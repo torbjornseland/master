@@ -1,0 +1,489 @@
+TITLE: Project inf5631 
+AUTHOR: Torbjørn Seland
+DATE: today
+
+TOC: on
+
+======= The model: Reaction diffusion equation =======
+The strength of calculations by computers has increased enormously the last
+decades. This is something that has given us new
+tools in how to describe everything around us. This has also affected the way to
+look at biological and medical issues. This
+paper will focus on the numerically way to solve it and how we can use
+mathematical tools to describe and analyse aa biological model. I will look at 
+the reaction diffusion equation (RD):
+!bt
+\begin{align} label{eq:reaction_diffusion}
+u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
+u(x,0) =& I(x)\\
+u(0,t)=& 0\\
+u(L,t)=& 0
+\end{align}
+!et
+This describe the concentration $u$ in
+one spatial dimension.To get a greater understanding, we can split up the model. The right side of the equation consist of two parts. The
+first part describe the spatial flow while the second describe the reaction
+term.
+
+======= Reaction term =======
+Here I want to investigate the reaction term. This describe the concentration in
+a certain point.
+!bt
+\begin{equation}
+u_t = f(u)
+\end{equation}
+!et
+To see the properties of this equation, we can  discretize the equation and solve it numerically for
+different values of $f(u)$.
+
+!bt
+\begin{align*}
+u_t =& f(u)\\
+\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
+\end{align*}
+!et
+This gives us a linear equation $Au = b$ that easy can be solved.
+===== Fisher-Kolmogoroff term =====
+When this part consist as the reaction term in our RD it is called Fisher-Kolmogoroff. This
+is often used in biology.Here $r$ describe the linear reproduction and
+$m$ the carrying capacity of this environment. The solution
+will then be.
+!bt
+\begin{equation}
+f(u) = ru(1-\frac{u}{m})
+\end{equation}
+!et
+
+
+!bt
+\begin{align*}
+u^n_i-\Delta t ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
+u^n_i(1-\Delta t r(1-\frac{u^n_i}{m})) =& u^{n-1}_i
+\end{align*}
+!et
+
+Since this equation gives us a nonlinear equation, we can use Picard to solve
+it. The idea with Picard is to replace one of the $u$ in the nonlinear part of the equation with $u\_$. $u\_$ will in the first
+iteration be sat to the value from the previous step $u\_1$. 
+
+!bt
+\begin{equation*}
+	u\_ = u^{n-1}
+\end{equation*}
+!et
+
+We can check the correct value $u$ against our pre produced $u\_$ each round. If the difference between
+them are less than what we demand, it continue. If not, the new $u\_$ will be a combination of $u\_$ and $u$. How we weight the combination is called relaxation 
+
+!bt
+\begin{equation*}
+u\_ = \gamma u + (1-\gamma)u\_, 0<= \gamma <=1
+\end{equation*}
+!et
+
+Our new equation will then be
+
+!bt
+\begin{align*}
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{m}))=& u^{n-1}_i\\
+\end{align*}
+!et
+
+Since we are using an approximation to $u$, we need to refine $u\_$ until it
+fulfil our expectations.
+
+=== Fisher's equation ===
+If we set $r=1$ and $m=1$, we will get a equation called Fisher's equation. This is the
+original equation for the FK equation.The reaction term in Fisher will look like this
+
+MOVIE: [movies/time_der_r_1_0_m_1_0.webm, height=300,width=375] r= 1, m= 1 
+
+=== Carrying capacity ===
+First it can be interesting to look at the changes in the carrying capacity of
+the function.
+
+MOVIE: [paramovies/time.webm, height=300,width=375]time
+
+Here we can see that they all goes towards their carrying capacity and stabilizes here.
+I have set $r=1$ in all of this simulations. The displacement from intial conditions to
+final conditions is quite similar in all of the cases.
+
+=== Reproduction rate ===
+We can do a similar thing with the reproduction $r$.
+
+MOVIE: [paramovies/time_r.webm, height=300,width=375]time_r
+
+This controls the speed of the movement. A larger reproduction will get in faster
+to the steady state, that $m$ controls.The carrying capacity is sat to $m=0.8$.
+
+!split
+======= Spatial diffusion =======
+The first part of the RD equation describe the spatial flow and how the values in $u$ are
+affected by their neighbours.  
+!bt
+\begin{equation}
+	u_t = \nabla \cdot \alpha(u)\nabla u
+\end{equation}
+!et
+This part consist of the function $\alpha(u)$. This
+affects the diffusion of the model. 
+To solve this numerically, we need to discretize the equation.
+!bt
+\begin{equation*}
+	\left[D_t^-u=D_x(\alpha(u) D_x u)\right]
+\end{equation*}
+!et
+I use Backward Euler for the time discrete and Crank Nicolson for the spatial
+discrete. 
+!bt
+\begin{align*}
+	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\
+	u^{n-1}_i=&u^n_i- \frac{\Delta t}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)
+\end{align*}
+!et
+Then we are able to put this into a linear equation as the section above. 
+!bt
+\begin{equation}
+A =
+\left(
+\begin{array}{cccccccccc}
+A_{0,0} & A_{0,1} & 0
+&\cdots &
+\cdots & \cdots & \cdots &
+\cdots & 0 \\
+A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
+0 & A_{2,1} & A_{2,2} & A_{2,3} &
+\ddots & &  &  & \vdots \\
+\vdots & \ddots &  & \ddots & \ddots & 0 &  & & \vdots \\
+\vdots &  & \ddots & \ddots & \ddots & \ddots & \ddots & & \vdots \\
+\vdots & &  & 0 & A_{i,i-1} & A_{i,i} & A_{i,i+1} & \ddots & \vdots \\
+\vdots & & &  & \ddots & \ddots & \ddots &\ddots  & 0 \\
+\vdots & & & &  &\ddots  & \ddots &\ddots  & A_{N_x-1,N_x} \\
+0 &\cdots & \cdots &\cdots & \cdots & \cdots  & 0 & A_{N_x,N_x-1} & A_{N_x,N_x}
+\end{array}
+\right)
+\tag{14}
+\end{equation}
+!et
+Our matrix $A$ will then be tridiagonal with the values.
+!bt
+\begin{align} label{eq:matrix_spatial}
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
+\end{align}                               
+!et
+We can see that in the cases where we replace
+$\alpha(u)$ with a function that contains $u$, we will get a nonlinear equation.
+=== Boundary conditions ===
+I have specified the boundary conditions in the first section to be zero. This has to be implemented in the linear function.
+Our matrix A will then be
+!bt
+\begin{align*}
+A_{0,0} &= 1,\\
+A_{0,1} &= 0,\\
+A_{N_x,N_x-1} &= 0,\\
+A_{N_x,N_x} &= 1
+\end{align*}
+!et
+And the b array with known values will be
+!bt
+\begin{align*}
+b_0 &= 0,\\
+b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\
+b_{N_x} &= 0 
+\end{align*}
+!et
+This decision affects the equilibrium state. 
+===== Linear equation =====
+The only solution for a linear equation is to replace $\alpha$ by a
+constant.
+!bt
+\begin{equation}
+	\alpha(u) = k
+\end{equation}
+!et
+We can then use our matrix from(ref{eq:matrix_spatial}) and insert the function. This gives us
+the matrix:
+!bt
+\begin{align*} label{eq:matrix_constant}
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
+\end{align*}                               
+!et
+The movies under represents different values for $k$
+
+MOVIE: [paramovies/constant.webm, height=300,width=375]constant 
+
+##N=Nx=200,T=L=10
+
+Here it is quite clearly that the size of $\alpha$ controls the speed of the
+diffusion. A large $\alpha$ will get the function faster towards zero. 
+
+===== Nonlinear equation =====
+We will get a nonlinear solution for all $\alpha$ that include $u$. 
+I will as in the previous section use Picard to solve it. There are also
+other methods to solve nonlinear equation like Newton's method. This method often demands
+a little bit more work, but is often more efficiency. 
+=== Picard ===
+=== Ordinary u ===
+!bt
+\begin{equation}
+	\alpha(u) = u\\
+\end{equation}
+!et
+
+Since we only used CN for one step in the general calculation for $\alpha$, we need to use arithmetic mean
+to be able to get values from $u$.
+!bt
+\begin{equation*}
+	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
+\end{equation*}
+!et
+
+Then we can insert $u$ in the matrix(ref{eq:matrix_spatial}).
+!bt
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i}+u_{i-1})\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i+1}+u_{i})
+\end{align*}                               
+!et
+This gives us a nonlinear problem. We can here replace $u$ by $u\_$
+as explained in the section \emph{Time Derivative}.
+!bt
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
+\end{align*}                               
+!et
+I will do a couple of different setup for this function. First I will try to plot
+a simulation where I only use the previous value $u\_$ in my matrix. Then I will add
+an error measure that use several Picard iterations.
+
+MOVIE: [submovies/ordinary_sub.webm, height=300,width=375]ordinary with different tolerance for Picard
+
+These results show us the behavior of $u\_$ when it varies from the previous
+time step up to the current time step. The simulation without any Picard
+iteration, gives us a wall that spreads in each direction. This wall becomes
+smaller the closer $u\_$ goes towards $u$. 
+
+An important aspect to be aware of when working with
+diffusion equation, is that the result after a certain time will be close to  equal in all
+the simulations. This happens because of the equilibrium principle. An example
+of this is the temperature in a room. The diffusion will cause it to go towards a smooth and
+balanced temperature in each point of the room. Therefore it is more interesting
+to look at the movement towards the equilibrium than the final result.
+
+===== Spatial derivation wrapped with an absolute value =====
+!bt
+\begin{equation}
+\alpha(u) = |\nabla(u)|
+\end{equation}
+!et
+Since we now have used CN one time on this, we can do it again. This will give
+us integer numbers to use in $u$.
+!bt
+\begin{align*}
+\alpha(u_{i+\frac{1}{2}}) =& \left|\nabla(u_{i+\frac{1}{2}})\right|\\
+\alpha(u_{i+\frac{1}{2}}) =& \left|\frac{u_{i+1}-u_i}{\Delta x}\right|
+\end{align*}
+!et
+We can do the same thing for $\alpha_{i-\frac{1}{2}}$ and insert them both in
+the matrix.
+!bt
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|+ \left|\frac{u_{i+1}-u_i}{\Delta x}\right|)\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|)\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\right|)
+\end{align*}                               
+!et
+To use this with Picard, we need to replace $u\_=u$. We can also move $\Delta x$
+out of the fraction, because $\Delta x > 0$.
+!bt
+\begin{align} label{eq:matrix_absolute}
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|+ \left|u\__{i+1}-u\__i\right|)\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|)\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__{i+1}-u\__i\right|)
+\end{align}                               
+!et
+
+MOVIE: [movies/spatial_abs_std.webm, height=300,width=375]abs_std
+
+MOVIE: [movies/spatial_abs_std_picard_tol__5.webm,height=300,width=375]abs_std_picard tol = 10^-5
+
+This also starts with a wall in each directions and then develops into smaller steps that nearly disappears when t gets larger.
+While the Picard solution gives a smoother curve. 
+===== Absolute value powered by m =====
+!bt
+\begin{equation}
+	\alpha(u) = |\nabla(u)|^m
+\end{equation}
+!et
+This equation is solved in the exact same as the equation above. We can then use
+the matrix (ref{eq:matrix_absolute}) and insert the power.
+!bt
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|^m+ \left|u\__{i+1}-u\__i\right|^m)\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|^m)\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__{i+1}-u\__i\right|^m)
+\end{align*}
+!et
+
+MOVIE: [paramovies/abs_std_m.webm, height=300,width=375]Powered by m
+
+Here the length of the simulation, $T$ is sat to be quite large. This is to show the effect of the power in
+this function. We can see that it quite fast moves towards zero when the power is low. But it seems that the equilibrium state for all these are at zero. The power only affect the speed.
+
+!split
+======= Solution for the biological equation =======
+Now we can try to combine the reaction term with the spatial part. The reaction-diffusion equation(ref{eq:reaction_diffusion}) can be inserted in a matrix. This is done by using the two linear equation from the earlier sections.
+Since we only use FK equation for $f(u)$, I will insert this in the matrix.
+!bt
+\begin{align} label{eq:matrix_reaction_diffusion}
+A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
+\end{align}                               
+!et
+=== Constant ===
+Here we will see how the reaction term and the spatial diffusion term affects each other. We
+know from the section above that the reaction term will go towards equlibrium state which is sat by M.
+The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as
+a Fisher's equation, while the diffusion part has different values of $k$.
+
+##MOVIE: [paramovies/reac_constant.webm, height=300,width=375]r=1,M=1
+
+MOVIE: [paramovies/reac_constant_2.webm, height=300,width=375]r=1,M=1
+
+They all goes towards zero but with different
+
+MOVIE: [paramovies/reac_constant_r_0_5.webm, height=300,width=375]r=0.5,M=1
+
+MOVIE: [paramovies/reac_constant_M_0_5.webm, height=300,width=375]r=1,M=0.5
+
+MOVIE: [paramovies/reac_constant_M_0_5_r_0_5.webm, height=300,width=375]r=0.5,M=0.5
+
+MOVIE: [paramovies/reac_constant_M_0_5_r_0_05.webm, height=300,width=375]r=0.05,M=0.5
+
+
+=== Ordinary ===
+
+MOVIE: [paramovies/reac_ordinary_r.webm, height=300,width=375]
+
+MOVIE: [paramovies/reac_ordinary_M.webm, height=300,width=375]
+
+=== Absolute value ===
+
+MOVIE: [paramovies/reac_abs_std_r.webm, height=300,width=375]
+
+MOVIE: [paramovies/reac_abs_std_M.webm, height=300,width=375]
+
+!split
+=== Further work ===
+=== Changes in the Boundary conditions ===
+===== Dirichlet boundary condition =====
+There are several ways to describe the boundary conditions for a differential equation.
+In this paper I have used Dirichlet, where I decide that the boundaries shall be zero.
+!bt
+\begin{equation}
+u = 0|_{\partial \Omega}
+\end{equation}
+!et
+This can be described with attach a rope to each side and then pull in the rope. It will always
+be zero at the edges.
+===== Neumann boundary condition =====
+Another way to look at the boundary is by reflecting boundaries. It can reflect it by $u=0$ which change the sign at the boundary. The way that we often use this, is by Neumann boundary condition. This we can describe
+!bt
+\begin{equation}
+ \frac{\partial u}{\partial n} \equiv \normalvec\cdot\nabla u = 0
+\end{equation}
+!et
+Where $\normalvec$ describes the normal vector.The boundaries can be describe  
+!bt
+\left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
+\frac{\partial}{\partial x}
+!et
+If we then discretize this at the boundaries, we get
+!bt
+\begin{align*}
+\frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0
+u_{-1}^n =& u_1^n
+\end{align*}
+!et
+We can do the same thing for $L$.
+Under I have made a simulation where I compare Dirichlet with Neumann. I run them
+both on the spatial part to see how it affects the diffusion.
+
+MOVIE: [paramovies/reac_boundary.webm, height=300,width=375]
+
+The interesting this here is to see that the Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. The reason that Dirichlet goes towards zero is because of the value of the boundary. If we continue with the idea of a temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with polystyrene(isopor),where the wall is totally isolated. With Dirichlet the walls has a specific temperature. In our example we sat it to zero, but any number would have caused an equilibrium state.  
+=== Newton's method ===
+Newtons method is another way to handle nonlinear equations. 
+!bt
+\begin{equation}
+	F(u) = 0
+\end{equation}
+!et
+This method linearizes the equation by using Taylor series expansion around
+$u\_$. This only keeping only the linear part.
+!bt
+\begin{align*}
+	F(u) &= F(u_{-}) + F'(u_{-})(u - u_{-}) + \frac{1}{2}F''(u_{-})(u-u_{-})^2
+	+\cdots  \\
+	& \approx F(u_{-}) + F'(u_{-})(u - u_{-}) = \hat F(u)
+\end{align*}
+!et
+The linear equation will be
+!bt
+\begin{equation}
+	u = u_{-} - \frac{F(u_{-})}{F'(u_{-})}
+\end{equation}
+!et
+This method require a Jacobian matrix. This means that we need to differentiate $F(u) = A(u)u - b(u)$ for all the 
+values of $u$. Our $F$ will be
+!bt
+\begin{equation*}
+F_i = A_{i,i-1}(u_{i-1},u_i)u_{i-1}+A_{i,i}(u_{i-1},u_{i},u_{i+1})u_{i}+A_{i,i+1}(u_i,u_{i+1})u_{i+1}-b_i(u^{n-1}_i)
+\end{equation*}
+!et
+
+
+!bt
+\begin{align*}
+J_{i,i}=& \frac{\partial F_i}{\partial u_i}=\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}
++ \frac{\partial A_{i,i}}{\partial u_i}u_i+ A_{i,i}
++ \frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}
+- \frac{\partial b_i}{\partial u_{i}}\\ 
+J_{i,i-1}=& \frac{\partial F_i}{\partial u_{i-1}}=\frac{\partial A_{i,i-1}}{\partial u_{i-1}}u_{i-1}
++ A_{i,i-1}+\frac{\partial A_{i,i}}{\partial u_{i-1}}u_i
+- \frac{\partial b_i}{\partial u_{i-1}}\\ 
+J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\partial u_{i+1}}u_i
++ \frac{\partial A_{i,i+1}}{\partial u_{i+1}}u_{i+1}+A_{i,i+1}
+- \frac{\partial b_i}{\partial u_{i+1}}\\ 
+\end{align*}
+!et
+Since this demands a lot of calculating, I will show how to do it for the first
+$J_{i,i}$. I calculate each subsection in one line
+!bt
+\begin{align*}
+\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
+\frac{\partial A_{i,i}}{\partial u_i}u_i=&\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
+A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\\
+\frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}=&-\frac{\Delta t}{\Delta x^2}(\alpha'(u_i)u_{i+1})\\
+- \frac{\partial b_i}{\partial u_{i}}=& -b'(u_i)\\
+\end{align*}
+!et
+This gives us the matrix
+!bt
+\begin{align*}
+J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
++&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i+1})-b'(u_i)\\
+J_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i-1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i-1})+\alpha(u_i))+\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i})\\
+J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i+1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_i)+\alpha(u_{i+1}))
+\end{align*}
+!et
+This matrix can be used to compute the Newton's method. We just need to replace $\alpha(u)$ by the function. 

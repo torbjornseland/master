@@ -1,0 +1,294 @@
+\documentclass[norsk,11pt,a4paper]{article}
+\usepackage[norsk]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{todonotes}
+\usepackage{cancel} 
+\usepackage{verbatim}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{backr}{RGB}{255,102,0}
+\definecolor{light_blue}{rgb}{0.8,1,1}
+
+\lstset{ %
+  language=Python,                % the language of the code
+  basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+  %numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+
+\begin{document}
+\title{Project INF5631- Biological model for infection}
+\author{Torbjørn Seland}
+\maketitle
+
+\section*{Biological model}
+In this project I will look at a diffusion equation which will describe how an
+infection can be spread in a society.
+\\
+The model:
+\begin{equation}
+u_t = \nabla \cdot \alpha(u)\nabla u + f(u)
+\end{equation}
+This equation consist of two parts that controls the behavior. I will do a study of them both, to 
+see how they affect the equation.
+\section*{Time derivative}
+The first part that I want to investigate, is the time derivate part:
+\begin{equation}
+u_t = f(u)
+\end{equation}
+When we talk about the time derivative, we are interesting in how the change in
+time affect the concentration at a specific point. This time derivative part can
+consist of several functions, so I will make a general solution of it first.
+\begin{align*}
+u_t =& f(u)\\
+\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
+\end{align*}
+This gives us a linear equation $Au = b$
+\subsection*{A given function}
+\begin{equation}
+f(u) = ru(1-\frac{u}{m})
+\end{equation}
+Now we have a function for $f(u)$ where $r$ and $m$ are constants.The solution
+will then be.
+\begin{align*}
+u^n_i-\Delta t ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
+u^n_i(1-\Delta t r(1-\frac{u^n_i}{m})) =& u^{n-1}_i
+\end{align*}
+\\
+Since this equation gives us a nonlinear equation, we can use Picard to solve
+it. The idea with Picard is to replace the $u$ on the right side with $u\_$. This is to get rid of the nonlinearity in this equation. $u\_$ will in the first
+iteration be sat to value from the step before $u\_1$. 
+\begin{equation*}
+	u\_ = u^{n-1}
+\end{equation*}
+We can check the correct value $u$ against our pre produced $u\_$ each round. If the difference between
+them are less than what we demand, it continue. If not, the new $u\_$ will be a combination of $u\_$ and $u$. How we weight the combination is called relaxation 
+\begin{equation*}
+u\_ = \alpha u + (1-\alpha)u\_, 0<= \alpha <=1
+\end{equation*}
+Our new equation will then be
+\begin{align*}
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{m}))=& u^{n-1}_i\\
+\end{align*}
+Since we are using an approximation to $u$, we need to refine $u\_$ until it
+fulfil our expectations.
+\section*{Spatial diffusion}
+In this part I will take a dive into the last fraction of our equation.
+\begin{equation}
+	u_t = \nabla \cdot \alpha(u)\nabla u
+\end{equation}
+This part consist of a function $\alpha(u)$, which the user defines. 
+To solve this numerically, we need to discretize the equation.
+\begin{equation*}
+	\left[D_t^-u=D_x(\alpha(u) D_x u)\right]
+\end{equation*}
+I use Backward Euler for the time discrete and Crank Nicolson for the spatial
+discrete. Since we only use CN one time for $\alpha$, we need to use arithmetic mean.
+\begin{equation*}
+	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
+\end{equation*}
+This can be inserted in our equation under.
+\begin{align*}
+	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\
+	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{2\Delta x^2}\left((\alpha_{i+1}+\alpha_{i})(u_{i+1}-u_i)-(\alpha_{i}-\alpha_{i-1})(u_{i}-u_{i-1})\right)\\
+	u^{n-1}_i=&u^n_i- \frac{\Delta t}{2\Delta x^2}\left((\alpha_{i+1}+\alpha_{i})(u_{i+1}-u_i)-(\alpha_{i}-\alpha_{i-1})(u_{i}-u_{i-1})\right)
+\end{align*}
+Then we are able to put this into $Au = b$, where $b$ is the previous u.
+\begin{equation}
+A =
+\left(
+\begin{array}{cccccccccc}
+A_{0,0} & A_{0,1} & 0
+&\cdots &
+\cdots & \cdots & \cdots &
+\cdots & 0 \\
+A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
+0 & A_{2,1} & A_{2,2} & A_{2,3} &
+\ddots & &  &  & \vdots \\
+\vdots & \ddots &  & \ddots & \ddots & 0 &  & & \vdots \\
+\vdots &  & \ddots & \ddots & \ddots & \ddots & \ddots & & \vdots \\
+\vdots & &  & 0 & A_{i,i-1} & A_{i,i} & A_{i,i+1} & \ddots & \vdots \\
+\vdots & & &  & \ddots & \ddots & \ddots &\ddots  & 0 \\
+\vdots & & & &  &\ddots  & \ddots &\ddots  & A_{N_x-1,N_x} \\
+0 &\cdots & \cdots &\cdots & \cdots & \cdots  & 0 & A_{N_x,N_x-1} & A_{N_x,N_x}
+\end{array}
+\right)
+\tag{14}
+\end{equation}
+Our matrix $A$ will then be tridiagonal with the values.
+\begin{align} \label{eq:matrix_spatial}
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta
+x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\notag \\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha(u_i)+\alpha(u_{i-1}))\notag \\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+\alpha(u_i))
+\end{align}                               
+If we look at this matrix above,we can see that in the cases where we replace
+$\alpha(u)$ with a value defined by $u$, we will get a nonlinear equation.
+\subsection*{Linear equation}
+The only solution if we want this to be linear, is to replace the function by a
+constant.
+\begin{equation}
+	\alpha(u) = k
+\end{equation}
+We can then use our matrix from(\ref{eq:matrix_spatial}) and insert the function. This gives us
+the matrix:
+\begin{align*} \label{eq:matrix_constant}
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(4k)=1+\frac{2k\Delta t}{\Delta x^2}\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(2k)=-\frac{k \Delta t}{\Delta x^2}\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(2k)=-\frac{k \Delta t}{\Delta x^2}\\
+\end{align*}                               
+\subsection*{Nonlinear equation}
+For all solutions that include $u$, we will get a nonlinear solution. There
+different techniques to handle them. I will try Picard as my first method.
+\subsubsection*{Picard}
+\subsubsection*{Ordinary u}
+\begin{equation}
+	\alpha(u) = u\\
+\end{equation}
+Then we can insert this in the matrix(\ref{eq:matrix_spatial}).
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i}+u_{i-1})\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i+1}+u_{i})
+\end{align*}                               
+This gives also gives us a nonlinear problem, we can here replace $u$ by $u\_$
+as explained in the section \emph{Time Derivative}.
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
+\end{align*}                               
+\subsection*{Spatial derivation wrapped with an absolute value}
+\begin{equation}
+	\alpha(u) = |\nabla(u)|
+\end{equation}
+This gives us a little bit more complicated equation than the constant in our
+subsection over. We can also see that we will get a non linear equation. This I
+will handle with a Picard iteration.
+\begin{align*} \label{eq:matrix_absolute}
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(|\nabla(u_{i+1})|+2|\nabla(u_i)|+|\nabla(u_{i-1})|)\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(|\nabla(u_i)|+|\nabla(u_{i-1})|)\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(|\nabla(u_{i+1})|+|\nabla(u_i)|)
+\end{align*}                               
+As we can see here, demands this equation a lot more work. This will give us a nonlinear equation and
+we need to take care of the absolute value. I will discretize $|\nabla(u)|$, and insert this in our matrix above.
+Here we have three different options BW,FW or CN. I choose to use CN, and then use an arithmetic mean.
+\begin{align*}
+|\nabla(u_i)|=&\left|\frac{u_{i+\frac{1}{2}}-u_{i-\frac{1}{2}}}{\Delta x}\right|\\
+=&\frac{1}{2}\left|\frac{(u_{i+1}+u_i)-(u_i+u_{i-1})}{\Delta x}\right|\\
+=&\frac{1}{2\Delta x}\left|u_{i+1}-u_{i-1}\right|
+\end{align*}
+If we insert this, our equation will be
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{4\Delta x^3}(|u_{i+2}-u_i|+2|u_{i+1}-u_{i-1}|+|u_{i}-u_{i-2}|)\\
+A_{i,i-1} =&-\frac{\Delta t}{4\Delta x^3}(|u_{i+1}-u_{i-1}|+|u_{i}-u_{i-2}|)\\
+A_{i,i+1} =&-\frac{\Delta t}{4\Delta x^3}(|u_{i+2}-u_i|+|u_{i+1}-u_{i-1}|)
+\end{align*}                               
+Since this will give us a nonlinear equation, we need to use Picard. The matrix will 
+then be
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{4\Delta x^3}(|u\__{i+2}-u\__i|+2|u\__{i+1}-u\__{i-1}|+|u\__{i}-u\__{i-2}|)\\
+A_{i,i-1} =&-\frac{\Delta t}{4\Delta x^3}(|u\__{i+1}-u\__{i-1}|+|u\__{i}-u\__{i-2}|)\\
+A_{i,i+1} =&-\frac{\Delta t}{4\Delta x^3}(|u\__{i+2}-u\__i|+|u\__{i+1}-u\__{i-1}|)
+\end{align*}                               
+\subsection*{Absolute value powered by m}
+\begin{equation}
+	\alpha(u) = |\nabla(u)|^m
+\end{equation}
+Here I have tried to use the same technique as for the \emph{Spatial derivation wrapped with an absolute value}.
+The values will be:
+\begin{align*}
+|\nabla(u_i)|^m=&\left|\frac{u_{i+\frac{1}{2}}-u_{i-\frac{1}{2}}}{\Delta x}\right|^m\\
+=&\frac{1}{2}\left|\frac{(u_{i+1}+u_i)-(u_i+u_{i-1})}{\Delta x}\right|^m\\
+=&\frac{1}{2\Delta x}\left|u_{i+1}-u_{i-1}\right|^m
+\end{align*}
+Then we just use Picard, and our matrix will be
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{4\Delta x^3}(|u\__{i+2}-u\__i|^m+2|u\__{i+1}-u\__{i-1}|^m+|u\__{i}-u\__{i-2}|^m)\\
+A_{i,i-1} =&-\frac{\Delta t}{4\Delta x^3}(|u\__{i+1}-u\__{i-1}|^m+|u\__{i}-u\__{i-2}|^m)\\
+A_{i,i+1} =&-\frac{\Delta t}{4\Delta x^3}(|u\__{i+2}-u\__i|^m+|u\__{i+1}-u\__{i-1}|^m)
+\end{align*}                               
+\subsubsection*{Newton}
+Newtons method is another way to handle nonlinear equations. 
+\begin{equation}
+	F(u) = 0
+\end{equation}
+This method linearizes the equation by using Taylor series expansion around
+$u\_$. This only keeping only the linear part.
+\begin{align*}
+	F(u) &= F(u_{-}) + F'(u_{-})(u - u_{-}) + \frac{1}{2}F''(u_{-})(u-u_{-})^2
+	+\cdots  \\
+	& \approx F(u_{-}) + F'(u_{-})(u - u_{-}) = \hat F(u)
+\end{align*}
+The linear equation will be
+\begin{equation}
+	u = u_{-} - \frac{F(u_{-})}{F'(u_{-})}
+\end{equation}
+This method require a Jacobian matrix. This means that we need to differentiate $F(u) = A(u)u - b(u)$ for all the 
+values of $u$. Our $F$ will be
+\begin{equation*}
+F_i = A_{i,i-1}(u_{i-1},u_i)u_{i-1}+A_{i,i}(u_{i-1},u_{i},u_{i+1})u_{i}+A_{i,i+1}(u_i,u_{i+1})u_{i+1}-b_i(u^{n-1}_i)
+\end{equation*}
+
+
+\begin{align*}
+J_{i,i}=& \frac{\partial F_i}{\partial u_i}=\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}
++ \frac{\partial A_{i,i}}{\partial u_i}u_i+ A_{i,i}
++ \frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}
+- \frac{\partial b_i}{\partial u_{i}}\\ 
+J_{i,i-1}=& \frac{\partial F_i}{\partial u_{i-1}}=\frac{\partial A_{i,i-1}}{\partial u_{i-1}}u_{i-1}
++ A_{i,i-1}+\frac{\partial A_{i,i}}{\partial u_{i-1}}u_i
+- \frac{\partial b_i}{\partial u_{i-1}}\\ 
+J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\partial u_{i+1}}u_i
++ \frac{\partial A_{i,i+1}}{\partial u_{i+1}}u_{i+1}+A_{i,i+1}
+- \frac{\partial b_i}{\partial u_{i+1}}\\ 
+\end{align*}
+Since this demands a lot of calculating, I will show how to do it for the first
+$J_{i,i}$. I calculate each subsection in one line
+\begin{align*}
+\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
+\frac{\partial A_{i,i}}{\partial u_i}u_i=&\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
+A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\\
+\frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}=&-\frac{\Delta t}{\Delta x^2}(\alpha'(u_i)u_{i+1})\\
+- \frac{\partial b_i}{\partial u_{i}}=& -b'(u_i)\\
+\end{align*}
+This gives us the matrix
+\begin{align*}
+J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
++&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i+1})-b'(u_i)\\
+J_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i-1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i-1})+\alpha(u_i))+\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i})\\
+J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i+1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_i)+\alpha(u_{i+1}))
+\end{align*}
+This matrix can be used to compute the Newton's method. We just need to replace $\alpha(u)$ by the function. 
+\subsubsection*{Ordinary u}
+\subsubsection*{Spatial derivation\dots}
+\subsubsection*{Spatial derviation power by m}
+\subsection*{Solution for the biological equation}
+\end{document}

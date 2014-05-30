@@ -1,0 +1,16 @@
+Dette notatet bruker jeg til å notere ned tanker og korte oppsummeringer etter
+leste kapitler.
+
+Murray 1, kap 10
+- Epidemiske modeller
+- Fokus på geografisk spredning
+- Enkle SIR modeller
+- Threshold, hvor mange smittede må det være for at en sykdom skal spre seg
+- Spredning av kjønnssykdommer
+- Aids
+- Bovine Tuberculosis- Criss cross model
+
+Murray 1, kap 11
+- Random walk og diffusjonslikningen
+
+Murray 1, kap 13

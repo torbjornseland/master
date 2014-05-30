@@ -1,0 +1,6 @@
+There are at least four ingredients which are crucial in order to understand the basic
+Monte-Carlo strategy. These are
+1.Random variables,
+2.probability distribution functions (PDF),
+3.moments of a PDF
+4.and its pertinent variance σ 2 .
