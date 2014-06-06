@@ -1,0 +1,154 @@
+\documentclass[norsk]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{lipsum}
+\usepackage{amsmath}
+%\usepackage{mathtools}
+
+\usetheme{Warsaw}
+\title[Løse likningssett med matriseregning]{Matriseregning\\ Introduksjon i matriseregning for Ent3relever}
+\author{Torbjørn Seland}
+
+\newcommand\Fontvi{\fontsize{20}{7.2}\selectfont}
+\newcommand\Fontvitwo{\fontsize{10}{7.2}\selectfont}
+\newcommand\Fontvithree{\fontsize{15}{7.2}\selectfont}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Info om opplegget til studenter}
+\begin{itemize}
+	\item Dette opplegget ble laget for en 1.klasse. Ideen var å vise hvordan
+		mer kompliserte likningssett kan løses på en mer effektiv måte
+	\item Jeg brukte tavlen aktivt da jeg forklarte opplegget og denne
+		powerpointen er kun til støtte. Dette krever selvfølgelig at man selv
+		har god kontroll på temaet.
+	\item Gå gjennom eksempeloppgaven grundig og forklar hvert steg. Her er det
+		viktig at elevene skjønner teknikken og ser sammenhengen.
+	\item Jeg har laget tre oppgaver med fasit i slutten av presentasjonen.
+		Disse er laget slik at de skal kunne regnes på en fin måte(om man gjør
+		det riktig). I den siste oppgaven skal elevene også gjøre om fra et
+		likningssystem til et matriseoppsett.
+\end{itemize}
+\end{frame}
+
+\Fontvi
+\begin{frame}{Likningssett}
+\begin{align*}
+I: 2x + y =& 5\\
+II: x + 2y =& 4
+\end{align*}
+
+\Fontvitwo
+\begin{itemize}
+	\item Hvordan ville dere løst dette likningssettet?
+\end{itemize}
+\end{frame}
+\begin{frame}{Fra likningssett til matriseoppsett}
+\Fontvi
+\centering
+\begin{align*}
+\begin{matrix}
+I:& 2x& + y& =& 5\\
+II:& x& + 2y& =& 4
+\end{matrix}
+\end{align*}
+\\
+\Downarrow\\
+\\
+\begin{align*}
+\begin{bmatrix}
+	2 & 1 \\
+	1 & 2
+\end{bmatrix}
+\begin{bmatrix}
+	x \\
+	y
+\end{bmatrix}
+=
+\begin{bmatrix}
+	5 \\
+	4
+\end{bmatrix}
+\end{align*}
+\end{frame}
+\begin{frame}
+\Fontvi
+\begin{align*}
+\begin{bmatrix}
+	1 & 0 \\
+	0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+	x \\
+	y
+\end{bmatrix}
+=
+\begin{bmatrix}
+	a \\
+	b
+\end{bmatrix}
+\end{align*}
+\Fontvitwo
+\begin{itemize}
+	\item Vi ønsker å ende opp med en slik matrise. Hvorfor?
+	\item Dette kan vi klare ved å trekke fra og legge til radene på
+		hverandre(vannrett).
+	\item Denne matrisen kalles en identitetsmatrise/enhetsmatrise
+\end{itemize}
+\end{frame}
+\begin{frame}
+\Fontvithree
+Oppgaver\\
+a)
+\begin{align*}
+\begin{bmatrix}
+	1 & 3 \\
+	3 & 1
+\end{bmatrix}
+\begin{bmatrix}
+	x \\
+	y
+\end{bmatrix}
+=
+\begin{bmatrix}
+	6 \\
+	10
+\end{bmatrix}\\
+\end{align*}
+b)
+\begin{align*}
+\begin{bmatrix}
+	2 & 2 \\
+	3 & 1
+\end{bmatrix}
+\begin{bmatrix}
+	x \\
+	y
+\end{bmatrix}
+=
+\begin{bmatrix}
+	12 \\
+	10
+\end{bmatrix}\\
+\end{align*}
+c)
+\begin{align*}
+	x + 2y + z &=9\\
+      + 2y + z &=7\\
+	x + y  + z &=6
+\end{align*}
+\end{frame}
+\begin{frame}{Fasit oppgaver}
+\begin{itemize}
+	\item a) x= 3, y=1
+	\item b) x= 2, y=4
+	\item c) x= 2, y=3, z=1
+\end{itemize}
+\end{frame}
+
+\end{document}

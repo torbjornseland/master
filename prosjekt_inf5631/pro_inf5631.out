@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{The model: Reaction diffusion equation}{}% 1
+\BOOKMARK [1][-]{section.2}{Reaction term}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Fisher-Kolmogoroff equation}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Spatial diffusion}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{Linear equation}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Nonlinear equation}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.3}{Spatial derivation wrapped with an absolute value}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.4}{Absolute value powered by m}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Solution for the biological equation}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Neumann boundary condition}{section.4}% 10

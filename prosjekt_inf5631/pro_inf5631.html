@@ -1,0 +1,313 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Project inf5631">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' The model: Reaction diffusion equation ',
+               1,
+               None,
+               '___sec0'),
+              (' Reaction term ', 1, None, '___sec1'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec2'),
+              (" Fisher's equation ", 3, None, '___sec3'),
+              (' Carrying capacity ', 3, None, '___sec4'),
+              (' Reproduction rate ', 3, None, '___sec5'),
+              (' Spatial diffusion ', 1, None, '___sec6'),
+              (' Boundary conditions ', 3, None, '___sec7'),
+              (' Linear equation ', 2, None, '___sec8'),
+              (' Nonlinear equation ', 2, None, '___sec9'),
+              (' Picard ', 3, None, '___sec10'),
+              (' Ordinary u ', 3, None, '___sec11'),
+              (' Spatial derivation wrapped with an absolute value ',
+               2,
+               None,
+               '___sec12'),
+              (' Absolute value powered by m ', 2, None, '___sec13'),
+              (' Solution for the biological equation ', 1, None, '___sec14'),
+              (' Constant ', 3, None, '___sec15'),
+              (' Ordinary ', 3, None, '___sec16'),
+              (' Absolute value ', 3, None, '___sec17'),
+              (' Further work ', 3, None, '___sec18'),
+              (' Changes in the Boundary conditions ', 3, None, '___sec19'),
+              (' Dirichlet boundary condition ', 2, None, '___sec20'),
+              (' Neumann boundary condition ', 2, None, '___sec21'),
+              (" Newton's method ", 3, None, '___sec22')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<a name="part0000"></a>
+<!-- begin top navigation -->
+<a href="._pro_inf5631001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Project inf5631 </title>
+
+<center><h1>Project inf5631 </h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Torbj&#248;rn Seland -->
+
+<center>
+<b>Torbj&#248;rn Seland</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>May 28, 2014</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<a href="#___sec0"> The model: Reaction diffusion equation </a><br>
+<a href="#___sec1"> Reaction term </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Fisher-Kolmogoroff term </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Fisher's equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Carrying capacity </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Reproduction rate </a><br>
+<a href="._pro_inf5631001.html#___sec6"> Spatial diffusion </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec7"> Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec8"> Linear equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec9"> Nonlinear equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec10"> Picard </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec11"> Ordinary u </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec12"> Spatial derivation wrapped with an absolute value </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec13"> Absolute value powered by m </a><br>
+<a href="._pro_inf5631002.html#___sec14"> Solution for the biological equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec15"> Constant </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec16"> Ordinary </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec17"> Absolute value </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec18"> Further work </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec19"> Changes in the Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec20"> Dirichlet boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec21"> Neumann boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec22"> Newton's method </a><br>
+</p>
+
+<h1>The model: Reaction diffusion equation  <a name="___sec0"></a></h1>
+The strength of calculations by computers has increased enormously the last
+decades. This is something that has given us new
+tools in how to describe everything around us. This has also affected the way to
+look at biological and medical issues. This
+paper will focus on the numerically way to solve it and how we can use
+mathematical tools to describe and analyse aa biological model. I will look at 
+the reaction diffusion equation (RD):
+$$
+\begin{align} \tag{1}
+u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
+u(x,0) =& I(x)\\
+u(0,t)=& 0\\
+u(L,t)=& 0
+\end{align}
+$$
+
+This describe the concentration \( u \) in
+one spatial dimension.To get a greater understanding, we can split up the model. The right side of the equation consist of two parts. The
+first part describe the spatial flow while the second describe the reaction
+term.
+
+<h1>Reaction term  <a name="___sec1"></a></h1>
+Here I want to investigate the reaction term. This describe the concentration in
+a certain point.
+$$
+\begin{equation}
+u_t = f(u)
+\end{equation}
+$$
+
+To see the properties of this equation, we can  discretize the equation and solve it numerically for
+different values of \( f(u) \).
+
+$$
+\begin{align*}
+u_t =& f(u)\\
+\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
+\end{align*}
+$$
+
+This gives us a linear equation \( Au = b \) that easy can be solved.
+
+<h2>Fisher-Kolmogoroff term  <a name="___sec2"></a></h2>
+When this part consist as the reaction term in our RD it is called Fisher-Kolmogoroff. This
+is often used in biology.Here \( r \) describe the linear reproduction and
+\( m \) the carrying capacity of this environment. The solution
+will then be.
+$$
+\begin{equation}
+f(u) = ru(1-\frac{u}{m})
+\end{equation}
+$$
+
+
+$$
+\begin{align*}
+u^n_i-\Delta t ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
+u^n_i(1-\Delta t r(1-\frac{u^n_i}{m})) =& u^{n-1}_i
+\end{align*}
+$$
+
+
+<p>
+Since this equation gives us a nonlinear equation, we can use Picard to solve
+it. The idea with Picard is to replace one of the \( u \) in the nonlinear part of the equation with \( u\_ \). \( u\_ \) will in the first
+iteration be sat to the value from the previous step \( u\_1 \). 
+
+$$
+\begin{equation*}
+	u\_ = u^{n-1}
+\end{equation*}
+$$
+
+
+<p>
+We can check the correct value \( u \) against our pre produced \( u\_ \) each round. If the difference between
+them are less than what we demand, it continue. If not, the new \( u\_ \) will be a combination of \( u\_ \) and \( u \). How we weight the combination is called relaxation 
+
+$$
+\begin{equation*}
+u\_ = \gamma u + (1-\gamma)u\_, 0<= \gamma <=1
+\end{equation*}
+$$
+
+
+<p>
+Our new equation will then be
+
+$$
+\begin{align*}
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{m}))=& u^{n-1}_i\\
+\end{align*}
+$$
+
+
+<p>
+Since we are using an approximation to \( u \), we need to refine \( u\_ \) until it
+fulfil our expectations.
+
+<h3>Fisher's equation  <a name="___sec3"></a></h3>
+
+If we set \( r=1 \) and \( m=1 \), we will get a equation called Fisher's equation. This is the
+original equation for the FK equation.The reaction term in Fisher will look like this
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/time_der_r_1_0_m_1_0.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>r= 1, m= 1</em></p>
+
+<h3>Carrying capacity  <a name="___sec4"></a></h3>
+
+First it can be interesting to look at the changes in the carrying capacity of
+the function.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/time.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>time</em></p>
+
+
+<p>
+Here we can see that they all goes towards their carrying capacity and stabilizes here.
+I have set \( r=1 \) in all of this simulations. The displacement from intial conditions to
+final conditions is quite similar in all of the cases.
+
+<h3>Reproduction rate  <a name="___sec5"></a></h3>
+
+We can do a similar thing with the reproduction \( r \).
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/time_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>time_r</em></p>
+
+
+<p>
+This controls the speed of the movement. A larger reproduction will get in faster
+to the steady state, that \( m \) controls.The carrying capacity is sat to \( m=0.8 \).
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<a href="._pro_inf5631001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
