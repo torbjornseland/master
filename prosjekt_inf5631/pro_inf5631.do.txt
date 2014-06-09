@@ -4,6 +4,8 @@ DATE: today
 
 TOC: on
 
+##doconce format html pro_inf5631
+##doconce 
 ======= The model: Reaction diffusion equation =======
 The strength of calculations by computers has increased enormously the last
 decades. This is something that has given us new
@@ -223,7 +225,7 @@ Here it is quite clearly that the size of $\alpha$ controls the speed of the
 diffusion. A large $\alpha$ will get the function faster towards zero. 
 
 ===== Nonlinear equation =====
-We will get a nonlinear solution for all $\alpha$ that include $u$. 
+We will get a nonlinear solution for all $\alpha$'s that include $u$. 
 I will as in the previous section use Picard to solve it. There are also
 other methods to solve nonlinear equation like Newton's method. This method often demands
 a little bit more work, but is often more efficiency. 
@@ -353,24 +355,26 @@ A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 Here we will see how the reaction term and the spatial diffusion term affects each other. We
 know from the section above that the reaction term will go towards equlibrium state which is sat by M.
 The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as
-a Fisher's equation, while the diffusion part has different values of $k$.
+a Fisher Kolmogoroff equation, while the diffusion part has different values of $k$.
 
 ##MOVIE: [paramovies/reac_constant.webm, height=300,width=375]r=1,M=1
 
 MOVIE: [paramovies/reac_constant_2.webm, height=300,width=375]r=1,M=1
 
-They all goes towards zero but with different
+The setup for this simulation is a standard Fisher for the reaction term. While the constant $\alpha$ varies 
+from 0.01 up to 10. This equation really show how their strengths afffects each other. When $\alpha=0.01$ it is not able to drag the diffusion towards zero. The reaction term is able to push it up. But when $\alpha=10$, it diffuse fast to zero. An interesting observation is when $\alpha=1$. The simulations under shows how the capacity and reproduction rate changes.
 
-MOVIE: [paramovies/reac_constant_r_0_5.webm, height=300,width=375]r=0.5,M=1
+MOVIE: [paramovies/reac_constant_M.webm, height=300,width=375]r=1,$\alpha$=1
 
-MOVIE: [paramovies/reac_constant_M_0_5.webm, height=300,width=375]r=1,M=0.5
+Here they goes towards their capacity, but $\alpha$ drag them down at the boundary.
 
-MOVIE: [paramovies/reac_constant_M_0_5_r_0_5.webm, height=300,width=375]r=0.5,M=0.5
+MOVIE: [paramovies/reac_constant_r.webm, height=300,width=375]M=1,$\alpha$=1
 
-MOVIE: [paramovies/reac_constant_M_0_5_r_0_05.webm, height=300,width=375]r=0.05,M=0.5
-
+When $r$ is to weak, it is not able to get it up to the capacity state, which are 1. But as $r$ gets stronger, more 
+of the equation fills the capacity
 
 === Ordinary ===
+I have here done the same as for the constant simulation above. We can see that these simulations act quite similar.
 
 MOVIE: [paramovies/reac_ordinary_r.webm, height=300,width=375]
 
@@ -382,10 +386,15 @@ MOVIE: [paramovies/reac_abs_std_r.webm, height=300,width=375]
 
 MOVIE: [paramovies/reac_abs_std_M.webm, height=300,width=375]
 
+=== Absolute powered up ===
+
+
+MOVIE: [paramovies/reac_abs_std_m.webm, height=300,width=375]
+
 !split
-=== Further work ===
-=== Changes in the Boundary conditions ===
-===== Dirichlet boundary condition =====
+======= Further work =======
+===== Changes in the Boundary conditions =====
+=== Dirichlet boundary condition ===
 There are several ways to describe the boundary conditions for a differential equation.
 In this paper I have used Dirichlet, where I decide that the boundaries shall be zero.
 !bt
@@ -395,7 +404,7 @@ u = 0|_{\partial \Omega}
 !et
 This can be described with attach a rope to each side and then pull in the rope. It will always
 be zero at the edges.
-===== Neumann boundary condition =====
+=== Neumann boundary condition ===
 Another way to look at the boundary is by reflecting boundaries. It can reflect it by $u=0$ which change the sign at the boundary. The way that we often use this, is by Neumann boundary condition. This we can describe
 !bt
 \begin{equation}
@@ -421,7 +430,7 @@ both on the spatial part to see how it affects the diffusion.
 MOVIE: [paramovies/reac_boundary.webm, height=300,width=375]
 
 The interesting this here is to see that the Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. The reason that Dirichlet goes towards zero is because of the value of the boundary. If we continue with the idea of a temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with polystyrene(isopor),where the wall is totally isolated. With Dirichlet the walls has a specific temperature. In our example we sat it to zero, but any number would have caused an equilibrium state.  
-=== Newton's method ===
+===== Newton's method =====
 Newtons method is another way to handle nonlinear equations. 
 !bt
 \begin{equation}

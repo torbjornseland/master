@@ -16,10 +16,10 @@ def build_plot(plotnames,moviename,parameter_values,para_name):
 			img = "%s%04d.npy" % (plotnames[i],j)
 			label_name = "%s = %s" % (para_name, parameter_values[i])
 			plt.plot(x,np.load(img),label=label_name)
-		plt.axis([0,L,-1,2])
+		plt.axis([0,L,-1,1.2])
 		plt.legend()
 		plt.suptitle(moviename)
-		plt.title("Change in the constant value")
+		plt.title("Change in the power")
 		plt.savefig("tmp%04d.png" % j)
 		plt.close()
 

@@ -63,11 +63,12 @@ Automatically generated HTML file from Doconce source
               (' Constant ', 3, None, '___sec15'),
               (' Ordinary ', 3, None, '___sec16'),
               (' Absolute value ', 3, None, '___sec17'),
-              (' Further work ', 3, None, '___sec18'),
-              (' Changes in the Boundary conditions ', 3, None, '___sec19'),
-              (' Dirichlet boundary condition ', 2, None, '___sec20'),
-              (' Neumann boundary condition ', 2, None, '___sec21'),
-              (" Newton's method ", 3, None, '___sec22')]}
+              (' Absolute powered up ', 3, None, '___sec18'),
+              (' Further work ', 1, None, '___sec19'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec20'),
+              (' Dirichlet boundary condition ', 3, None, '___sec21'),
+              (' Neumann boundary condition ', 3, None, '___sec22'),
+              (" Newton's method ", 2, None, '___sec23')]}
 end of tocinfo -->
 
 <body>
@@ -118,17 +119,7 @@ $$
 Here we will see how the reaction term and the spatial diffusion term affects each other. We
 know from the section above that the reaction term will go towards equlibrium state which is sat by M.
 The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as
-a Fisher's equation, while the diffusion part has different values of \( k \).
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>r=1,M=1</em></p>
-
+a Fisher Kolmogoroff equation, while the diffusion part has different values of \( k \).
 
 <p>
 
@@ -141,46 +132,35 @@ a Fisher's equation, while the diffusion part has different values of \( k \).
 
 
 <p>
-They all goes towards zero but with different
+The setup for this simulation is a standard Fisher for the reaction term. While the constant \( \alpha \) varies 
+from 0.01 up to 10. This equation really show how their strengths afffects each other. When \( \alpha=0.01 \) it is not able to drag the diffusion towards zero. The reaction term is able to push it up. But when \( \alpha=10 \), it diffuse fast to zero. An interesting observation is when \( \alpha=1 \). The simulations under shows how the capacity and reproduction rate changes.
 
 <p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant_r_0_5.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='paramovies/reac_constant_M.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>r=0.5,M=1</em></p>
+<p><em>r=1,$\alpha$=1</em></p>
 
+
+<p>
+Here they goes towards their capacity, but \( \alpha \) drag them down at the boundary.
 
 <p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant_M_0_5.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>r=1,M=0.5</em></p>
+<p><em>M=1,$\alpha$=1</em></p>
 
 
 <p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant_M_0_5_r_0_5.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>r=0.5,M=0.5</em></p>
-
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant_M_0_5_r_0_05.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>r=0.05,M=0.5</em></p>
+When \( r \) is to weak, it is not able to get it up to the capacity state, which are 1. But as \( r \) gets stronger, more 
+of the equation fills the capacity
 
 <h3>Ordinary  <a name="___sec16"></a></h3>
 
@@ -218,6 +198,16 @@ They all goes towards zero but with different
 <div>
 <video  loop controls width='375' height='365' preload='none'>
     <source src='paramovies/reac_abs_std_M.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+<h3>Absolute powered up  <a name="___sec18"></a></h3>
+
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_abs_std_m.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
 <p><em></em></p>

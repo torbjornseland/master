@@ -63,11 +63,12 @@ Automatically generated HTML file from Doconce source
               (' Constant ', 3, None, '___sec15'),
               (' Ordinary ', 3, None, '___sec16'),
               (' Absolute value ', 3, None, '___sec17'),
-              (' Further work ', 3, None, '___sec18'),
-              (' Changes in the Boundary conditions ', 3, None, '___sec19'),
-              (' Dirichlet boundary condition ', 2, None, '___sec20'),
-              (' Neumann boundary condition ', 2, None, '___sec21'),
-              (" Newton's method ", 3, None, '___sec22')]}
+              (' Absolute powered up ', 3, None, '___sec18'),
+              (' Further work ', 1, None, '___sec19'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec20'),
+              (' Dirichlet boundary condition ', 3, None, '___sec21'),
+              (' Neumann boundary condition ', 3, None, '___sec22'),
+              (" Newton's method ", 2, None, '___sec23')]}
 end of tocinfo -->
 
 <body>
@@ -100,11 +101,12 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h3>Further work  <a name="___sec18"></a></h3>
+<h1>Further work  <a name="___sec19"></a></h1>
 
-<h3>Changes in the Boundary conditions  <a name="___sec19"></a></h3>
+<h2>Changes in the Boundary conditions  <a name="___sec20"></a></h2>
 
-<h2>Dirichlet boundary condition  <a name="___sec20"></a></h2>
+<h3>Dirichlet boundary condition  <a name="___sec21"></a></h3>
+
 There are several ways to describe the boundary conditions for a differential equation.
 In this paper I have used Dirichlet, where I decide that the boundaries shall be zero.
 $$
@@ -116,7 +118,8 @@ $$
 This can be described with attach a rope to each side and then pull in the rope. It will always
 be zero at the edges.
 
-<h2>Neumann boundary condition  <a name="___sec21"></a></h2>
+<h3>Neumann boundary condition  <a name="___sec22"></a></h3>
+
 Another way to look at the boundary is by reflecting boundaries. It can reflect it by \( u=0 \) which change the sign at the boundary. The way that we often use this, is by Neumann boundary condition. This we can describe
 $$
 \begin{equation}
@@ -155,8 +158,7 @@ both on the spatial part to see how it affects the diffusion.
 <p>
 The interesting this here is to see that the Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. The reason that Dirichlet goes towards zero is because of the value of the boundary. If we continue with the idea of a temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with polystyrene(isopor),where the wall is totally isolated. With Dirichlet the walls has a specific temperature. In our example we sat it to zero, but any number would have caused an equilibrium state.
 
-<h3>Newton's method  <a name="___sec22"></a></h3>
-
+<h2>Newton's method  <a name="___sec23"></a></h2>
 Newtons method is another way to handle nonlinear equations. 
 $$
 \begin{equation}

@@ -35,16 +35,16 @@ for i in m_list:
 		print os_name
 		os.system(os_name)
 """
-para_list = [0.01,0.1,1,10] #parameter list
-eq_list = ["constant"]
+para_list = [0.01,0.1,1,5] #parameter list
+eq_list = ["abs_std"]
 plotnames = []
 for i in para_list:
 	for j in eq_list:
-		plotname = ("plot_data/%s_k_%2.3f" % (j,i)).replace(".","_")
+		plotname = ("plot_data/%s_M_%2.3f" % (j,i)).replace(".","_")
 		plotnames.append(plotname)
-		os_name = "python reac_diff_eq.py --method %s --p_n %s --r 1 --M 1 --k %g --picard True " % (j,plotname,i)
+		os_name = "python reac_diff_eq.py --method %s --p_n %s --M 1 --r 1 --m %g --picard True " % (j,plotname,i)
 		print os_name
 		os.system(os_name)
-build_plot(plotnames,"paramovies/reac_constant_2",para_list,"k")
+build_plot(plotnames,"paramovies/reac_%s_m" % eq_list[0],para_list,"m")
 #build_subplot(plotnames,"submovies/ordinary_sub",para_list,"k")
 os.system('rm plot_data/*')
