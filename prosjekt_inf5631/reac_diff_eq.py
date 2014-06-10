@@ -55,10 +55,10 @@ def read_command_line():
 m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err= read_command_line()
 
 Nx = 200
-N = 160
+N = 320
 
 L = 10
-T = 40 
+T = 80 
 
 #List of values
 
