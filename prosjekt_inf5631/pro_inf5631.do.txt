@@ -5,7 +5,7 @@ DATE: today
 TOC: on
 
 ##doconce format html pro_inf5631
-##doconce 
+##doconce split_html pro_inf5631 
 ======= The model: Reaction diffusion equation =======
 The strength of calculations by computers has increased enormously the last
 decades. This is something that has given us new
@@ -335,7 +335,7 @@ A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__{i+1}-u\__i\right|^m)
 \end{align*}
 !et
 
-MOVIE: [paramovies/abs_std_m.webm, height=300,width=375]Powered by m
+MOVIE: [paramovies/abs_std_power.webm, height=300,width=375]Powered by m
 
 Here the length of the simulation, $T$ is sat to be quite large. This is to show the effect of the power in
 this function. We can see that it quite fast moves towards zero when the power is low. But it seems that the equilibrium state for all these are at zero. The power only affect the speed.
@@ -394,9 +394,10 @@ after a certain time step is quite weak, the reproduction rate is able to push i
 is 
 === Absolute powered up ===
 
+MOVIE: [paramovies/reac_abs_std_power.webm, height=300,width=375]
 
-MOVIE: [paramovies/reac_abs_std_m.webm, height=300,width=375]
-
+Here I have changed the power in the equation. I'm using a standard Fisher in the reaction term. We can see that the
+diffusion equation gets weaker as the power increases. This gives the reaction term a chance to increase up to the capacity.
 !split
 ======= Further work =======
 ===== Changes in the Boundary conditions =====

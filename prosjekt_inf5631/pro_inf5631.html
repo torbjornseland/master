@@ -55,10 +55,10 @@ Automatically generated HTML file from Doconce source
               (' Picard ', 3, None, '___sec10'),
               (' Ordinary u ', 3, None, '___sec11'),
               (' Spatial derivation wrapped with an absolute value ',
-               2,
+               3,
                None,
                '___sec12'),
-              (' Absolute value powered by m ', 2, None, '___sec13'),
+              (' Absolute value powered by m ', 3, None, '___sec13'),
               (' Solution for the biological equation ', 1, None, '___sec14'),
               (' Constant ', 3, None, '___sec15'),
               (' Ordinary ', 3, None, '___sec16'),
@@ -78,7 +78,7 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
+     equationNumbers: {  autoNumber: "none"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
@@ -93,6 +93,12 @@ MathJax.Hub.Config({
 
 
     
+<a name="part0000"></a>
+<!-- begin top navigation -->
+<a href="._pro_inf5631001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end top navigation -->
+
+<p>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -121,24 +127,24 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Fisher's equation </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Carrying capacity </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Reproduction rate </a><br>
-<a href="#___sec6"> Spatial diffusion </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Boundary conditions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Linear equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Nonlinear equation </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> Picard </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Ordinary u </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Spatial derivation wrapped with an absolute value </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec13"> Absolute value powered by m </a><br>
-<a href="#___sec14"> Solution for the biological equation </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Constant </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> Ordinary </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec17"> Absolute value </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Absolute powered up </a><br>
-<a href="#___sec19"> Further work </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Changes in the Boundary conditions </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec21"> Dirichlet boundary condition </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec22"> Neumann boundary condition </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Newton's method </a><br>
+<a href="._pro_inf5631001.html#___sec6"> Spatial diffusion </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec7"> Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec8"> Linear equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec9"> Nonlinear equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec10"> Picard </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec11"> Ordinary u </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec12"> Spatial derivation wrapped with an absolute value </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec13"> Absolute value powered by m </a><br>
+<a href="._pro_inf5631002.html#___sec14"> Solution for the biological equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec15"> Constant </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec16"> Ordinary </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec17"> Absolute value </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec18"> Absolute powered up </a><br>
+<a href="._pro_inf5631003.html#___sec19"> Further work </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec20"> Changes in the Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec21"> Dirichlet boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec22"> Neumann boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec23"> Newton's method </a><br>
 </p>
 
 <h1>The model: Reaction diffusion equation  <a name="___sec0"></a></h1>
@@ -150,7 +156,7 @@ paper will focus on the numerically way to solve it and how we can use
 mathematical tools to describe and analyse aa biological model. I will look at 
 the reaction diffusion equation (RD):
 $$
-\begin{align} \label{eq:reaction_diffusion}
+\begin{align} \tag{1}
 u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
 u(x,0) =& I(x)\\
 u(0,t)=& 0\\
@@ -295,546 +301,10 @@ This controls the speed of the movement. A larger reproduction will get in faste
 to the steady state, that \( m \) controls.The carrying capacity is sat to \( m=0.8 \).
 
 <p>
-<!-- !split -->
-
-<h1>Spatial diffusion  <a name="___sec6"></a></h1>
-The first part of the RD equation describe the spatial flow and how the values in \( u \) are
-affected by their neighbours.  
-$$
-\begin{equation}
-	u_t = \nabla \cdot \alpha(u)\nabla u
-\end{equation}
-$$
-
-This part consist of the function \( \alpha(u) \). This
-affects the diffusion of the model. 
-To solve this numerically, we need to discretize the equation.
-$$
-\begin{equation*}
-	\left[D_t^-u=D_x(\alpha(u) D_x u)\right]
-\end{equation*}
-$$
-
-I use Backward Euler for the time discrete and Crank Nicolson for the spatial
-discrete. 
-$$
-\begin{align*}
-	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\
-	u^{n-1}_i=&u^n_i- \frac{\Delta t}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)
-\end{align*}
-$$
-
-Then we are able to put this into a linear equation as the section above. 
-$$
-\begin{equation}
-A =
-\left(
-\begin{array}{cccccccccc}
-A_{0,0} & A_{0,1} & 0
-&\cdots &
-\cdots & \cdots & \cdots &
-\cdots & 0 \\
-A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
-0 & A_{2,1} & A_{2,2} & A_{2,3} &
-\ddots & &  &  & \vdots \\
-\vdots & \ddots &  & \ddots & \ddots & 0 &  & & \vdots \\
-\vdots &  & \ddots & \ddots & \ddots & \ddots & \ddots & & \vdots \\
-\vdots & &  & 0 & A_{i,i-1} & A_{i,i} & A_{i,i+1} & \ddots & \vdots \\
-\vdots & & &  & \ddots & \ddots & \ddots &\ddots  & 0 \\
-\vdots & & & &  &\ddots  & \ddots &\ddots  & A_{N_x-1,N_x} \\
-0 &\cdots & \cdots &\cdots & \cdots & \cdots  & 0 & A_{N_x,N_x-1} & A_{N_x,N_x}
-\end{array}
-\right)
-\tag{14}
-\end{equation}
-$$
-
-Our matrix \( A \) will then be tridiagonal with the values.
-$$
-\begin{align} \label{eq:matrix_spatial}
-A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
-A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
-\end{align}                               
-$$
-
-We can see that in the cases where we replace
-\( \alpha(u) \) with a function that contains \( u \), we will get a nonlinear equation.
-
-<h3>Boundary conditions  <a name="___sec7"></a></h3>
-
-I have specified the boundary conditions in the first section to be zero. This has to be implemented in the linear function.
-Our matrix A will then be
-$$
-\begin{align*}
-A_{0,0} &= 1,\\
-A_{0,1} &= 0,\\
-A_{N_x,N_x-1} &= 0,\\
-A_{N_x,N_x} &= 1
-\end{align*}
-$$
-
-And the b array with known values will be
-$$
-\begin{align*}
-b_0 &= 0,\\
-b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\
-b_{N_x} &= 0 
-\end{align*}
-$$
-
-This decision affects the equilibrium state.
-
-<h2>Linear equation  <a name="___sec8"></a></h2>
-The only solution for a linear equation is to replace \( \alpha \) by a
-constant.
-$$
-\begin{equation}
-	\alpha(u) = k
-\end{equation}
-$$
-
-We can then use our matrix from\eqref{eq:matrix_spatial} and insert the function. This gives us
-the matrix:
-$$
-\begin{align*} \label{eq:matrix_constant}
-A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
-A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
-\end{align*}                               
-$$
-
-The movies under represents different values for \( k \)
-
 <p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/constant.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>constant</em></p>
-
-
-<p>
-Here it is quite clearly that the size of \( \alpha \) controls the speed of the
-diffusion. A large \( \alpha \) will get the function faster towards zero.
-
-<h2>Nonlinear equation  <a name="___sec9"></a></h2>
-We will get a nonlinear solution for all \( \alpha \)'s that include \( u \). 
-I will as in the previous section use Picard to solve it. There are also
-other methods to solve nonlinear equation like Newton's method. This method often demands
-a little bit more work, but is often more efficiency.
-
-<h3>Picard  <a name="___sec10"></a></h3>
-
-<h3>Ordinary u  <a name="___sec11"></a></h3>
-
-$$
-\begin{equation}
-	\alpha(u) = u\\
-\end{equation}
-$$
-
-
-<p>
-Since we only used CN for one step in the general calculation for \( \alpha \), we need to use arithmetic mean
-to be able to get values from \( u \).
-$$
-\begin{equation*}
-	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
-\end{equation*}
-$$
-
-
-<p>
-Then we can insert \( u \) in the matrix\eqref{eq:matrix_spatial}.
-$$
-\begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i}+u_{i-1})\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i+1}+u_{i})
-\end{align*}                               
-$$
-
-This gives us a nonlinear problem. We can here replace \( u \) by \( u\_ \)
-as explained in the section \emph{Time Derivative}.
-$$
-\begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
-\end{align*}                               
-$$
-
-I will do a couple of different setup for this function. First I will try to plot
-a simulation where I only use the previous value \( u\_ \) in my matrix. Then I will add
-an error measure that use several Picard iterations.
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='submovies/ordinary_sub.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>ordinary with different tolerance for Picard</em></p>
-
-
-<p>
-These results show us the behavior of \( u\_ \) when it varies from the previous
-time step up to the current time step. The simulation without any Picard
-iteration, gives us a wall that spreads in each direction. This wall becomes
-smaller the closer \( u\_ \) goes towards \( u \). 
-
-<p>
-An important aspect to be aware of when working with
-diffusion equation, is that the result after a certain time will be close to  equal in all
-the simulations. This happens because of the equilibrium principle. An example
-of this is the temperature in a room. The diffusion will cause it to go towards a smooth and
-balanced temperature in each point of the room. Therefore it is more interesting
-to look at the movement towards the equilibrium than the final result.
-
-<h2>Spatial derivation wrapped with an absolute value  <a name="___sec12"></a></h2>
-$$
-\begin{equation}
-\alpha(u) = |\nabla(u)|
-\end{equation}
-$$
-
-Since we now have used CN one time on this, we can do it again. This will give
-us integer numbers to use in \( u \).
-$$
-\begin{align*}
-\alpha(u_{i+\frac{1}{2}}) =& \left|\nabla(u_{i+\frac{1}{2}})\right|\\
-\alpha(u_{i+\frac{1}{2}}) =& \left|\frac{u_{i+1}-u_i}{\Delta x}\right|
-\end{align*}
-$$
-
-We can do the same thing for \( \alpha_{i-\frac{1}{2}} \) and insert them both in
-the matrix.
-$$
-\begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|+ \left|\frac{u_{i+1}-u_i}{\Delta x}\right|)\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|)\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\right|)
-\end{align*}                               
-$$
-
-To use this with Picard, we need to replace \( u\_=u \). We can also move \( \Delta x \)
-out of the fraction, because \( \Delta x > 0 \).
-$$
-\begin{align} \label{eq:matrix_absolute}
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|+ \left|u\__{i+1}-u\__i\right|)\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|)\notag\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__{i+1}-u\__i\right|)
-\end{align}                               
-$$
-
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='movies/spatial_abs_std.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>abs_std</em></p>
-
-
-<p>
-
-<div>
-<video  loop controls width='375' height='300' preload='none'>
-    <source src='movies/spatial_abs_std_picard_tol__5.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>abs_std_picard tol = 10^-5</em></p>
-
-
-<p>
-This also starts with a wall in each directions and then develops into smaller steps that nearly disappears when t gets larger.
-While the Picard solution gives a smoother curve.
-
-<h2>Absolute value powered by m  <a name="___sec13"></a></h2>
-$$
-\begin{equation}
-	\alpha(u) = |\nabla(u)|^m
-\end{equation}
-$$
-
-This equation is solved in the exact same as the equation above. We can then use
-the matrix \eqref{eq:matrix_absolute} and insert the power.
-$$
-\begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|^m+ \left|u\__{i+1}-u\__i\right|^m)\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|^m)\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__{i+1}-u\__i\right|^m)
-\end{align*}
-$$
-
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/abs_std_m.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Powered by m</em></p>
-
-
-<p>
-Here the length of the simulation, \( T \) is sat to be quite large. This is to show the effect of the power in
-this function. We can see that it quite fast moves towards zero when the power is low. But it seems that the equilibrium state for all these are at zero. The power only affect the speed.
-
-<p>
-<!-- !split -->
-
-<h1>Solution for the biological equation  <a name="___sec14"></a></h1>
-Now we can try to combine the reaction term with the spatial part. The reaction-diffusion equation\eqref{eq:reaction_diffusion} can be inserted in a matrix. This is done by using the two linear equation from the earlier sections.
-Since we only use FK equation for \( f(u) \), I will insert this in the matrix.
-$$
-\begin{align} \label{eq:matrix_reaction_diffusion}
-A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
-A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
-\end{align}                               
-$$
-
-<h3>Constant  <a name="___sec15"></a></h3>
-
-Here we will see how the reaction term and the spatial diffusion term affects each other. We
-know from the section above that the reaction term will go towards equlibrium state which is sat by M.
-The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as
-a Fisher Kolmogoroff equation, while the diffusion part has different values of \( k \).
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant_2.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>r=1,M=1</em></p>
-
-
-<p>
-The setup for this simulation is a standard Fisher for the reaction term. While the constant \( \alpha \) varies 
-from 0.01 up to 10. This equation really show how their strengths afffects each other. When \( \alpha=0.01 \) it is not able to drag the diffusion towards zero. The reaction term is able to push it up. But when \( \alpha=10 \), it diffuse fast to zero. An interesting observation is when \( \alpha=1 \). The simulations under shows how the capacity and reproduction rate changes.
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant_M.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>r=1,$\alpha$=1</em></p>
-
-
-<p>
-Here they goes towards their capacity, but \( \alpha \) drag them down at the boundary.
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>M=1,$\alpha$=1</em></p>
-
-
-<p>
-When \( r \) is to weak, it is not able to get it up to the capacity state, which are 1. But as \( r \) gets stronger, more 
-of the equation fills the capacity
-
-<h3>Ordinary  <a name="___sec16"></a></h3>
-
-I have here done the same as for the constant simulation above. We can see that these simulations act quite similar.
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_ordinary_r.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_ordinary_M.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
-<h3>Absolute value  <a name="___sec17"></a></h3>
-
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_abs_std_r.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_abs_std_M.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
-<h3>Absolute powered up  <a name="___sec18"></a></h3>
-
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-</video>
-</div>
-<p><em></em></p>
-
-
-<p>
-<!-- !split -->
-
-<h1>Further work  <a name="___sec19"></a></h1>
-
-<h2>Changes in the Boundary conditions  <a name="___sec20"></a></h2>
-
-<h3>Dirichlet boundary condition  <a name="___sec21"></a></h3>
-
-There are several ways to describe the boundary conditions for a differential equation.
-In this paper I have used Dirichlet, where I decide that the boundaries shall be zero.
-$$
-\begin{equation}
-u = 0|_{\partial \Omega}
-\end{equation}
-$$
-
-This can be described with attach a rope to each side and then pull in the rope. It will always
-be zero at the edges.
-
-<h3>Neumann boundary condition  <a name="___sec22"></a></h3>
-
-Another way to look at the boundary is by reflecting boundaries. It can reflect it by \( u=0 \) which change the sign at the boundary. The way that we often use this, is by Neumann boundary condition. This we can describe
-$$
-\begin{equation}
- \frac{\partial u}{\partial n} \equiv \normalvec\cdot\nabla u = 0
-\end{equation}
-$$
-
-Where \( \normalvec \) describes the normal vector.The boundaries can be describe  
-$$
-\left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
-\frac{\partial}{\partial x}
-$$
-
-If we then discretize this at the boundaries, we get
-$$
-\begin{align*}
-\frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0
-u_{-1}^n =& u_1^n
-\end{align*}
-$$
-
-We can do the same thing for \( L \).
-Under I have made a simulation where I compare Dirichlet with Neumann. I run them
-both on the spatial part to see how it affects the diffusion.
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_boundary.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
-
-<p>
-The interesting this here is to see that the Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. The reason that Dirichlet goes towards zero is because of the value of the boundary. If we continue with the idea of a temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with polystyrene(isopor),where the wall is totally isolated. With Dirichlet the walls has a specific temperature. In our example we sat it to zero, but any number would have caused an equilibrium state.
-
-<h2>Newton's method  <a name="___sec23"></a></h2>
-Newtons method is another way to handle nonlinear equations. 
-$$
-\begin{equation}
-	F(u) = 0
-\end{equation}
-$$
-
-This method linearizes the equation by using Taylor series expansion around
-\( u\_ \). This only keeping only the linear part.
-$$
-\begin{align*}
-	F(u) &= F(u_{-}) + F'(u_{-})(u - u_{-}) + \frac{1}{2}F''(u_{-})(u-u_{-})^2
-	+\cdots  \\
-	& \approx F(u_{-}) + F'(u_{-})(u - u_{-}) = \hat F(u)
-\end{align*}
-$$
-
-The linear equation will be
-$$
-\begin{equation}
-	u = u_{-} - \frac{F(u_{-})}{F'(u_{-})}
-\end{equation}
-$$
-
-This method require a Jacobian matrix. This means that we need to differentiate \( F(u) = A(u)u - b(u) \) for all the 
-values of \( u \). Our \( F \) will be
-$$
-\begin{equation*}
-F_i = A_{i,i-1}(u_{i-1},u_i)u_{i-1}+A_{i,i}(u_{i-1},u_{i},u_{i+1})u_{i}+A_{i,i+1}(u_i,u_{i+1})u_{i+1}-b_i(u^{n-1}_i)
-\end{equation*}
-$$
-
-
-$$
-\begin{align*}
-J_{i,i}=& \frac{\partial F_i}{\partial u_i}=\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}
-+ \frac{\partial A_{i,i}}{\partial u_i}u_i+ A_{i,i}
-+ \frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}
-- \frac{\partial b_i}{\partial u_{i}}\\ 
-J_{i,i-1}=& \frac{\partial F_i}{\partial u_{i-1}}=\frac{\partial A_{i,i-1}}{\partial u_{i-1}}u_{i-1}
-+ A_{i,i-1}+\frac{\partial A_{i,i}}{\partial u_{i-1}}u_i
-- \frac{\partial b_i}{\partial u_{i-1}}\\ 
-J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\partial u_{i+1}}u_i
-+ \frac{\partial A_{i,i+1}}{\partial u_{i+1}}u_{i+1}+A_{i,i+1}
-- \frac{\partial b_i}{\partial u_{i+1}}\\ 
-\end{align*}
-$$
-
-Since this demands a lot of calculating, I will show how to do it for the first
-\( J_{i,i} \). I calculate each subsection in one line
-$$
-\begin{align*}
-\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
-\frac{\partial A_{i,i}}{\partial u_i}u_i=&\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
-A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\\
-\frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}=&-\frac{\Delta t}{\Delta x^2}(\alpha'(u_i)u_{i+1})\\
-- \frac{\partial b_i}{\partial u_{i}}=& -b'(u_i)\\
-\end{align*}
-$$
-
-This gives us the matrix
-$$
-\begin{align*}
-J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
-+&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i+1})-b'(u_i)\\
-J_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i-1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i-1})+\alpha(u_i))+\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i})\\
-J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i+1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_i)+\alpha(u_{i+1}))
-\end{align*}
-$$
-
-This matrix can be used to compute the Newton's method. We just need to replace \( \alpha(u) \) by the function. 
+<!-- begin bottom navigation -->
+<a href="._pro_inf5631001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
 

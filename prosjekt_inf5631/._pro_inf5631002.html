@@ -55,10 +55,10 @@ Automatically generated HTML file from Doconce source
               (' Picard ', 3, None, '___sec10'),
               (' Ordinary u ', 3, None, '___sec11'),
               (' Spatial derivation wrapped with an absolute value ',
-               2,
+               3,
                None,
                '___sec12'),
-              (' Absolute value powered by m ', 2, None, '___sec13'),
+              (' Absolute value powered by m ', 3, None, '___sec13'),
               (' Solution for the biological equation ', 1, None, '___sec14'),
               (' Constant ', 3, None, '___sec15'),
               (' Ordinary ', 3, None, '___sec16'),
@@ -164,6 +164,10 @@ of the equation fills the capacity
 
 <h3>Ordinary  <a name="___sec16"></a></h3>
 
+I have here done the same as for the constant simulation above. We can see that these simulations act quite similar to the
+constant solution above. But If we look at \( r=0.1 \), the reaction term gets a larger influence.
+
+<p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
@@ -184,14 +188,7 @@ of the equation fills the capacity
 
 <h3>Absolute value  <a name="___sec17"></a></h3>
 
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_abs_std_r.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
+The carrying capacity acts quite as expected, but the reaction term i more interesting to look at.
 
 <p>
 
@@ -202,18 +199,37 @@ of the equation fills the capacity
 </div>
 <p><em></em></p>
 
-<h3>Absolute powered up  <a name="___sec18"></a></h3>
 
+<p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_abs_std_m.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='paramovies/reac_abs_std_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
 <p><em></em></p>
 
 
 <p>
+This simulation I run for a longer time. Usually the time step is sat to be 40, but here I have increased it to 80. 
+The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level. But since the diffusion for \( \alpha \)
+after a certain time step is quite weak, the reproduction rate is able to push it up.
+is
+
+<h3>Absolute powered up  <a name="___sec18"></a></h3>
+
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+Here I have changed the power in the equation. I'm using a standard Fisher in the reaction term. We can see that the
+diffusion equation gets weaker as the power increases. This gives the reaction term a chance to increase up to the capacity.
 <p>
 <!-- begin bottom navigation -->
 <a href="._pro_inf5631001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>

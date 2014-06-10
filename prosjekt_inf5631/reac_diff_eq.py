@@ -55,10 +55,10 @@ def read_command_line():
 m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err= read_command_line()
 
 Nx = 200
-N = 320
+N = 160
 
 L = 10
-T = 80 
+T = 40 
 
 #List of values
 
@@ -92,7 +92,7 @@ if(method == "constant"):
         return k
 elif(method == "abs_std"):
     def alpha(i):
-        return (abs(u_[i+1]-u_[i])/dx)**m
+        return ((abs(u_[i+1]-u_[i])**m)/dx)
 elif(method == "ordinary"):
     def alpha(i):
         return 0.5*(u_[i]+u_[i+1])

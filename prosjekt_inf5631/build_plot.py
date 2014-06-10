@@ -19,7 +19,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name):
 		plt.axis([0,L,-1,1.2])
 		plt.legend()
 		plt.suptitle(moviename)
-		plt.title("Change in the reproduction rate")
+		plt.title("Change in the power")
 		plt.savefig("tmp%04d.png" % j)
 		plt.close()
 
