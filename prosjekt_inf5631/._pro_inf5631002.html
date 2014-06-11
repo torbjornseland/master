@@ -39,36 +39,35 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' The model: Reaction diffusion equation ',
-               1,
-               None,
-               '___sec0'),
-              (' Reaction term ', 1, None, '___sec1'),
-              (' Fisher-Kolmogoroff term ', 2, None, '___sec2'),
-              (" Fisher's equation ", 3, None, '___sec3'),
-              (' Carrying capacity ', 3, None, '___sec4'),
-              (' Reproduction rate ', 3, None, '___sec5'),
-              (' Spatial diffusion ', 1, None, '___sec6'),
-              (' Boundary conditions ', 3, None, '___sec7'),
-              (' Linear equation ', 2, None, '___sec8'),
-              (' Nonlinear equation ', 2, None, '___sec9'),
-              (' Picard ', 3, None, '___sec10'),
-              (' Ordinary u ', 3, None, '___sec11'),
+ 'sections': [(' Reaction diffusion equation ', 1, None, '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Travelling wavefront ', 3, None, '___sec2'),
+              (' Reaction term ', 1, None, '___sec3'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
+              (" Fisher's equation ", 3, None, '___sec5'),
+              (' Carrying capacity ', 3, None, '___sec6'),
+              (' Reproduction rate ', 3, None, '___sec7'),
+              (' Spatial diffusion ', 1, None, '___sec8'),
+              (' Boundary conditions ', 3, None, '___sec9'),
+              (' Linear equation ', 2, None, '___sec10'),
+              (' Nonlinear equation ', 2, None, '___sec11'),
+              (' Picard Iteration ', 3, None, '___sec12'),
+              (' Ordinary u ', 3, None, '___sec13'),
               (' Spatial derivation wrapped with an absolute value ',
                3,
                None,
-               '___sec12'),
-              (' Absolute value powered by m ', 3, None, '___sec13'),
-              (' Solution for the biological equation ', 1, None, '___sec14'),
-              (' Constant ', 3, None, '___sec15'),
-              (' Ordinary ', 3, None, '___sec16'),
-              (' Absolute value ', 3, None, '___sec17'),
-              (' Absolute powered up ', 3, None, '___sec18'),
-              (' Further work ', 1, None, '___sec19'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec20'),
-              (' Dirichlet boundary condition ', 3, None, '___sec21'),
-              (' Neumann boundary condition ', 3, None, '___sec22'),
-              (" Newton's method ", 2, None, '___sec23')]}
+               '___sec14'),
+              (' Absolute value powered by m ', 3, None, '___sec15'),
+              (' Solution for the biological equation ', 1, None, '___sec16'),
+              (' Constant ', 3, None, '___sec17'),
+              (' Ordinary ', 3, None, '___sec18'),
+              (' Absolute value ', 3, None, '___sec19'),
+              (' Absolute powered up ', 3, None, '___sec20'),
+              (' Further work ', 1, None, '___sec21'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec22'),
+              (' Dirichlet boundary condition ', 3, None, '___sec23'),
+              (' Neumann boundary condition ', 3, None, '___sec24'),
+              (" Newton's method ", 2, None, '___sec25')]}
 end of tocinfo -->
 
 <body>
@@ -103,18 +102,18 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Solution for the biological equation  <a name="___sec14"></a></h1>
+<h1>Solution for the biological equation  <a name="___sec16"></a></h1>
 Now we can try to combine the reaction term with the spatial part. The reaction-diffusion equation<a href="._pro_inf5631000.html#mjx-eqn-1">(1)</a> can be inserted in a matrix. This is done by using the two linear equation from the earlier sections.
 Since we only use FK equation for \( f(u) \), I will insert this in the matrix.
 $$
-\begin{align} \tag{5}
+\begin{align} \tag{6}
 A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 \end{align}                               
 $$
 
-<h3>Constant  <a name="___sec15"></a></h3>
+<h3>Constant  <a name="___sec17"></a></h3>
 
 Here we will see how the reaction term and the spatial diffusion term affects each other. We
 know from the section above that the reaction term will go towards equlibrium state which is sat by M.
@@ -162,7 +161,7 @@ Here they goes towards their capacity, but \( \alpha \) drag them down at the bo
 When \( r \) is to weak, it is not able to get it up to the capacity state, which are 1. But as \( r \) gets stronger, more 
 of the equation fills the capacity
 
-<h3>Ordinary  <a name="___sec16"></a></h3>
+<h3>Ordinary  <a name="___sec18"></a></h3>
 
 I have here done the same as for the constant simulation above. We can see that these simulations act quite similar to the
 constant solution above. But If we look at \( r=0.1 \), the reaction term gets a larger influence.
@@ -186,7 +185,7 @@ constant solution above. But If we look at \( r=0.1 \), the reaction term gets a
 </div>
 <p><em></em></p>
 
-<h3>Absolute value  <a name="___sec17"></a></h3>
+<h3>Absolute value  <a name="___sec19"></a></h3>
 
 The carrying capacity acts quite as expected, but the reaction term i more interesting to look at.
 
@@ -216,7 +215,7 @@ The interesting observation here is \( r=0.1 \). This has usually been quite sta
 after a certain time step is quite weak, the reproduction rate is able to push it up.
 is
 
-<h3>Absolute powered up  <a name="___sec18"></a></h3>
+<h3>Absolute powered up  <a name="___sec20"></a></h3>
 
 
 <div>

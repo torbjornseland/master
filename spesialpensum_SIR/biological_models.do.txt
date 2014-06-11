@@ -1,0 +1,8 @@
+TITLE: Epidemic models
+AUTHOR: Torbjørn Seland
+DATE: today
+
+TOC: on
+
+===== Introduction to epidemic models =====
+Throughout th

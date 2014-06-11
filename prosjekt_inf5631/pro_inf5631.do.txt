@@ -6,36 +6,59 @@ TOC: on
 
 ##doconce format html pro_inf5631
 ##doconce split_html pro_inf5631 
-======= The model: Reaction diffusion equation =======
-The strength of calculations by computers has increased enormously the last
-decades. This is something that has given us new
-tools in how to describe everything around us. This has also affected the way to
-look at biological and medical issues. This
-paper will focus on the numerically way to solve it and how we can use
-mathematical tools to describe and analyse aa biological model. I will look at 
-the reaction diffusion equation (RD):
+======= Reaction diffusion equation =======
+The efficiency of computers has increased vastly over the last few decades, giving scientists and engineers new tools to describe the dynamics of the world around us. It has also affected the way biological processes are viewed and described. This project will focus on numerical methods to solve the reaction diffusion equation which is described below. Reaction-diffusion systems explain how the concentration of one or more substances changes under the influence of the local chemical reactions, here $f(u)$ and diffusion which cause a spatial dispersion. This system are applied in fields as chemistry, biology, geology, physics and ecology. 
 !bt
 \begin{align} label{eq:reaction_diffusion}
 u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
-u(x,0) =& I(x)\\
-u(0,t)=& 0\\
-u(L,t)=& 0
+u(x,0) =& I(x)\notag \\
+u(0,t)=& 0\notag \\
+u(L,t)=& 0\notag
 \end{align}
 !et
-This describe the concentration $u$ in
-one spatial dimension.To get a greater understanding, we can split up the model. The right side of the equation consist of two parts. The
-first part describe the spatial flow while the second describe the reaction
-term.
+Here, $u$ denotes the concentration of the substance in
+one spatial dimension. To get a better understanding, the model will be split up the model. The right side of the equation consist of two parts. The first part describes the spatial flow while the second describes the reaction term.
+===== Fisher-Kolmogoroff equation =====
+My main focus in this project will be at the Fisher-Kolmogoroff equation. This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [1(Mathematical Biology, I an introduction, 11.Reaction Diffusion)].
+If we in out general equation (ref{eq:reaction_diffusion}) set $\alpha(u)=k$ and $f(u) = ru(1-\frac{u}{m})$. We will 
+get the equation
+!bt
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{m})
+\end{equation}
+!et
+=== Travelling wavefront ===
+A good reason to study this equation, is because it is the prototype equation which admits travelling wavefront solutions. This is also a good equation for develop many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When we now want to investigate the travelling wavefront. Then it is convenient to rescale the equation, by writing.
+!bt
+t* = rt,	x* = x(\frac{r}{k})^{1/2}
+!et
+The equation then become when we set $m=1$. $m$ describes the carrying capacity which in the travelling wavefront will be between 0 and 1.
+!bt
+\begin{equation} label{eq:trav_wave}
+\frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-\frac{u}{m})
+\end{equation}
+!et
 
+Since $m=1$ the steady states are $u=0$ and $u=1$, which are respectively unstable and stable.
+If the solution represents a travelling wave, then the shape of the wave will move with the speed $c$. We
+are then able to show the travelling wave stationary.
+!bt
+u(x,t) = u(x-ct) = U(z), x-ct = z
+!et
+Here we use $U(z)$ instead of $u(u)$. This is just to avoid any confusion of the terminology. We also assume
+that $c \geq 0$. Substituting this traveling wavefront into (ref{eq:trav_wave}), we get
+!bt
+U'' +cU' + U(1-U) = 0
+!et
 ======= Reaction term =======
-Here I want to investigate the reaction term. This describe the concentration in
-a certain point.
+The reaction term describes the change in concentration in a certain point. This variation is only affected
+by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
 !bt
 \begin{equation}
 u_t = f(u)
 \end{equation}
 !et
-To see the properties of this equation, we can  discretize the equation and solve it numerically for
+To see the properties of this equation, it can be discretized and solved numerically for
 different values of $f(u)$.
 
 !bt
@@ -45,28 +68,24 @@ u_t =& f(u)\\
 u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
 \end{align*}
 !et
-This gives us a linear equation $Au = b$ that easy can be solved.
+This gives a linear equation $Au = b$ that easy can be solved.
 ===== Fisher-Kolmogoroff term =====
-When this part consist as the reaction term in our RD it is called Fisher-Kolmogoroff. This
-is often used in biology.Here $r$ describe the linear reproduction and
-$m$ the carrying capacity of this environment. The solution
-will then be.
+A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form $f(u) = ru(1-u/m)$, where $r$ describes the linear reproduction and $m$ the carrying capacity of this environment. The solution will then be.
 !bt
 \begin{equation}
 f(u) = ru(1-\frac{u}{m})
 \end{equation}
 !et
 
-
 !bt
 \begin{align*}
-u^n_i-\Delta t ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
+u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
 u^n_i(1-\Delta t r(1-\frac{u^n_i}{m})) =& u^{n-1}_i
 \end{align*}
 !et
 
-Since this equation gives us a nonlinear equation, we can use Picard to solve
-it. The idea with Picard is to replace one of the $u$ in the nonlinear part of the equation with $u\_$. $u\_$ will in the first
+Since this equation gives us a nonlinear equation, we can use Picard Iteration to solve
+it. The idea with Picard Iteration is to replace one of the $u$ in the nonlinear part of the equation with $u\_$. $u\_$ will in the first
 iteration be sat to the value from the previous step $u\_1$. 
 
 !bt
@@ -76,7 +95,7 @@ iteration be sat to the value from the previous step $u\_1$.
 !et
 
 We can check the correct value $u$ against our pre produced $u\_$ each round. If the difference between
-them are less than what we demand, it continue. If not, the new $u\_$ will be a combination of $u\_$ and $u$. How we weight the combination is called relaxation 
+them are less than a predefined limit, the new solution is accepted. If not, the new $u\_$ will be a combination of $u\_$ and $u$. How we weight the combination is called relaxation 
 
 !bt
 \begin{equation*}
@@ -92,12 +111,12 @@ Our new equation will then be
 \end{align*}
 !et
 
-Since we are using an approximation to $u$, we need to refine $u\_$ until it
-fulfil our expectations.
+Since $u\_$ is an approximation to $u$, we need to refine $u\_$ until it fulfil the expectations.
 
 === Fisher's equation ===
-If we set $r=1$ and $m=1$, we will get a equation called Fisher's equation. This is the
-original equation for the FK equation.The reaction term in Fisher will look like this
+The values from FK is sat to $r=1$ and $m=1$. This is called Fisher's equation.The reaction term in Fisher will look like this.
+
+MOVIE: [paramovies/constant_fisher_few_points.webm, height=300,width=375]Fisher with ten points
 
 MOVIE: [movies/time_der_r_1_0_m_1_0.webm, height=300,width=375] r= 1, m= 1 
 
@@ -121,7 +140,7 @@ to the steady state, that $m$ controls.The carrying capacity is sat to $m=0.8$.
 
 !split
 ======= Spatial diffusion =======
-The first part of the RD equation describe the spatial flow and how the values in $u$ are
+The first part of the RD equation describes the spatial flow and how the values in $u$ are
 affected by their neighbours.  
 !bt
 \begin{equation}
@@ -226,10 +245,10 @@ diffusion. A large $\alpha$ will get the function faster towards zero.
 
 ===== Nonlinear equation =====
 We will get a nonlinear solution for all $\alpha$'s that include $u$. 
-I will as in the previous section use Picard to solve it. There are also
+I will as in the previous section use Picard Iteration to solve it. There are also
 other methods to solve nonlinear equation like Newton's method. This method often demands
 a little bit more work, but is often more efficiency. 
-=== Picard ===
+=== Picard Iteration ===
 === Ordinary u ===
 !bt
 \begin{equation}
@@ -264,12 +283,12 @@ A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
 !et
 I will do a couple of different setup for this function. First I will try to plot
 a simulation where I only use the previous value $u\_$ in my matrix. Then I will add
-an error measure that use several Picard iterations.
+an error measure that use several Picard Iteration iterations.
 
-MOVIE: [submovies/ordinary_sub.webm, height=300,width=375]ordinary with different tolerance for Picard
+MOVIE: [submovies/ordinary_sub.webm, height=300,width=375]ordinary with different tolerance for Picard Iteration
 
 These results show us the behavior of $u\_$ when it varies from the previous
-time step up to the current time step. The simulation without any Picard
+time step up to the current time step. The simulation without any Picard Iteration
 iteration, gives us a wall that spreads in each direction. This wall becomes
 smaller the closer $u\_$ goes towards $u$. 
 
@@ -303,7 +322,7 @@ A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\rig
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\right|)
 \end{align*}                               
 !et
-To use this with Picard, we need to replace $u\_=u$. We can also move $\Delta x$
+To use this with Picard Iteration, we need to replace $u\_=u$. We can also move $\Delta x$
 out of the fraction, because $\Delta x > 0$.
 !bt
 \begin{align} label{eq:matrix_absolute}
@@ -318,7 +337,7 @@ MOVIE: [movies/spatial_abs_std.webm, height=300,width=375]abs_std
 MOVIE: [movies/spatial_abs_std_picard_tol__5.webm,height=300,width=375]abs_std_picard tol = 10^-5
 
 This also starts with a wall in each directions and then develops into smaller steps that nearly disappears when t gets larger.
-While the Picard solution gives a smoother curve. 
+While the Picard Iteration solution gives a smoother curve. 
 === Absolute value powered by m ===
 !bt
 \begin{equation}
@@ -418,7 +437,7 @@ Another way to look at the boundary is by reflecting boundaries. It can reflect 
  \frac{\partial u}{\partial n} \equiv \normalvec\cdot\nabla u = 0
 \end{equation}
 !et
-Where $\normalvec$ describes the normal vector.The boundaries can be describe  
+Where $\normalvec$ describes the normal vector.The boundaries can be described  
 !bt
 \left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
 \frac{\partial}{\partial x}

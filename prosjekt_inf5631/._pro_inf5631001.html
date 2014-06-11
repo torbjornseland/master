@@ -39,36 +39,35 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' The model: Reaction diffusion equation ',
-               1,
-               None,
-               '___sec0'),
-              (' Reaction term ', 1, None, '___sec1'),
-              (' Fisher-Kolmogoroff term ', 2, None, '___sec2'),
-              (" Fisher's equation ", 3, None, '___sec3'),
-              (' Carrying capacity ', 3, None, '___sec4'),
-              (' Reproduction rate ', 3, None, '___sec5'),
-              (' Spatial diffusion ', 1, None, '___sec6'),
-              (' Boundary conditions ', 3, None, '___sec7'),
-              (' Linear equation ', 2, None, '___sec8'),
-              (' Nonlinear equation ', 2, None, '___sec9'),
-              (' Picard ', 3, None, '___sec10'),
-              (' Ordinary u ', 3, None, '___sec11'),
+ 'sections': [(' Reaction diffusion equation ', 1, None, '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Travelling wavefront ', 3, None, '___sec2'),
+              (' Reaction term ', 1, None, '___sec3'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
+              (" Fisher's equation ", 3, None, '___sec5'),
+              (' Carrying capacity ', 3, None, '___sec6'),
+              (' Reproduction rate ', 3, None, '___sec7'),
+              (' Spatial diffusion ', 1, None, '___sec8'),
+              (' Boundary conditions ', 3, None, '___sec9'),
+              (' Linear equation ', 2, None, '___sec10'),
+              (' Nonlinear equation ', 2, None, '___sec11'),
+              (' Picard Iteration ', 3, None, '___sec12'),
+              (' Ordinary u ', 3, None, '___sec13'),
               (' Spatial derivation wrapped with an absolute value ',
                3,
                None,
-               '___sec12'),
-              (' Absolute value powered by m ', 3, None, '___sec13'),
-              (' Solution for the biological equation ', 1, None, '___sec14'),
-              (' Constant ', 3, None, '___sec15'),
-              (' Ordinary ', 3, None, '___sec16'),
-              (' Absolute value ', 3, None, '___sec17'),
-              (' Absolute powered up ', 3, None, '___sec18'),
-              (' Further work ', 1, None, '___sec19'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec20'),
-              (' Dirichlet boundary condition ', 3, None, '___sec21'),
-              (' Neumann boundary condition ', 3, None, '___sec22'),
-              (" Newton's method ", 2, None, '___sec23')]}
+               '___sec14'),
+              (' Absolute value powered by m ', 3, None, '___sec15'),
+              (' Solution for the biological equation ', 1, None, '___sec16'),
+              (' Constant ', 3, None, '___sec17'),
+              (' Ordinary ', 3, None, '___sec18'),
+              (' Absolute value ', 3, None, '___sec19'),
+              (' Absolute powered up ', 3, None, '___sec20'),
+              (' Further work ', 1, None, '___sec21'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec22'),
+              (' Dirichlet boundary condition ', 3, None, '___sec23'),
+              (' Neumann boundary condition ', 3, None, '___sec24'),
+              (" Newton's method ", 2, None, '___sec25')]}
 end of tocinfo -->
 
 <body>
@@ -103,8 +102,8 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Spatial diffusion  <a name="___sec6"></a></h1>
-The first part of the RD equation describe the spatial flow and how the values in \( u \) are
+<h1>Spatial diffusion  <a name="___sec8"></a></h1>
+The first part of the RD equation describes the spatial flow and how the values in \( u \) are
 affected by their neighbours.  
 $$
 \begin{equation}
@@ -157,7 +156,7 @@ $$
 
 Our matrix \( A \) will then be tridiagonal with the values.
 $$
-\begin{align} \tag{2}
+\begin{align} \tag{3}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -167,7 +166,7 @@ $$
 We can see that in the cases where we replace
 \( \alpha(u) \) with a function that contains \( u \), we will get a nonlinear equation.
 
-<h3>Boundary conditions  <a name="___sec7"></a></h3>
+<h3>Boundary conditions  <a name="___sec9"></a></h3>
 
 I have specified the boundary conditions in the first section to be zero. This has to be implemented in the linear function.
 Our matrix A will then be
@@ -191,7 +190,7 @@ $$
 
 This decision affects the equilibrium state.
 
-<h2>Linear equation  <a name="___sec8"></a></h2>
+<h2>Linear equation  <a name="___sec10"></a></h2>
 The only solution for a linear equation is to replace \( \alpha \) by a
 constant.
 $$
@@ -200,10 +199,10 @@ $$
 \end{equation}
 $$
 
-We can then use our matrix from<a href="#mjx-eqn-2">(2)</a> and insert the function. This gives us
+We can then use our matrix from<a href="#mjx-eqn-3">(3)</a> and insert the function. This gives us
 the matrix:
 $$
-\begin{align*} \tag{3}
+\begin{align*} \tag{4}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
@@ -226,15 +225,15 @@ The movies under represents different values for \( k \)
 Here it is quite clearly that the size of \( \alpha \) controls the speed of the
 diffusion. A large \( \alpha \) will get the function faster towards zero.
 
-<h2>Nonlinear equation  <a name="___sec9"></a></h2>
+<h2>Nonlinear equation  <a name="___sec11"></a></h2>
 We will get a nonlinear solution for all \( \alpha \)'s that include \( u \). 
-I will as in the previous section use Picard to solve it. There are also
+I will as in the previous section use Picard Iteration to solve it. There are also
 other methods to solve nonlinear equation like Newton's method. This method often demands
 a little bit more work, but is often more efficiency.
 
-<h3>Picard  <a name="___sec10"></a></h3>
+<h3>Picard Iteration  <a name="___sec12"></a></h3>
 
-<h3>Ordinary u  <a name="___sec11"></a></h3>
+<h3>Ordinary u  <a name="___sec13"></a></h3>
 
 $$
 \begin{equation}
@@ -254,7 +253,7 @@ $$
 
 
 <p>
-Then we can insert \( u \) in the matrix<a href="#mjx-eqn-2">(2)</a>.
+Then we can insert \( u \) in the matrix<a href="#mjx-eqn-3">(3)</a>.
 $$
 \begin{align*} 
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
@@ -275,7 +274,7 @@ $$
 
 I will do a couple of different setup for this function. First I will try to plot
 a simulation where I only use the previous value \( u\_ \) in my matrix. Then I will add
-an error measure that use several Picard iterations.
+an error measure that use several Picard Iteration iterations.
 
 <p>
 
@@ -284,12 +283,12 @@ an error measure that use several Picard iterations.
     <source src='submovies/ordinary_sub.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>ordinary with different tolerance for Picard</em></p>
+<p><em>ordinary with different tolerance for Picard Iteration</em></p>
 
 
 <p>
 These results show us the behavior of \( u\_ \) when it varies from the previous
-time step up to the current time step. The simulation without any Picard
+time step up to the current time step. The simulation without any Picard Iteration
 iteration, gives us a wall that spreads in each direction. This wall becomes
 smaller the closer \( u\_ \) goes towards \( u \). 
 
@@ -301,7 +300,7 @@ of this is the temperature in a room. The diffusion will cause it to go towards 
 balanced temperature in each point of the room. Therefore it is more interesting
 to look at the movement towards the equilibrium than the final result.
 
-<h3>Spatial derivation wrapped with an absolute value  <a name="___sec12"></a></h3>
+<h3>Spatial derivation wrapped with an absolute value  <a name="___sec14"></a></h3>
 
 $$
 \begin{equation}
@@ -328,10 +327,10 @@ A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\rig
 \end{align*}                               
 $$
 
-To use this with Picard, we need to replace \( u\_=u \). We can also move \( \Delta x \)
+To use this with Picard Iteration, we need to replace \( u\_=u \). We can also move \( \Delta x \)
 out of the fraction, because \( \Delta x > 0 \).
 $$
-\begin{align} \tag{4}
+\begin{align} \tag{5}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|+ \left|u\__{i+1}-u\__i\right|)\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|)\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^3}(\left|u\__{i+1}-u\__i\right|)
@@ -361,9 +360,9 @@ $$
 
 <p>
 This also starts with a wall in each directions and then develops into smaller steps that nearly disappears when t gets larger.
-While the Picard solution gives a smoother curve.
+While the Picard Iteration solution gives a smoother curve.
 
-<h3>Absolute value powered by m  <a name="___sec13"></a></h3>
+<h3>Absolute value powered by m  <a name="___sec15"></a></h3>
 
 $$
 \begin{equation}
@@ -372,7 +371,7 @@ $$
 $$
 
 This equation is solved in the exact same as the equation above. We can then use
-the matrix <a href="#mjx-eqn-4">(4)</a> and insert the power.
+the matrix <a href="#mjx-eqn-5">(5)</a> and insert the power.
 $$
 \begin{align*} 
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^3}(\left|u\__i-u\__{i-1}\right|^m+ \left|u\__{i+1}-u\__i\right|^m)\\

@@ -54,7 +54,7 @@ def read_command_line():
 
 m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err= read_command_line()
 
-Nx = 10
+Nx = 200
 N = 160
 
 L = 10

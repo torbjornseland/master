@@ -39,36 +39,35 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' The model: Reaction diffusion equation ',
-               1,
-               None,
-               '___sec0'),
-              (' Reaction term ', 1, None, '___sec1'),
-              (' Fisher-Kolmogoroff term ', 2, None, '___sec2'),
-              (" Fisher's equation ", 3, None, '___sec3'),
-              (' Carrying capacity ', 3, None, '___sec4'),
-              (' Reproduction rate ', 3, None, '___sec5'),
-              (' Spatial diffusion ', 1, None, '___sec6'),
-              (' Boundary conditions ', 3, None, '___sec7'),
-              (' Linear equation ', 2, None, '___sec8'),
-              (' Nonlinear equation ', 2, None, '___sec9'),
-              (' Picard ', 3, None, '___sec10'),
-              (' Ordinary u ', 3, None, '___sec11'),
+ 'sections': [(' Reaction diffusion equation ', 1, None, '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Travelling wavefront ', 3, None, '___sec2'),
+              (' Reaction term ', 1, None, '___sec3'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
+              (" Fisher's equation ", 3, None, '___sec5'),
+              (' Carrying capacity ', 3, None, '___sec6'),
+              (' Reproduction rate ', 3, None, '___sec7'),
+              (' Spatial diffusion ', 1, None, '___sec8'),
+              (' Boundary conditions ', 3, None, '___sec9'),
+              (' Linear equation ', 2, None, '___sec10'),
+              (' Nonlinear equation ', 2, None, '___sec11'),
+              (' Picard Iteration ', 3, None, '___sec12'),
+              (' Ordinary u ', 3, None, '___sec13'),
               (' Spatial derivation wrapped with an absolute value ',
                3,
                None,
-               '___sec12'),
-              (' Absolute value powered by m ', 3, None, '___sec13'),
-              (' Solution for the biological equation ', 1, None, '___sec14'),
-              (' Constant ', 3, None, '___sec15'),
-              (' Ordinary ', 3, None, '___sec16'),
-              (' Absolute value ', 3, None, '___sec17'),
-              (' Absolute powered up ', 3, None, '___sec18'),
-              (' Further work ', 1, None, '___sec19'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec20'),
-              (' Dirichlet boundary condition ', 3, None, '___sec21'),
-              (' Neumann boundary condition ', 3, None, '___sec22'),
-              (" Newton's method ", 2, None, '___sec23')]}
+               '___sec14'),
+              (' Absolute value powered by m ', 3, None, '___sec15'),
+              (' Solution for the biological equation ', 1, None, '___sec16'),
+              (' Constant ', 3, None, '___sec17'),
+              (' Ordinary ', 3, None, '___sec18'),
+              (' Absolute value ', 3, None, '___sec19'),
+              (' Absolute powered up ', 3, None, '___sec20'),
+              (' Further work ', 1, None, '___sec21'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec22'),
+              (' Dirichlet boundary condition ', 3, None, '___sec23'),
+              (' Neumann boundary condition ', 3, None, '___sec24'),
+              (" Newton's method ", 2, None, '___sec25')]}
 end of tocinfo -->
 
 <body>
@@ -101,11 +100,11 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Further work  <a name="___sec19"></a></h1>
+<h1>Further work  <a name="___sec21"></a></h1>
 
-<h2>Changes in the Boundary conditions  <a name="___sec20"></a></h2>
+<h2>Changes in the Boundary conditions  <a name="___sec22"></a></h2>
 
-<h3>Dirichlet boundary condition  <a name="___sec21"></a></h3>
+<h3>Dirichlet boundary condition  <a name="___sec23"></a></h3>
 
 There are several ways to describe the boundary conditions for a differential equation.
 In this paper I have used Dirichlet, where I decide that the boundaries shall be zero.
@@ -118,7 +117,7 @@ $$
 This can be described with attach a rope to each side and then pull in the rope. It will always
 be zero at the edges.
 
-<h3>Neumann boundary condition  <a name="___sec22"></a></h3>
+<h3>Neumann boundary condition  <a name="___sec24"></a></h3>
 
 Another way to look at the boundary is by reflecting boundaries. It can reflect it by \( u=0 \) which change the sign at the boundary. The way that we often use this, is by Neumann boundary condition. This we can describe
 $$
@@ -127,7 +126,7 @@ $$
 \end{equation}
 $$
 
-Where \( \normalvec \) describes the normal vector.The boundaries can be describe  
+Where \( \normalvec \) describes the normal vector.The boundaries can be described  
 $$
 \left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
 \frac{\partial}{\partial x}
@@ -158,7 +157,7 @@ both on the spatial part to see how it affects the diffusion.
 <p>
 The interesting this here is to see that the Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. The reason that Dirichlet goes towards zero is because of the value of the boundary. If we continue with the idea of a temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with polystyrene(isopor),where the wall is totally isolated. With Dirichlet the walls has a specific temperature. In our example we sat it to zero, but any number would have caused an equilibrium state.
 
-<h2>Newton's method  <a name="___sec23"></a></h2>
+<h2>Newton's method  <a name="___sec25"></a></h2>
 Newtons method is another way to handle nonlinear equations. 
 $$
 \begin{equation}

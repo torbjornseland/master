@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os,glob
 
-Nx = 200
+Nx = 10
 L = 10
 x = np.linspace(0,L,Nx+1)
 
