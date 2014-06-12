@@ -49,20 +49,23 @@ Automatically generated HTML file from Doconce source
               (' Reproduction rate ', 3, None, '___sec7'),
               (' Spatial diffusion ', 1, None, '___sec8'),
               (' Boundary conditions ', 3, None, '___sec9'),
-              (' Linear equation ', 2, None, '___sec10'),
+              (' Linear system/equation ', 2, None, '___sec10'),
               (' Nonlinear equation ', 2, None, '___sec11'),
               (' Picard Iteration ', 3, None, '___sec12'),
-              (' Ordinary u ', 3, None, '___sec13'),
-              (' Spatial derivation wrapped with an absolute value ',
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec13'),
+              (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
                '___sec14'),
-              (' Absolute value powered by m ', 3, None, '___sec15'),
+              (' Spatial derivative wrapped with an absolute value powered by m ',
+               3,
+               None,
+               '___sec15'),
               (' Solution for the biological equation ', 1, None, '___sec16'),
-              (' Constant ', 3, None, '___sec17'),
-              (' Ordinary ', 3, None, '___sec18'),
-              (' Absolute value ', 3, None, '___sec19'),
-              (' Absolute powered up ', 3, None, '___sec20'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec17'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec18'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec19'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec20'),
               (' Further work ', 1, None, '___sec21'),
               (' Changes in the Boundary conditions ', 2, None, '___sec22'),
               (' Dirichlet boundary condition ', 3, None, '___sec23'),
@@ -103,22 +106,18 @@ MathJax.Hub.Config({
 <!-- !split -->
 
 <h1>Solution for the biological equation  <a name="___sec16"></a></h1>
-Now we can try to combine the reaction term with the spatial part. The reaction-diffusion equation<a href="._pro_inf5631000.html#mjx-eqn-1">(1)</a> can be inserted in a matrix. This is done by using the two linear equation from the earlier sections.
-Since we only use FK equation for \( f(u) \), I will insert this in the matrix.
+The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="._pro_inf5631000.html#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. Since FK is the only equation that has been studied in the reaction term,$f(u)$, this can be inserted in the matrix.
 $$
-\begin{align} \tag{6}
+\begin{align} \tag{8}
 A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 \end{align}                               
 $$
 
-<h3>Constant  <a name="___sec17"></a></h3>
+<h3>Fisher-Komogoroff equation  <a name="___sec17"></a></h3>
 
-Here we will see how the reaction term and the spatial diffusion term affects each other. We
-know from the section above that the reaction term will go towards equlibrium state which is sat by M.
-The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as
-a Fisher Kolmogoroff equation, while the diffusion part has different values of \( k \).
+This simulation shows how the reaction term and the spatial diffusion term affects each other. We know from the section above that the reaction term will go towards equilibrium state which is sat by the carrying capacity,$M$. The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values,$k$, in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation <a href="._pro_inf5631000.html#mjx-eqn-2">(2)</a>
 
 <p>
 
@@ -131,8 +130,7 @@ a Fisher Kolmogoroff equation, while the diffusion part has different values of 
 
 
 <p>
-The setup for this simulation is a standard Fisher for the reaction term. While the constant \( \alpha \) varies 
-from 0.01 up to 10. This equation really show how their strengths afffects each other. When \( \alpha=0.01 \) it is not able to drag the diffusion towards zero. The reaction term is able to push it up. But when \( \alpha=10 \), it diffuse fast to zero. An interesting observation is when \( \alpha=1 \). The simulations under shows how the capacity and reproduction rate changes.
+The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is able to push it up. But when \( \alpha=10 \), it diffuses fast to zero. An interesting observation is when \( \alpha=1 \). The simulations under shows how the capacity and reproduction rate changes.
 
 <p>
 
@@ -145,7 +143,7 @@ from 0.01 up to 10. This equation really show how their strengths afffects each 
 
 
 <p>
-Here they goes towards their capacity, but \( \alpha \) drag them down at the boundary.
+Here they tend towards their capacity, but \( \alpha \) drags them down at the boundary.
 
 <p>
 
@@ -158,23 +156,11 @@ Here they goes towards their capacity, but \( \alpha \) drag them down at the bo
 
 
 <p>
-When \( r \) is to weak, it is not able to get it up to the capacity state, which are 1. But as \( r \) gets stronger, more 
-of the equation fills the capacity
+When \( r \) is to weak, the reproduction is to low to get it to the capacity state, which is 1. But as \( r \) gets stronger, it is able to push the function towards the carrying capacity, \( M \).
 
-<h3>Ordinary  <a name="___sec18"></a></h3>
+<h3>\( \alpha(u)= u \)  <a name="___sec18"></a></h3>
 
-I have here done the same as for the constant simulation above. We can see that these simulations act quite similar to the
-constant solution above. But If we look at \( r=0.1 \), the reaction term gets a larger influence.
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_ordinary_r.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
+The simulations are produced in the same way as for the FK in the section above. And the results are quite similar. One difference between them is \( r=0.1 \). After decreasing for a certain time, the function starts to increase towards the carrying capacity.
 
 <p>
 
@@ -185,9 +171,19 @@ constant solution above. But If we look at \( r=0.1 \), the reaction term gets a
 </div>
 <p><em></em></p>
 
-<h3>Absolute value  <a name="___sec19"></a></h3>
 
-The carrying capacity acts quite as expected, but the reaction term i more interesting to look at.
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_ordinary_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+<h3>\( \alpha(u)=|\nabla u| \)  <a name="___sec19"></a></h3>
+
+The carrying capacity acts quite as expected, but the reaction term is more interesting to look at.
 
 <p>
 
@@ -210,12 +206,9 @@ The carrying capacity acts quite as expected, but the reaction term i more inter
 
 
 <p>
-This simulation I run for a longer time. Usually the time step is sat to be 40, but here I have increased it to 80. 
-The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level. But since the diffusion for \( \alpha \)
-after a certain time step is quite weak, the reproduction rate is able to push it up.
-is
+The simulation for changes in the reproduction is run for twice as long time as the other simulations. The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level. But since the diffusion for \( \alpha \) after a certain time step is quite weak, the reproduction rate is able to push it up.
 
-<h3>Absolute powered up  <a name="___sec20"></a></h3>
+<h3>\( \alpha(u)=|\nabla u|^m \)  <a name="___sec20"></a></h3>
 
 
 <div>
@@ -227,8 +220,7 @@ is
 
 
 <p>
-Here I have changed the power in the equation. I'm using a standard Fisher in the reaction term. We can see that the
-diffusion equation gets weaker as the power increases. This gives the reaction term a chance to increase up to the capacity.
+The power term, \( m \), in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases. This gives the reaction term a chance to increase up to the carrying capacity.
 <p>
 <!-- begin bottom navigation -->
 <a href="._pro_inf5631001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>

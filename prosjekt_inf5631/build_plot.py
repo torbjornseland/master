@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os,glob
 
-Nx = 10
+Nx = 200
 L = 10
 x = np.linspace(0,L,Nx+1)
 
@@ -19,7 +19,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name):
 		plt.axis([0,L,-1,1.2])
 		plt.legend()
 		plt.suptitle(moviename)
-		plt.title("Change in the power")
+		plt.title("Change in the power term")
 		plt.savefig("tmp%04d.png" % j)
 		plt.close()
 

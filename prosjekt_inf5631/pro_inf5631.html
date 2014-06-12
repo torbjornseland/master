@@ -49,20 +49,23 @@ Automatically generated HTML file from Doconce source
               (' Reproduction rate ', 3, None, '___sec7'),
               (' Spatial diffusion ', 1, None, '___sec8'),
               (' Boundary conditions ', 3, None, '___sec9'),
-              (' Linear equation ', 2, None, '___sec10'),
+              (' Linear system/equation ', 2, None, '___sec10'),
               (' Nonlinear equation ', 2, None, '___sec11'),
               (' Picard Iteration ', 3, None, '___sec12'),
-              (' Ordinary u ', 3, None, '___sec13'),
-              (' Spatial derivation wrapped with an absolute value ',
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec13'),
+              (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
                '___sec14'),
-              (' Absolute value powered by m ', 3, None, '___sec15'),
+              (' Spatial derivative wrapped with an absolute value powered by m ',
+               3,
+               None,
+               '___sec15'),
               (' Solution for the biological equation ', 1, None, '___sec16'),
-              (' Constant ', 3, None, '___sec17'),
-              (' Ordinary ', 3, None, '___sec18'),
-              (' Absolute value ', 3, None, '___sec19'),
-              (' Absolute powered up ', 3, None, '___sec20'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec17'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec18'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec19'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec20'),
               (' Further work ', 1, None, '___sec21'),
               (' Changes in the Boundary conditions ', 2, None, '___sec22'),
               (' Dirichlet boundary condition ', 3, None, '___sec23'),
@@ -116,7 +119,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Jun 11, 2014</h4></center> <!-- date -->
+<center><h4>Jun 12, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -130,17 +133,17 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Reproduction rate </a><br>
 <a href="._pro_inf5631001.html#___sec8"> Spatial diffusion </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec9"> Boundary conditions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec10"> Linear equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec10"> Linear system/equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec11"> Nonlinear equation </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec12"> Picard Iteration </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec13"> Ordinary u </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec14"> Spatial derivation wrapped with an absolute value </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec15"> Absolute value powered by m </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec13"> \( \alpha(u) \) as a linear function </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec14"> Spatial derivative wrapped with an absolute value </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec15"> Spatial derivative wrapped with an absolute value powered by m </a><br>
 <a href="._pro_inf5631002.html#___sec16"> Solution for the biological equation </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec17"> Constant </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec18"> Ordinary </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec19"> Absolute value </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec20"> Absolute powered up </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec17"> Fisher-Komogoroff equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec18"> \( \alpha(u)= u \) </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec19"> \( \alpha(u)=|\nabla u| \) </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec20"> \( \alpha(u)=|\nabla u|^m \) </a><br>
 <a href="._pro_inf5631003.html#___sec21"> Further work </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec22"> Changes in the Boundary conditions </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec23"> Dirichlet boundary condition </a><br>
@@ -167,7 +170,7 @@ My main focus in this project will be at the Fisher-Kolmogoroff equation. This w
 If we in out general equation <a href="#mjx-eqn-1">(1)</a> set \( \alpha(u)=k \) and \( f(u) = ru(1-\frac{u}{m}) \). We will 
 get the equation
 $$
-\begin{equation}
+\begin{equation} \tag{2}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{m})
 \end{equation}
 $$
@@ -181,7 +184,7 @@ $$
 
 The equation then become when we set \( m=1 \). \( m \) describes the carrying capacity which in the travelling wavefront will be between 0 and 1.
 $$
-\begin{equation} \tag{2}
+\begin{equation} \tag{3}
 \frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-\frac{u}{m})
 \end{equation}
 $$
@@ -196,7 +199,7 @@ u(x,t) = u(x-ct) = U(z), x-ct = z
 $$
 
 Here we use \( U(z) \) instead of \( u(u) \). This is just to avoid any confusion of the terminology. We also assume
-that \( c \geq 0 \). Substituting this traveling wavefront into <a href="#mjx-eqn-2">(2)</a>, we get
+that \( c \geq 0 \). Substituting this traveling wavefront into <a href="#mjx-eqn-3">(3)</a>, we get
 $$
 U'' +cU' + U(1-U) = 0
 $$
@@ -301,8 +304,8 @@ The values from FK is sat to \( r=1 \) and \( m=1 \). This is called Fisher's eq
 
 <h3>Carrying capacity  <a name="___sec6"></a></h3>
 
-First it can be interesting to look at the changes in the carrying capacity of
-the function.
+First it can be interesting to look at the changes in the carrying capacity, here denoted as \( m \), of
+the function. This simulation has the purpose to illustrate the efficiency of varying the carrying capacity.
 
 <p>
 
@@ -315,13 +318,11 @@ the function.
 
 
 <p>
-Here we can see that they all goes towards their carrying capacity and stabilizes here.
-I have set \( r=1 \) in all of this simulations. The displacement from intial conditions to
-final conditions is quite similar in all of the cases.
+All the simulations goes towards their carrying capacity and stabilizes here.The reproduction rate,$r$, has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all of the cases.
 
 <h3>Reproduction rate  <a name="___sec7"></a></h3>
 
-We can do a similar thing with the reproduction \( r \).
+A similar simulation can be done for the reproduction rate,$r$. Here with focus on the effect of varying the reproduction.
 
 <p>
 
@@ -335,7 +336,7 @@ We can do a similar thing with the reproduction \( r \).
 
 <p>
 This controls the speed of the movement. A larger reproduction will get in faster
-to the steady state, that \( m \) controls.The carrying capacity is sat to \( m=0.8 \).
+to the steady state, that is controlled by \( m \). The carrying capacity is sat to \( m=0.8 \).
 
 <p>
 <p>

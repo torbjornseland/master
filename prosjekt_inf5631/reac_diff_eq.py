@@ -54,7 +54,7 @@ def read_command_line():
 
 m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err= read_command_line()
 
-Nx = 10
+Nx = 200
 N = 160
 
 L = 10
@@ -92,7 +92,7 @@ if(method == "constant"):
         return k
 elif(method == "abs_std"):
     def alpha(i):
-        return ((abs(u_[i+1]-u_[i])**m)/dx)
+        return (abs(u_[i+1]-u_[i])/float(dx))**m
 elif(method == "ordinary"):
     def alpha(i):
         return 0.5*(u_[i]+u_[i+1])
@@ -151,9 +151,9 @@ for n in range(0, N):
 		A[0,1] = A[Nx,Nx-1] = -F*2*(dt/float(dx**2))*(alpha(i))
 		u[:] = sl.solve(A, b)
 
-	if(n%1 == 0):
+	if(n%2 == 0):
 		print "nr: ",n
-		np.save("%s%04d" % (plotname,(n/1.)+1),u)
+		np.save("%s%04d" % (plotname,(n/2)+1),u)
 	#Update u_1 and u_ before next step
 	u_1[:] = u
 	u_[:] = u

@@ -49,20 +49,23 @@ Automatically generated HTML file from Doconce source
               (' Reproduction rate ', 3, None, '___sec7'),
               (' Spatial diffusion ', 1, None, '___sec8'),
               (' Boundary conditions ', 3, None, '___sec9'),
-              (' Linear equation ', 2, None, '___sec10'),
+              (' Linear system/equation ', 2, None, '___sec10'),
               (' Nonlinear equation ', 2, None, '___sec11'),
               (' Picard Iteration ', 3, None, '___sec12'),
-              (' Ordinary u ', 3, None, '___sec13'),
-              (' Spatial derivation wrapped with an absolute value ',
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec13'),
+              (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
                '___sec14'),
-              (' Absolute value powered by m ', 3, None, '___sec15'),
+              (' Spatial derivative wrapped with an absolute value powered by m ',
+               3,
+               None,
+               '___sec15'),
               (' Solution for the biological equation ', 1, None, '___sec16'),
-              (' Constant ', 3, None, '___sec17'),
-              (' Ordinary ', 3, None, '___sec18'),
-              (' Absolute value ', 3, None, '___sec19'),
-              (' Absolute powered up ', 3, None, '___sec20'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec17'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec18'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec19'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec20'),
               (' Further work ', 1, None, '___sec21'),
               (' Changes in the Boundary conditions ', 2, None, '___sec22'),
               (' Dirichlet boundary condition ', 3, None, '___sec23'),
@@ -114,19 +117,20 @@ u = 0|_{\partial \Omega}
 \end{equation}
 $$
 
-This can be described with attach a rope to each side and then pull in the rope. It will always
-be zero at the edges.
+
+<p>
+An analogous description of Dirichelt boundary conditions can be found in the wave equation. Attaching a rope to a wall, and inducing oscillations allows us to describe the displacement of the rope with the wave equation. The end of the rope attached to the wall will always have zero displacement since it is, in fact, attached.
 
 <h3>Neumann boundary condition  <a name="___sec24"></a></h3>
 
-Another way to look at the boundary is by reflecting boundaries. It can reflect it by \( u=0 \) which change the sign at the boundary. The way that we often use this, is by Neumann boundary condition. This we can describe
+Another way to look at the boundary conditions is by reflecting boundaries. The boundary can be sat to \( u=0 \),which change the sign at the boundary or \( u_x \), that reflects the same value. This can be implemented with Neumann boundary condition[http://hplgit.github.io/INF5620/doc/pub/._main_wave003.html#wave:pde2:Neumann].
 $$
 \begin{equation}
- \frac{\partial u}{\partial n} \equiv \normalvec\cdot\nabla u = 0
+ \frac{\partial u}{\partial n} \equiv \emph{n}\cdot\nabla u = 0
 \end{equation}
 $$
 
-Where \( \normalvec \) describes the normal vector.The boundaries can be described  
+Where emph{n} describes the normal vector.The boundaries can be described  
 $$
 \left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
 \frac{\partial}{\partial x}
@@ -141,8 +145,7 @@ u_{-1}^n =& u_1^n
 $$
 
 We can do the same thing for \( L \).
-Under I have made a simulation where I compare Dirichlet with Neumann. I run them
-both on the spatial part to see how it affects the diffusion.
+The simulation under compares Dirichlet with Neumann. The reaction term is sat to be zero to see how the boundary affects the diffusion term.
 
 <p>
 
@@ -155,10 +158,10 @@ both on the spatial part to see how it affects the diffusion.
 
 
 <p>
-The interesting this here is to see that the Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. The reason that Dirichlet goes towards zero is because of the value of the boundary. If we continue with the idea of a temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with polystyrene(isopor),where the wall is totally isolated. With Dirichlet the walls has a specific temperature. In our example we sat it to zero, but any number would have caused an equilibrium state.
+Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are sat to be zero. If we think of this as the temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. In our example we sat the temperature to zero, but any number would have caused an equilibrium state.
 
 <h2>Newton's method  <a name="___sec25"></a></h2>
-Newtons method is another way to handle nonlinear equations. 
+Newtons method is another way to handle non linear equations. 
 $$
 \begin{equation}
 	F(u) = 0
@@ -166,7 +169,7 @@ $$
 $$
 
 This method linearizes the equation by using Taylor series expansion around
-\( u\_ \). This only keeping only the linear part.
+\( u\_ \). Thus only keeping the linear part.
 $$
 \begin{align*}
 	F(u) &= F(u_{-}) + F'(u_{-})(u - u_{-}) + \frac{1}{2}F''(u_{-})(u-u_{-})^2
@@ -182,8 +185,7 @@ $$
 \end{equation}
 $$
 
-This method require a Jacobian matrix. This means that we need to differentiate \( F(u) = A(u)u - b(u) \) for all the 
-values of \( u \). Our \( F \) will be
+A Jacobian matrix is required for this method. \( F(u) = A(u)u - b(u) \) needs to be differentiate for all values of \( u \). \( F \) will be
 $$
 \begin{equation*}
 F_i = A_{i,i-1}(u_{i-1},u_i)u_{i-1}+A_{i,i}(u_{i-1},u_{i},u_{i+1})u_{i}+A_{i,i+1}(u_i,u_{i+1})u_{i+1}-b_i(u^{n-1}_i)
@@ -206,8 +208,7 @@ J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\part
 \end{align*}
 $$
 
-Since this demands a lot of calculating, I will show how to do it for the first
-\( J_{i,i} \). I calculate each subsection in one line
+The method demands a lot of calculating. Every part of \( J_{i,i} \) will be computed under, as an example. The same principles are used for \( J_{i,i-1} \) and \( J_{i,i+1} \).
 $$
 \begin{align*}
 \frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
@@ -218,7 +219,7 @@ A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i
 \end{align*}
 $$
 
-This gives us the matrix
+This gives the matrix
 $$
 \begin{align*}
 J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
@@ -228,7 +229,7 @@ J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{
 \end{align*}
 $$
 
-This matrix can be used to compute the Newton's method. We just need to replace \( \alpha(u) \) by the function. 
+This matrix can be used to compute the Newton's method. 
 
 <p>
 <!-- begin bottom navigation -->
