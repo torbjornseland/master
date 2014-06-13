@@ -39,9 +39,12 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Reaction diffusion equation ', 1, None, '___sec0'),
+ 'sections': [(' Density-Dependent Diffusion- Reaction Diffusion Model ',
+               1,
+               None,
+               '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
-              (' Travelling wavefront ', 3, None, '___sec2'),
+              (' Travelling wavefront ', 2, None, '___sec2'),
               (' Reaction term ', 1, None, '___sec3'),
               (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
               (" Fisher's equation ", 3, None, '___sec5'),
@@ -156,7 +159,7 @@ $$
 
 The matrix \( A \) will be tridiagonal with the values.
 $$
-\begin{align} \tag{4}
+\begin{align} \tag{5}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -196,10 +199,10 @@ $$
 \end{equation}
 $$
 
-The matrix from<a href="#mjx-eqn-4">(4)</a> and insert the function for \( \alpha(u) \). This gives us
+The matrix from<a href="#mjx-eqn-5">(5)</a> and insert the function for \( \alpha(u) \). This gives us
 the matrix:
 $$
-\begin{align*} \tag{5}
+\begin{align*} \tag{6}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
@@ -236,8 +239,8 @@ $$
 
 
 <p>
-Since we only used CN for one step in the general calculation for \( \alpha \), we need to use arithmetic mean
-to be able to get values from \( u \).
+Since Crank Nicolson is only applied for one step in the general calculation for \( \alpha \), arithmetic mean
+can be used to get values from \( u \).
 $$
 \begin{equation*}
 	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
@@ -246,7 +249,7 @@ $$
 
 
 <p>
-Then \( u \) can be inserted in the matrix<a href="#mjx-eqn-4">(4)</a>.
+Then \( u \) can be inserted in the matrix<a href="#mjx-eqn-5">(5)</a>.
 $$
 \begin{align*} 
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
@@ -310,7 +313,7 @@ $$
 
 To use this with Picard Iteration, \( u\ \) need to replace \( u \). \( \Delta x \) can be moved out of the fraction, because \( \Delta x > 0 \).
 $$
-\begin{align} \tag{7}
+\begin{align} \tag{8}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|)\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)
@@ -350,9 +353,9 @@ $$
 \end{equation}
 $$
 
-This equation is solved in the exact same manner as the equation above. The matrix<a href="#mjx-eqn-7">(7)</a> A from the section above can be used. A power, \( m \), can be added in the matrix.
+This equation is solved in the exact same manner as the equation above. The matrix<a href="#mjx-eqn-8">(8)</a> A from the section above can be used. A power, \( m \), can be added in the matrix.
 $$
-\begin{align} \tag{7}
+\begin{align} \tag{8}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)

@@ -39,9 +39,12 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Reaction diffusion equation ', 1, None, '___sec0'),
+ 'sections': [(' Density-Dependent Diffusion- Reaction Diffusion Model ',
+               1,
+               None,
+               '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
-              (' Travelling wavefront ', 3, None, '___sec2'),
+              (' Travelling wavefront ', 2, None, '___sec2'),
               (' Reaction term ', 1, None, '___sec3'),
               (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
               (" Fisher's equation ", 3, None, '___sec5'),
@@ -110,7 +113,7 @@ MathJax.Hub.Config({
 <h3>Dirichlet boundary condition  <a name="___sec23"></a></h3>
 
 There are several ways to describe the boundary conditions for a differential equation.
-In this paper I have used Dirichlet, where I decide that the boundaries shall be zero.
+Dirichlet has been used in this paper. The boundaries has been sat to zero.
 $$
 \begin{equation}
 u = 0|_{\partial \Omega}
@@ -130,13 +133,13 @@ $$
 \end{equation}
 $$
 
-Where emph{n} describes the normal vector.The boundaries can be described  
+Where \( \emph{n} \) describes the normal vector.The boundaries can be described  
 $$
 \left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
 \frac{\partial}{\partial x}
 $$
 
-If we then discretize this at the boundaries, we get
+If the equation is discretized at the boundaries, it gives
 $$
 \begin{align*}
 \frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0
@@ -144,7 +147,7 @@ u_{-1}^n =& u_1^n
 \end{align*}
 $$
 
-We can do the same thing for \( L \).
+The same thing can be done for \( L \).
 The simulation under compares Dirichlet with Neumann. The reaction term is sat to be zero to see how the boundary affects the diffusion term.
 
 <p>
@@ -158,7 +161,7 @@ The simulation under compares Dirichlet with Neumann. The reaction term is sat t
 
 
 <p>
-Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are sat to be zero. If we think of this as the temperature in a room, the walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. In our example we sat the temperature to zero, but any number would have caused an equilibrium state.
+Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are sat to be zero. Assume that the concentration of \( u \) is the temperature in a room. The walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. Here the temperature is sat to be zero, but any number would have caused an equilibrium state.
 
 <h2>Newton's method  <a name="___sec25"></a></h2>
 Newtons method is another way to handle non linear equations. 

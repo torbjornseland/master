@@ -39,9 +39,12 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Reaction diffusion equation ', 1, None, '___sec0'),
+ 'sections': [(' Density-Dependent Diffusion- Reaction Diffusion Model ',
+               1,
+               None,
+               '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
-              (' Travelling wavefront ', 3, None, '___sec2'),
+              (' Travelling wavefront ', 2, None, '___sec2'),
               (' Reaction term ', 1, None, '___sec3'),
               (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
               (" Fisher's equation ", 3, None, '___sec5'),
@@ -108,7 +111,7 @@ MathJax.Hub.Config({
 <h1>Solution for the biological equation  <a name="___sec16"></a></h1>
 The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="._pro_inf5631000.html#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. Since FK is the only equation that has been studied in the reaction term,$f(u)$, this can be inserted in the matrix.
 $$
-\begin{align} \tag{8}
+\begin{align} \tag{9}
 A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -117,7 +120,7 @@ $$
 
 <h3>Fisher-Komogoroff equation  <a name="___sec17"></a></h3>
 
-This simulation shows how the reaction term and the spatial diffusion term affects each other. We know from the section above that the reaction term will go towards equilibrium state which is sat by the carrying capacity,$M$. The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values,$k$, in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation <a href="._pro_inf5631000.html#mjx-eqn-2">(2)</a>
+This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity,$M$, as shown in the section above. The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values,$k$, in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation <a href="._pro_inf5631000.html#mjx-eqn-2">(2)</a>
 
 <p>
 

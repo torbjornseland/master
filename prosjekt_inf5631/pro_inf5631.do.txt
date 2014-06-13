@@ -6,8 +6,8 @@ TOC: on
 
 ##doconce format html pro_inf5631
 ##doconce split_html pro_inf5631 
-======= Reaction diffusion equation =======
-The efficiency of computers has increased vastly over the last few decades, giving scientists and engineers new tools to describe the dynamics of the world around us. It has also affected the way biological processes are viewed and described. This project will focus on numerical methods to solve the reaction diffusion equation which is described below. Reaction-diffusion systems explain how the concentration of one or more substances changes under the influence of the local chemical reactions, here $f(u)$ and diffusion which cause a spatial dispersion. This system are applied in fields as chemistry, biology, geology, physics and ecology. 
+======= Density-Dependent Diffusion- Reaction Diffusion Model =======
+The efficiency of computers has increased vastly over the last few decades, giving scientists and engineers new tools to describe the dynamics of the world around us. It has also affected the way biological processes are viewed and described. This project will focus on numerical methods to solve the reaction diffusion equation which is described below. Reaction-diffusion systems explain how the concentration of one or more substances changes under the influence of the local chemical reactions, here $f(u)$ and diffusion which cause a spatial dispersion. These systems are applied in fields as chemistry, biology, geology, physics and ecology. 
 !bt
 \begin{align} label{eq:reaction_diffusion}
 u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
@@ -16,37 +16,55 @@ u(0,t)=& 0\notag \\
 u(L,t)=& 0\notag
 \end{align}
 !et
-Here, $u$ denotes the concentration of the substance in
-one spatial dimension. To get a better understanding, the model will be split up the model. The right side of the equation consist of two parts. The first part describes the spatial flow while the second describes the reaction term.
+This model is a $\textit{Density-Dependent Diffusion-Reaction Diffusion Model}$, because of the $\alpha(u)$ function in the diffusion part. When $\alpha(u)$ is sat to be a constant, the model will be a ordinary $\textit{Reaction Diffusion model}$ [MB,I,449]. Here, $u$ denotes the concentration of the substance in one spatial dimension. This project will include a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will be a study on the affect of the reaction and diffusion term.
 ===== Fisher-Kolmogoroff equation =====
-My main focus in this project will be at the Fisher-Kolmogoroff equation. This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [1(Mathematical Biology, I an introduction, 11.Reaction Diffusion)].
-If we in out general equation (ref{eq:reaction_diffusion}) set $\alpha(u)=k$ and $f(u) = ru(1-\frac{u}{m})$. We will 
-get the equation
+The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [1(Mathematical Biology, I an introduction, 11.Reaction Diffusion)].The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{m})$ in the general equation (ref{eq:reaction_diffusion}).
 !bt
 \begin{equation} label{eq:fish_kol}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{m})
 \end{equation}
 !et
-=== Travelling wavefront ===
-A good reason to study this equation, is because it is the prototype equation which admits travelling wavefront solutions. This is also a good equation for develop many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When we now want to investigate the travelling wavefront. Then it is convenient to rescale the equation, by writing.
+===== Travelling wavefront =====
+There is a vast number of examples from the biology where an important reason to a developmental process seems to be the appearance of a travelling wave of chemical concentration[MB,I,437]. An example from the humans interaction, is the progressing wave of an epidemic. Here the spread of rabies epizootic through Europe is an example. 
+
+A travelling wave is a wave that travels without any change in the shape and the speed can be given by a constant. This means that by following the wave with the same speed as the wave speed, it would be no changes in the wave. A mathematical expression for this is
+!bt
+\begin{equation} label{eq:wave_constant}
+u(x,t) = u(x-ct) = u(z), z = x-ct
+\end{equation}
+!et
+So if $x-ct$ is a constant, then $u$ will be a constant. If we look for a travelling wave solution of the (ref{eq:wave_constant}), the partial differential equations can be written as ordinary differential equations. $\frac{\partial u}\{\partial t} = -c\frac{du}{dz}$ and $\frac{\partial u}\{\partial x} = \frac{du}{dz}$. A couple of physical assumptions that has to be done, are that $u(z)$ has to be bounded by $z$ and that the concentration of the quantities cannot be negative, for example the human population. Inserting the ordinary differential equations into a standard diffusion equation under
+!bt
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
+\end{equation}
+!et
+Will give
+
+!bt
+\begin{equation}
+k\frac{d^2u}{dx^2} + \frac{du}{dt} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/D} 
+\end{equation}
+!et
+Here $A$ and $B$ will be integration constants. The physical assumption above requiring $u(z)$ to be bounded by $z$. Then $B$ need to be zero, since the exponential gets unbounded when $z\rightarrow -\infty$. Then the wave solutions ends up as $u(z)=A$, which is a constant value, and not a wave solution. Therefore the reaction term $f(u)$ was applied to the equation. This term can exhibit travelling wave solution. A major factor for the mathematical theory in reaction diffusion equations.
+---------------------- Disse delene må settes bedre sammen------------------- 
+<linebreak>
+<linebreak>
+A good reason to study this equation, is because it is the prototype equation which admits travelling wavefront solutions. This is also a good equation for develop many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing
 !bt
 t* = rt,	x* = x(\frac{r}{k})^{1/2}
 !et
-The equation then become when we set $m=1$. $m$ describes the carrying capacity which in the travelling wavefront will be between 0 and 1.
+The carrying capacity, $m$, will be sat to one. This gives a travelling wavefront between 0 and 1.
 !bt
 \begin{equation} label{eq:trav_wave}
-\frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-\frac{u}{m})
+\frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)
 \end{equation}
 !et
-
-Since $m=1$ the steady states are $u=0$ and $u=1$, which are respectively unstable and stable.
-If the solution represents a travelling wave, then the shape of the wave will move with the speed $c$. We
-are then able to show the travelling wave stationary.
+Since $m=1$, the steady states are $u=0$ and $u=1$, which are respectively unstable and stable. If the solution represents a travelling wave, the shape of the wave will move with the speed $c$. The travelling wave can then be whown stationary.
 !bt
 u(x,t) = u(x-ct) = U(z), x-ct = z
 !et
-Here we use $U(z)$ instead of $u(u)$. This is just to avoid any confusion of the terminology. We also assume
-that $c \geq 0$. Substituting this traveling wavefront into (ref{eq:trav_wave}), we get
+$U(z)$ will be used instead of $u(u)$. This is to avoid any confusion of the terminology. The assumption $c \geq 0$ is done. Substituting this traveling wavefront into (ref{eq:trav_wave}), gives
 !bt
 U'' +cU' + U(1-U) = 0
 !et
@@ -84,9 +102,7 @@ u^n_i(1-\Delta t r(1-\frac{u^n_i}{m})) =& u^{n-1}_i
 \end{align*}
 !et
 
-Since this equation gives us a nonlinear equation, we can use Picard Iteration to solve
-it. The idea with Picard Iteration is to replace one of the $u$ in the nonlinear part of the equation with $u\_$. $u\_$ will in the first
-iteration be sat to the value from the previous step $u\_1$. 
+Since this equation gives a nonlinear equation, Picard Iteration can be used to solve the equation. The idea with Picard Iteration is to replace one of the $u$ in the nonlinear part with $u\_$. $u\_$ will in the first iteration be sat to the value from the previous time step $u\_1$. 
 
 !bt
 \begin{equation*}
@@ -94,8 +110,8 @@ iteration be sat to the value from the previous step $u\_1$.
 \end{equation*}
 !et
 
-We can check the correct value $u$ against our pre produced $u\_$ each round. If the difference between
-them are less than a predefined limit, the new solution is accepted. If not, the new $u\_$ will be a combination of $u\_$ and $u$. How we weight the combination is called relaxation 
+The correct value $u$ can be compared with the pre produced $u\_$ each round. If the difference between
+them are less than a predefined limit, the new solution is accepted. If not, the new $u\_$ will be a combination of $u\_$ and $u$. How the combination is weighted is called relaxation. 
 
 !bt
 \begin{equation*}
@@ -103,7 +119,7 @@ u\_ = \gamma u + (1-\gamma)u\_, 0<= \gamma <=1
 \end{equation*}
 !et
 
-Our new equation will then be
+The new equation will be
 
 !bt
 \begin{align*}
@@ -111,7 +127,7 @@ Our new equation will then be
 \end{align*}
 !et
 
-Since $u\_$ is an approximation to $u$, we need to refine $u\_$ until it fulfil the expectations.
+Since $u\_$ is an approximation to $u$, $u\_$ need to be refined until it fulfil the expectations.
 
 === Fisher's equation ===
 The values from FK is sat to $r=1$ and $m=1$. This is called Fisher's equation.The reaction term in Fisher will look like this.
@@ -244,8 +260,8 @@ All $\alpha$'s that include $u$ will give a non-linear equation.Picard Iteration
 \end{equation}
 !et
 
-Since we only used CN for one step in the general calculation for $\alpha$, we need to use arithmetic mean
-to be able to get values from $u$.
+Since Crank Nicolson is only applied for one step in the general calculation for $\alpha$, arithmetic mean
+can be used to get values from $u$.
 !bt
 \begin{equation*}
 	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
@@ -343,7 +359,7 @@ A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 \end{align}                               
 !et
 === Fisher-Komogoroff equation ===
-This simulation shows how the reaction term and the spatial diffusion term affects each other. We know from the section above that the reaction term will go towards equilibrium state which is sat by the carrying capacity,$M$. The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values,$k$, in the $\alpha(u)$. This gives a Fisher Kolmogoroff equation (ref{eq:fish_kol})
+This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity,$M$, as shown in the section above. The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values,$k$, in the $\alpha(u)$. This gives a Fisher Kolmogoroff equation (ref{eq:fish_kol})
 
 ##MOVIE: [paramovies/reac_constant.webm, height=300,width=375]r=1,M=1
 
@@ -384,7 +400,7 @@ The power term, $m$, in the spatial diffusion term changes here. The reaction te
 ===== Changes in the Boundary conditions =====
 === Dirichlet boundary condition ===
 There are several ways to describe the boundary conditions for a differential equation.
-In this paper I have used Dirichlet, where I decide that the boundaries shall be zero.
+Dirichlet has been used in this paper. The boundaries has been sat to zero.
 !bt
 \begin{equation}
 u = 0|_{\partial \Omega}
@@ -404,7 +420,7 @@ Where $\emph{n}$ describes the normal vector.The boundaries can be described
 \left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
 \frac{\partial}{\partial x}
 !et
-If we then discretize this at the boundaries, we get
+If the equation is discretized at the boundaries, it gives
 !bt
 \begin{align*}
 \frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0
