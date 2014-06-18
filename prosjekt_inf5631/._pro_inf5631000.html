@@ -115,14 +115,17 @@ MathJax.Hub.Config({
 <!-- author(s): Torbj&#248;rn Seland -->
 
 <center>
-<b>Torbj&#248;rn Seland</b> 
+<b>Torbj&#248;rn Seland</b> [1, 2]
 </center>
 
 
 <p>
 <!-- institution(s) -->
+
+<center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
+<center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jun 13, 2014</h4></center> <!-- date -->
+<center><h4>Jun 18, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -168,7 +171,9 @@ $$
 This model is a \( \textit{Density-Dependent Diffusion-Reaction Diffusion Model} \), because of the \( \alpha(u) \) function in the diffusion part. When \( \alpha(u) \) is sat to be a constant, the model will be a ordinary \( \textit{Reaction Diffusion model} \) [MB,I,449]. Here, \( u \) denotes the concentration of the substance in one spatial dimension. This project will include a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will be a study on the affect of the reaction and diffusion term.
 
 <h2>Fisher-Kolmogoroff equation  <a name="___sec1"></a></h2>
-The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [1(Mathematical Biology, I an introduction, 11.Reaction Diffusion)].The FK can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{m}) \) in the general equation <a href="#mjx-eqn-1">(1)</a>.
+The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>].The FK can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{m}) \) in the general equation <a href="#mjx-eqn-1">(1)</a>.
+
+<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> J.D. Murray,Mathematical Biology, 3rd edition (Springer, Berlin, 2003)
 $$
 \begin{equation} \tag{2}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{m})
@@ -176,7 +181,7 @@ $$
 $$
 
 <h2>Travelling wavefront  <a name="___sec2"></a></h2>
-There is a vast number of examples from the biology where an important reason to a developmental process seems to be the appearance of a travelling wave of chemical concentration[MB,I,437]. An example from the humans interaction, is the progressing wave of an epidemic. Here the spread of rabies epizootic through Europe is an example. 
+There is a vast number of examples from the biology where an important reason to a developmental process seems to be the appearance of a travelling wave of chemical concentration[MB,I,437]. An example from the humans interaction, is the progressing wave of an epidemic. Here the spread of rabies epizootic through Europe is an example.
 
 <p>
 A travelling wave is a wave that travels without any change in the shape and the speed can be given by a constant. This means that by following the wave with the same speed as the wave speed, it would be no changes in the wave. A mathematical expression for this is
@@ -186,9 +191,27 @@ u(x,t) = u(x-ct) = u(z), z = x-ct
 \end{equation}
 $$
 
-So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-3">(3)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \)
+So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-3">(3)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative, for example the human population. Inserting the ordinary differential equations into a standard diffusion equation under
+$$
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
+\end{equation}
+$$
+
+Will give
+
+$$
+\begin{equation}
+k\frac{d^2u}{dx^2} + \frac{du}{dt} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/D} 
+\end{equation}
+$$
+
+Here \( A \) and \( B \) will be integration constants. The physical assumption above requiring \( u(z) \) to be bounded by \( z \). Then \( B \) need to be zero, since the exponential gets unbounded when \( z\rightarrow -\infty \). Then the wave solutions ends up as \( u(z)=A \), which is a constant value, and not a wave solution. Therefore the reaction term \( f(u) \) was applied to the equation. This term can exhibit travelling wave solution. A major factor for the mathematical theory in reaction diffusion equations.
 
 <p>
+---------------------- Disse delene m&#229; settes bedre sammen------------------- 
+<br />
+<br />
 A good reason to study this equation, is because it is the prototype equation which admits travelling wavefront solutions. This is also a good equation for develop many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing
 $$
 t* = rt,	x* = x(\frac{r}{k})^{1/2}
@@ -201,8 +224,6 @@ $$
 \end{equation}
 $$
 
-
-<p>
 Since \( m=1 \), the steady states are \( u=0 \) and \( u=1 \), which are respectively unstable and stable. If the solution represents a travelling wave, the shape of the wave will move with the speed \( c \). The travelling wave can then be whown stationary.
 $$
 u(x,t) = u(x-ct) = U(z), x-ct = z
@@ -210,7 +231,22 @@ $$
 
 \( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-4">(4)</a>, gives
 $$
+\begin{equation} \tag{5}
 U'' +cU' + U(1-U) = 0
+\end{equation}
+$$
+
+An analytical solution of this can be written
+
+$$
+\begin{equation} <a name="eq:ana_sol"></a>
+U(z) = \frac{1}{(1+ae^{bz})^s}
+\end{equation}
+$$
+
+Here \( a \),$b$ and \( s \) are positive constants. These can be found by substituting (<a href="#eq:ana_sol">eq:ana_sol</a>) into <a href="#mjx-eqn-5">(5)</a>. This is done in detalj by Murray et al.[ref]. Because of the translational invariance, \( a \) can be sat to arbitrary. The other constans are
+$$
+s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 $$
 
 <h1>Reaction term  <a name="___sec3"></a></h1>

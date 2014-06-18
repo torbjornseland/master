@@ -1,5 +1,5 @@
 TITLE: Project inf5631 
-AUTHOR: Torbjørn Seland
+AUTHOR: Torbjørn Seland at Departments of Mathematics, University of Oslo & Center for Biomedical Computing, Simula Research Laboratory
 DATE: today
 
 TOC: on
@@ -18,7 +18,9 @@ u(L,t)=& 0\notag
 !et
 This model is a $\textit{Density-Dependent Diffusion-Reaction Diffusion Model}$, because of the $\alpha(u)$ function in the diffusion part. When $\alpha(u)$ is sat to be a constant, the model will be a ordinary $\textit{Reaction Diffusion model}$ [MB,I,449]. Here, $u$ denotes the concentration of the substance in one spatial dimension. This project will include a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will be a study on the affect of the reaction and diffusion term.
 ===== Fisher-Kolmogoroff equation =====
-The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [1(Mathematical Biology, I an introduction, 11.Reaction Diffusion)].The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{m})$ in the general equation (ref{eq:reaction_diffusion}).
+The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [^Murray].The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{m})$ in the general equation (ref{eq:reaction_diffusion}).
+
+[^Murray]: J.D. Murray,Mathematical Biology, 3rd edition (Springer, Berlin, 2003)
 !bt
 \begin{equation} label{eq:fish_kol}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{m})
@@ -47,6 +49,7 @@ k\frac{d^2u}{dx^2} + \frac{du}{dt} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z
 \end{equation}
 !et
 Here $A$ and $B$ will be integration constants. The physical assumption above requiring $u(z)$ to be bounded by $z$. Then $B$ need to be zero, since the exponential gets unbounded when $z\rightarrow -\infty$. Then the wave solutions ends up as $u(z)=A$, which is a constant value, and not a wave solution. Therefore the reaction term $f(u)$ was applied to the equation. This term can exhibit travelling wave solution. A major factor for the mathematical theory in reaction diffusion equations.
+
 ---------------------- Disse delene må settes bedre sammen------------------- 
 <linebreak>
 <linebreak>
@@ -66,7 +69,20 @@ u(x,t) = u(x-ct) = U(z), x-ct = z
 !et
 $U(z)$ will be used instead of $u(u)$. This is to avoid any confusion of the terminology. The assumption $c \geq 0$ is done. Substituting this traveling wavefront into (ref{eq:trav_wave}), gives
 !bt
+\begin{equation} label{eq:ord_diff}
 U'' +cU' + U(1-U) = 0
+\end{equation}
+!et
+An analytical solution of this can be written
+
+!bt 
+\begin{equation} label{eq:ana_sol}
+U(z) = \frac{1}{(1+ae^{bz})^s}
+\end{equation}
+!et
+Here $a$,$b$ and $s$ are positive constants. These can be found by substituting (ref{eq:ana_sol}) into (ref{eq:ord_diff}). This is done in detalj by Murray et al.[ref]. Because of the translational invariance, $a$ can be sat to arbitrary. The other constans are
+!bt
+s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 !et
 ======= Reaction term =======
 The reaction term describes the change in concentration in a certain point. This variation is only affected

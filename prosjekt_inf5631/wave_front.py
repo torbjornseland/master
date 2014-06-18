@@ -5,7 +5,7 @@ import os,glob,sys
 
 plotname = "plot_data/test"
 
-Nx = 200
+Nx = 50
 N = 80
 
 L = 60
@@ -22,20 +22,32 @@ u = np.zeros(Nx+1)
 u_1 = np.zeros(Nx+1)
 u_ = np.zeros(Nx+1) #Picard
 
-q = 10
+"""
+q = 1
 s = -2/float(q)
 k = q/float(np.sqrt(2*(q+2)))
 c = (q+4)/float(np.sqrt(2*q+4))
 alpha = 1
-
 def exact_u(x,t):
     return (1+alpha*np.exp(k*(x-c*t)))**s
+"""
+
+q = 1
+s = 2/float(q)
+k = q/float(np.sqrt(2*(q+2)))
+c = (q+4)/float(np.sqrt(2*q+4))
+alpha = 1
+def reverse_exact_u(x,t):
+    return 1/((1+alpha*np.exp(k*(x-c*t)))**s)
+
+
 
 
 for n in range(0, N):
-    u[:] = exact_u(x,t[n])
-    
-    plt.plot(x,u)
+    for i in range(3):
+        alpha = (i+1)*100
+        u[:] = reverse_exact_u(x,t[n])
+        plt.plot(x,u)
     plt.axis([-60,60,-0.2,1.2])
     plt.savefig("plot_data/tmp%04d.png" % (n/1))
     plt.close()
