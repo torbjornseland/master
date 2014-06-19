@@ -54,16 +54,16 @@ def read_command_line():
 
 m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err= read_command_line()
 
-Nx = 200
-N = 160
+Nx = 20
+N = 2000
 
-L = 10
-T = 40 
+L = 60
+T = 10 
 
 #List of values
 
 
-x = np.linspace(0,L,Nx+1)
+x = np.linspace(-L,L,Nx+1)
 dx = x[1]-x[0]
 t = np.linspace(0,T,N+1)
 dt = t[1]-t[0]
@@ -73,9 +73,18 @@ u_ = np.zeros(Nx+1) #Picard
 
 sigma = 0.45 
 mu= 0
-def gauss(x):
-	return (1/(sigma*np.sqrt(2*np.pi)))*np.exp(-(abs((L/float(2))-x)-mu)**2/(float(2*sigma**2)))
-
+wavefront = True
+if wavefront:
+	q_w = 1
+	s_w = 2/float(q_w)
+	b_w = q_w/float(np.sqrt(2*(q_w+2)))
+	c_w = (q_w+4)/float(np.sqrt(2*q_w+4))
+	alpha_w = 1
+	def initial_cond(x):
+		return 1/((1+alpha_w*np.exp(b_w*(x)))**s_w)
+else:
+	def initial_cond(x):
+		return (1/(sigma*np.sqrt(2*np.pi)))*np.exp(-(abs((L/float(2))-x)-mu)**2/(float(2*sigma**2)))
 
 # Data structures for the linear system
 A = np.zeros([Nx+1,Nx+1])
@@ -83,7 +92,7 @@ b = np.zeros(Nx+1)
 #time_d = sys.argv[2]
 
 for i in range(0, Nx+1):
-	u_1[i] = gauss(x[i])
+	u_1[i] = initial_cond(x[i])
 u_[:] = u_1
 
 #Choose the right equation
@@ -113,7 +122,10 @@ for n in range(0, N):
 	counter = 0
 	out_now = 0
 	b[:] = u_1
-	if(F == 0):
+	if(F == 0 and wavefront):
+		b[0] = 1
+		b[Nx] = 0
+	elif(F == 0):
 		b[Nx]= b[0] = 0 
 	else:
 		b[0] += 2*C1*dx*(dt/float(dx**2))*(alpha(0))
@@ -151,9 +163,9 @@ for n in range(0, N):
 		A[0,1] = A[Nx,Nx-1] = -F*2*(dt/float(dx**2))*(alpha(i))
 		u[:] = sl.solve(A, b)
 
-	if(n%2 == 0):
+	if(n%50 == 0):
 		print "nr: ",n
-		np.save("%s%04d" % (plotname,(n/2)+1),u)
+		np.save("%s%04d" % (plotname,(n/50)+1),u)
 	#Update u_1 and u_ before next step
 	u_1[:] = u
 	u_[:] = u

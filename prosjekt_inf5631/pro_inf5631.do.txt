@@ -74,16 +74,25 @@ U'' +cU' + U(1-U) = 0
 \end{equation}
 !et
 An analytical solution of this can be written
-
 !bt 
 \begin{equation} label{eq:ana_sol}
 U(z) = \frac{1}{(1+ae^{bz})^s}
 \end{equation}
 !et
-Here $a$,$b$ and $s$ are positive constants. These can be found by substituting (ref{eq:ana_sol}) into (ref{eq:ord_diff}). This is done in detalj by Murray et al.[ref]. Because of the translational invariance, $a$ can be sat to arbitrary. The other constans are
+Here $a$,$b$ and $s$ are positive constants. These can be found by substituting (ref{eq:ana_sol}) into (ref{eq:ord_diff}). This is done in detalj by Murray et al.[ref]. To achieve that $z=0$ corresponds to $U=1/2$, the constant $a$ can be sat to $a=\sqrt{2}-1$ . The other constans are
 !bt
 s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 !et
+The function for the analytical wavefront solution will then be,
+!bt
+\begin{equation}
+U(z) = \frac{1}{[1+(\sqrt{2}-1)=e^{\frac{z}{\sqrt{6}}}]^2}
+\end{equation}
+!et
+The wavefront will look like this
+
+MOVIE: [movies/wave_front_analytical.webm, height=300,width=375]Wavefront with analytical solution
+
 ======= Reaction term =======
 The reaction term describes the change in concentration in a certain point. This variation is only affected
 by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
@@ -103,6 +112,8 @@ u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
 \end{align*}
 !et
 This gives a linear equation $Au = b$ that easy can be solved.
+
+
 ===== Fisher-Kolmogoroff term =====
 A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form $f(u) = ru(1-u/m)$, where $r$ describes the linear reproduction and $m$ the carrying capacity of this environment. The solution will then be.
 !bt

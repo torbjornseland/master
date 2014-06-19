@@ -1,5 +1,6 @@
 import os
 from build_plot import *
+from wave_front import wave_front
 
 #Print several versions of time derivate solution
 """
@@ -35,8 +36,8 @@ for i in m_list:
 		print os_name
 		os.system(os_name)
 """
-para_list = [0,1,8] #parameter list
-eq_list = ["abs_std"]
+para_list = [1] #parameter list
+eq_list = ["constant"]
 plotnames = []
 for i in para_list:
 	for j in eq_list:
@@ -45,6 +46,12 @@ for i in para_list:
 		os_name = "python reac_diff_eq.py --method %s --p_n %s --r 1 --M 1 --m %g --picard True " % (j,plotname,i)
 		print os_name
 		os.system(os_name)
-build_plot(plotnames,"paramovies/reac_%s_power" % eq_list[0],para_list,"m")
+
+plotname = "plot_data/wave_front"
+plotnames.append(plotname)
+wave_front(plotname)
+para_list.append("analytical")
+
+build_plot(plotnames,"paramovies/reac_%s_wavefront_compare" % eq_list[0],para_list,"m")
 #build_subplot(plotnames,"submovies/ordinary_sub",para_list,"k")
 os.system('rm plot_data/*')

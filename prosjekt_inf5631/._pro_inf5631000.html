@@ -125,7 +125,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jun 18, 2014</h4></center> <!-- date -->
+<center><h4>Jun 19, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -237,17 +237,25 @@ U'' +cU' + U(1-U) = 0
 $$
 
 An analytical solution of this can be written
-
 $$
 \begin{equation} <a name="eq:ana_sol"></a>
 U(z) = \frac{1}{(1+ae^{bz})^s}
 \end{equation}
 $$
 
-Here \( a \),$b$ and \( s \) are positive constants. These can be found by substituting (<a href="#eq:ana_sol">eq:ana_sol</a>) into <a href="#mjx-eqn-5">(5)</a>. This is done in detalj by Murray et al.[ref]. Because of the translational invariance, \( a \) can be sat to arbitrary. The other constans are
+Here \( a \),$b$ and \( s \) are positive constants. These can be found by substituting (<a href="#eq:ana_sol">eq:ana_sol</a>) into <a href="#mjx-eqn-5">(5)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
 $$
 s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 $$
+
+The function for the analytical wavefront solution will then be,
+$$
+\begin{equation}
+U(z) = \frac{1}{[1+(\sqrt{2}-1)=e^{\frac{z}{\sqrt{6}}}]^2}
+\end{equation}
+$$
+
+The wavefront will look like this
 
 <h1>Reaction term  <a name="___sec3"></a></h1>
 The reaction term describes the change in concentration in a certain point. This variation is only affected
@@ -270,6 +278,15 @@ u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
 $$
 
 This gives a linear equation \( Au = b \) that easy can be solved.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/wave_front_analytical.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Fisher with ten points</em></p>
 
 <h2>Fisher-Kolmogoroff term  <a name="___sec4"></a></h2>
 A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form \( f(u) = ru(1-u/m) \), where \( r \) describes the linear reproduction and \( m \) the carrying capacity of this environment. The solution will then be.
