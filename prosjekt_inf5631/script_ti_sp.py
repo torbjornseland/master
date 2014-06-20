@@ -36,6 +36,13 @@ for i in m_list:
 		print os_name
 		os.system(os_name)
 """
+
+Nx = 100
+N = 1000
+L = 60
+T = 50
+
+
 para_list = [1] #parameter list
 eq_list = ["constant"]
 plotnames = []
@@ -43,15 +50,15 @@ for i in para_list:
 	for j in eq_list:
 		plotname = ("plot_data/%s_M_%2.3f" % (j,i)).replace(".","_")
 		plotnames.append(plotname)
-		os_name = "python reac_diff_eq.py --method %s --p_n %s --r 1 --M 1 --m %g --picard True " % (j,plotname,i)
+		os_name = "python reac_diff_eq.py --method %s --p_n %s --r 1 --M 1 --m %g --picard True --Nx %i --N %i --L %i --T %i" % (j,plotname,i,Nx,N,L,T)
 		print os_name
 		os.system(os_name)
 
 plotname = "plot_data/wave_front"
 plotnames.append(plotname)
-wave_front(plotname)
+wave_front(plotname,Nx,N,L,T)
 para_list.append("analytical")
 
-build_plot(plotnames,"paramovies/reac_%s_wavefront_compare" % eq_list[0],para_list,"m")
+build_plot(plotnames,"paramovies/reac_%s_wavefront_test" % eq_list[0],para_list,"m",L)
 #build_subplot(plotnames,"submovies/ordinary_sub",para_list,"k")
 os.system('rm plot_data/*')

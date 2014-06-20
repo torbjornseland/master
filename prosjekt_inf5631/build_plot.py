@@ -2,12 +2,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os,glob
 
-Nx = 20
-L = 60
-x = np.linspace(-L,L,Nx+1)
+#Nx = 2000
+#L = 60
+#x = np.linspace(-L,L,Nx+1)
 
 
-def build_plot(plotnames,moviename,parameter_values,para_name):
+def build_plot(plotnames,moviename,parameter_values,para_name,L):
+	x_list = []
+	for i in plotnames:
+		img = "%s%04d.npy" % (i,0)
+		len_x = len(np.load(img))
+		x = np.linspace(-L,L,len_x)
+		x_list.append(x)
 	plotname = "%s*" %(plotnames[0])
 	Nt = len(glob.glob(plotname))
 	print Nt
@@ -15,7 +21,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name):
 		for i in range(len(plotnames)):
 			img = "%s%04d.npy" % (plotnames[i],j)
 			label_name = "%s = %s" % (para_name, parameter_values[i])
-			plt.plot(x,np.load(img),label=label_name)
+			plt.plot(x_list[i],np.load(img),label=label_name)
 		plt.axis([-L,L,-0.2,1.2])
 		plt.legend()
 		plt.suptitle(moviename)

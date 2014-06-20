@@ -43,22 +43,33 @@ def define_command_line_options():
 	parser.add_argument('--err', '--err', type=float,
 		default=1e-05, help='Tolerance in Picard',
 		metavar='err')
+	parser.add_argument('--Nx', '--nodes in spatial direction', type=int,
+		default=0, help='nodes in spatial direction',
+		metavar='Nx')
+	parser.add_argument('--N', '--numbers of temporal steps', type=int,
+		default=0, help='power in the absolute equation',
+		metavar='N')
+	parser.add_argument('--L', '--length in spatial directions', type=int,
+		default=0, help='lenght in spatial direction',
+		metavar='L')
+	parser.add_argument('--T', '--Total time', type=float,
+		default=0, help='Total time',
+		metavar='T')
 	return parser
 
 def read_command_line():
 	parser = define_command_line_options()
 	args = parser.parse_args()
 	print
-        'm={},k={},method={},movie_name={},picard={},r={},M={},plot_name={},C1={},C2={},F={},err={}'.format(args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M, args.p_n,args.C1,args.C2,args.F,args.err)
-	return args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M,args.p_n,args.C1,args.C2,args.F,args.err
+        'm={},k={},method={},movie_name={},picard={},r={},M={},plot_name={},C1={},C2={},F={},err={},Nx={},N={},L={},T={}'.format(args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M, args.p_n,args.C1,args.C2,args.F,args.err,args.Nx,args.N,args.L,args.T)
+	return args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M,args.p_n,args.C1,args.C2,args.F,args.err,args.Nx,args.N,args.L,args.T
 
-m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err= read_command_line()
+m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err,Nx,N,L,T= read_command_line()
 
-Nx = 20
-N = 2000
-
-L = 60
-T = 10 
+#Nx = 2000
+#N = 2000
+#L = 60
+#T = 10 
 
 #List of values
 
@@ -80,10 +91,10 @@ if wavefront:
 	b_w = q_w/float(np.sqrt(2*(q_w+2)))
 	c_w = (q_w+4)/float(np.sqrt(2*q_w+4))
 	alpha_w = 1
-	def initial_cond(x):
-		return 1/((1+alpha_w*np.exp(b_w*(x)))**s_w)
+	def initial_cond(x,t):
+		return 1/((1+alpha_w*np.exp(b_w*(x-c_w*t)))**s_w)
 else:
-	def initial_cond(x):
+	def initial_cond(x,t):
 		return (1/(sigma*np.sqrt(2*np.pi)))*np.exp(-(abs((L/float(2))-x)-mu)**2/(float(2*sigma**2)))
 
 # Data structures for the linear system
@@ -92,7 +103,7 @@ b = np.zeros(Nx+1)
 #time_d = sys.argv[2]
 
 for i in range(0, Nx+1):
-	u_1[i] = initial_cond(x[i])
+	u_1[i] = initial_cond(x[i],0)
 u_[:] = u_1
 
 #Choose the right equation
@@ -123,8 +134,8 @@ for n in range(0, N):
 	out_now = 0
 	b[:] = u_1
 	if(F == 0 and wavefront):
-		b[0] = 1
-		b[Nx] = 0
+		b[0] = initial_cond(x[0],t[n])
+		b[Nx] = initial_cond(x[Nx],t[n])
 	elif(F == 0):
 		b[Nx]= b[0] = 0 
 	else:
@@ -163,9 +174,9 @@ for n in range(0, N):
 		A[0,1] = A[Nx,Nx-1] = -F*2*(dt/float(dx**2))*(alpha(i))
 		u[:] = sl.solve(A, b)
 
-	if(n%50 == 0):
+	if(n%2 == 0):
 		print "nr: ",n
-		np.save("%s%04d" % (plotname,(n/50)+1),u)
+		np.save("%s%04d" % (plotname,(n/2)+1),u)
 	#Update u_1 and u_ before next step
 	u_1[:] = u
 	u_[:] = u
