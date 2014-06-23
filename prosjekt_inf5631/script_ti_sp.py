@@ -37,28 +37,38 @@ for i in m_list:
 		os.system(os_name)
 """
 
-Nx = 100
-N = 1000
+Nx_list = [100,100,100,100,100]
+N_list = [100,200,800,1600,3200]
 L = 60
-T = 50
+T = 40
+fg_list = [1,2,8,16,32]	#frame gap
 
 
-para_list = [1] #parameter list
+#para_list = [1] #parameter list
 eq_list = ["constant"]
 plotnames = []
-for i in para_list:
+for i in range(len(Nx_list)):
 	for j in eq_list:
 		plotname = ("plot_data/%s_M_%2.3f" % (j,i)).replace(".","_")
 		plotnames.append(plotname)
-		os_name = "python reac_diff_eq.py --method %s --p_n %s --r 1 --M 1 --m %g --picard True --Nx %i --N %i --L %i --T %i" % (j,plotname,i,Nx,N,L,T)
+		os_name = "python reac_diff_eq.py --method %s --p_n %s --r 1 --M 1 --k 1 --picard True --Nx %i --N %i --L %i --T %i --fg %i" % (j,plotname,Nx_list[i],N_list[i],L,T,fg_list[i])
 		print os_name
 		os.system(os_name)
 
 plotname = "plot_data/wave_front"
 plotnames.append(plotname)
-wave_front(plotname,Nx,N,L,T)
-para_list.append("analytical")
+wave_front(plotname,Nx_list[0],N_list[0]/fg_list[0],L,T)
+N_list.append("analytical")
 
-build_plot(plotnames,"paramovies/reac_%s_wavefront_test" % eq_list[0],para_list,"m",L)
+build_plot(plotnames,"paramovies/reac_%s_wavefront_test" % eq_list[0],N_list,"Nt",L)
 #build_subplot(plotnames,"submovies/ordinary_sub",para_list,"k")
+
+error_list = check_error(plotnames[-1],plotnames,L)
+for i in range(len(plotnames)-1):
+	if (i>0):
+		power = np.log(error_list[i-1]/error_list[i])/np.log(N_list[i]/N_list[i-1])
+	else:
+		power = 0
+	print("N = %s, err = %f pow = %f" % (N_list[i],error_list[i],power))
+
 os.system('rm plot_data/*')

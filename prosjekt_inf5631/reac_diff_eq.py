@@ -52,19 +52,22 @@ def define_command_line_options():
 	parser.add_argument('--L', '--length in spatial directions', type=int,
 		default=0, help='lenght in spatial direction',
 		metavar='L')
-	parser.add_argument('--T', '--Total time', type=float,
+	parser.add_argument('--T', '--Total time', type=int,
 		default=0, help='Total time',
 		metavar='T')
+	parser.add_argument('--fg', '--Frame gap', type=int,
+		default=1, help='Frame gap',
+		metavar='fg')
 	return parser
 
 def read_command_line():
 	parser = define_command_line_options()
 	args = parser.parse_args()
 	print
-        'm={},k={},method={},movie_name={},picard={},r={},M={},plot_name={},C1={},C2={},F={},err={},Nx={},N={},L={},T={}'.format(args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M, args.p_n,args.C1,args.C2,args.F,args.err,args.Nx,args.N,args.L,args.T)
-	return args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M,args.p_n,args.C1,args.C2,args.F,args.err,args.Nx,args.N,args.L,args.T
+        'm={},k={},method={},movie_name={},picard={},r={},M={},plot_name={},C1={},C2={},F={},err={},Nx={},N={},L={},T={},fg={}'.format(args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M, args.p_n,args.C1,args.C2,args.F,args.err,args.Nx,args.N,args.L,args.T,args.fg)
+	return args.m,args.k,args.method,args.m_n,args.picard,args.r,args.M,args.p_n,args.C1,args.C2,args.F,args.err,args.Nx,args.N,args.L,args.T,args.fg
 
-m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err,Nx,N,L,T= read_command_line()
+m,k,method,moviename,picard,r,M,plotname,C1,C2,F,err,Nx,N,L,T,fg= read_command_line()
 
 #Nx = 2000
 #N = 2000
@@ -134,8 +137,8 @@ for n in range(0, N):
 	out_now = 0
 	b[:] = u_1
 	if(F == 0 and wavefront):
-		b[0] = initial_cond(x[0],t[n])
-		b[Nx] = initial_cond(x[Nx],t[n])
+		b[0] = initial_cond(x[0],t[n+1])
+		b[Nx] = initial_cond(x[Nx],t[n+1])
 	elif(F == 0):
 		b[Nx]= b[0] = 0 
 	else:
@@ -174,9 +177,9 @@ for n in range(0, N):
 		A[0,1] = A[Nx,Nx-1] = -F*2*(dt/float(dx**2))*(alpha(i))
 		u[:] = sl.solve(A, b)
 
-	if(n%2 == 0):
+	if(n%fg== 0):
 		print "nr: ",n
-		np.save("%s%04d" % (plotname,(n/2)+1),u)
+		np.save("%s%04d" % (plotname,(n/fg)+1),u)
 	#Update u_1 and u_ before next step
 	u_1[:] = u
 	u_[:] = u

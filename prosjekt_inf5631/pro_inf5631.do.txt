@@ -97,7 +97,7 @@ MOVIE: [movies/wave_front_analytical.webm, height=300,width=375]Wavefront with a
 The reaction term describes the change in concentration in a certain point. This variation is only affected
 by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
 !bt
-\begin{equation}
+\begin{equation}label{eq:rec_term}
 u_t = f(u)
 \end{equation}
 !et
@@ -121,7 +121,7 @@ A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which ofte
 f(u) = ru(1-\frac{u}{m})
 \end{equation}
 !et
-
+We can then replace $f(u)$ by the reaction term
 !bt
 \begin{align*}
 u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
@@ -178,6 +178,25 @@ MOVIE: [paramovies/time_r.webm, height=300,width=375]time_r
 
 This controls the speed of the movement. A larger reproduction will get in faster
 to the steady state, that is controlled by $m$. The carrying capacity is sat to $m=0.8$.
+
+=== Scaling ===
+This problem can be scaled to give a better overwiev of the parameters $r$ and $m$. The idea by scaling is to get the solution dimensionless by strech $u$ and $t$ in the problem. A new function $\bar u(\bar t)$, with
+!bt
+\begin{equation}
+\bar u = \frac{u}{u_c}, \hspace{8 mm} \bar t = \frac{t}{t_c}
+\end{equation}
+!et
+Here $u_c$ and $t_c$ are characteristic sizes of the range for $u$ and $t$. These values are sat to be.
+!bt
+\begin{equation}
+u_c = m,\hspace{8 mm} t_c = \frac{1}{r}
+\end{equation}
+!et
+Then equation (ref{eq:rec_term}) is used where $f(u)$ is the FK.
+!bt
+\begin{align*}
+\frac{ = ru(1-\frac{u}{m})
+
 
 !split
 ======= Spatial diffusion =======

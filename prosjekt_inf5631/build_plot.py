@@ -53,3 +53,23 @@ def build_subplot(plotnames,moviename,parameter_values,para_name):
 	for filename in glob.glob('tmp*.png'):
 		os.remove(filename)
 
+
+def check_error(analytical_sol,plotnames,L):
+	x_list = []
+	for i in plotnames:
+		img = "%s%04d.npy" % (i,0)
+		len_x = len(np.load(img))
+		x = np.linspace(-L,L,len_x)
+		x_list.append(x)
+	plotname = "%s*" %(plotnames[0])
+	Nt = len(glob.glob(plotname))
+	print Nt
+	error_list = [0]*len(plotnames)
+	for j in range(Nt):
+		analytical = np.load("%s%04d.npy" % (analytical_sol,j))
+		for i in range(len(plotnames)):
+			img = "%s%04d.npy" % (plotnames[i],j)
+			ch_err = np.max(abs(analytical-np.load(img)))
+			if(ch_err > error_list[i]):
+				error_list[i] = ch_err
+	return error_list
