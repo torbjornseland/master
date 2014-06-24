@@ -45,35 +45,41 @@ Automatically generated HTML file from Doconce source
                '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
               (' Travelling wavefront ', 2, None, '___sec2'),
-              (' Reaction term ', 1, None, '___sec3'),
-              (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
-              (" Fisher's equation ", 3, None, '___sec5'),
-              (' Carrying capacity ', 3, None, '___sec6'),
-              (' Reproduction rate ', 3, None, '___sec7'),
-              (' Spatial diffusion ', 1, None, '___sec8'),
-              (' Boundary conditions ', 3, None, '___sec9'),
-              (' Linear system/equation ', 2, None, '___sec10'),
-              (' Nonlinear equation ', 2, None, '___sec11'),
-              (' Picard Iteration ', 3, None, '___sec12'),
-              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec13'),
+              (' Motivation for the reaction-diffusion equation ',
+               3,
+               None,
+               '___sec3'),
+              (' The analytical solution ', 3, None, '___sec4'),
+              (' Reaction term ', 1, None, '___sec5'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec6'),
+              (" Fisher's equation ", 3, None, '___sec7'),
+              (' Carrying capacity ', 3, None, '___sec8'),
+              (' Reproduction rate ', 3, None, '___sec9'),
+              (' Scaling ', 3, 'section:scaling', 'section:scaling'),
+              (' Spatial diffusion ', 1, None, '___sec11'),
+              (' Boundary conditions ', 3, None, '___sec12'),
+              (' Linear system/equation ', 2, None, '___sec13'),
+              (' Nonlinear equation ', 2, None, '___sec14'),
+              (' Picard Iteration ', 3, None, '___sec15'),
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec16'),
               (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
-               '___sec14'),
+               '___sec17'),
               (' Spatial derivative wrapped with an absolute value powered by m ',
                3,
                None,
-               '___sec15'),
-              (' Solution for the biological equation ', 1, None, '___sec16'),
-              (' Fisher-Komogoroff equation ', 3, None, '___sec17'),
-              (' $\\alpha(u)= u$ ', 3, None, '___sec18'),
-              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec19'),
-              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec20'),
-              (' Further work ', 1, None, '___sec21'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec22'),
-              (' Dirichlet boundary condition ', 3, None, '___sec23'),
-              (' Neumann boundary condition ', 3, None, '___sec24'),
-              (" Newton's method ", 2, None, '___sec25')]}
+               '___sec18'),
+              (' Solution for the biological equation ', 1, None, '___sec19'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec20'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec22'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec23'),
+              (' Further work ', 1, None, '___sec24'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec25'),
+              (' Dirichlet boundary condition ', 3, None, '___sec26'),
+              (' Neumann boundary condition ', 3, None, '___sec27'),
+              (" Newton's method ", 2, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -108,7 +114,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Spatial diffusion  <a name="___sec8"></a></h1>
+<h1>Spatial diffusion  <a name="___sec11"></a></h1>
 The first part of the RD equation describes the spatial flow and how the values in \( u \) are affected by their neighbours.  
 $$
 \begin{equation}
@@ -159,7 +165,7 @@ $$
 
 The matrix \( A \) will be tridiagonal with the values.
 $$
-\begin{align} \tag{6}
+\begin{align} \tag{8}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -168,7 +174,7 @@ $$
 
 In the cases where the function \( \alpha(u) \) contains \( u \), it will provide a non-linear term.
 
-<h3>Boundary conditions  <a name="___sec9"></a></h3>
+<h3>Boundary conditions  <a name="___sec12"></a></h3>
 
 The boundary conditions are specified to be zero. Implementing these boundary conditions requires changing the following terms in the matrix, A.
 $$
@@ -191,7 +197,7 @@ $$
 
 This decision affects the equilibrium state.
 
-<h2>Linear system/equation  <a name="___sec10"></a></h2>
+<h2>Linear system/equation  <a name="___sec13"></a></h2>
 The only solution for a linear equation is to replace \( \alpha \) by a constant.
 $$
 \begin{equation}
@@ -199,10 +205,10 @@ $$
 \end{equation}
 $$
 
-The matrix from<a href="#mjx-eqn-6">(6)</a> and insert the function for \( \alpha(u) \). This gives us
+The matrix from<a href="#mjx-eqn-8">(8)</a> and insert the function for \( \alpha(u) \). This gives us
 the matrix:
 $$
-\begin{align*} \tag{7}
+\begin{align*} \tag{9}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
@@ -224,12 +230,12 @@ The movies under represents different values for \( k \)
 <p>
 The size of \( \alpha \) controls the speed of the diffusion. A large \( \alpha \) will get the function faster towards equilibrium.
 
-<h2>Nonlinear equation  <a name="___sec11"></a></h2>
+<h2>Nonlinear equation  <a name="___sec14"></a></h2>
 All \( \alpha \)'s that include \( u \) will give a non-linear equation.Picard Iteration can be used to solve this non-linear equation. This method is explained thorough in \( \textit{Reaction term} \).
 
-<h3>Picard Iteration  <a name="___sec12"></a></h3>
+<h3>Picard Iteration  <a name="___sec15"></a></h3>
 
-<h3>\( \alpha(u) \) as a linear function  <a name="___sec13"></a></h3>
+<h3>\( \alpha(u) \) as a linear function  <a name="___sec16"></a></h3>
 
 $$
 \begin{equation}
@@ -249,7 +255,7 @@ $$
 
 
 <p>
-Then \( u \) can be inserted in the matrix<a href="#mjx-eqn-6">(6)</a>.
+Then \( u \) can be inserted in the matrix<a href="#mjx-eqn-8">(8)</a>.
 $$
 \begin{align*} 
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
@@ -285,7 +291,7 @@ These results show us the behavior of \( u\_ \) when it varies from a large erro
 <p>
 An important aspect to be aware of when working with diffusion equation, is that the result after a certain time will be close to equal in all the simulations. This happens because of the equilibrium principle. An example of this is the temperature in a room. The diffusion will cause it to go towards a smooth and balanced temperature in each point of the room. Therefore it is more interesting to look at the movement towards the equilibrium than the final result.
 
-<h3>Spatial derivative wrapped with an absolute value  <a name="___sec14"></a></h3>
+<h3>Spatial derivative wrapped with an absolute value  <a name="___sec17"></a></h3>
 
 $$
 \begin{equation}
@@ -313,7 +319,7 @@ $$
 
 To use this with Picard Iteration, \( u\ \) need to replace \( u \). \( \Delta x \) can be moved out of the fraction, because \( \Delta x > 0 \).
 $$
-\begin{align} \tag{9}
+\begin{align} \tag{11}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|)\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)
@@ -345,7 +351,7 @@ The first simulation consist of a large error tolerance while the second one has
 <p>
 The first simulation starts with a discontinuity in each directions and smoothes out as the time gets larger.While the last plot with a small tolerance gives a smoother curve.
 
-<h3>Spatial derivative wrapped with an absolute value powered by m  <a name="___sec15"></a></h3>
+<h3>Spatial derivative wrapped with an absolute value powered by m  <a name="___sec18"></a></h3>
 
 $$
 \begin{equation}
@@ -353,9 +359,9 @@ $$
 \end{equation}
 $$
 
-This equation is solved in the exact same manner as the equation above. The matrix<a href="#mjx-eqn-9">(9)</a> A from the section above can be used. A power, \( m \), can be added in the matrix.
+This equation is solved in the exact same manner as the equation above. The matrix<a href="#mjx-eqn-11">(11)</a> A from the section above can be used. A power, \( m \), can be added in the matrix.
 $$
-\begin{align} \tag{9}
+\begin{align} \tag{11}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)

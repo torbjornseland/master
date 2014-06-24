@@ -7,12 +7,12 @@ import os,glob
 #x = np.linspace(-L,L,Nx+1)
 
 
-def build_plot(plotnames,moviename,parameter_values,para_name,L):
+def build_plot(plotnames,moviename,parameter_values,para_name,L,T):
 	x_list = []
 	for i in plotnames:
 		img = "%s%04d.npy" % (i,0)
 		len_x = len(np.load(img))
-		x = np.linspace(-L,L,len_x)
+		x = np.linspace(0,L,len_x)
 		x_list.append(x)
 	plotname = "%s*" %(plotnames[0])
 	Nt = len(glob.glob(plotname))
@@ -20,12 +20,15 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L):
 	for j in range(Nt):
 		for i in range(len(plotnames)):
 			img = "%s%04d.npy" % (plotnames[i],j)
-			label_name = "%s = %s" % (para_name, parameter_values[i])
+			if not(parameter_values[i]=="analytical"):
+				label_name = "%s = %2.3f" % (para_name, float(parameter_values[i]))
+			else:
+				label_name = "%s = %s" % (para_name, parameter_values[i])
 			plt.plot(x_list[i],np.load(img),label=label_name)
-		plt.axis([-L,L,-0.2,1.2])
-		plt.legend()
+		plt.axis([0,L,-0.2,1.2])
+		plt.legend(loc=3)
 		plt.suptitle(moviename)
-		plt.title("Change in the power term")
+		plt.title("Change in the carrying capacity")
 		plt.savefig("tmp%04d.png" % j)
 		plt.close()
 

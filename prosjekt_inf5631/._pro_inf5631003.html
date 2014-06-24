@@ -45,35 +45,41 @@ Automatically generated HTML file from Doconce source
                '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
               (' Travelling wavefront ', 2, None, '___sec2'),
-              (' Reaction term ', 1, None, '___sec3'),
-              (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
-              (" Fisher's equation ", 3, None, '___sec5'),
-              (' Carrying capacity ', 3, None, '___sec6'),
-              (' Reproduction rate ', 3, None, '___sec7'),
-              (' Spatial diffusion ', 1, None, '___sec8'),
-              (' Boundary conditions ', 3, None, '___sec9'),
-              (' Linear system/equation ', 2, None, '___sec10'),
-              (' Nonlinear equation ', 2, None, '___sec11'),
-              (' Picard Iteration ', 3, None, '___sec12'),
-              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec13'),
+              (' Motivation for the reaction-diffusion equation ',
+               3,
+               None,
+               '___sec3'),
+              (' The analytical solution ', 3, None, '___sec4'),
+              (' Reaction term ', 1, None, '___sec5'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec6'),
+              (" Fisher's equation ", 3, None, '___sec7'),
+              (' Carrying capacity ', 3, None, '___sec8'),
+              (' Reproduction rate ', 3, None, '___sec9'),
+              (' Scaling ', 3, 'section:scaling', 'section:scaling'),
+              (' Spatial diffusion ', 1, None, '___sec11'),
+              (' Boundary conditions ', 3, None, '___sec12'),
+              (' Linear system/equation ', 2, None, '___sec13'),
+              (' Nonlinear equation ', 2, None, '___sec14'),
+              (' Picard Iteration ', 3, None, '___sec15'),
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec16'),
               (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
-               '___sec14'),
+               '___sec17'),
               (' Spatial derivative wrapped with an absolute value powered by m ',
                3,
                None,
-               '___sec15'),
-              (' Solution for the biological equation ', 1, None, '___sec16'),
-              (' Fisher-Komogoroff equation ', 3, None, '___sec17'),
-              (' $\\alpha(u)= u$ ', 3, None, '___sec18'),
-              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec19'),
-              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec20'),
-              (' Further work ', 1, None, '___sec21'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec22'),
-              (' Dirichlet boundary condition ', 3, None, '___sec23'),
-              (' Neumann boundary condition ', 3, None, '___sec24'),
-              (" Newton's method ", 2, None, '___sec25')]}
+               '___sec18'),
+              (' Solution for the biological equation ', 1, None, '___sec19'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec20'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec22'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec23'),
+              (' Further work ', 1, None, '___sec24'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec25'),
+              (' Dirichlet boundary condition ', 3, None, '___sec26'),
+              (' Neumann boundary condition ', 3, None, '___sec27'),
+              (" Newton's method ", 2, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -106,11 +112,11 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Further work  <a name="___sec21"></a></h1>
+<h1>Further work  <a name="___sec24"></a></h1>
 
-<h2>Changes in the Boundary conditions  <a name="___sec22"></a></h2>
+<h2>Changes in the Boundary conditions  <a name="___sec25"></a></h2>
 
-<h3>Dirichlet boundary condition  <a name="___sec23"></a></h3>
+<h3>Dirichlet boundary condition  <a name="___sec26"></a></h3>
 
 There are several ways to describe the boundary conditions for a differential equation.
 Dirichlet has been used in this paper. The boundaries has been sat to zero.
@@ -124,7 +130,7 @@ $$
 <p>
 An analogous description of Dirichelt boundary conditions can be found in the wave equation. Attaching a rope to a wall, and inducing oscillations allows us to describe the displacement of the rope with the wave equation. The end of the rope attached to the wall will always have zero displacement since it is, in fact, attached.
 
-<h3>Neumann boundary condition  <a name="___sec24"></a></h3>
+<h3>Neumann boundary condition  <a name="___sec27"></a></h3>
 
 Another way to look at the boundary conditions is by reflecting boundaries. The boundary can be sat to \( u=0 \),which change the sign at the boundary or \( u_x \), that reflects the same value. This can be implemented with Neumann boundary condition[http://hplgit.github.io/INF5620/doc/pub/._main_wave003.html#wave:pde2:Neumann].
 $$
@@ -163,7 +169,7 @@ The simulation under compares Dirichlet with Neumann. The reaction term is sat t
 <p>
 Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are sat to be zero. Assume that the concentration of \( u \) is the temperature in a room. The walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. Here the temperature is sat to be zero, but any number would have caused an equilibrium state.
 
-<h2>Newton's method  <a name="___sec25"></a></h2>
+<h2>Newton's method  <a name="___sec28"></a></h2>
 Newtons method is another way to handle non linear equations. 
 $$
 \begin{equation}

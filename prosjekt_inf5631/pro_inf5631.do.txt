@@ -18,15 +18,16 @@ u(L,t)=& 0\notag
 !et
 This model is a $\textit{Density-Dependent Diffusion-Reaction Diffusion Model}$, because of the $\alpha(u)$ function in the diffusion part. When $\alpha(u)$ is sat to be a constant, the model will be a ordinary $\textit{Reaction Diffusion model}$ [MB,I,449]. Here, $u$ denotes the concentration of the substance in one spatial dimension. This project will include a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will be a study on the affect of the reaction and diffusion term.
 ===== Fisher-Kolmogoroff equation =====
-The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [^Murray].The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{m})$ in the general equation (ref{eq:reaction_diffusion}).
+The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [^Murray].The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{M})$ in the general equation (ref{eq:reaction_diffusion}).
 
 [^Murray]: J.D. Murray,Mathematical Biology, 3rd edition (Springer, Berlin, 2003)
 !bt
 \begin{equation} label{eq:fish_kol}
-\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{m})
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{M})
 \end{equation}
 !et
 ===== Travelling wavefront =====
+=== Motivation for the reaction-diffusion equation ===
 There is a vast number of examples from the biology where an important reason to a developmental process seems to be the appearance of a travelling wave of chemical concentration[MB,I,437]. An example from the humans interaction, is the progressing wave of an epidemic. Here the spread of rabies epizootic through Europe is an example. 
 
 A travelling wave is a wave that travels without any change in the shape and the speed can be given by a constant. This means that by following the wave with the same speed as the wave speed, it would be no changes in the wave. A mathematical expression for this is
@@ -35,7 +36,7 @@ A travelling wave is a wave that travels without any change in the shape and the
 u(x,t) = u(x-ct) = u(z), z = x-ct
 \end{equation}
 !et
-So if $x-ct$ is a constant, then $u$ will be a constant. If we look for a travelling wave solution of the (ref{eq:wave_constant}), the partial differential equations can be written as ordinary differential equations. $\frac{\partial u}\{\partial t} = -c\frac{du}{dz}$ and $\frac{\partial u}\{\partial x} = \frac{du}{dz}$. A couple of physical assumptions that has to be done, are that $u(z)$ has to be bounded by $z$ and that the concentration of the quantities cannot be negative, for example the human population. Inserting the ordinary differential equations into a standard diffusion equation under
+So if $x-ct$ is a constant, then $u$ will be a constant. If we look for a travelling wave solution of the (ref{eq:wave_constant}), the partial differential equations can be written as ordinary differential equations. $\frac{\partial u}\{\partial t} = -c\frac{du}{dz}$ and $\frac{\partial u}\{\partial x} = \frac{du}{dz}$. A couple of physical assumptions that has to be done, are that $u(z)$ has to be bounded by $z$ and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
 !bt
 \begin{equation}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
@@ -50,22 +51,20 @@ k\frac{d^2u}{dx^2} + \frac{du}{dt} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z
 !et
 Here $A$ and $B$ will be integration constants. The physical assumption above requiring $u(z)$ to be bounded by $z$. Then $B$ need to be zero, since the exponential gets unbounded when $z\rightarrow -\infty$. Then the wave solutions ends up as $u(z)=A$, which is a constant value, and not a wave solution. Therefore the reaction term $f(u)$ was applied to the equation. This term can exhibit travelling wave solution. A major factor for the mathematical theory in reaction diffusion equations.
 
----------------------- Disse delene må settes bedre sammen------------------- 
-<linebreak>
-<linebreak>
-A good reason to study this equation, is because it is the prototype equation which admits travelling wavefront solutions. This is also a good equation for develop many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing
+=== The analytical solution ===
+A good reason to study the FK equation, is because this is the prototype equation which admits travelling wavefront solutions. FK equation is also good for developing many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing,(rescaling is explained thoroughly in ref{section:scaling}) 
 !bt
 t* = rt,	x* = x(\frac{r}{k})^{1/2}
 !et
-The carrying capacity, $m$, will be sat to one. This gives a travelling wavefront between 0 and 1.
+The carrying capacity, $M$, will be sat to one. This gives a travelling wavefront between 0 and 1.
 !bt
 \begin{equation} label{eq:trav_wave}
 \frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)
 \end{equation}
 !et
-Since $m=1$, the steady states are $u=0$ and $u=1$, which are respectively unstable and stable. If the solution represents a travelling wave, the shape of the wave will move with the speed $c$. The travelling wave can then be whown stationary.
+Since $M=1$, the steady states are $u=0$ and $u=1$, which are respectively unstable and stable. If the solution represents a travelling wave, the shape of the wave will move with the speed $c$. The travelling wave can then be shown stationary.
 !bt
-u(x,t) = u(x-ct) = U(z), x-ct = z
+u(x,t) = u(x-ct) = U(z),\hspace{8 mm} x-ct = z
 !et
 $U(z)$ will be used instead of $u(u)$. This is to avoid any confusion of the terminology. The assumption $c \geq 0$ is done. Substituting this traveling wavefront into (ref{eq:trav_wave}), gives
 !bt
@@ -74,12 +73,12 @@ U'' +cU' + U(1-U) = 0
 \end{equation}
 !et
 An analytical solution of this can be written
-!bt 
+!bt
 \begin{equation} label{eq:ana_sol}
 U(z) = \frac{1}{(1+ae^{bz})^s}
 \end{equation}
 !et
-Here $a$,$b$ and $s$ are positive constants. These can be found by substituting (ref{eq:ana_sol}) into (ref{eq:ord_diff}). This is done in detalj by Murray et al.[ref]. To achieve that $z=0$ corresponds to $U=1/2$, the constant $a$ can be sat to $a=\sqrt{2}-1$ . The other constans are
+Here $a$, $b$ and $s$ are positive constants. These can be found by substituting (ref{eq:ana_sol}) into (ref{eq:ord_diff}). This is done in detalj by Murray et al.[ref]. To achieve that $z=0$ corresponds to $U=1/2$, the constant $a$ can be sat to $a=\sqrt{2}-1$ . The other constans are
 !bt
 s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 !et
@@ -93,7 +92,23 @@ The wavefront will look like this
 
 MOVIE: [movies/wave_front_analytical.webm, height=300,width=375]Wavefront with analytical solution
 
-======= Reaction term =======
+Then the numerical soultion can be compared with the analytical. Here dt varies from 0.4 to 0.02.
+
+MOVIE: [paramovies/reac_constant_wavefront_dt.webm, height=300,width=375]Analytical solution plotted with numerical solutions
+
+The numerical solution has here got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries dont affect the error estimate.
+
+|------c--------------c--------------c-------|
+| dt           | error        | order        |
+|------c--------------c--------------c-------|
+| 0.4          | 0.967214     | 0.0          |
+| 0.08         | 0.408244     | 0.53         |
+| 0.02         | 0.131734     | 0.81	     |
+|--------------------------------------------|
+
+This table shows how the error goes towards zero when dt goes towards zero. The order of the error also moves towars 1, which is the expected order for the dt.
+
+======= Reaction term ======= 
 The reaction term describes the change in concentration in a certain point. This variation is only affected
 by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
 !bt
@@ -115,17 +130,17 @@ This gives a linear equation $Au = b$ that easy can be solved.
 
 
 ===== Fisher-Kolmogoroff term =====
-A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form $f(u) = ru(1-u/m)$, where $r$ describes the linear reproduction and $m$ the carrying capacity of this environment. The solution will then be.
+A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form $f(u) = ru(1-u/M)$, where $r$ describes the linear reproduction and $M$ the carrying capacity of this environment. The solution will then be.
 !bt
 \begin{equation}
-f(u) = ru(1-\frac{u}{m})
+f(u) = ru(1-\frac{u}{M})
 \end{equation}
 !et
 We can then replace $f(u)$ by the reaction term
 !bt
 \begin{align*}
-u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
-u^n_i(1-\Delta t r(1-\frac{u^n_i}{m})) =& u^{n-1}_i
+u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{M}) =& u^{n-1}_i\\
+u^n_i(1-\Delta t r(1-\frac{u^n_i}{M})) =& u^{n-1}_i
 \end{align*}
 !et
 
@@ -150,21 +165,21 @@ The new equation will be
 
 !bt
 \begin{align*}
-	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{m}))=& u^{n-1}_i\\
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{M}))=& u^{n-1}_i\\
 \end{align*}
 !et
 
 Since $u\_$ is an approximation to $u$, $u\_$ need to be refined until it fulfil the expectations.
 
 === Fisher's equation ===
-The values from FK is sat to $r=1$ and $m=1$. This is called Fisher's equation.The reaction term in Fisher will look like this.
+The values from FK is sat to $r=1$ and $M=1$. This is called Fisher's equation.The reaction term in Fisher will look like this.
 
 MOVIE: [paramovies/constant_fisher_few_points.webm, height=300,width=375]Fisher with ten points
 
-MOVIE: [movies/time_der_r_1_0_m_1_0.webm, height=300,width=375] r= 1, m= 1 
+MOVIE: [movies/time_der_r_1_0_m_1_0.webm, height=300,width=375] r= 1, M= 1 
 
 === Carrying capacity ===
-First it can be interesting to look at the changes in the carrying capacity, here denoted as $m$, of
+First it can be interesting to look at the changes in the carrying capacity, here denoted as $M$, of
 the function. This simulation has the purpose to illustrate the efficiency of varying the carrying capacity.
 
 MOVIE: [paramovies/time.webm, height=300,width=375]time
@@ -177,10 +192,11 @@ A similar simulation can be done for the reproduction rate,$r$. Here with focus 
 MOVIE: [paramovies/time_r.webm, height=300,width=375]time_r
 
 This controls the speed of the movement. A larger reproduction will get in faster
-to the steady state, that is controlled by $m$. The carrying capacity is sat to $m=0.8$.
+to the steady state, that is controlled by $M$. The carrying capacity is sat to $M=0.8$.
 
 === Scaling ===
-This problem can be scaled to give a better overwiev of the parameters $r$ and $m$. The idea by scaling is to get the solution dimensionless by strech $u$ and $t$ in the problem. A new function $\bar u(\bar t)$, with
+label{section:scaling}
+This problem can be scaled to give a better overview of the parameters $r$ and $M$.  This technique will make it possible to look at only one or a few dimensionless numbers. The idea by scaling is to get the solution dimensionless by strech $u$ and $t$ in the problem.A new function $\bar u(\bar t)$, with
 !bt
 \begin{equation}
 \bar u = \frac{u}{u_c}, \hspace{8 mm} \bar t = \frac{t}{t_c}
@@ -189,15 +205,30 @@ This problem can be scaled to give a better overwiev of the parameters $r$ and $
 Here $u_c$ and $t_c$ are characteristic sizes of the range for $u$ and $t$. These values are sat to be.
 !bt
 \begin{equation}
-u_c = m,\hspace{8 mm} t_c = \frac{1}{r}
+u_c = M,\hspace{8 mm} t_c = \frac{1}{r}
 \end{equation}
 !et
 Then equation (ref{eq:rec_term}) is used where $f(u)$ is the FK.
 !bt
 \begin{align*}
-\frac{ = ru(1-\frac{u}{m})
+\frac{\partial u}{\partial t} = ru(1-\frac{u}{M})\\
+\frac{\partial (u_c\bar u)}{\partial \bar t}\frac{\partial \bar t}{\partial t} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+u_c\frac{\partial \bar u}{\partial \bar t}\frac{1}{t_c} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = t_c r\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = \bar u(1-\bar u)
+\end{align*}
+!et
+The initial condition for $\bar u$ can be found by using the initial condition from $u(x,0)= gauss(x)$.
+!bt
+\begin{equation*}
+\bar u(x,0) = \frac{u(x,0)}{u_c} = \frac{gauss(x)}{M}
+\end{equation*}
+!et
+This can now be plotted for different values of $M$
 
+MOVIE: [movies/scaling.webm, height=300,width=375] Solution by scaling 
 
+The model breaks down if $M=0$, since this gives a nonexistent initial condition. 
 !split
 ======= Spatial diffusion =======
 The first part of the RD equation describes the spatial flow and how the values in $u$ are affected by their neighbours.  

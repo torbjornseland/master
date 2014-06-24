@@ -45,35 +45,41 @@ Automatically generated HTML file from Doconce source
                '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
               (' Travelling wavefront ', 2, None, '___sec2'),
-              (' Reaction term ', 1, None, '___sec3'),
-              (' Fisher-Kolmogoroff term ', 2, None, '___sec4'),
-              (" Fisher's equation ", 3, None, '___sec5'),
-              (' Carrying capacity ', 3, None, '___sec6'),
-              (' Reproduction rate ', 3, None, '___sec7'),
-              (' Spatial diffusion ', 1, None, '___sec8'),
-              (' Boundary conditions ', 3, None, '___sec9'),
-              (' Linear system/equation ', 2, None, '___sec10'),
-              (' Nonlinear equation ', 2, None, '___sec11'),
-              (' Picard Iteration ', 3, None, '___sec12'),
-              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec13'),
+              (' Motivation for the reaction-diffusion equation ',
+               3,
+               None,
+               '___sec3'),
+              (' The analytical solution ', 3, None, '___sec4'),
+              (' Reaction term ', 1, None, '___sec5'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec6'),
+              (" Fisher's equation ", 3, None, '___sec7'),
+              (' Carrying capacity ', 3, None, '___sec8'),
+              (' Reproduction rate ', 3, None, '___sec9'),
+              (' Scaling ', 3, 'section:scaling', 'section:scaling'),
+              (' Spatial diffusion ', 1, None, '___sec11'),
+              (' Boundary conditions ', 3, None, '___sec12'),
+              (' Linear system/equation ', 2, None, '___sec13'),
+              (' Nonlinear equation ', 2, None, '___sec14'),
+              (' Picard Iteration ', 3, None, '___sec15'),
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec16'),
               (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
-               '___sec14'),
+               '___sec17'),
               (' Spatial derivative wrapped with an absolute value powered by m ',
                3,
                None,
-               '___sec15'),
-              (' Solution for the biological equation ', 1, None, '___sec16'),
-              (' Fisher-Komogoroff equation ', 3, None, '___sec17'),
-              (' $\\alpha(u)= u$ ', 3, None, '___sec18'),
-              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec19'),
-              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec20'),
-              (' Further work ', 1, None, '___sec21'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec22'),
-              (' Dirichlet boundary condition ', 3, None, '___sec23'),
-              (' Neumann boundary condition ', 3, None, '___sec24'),
-              (" Newton's method ", 2, None, '___sec25')]}
+               '___sec18'),
+              (' Solution for the biological equation ', 1, None, '___sec19'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec20'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec22'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec23'),
+              (' Further work ', 1, None, '___sec24'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec25'),
+              (' Dirichlet boundary condition ', 3, None, '___sec26'),
+              (' Neumann boundary condition ', 3, None, '___sec27'),
+              (" Newton's method ", 2, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -125,36 +131,39 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jun 19, 2014</h4></center> <!-- date -->
+<center><h4>Jun 24, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
 <a href="#___sec0"> Density-Dependent Diffusion- Reaction Diffusion Model </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Fisher-Kolmogoroff equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Travelling wavefront </a><br>
-<a href="#___sec3"> Reaction term </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Fisher-Kolmogoroff term </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Fisher's equation </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Carrying capacity </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Reproduction rate </a><br>
-<a href="._pro_inf5631001.html#___sec8"> Spatial diffusion </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec9"> Boundary conditions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec10"> Linear system/equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec11"> Nonlinear equation </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec12"> Picard Iteration </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec13"> \( \alpha(u) \) as a linear function </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec14"> Spatial derivative wrapped with an absolute value </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec15"> Spatial derivative wrapped with an absolute value powered by m </a><br>
-<a href="._pro_inf5631002.html#___sec16"> Solution for the biological equation </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec17"> Fisher-Komogoroff equation </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec18"> \( \alpha(u)= u \) </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec19"> \( \alpha(u)=|\nabla u| \) </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec20"> \( \alpha(u)=|\nabla u|^m \) </a><br>
-<a href="._pro_inf5631003.html#___sec21"> Further work </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec22"> Changes in the Boundary conditions </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec23"> Dirichlet boundary condition </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec24"> Neumann boundary condition </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec25"> Newton's method </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Motivation for the reaction-diffusion equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> The analytical solution </a><br>
+<a href="#___sec5"> Reaction term </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Fisher-Kolmogoroff term </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Fisher's equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> Carrying capacity </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Reproduction rate </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#section:scaling"> Scaling </a><br>
+<a href="._pro_inf5631001.html#___sec11"> Spatial diffusion </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec12"> Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec13"> Linear system/equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec14"> Nonlinear equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec15"> Picard Iteration </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec16"> \( \alpha(u) \) as a linear function </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec17"> Spatial derivative wrapped with an absolute value </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631001.html#___sec18"> Spatial derivative wrapped with an absolute value powered by m </a><br>
+<a href="._pro_inf5631002.html#___sec19"> Solution for the biological equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec20"> Fisher-Komogoroff equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec21"> \( \alpha(u)= u \) </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec22"> \( \alpha(u)=|\nabla u| \) </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631002.html#___sec23"> \( \alpha(u)=|\nabla u|^m \) </a><br>
+<a href="._pro_inf5631003.html#___sec24"> Further work </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec25"> Changes in the Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec26"> Dirichlet boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec27"> Neumann boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._pro_inf5631003.html#___sec28"> Newton's method </a><br>
 </p>
 
 <h1>Density-Dependent Diffusion- Reaction Diffusion Model  <a name="___sec0"></a></h1>
@@ -171,16 +180,19 @@ $$
 This model is a \( \textit{Density-Dependent Diffusion-Reaction Diffusion Model} \), because of the \( \alpha(u) \) function in the diffusion part. When \( \alpha(u) \) is sat to be a constant, the model will be a ordinary \( \textit{Reaction Diffusion model} \) [MB,I,449]. Here, \( u \) denotes the concentration of the substance in one spatial dimension. This project will include a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will be a study on the affect of the reaction and diffusion term.
 
 <h2>Fisher-Kolmogoroff equation  <a name="___sec1"></a></h2>
-The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>].The FK can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{m}) \) in the general equation <a href="#mjx-eqn-1">(1)</a>.
+The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>].The FK can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{M}) \) in the general equation <a href="#mjx-eqn-1">(1)</a>.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> J.D. Murray,Mathematical Biology, 3rd edition (Springer, Berlin, 2003)
 $$
 \begin{equation} \tag{2}
-\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{m})
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{M})
 \end{equation}
 $$
 
 <h2>Travelling wavefront  <a name="___sec2"></a></h2>
+
+<h3>Motivation for the reaction-diffusion equation  <a name="___sec3"></a></h3>
+
 There is a vast number of examples from the biology where an important reason to a developmental process seems to be the appearance of a travelling wave of chemical concentration[MB,I,437]. An example from the humans interaction, is the progressing wave of an epidemic. Here the spread of rabies epizootic through Europe is an example.
 
 <p>
@@ -191,7 +203,7 @@ u(x,t) = u(x-ct) = u(z), z = x-ct
 \end{equation}
 $$
 
-So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-3">(3)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative, for example the human population. Inserting the ordinary differential equations into a standard diffusion equation under
+So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-3">(3)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
 $$
 \begin{equation}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
@@ -208,25 +220,23 @@ $$
 
 Here \( A \) and \( B \) will be integration constants. The physical assumption above requiring \( u(z) \) to be bounded by \( z \). Then \( B \) need to be zero, since the exponential gets unbounded when \( z\rightarrow -\infty \). Then the wave solutions ends up as \( u(z)=A \), which is a constant value, and not a wave solution. Therefore the reaction term \( f(u) \) was applied to the equation. This term can exhibit travelling wave solution. A major factor for the mathematical theory in reaction diffusion equations.
 
-<p>
----------------------- Disse delene m&#229; settes bedre sammen------------------- 
-<br />
-<br />
-A good reason to study this equation, is because it is the prototype equation which admits travelling wavefront solutions. This is also a good equation for develop many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing
+<h3>The analytical solution  <a name="___sec4"></a></h3>
+
+A good reason to study the FK equation, is because this is the prototype equation which admits travelling wavefront solutions. FK equation is also good for developing many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing,(rescaling is explained thoroughly in <a href="#section:scaling">Scaling</a>) 
 $$
 t* = rt,	x* = x(\frac{r}{k})^{1/2}
 $$
 
-The carrying capacity, \( m \), will be sat to one. This gives a travelling wavefront between 0 and 1.
+The carrying capacity, \( M \), will be sat to one. This gives a travelling wavefront between 0 and 1.
 $$
 \begin{equation} \tag{4}
 \frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)
 \end{equation}
 $$
 
-Since \( m=1 \), the steady states are \( u=0 \) and \( u=1 \), which are respectively unstable and stable. If the solution represents a travelling wave, the shape of the wave will move with the speed \( c \). The travelling wave can then be whown stationary.
+Since \( M=1 \), the steady states are \( u=0 \) and \( u=1 \), which are respectively unstable and stable. If the solution represents a travelling wave, the shape of the wave will move with the speed \( c \). The travelling wave can then be shown stationary.
 $$
-u(x,t) = u(x-ct) = U(z), x-ct = z
+u(x,t) = u(x-ct) = U(z),\hspace{8 mm} x-ct = z
 $$
 
 \( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-4">(4)</a>, gives
@@ -238,12 +248,12 @@ $$
 
 An analytical solution of this can be written
 $$
-\begin{equation} <a name="eq:ana_sol"></a>
+\begin{equation}label{eq:ana_sol}
 U(z) = \frac{1}{(1+ae^{bz})^s}
 \end{equation}
 $$
 
-Here \( a \),$b$ and \( s \) are positive constants. These can be found by substituting (<a href="#eq:ana_sol">eq:ana_sol</a>) into <a href="#mjx-eqn-5">(5)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
+Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting <a href="#mjx-eqn-6">(6)</a> into <a href="#mjx-eqn-5">(5)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
 $$
 s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 $$
@@ -257,11 +267,51 @@ $$
 
 The wavefront will look like this
 
-<h1>Reaction term  <a name="___sec3"></a></h1>
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/wave_front_analytical.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Wavefront with analytical solution</em></p>
+
+
+<p>
+Then the numerical soultion can be compared with the analytical. Here dt varies from 0.4 to 0.02.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_constant_wavefront_dt.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Analytical solution plotted with numerical solutions</em></p>
+
+
+<p>
+The numerical solution has here got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries dont affect the error estimate.
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   dt   </th> <th align="center"> error  </th> <th align="center"> order  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   0.4         </td> <td align="center">   0.967214    </td> <td align="center">   0.0         </td> </tr>
+<tr><td align="center">   0.08        </td> <td align="center">   0.408244    </td> <td align="center">   0.53        </td> </tr>
+<tr><td align="center">   0.02        </td> <td align="center">   0.131734    </td> <td align="center">   0.81        </td> </tr>
+</tbody>
+</table>
+<p>
+This table shows how the error goes towards zero when dt goes towards zero. The order of the error also moves towars 1, which is the expected order for the dt.
+
+<h1>Reaction term  <a name="___sec5"></a></h1>
 The reaction term describes the change in concentration in a certain point. This variation is only affected
 by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
 $$
-\begin{equation}
+\begin{equation}label{eq:rec_term}
 u_t = f(u)
 \end{equation}
 $$
@@ -279,28 +329,19 @@ $$
 
 This gives a linear equation \( Au = b \) that easy can be solved.
 
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='movies/wave_front_analytical.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Fisher with ten points</em></p>
-
-<h2>Fisher-Kolmogoroff term  <a name="___sec4"></a></h2>
-A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form \( f(u) = ru(1-u/m) \), where \( r \) describes the linear reproduction and \( m \) the carrying capacity of this environment. The solution will then be.
+<h2>Fisher-Kolmogoroff term  <a name="___sec6"></a></h2>
+A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form \( f(u) = ru(1-u/M) \), where \( r \) describes the linear reproduction and \( M \) the carrying capacity of this environment. The solution will then be.
 $$
 \begin{equation}
-f(u) = ru(1-\frac{u}{m})
+f(u) = ru(1-\frac{u}{M})
 \end{equation}
 $$
 
-
+We can then replace \( f(u) \) by the reaction term
 $$
 \begin{align*}
-u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{m}) =& u^{n-1}_i\\
-u^n_i(1-\Delta t r(1-\frac{u^n_i}{m})) =& u^{n-1}_i
+u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{M}) =& u^{n-1}_i\\
+u^n_i(1-\Delta t r(1-\frac{u^n_i}{M})) =& u^{n-1}_i
 \end{align*}
 $$
 
@@ -331,7 +372,7 @@ The new equation will be
 
 $$
 \begin{align*}
-	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{m}))=& u^{n-1}_i\\
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{M}))=& u^{n-1}_i\\
 \end{align*}
 $$
 
@@ -339,9 +380,9 @@ $$
 <p>
 Since \( u\_ \) is an approximation to \( u \), \( u\_ \) need to be refined until it fulfil the expectations.
 
-<h3>Fisher's equation  <a name="___sec5"></a></h3>
+<h3>Fisher's equation  <a name="___sec7"></a></h3>
 
-The values from FK is sat to \( r=1 \) and \( m=1 \). This is called Fisher's equation.The reaction term in Fisher will look like this.
+The values from FK is sat to \( r=1 \) and \( M=1 \). This is called Fisher's equation.The reaction term in Fisher will look like this.
 
 <p>
 
@@ -360,11 +401,11 @@ The values from FK is sat to \( r=1 \) and \( m=1 \). This is called Fisher's eq
     <source src='movies/time_der_r_1_0_m_1_0.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>r= 1, m= 1</em></p>
+<p><em>r= 1, M= 1</em></p>
 
-<h3>Carrying capacity  <a name="___sec6"></a></h3>
+<h3>Carrying capacity  <a name="___sec8"></a></h3>
 
-First it can be interesting to look at the changes in the carrying capacity, here denoted as \( m \), of
+First it can be interesting to look at the changes in the carrying capacity, here denoted as \( M \), of
 the function. This simulation has the purpose to illustrate the efficiency of varying the carrying capacity.
 
 <p>
@@ -380,7 +421,7 @@ the function. This simulation has the purpose to illustrate the efficiency of va
 <p>
 All the simulations goes towards their carrying capacity and stabilizes here.The reproduction rate,$r$, has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all of the cases.
 
-<h3>Reproduction rate  <a name="___sec7"></a></h3>
+<h3>Reproduction rate  <a name="___sec9"></a></h3>
 
 A similar simulation can be done for the reproduction rate,$r$. Here with focus on the effect of varying the reproduction.
 
@@ -396,9 +437,56 @@ A similar simulation can be done for the reproduction rate,$r$. Here with focus 
 
 <p>
 This controls the speed of the movement. A larger reproduction will get in faster
-to the steady state, that is controlled by \( m \). The carrying capacity is sat to \( m=0.8 \).
+to the steady state, that is controlled by \( M \). The carrying capacity is sat to \( M=0.8 \).
+
+<h3>Scaling <a name="section:scaling"></a></h3>
+
+This problem can be scaled to give a better overview of the parameters \( r \) and \( M \).  This technique will make it possible to look at only one or a few dimensionless numbers. The idea by scaling is to get the solution dimensionless by strech \( u \) and \( t \) in the problem.A new function \( \bar u(\bar t) \), with
+$$
+\begin{equation}
+\bar u = \frac{u}{u_c}, \hspace{8 mm} \bar t = \frac{t}{t_c}
+\end{equation}
+$$
+
+Here \( u_c \) and \( t_c \) are characteristic sizes of the range for \( u \) and \( t \). These values are sat to be.
+$$
+\begin{equation}
+u_c = M,\hspace{8 mm} t_c = \frac{1}{r}
+\end{equation}
+$$
+
+Then equation <a href="#mjx-eqn-7">(7)</a> is used where \( f(u) \) is the FK.
+$$
+\begin{align*}
+\frac{\partial u}{\partial t} = ru(1-\frac{u}{M})\\
+\frac{\partial (u_c\bar u)}{\partial \bar t}\frac{\partial \bar t}{\partial t} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+u_c\frac{\partial \bar u}{\partial \bar t}\frac{1}{t_c} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = t_c r\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = \bar u(1-\bar u)
+\end{align*}
+$$
+
+The initial condition for \( \bar u \) can be found by using the initial condition from \( u(x,0)= gauss(x) \).
+$$
+\begin{equation*}
+\bar u(x,0) = \frac{u(x,0)}{u_c} = \frac{gauss(x)}{M}
+\end{equation*}
+$$
+
+This can now be plotted for different values of \( M \)
 
 <p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/scaling.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Solution by scaling</em></p>
+
+
+<p>
+The model breaks down if \( M=0 \), since this gives a nonexistent initial condition. 
 <p>
 <!-- begin bottom navigation -->
 <a href="._pro_inf5631001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>

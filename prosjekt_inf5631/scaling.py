@@ -3,7 +3,13 @@ import scipy.linalg as sl
 import matplotlib.pyplot as plt
 import os,glob,sys
 
-def wave_front(plotname,Nx,N,L,T):
+
+sigma = 0.45 
+mu= 0
+def initial_cond(x,t,m,L):
+	return ((1/(sigma*np.sqrt(2*np.pi)))*np.exp(-(abs((L/float(2))-x)-mu)**2/(float(2*sigma**2)))/float(m))
+
+def scaling(plotname,Nx,N,L,T,m):
 	#plotname = "plot_data/test"
 
 	#List of values
@@ -13,19 +19,13 @@ def wave_front(plotname,Nx,N,L,T):
 	dt = t[1]-t[0]
 	u = np.zeros(Nx+1)
 	u_1 = np.zeros(Nx+1)
-	u_ = np.zeros(Nx+1) #Picard
-
-	q = 1
-	s = 2/float(q)
-	b = q/float(np.sqrt(2*(q+2)))
-	c = (q+4)/float(np.sqrt(2*q+4))
-	print "c",c
-	alpha = 1
-	def reverse_exact_u(x,t):
-		return 1/((1+alpha*np.exp(b*(x-c*t)))**s)
-
+	
+	for i in range(0, Nx+1):
+		u_1[i] = initial_cond(x[i],0,m,L)
+	
 
 	for n in range(0, N+1):
-		u[:] = reverse_exact_u(x,t[n])
+		u[:] = u_1*(1+dt*(1-u_1)) 
 		np.save("%s%04d" % (plotname,n),u)
+		u_1[:] = u
 
