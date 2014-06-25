@@ -26,6 +26,52 @@ The main focus in this project will be at the Fisher-Kolmogoroff equation, now r
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{M})
 \end{equation}
 !et
+
+=== Stability ===
+An important factor for the numerical simulation, is the stability criteria. A general solution of the diffusion equation can be described with basic components,
+!bt
+\begin{equation}
+e^{-\alpha f^2t}e^{ifx} 
+\end{equation}
+!et
+Here $f$ is used instead of $i$ for the steps in time. This is because $i$ is used for the imaginary number $\sqrt{-1}$. These components can be used to find the solution of the finite difference schemes. The amplitude $e^{-\alpha f^2 t}$ can be modified. The numerical solution can be looked at
+!bt
+\begin{equation}
+u^n_q = A^n e^{ifx} 
+\end{equation}
+!et
+The amplification factor has to be $|A|<1$ for a decaying solution and $A > 1$ to avoid oscillations. Both these requirements are fulfilled if $0\leq A \leq 1$. Nonlinearity is quite hard to work with. The reaction term will therefore be written as linear equation, where the $u$ in the fraction will be replaced with the previous $u\_1$.
+!bt
+\begin{equation}
+ru(1-\frac{u\_1}{M}) = Bu, \hspace{8 mm} B = r(1-\frac{u\_1}{M})
+\end{equation}
+!et
+The FK equation (ref{eq:fish_kol}) can be discretized
+!bt
+\begin{equation}
+[D_t^- u = \alpha D_xD_x u + Bu]^n_q
+\end{equation}
+!et
+The different discretization parts can be written out
+!bt
+\begin{align*}
+e^{ikq\Delta x}[D_t^- A]^n =& A^ne^{ifq\Delta x}\frac{1 - A^{-1}}{\Delta t}\\
+A^nD_xD_x [e^{ifx}]_q =& A^n\left( - e^{ifq\Delta x}\frac{4}{\Delta x^2}
+\sin^2\left(\frac{f\Delta x}{2}\right)\right)\\
+Bu =& BA^ne^{ifq\Delta x}
+\end{align*}
+!et
+Then the equation can be solved
+!bt
+\begin{align*}
+A^ne^{ifq\Delta x}\frac{1 - A^{-1}}{\Delta t}=& kA^n\left( - e^{ifq\Delta x}\frac{4}{\Delta x^2}
+\sin^2\left(\frac{f\Delta x}{2}\right)\right)+BA^ne^{ifq\Delta x}\\
+\frac{1 - A^{-1}}{\Delta t}=& -k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)+B\\
+A^{-1}=& 1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-\Delta tB\\
+A=& (1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-\Delta tB)^{-1}
+\end{align*}
+!et
+
 ===== Travelling wavefront =====
 === Motivation for the reaction-diffusion equation ===
 There is a vast number of examples from the biology where an important reason to a developmental process seems to be the appearance of a travelling wave of chemical concentration[MB,I,437]. An example from the humans interaction, is the progressing wave of an epidemic. Here the spread of rabies epizootic through Europe is an example. 
@@ -52,7 +98,7 @@ k\frac{d^2u}{dx^2} + \frac{du}{dt} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z
 Here $A$ and $B$ will be integration constants. The physical assumption above requiring $u(z)$ to be bounded by $z$. Then $B$ need to be zero, since the exponential gets unbounded when $z\rightarrow -\infty$. Then the wave solutions ends up as $u(z)=A$, which is a constant value, and not a wave solution. Therefore the reaction term $f(u)$ was applied to the equation. This term can exhibit travelling wave solution. A major factor for the mathematical theory in reaction diffusion equations.
 
 === The analytical solution ===
-A good reason to study the FK equation, is because this is the prototype equation which admits travelling wavefront solutions. FK equation is also good for developing many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing,(rescaling is explained thoroughly in ref{section:scaling}) 
+A good reason to study the FK equation, is because this is the prototype equation which admits travelling wavefront solutions. FK equation is also good for developing many of the standard techniques to analyse a single-species model with diffusion dispersal.[2,(Mathematical Biology, I an introduction, 13.Biological waves, 440)] When investigating the travelling wavefront, it is convenient to rescale the equation by writing,(rescaling is explained thoroughly in (ref{section:scaling})) 
 !bt
 t* = rt,	x* = x(\frac{r}{k})^{1/2}
 !et
