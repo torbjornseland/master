@@ -71,6 +71,31 @@ A^{-1}=& 1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-
 A=& (1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-\Delta tB)^{-1}
 \end{align*}
 !et
+Since the amplification factor, $A$, has to be in the interval [0,1],
+!bt
+\begin{equation}
+k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)\geq B
+\end{equation}
+!et
+has to be fullfilled. This makes it interesting to look at the reaction term,$B$, to see when the term is largest. This can be found by derivating the equation and find the maximum point.
+!bt
+\begin{align*}
+B(u)=& ru(1-\frac{u}{M})\\
+B'(u)=& r(1-\frac{2u}{M})\\
+r =& 2r\frac{u}{M}\\
+\frac{M}{2} =& u
+\end{align*}
+!et
+Since $u$ has to stay $[0,1]$, this means that the maximum point will be found,
+!bt
+\[ B(u) = \left\{
+	\begin{array}{l l}
+		\frac{M}{2} & \quad \text{if M < 2}\\
+		1 & \quad \text{if M $\geq$ 2}
+	\end{array} \right.\]
+!et
+
+
 
 ===== Travelling wavefront =====
 === Motivation for the reaction-diffusion equation ===

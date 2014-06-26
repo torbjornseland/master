@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jun 25, 2014</h4></center> <!-- date -->
+<center><h4>Jun 26, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -241,6 +241,30 @@ A^{-1}=& 1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-
 A=& (1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-\Delta tB)^{-1}
 \end{align*}
 $$
+
+Since the amplification factor, \( A \), has to be in the interval [0,1],
+$$
+\begin{equation}
+k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)\geq B
+\end{equation}
+$$
+
+has to be fullfilled. This makes it interesting to look at the reaction term,$B$, to see when the term is largest. This can be found by derivating the equation and find the maximum point.
+$$
+\begin{align*}
+B(u)=& ru(1-\frac{u}{M})\\
+B'(u)=& r(1-\frac{2u}{M})\\
+r =& 2r\frac{u}{M}\\
+\frac{M}{2} =& u
+\end{align*}
+$$
+
+Since \( u \) has to stay \( [0,1] \), this means that the maximum point will be found,
+$$ B(u) = \left\{
+	\begin{array}{l l}
+		\frac{M}{2} & \quad \text{if M < 2}\\
+		1 & \quad \text{if M $\geq$ 2}
+	\end{array} \right.$$
 
 <h2>Travelling wavefront  <a name="___sec3"></a></h2>
 
