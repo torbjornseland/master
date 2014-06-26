@@ -108,142 +108,134 @@ MathJax.Hub.Config({
 <a name="part0003"></a>
 <!-- begin top navigation -->
 <a href="._pro_inf5631002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._pro_inf5631004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
 <!-- !split -->
 
-<h1>Further work  <a name="___sec25"></a></h1>
-
-<h2>Changes in the Boundary conditions  <a name="___sec26"></a></h2>
-
-<h3>Dirichlet boundary condition  <a name="___sec27"></a></h3>
-
-There are several ways to describe the boundary conditions for a differential equation.
-Dirichlet has been used in this paper. The boundaries has been sat to zero.
+<h1>Solution for the biological equation  <a name="___sec20"></a></h1>
+The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="._pro_inf5631000.html#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. Since FK is the only equation that has been studied in the reaction term,$f(u)$, this can be inserted in the matrix.
 $$
-\begin{equation}
-u = 0|_{\partial \Omega}
-\end{equation}
+\begin{align} \tag{14}
+A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
+\end{align}                               
 $$
 
+<h3>Fisher-Komogoroff equation  <a name="___sec21"></a></h3>
 
-<p>
-An analogous description of Dirichelt boundary conditions can be found in the wave equation. Attaching a rope to a wall, and inducing oscillations allows us to describe the displacement of the rope with the wave equation. The end of the rope attached to the wall will always have zero displacement since it is, in fact, attached.
-
-<h3>Neumann boundary condition  <a name="___sec28"></a></h3>
-
-Another way to look at the boundary conditions is by reflecting boundaries. The boundary can be sat to \( u=0 \),which change the sign at the boundary or \( u_x \), that reflects the same value. This can be implemented with Neumann boundary condition[http://hplgit.github.io/INF5620/doc/pub/._main_wave003.html#wave:pde2:Neumann].
-$$
-\begin{equation}
- \frac{\partial u}{\partial n} \equiv \emph{n}\cdot\nabla u = 0
-\end{equation}
-$$
-
-Where \( \emph{n} \) describes the normal vector.The boundaries can be described  
-$$
-\left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
-\frac{\partial}{\partial x}
-$$
-
-If the equation is discretized at the boundaries, it gives
-$$
-\begin{align*}
-\frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0
-u_{-1}^n =& u_1^n
-\end{align*}
-$$
-
-The same thing can be done for \( L \).
-The simulation under compares Dirichlet with Neumann. The reaction term is sat to be zero to see how the boundary affects the diffusion term.
+This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity,$M$, as shown in the section above. The diffusion term will at the same time try to drag the function towards its equlibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values,$k$, in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation <a href="._pro_inf5631000.html#mjx-eqn-2">(2)</a>
 
 <p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/reac_boundary.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='paramovies/reac_constant_2.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>r=1,M=1</em></p>
+
+
+<p>
+The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is able to push it up. But when \( \alpha=10 \), it diffuses fast to zero. An interesting observation is when \( \alpha=1 \). The simulations under shows how the capacity and reproduction rate changes.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_constant_M.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>r=1,$\alpha$=1</em></p>
+
+
+<p>
+Here they tend towards their capacity, but \( \alpha \) drags them down at the boundary.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>M=1,$\alpha$=1</em></p>
+
+
+<p>
+When \( r \) is to weak, the reproduction is to low to get it to the capacity state, which is 1. But as \( r \) gets stronger, it is able to push the function towards the carrying capacity, \( M \).
+
+<h3>\( \alpha(u)= u \)  <a name="___sec22"></a></h3>
+
+The simulations are produced in the same way as for the FK in the section above. And the results are quite similar. One difference between them is \( r=0.1 \). After decreasing for a certain time, the function starts to increase towards the carrying capacity.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_ordinary_M.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
 <p><em></em></p>
 
 
 <p>
-Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are sat to be zero. Assume that the concentration of \( u \) is the temperature in a room. The walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. Here the temperature is sat to be zero, but any number would have caused an equilibrium state.
 
-<h2>Newton's method  <a name="___sec29"></a></h2>
-Newtons method is another way to handle non linear equations. 
-$$
-\begin{equation}
-	F(u) = 0
-\end{equation}
-$$
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_ordinary_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
 
-This method linearizes the equation by using Taylor series expansion around
-\( u\_ \). Thus only keeping the linear part.
-$$
-\begin{align*}
-	F(u) &= F(u_{-}) + F'(u_{-})(u - u_{-}) + \frac{1}{2}F''(u_{-})(u-u_{-})^2
-	+\cdots  \\
-	& \approx F(u_{-}) + F'(u_{-})(u - u_{-}) = \hat F(u)
-\end{align*}
-$$
+<h3>\( \alpha(u)=|\nabla u| \)  <a name="___sec23"></a></h3>
 
-The linear equation will be
-$$
-\begin{equation}
-	u = u_{-} - \frac{F(u_{-})}{F'(u_{-})}
-\end{equation}
-$$
+The carrying capacity acts quite as expected, but the reaction term is more interesting to look at.
 
-A Jacobian matrix is required for this method. \( F(u) = A(u)u - b(u) \) needs to be differentiate for all values of \( u \). \( F \) will be
-$$
-\begin{equation*}
-F_i = A_{i,i-1}(u_{i-1},u_i)u_{i-1}+A_{i,i}(u_{i-1},u_{i},u_{i+1})u_{i}+A_{i,i+1}(u_i,u_{i+1})u_{i+1}-b_i(u^{n-1}_i)
-\end{equation*}
-$$
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_abs_std_M.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
 
 
-$$
-\begin{align*}
-J_{i,i}=& \frac{\partial F_i}{\partial u_i}=\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}
-+ \frac{\partial A_{i,i}}{\partial u_i}u_i+ A_{i,i}
-+ \frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}
-- \frac{\partial b_i}{\partial u_{i}}\\ 
-J_{i,i-1}=& \frac{\partial F_i}{\partial u_{i-1}}=\frac{\partial A_{i,i-1}}{\partial u_{i-1}}u_{i-1}
-+ A_{i,i-1}+\frac{\partial A_{i,i}}{\partial u_{i-1}}u_i
-- \frac{\partial b_i}{\partial u_{i-1}}\\ 
-J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\partial u_{i+1}}u_i
-+ \frac{\partial A_{i,i+1}}{\partial u_{i+1}}u_{i+1}+A_{i,i+1}
-- \frac{\partial b_i}{\partial u_{i+1}}\\ 
-\end{align*}
-$$
+<p>
 
-The method demands a lot of calculating. Every part of \( J_{i,i} \) will be computed under, as an example. The same principles are used for \( J_{i,i-1} \) and \( J_{i,i+1} \).
-$$
-\begin{align*}
-\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
-\frac{\partial A_{i,i}}{\partial u_i}u_i=&\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
-A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\\
-\frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}=&-\frac{\Delta t}{\Delta x^2}(\alpha'(u_i)u_{i+1})\\
-- \frac{\partial b_i}{\partial u_{i}}=& -b'(u_i)\\
-\end{align*}
-$$
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_abs_std_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
 
-This gives the matrix
-$$
-\begin{align*}
-J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
-+&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i+1})-b'(u_i)\\
-J_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i-1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i-1})+\alpha(u_i))+\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i})\\
-J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i+1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_i)+\alpha(u_{i+1}))
-\end{align*}
-$$
 
-This matrix can be used to compute the Newton's method. 
+<p>
+The simulation for changes in the reproduction is run for twice as long time as the other simulations. The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level. But since the diffusion for \( \alpha \) after a certain time step is quite weak, the reproduction rate is able to push it up.
 
+<h3>\( \alpha(u)=|\nabla u|^m \)  <a name="___sec24"></a></h3>
+
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+The power term, \( m \), in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases. This gives the reaction term a chance to increase up to the carrying capacity.
 <p>
 <!-- begin bottom navigation -->
 <a href="._pro_inf5631002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._pro_inf5631004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

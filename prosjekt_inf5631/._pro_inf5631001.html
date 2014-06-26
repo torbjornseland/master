@@ -115,275 +115,186 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Spatial diffusion  <a name="___sec12"></a></h1>
-The first part of the RD equation describes the spatial flow and how the values in \( u \) are affected by their neighbours.  
+<h1>Reaction term  <a name="___sec6"></a></h1>
+The reaction term describes the change in concentration in a certain point. This variation is only affected
+by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
 $$
-\begin{equation}
-	u_t = \nabla \cdot \alpha(u)\nabla u
+\begin{equation}label{eq:rec_term}
+u_t = f(u)
 \end{equation}
 $$
 
-The function \( \alpha(u) \) has a major influence on the spatial term and affects the diffusion of the model. To solve this equation numerically, the equation needs to be discretized.
+To see the properties of this equation, it can be discretized and solved numerically for
+different values of \( f(u) \).
+
+$$
+\begin{align*}
+u_t =& f(u)\\
+\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
+\end{align*}
+$$
+
+This gives a linear equation \( Au = b \) that easy can be solved.
+
+<h2>Fisher-Kolmogoroff term  <a name="___sec7"></a></h2>
+A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form \( f(u) = ru(1-u/M) \), where \( r \) describes the linear reproduction and \( M \) the carrying capacity of this environment. The solution will then be.
+$$
+\begin{equation}
+f(u) = ru(1-\frac{u}{M})
+\end{equation}
+$$
+
+We can then replace \( f(u) \) by the reaction term
+$$
+\begin{align*}
+u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{M}) =& u^{n-1}_i\\
+u^n_i(1-\Delta t r(1-\frac{u^n_i}{M})) =& u^{n-1}_i
+\end{align*}
+$$
+
+
+<p>
+Since this equation gives a nonlinear equation, Picard Iteration can be used to solve the equation. The idea with Picard Iteration is to replace one of the \( u \) in the nonlinear part with \( u\_ \). \( u\_ \) will in the first iteration be sat to the value from the previous time step \( u\_1 \). 
+
 $$
 \begin{equation*}
-	\left[D_t^-u=D_x(\alpha(u) D_x u)\right]
-\end{equation*}
-$$
-
-Backward Euler is used for the time discrete and Crank Nicolson for the spatial
-discrete. 
-$$
-\begin{align*}
-	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\
-	u^{n-1}_i=&u^n_i- \frac{\Delta t}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)
-\end{align*}
-$$
-
-This is assembled to a linear system.
-$$
-\begin{equation}
-A =
-\left(
-\begin{array}{cccccccccc}
-A_{0,0} & A_{0,1} & 0
-&\cdots &
-\cdots & \cdots & \cdots &
-\cdots & 0 \\
-A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
-0 & A_{2,1} & A_{2,2} & A_{2,3} &
-\ddots & &  &  & \vdots \\
-\vdots & \ddots &  & \ddots & \ddots & 0 &  & & \vdots \\
-\vdots &  & \ddots & \ddots & \ddots & \ddots & \ddots & & \vdots \\
-\vdots & &  & 0 & A_{i,i-1} & A_{i,i} & A_{i,i+1} & \ddots & \vdots \\
-\vdots & & &  & \ddots & \ddots & \ddots &\ddots  & 0 \\
-\vdots & & & &  &\ddots  & \ddots &\ddots  & A_{N_x-1,N_x} \\
-0 &\cdots & \cdots &\cdots & \cdots & \cdots  & 0 & A_{N_x,N_x-1} & A_{N_x,N_x}
-\end{array}
-\right)
-\tag{14}
-\end{equation}
-$$
-
-The matrix \( A \) will be tridiagonal with the values.
-$$
-\begin{align} \tag{8}
-A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
-A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
-\end{align}                               
-$$
-
-In the cases where the function \( \alpha(u) \) contains \( u \), it will provide a non-linear term.
-
-<h3>Boundary conditions  <a name="___sec13"></a></h3>
-
-The boundary conditions are specified to be zero. Implementing these boundary conditions requires changing the following terms in the matrix, A.
-$$
-\begin{align*}
-A_{0,0} &= 1,\\
-A_{0,1} &= 0,\\
-A_{N_x,N_x-1} &= 0,\\
-A_{N_x,N_x} &= 1
-\end{align*}
-$$
-
-The b array with known values will be
-$$
-\begin{align*}
-b_0 &= 0,\\
-b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\
-b_{N_x} &= 0 
-\end{align*}
-$$
-
-This decision affects the equilibrium state.
-
-<h2>Linear system/equation  <a name="___sec14"></a></h2>
-The only solution for a linear equation is to replace \( \alpha \) by a constant.
-$$
-\begin{equation}
-	\alpha(u) = k
-\end{equation}
-$$
-
-The matrix from<a href="#mjx-eqn-8">(8)</a> and insert the function for \( \alpha(u) \). This gives us
-the matrix:
-$$
-\begin{align*} \tag{9}
-A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
-A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
-\end{align*}                               
-$$
-
-The movies under represents different values for \( k \)
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/constant.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>constant</em></p>
-
-
-<p>
-The size of \( \alpha \) controls the speed of the diffusion. A large \( \alpha \) will get the function faster towards equilibrium.
-
-<h2>Nonlinear equation  <a name="___sec15"></a></h2>
-All \( \alpha \)'s that include \( u \) will give a non-linear equation.Picard Iteration can be used to solve this non-linear equation. This method is explained thorough in \( \textit{Reaction term} \).
-
-<h3>Picard Iteration  <a name="___sec16"></a></h3>
-
-<h3>\( \alpha(u) \) as a linear function  <a name="___sec17"></a></h3>
-
-$$
-\begin{equation}
-	\alpha(u) = u\\
-\end{equation}
-$$
-
-
-<p>
-Since Crank Nicolson is only applied for one step in the general calculation for \( \alpha \), arithmetic mean
-can be used to get values from \( u \).
-$$
-\begin{equation*}
-	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
+	u\_ = u^{n-1}
 \end{equation*}
 $$
 
 
 <p>
-Then \( u \) can be inserted in the matrix<a href="#mjx-eqn-8">(8)</a>.
-$$
-\begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i}+u_{i-1})\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i+1}+u_{i})
-\end{align*}                               
-$$
+The correct value \( u \) can be compared with the pre produced \( u\_ \) each round. If the difference between
+them are less than a predefined limit, the new solution is accepted. If not, the new \( u\_ \) will be a combination of \( u\_ \) and \( u \). How the combination is weighted is called relaxation. 
 
-This gives a nonlinear problem. \( u \) can here be replaced by \( u\_ \).
 $$
-\begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
-\end{align*}                               
+\begin{equation*}
+u\_ = \gamma u + (1-\gamma)u\_, 0<= \gamma <=1
+\end{equation*}
 $$
-
-The function will be produced with different error tolerance. First a simulation where only the previous value \( u\_ \) is used in matrix A. This is equivalent to a very large error tolerance. Then the error tolerance will be reduced in order to carry out a proper Picard Iteration.
-
-<p>
-
-<div>
-<video  loop controls width='375' height='365' preload='none'>
-    <source src='submovies/ordinary_sub.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>ordinary with different tolerance for Picard Iteration</em></p>
 
 
 <p>
-These results show us the behavior of \( u\_ \) when it varies from a large error tolerance,the previous time step, up to a error tolerance of \( 10^{-7} \). The simulation without any Picard Iteration gives a discontinuity in each direction. This becomes smaller the closer \( u\_ \) goes towards \( u \). 
+The new equation will be
 
-<p>
-An important aspect to be aware of when working with diffusion equation, is that the result after a certain time will be close to equal in all the simulations. This happens because of the equilibrium principle. An example of this is the temperature in a room. The diffusion will cause it to go towards a smooth and balanced temperature in each point of the room. Therefore it is more interesting to look at the movement towards the equilibrium than the final result.
-
-<h3>Spatial derivative wrapped with an absolute value  <a name="___sec18"></a></h3>
-
-$$
-\begin{equation}
-\alpha(u) = |\nabla(u)|
-\end{equation}
-$$
-
-Since CN in used one time on this, it can be used again. This will give integer numbers in spatial direction for \( u \).
 $$
 \begin{align*}
-\alpha(u_{i+\frac{1}{2}}) =& \left|\nabla(u_{i+\frac{1}{2}})\right|\\
-\alpha(u_{i+\frac{1}{2}}) =& \left|\frac{u_{i+1}-u_i}{\Delta x}\right|
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{M}))=& u^{n-1}_i\\
 \end{align*}
 $$
 
-The same can be done for \( \alpha_{i-\frac{1}{2}} \). Both solutions can be inserted in
-the matrix A.
-$$
-\begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|+ \left|\frac{u_{i+1}-u_i}{\Delta x}\right|)\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|)\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\right|)
-\end{align*}                               
-$$
 
-To use this with Picard Iteration, \( u\ \) need to replace \( u \). \( \Delta x \) can be moved out of the fraction, because \( \Delta x > 0 \).
-$$
-\begin{align} \tag{11}
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|)\notag\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)
-\end{align}                               
-$$
+<p>
+Since \( u\_ \) is an approximation to \( u \), \( u\_ \) need to be refined until it fulfil the expectations.
 
-The first simulation consist of a large error tolerance while the second one has a tolerance of \( 10^{-5} \).
+<h3>Fisher's equation  <a name="___sec8"></a></h3>
+
+The values from FK is sat to \( r=1 \) and \( M=1 \). This is called Fisher's equation.The reaction term in Fisher will look like this.
 
 <p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
-    <source src='movies/spatial_abs_std.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='paramovies/constant_fisher_few_points.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>abs_std</em></p>
+<p><em>Fisher with ten points</em></p>
 
 
 <p>
 
 <div>
-<video  loop controls width='375' height='300' preload='none'>
-    <source src='movies/spatial_abs_std_picard_tol__5.webm' type='video/webm; codecs="vp8, vorbis"'>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/time_der_r_1_0_m_1_0.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>abs_std_picard tol = 10^-5</em></p>
+<p><em>r= 1, M= 1</em></p>
+
+<h3>Carrying capacity  <a name="___sec9"></a></h3>
+
+First it can be interesting to look at the changes in the carrying capacity, here denoted as \( M \), of
+the function. This simulation has the purpose to illustrate the efficiency of varying the carrying capacity.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/time.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>time</em></p>
 
 
 <p>
-The first simulation starts with a discontinuity in each directions and smoothes out as the time gets larger.While the last plot with a small tolerance gives a smoother curve.
+All the simulations goes towards their carrying capacity and stabilizes here.The reproduction rate,$r$, has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all of the cases.
 
-<h3>Spatial derivative wrapped with an absolute value powered by m  <a name="___sec19"></a></h3>
+<h3>Reproduction rate  <a name="___sec10"></a></h3>
 
+A similar simulation can be done for the reproduction rate,$r$. Here with focus on the effect of varying the reproduction.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/time_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>time_r</em></p>
+
+
+<p>
+This controls the speed of the movement. A larger reproduction will get in faster
+to the steady state, that is controlled by \( M \). The carrying capacity is sat to \( M=0.8 \).
+
+<h3>Scaling <a name="section:scaling"></a></h3>
+
+This problem can be scaled to give a better overview of the parameters \( r \) and \( M \).  This technique will make it possible to look at only one or a few dimensionless numbers. The idea by scaling is to get the solution dimensionless by strech \( u \) and \( t \) in the problem.A new function \( \bar u(\bar t) \), with
 $$
 \begin{equation}
-	\alpha(u) = |\nabla(u)|^m
+\bar u = \frac{u}{u_c}, \hspace{8 mm} \bar t = \frac{t}{t_c}
 \end{equation}
 $$
 
-This equation is solved in the exact same manner as the equation above. The matrix<a href="#mjx-eqn-11">(11)</a> A from the section above can be used. A power, \( m \), can be added in the matrix.
+Here \( u_c \) and \( t_c \) are characteristic sizes of the range for \( u \) and \( t \). These values are sat to be.
 $$
-\begin{align} \tag{11}
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\
-A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)
-\end{align}                               
+\begin{equation}
+u_c = M,\hspace{8 mm} t_c = \frac{1}{r}
+\end{equation}
 $$
 
+Then equation <a href="#mjx-eqn-9">(9)</a> is used where \( f(u) \) is the FK.
+$$
+\begin{align*}
+\frac{\partial u}{\partial t} = ru(1-\frac{u}{M})\\
+\frac{\partial (u_c\bar u)}{\partial \bar t}\frac{\partial \bar t}{\partial t} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+u_c\frac{\partial \bar u}{\partial \bar t}\frac{1}{t_c} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = t_c r\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = \bar u(1-\bar u)
+\end{align*}
+$$
+
+The initial condition for \( \bar u \) can be found by using the initial condition from \( u(x,0)= gauss(x) \).
+$$
+\begin{equation*}
+\bar u(x,0) = \frac{u(x,0)}{u_c} = \frac{gauss(x)}{M}
+\end{equation*}
+$$
+
+This can now be plotted for different values of \( M \)
 
 <p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
-    <source src='paramovies/abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='movies/scaling.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>Powered by m</em></p>
+<p><em>Solution by scaling</em></p>
 
 
 <p>
-Here the length of the simulation, \( T \), is sat to be quite large. This is to show the effect of the power term in this function. The function moves quite fast towards zero when the power term is low. But it seems that the equilibrium state for all these are at zero. The power term only affects the speed.
-
-<p>
+The model breaks down if \( M=0 \), since this gives a nonexistent initial condition. 
 <p>
 <!-- begin bottom navigation -->
 <a href="._pro_inf5631000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>

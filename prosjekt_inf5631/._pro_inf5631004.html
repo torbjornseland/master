@@ -1,0 +1,255 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Project inf5631">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Density-Dependent Diffusion- Reaction Diffusion Model ',
+               1,
+               None,
+               '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Stability ', 3, None, '___sec2'),
+              (' Travelling wavefront ', 2, None, '___sec3'),
+              (' Motivation for the reaction-diffusion equation ',
+               3,
+               None,
+               '___sec4'),
+              (' The analytical solution ', 3, None, '___sec5'),
+              (' Reaction term ', 1, None, '___sec6'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec7'),
+              (" Fisher's equation ", 3, None, '___sec8'),
+              (' Carrying capacity ', 3, None, '___sec9'),
+              (' Reproduction rate ', 3, None, '___sec10'),
+              (' Scaling ', 3, 'section:scaling', 'section:scaling'),
+              (' Spatial diffusion ', 1, None, '___sec12'),
+              (' Boundary conditions ', 3, None, '___sec13'),
+              (' Linear system/equation ', 2, None, '___sec14'),
+              (' Nonlinear equation ', 2, None, '___sec15'),
+              (' Picard Iteration ', 3, None, '___sec16'),
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec17'),
+              (' Spatial derivative wrapped with an absolute value ',
+               3,
+               None,
+               '___sec18'),
+              (' Spatial derivative wrapped with an absolute value powered by m ',
+               3,
+               None,
+               '___sec19'),
+              (' Solution for the biological equation ', 1, None, '___sec20'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec21'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec22'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec23'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec24'),
+              (' Further work ', 1, None, '___sec25'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec26'),
+              (' Dirichlet boundary condition ', 3, None, '___sec27'),
+              (' Neumann boundary condition ', 3, None, '___sec28'),
+              (" Newton's method ", 2, None, '___sec29')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<a name="part0004"></a>
+<!-- begin top navigation -->
+<a href="._pro_inf5631003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split -->
+
+<h1>Further work  <a name="___sec25"></a></h1>
+
+<h2>Changes in the Boundary conditions  <a name="___sec26"></a></h2>
+
+<h3>Dirichlet boundary condition  <a name="___sec27"></a></h3>
+
+There are several ways to describe the boundary conditions for a differential equation.
+Dirichlet has been used in this paper. The boundaries has been sat to zero.
+$$
+\begin{equation}
+u = 0|_{\partial \Omega}
+\end{equation}
+$$
+
+
+<p>
+An analogous description of Dirichelt boundary conditions can be found in the wave equation. Attaching a rope to a wall, and inducing oscillations allows us to describe the displacement of the rope with the wave equation. The end of the rope attached to the wall will always have zero displacement since it is, in fact, attached.
+
+<h3>Neumann boundary condition  <a name="___sec28"></a></h3>
+
+Another way to look at the boundary conditions is by reflecting boundaries. The boundary can be sat to \( u=0 \),which change the sign at the boundary or \( u_x \), that reflects the same value. This can be implemented with Neumann boundary condition[http://hplgit.github.io/INF5620/doc/pub/._main_wave003.html#wave:pde2:Neumann].
+$$
+\begin{equation}
+ \frac{\partial u}{\partial n} \equiv \emph{n}\cdot\nabla u = 0
+\end{equation}
+$$
+
+Where \( \emph{n} \) describes the normal vector.The boundaries can be described  
+$$
+\left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
+\frac{\partial}{\partial x}
+$$
+
+If the equation is discretized at the boundaries, it gives
+$$
+\begin{align*}
+\frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0
+u_{-1}^n =& u_1^n
+\end{align*}
+$$
+
+The same thing can be done for \( L \).
+The simulation under compares Dirichlet with Neumann. The reaction term is sat to be zero to see how the boundary affects the diffusion term.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_boundary.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are sat to be zero. Assume that the concentration of \( u \) is the temperature in a room. The walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. Here the temperature is sat to be zero, but any number would have caused an equilibrium state.
+
+<h2>Newton's method  <a name="___sec29"></a></h2>
+Newtons method is another way to handle non linear equations. 
+$$
+\begin{equation}
+	F(u) = 0
+\end{equation}
+$$
+
+This method linearizes the equation by using Taylor series expansion around
+\( u\_ \). Thus only keeping the linear part.
+$$
+\begin{align*}
+	F(u) &= F(u_{-}) + F'(u_{-})(u - u_{-}) + \frac{1}{2}F''(u_{-})(u-u_{-})^2
+	+\cdots  \\
+	& \approx F(u_{-}) + F'(u_{-})(u - u_{-}) = \hat F(u)
+\end{align*}
+$$
+
+The linear equation will be
+$$
+\begin{equation}
+	u = u_{-} - \frac{F(u_{-})}{F'(u_{-})}
+\end{equation}
+$$
+
+A Jacobian matrix is required for this method. \( F(u) = A(u)u - b(u) \) needs to be differentiate for all values of \( u \). \( F \) will be
+$$
+\begin{equation*}
+F_i = A_{i,i-1}(u_{i-1},u_i)u_{i-1}+A_{i,i}(u_{i-1},u_{i},u_{i+1})u_{i}+A_{i,i+1}(u_i,u_{i+1})u_{i+1}-b_i(u^{n-1}_i)
+\end{equation*}
+$$
+
+
+$$
+\begin{align*}
+J_{i,i}=& \frac{\partial F_i}{\partial u_i}=\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}
++ \frac{\partial A_{i,i}}{\partial u_i}u_i+ A_{i,i}
++ \frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}
+- \frac{\partial b_i}{\partial u_{i}}\\ 
+J_{i,i-1}=& \frac{\partial F_i}{\partial u_{i-1}}=\frac{\partial A_{i,i-1}}{\partial u_{i-1}}u_{i-1}
++ A_{i,i-1}+\frac{\partial A_{i,i}}{\partial u_{i-1}}u_i
+- \frac{\partial b_i}{\partial u_{i-1}}\\ 
+J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\partial u_{i+1}}u_i
++ \frac{\partial A_{i,i+1}}{\partial u_{i+1}}u_{i+1}+A_{i,i+1}
+- \frac{\partial b_i}{\partial u_{i+1}}\\ 
+\end{align*}
+$$
+
+The method demands a lot of calculating. Every part of \( J_{i,i} \) will be computed under, as an example. The same principles are used for \( J_{i,i-1} \) and \( J_{i,i+1} \).
+$$
+\begin{align*}
+\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
+\frac{\partial A_{i,i}}{\partial u_i}u_i=&\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
+A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\\
+\frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}=&-\frac{\Delta t}{\Delta x^2}(\alpha'(u_i)u_{i+1})\\
+- \frac{\partial b_i}{\partial u_{i}}=& -b'(u_i)\\
+\end{align*}
+$$
+
+This gives the matrix
+$$
+\begin{align*}
+J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
++&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i+1})-b'(u_i)\\
+J_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i-1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i-1})+\alpha(u_i))+\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i})\\
+J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i+1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_i)+\alpha(u_{i+1}))
+\end{align*}
+$$
+
+This matrix can be used to compute the Newton's method. 
+
+<p>
+<!-- begin bottom navigation -->
+<a href="._pro_inf5631003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

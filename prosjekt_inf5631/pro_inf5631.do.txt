@@ -28,13 +28,23 @@ The main focus in this project will be at the Fisher-Kolmogoroff equation, now r
 !et
 
 === Stability ===
-An important factor for the numerical simulation, is the stability criteria. A general solution of the diffusion equation can be described with basic components,
+An important factor for the numerical simulation, is the stability criteria. The function can be expressed as a complex function. 
 !bt
 \begin{equation}
-e^{-\alpha f^2t}e^{ifx} 
+u(x,t) = Qe^{-kf^2t}e^{ifx},
 \end{equation}
 !et
-Here $f$ is used instead of $i$ for the steps in time. This is because $i$ is used for the imaginary number $\sqrt{-1}$. These components can be used to find the solution of the finite difference schemes. The amplitude $e^{-\alpha f^2 t}$ can be modified. The numerical solution can be looked at
+$i$ is here used for the imaginary number $\sqrt{-1}$ and $Q$ and $f$ are chosen parameters. Several of these functions can be added to make  a Fourier representation of a general solution.
+!bt
+\begin{equation}
+u(x,t) \approx \sum_{f\in F} b_k e^{-k f^2t}e^{ifx},
+\end{equation}
+!et
+K is here a set of infinite number of $f$ values. These components can be used to find the solution of the finite difference schemes. A general solution of the diffusion equation can be described with basic components.
+!bt
+\begin{equation*} e^{-k f^2t}e^{ifx} \end{equation*}
+!et
+The amplitude $e^{-\alpha f^2 t}$ can be modified. The numerical solution can be looked at
 !bt
 \begin{equation}
 u^n_q = A^n e^{ifx} 
@@ -73,7 +83,7 @@ A=& (1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-\Del
 !et
 Since the amplification factor, $A$, has to be in the interval [0,1],
 !bt
-\begin{equation}
+\begin{equation} label{eq:stab_dem}
 k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)\geq B
 \end{equation}
 !et
@@ -88,13 +98,35 @@ r =& 2r\frac{u}{M}\\
 !et
 Since $u$ has to stay $[0,1]$, this means that the maximum point will be found,
 !bt
-\[ B(u) = \left\{
+\[ B(u)_{max} = \left\{
 	\begin{array}{l l}
 		\frac{M}{2} & \quad \text{if M < 2}\\
 		1 & \quad \text{if M $\geq$ 2}
 	\end{array} \right.\]
 !et
+The right side of eq(ref{eq:stab_dem}) need to stay as high as possible.The equation is
+!bt
+\begin{equation} label{eq:stab_dx}
+k\frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)
+\end{equation}
+!et
+What happens if $\Delta x$ goes towards 0? A Taylor expansion around $sin(0)$ will give,
+!bt
+\begin{equation}
+x-\frac{x^3}{6}+\frac{x^5}{120}+O(x^6)
+\end{equation}
+!et
+Then $sin(dx) = dx$ when $dx<<1$. The equation(ref{eq:stab_dx}) can then be written.
+!bt
+\begin{align*} 
+k\frac{4}{\Delta x^2}\left(\frac{f\Delta x}{2}\right)^2\\
+k\frac{4}{\Delta x^2}\frac{f^2\Delta x^2}{4}\\
+kf^2
+\end{align*}
+!et
+$k$ and $f$ has a large impact when $dx$ is small. A simulation is done for different values of $k$ and $f$. 
 
+FIGURE:[images/Stability.png, height=400 width=500 frac=0.8] dx towards 0
 
 
 ===== Travelling wavefront =====
@@ -178,7 +210,7 @@ The numerical solution has here got the exact analytical solution as initial con
 |--------------------------------------------|
 
 This table shows how the error goes towards zero when dt goes towards zero. The order of the error also moves towars 1, which is the expected order for the dt.
-
+!split
 ======= Reaction term ======= 
 The reaction term describes the change in concentration in a certain point. This variation is only affected
 by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
