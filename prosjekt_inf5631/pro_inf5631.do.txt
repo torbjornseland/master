@@ -40,7 +40,7 @@ $i$ is here used for the imaginary number $\sqrt{-1}$ and $Q$ and $f$ are chosen
 u(x,t) \approx \sum_{f\in F} b_k e^{-k f^2t}e^{ifx},
 \end{equation}
 !et
-K is here a set of infinite number of $f$ values. These components can be used to find the solution of the finite difference schemes. A general solution of the diffusion equation can be described with basic components.
+F is here a set of infinite number of $f$ values. These components can be used to find the solution of the finite difference schemes. A general solution of the diffusion equation can be described with basic components.
 !bt
 \begin{equation*} e^{-k f^2t}e^{ifx} \end{equation*}
 !et
@@ -119,9 +119,9 @@ x-\frac{x^3}{6}+\frac{x^5}{120}+O(x^6)
 Then $sin(dx) = dx$ when $dx<<1$. The equation(ref{eq:stab_dx}) can then be written.
 !bt
 \begin{align*} 
-k\frac{4}{\Delta x^2}\left(\frac{f\Delta x}{2}\right)^2\\
-k\frac{4}{\Delta x^2}\frac{f^2\Delta x^2}{4}\\
-kf^2
+k\frac{4}{\Delta x^2}\left(\frac{f\Delta x}{2}\right)^2 \geq B\\
+k\frac{4}{\Delta x^2}\frac{f^2\Delta x^2}{4}\geq B\\
+kf^2\geq B
 \end{align*}
 !et
 $k$ and $f$ has a large impact when $dx$ is small. A simulation is done for different values of $k$ and $f$. 
