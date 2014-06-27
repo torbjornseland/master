@@ -28,7 +28,78 @@ The main focus in this project will be at the Fisher-Kolmogoroff equation, now r
 !et
 
 === Stability ===
-An important factor for the numerical simulation, is the stability criteria. The function can be expressed as a complex function. 
+__New version(Based on Introduction to Partial Differential Equations, Tveito-Winther.__
+Starting with a Von Neumann's Stability Analysis on the following equation:
+!bt
+\begin{equation} label{eq:reac_stab}
+u_t = \alpha u_{xx} + Bu
+\end{equation}
+!et
+The concentration $u$ can be expressed as linear combinations shown under.
+!bt
+\begin{equation}
+u_k(x,t) = T_k(t)e^{ik\pi x}
+\end{equation}
+!et
+By inserting this particular solution in (ref{eq:reac_stab}), the equation can be written,
+!bt
+\begin{equation}
+T_k'(t)=(B-\alpha(k\pi)^2)T_k(t)
+\end{equation}
+!et
+This give
+!bt
+\begin{equation}
+T_k(t) = e^{(B-\alpha (k\pi)^2)t}
+\end{equation}
+!et
+For all $k$, the following requirement will be fulfilled
+!bt
+\begin{equation} label{eq:st_ana_sol}
+|T_k(t)|\leq e^{Bt}, \hspace{8 mm}t\geq 0.
+\end{equation}
+!et
+Then the solution of (ref{eq:reac_stab}) can be approximated by a scheme
+!bt
+\begin{equation}
+\frac{v^m_j-v^{m-1}_j}{\Delta t} = \alpha\frac{v^m_{j-1}-2v^m_j+v^m_{j+1}}{\Delta x^2} + Bv^m_j
+\end{equation}
+!et
+By inserting
+!bt
+\begin{equation}
+(a_k)^me^{ik\pi x_j}
+\end{equation}
+!et
+The equation can be expressed
+!bt
+\begin{align*} label{eq:a_k}
+\frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{-ik\pi \Delta x}}{\Delta x^2} + B \notag\\
+a_k =& (1+\alpha\frac{4 \Delta t}{\Delta x^2}sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t )^{-1}
+\end{align*}
+!et
+As required for the analytical solution (ref{eq:st_ana_sol}), the same can be done for the numerical solution.
+!bt
+\begin{equation}
+|(a_k)^m|\leq e^{t_m}
+\end{equation}
+!et
+for all $k$. Suppose that the usual condition
+!bt
+\begin{equation}
+\frac{\Delta t}{\Delta x^2} \leq \frac{1}{2}
+\end{equation}
+!et
+is satisfied. Then (ref{eq:a_k}) can be used to show
+!bt
+\begin{align*}
+|(a_k)^m|\leq& |a_k|^m\\
+\leq& (|1+\alpha\frac{4 \Delta t}{\Delta x^2}sin^2(\frac{k\pi\Delta x}{2})|- B\Delta t )^{-m}
+\end{align*}
+!et
+
+__Oldversion.__
+An important factor for a numerical simulation is to get a steady solution. This can be done by finding the stability criteria. The function can be expressed as a complex function. 
 !bt
 \begin{equation}
 u(x,t) = Qe^{-kf^2t}e^{ifx},
@@ -87,7 +158,7 @@ Since the amplification factor, $A$, has to be in the interval [0,1],
 k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)\geq B
 \end{equation}
 !et
-has to be fullfilled. This makes it interesting to look at the reaction term,$B$, to see when the term is largest. This can be found by derivating the equation and find the maximum point.
+has to be fullfilled. This makes it interesting to look at the reaction term, $B$, to see when the term is largest. This can be found by derivating the equation and find the maximum point.
 !bt
 \begin{align*}
 B(u)=& ru(1-\frac{u}{M})\\
@@ -95,14 +166,6 @@ B'(u)=& r(1-\frac{2u}{M})\\
 r =& 2r\frac{u}{M}\\
 \frac{M}{2} =& u
 \end{align*}
-!et
-Since $u$ has to stay $[0,1]$, this means that the maximum point will be found,
-!bt
-\[ B(u)_{max} = \left\{
-	\begin{array}{l l}
-		\frac{M}{2} & \quad \text{if M < 2}\\
-		1 & \quad \text{if M $\geq$ 2}
-	\end{array} \right.\]
 !et
 The right side of eq(ref{eq:stab_dem}) need to stay as high as possible.The equation is
 !bt
@@ -116,7 +179,7 @@ What happens if $\Delta x$ goes towards 0? A Taylor expansion around $sin(0)$ wi
 x-\frac{x^3}{6}+\frac{x^5}{120}+O(x^6)
 \end{equation}
 !et
-Then $sin(dx) = dx$ when $dx<<1$. The equation(ref{eq:stab_dx}) can then be written.
+Then $sin(\Delta x) = \Delta x$ when $\Delta x<<1$. The equation(ref{eq:stab_dx}) can then be written.
 !bt
 \begin{align*} 
 k\frac{4}{\Delta x^2}\left(\frac{f\Delta x}{2}\right)^2 \geq B\\
@@ -124,7 +187,7 @@ k\frac{4}{\Delta x^2}\frac{f^2\Delta x^2}{4}\geq B\\
 kf^2\geq B
 \end{align*}
 !et
-$k$ and $f$ has a large impact when $dx$ is small. A simulation is done for different values of $k$ and $f$. 
+$k$ and $f$ has a large impact when $\Delta x$ is small. A simulation is done for different values of $k$ and $f$. 
 
 FIGURE:[images/Stability.png, height=400 width=500 frac=0.8] dx towards 0
 

@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jun 26, 2014</h4></center> <!-- date -->
+<center><h4>Jun 27, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -193,7 +193,90 @@ $$
 
 <h3>Stability  <a name="___sec2"></a></h3>
 
-An important factor for the numerical simulation, is the stability criteria. The function can be expressed as a complex function. 
+<b>New version(Based on Introduction to Partial Differential Equations, Tveito-Winther.</b>
+Starting with a Von Neumann's Stability Analysis on the following equation:
+$$
+\begin{equation} \tag{3}
+u_t = \alpha u_{xx} + Bu
+\end{equation}
+$$
+
+The concentration \( u \) can be expressed as linear combinations shown under.
+$$
+\begin{equation}
+u_k(x,t) = T_k(t)e^{ik\pi x}
+\end{equation}
+$$
+
+By inserting this particular solution in <a href="#mjx-eqn-3">(3)</a>, the equation can be written,
+$$
+\begin{equation}
+T_k'(t)=(B-\alpha(k\pi)^2)T_k(t)
+\end{equation}
+$$
+
+This give
+$$
+\begin{equation}
+T_k(t) = e^{(B-\alpha (k\pi)^2)t}
+\end{equation}
+$$
+
+For all \( k \), the following requirement will be fulfilled
+$$
+\begin{equation} \tag{4}
+|T_k(t)|\leq e^{Bt}, \hspace{8 mm}t\geq 0.
+\end{equation}
+$$
+
+Then the solution of <a href="#mjx-eqn-3">(3)</a> can be approximated by a scheme
+$$
+\begin{equation}
+\frac{v^m_j-v^{m-1}_j}{\Delta t} = \alpha\frac{v^m_{j-1}-2v^m_j+v^m_{j+1}}{\Delta x^2} + Bv^m_j
+\end{equation}
+$$
+
+By inserting
+$$
+\begin{equation}
+(a_k)^me^{ik\pi x_j}
+\end{equation}
+$$
+
+The equation can be expressed
+$$
+\begin{align*} \tag{5}
+\frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{-ik\pi \Delta x}}{\Delta x^2} + B \notag\\
+a_k =& (1+\alpha\frac{4 \Delta t}{\Delta x^2}sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t )^{-1}
+\end{align*}
+$$
+
+As required for the analytical solution <a href="#mjx-eqn-4">(4)</a>, the same can be done for the numerical solution.
+$$
+\begin{equation}
+|(a_k)^m|\leq e^{t_m}
+\end{equation}
+$$
+
+for all \( k \). Suppose that the usual condition
+$$
+\begin{equation}
+\frac{\Delta t}{\Delta x^2} \leq \frac{1}{2}
+\end{equation}
+$$
+
+is satisfied. Then <a href="#mjx-eqn-5">(5)</a> can be used to show
+$$
+\begin{align*}
+|(a_k)^m|\leq& |a_k|^m\\
+\leq& ((|1+\alpha\frac{4 \Delta t}{\Delta x^2}sin^2(\frac{k\pi\Delta x}{2})|)^{-1} - B\Delta t )^{n}
+\end{align*}
+$$
+
+
+<p>
+<b>Oldversion.</b>
+An important factor for a numerical simulation is to get a steady solution. This can be done by finding the stability criteria. The function can be expressed as a complex function. 
 $$
 \begin{equation}
 u(x,t) = Qe^{-kf^2t}e^{ifx},
@@ -256,12 +339,12 @@ $$
 
 Since the amplification factor, \( A \), has to be in the interval [0,1],
 $$
-\begin{equation} \tag{3}
+\begin{equation} \tag{6}
 k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)\geq B
 \end{equation}
 $$
 
-has to be fullfilled. This makes it interesting to look at the reaction term,$B$, to see when the term is largest. This can be found by derivating the equation and find the maximum point.
+has to be fullfilled. This makes it interesting to look at the reaction term, \( B \), to see when the term is largest. This can be found by derivating the equation and find the maximum point.
 $$
 \begin{align*}
 B(u)=& ru(1-\frac{u}{M})\\
@@ -271,16 +354,9 @@ r =& 2r\frac{u}{M}\\
 \end{align*}
 $$
 
-Since \( u \) has to stay \( [0,1] \), this means that the maximum point will be found,
-$$ B(u)_{max} = \left\{
-	\begin{array}{l l}
-		\frac{M}{2} & \quad \text{if M < 2}\\
-		1 & \quad \text{if M $\geq$ 2}
-	\end{array} \right.$$
-
-The right side of eq<a href="#mjx-eqn-3">(3)</a> need to stay as high as possible.The equation is
+The right side of eq<a href="#mjx-eqn-6">(6)</a> need to stay as high as possible.The equation is
 $$
-\begin{equation} \tag{4}
+\begin{equation} \tag{7}
 k\frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)
 \end{equation}
 $$
@@ -292,7 +368,7 @@ x-\frac{x^3}{6}+\frac{x^5}{120}+O(x^6)
 \end{equation}
 $$
 
-Then \( sin(dx) = dx \) when \( dx<<1 \). The equation<a href="#mjx-eqn-4">(4)</a> can then be written.
+Then \( sin(\Delta x) = \Delta x \) when \( \Delta x<<1 \). The equation<a href="#mjx-eqn-7">(7)</a> can then be written.
 $$
 \begin{align*} 
 k\frac{4}{\Delta x^2}\left(\frac{f\Delta x}{2}\right)^2 \geq B\\
@@ -301,7 +377,7 @@ kf^2\geq B
 \end{align*}
 $$
 
-\( k \) and \( f \) has a large impact when \( dx \) is small. A simulation is done for different values of \( k \) and \( f \). 
+\( k \) and \( f \) has a large impact when \( \Delta x \) is small. A simulation is done for different values of \( k \) and \( f \). 
 
 <p>
 <center> <!-- figure -->
@@ -319,12 +395,12 @@ There is a vast number of examples from the biology where an important reason to
 <p>
 A travelling wave is a wave that travels without any change in the shape and the speed can be given by a constant. This means that by following the wave with the same speed as the wave speed, it would be no changes in the wave. A mathematical expression for this is
 $$
-\begin{equation} \tag{5}
+\begin{equation} \tag{8}
 u(x,t) = u(x-ct) = u(z), z = x-ct
 \end{equation}
 $$
 
-So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-5">(5)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
+So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-8">(8)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
 $$
 \begin{equation}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
@@ -350,7 +426,7 @@ $$
 
 The carrying capacity, \( M \), will be sat to one. This gives a travelling wavefront between 0 and 1.
 $$
-\begin{equation} \tag{6}
+\begin{equation} \tag{9}
 \frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)
 \end{equation}
 $$
@@ -360,21 +436,21 @@ $$
 u(x,t) = u(x-ct) = U(z),\hspace{8 mm} x-ct = z
 $$
 
-\( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-6">(6)</a>, gives
+\( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-9">(9)</a>, gives
 $$
-\begin{equation} \tag{7}
+\begin{equation} \tag{10}
 U'' +cU' + U(1-U) = 0
 \end{equation}
 $$
 
 An analytical solution of this can be written
 $$
-\begin{equation} \tag{8}
+\begin{equation} \tag{11}
 U(z) = \frac{1}{(1+ae^{bz})^s}
 \end{equation}
 $$
 
-Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting <a href="#mjx-eqn-8">(8)</a> into <a href="#mjx-eqn-7">(7)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
+Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting <a href="#mjx-eqn-11">(11)</a> into <a href="#mjx-eqn-10">(10)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
 $$
 s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 $$
