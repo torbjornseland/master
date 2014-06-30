@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jun 27, 2014</h4></center> <!-- date -->
+<center><h4>Jun 30, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -194,39 +194,80 @@ $$
 <h3>Stability  <a name="___sec2"></a></h3>
 
 <b>New version(Based on Introduction to Partial Differential Equations, Tveito-Winther.</b>
-Starting with a Von Neumann's Stability Analysis on the following equation:
+An important requirement when running a numerical simulation, is the stability criteria for the function. A technique for this is Von Neumann's Stability Analysis. This technique can be used to find the sizes of \( \Delta t \) and $\Delta x$|
 $$
 \begin{equation} \tag{3}
 u_t = \alpha u_{xx} + Bu
 \end{equation}
 $$
 
-The concentration \( u \) can be expressed as linear combinations shown under.
-$$
-\begin{equation}
-u_k(x,t) = T_k(t)e^{ik\pi x}
-\end{equation}
-$$
-
-By inserting this particular solution in <a href="#mjx-eqn-3">(3)</a>, the equation can be written,
-$$
-\begin{equation}
-T_k'(t)=(B-\alpha(k\pi)^2)T_k(t)
-\end{equation}
-$$
-
-This give
-$$
-\begin{equation}
-T_k(t) = e^{(B-\alpha (k\pi)^2)t}
-\end{equation}
-$$
-
-For all \( k \), the following requirement will be fulfilled
+The concentration \( u \) can be expressed as combinations of \( X \) and \( T \). A separation of variables can be done to the equation. This will give a better control of the time, \( t \), and spatial,$x$, values.
 $$
 \begin{equation} \tag{4}
-|T_k(t)|\leq e^{Bt}, \hspace{8 mm}t\geq 0.
+u_k(x,t) = X_k(x)T_k(t)
 \end{equation}
+$$
+
+This can now be inserted in <a href="#mjx-eqn-3">(3)</a>,
+$$
+\begin{align*}
+T_k'X_k =& \alpha X_k''T_k + BX_kT_k
+\end{align*}
+$$
+
+The next thing that can be done is to divide both sides with the identity \( T_kX_k \). This will give a left side that only depends on \( x \) and a right side that only depends on \( x \). Since both expressions must be equal to a common constant, this can be expressed by a constant, \( -\lambda \)
+$$
+\begin{equation}
+\frac{T_k'}{T_k} = \alpha \frac{X_k''}{X_k} + B= -\lambda
+\end{equation}
+$$
+
+The constant is sat up with a minus sign. This is done considering the next step. The equations can now be set up as a set of linear equations, here with two ordinary equations. The idea is to find \( \lambda \). 
+$$
+\begin{align*}
+T_k'+\lambda T_k = 0\\
+X_k''+\frac{\beta + \lambda}{\alpha} = 0
+\end{align*}
+$$
+
+The boundary conditions has been set to zero in this paper.
+$$
+\begin{equation}
+X_k(0)=X_k(L) = 0
+\end{equation}
+$$
+
+The expression now need to fulfill these terms. The spatial equation in the linear system can be used. With some calculations \( \lambda \) can be found, this can be inserted in the spatial function.  
+$$
+\begin{align*}
+\lambda = \frac{\pi k}{L}\alpha-B\\
+X_k(x) = \sin(\frac{\pi k}{L}x)
+\end{align*}
+$$
+
+
+<p>
+Since \( \lambda \) is found, the temporal equation in the linear system can be found,
+$$
+\begin{align*}
+T_k'+ \lambda T =& 0\\
+T_k =& e^{-\lambda t} = e^{(B-\alpha \frac{\pi k}{L}^2)t}
+\end{align*}
+$$
+
+For all \( k \), the following requirement must be fulfilled
+$$
+\begin{equation} \tag{5}
+|T_k(t)|\leq e^{Bt}, \hspace{8 mm}t\geq 0\\
+\end{equation}
+$$
+
+The eq<a href="#mjx-eqn-3">(3)</a> can for all boundary conditions be expressed as
+$$
+\begin{align*}
+u_k(x,t) = T_k(t)e^{ik\pi x}\\
+u_k(x,t) = e^{(B-\alpha \frac{\pi k}{L}^2)t}e^{ik\pi x}
+\end{align*}
 $$
 
 Then the solution of <a href="#mjx-eqn-3">(3)</a> can be approximated by a scheme
@@ -239,108 +280,30 @@ $$
 By inserting
 $$
 \begin{equation}
-(a_k)^me^{ik\pi x_j}
+v^m_j = (a_k)^me^{ik\pi x}
 \end{equation}
 $$
 
 The equation can be expressed
 $$
-\begin{align*} \tag{5}
-\frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{-ik\pi \Delta x}}{\Delta x^2} + B \notag\\
-a_k =& (1+\alpha\frac{4 \Delta t}{\Delta x^2}sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t )^{-1}
+\begin{align*} \tag{6}
+\frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\
+a_k =& \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }
 \end{align*}
 $$
 
-As required for the analytical solution <a href="#mjx-eqn-4">(4)</a>, the same can be done for the numerical solution.
-$$
-\begin{equation}
-|(a_k)^m|\leq e^{t_m}
-\end{equation}
-$$
-
-for all \( k \). Suppose that the usual condition
-$$
-\begin{equation}
-\frac{\Delta t}{\Delta x^2} \leq \frac{1}{2}
-\end{equation}
-$$
-
-is satisfied. Then <a href="#mjx-eqn-5">(5)</a> can be used to show
+As required for the analytical solution <a href="#mjx-eqn-5">(5)</a>, the same can be done for the numerical solution.
 $$
 \begin{align*}
-|(a_k)^m|\leq& |a_k|^m\\
-\leq& ((|1+\alpha\frac{4 \Delta t}{\Delta x^2}sin^2(\frac{k\pi\Delta x}{2})|)^{-1} - B\Delta t )^{n}
+|(a_k)^m|\leq& e^{Bt_m}\\
+|(a_k)|\leq& 1
 \end{align*}
 $$
 
-
-<p>
-<b>Oldversion.</b>
-An important factor for a numerical simulation is to get a steady solution. This can be done by finding the stability criteria. The function can be expressed as a complex function. 
+Since the amplification factor, \( a_k \), has to be in the interval [-1,1], the denominator has to be [ \( -\infty \),-1] or [1, \( \infty \) ].
 $$
-\begin{equation}
-u(x,t) = Qe^{-kf^2t}e^{ifx},
-\end{equation}
-$$
-
-\( i \) is here used for the imaginary number \( \sqrt{-1} \) and \( Q \) and \( f \) are chosen parameters. Several of these functions can be added to make  a Fourier representation of a general solution.
-$$
-\begin{equation}
-u(x,t) \approx \sum_{f\in F} b_k e^{-k f^2t}e^{ifx},
-\end{equation}
-$$
-
-F is here a set of infinite number of \( f \) values. These components can be used to find the solution of the finite difference schemes. A general solution of the diffusion equation can be described with basic components.
-$$
-\begin{equation*} e^{-k f^2t}e^{ifx} \end{equation*}
-$$
-
-The amplitude \( e^{-\alpha f^2 t} \) can be modified. The numerical solution can be looked at
-$$
-\begin{equation}
-u^n_q = A^n e^{ifx} 
-\end{equation}
-$$
-
-The amplification factor has to be \( |A|<1 \) for a decaying solution and \( A > 1 \) to avoid oscillations. Both these requirements are fulfilled if \( 0\leq A \leq 1 \). Nonlinearity is quite hard to work with. The reaction term will therefore be written as linear equation, where the \( u \) in the fraction will be replaced with the previous \( u\_1 \).
-$$
-\begin{equation}
-ru(1-\frac{u\_1}{M}) = Bu, \hspace{8 mm} B = r(1-\frac{u\_1}{M})
-\end{equation}
-$$
-
-The FK equation <a href="#mjx-eqn-2">(2)</a> can be discretized
-$$
-\begin{equation}
-[D_t^- u = \alpha D_xD_x u + Bu]^n_q
-\end{equation}
-$$
-
-The different discretization parts can be written out
-$$
-\begin{align*}
-e^{ikq\Delta x}[D_t^- A]^n =& A^ne^{ifq\Delta x}\frac{1 - A^{-1}}{\Delta t}\\
-A^nD_xD_x [e^{ifx}]_q =& A^n\left( - e^{ifq\Delta x}\frac{4}{\Delta x^2}
-\sin^2\left(\frac{f\Delta x}{2}\right)\right)\\
-Bu =& BA^ne^{ifq\Delta x}
-\end{align*}
-$$
-
-Then the equation can be solved
-$$
-\begin{align*}
-A^ne^{ifq\Delta x}\frac{1 - A^{-1}}{\Delta t}=& kA^n\left( - e^{ifq\Delta x}\frac{4}{\Delta x^2}
-\sin^2\left(\frac{f\Delta x}{2}\right)\right)+BA^ne^{ifq\Delta x}\\
-\frac{1 - A^{-1}}{\Delta t}=& -k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)+B\\
-A^{-1}=& 1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-\Delta tB\\
-A=& (1+\Delta tk \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)-\Delta tB)^{-1}
-\end{align*}
-$$
-
-Since the amplification factor, \( A \), has to be in the interval [0,1],
-$$
-\begin{equation} \tag{6}
-k \frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)\geq B
+\begin{equation} \tag{7}
+\alpha \frac{4}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)\geq B
 \end{equation}
 $$
 
@@ -354,10 +317,10 @@ r =& 2r\frac{u}{M}\\
 \end{align*}
 $$
 
-The right side of eq<a href="#mjx-eqn-6">(6)</a> need to stay as high as possible.The equation is
+The right side of eq<a href="#mjx-eqn-7">(7)</a> need to stay as high as possible.The equation is
 $$
-\begin{equation} \tag{7}
-k\frac{4}{\Delta x^2}\sin^2\left(\frac{f\Delta x}{2}\right)
+\begin{equation} \tag{8}
+\alpha\frac{4}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)
 \end{equation}
 $$
 
@@ -368,16 +331,16 @@ x-\frac{x^3}{6}+\frac{x^5}{120}+O(x^6)
 \end{equation}
 $$
 
-Then \( sin(\Delta x) = \Delta x \) when \( \Delta x<<1 \). The equation<a href="#mjx-eqn-7">(7)</a> can then be written.
+Then \( sin(\Delta x) = \Delta x \) when \( \Delta x<<1 \). The equation<a href="#mjx-eqn-8">(8)</a> can then be written.
 $$
 \begin{align*} 
-k\frac{4}{\Delta x^2}\left(\frac{f\Delta x}{2}\right)^2 \geq B\\
-k\frac{4}{\Delta x^2}\frac{f^2\Delta x^2}{4}\geq B\\
-kf^2\geq B
+\alpha\frac{4}{\Delta x^2}\left(\frac{k\Delta x}{2}\right)^2 \geq B\\
+\alpha\frac{4}{\Delta x^2}\frac{k^2\Delta x^2}{4}\geq B\\
+\alpha k^2\geq B
 \end{align*}
 $$
 
-\( k \) and \( f \) has a large impact when \( \Delta x \) is small. A simulation is done for different values of \( k \) and \( f \). 
+\( \alpha \) and \( k \) has a large impact when \( \Delta x \) is small. A simulation is done for different values of \( \alpha \) and \( k \). 
 
 <p>
 <center> <!-- figure -->
@@ -395,12 +358,12 @@ There is a vast number of examples from the biology where an important reason to
 <p>
 A travelling wave is a wave that travels without any change in the shape and the speed can be given by a constant. This means that by following the wave with the same speed as the wave speed, it would be no changes in the wave. A mathematical expression for this is
 $$
-\begin{equation} \tag{8}
+\begin{equation} \tag{9}
 u(x,t) = u(x-ct) = u(z), z = x-ct
 \end{equation}
 $$
 
-So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-8">(8)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
+So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-9">(9)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
 $$
 \begin{equation}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
@@ -426,7 +389,7 @@ $$
 
 The carrying capacity, \( M \), will be sat to one. This gives a travelling wavefront between 0 and 1.
 $$
-\begin{equation} \tag{9}
+\begin{equation} \tag{10}
 \frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)
 \end{equation}
 $$
@@ -436,21 +399,21 @@ $$
 u(x,t) = u(x-ct) = U(z),\hspace{8 mm} x-ct = z
 $$
 
-\( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-9">(9)</a>, gives
+\( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-10">(10)</a>, gives
 $$
-\begin{equation} \tag{10}
+\begin{equation} \tag{11}
 U'' +cU' + U(1-U) = 0
 \end{equation}
 $$
 
 An analytical solution of this can be written
 $$
-\begin{equation} \tag{11}
+\begin{equation} \tag{12}
 U(z) = \frac{1}{(1+ae^{bz})^s}
 \end{equation}
 $$
 
-Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting <a href="#mjx-eqn-11">(11)</a> into <a href="#mjx-eqn-10">(10)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
+Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting <a href="#mjx-eqn-12">(12)</a> into <a href="#mjx-eqn-11">(11)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
 $$
 s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 $$
