@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jun 30, 2014</h4></center> <!-- date -->
+<center><h4>Jul 1, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -296,34 +296,73 @@ As required for the analytical solution <a href="#mjx-eqn-5">(5)</a>, the same c
 $$
 \begin{align*}
 |(a_k)^m|\leq& e^{Bt_m}\\
-|(a_k)|\leq& 1
+|a_k|\leq& 1
 \end{align*}
 $$
 
-Since the amplification factor, \( a_k \), has to be in the interval [-1,1], the denominator has to be [ \( -\infty \),-1] or [1, \( \infty \) ].
+Since the amplification factor, \( a_k \), has to be in the interval [-1,1], the denominator has to be [ \( -\infty \),-1] or [1, \( \infty \) ]. This means that one of the two terms under need to be fulfilled.
 $$
-\begin{equation} \tag{7}
-\alpha \frac{4}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)\geq B
-\end{equation}
+\begin{align*}
+\alpha \frac{4}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)\geq& B,\hspace{8mm} a_k =  (0,1]\\
+2 + \alpha \frac{4\Delta t}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)\leq& \Delta t B,\hspace{8mm} a_k = [-1,0)
+\end{align*}
 $$
 
-has to be fullfilled. This makes it interesting to look at the reaction term, \( B \), to see when the term is largest. This can be found by derivating the equation and find the maximum point.
+Here it seems that the worst case is when \( \sin^2(\frac{k\Delta x}{L}) = 1 \).  The reaction term, \( B \), has to be sat to the largest value that can appear. This can be found by derivate the equation and find the maximum point.
+
+<p>
+
+<!-- begin inline comment -->
+<font color="red">[<b>Torbjorn 1</b>: <em>Er usikker p&#229; om disse antagelsene er ok &#229; gj&#248;re for begge likningene?</em>]</font>
+<!-- end inline comment -->
+
 $$
 \begin{align*}
 B(u)=& ru(1-\frac{u}{M})\\
 B'(u)=& r(1-\frac{2u}{M})\\
 r =& 2r\frac{u}{M}\\
-\frac{M}{2} =& u
+\frac{M}{2} =& u\\
+B(\frac{M}{2})=& r\frac{M}{2}(1-\frac{\frac{M}{2}}{M})\\
+=& \frac{rM}{4}
 \end{align*}
 $$
 
-The right side of eq<a href="#mjx-eqn-7">(7)</a> need to stay as high as possible.The equation is
+Lets look at the requirement for \( a_k = (0,1] \). With the replacement for \( \sin \), the equation can be written
 $$
-\begin{equation} \tag{8}
-\alpha\frac{4}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)
-\end{equation}
+\begin{align*} \tag{7}
+\alpha\frac{4}{\Delta x^2} \geq& \frac{rM}{4}\\
+\sqrt{\alpha\frac{16}{r M}} \geq& \Delta x
+\end{align*}
 $$
 
+
+<!-- begin inline comment -->
+<font color="red">[<b>Torbjorn 2</b>: <em>Dette virker veldig rart??</em>]</font>
+<!-- end inline comment -->
+<br />
+The same can be done for the next term,
+$$
+\begin{align*}
+2 + \alpha \frac{4\Delta t}{\Delta x^2}\leq& \Delta t \frac{rM}{4}\\
+2 \leq& \Delta t (\frac{rM}{4} - \alpha \frac{4}{\Delta x^2})\\
+\frac{2}{(\frac{rM}{4} - \alpha \frac{4}{\Delta x^2})} \leq& \Delta t 
+\end{align*}
+$$
+
+
+<!-- begin inline comment -->
+<font color="red">[<b>Torbjorn 3</b>: <em>Her har jeg forel&#248;big ikke designet noen eksperimenter, fordi dette ser helt rart ut. Klarer ikke &#229; skj&#248;nne hvor jeg har feil</em>]</font>
+<!-- end inline comment -->
+
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<p>
 What happens if \( \Delta x \) goes towards 0? A Taylor expansion around \( sin(0) \) will give,
 $$
 \begin{equation}
@@ -331,7 +370,7 @@ x-\frac{x^3}{6}+\frac{x^5}{120}+O(x^6)
 \end{equation}
 $$
 
-Then \( sin(\Delta x) = \Delta x \) when \( \Delta x<<1 \). The equation<a href="#mjx-eqn-8">(8)</a> can then be written.
+Then \( sin(\Delta x) = \Delta x \) when \( \Delta x<<1 \). The equation<a href="#mjx-eqn-7">(7)</a> can then be written.
 $$
 \begin{align*} 
 \alpha\frac{4}{\Delta x^2}\left(\frac{k\Delta x}{2}\right)^2 \geq B\\
@@ -358,12 +397,12 @@ There is a vast number of examples from the biology where an important reason to
 <p>
 A travelling wave is a wave that travels without any change in the shape and the speed can be given by a constant. This means that by following the wave with the same speed as the wave speed, it would be no changes in the wave. A mathematical expression for this is
 $$
-\begin{equation} \tag{9}
+\begin{equation} \tag{8}
 u(x,t) = u(x-ct) = u(z), z = x-ct
 \end{equation}
 $$
 
-So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-9">(9)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
+So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-8">(8)</a>, the partial differential equations can be written as ordinary differential equations. \( \frac{\partial u}\{\partial t} = -c\frac{du}{dz} \) and \( \frac{\partial u}\{\partial x} = \frac{du}{dz} \). A couple of physical assumptions that has to be done, are that \( u(z) \) has to be bounded by \( z \) and that the concentration of the quantities cannot be negative. An example of the quantities is the human population. Inserting the ordinary differential equations into a standard diffusion equation under
 $$
 \begin{equation}
 \frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
@@ -389,7 +428,7 @@ $$
 
 The carrying capacity, \( M \), will be sat to one. This gives a travelling wavefront between 0 and 1.
 $$
-\begin{equation} \tag{10}
+\begin{equation} \tag{9}
 \frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)
 \end{equation}
 $$
@@ -399,21 +438,21 @@ $$
 u(x,t) = u(x-ct) = U(z),\hspace{8 mm} x-ct = z
 $$
 
-\( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-10">(10)</a>, gives
+\( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into <a href="#mjx-eqn-9">(9)</a>, gives
 $$
-\begin{equation} \tag{11}
+\begin{equation} \tag{10}
 U'' +cU' + U(1-U) = 0
 \end{equation}
 $$
 
 An analytical solution of this can be written
 $$
-\begin{equation} \tag{12}
+\begin{equation} \tag{11}
 U(z) = \frac{1}{(1+ae^{bz})^s}
 \end{equation}
 $$
 
-Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting <a href="#mjx-eqn-12">(12)</a> into <a href="#mjx-eqn-11">(11)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
+Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting <a href="#mjx-eqn-11">(11)</a> into <a href="#mjx-eqn-10">(10)</a>. This is done in detalj by Murray et al.[ref]. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
 $$
 s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
 $$

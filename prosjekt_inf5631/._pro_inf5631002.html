@@ -166,7 +166,7 @@ $$
 
 The matrix \( A \) will be tridiagonal with the values.
 $$
-\begin{align} \tag{14}
+\begin{align} \tag{13}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -206,10 +206,10 @@ $$
 \end{equation}
 $$
 
-The matrix from<a href="#mjx-eqn-14">(14)</a> and insert the function for \( \alpha(u) \). This gives us
+The matrix from<a href="#mjx-eqn-13">(13)</a> and insert the function for \( \alpha(u) \). This gives us
 the matrix:
 $$
-\begin{align*} \tag{15}
+\begin{align*} \tag{14}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
@@ -256,7 +256,7 @@ $$
 
 
 <p>
-Then \( u \) can be inserted in the matrix<a href="#mjx-eqn-14">(14)</a>.
+Then \( u \) can be inserted in the matrix<a href="#mjx-eqn-13">(13)</a>.
 $$
 \begin{align*} 
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
@@ -320,7 +320,7 @@ $$
 
 To use this with Picard Iteration, \( u\ \) need to replace \( u \). \( \Delta x \) can be moved out of the fraction, because \( \Delta x > 0 \).
 $$
-\begin{align} \tag{17}
+\begin{align} \tag{16}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|)\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)
@@ -360,9 +360,9 @@ $$
 \end{equation}
 $$
 
-This equation is solved in the exact same manner as the equation above. The matrix<a href="#mjx-eqn-17">(17)</a> A from the section above can be used. A power, \( m \), can be added in the matrix.
+This equation is solved in the exact same manner as the equation above. The matrix<a href="#mjx-eqn-16">(16)</a> A from the section above can be used. A power, \( m \), can be added in the matrix.
 $$
-\begin{align} \tag{17}
+\begin{align} \tag{16}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)

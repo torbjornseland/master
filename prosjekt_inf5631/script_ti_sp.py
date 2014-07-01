@@ -40,7 +40,7 @@ for i in m_list:
 
 Nx_list = [100,100,100]#,100,100]
 N_list = [100,500,2000]
-L = 2
+L = 20
 T = 10
 fg_list = [1,5,20]	#frame gap
 
@@ -48,16 +48,16 @@ fg_list = [1,5,20]	#frame gap
 #para_list = [1] #parameter list
 eq_list = ["constant"]
 plotnames = []
-"""
+
 for i in range(len(Nx_list)):
 	for j in eq_list:
 		plotname = ("plot_data/%s_M_%2.3f" % (j,i)).replace(".","_")
 		plotnames.append(plotname)
 		os_name = "python reac_diff_eq.py --method %s --p_n %s --r 1 --M 1 --k 1 --picard True --Nx %i --N %i --L %i --T %i --fg %i" % (j,plotname,Nx_list[i],N_list[i],L,T,fg_list[i])
 		print os_name
-		os.system(os_name)
-"""
-"""
+		#os.system(os_name)
+
+
 plotname = "plot_data/wave_front"
 plotnames.append(plotname)
 wave_front(plotname,Nx_list[0],N_list[0]/fg_list[0],L,T)
@@ -68,8 +68,8 @@ for i in m_list:
         plotname = ("plot_data/scaling_%2.3f" % i)
         plotnames.append(plotname)
         scaling(plotname,Nx_list[0],N_list[0]/fg_list[0],L,T,i)
-
-build_plot(plotnames,"movies/scaling",m_list,"M",L,T)
+"""
+build_plot(plotnames,"movies/stability_analysis",N_list,"N",L,T)
 #build_subplot(plotnames,"submovies/ordinary_sub",para_list,"k")
 """
 error_list = check_error(plotnames[-1],plotnames,L)
