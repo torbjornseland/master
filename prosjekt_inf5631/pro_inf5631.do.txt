@@ -156,7 +156,7 @@ The same can be done for the next term,
 \frac{2}{(\frac{rM}{4} - \alpha \frac{4}{\Delta x^2})} \leq& \Delta t 
 \end{align*}
 !et
-[Torbjorn: Her har jeg foreløbig ikke designet noen eksperimenter, fordi dette ser helt rart ut. Klarer ikke å skjønne hvor jeg har feil]
+[Torbjorn: Her har jeg foreløbig ikke designet noen eksperimenter, fordi dette ser helt rart ut. Klarer ikke å skjønne hvor jeg har feil. ]
 
 
 
