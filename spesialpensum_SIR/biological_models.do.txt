@@ -14,5 +14,19 @@ The first major epidemic in the U.S.A was the Yellow Fever, discovered in 1793 i
 After the world war II, public health strategy has focused on elimination and control of organisms which cause disease. United Nations sat in 1978 a goal to eradication all disease by 2000. This was before AIDS was recognized, but a large job has been done and smallpox is an example on a disease that was last seen in Somalia in 1977.
 <linebreak>
 <linebreak>
-Another important aspect in the current spread of diseases, is the displacement of human populations. About an million people cross international borders daily. The growth of human population, especially in underdeveloped countries, is also a factor that affects spread, specially microbes. These played a key role in the spread of HIV(human immunodeficiency) in the 1980's.
+Another important aspect in the current spread of diseases, is the displacement of human populations. About a million people cross international borders daily. The growth of human population, especially in underdeveloped countries, is also a factor that affects spread, specially microbes. These conditions played a key role in the spread of HIV(human immunodeficiency) in the 1980's. World Health Organization has estimated that around 30 million are at current time infected with the HIV virus.
+<linebreak>
+<linebreak>
+Knowledge through history is important for the control of different epidemics, but also important in detecting new diseases. The plague of Athens had been studied in great detail by Thucydides in 430-438 BC. Similar had been done with the 'sweating sickness' in the late 15th and first of the 16th centuries in England. The symptoms of 'sweating sickness' was detected in 1993 in the Southwest U.S.A. Here the disease was called hanta virus. There is likely that this is the same disease, but that the 'sweating sickness' has been dormant for couple of hundred years.
+<linebreak>
+<linebreak>
+There are four main microorganisms that can be disease-causing. These are; viruses, bacteria, parasites and fungi. This chapter will focus on the population dynamics. Spatiotemporal models will also be studied. These mathematical models has been important for the combating of the diseases. Both in describing the movement pattern but also in giving reasoned estimated numbers for the level of vaccination.
+
+===== Simple Epidemic models =====
+These models that will be shown in this chapter, will have a constant population. This may differ from the real world. Another assumption that has to be done, is how the population interact. This has to be similar for the whole area that is modeled. The population can be divided into three different groups. The first group is Susceptible,$S$, which consist of humans that are healthy and at risk of becoming infected. Infective,$I$,this group has the disease or only carriers of the disease. This group can infect the Susceptible. The last group is the removed, $R$. This group consist of either dead or recovered recovered humans, often people that already have had the disease. The natural order for a human is,
+!bt
+\begin{equation}
+S \rightarrow I \rightarrow R.
+\end{equation}
+!et
 
