@@ -40,7 +40,8 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 2,
  'sections': [(' Introduction to epidemic models ', 2, None, '___sec0'),
-              (' Simple Epidemic models ', 2, None, '___sec1')]}
+              (' Simple Epidemic models ', 2, None, '___sec1'),
+              (' Threshold phenomenon ', 3, None, '___sec2')]}
 end of tocinfo -->
 
 <body>
@@ -83,12 +84,13 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Jul 2, 2014</h4></center> <!-- date -->
+<center><h4>Jul 3, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
 <a href="#___sec0"> Introduction to epidemic models </a><br>
 <a href="#___sec1"> Simple Epidemic models </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Threshold phenomenon </a><br>
 </p>
 
 <h2>Introduction to epidemic models  <a name="___sec0"></a></h2>
@@ -117,6 +119,59 @@ S \rightarrow I \rightarrow R.
 \end{equation}
 $$
 
+This model is called \( SIR \) model, but the number of classes can be changed. \( SI \) only consist of the two first groups and \( SEIR \) has added an extra class \( E \), where the disease is latent. This can be used to model the incubation time. 
+<br />
+<br />
+A couple of important assumptions that has to be done for the model, are the transmission of the infection and incubation period. These are reflected in the terms of the equations. The amount of people in each class can be seen as a function of time, expressed as \( S(t),I(t) \) and \( R(t) \). The growth of \( I \) caused by Susceptible, can be viewed as a rate proportional to the number of Infective and Susceptible multiplied by a constant,$rSI$, where \( r>0 \). This constant controls the efficiency of the transmission from \( S \) to \( I \). This will appear as a reduction in the function \( S(t) \). The rate of removal from Infective to Removed can be viewed as the number of Infective times a constant,$aI$, where \( a>0 \) controls the time spent in the Infection state. The incubation time is here negligible. This could have been taken into account by the \( SEIR \) model. The dynamic model will be,
+$$
+\begin{align*} \label{eq:SIR_model}
+\frac{dS}{dt} =& -rSI \\
+\frac{dI}{dt} =& rSI-aI \\
+\frac{dR}{dt} =& aI
+\end{align*}
+$$
+
+This model is called the Kermack-McKendrick(1927) model. Is is considered that the classes are uniformly mixed and that there is equal probability for contact for all individuals. This assumptions will not be correct for all diseases, especially sexually transmitted diseases.&#160;The total number for the population will stay constant. This can be seen on the total change in the classes,
+$$
+\begin{equation}
+\frac{dS}{dt} + \frac{dI}{dt} + \frac{dR}{dt} = 0
+\end{equation}
+$$
+
+
+<p>
+Therefore the total size of the population, \( N \), will be constant.
+
+<h3>Threshold phenomenon  <a name="___sec2"></a></h3>
+
+An important question to study when looking the at an epidemic model, is the threshold phenomenon. To cause an epidemic situation, the model need to fulfill \( I(t)> I_0 \) for some \( t>0 \), where \( I_0 \) describe the initial condition for Infective. The initial conditions can be given as,
+$$
+\begin{equation}
+S(0)=S_0 > 0,\hspace{8mm} I(0)=I_0>0,\hspace{8mm} R(0) =0.
+\end{equation}
+$$
+
+The initial conditions for Susceptible and Infective combined with \( r \) and \( a \) will control the epidemic situation. These will affect the spread if the infection. From equation \eqref{eq:SIR_model} the function for Infection at initial time can be written,
+$$
+\begin{equation}
+\left[\frac{dI}{dt}\right]_{t=0} = I_0(rS_0-a)
+\end{equation}
+$$
+
+The expression inside the brackets controls the change in \( I \). The function will increase if \( S_0 > \frac{a}{r} \), this will therefore be the threshold value for the function. This can be shown with a Phase trajectories of the Susceptible and the Infective.  
+
+<p>
+<center><p><img src="plots/threshold_phenomenon.png" align="bottom" ></p></center>
+
+<p>
+The simulation shows that when the value of \( S \) is larger than \( \frac{a}{r} \) the value of \( I \) is increasing. But when \( S = \frac{a}{r} \), the value of \( I \) reaches a maximum value and then start to decrease. The reproduction rate can be described
+$$
+\begin{equation}
+R_0 = \frac{rS_0}{a}
+\end{equation}
+$$
+
+If \( R_0 > 1 \) it will cause an epidemic reaction. This parameter is crucial in the understanding with the work with the disease. To be able to keep \( R_0 < 1 \) will prevent a dispersion. Global vaccination programs are an effective way to get control. Smallpox is an example on a disease that has been close to eradicating around the world. This is caused because of the reduction of Susceptible. But there is always a small chance for side effects when using vaccination. And therefore some people choose to skip it. This is quite critical for the fight of total eradication. Not only is this a big risk the specific person, but it also increase the number of Susceptible 
 
 <!-- ------------------- end of main content --------------- -->
 
