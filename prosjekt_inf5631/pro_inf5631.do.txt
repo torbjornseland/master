@@ -108,10 +108,10 @@ v^m_j = (a_k)^me^{ik\pi x}
 !et
 The equation can be expressed
 !bt
-\begin{align*} label{eq:a_k}
+\begin{align} label{eq:a_k}
 \frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\
 a_k =& \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }
-\end{align*}
+\end{align}
 !et
 As required for the analytical solution (ref{eq:st_ana_sol}), the same can be done for the numerical solution.
 !bt
@@ -124,24 +124,24 @@ __0- Plot amplification factor.__<linebreak>
 Plot amplification factor for the following ODE for Forward Euler and Backward Euler.
 !bt
 \begin{equation}
-u' = a*u, \hspace{8mm} a>0
+u' = -au, \hspace{8mm} a>0
 \end{equation}
 !et
 Forward Euler
 !bt
 \begin{align*}
-\frac{u^{n+1}-u^n}{\Delta t} =& au^n\\
-u^{n+1}=& (1+\Delta t a)u^n\\
-u^{n}=& (1+\Delta t a)^nu^0\\
+\frac{u^{n+1}-u^n}{\Delta t} =& -au^n\\
+u^{n+1}=& (1-\Delta t a)u^n\\
+u^{n}=& (1-\Delta t a)^nu^0\\
 u^{n}=& A_{fe}^nu^0
 \end{align*}
 !et
 Backward Euler
 !bt
 \begin{align*}
-\frac{u^{n}-u^{n-1}}{\Delta t} =& au^n\\
-u^{n}=& \frac{u^n}{1-\Delta t a}\\
-u^{n}=& \left(\frac{1}{1-\Delta t a}\right)^nu^0\\
+\frac{u^{n}-u^{n+1}}{\Delta t} =& au^n\\
+u^{n}=& \frac{u^n}{1+\Delta t a}\\
+u^{n}=& \left(\frac{1}{1+\Delta t a}\right)^nu^0\\
 u^{n}=& A_{be}^nu^0
 \end{align*}
 !et
@@ -149,7 +149,15 @@ These amplification factors can be plottet against the $a*\Delta t$. This gives
 
 FIGURE:[images/amplification_factor.png, height=400 width=500 frac=0.8] dx towards 0
 
+__1-Find stability for explicit Forward Euler for reaction diffusion when B<0.__ <linebreak>
+!bt
+\begin{equation} 
+a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }
+\end{equation}
+!et
+Since $B<0$,the last term $-B\Delta t$ will be positive. Then there will be no problem with the stability criterium, because $a_k$ will always be in the inteval (0,1].
 
+__2-
 
 
 

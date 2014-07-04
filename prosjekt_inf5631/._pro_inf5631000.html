@@ -288,10 +288,10 @@ $$
 
 The equation can be expressed
 $$
-\begin{align*} \tag{6}
+\begin{align} \tag{6}
 \frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\
 a_k =& \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }
-\end{align*}
+\end{align}
 $$
 
 As required for the analytical solution <a href="#mjx-eqn-5">(5)</a>, the same can be done for the numerical solution.
@@ -307,26 +307,46 @@ __0- Plot amplification factor.__<br />
 Plot amplification factor for the following ODE for Forward Euler and Backward Euler.
 $$
 \begin{equation}
-u' = a*u, \hspace{8mm} a>0
+u' = -au, \hspace{8mm} a>0
 \end{equation}
 $$
 
 Forward Euler
 $$
 \begin{align*}
-\frac{u^{n+1}-u^n}{\Delta t} =& au^n\\
-u^{n+1}=& (1+\Delta t a)u^n\\
-u^{n}=& (1+\Delta t a)^nu^0
+\frac{u^{n+1}-u^n}{\Delta t} =& -au^n\\
+u^{n+1}=& (1-\Delta t a)u^n\\
+u^{n}=& (1-\Delta t a)^nu^0\\
+u^{n}=& A_{fe}^nu^0
 \end{align*}
 $$
 
 Backward Euler
 $$
 \begin{align*}
-\frac{u^{n}-u^{n-1}}{\Delta t} =& au^n\\
+\frac{u^{n}-u^{n+1}}{\Delta t} =& au^n\\
 u^{n}=& \frac{u^n}{1+\Delta t a}\\
-u^{n}=& \frac{1}{1+\Delta t a}^nu^0
+u^{n}=& \left(\frac{1}{1+\Delta t a}\right)^nu^0\\
+u^{n}=& A_{be}^nu^0
 \end{align*}
+$$
+
+These amplification factors can be plottet against the \( a*\Delta t \). This gives
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  dx towards 0 </p></center>
+<p><img src="images/amplification_factor.png" align="bottom" height=400 width=500></p>
+</center>
+
+<p>
+<b>1-Find stability for reaction diffusion when B<0.</b>
+<br />
+$$
+\begin{equation} 
+a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }
+\end{equation}
 $$
 
 
@@ -415,7 +435,7 @@ $$
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  dx towards 0 </p></center>
+<center><p class="caption">Figure 2:  dx towards 0 </p></center>
 <p><img src="images/Stability.png" align="bottom" height=400 width=500></p>
 </center>
 
