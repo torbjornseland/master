@@ -45,42 +45,43 @@ Automatically generated HTML file from Doconce source
                '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
               (' Stability ', 3, None, '___sec2'),
-              (' Travelling wavefront ', 2, None, '___sec3'),
+              (' Five point TODO ', 3, None, '___sec3'),
+              (' Travelling wavefront ', 2, None, '___sec4'),
               (' Motivation for the reaction-diffusion equation ',
                3,
                None,
-               '___sec4'),
-              (' The analytical solution ', 3, None, '___sec5'),
-              (' Reaction term ', 1, None, '___sec6'),
-              (' Fisher-Kolmogoroff term ', 2, None, '___sec7'),
-              (" Fisher's equation ", 3, None, '___sec8'),
-              (' Carrying capacity ', 3, None, '___sec9'),
-              (' Reproduction rate ', 3, None, '___sec10'),
+               '___sec5'),
+              (' The analytical solution ', 3, None, '___sec6'),
+              (' Reaction term ', 1, None, '___sec7'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec8'),
+              (" Fisher's equation ", 3, None, '___sec9'),
+              (' Carrying capacity ', 3, None, '___sec10'),
+              (' Reproduction rate ', 3, None, '___sec11'),
               (' Scaling ', 3, 'section:scaling', 'section:scaling'),
-              (' Spatial diffusion ', 1, None, '___sec12'),
-              (' Boundary conditions ', 3, None, '___sec13'),
-              (' Linear system/equation ', 2, None, '___sec14'),
-              (' Nonlinear equation ', 2, None, '___sec15'),
-              (' Picard Iteration ', 3, None, '___sec16'),
-              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec17'),
+              (' Spatial diffusion ', 1, None, '___sec13'),
+              (' Boundary conditions ', 3, None, '___sec14'),
+              (' Linear system/equation ', 2, None, '___sec15'),
+              (' Nonlinear equation ', 2, None, '___sec16'),
+              (' Picard Iteration ', 3, None, '___sec17'),
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec18'),
               (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
-               '___sec18'),
+               '___sec19'),
               (' Spatial derivative wrapped with an absolute value powered by m ',
                3,
                None,
-               '___sec19'),
-              (' Solution for the biological equation ', 1, None, '___sec20'),
-              (' Fisher-Komogoroff equation ', 3, None, '___sec21'),
-              (' $\\alpha(u)= u$ ', 3, None, '___sec22'),
-              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec23'),
-              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec24'),
-              (' Further work ', 1, None, '___sec25'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec26'),
-              (' Dirichlet boundary condition ', 3, None, '___sec27'),
-              (' Neumann boundary condition ', 3, None, '___sec28'),
-              (" Newton's method ", 2, None, '___sec29')]}
+               '___sec20'),
+              (' Solution for the biological equation ', 1, None, '___sec21'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec22'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec23'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec24'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec25'),
+              (' Further work ', 1, None, '___sec26'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec27'),
+              (' Dirichlet boundary condition ', 3, None, '___sec28'),
+              (' Neumann boundary condition ', 3, None, '___sec29'),
+              (" Newton's method ", 2, None, '___sec30')]}
 end of tocinfo -->
 
 <body>
@@ -115,7 +116,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Reaction term  <a name="___sec6"></a></h1>
+<h1>Reaction term  <a name="___sec7"></a></h1>
 The reaction term describes the change in concentration in a certain point. This variation is only affected
 by the local chemical reaction.(Blir litt likt beskrivelsen i "The model")
 $$
@@ -137,7 +138,7 @@ $$
 
 This gives a linear equation \( Au = b \) that easy can be solved.
 
-<h2>Fisher-Kolmogoroff term  <a name="___sec7"></a></h2>
+<h2>Fisher-Kolmogoroff term  <a name="___sec8"></a></h2>
 A Fisher-Kolmogoroff term, now referred to as FK, is a nonlinear term which often arises from biological applications. It takes the form \( f(u) = ru(1-u/M) \), where \( r \) describes the linear reproduction and \( M \) the carrying capacity of this environment. The solution will then be.
 $$
 \begin{equation}
@@ -188,7 +189,7 @@ $$
 <p>
 Since \( u\_ \) is an approximation to \( u \), \( u\_ \) need to be refined until it fulfil the expectations.
 
-<h3>Fisher's equation  <a name="___sec8"></a></h3>
+<h3>Fisher's equation  <a name="___sec9"></a></h3>
 
 The values from FK is sat to \( r=1 \) and \( M=1 \). This is called Fisher's equation.The reaction term in Fisher will look like this.
 
@@ -211,7 +212,7 @@ The values from FK is sat to \( r=1 \) and \( M=1 \). This is called Fisher's eq
 </div>
 <p><em>r= 1, M= 1</em></p>
 
-<h3>Carrying capacity  <a name="___sec9"></a></h3>
+<h3>Carrying capacity  <a name="___sec10"></a></h3>
 
 First it can be interesting to look at the changes in the carrying capacity, here denoted as \( M \), of
 the function. This simulation has the purpose to illustrate the efficiency of varying the carrying capacity.
@@ -229,7 +230,7 @@ the function. This simulation has the purpose to illustrate the efficiency of va
 <p>
 All the simulations goes towards their carrying capacity and stabilizes here.The reproduction rate,$r$, has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all of the cases.
 
-<h3>Reproduction rate  <a name="___sec10"></a></h3>
+<h3>Reproduction rate  <a name="___sec11"></a></h3>
 
 A similar simulation can be done for the reproduction rate,$r$. Here with focus on the effect of varying the reproduction.
 

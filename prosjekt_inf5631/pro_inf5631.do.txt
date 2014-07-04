@@ -117,9 +117,43 @@ As required for the analytical solution (ref{eq:st_ana_sol}), the same can be do
 !bt
 \begin{align*}
 |(a_k)^m|\leq& e^{Bt_m}\\
-|a_k|\leq& 1
 \end{align*}
 !et
+=== Five point TODO ===
+__0- Plot amplification factor.__<linebreak>
+Plot amplification factor for the following ODE for Forward Euler and Backward Euler.
+!bt
+\begin{equation}
+u' = a*u, \hspace{8mm} a>0
+\end{equation}
+!et
+Forward Euler
+!bt
+\begin{align*}
+\frac{u^{n+1}-u^n}{\Delta t} =& au^n\\
+u^{n+1}=& (1+\Delta t a)u^n\\
+u^{n}=& (1+\Delta t a)^nu^0\\
+u^{n}=& A_{fe}^nu^0
+\end{align*}
+!et
+Backward Euler
+!bt
+\begin{align*}
+\frac{u^{n}-u^{n-1}}{\Delta t} =& au^n\\
+u^{n}=& \frac{u^n}{1-\Delta t a}\\
+u^{n}=& \left(\frac{1}{1-\Delta t a}\right)^nu^0\\
+u^{n}=& A_{be}^nu^0
+\end{align*}
+!et
+These amplification factors can be plottet against the $a*\Delta t$. This gives
+
+FIGURE:[images/amplification_factor.png, height=400 width=500 frac=0.8] dx towards 0
+
+
+
+
+
+
 Since the amplification factor, $a_k$, has to be in the interval [-1,1], the denominator has to be [ $-\infty$,-1] or [1, $\infty$ ]. This means that one of the two terms under need to be fulfilled.
 !bt
 \begin{align*}
