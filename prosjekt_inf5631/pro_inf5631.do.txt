@@ -149,15 +149,50 @@ These amplification factors can be plottet against the $a*\Delta t$. This gives
 
 FIGURE:[images/amplification_factor.png, height=400 width=500 frac=0.8] dx towards 0
 
-__1-Find stability for explicit Forward Euler for reaction diffusion when B<0.__ <linebreak>
+__1-Find stability for explicit Forward Euler for reaction diffusion when B<0 and \alpha >0.__ <linebreak>
+Use the same idea as for Backward Euler in the section above. The equation can then be expressed.
 !bt
-\begin{equation} 
-a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }
+\begin{align} label{eq:a_k_forward}
+\frac{a_k-1}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\
+a_k =& 1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) + B\Delta t 
+\end{align}
+!et
+Since $B$ has sat to be negative, an new variable $D$ can be introduced
+!bt
+\begin{equation} label{eq:b_d}
+B = -D,\hspace{8mm} D>0
 \end{equation}
+!et
+And then use this.
+!bt
+\begin{align} 
+a_k =& 1-\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D) 
+\end{align}
+!et
+$a_k$ is not able to grow larger than 1, but $a_k < -1$ is still possible and will give oscillations. To avoid this the following requirement has to be true. The worst case for $sin^2(\frac{k\pi\Delta x}{2})=1$, and can then do some calculations.
+!bt
+\begin{align*}
+\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)\leq 2\\
+\Delta t(\frac{\alpha 4}{\Delta x^2}+ D)\leq 2\\
+\Delta t \leq \frac{2}{(\frac{4\alpha }{\Delta x^2}+ D)}
+\end{align*}
+!et
+This gives a relation between $\Delta t$ and $\Delta x,\alpha,B$.
+
+__2- Same for Backward Euler.__
+The equation (ref{eq:b_d}) can be used here
+!bt
+\begin{align*} 
+a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }\\
+a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) + D\Delta t }
+\end{align*}
 !et
 Since $B<0$,the last term $-B\Delta t$ will be positive. Then there will be no problem with the stability criterium, because $a_k$ will always be in the inteval (0,1].
 
-__2-
+__3- Regn stabilitet for Forward Euler når B>0. Legg vekt på hva som er prinsippet for stabilitet.__
+
+__4. Anvend metoden i 3 på Backward Euler. Som sagt, tror jeg skjemaet alltid er stabilt mht "unormal" vekst, men du kan få oscillasjoner i Backward Euler for B>0.__
+
 
 
 
