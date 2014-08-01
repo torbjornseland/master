@@ -115,12 +115,14 @@ a_k =& \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{
 !et
 As required for the analytical solution (ref{eq:st_ana_sol}), the same can be done for the numerical solution.
 !bt
-\begin{align*}
-|(a_k)^m|\leq& e^{Bt_m}\\
-\end{align*}
+\begin{equation} label{eq:stab_crit}
+|(a_k)^m|\leq e^{Bt_m}
+\end{equation}
 !et
 === Five point TODO ===
-__0- Plot amplification factor.__<linebreak>
+
+__0- Plot amplification factor.__
+
 Plot amplification factor for the following ODE for Forward Euler and Backward Euler.
 !bt
 \begin{equation}
@@ -157,7 +159,7 @@ Use the same idea as for Backward Euler in the section above. The equation can t
 a_k =& 1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) + B\Delta t 
 \end{align}
 !et
-Since $B$ has sat to be negative, an new variable $D$ can be introduced
+Since $B$ is sat to be negative, a new variable $D$ can be introduced
 !bt
 \begin{equation} label{eq:b_d}
 B = -D,\hspace{8mm} D>0
@@ -169,7 +171,7 @@ And then use this.
 a_k =& 1-\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D) 
 \end{align}
 !et
-$a_k$ is not able to grow larger than 1, but $a_k < -1$ is still possible and will give oscillations. To avoid this the following requirement has to be true. The worst case for $sin^2(\frac{k\pi\Delta x}{2})=1$, and can then do some calculations.
+$a_k$ is not able to grow larger than 1, but $a_k < -1$ is still possible and will give oscillations. The worst case for $sin^2(\frac{k\pi\Delta x}{2})=1$, and can then do some calculations. To avoid this the following requirement has to be true. 
 !bt
 \begin{align*}
 \Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)\leq 2\\
@@ -191,7 +193,78 @@ Since $B<0$,the last term $-B\Delta t$ will be positive. Then there will be no p
 
 __3- Regn stabilitet for Forward Euler når B>0. Legg vekt på hva som er prinsippet for stabilitet.__
 
+Here the criteria (ref{eq:stab_crit}) can be used.
+!bt
+\begin{align*}
+|(a_k)^m| \leq& |a_k|^m\\
+\leq& \left(|1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})| + B\Delta t\right)\\
+\leq& \left(1+ B\Delta t\right)\\
+\leq& e^{ B m \Delta t} = e^{B t_m}
+\end{align*}
+!et
+where the inequality below is used
+!bt
+\begin{equation}
+(1+y)^m \leq e^{my},\hspace{8mm}m\geq0, y \geq -1
+\end{equation}
+!et
+This means that it will always fulfill the requirement
+
 __4. Anvend metoden i 3 på Backward Euler. Som sagt, tror jeg skjemaet alltid er stabilt mht "unormal" vekst, men du kan få oscillasjoner i Backward Euler for B>0.__
+The requirement in (ref{eq:stab_crit}) can be combined with the inequality above
+!bt
+\begin{align*}
+|(a_k)^m| \leq& e^{Bt_m}\\
+(1+B\Delta t)^m \leq& e^{Bt_m}\\
+\end{align*}
+!et
+Since $1+B\Delta t$ also fulfill the demands, this can be used as a criteria for the value of $a_k$
+!bt
+\begin{equation}
+|a_k| \leq 1+B\Delta t
+\end{equation}
+!et
+$a_k$ then need to be in the interval [-1-B $\Delta t$,1+B $\Delta t$].
+!bt
+\begin{equation}
+-1-B\Delta t \leq \frac{1}{1+\theta - B\Delta t } \leq 1+B\Delta t
+\end{equation}
+!et
+Where $\theta = \alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})$
+
+The first requirement is to be less than $1+B\Delta t$
+!bt
+\begin{align*}
+\frac{1}{1+\theta- B\Delta t } \leq& 1+B\Delta t\\
+1 \leq& (1+B\Delta t)(1+\theta- B\Delta t)\\
+1 \leq& 1+\theta + \theta B \Delta t - (B\Delta t)^2\\
+0 \leq& \theta(1 + B \Delta t) - (B\Delta t)^2\\
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \theta
+\end{align*}
+!et
+The same thing can be done for the lower boundary
+!bt
+\begin{align*}
+-(1+B\Delta t) \leq& \frac{1}{1+\theta- B\Delta t}\\ 
+-(1+B\Delta t)(1+\theta- B\Delta t) \leq& 1\\
+-1-\theta + B\Delta t-B\Delta t-\theta B\Delta t + (B\Delta t)^2 \leq& 1\\
+-\theta(1 + B\Delta t) + (B\Delta t)^2 \leq& 2\\
+-\theta \leq& \frac{2-(B\Delta t)^2}{1+B\Delta t} \\
+\frac{(B\Delta t)^2-2}{1+B\Delta t} \leq& \theta 
+\end{align*}
+!et
+Since the requirement for the upper limit is stricter($B>0$ and $\theta>0$), this can be used. Here $\theta$ can be replaced by the original constant.
+
+!bt
+\begin{align*}
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \theta\\
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})\\
+\frac{B^2\Delta t}{1+B \Delta t} \leq& \alpha\frac{4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})
+\end{align*}
+!et
+
+
+A couple of tests can be done. The value of $B\Delta t$ and $\theta$ can be sat to one. This should fulfill the requirement.
 
 
 

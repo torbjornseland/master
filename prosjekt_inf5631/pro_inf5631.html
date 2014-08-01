@@ -127,7 +127,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Jul 31, 2014</h4></center> <!-- date -->
+<center><h4>Aug 1, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -290,14 +290,16 @@ $$
 
 As required for the analytical solution \eqref{eq:st_ana_sol}, the same can be done for the numerical solution.
 $$
-\begin{align*}
-|(a_k)^m|\leq& e^{Bt_m}\\
-\end{align*}
+\begin{equation} \label{eq:stab_crit}
+|(a_k)^m|\leq e^{Bt_m}
+\end{equation}
 $$
 
 <h3>Five point TODO  <a name="___sec3"></a></h3>
 
-__0- Plot amplification factor.__<br />
+<b>0- Plot amplification factor.</b>
+
+<p>
 Plot amplification factor for the following ODE for Forward Euler and Backward Euler.
 $$
 \begin{equation}
@@ -345,7 +347,7 @@ a_k =& 1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) + B\D
 \end{align}
 $$
 
-Since \( B \) has sat to be negative, an new variable \( D \) can be introduced
+Since \( B \) is sat to be negative, a new variable \( D \) can be introduced
 $$
 \begin{equation} \label{eq:b_d}
 B = -D,\hspace{8mm} D>0
@@ -359,7 +361,7 @@ a_k =& 1-\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)
 \end{align}
 $$
 
-\( a_k \) is not able to grow larger than 1, but \( a_k < -1 \) is still possible and will give oscillations. To avoid this the following requirement has to be true. The worst case for \( sin^2(\frac{k\pi\Delta x}{2})=1 \), and can then do some calculations.
+\( a_k \) is not able to grow larger than 1, but \( a_k < -1 \) is still possible and will give oscillations. The worst case for \( sin^2(\frac{k\pi\Delta x}{2})=1 \), and can then do some calculations. To avoid this the following requirement has to be true. 
 $$
 \begin{align*}
 \Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)\leq 2\\
@@ -386,7 +388,88 @@ Since \( B<0 \),the last term \( -B\Delta t \) will be positive. Then there will
 <b>3- Regn stabilitet for Forward Euler n&#229;r B>0. Legg vekt p&#229; hva som er prinsippet for stabilitet.</b>
 
 <p>
+Here the criteria \eqref{eq:stab_crit} can be used.
+$$
+\begin{align*}
+|(a_k)^m| \leq& |a_k|^m\\
+\leq& \left(|1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})| + B\Delta t\right)\\
+\leq& \left(1+ B\Delta t\right)\\
+\leq& e^{ B m \Delta t} = e^{B t_m}
+\end{align*}
+$$
+
+where the inequality below is used
+$$
+\begin{equation}
+(1+y)^m \leq e^{my},\hspace{8mm}m\geq0, y \geq -1
+\end{equation}
+$$
+
+This means that it will always fulfill the requirement
+
+<p>
 <b>4. Anvend metoden i 3 p&#229; Backward Euler. Som sagt, tror jeg skjemaet alltid er stabilt mht "unormal" vekst, men du kan f&#229; oscillasjoner i Backward Euler for B>0.</b>
+The requirement in \eqref{eq:stab_crit} can be combined with the inequality above
+$$
+\begin{align*}
+|(a_k)^m| \leq& e^{Bt_m}\\
+(1+B\Delta t)^m \leq& e^{Bt_m}\\
+\end{align*}
+$$
+
+Since \( 1+B\Delta t \) also fulfill the demands, this can be used as a criteria for the value of \( a_k \)
+$$
+\begin{equation}
+|a_k| \leq 1+B\Delta t
+\end{equation}
+$$
+
+\( a_k \) then need to be in the interval [-1-B \( \Delta t \),1+B $\Delta t$].
+$$
+\begin{equation}
+-1-B\Delta t \leq \frac{1}{1+\theta - B\Delta t } \leq 1+B\Delta t
+\end{equation}
+$$
+
+Where \( \theta = \alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) \)
+
+<p>
+The first requirement is to be less than \( 1+B\Delta t \)
+$$
+\begin{align*}
+\frac{1}{1+\theta- B\Delta t } \leq& 1+B\Delta t\\
+1 \leq& (1+B\Delta t)(1+\theta- B\Delta t)\\
+1 \leq& 1+\theta + \theta B \Delta t - (B\Delta t)^2\\
+0 \leq& \theta(1 + B \Delta t) - (B\Delta t)^2\\
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \theta
+\end{align*}
+$$
+
+The same thing can be done for the lower boundary
+$$
+\begin{align*}
+-(1+B\Delta t) \leq& \frac{1}{1+\theta- B\Delta t}\\ 
+-(1+B\Delta t)(1+\theta- B\Delta t) \leq& 1\\
+-1-\theta + B\Delta t-B\Delta t-\theta B\Delta t + (B\Delta t)^2 \leq& 1\\
+-\theta(1 + B\Delta t) + (B\Delta t)^2 \leq& 2\\
+-\theta \leq& \frac{2-(B\Delta t)^2}{1+B\Delta t} \\
+\frac{(B\Delta t)^2-2}{1+B\Delta t} \leq& \theta 
+\end{align*}
+$$
+
+Since the requirement for the upper limit is stricter(\( B>0 \) and \( \theta>0 \)), this can be used. Here \( \theta \) can be replaced by the original constant.
+
+$$
+\begin{align*}
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \theta\\
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})\\
+\frac{B^2\Delta t}{1+B \Delta t} \leq& \alpha\frac{4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})
+\end{align*}
+$$
+
+
+<p>
+A couple of tests can be done. The value of \( B\Delta t \) and \( \theta \) can be sat to one. This should fulfill the requirement.
 
 <p>
 Since the amplification factor, \( a_k \), has to be in the interval [-1,1], the denominator has to be [ \( -\infty \),-1] or [1, \( \infty \) ]. This means that one of the two terms under need to be fulfilled.
