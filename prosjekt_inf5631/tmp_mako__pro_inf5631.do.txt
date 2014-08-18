@@ -10,9 +10,9 @@ TOC: on
 The efficiency of computers has increased vastly over the last few decades, giving scientists and engineers new tools to describe the dynamics of the world around us. It has also affected the way biological processes are viewed and described. This project will focus on numerical methods to solve the reaction diffusion equation which is described below. Reaction-diffusion systems explain how the concentration of one or more substances changes under the influence of the local chemical reactions, here $f(u)$ and diffusion which cause a spatial dispersion. These systems are applied in fields as chemistry, biology, geology, physics and ecology. 
 !bt
 \begin{align} label{eq:reaction_diffusion}
-u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
-u(x,0) =& I(x)\notag \\
-u(0,t)=& 0\notag \\
+u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\ 
+u(x,0) =& I(x)\notag \\ 
+u(0,t)=& 0\notag \\ 
 u(L,t)=& 0\notag
 \end{align}
 !et
@@ -56,7 +56,7 @@ The next thing that can be done is to divide both sides with the identity $T_kX_
 The constant is sat up with a minus sign. This is done considering the next step. The equations can now be set up as a set of linear equations, here with two ordinary equations. The idea is to find $\lambda$. 
 !bt
 \begin{align*}
-T_k'+\lambda T_k = 0\\
+T_k'+\lambda T_k = 0\\ 
 X_k''+\frac{\beta + \lambda}{\alpha} = 0
 \end{align*}
 !et
@@ -69,7 +69,7 @@ X_k(0)=X_k(L) = 0
 The expression now need to fulfill these terms. The spatial equation in the linear system can be used. With some calculations $\lambda$ can be found, this can be inserted in the spatial function.  
 !bt
 \begin{align*}
-\lambda = \frac{\pi k}{L}\alpha-B\\
+\lambda = \frac{\pi k}{L}\alpha-B\\ 
 X_k(x) = \sin(\frac{\pi k}{L}x)
 \end{align*}
 !et
@@ -77,20 +77,20 @@ X_k(x) = \sin(\frac{\pi k}{L}x)
 Since $\lambda$ is found, the temporal equation in the linear system can be found,
 !bt
 \begin{align*}
-T_k'+ \lambda T =& 0\\
+T_k'+ \lambda T =& 0\\ 
 T_k =& e^{-\lambda t} = e^{(B-\alpha \frac{\pi k}{L}^2)t}
 \end{align*}
 !et
 For all $k$, the following requirement must be fulfilled
 !bt
 \begin{equation} label{eq:st_ana_sol}
-|T_k(t)|\leq e^{Bt}, \hspace{8 mm}t\geq 0\\
+|T_k(t)|\leq e^{Bt}, \hspace{8 mm}t\geq 0\\ 
 \end{equation}
 !et
 The eq(ref{eq:reac_stab}) can for all boundary conditions be expressed as
 !bt
 \begin{align*}
-u_k(x,t) = T_k(t)e^{ik\pi x}\\
+u_k(x,t) = T_k(t)e^{ik\pi x}\\ 
 u_k(x,t) = e^{(B-\alpha \frac{\pi k}{L}^2)t}e^{ik\pi x}
 \end{align*}
 !et
@@ -109,7 +109,7 @@ v^m_j = (a_k)^me^{ik\pi x}
 The equation can be expressed
 !bt
 \begin{align} label{eq:a_k}
-\frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\
+\frac{1-a_k^{-1}}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\ 
 a_k =& \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }
 \end{align}
 !et
@@ -132,18 +132,18 @@ u' = -au, \hspace{8mm} a>0
 Forward Euler
 !bt
 \begin{align*}
-\frac{u^{n+1}-u^n}{\Delta t} =& -au^n\\
-u^{n+1}=& (1-\Delta t a)u^n\\
-u^{n}=& (1-\Delta t a)^nu^0\\
+\frac{u^{n+1}-u^n}{\Delta t} =& -au^n\\ 
+u^{n+1}=& (1-\Delta t a)u^n\\ 
+u^{n}=& (1-\Delta t a)^nu^0\\ 
 u^{n}=& A_{fe}^nu^0
 \end{align*}
 !et
 Backward Euler
 !bt
 \begin{align*}
-\frac{u^{n}-u^{n+1}}{\Delta t} =& -au^n\\
-u^{n}=& \frac{u^n}{1-\Delta t a}\\
-u^{n}=& \left(\frac{1}{1-\Delta t a}\right)^nu^0\\
+\frac{u^{n}-u^{n+1}}{\Delta t} =& au^n\\ 
+u^{n}=& \frac{u^n}{1+\Delta t a}\\ 
+u^{n}=& \left(\frac{1}{1+\Delta t a}\right)^nu^0\\ 
 u^{n}=& A_{be}^nu^0
 \end{align*}
 !et
@@ -155,7 +155,7 @@ __1-Find stability for explicit Forward Euler for reaction diffusion when B<0 an
 Use the same idea as for Backward Euler in the section above. The equation can then be expressed.
 !bt
 \begin{align} label{eq:a_k_forward}
-\frac{a_k-1}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\
+\frac{a_k-1}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\ 
 a_k =& 1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) + B\Delta t 
 \end{align}
 !et
@@ -174,8 +174,8 @@ a_k =& 1-\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)
 $a_k$ is not able to grow larger than 1, but $a_k < -1$ is still possible and will give oscillations. The worst case for $sin^2(\frac{k\pi\Delta x}{2})=1$. To avoid oscillations the following requirement has to be true. 
 !bt
 \begin{align*}
-\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)\leq 2\\
-\Delta t(\frac{\alpha 4}{\Delta x^2}+ D)\leq 2\\
+\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)\leq 2\\ 
+\Delta t(\frac{\alpha 4}{\Delta x^2}+ D)\leq 2\\ 
 \Delta t \leq \frac{2}{(\frac{4\alpha }{\Delta x^2}+ D)}
 \end{align*}
 !et
@@ -185,7 +185,7 @@ __2- Find stability for Backward euler when B<0 and $\alpha>0$.__
 The equation (ref{eq:b_d}) can be used here
 !bt
 \begin{align*} 
-a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }\\
+a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) - B\Delta t }\\ 
 a_k = \frac{1}{1+\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) + D\Delta t }
 \end{align*}
 !et
@@ -196,9 +196,9 @@ __3- Find stability for Forward Euler when B>0. Use the principle for stability.
 Here the criteria (ref{eq:stab_crit}) can be used.
 !bt
 \begin{align*}
-|(a_k)^m| \leq& |a_k|^m\\
-\leq& \left(|1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})| + B\Delta t\right)^m\\
-\leq& \left(1+ B\Delta t\right)^m\\
+|(a_k)^m| \leq& |a_k|^m\\ 
+\leq& \left(|1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})| + B\Delta t\right)^m\\ 
+\leq& \left(1+ B\Delta t\right)^m\\ 
 \leq& e^{ B m \Delta t} = e^{B t_m}
 \end{align*}
 !et
@@ -214,8 +214,8 @@ __4. Use the same principle for stability for Backward Euler.__
 The requirement in (ref{eq:stab_crit}) can be combined with the inequality equation (ref{eq:ine})
 !bt
 \begin{align*}
-|(a_k)^m| \leq& e^{Bt_m}\\
-(1+B\Delta t)^m \leq& e^{Bt_m}\\
+|(a_k)^m| \leq& e^{Bt_m}\\ 
+(1+B\Delta t)^m \leq& e^{Bt_m}\\ 
 \end{align*}
 !et
 Since $1+B\Delta t$ also fulfill the demands, this can be used as a criteria for the value of $a_k$
@@ -235,10 +235,10 @@ Where $\theta = \alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}
 The first requirement is to be less than $1+B\Delta t$
 !bt
 \begin{align*}
-\frac{1}{1+\theta- B\Delta t } \leq& 1+B\Delta t\\
-1 \leq& (1+B\Delta t)(1+\theta- B\Delta t)\\
-1 \leq& 1+\theta + \theta B \Delta t - (B\Delta t)^2\\
-0 \leq& \theta(1 + B \Delta t) - (B\Delta t)^2\\
+\frac{1}{1+\theta- B\Delta t } \leq& 1+B\Delta t\\ 
+1 \leq& (1+B\Delta t)(1+\theta- B\Delta t)\\ 
+1 \leq& 1+\theta + \theta B \Delta t - (B\Delta t)^2\\ 
+0 \leq& \theta(1 + B \Delta t) - (B\Delta t)^2\\ 
 \frac{(B\Delta t)^2}{1+B \Delta t} \leq& \theta
 \end{align*}
 !et
@@ -246,10 +246,10 @@ The same thing can be done for the lower boundary
 !bt
 \begin{align*}
 -(1+B\Delta t) \leq& \frac{1}{1+\theta- B\Delta t}\\ 
--(1+B\Delta t)(1+\theta- B\Delta t) \leq& 1\\
--1-\theta + B\Delta t-B\Delta t-\theta B\Delta t + (B\Delta t)^2 \leq& 1\\
--\theta(1 + B\Delta t) + (B\Delta t)^2 \leq& 2\\
--\theta \leq& \frac{2-(B\Delta t)^2}{1+B\Delta t} \\
+-(1+B\Delta t)(1+\theta- B\Delta t) \leq& 1\\ 
+-1-\theta + B\Delta t-B\Delta t-\theta B\Delta t + (B\Delta t)^2 \leq& 1\\ 
+-\theta(1 + B\Delta t) + (B\Delta t)^2 \leq& 2\\ 
+-\theta \leq& \frac{2-(B\Delta t)^2}{1+B\Delta t} \\ 
 \frac{(B\Delta t)^2-2}{1+B\Delta t} \leq& \theta 
 \end{align*}
 !et
@@ -257,19 +257,19 @@ Since the requirement for the upper limit is stricter($B>0$ and $\theta>0$), thi
 
 !bt
 \begin{align*}
-\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \theta\\
-\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})\\
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \theta\\ 
+\frac{(B\Delta t)^2}{1+B \Delta t} \leq& \alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})\\ 
 \frac{B^2\Delta t}{1+B \Delta t} \leq& \alpha\frac{4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})
 \end{align*}
 !et
 
-[Torbjorn: Dette er de 5 punktene du anbefalte meg å gjøre før ferien. Kan dette se ut som en mulig løsning, HP?]
+[Torbjorn: Kan dette se ut som en mulig løsning, HP?]
 
-
+<%doc>
 Since the amplification factor, $a_k$, has to be in the interval [-1,1], the denominator has to be [ $-\infty$,-1] or [1, $\infty$ ]. This means that one of the two terms under need to be fulfilled.
 !bt
 \begin{align*}
-\alpha \frac{4}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)\geq& B,\hspace{8mm} a_k =  (0,1]\\
+\alpha \frac{4}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)\geq& B,\hspace{8mm} a_k =  (0,1]\\ 
 2 + \alpha \frac{4\Delta t}{\Delta x^2}\sin^2\left(\frac{k\Delta x}{2}\right)\leq& \Delta t B,\hspace{8mm} a_k = [-1,0)
 \end{align*}
 !et
@@ -278,18 +278,18 @@ Here it seems that the worst case is when $\sin^2(\frac{k\Delta x}{L}) = 1$.  Th
 [Torbjorn: Er usikker på om disse antagelsene er ok å gjøre for begge likningene?]
 !bt
 \begin{align*}
-B(u)=& ru(1-\frac{u}{M})\\
-B'(u)=& r(1-\frac{2u}{M})\\
-r =& 2r\frac{u}{M}\\
-\frac{M}{2} =& u\\
-B(\frac{M}{2})=& r\frac{M}{2}(1-\frac{\frac{M}{2}}{M})\\
+B(u)=& ru(1-\frac{u}{M})\\ 
+B'(u)=& r(1-\frac{2u}{M})\\ 
+r =& 2r\frac{u}{M}\\ 
+\frac{M}{2} =& u\\ 
+B(\frac{M}{2})=& r\frac{M}{2}(1-\frac{\frac{M}{2}}{M})\\ 
 =& \frac{rM}{4}
 \end{align*}
 !et
 Lets look at the requirement for $a_k = (0,1]$. With the replacement for $\sin$, the equation can be written
 !bt
 \begin{align*} label{eq:stab_dx}
-\alpha\frac{4}{\Delta x^2} \geq& \frac{rM}{4}\\
+\alpha\frac{4}{\Delta x^2} \geq& \frac{rM}{4}\\ 
 \sqrt{\alpha\frac{16}{r M}} \geq& \Delta x
 \end{align*}
 !et
@@ -297,8 +297,8 @@ Lets look at the requirement for $a_k = (0,1]$. With the replacement for $\sin$,
 The same can be done for the next term,
 !bt
 \begin{align*}
-2 + \alpha \frac{4\Delta t}{\Delta x^2}\leq& \Delta t \frac{rM}{4}\\
-2 \leq& \Delta t (\frac{rM}{4} - \alpha \frac{4}{\Delta x^2})\\
+2 + \alpha \frac{4\Delta t}{\Delta x^2}\leq& \Delta t \frac{rM}{4}\\ 
+2 \leq& \Delta t (\frac{rM}{4} - \alpha \frac{4}{\Delta x^2})\\ 
 \frac{2}{(\frac{rM}{4} - \alpha \frac{4}{\Delta x^2})} \leq& \Delta t 
 \end{align*}
 !et
@@ -321,8 +321,8 @@ x-\frac{x^3}{6}+\frac{x^5}{120}+O(x^6)
 Then $sin(\Delta x) = \Delta x$ when $\Delta x<<1$. The equation(ref{eq:stab_dx}) can then be written.
 !bt
 \begin{align*} 
-\alpha\frac{4}{\Delta x^2}\left(\frac{k\Delta x}{2}\right)^2 \geq B\\
-\alpha\frac{4}{\Delta x^2}\frac{k^2\Delta x^2}{4}\geq B\\
+\alpha\frac{4}{\Delta x^2}\left(\frac{k\Delta x}{2}\right)^2 \geq B\\ 
+\alpha\frac{4}{\Delta x^2}\frac{k^2\Delta x^2}{4}\geq B\\ 
 \alpha k^2\geq B
 \end{align*}
 !et
@@ -330,7 +330,7 @@ $\alpha$ and $k$ has a large impact when $\Delta x$ is small. A simulation is do
 
 FIGURE:[images/Stability.png, height=400 width=500 frac=0.8] dx towards 0
 
-
+<%doc/>
 ===== Travelling wavefront =====
 === Motivation for the reaction-diffusion equation ===
 There is a vast number of examples from the biology where an important reason to a developmental process seems to be the appearance of a travelling wave of chemical concentration[MB,I,437]. An example from the humans interaction, is the progressing wave of an epidemic. Here the spread of rabies epizootic through Europe is an example. 
@@ -426,8 +426,8 @@ different values of $f(u)$.
 
 !bt
 \begin{align*}
-u_t =& f(u)\\
-\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+u_t =& f(u)\\ 
+\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\ 
 u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
 \end{align*}
 !et
@@ -444,7 +444,7 @@ f(u) = ru(1-\frac{u}{M})
 We can then replace $f(u)$ by the reaction term
 !bt
 \begin{align*}
-u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{M}) =& u^{n-1}_i\\
+u^n_i-\Delta t *ru^n_i(1-\frac{u^n_i}{M}) =& u^{n-1}_i\\ 
 u^n_i(1-\Delta t r(1-\frac{u^n_i}{M})) =& u^{n-1}_i
 \end{align*}
 !et
@@ -470,7 +470,7 @@ The new equation will be
 
 !bt
 \begin{align*}
-	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{M}))=& u^{n-1}_i\\
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{M}))=& u^{n-1}_i\\ 
 \end{align*}
 !et
 
@@ -516,10 +516,10 @@ u_c = M,\hspace{8 mm} t_c = \frac{1}{r}
 Then equation (ref{eq:rec_term}) is used where $f(u)$ is the FK.
 !bt
 \begin{align*}
-\frac{\partial u}{\partial t} = ru(1-\frac{u}{M})\\
-\frac{\partial (u_c\bar u)}{\partial \bar t}\frac{\partial \bar t}{\partial t} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
-u_c\frac{\partial \bar u}{\partial \bar t}\frac{1}{t_c} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
-\frac{\partial \bar u}{\partial \bar t} = t_c r\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial u}{\partial t} = ru(1-\frac{u}{M})\\ 
+\frac{\partial (u_c\bar u)}{\partial \bar t}\frac{\partial \bar t}{\partial t} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\ 
+u_c\frac{\partial \bar u}{\partial \bar t}\frac{1}{t_c} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\ 
+\frac{\partial \bar u}{\partial \bar t} = t_c r\bar u(1-\frac{u_c\bar u}{M})\\ 
 \frac{\partial \bar u}{\partial \bar t} = \bar u(1-\bar u)
 \end{align*}
 !et
@@ -552,7 +552,7 @@ Backward Euler is used for the time discrete and Crank Nicolson for the spatial
 discrete. 
 !bt
 \begin{align*}
-	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\
+	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\ 
 	u^{n-1}_i=&u^n_i- \frac{\Delta t}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)
 \end{align*}
 !et
@@ -565,15 +565,15 @@ A =
 A_{0,0} & A_{0,1} & 0
 &\cdots &
 \cdots & \cdots & \cdots &
-\cdots & 0 \\
-A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
+\cdots & 0 \\ 
+A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\ 
 0 & A_{2,1} & A_{2,2} & A_{2,3} &
-\ddots & &  &  & \vdots \\
-\vdots & \ddots &  & \ddots & \ddots & 0 &  & & \vdots \\
-\vdots &  & \ddots & \ddots & \ddots & \ddots & \ddots & & \vdots \\
-\vdots & &  & 0 & A_{i,i-1} & A_{i,i} & A_{i,i+1} & \ddots & \vdots \\
-\vdots & & &  & \ddots & \ddots & \ddots &\ddots  & 0 \\
-\vdots & & & &  &\ddots  & \ddots &\ddots  & A_{N_x-1,N_x} \\
+\ddots & &  &  & \vdots \\ 
+\vdots & \ddots &  & \ddots & \ddots & 0 &  & & \vdots \\ 
+\vdots &  & \ddots & \ddots & \ddots & \ddots & \ddots & & \vdots \\ 
+\vdots & &  & 0 & A_{i,i-1} & A_{i,i} & A_{i,i+1} & \ddots & \vdots \\ 
+\vdots & & &  & \ddots & \ddots & \ddots &\ddots  & 0 \\ 
+\vdots & & & &  &\ddots  & \ddots &\ddots  & A_{N_x-1,N_x} \\ 
 0 &\cdots & \cdots &\cdots & \cdots & \cdots  & 0 & A_{N_x,N_x-1} & A_{N_x,N_x}
 \end{array}
 \right)
@@ -583,8 +583,8 @@ A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
 The matrix $A$ will be tridiagonal with the values.
 !bt
 \begin{align} label{eq:matrix_spatial}
-A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\ 
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\ 
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 \end{align}                               
 !et
@@ -593,17 +593,17 @@ In the cases where the function $\alpha(u)$ contains $u$, it will provide a non-
 The boundary conditions are specified to be zero. Implementing these boundary conditions requires changing the following terms in the matrix, A.
 !bt
 \begin{align*}
-A_{0,0} &= 1,\\
-A_{0,1} &= 0,\\
-A_{N_x,N_x-1} &= 0,\\
+A_{0,0} &= 1,\\ 
+A_{0,1} &= 0,\\ 
+A_{N_x,N_x-1} &= 0,\\ 
 A_{N_x,N_x} &= 1
 \end{align*}
 !et
 The b array with known values will be
 !bt
 \begin{align*}
-b_0 &= 0,\\
-b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\
+b_0 &= 0,\\ 
+b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\ 
 b_{N_x} &= 0 
 \end{align*}
 !et
@@ -619,9 +619,9 @@ The matrix from(ref{eq:matrix_spatial}) and insert the function for $\alpha(u)$.
 the matrix:
 !bt
 \begin{align*} label{eq:matrix_constant}
-A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
-A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\ 
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\ 
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\ 
 \end{align*}                               
 !et
 The movies under represents different values for $k$
@@ -638,7 +638,7 @@ All $\alpha$'s that include $u$ will give a non-linear equation.Picard Iteration
 === $\alpha(u)$ as a linear function ===
 !bt
 \begin{equation}
-	\alpha(u) = u\\
+	\alpha(u) = u\\ 
 \end{equation}
 !et
 
@@ -653,16 +653,16 @@ can be used to get values from $u$.
 Then $u$ can be inserted in the matrix(ref{eq:matrix_spatial}).
 !bt
 \begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i}+u_{i-1})\\
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\ 
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i}+u_{i-1})\\ 
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i+1}+u_{i})
 \end{align*}                               
 !et
 This gives a nonlinear problem. $u$ can here be replaced by $u\_$.
 !bt
 \begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\ 
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\ 
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
 \end{align*}                               
 !et
@@ -683,7 +683,7 @@ An important aspect to be aware of when working with diffusion equation, is that
 Since CN in used one time on this, it can be used again. This will give integer numbers in spatial direction for $u$.
 !bt
 \begin{align*}
-\alpha(u_{i+\frac{1}{2}}) =& \left|\nabla(u_{i+\frac{1}{2}})\right|\\
+\alpha(u_{i+\frac{1}{2}}) =& \left|\nabla(u_{i+\frac{1}{2}})\right|\\ 
 \alpha(u_{i+\frac{1}{2}}) =& \left|\frac{u_{i+1}-u_i}{\Delta x}\right|
 \end{align*}
 !et
@@ -691,16 +691,16 @@ The same can be done for $\alpha_{i-\frac{1}{2}}$. Both solutions can be inserte
 the matrix A.
 !bt
 \begin{align*} 
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|+ \left|\frac{u_{i+1}-u_i}{\Delta x}\right|)\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|)\\
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|+ \left|\frac{u_{i+1}-u_i}{\Delta x}\right|)\\ 
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|)\\ 
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\right|)
 \end{align*}                               
 !et
 To use this with Picard Iteration, $u\$ need to replace $u$. $\Delta x$ can be moved out of the fraction, because $\Delta x > 0$.
 !bt
 \begin{align} label{eq:matrix_absolute}
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|)\notag\\
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\ 
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|)\notag\\ 
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)
 \end{align}                               
 !et
@@ -720,8 +720,8 @@ The first simulation starts with a discontinuity in each directions and smoothes
 This equation is solved in the exact same manner as the equation above. The matrix(ref{eq:matrix_absolute}) A from the section above can be used. A power, $m$, can be added in the matrix.
 !bt
 \begin{align} label{eq:matrix_absolute}
-A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\ 
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\ 
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)
 \end{align}                               
 !et
@@ -735,8 +735,8 @@ Here the length of the simulation, $T$, is sat to be quite large. This is to sho
 The combination of the reaction part and the spatial part gives the reaction-diffusion equation(ref{eq:reaction_diffusion}). This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. Since FK is the only equation that has been studied in the reaction term,$f(u)$, this can be inserted in the matrix.
 !bt
 \begin{align} label{eq:matrix_reaction_diffusion}
-A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
-A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\ 
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\ 
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 \end{align}                               
 !et
@@ -827,7 +827,7 @@ $u\_$. Thus only keeping the linear part.
 !bt
 \begin{align*}
 	F(u) &= F(u_{-}) + F'(u_{-})(u - u_{-}) + \frac{1}{2}F''(u_{-})(u-u_{-})^2
-	+\cdots  \\
+	+\cdots  \\ 
 	& \approx F(u_{-}) + F'(u_{-})(u - u_{-}) = \hat F(u)
 \end{align*}
 !et
@@ -862,19 +862,19 @@ J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\part
 The method demands a lot of calculating. Every part of $J_{i,i}$ will be computed under, as an example. The same principles are used for $J_{i,i-1}$ and $J_{i,i+1}$.
 !bt
 \begin{align*}
-\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
-\frac{\partial A_{i,i}}{\partial u_i}u_i=&\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
-A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\\
-\frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}=&-\frac{\Delta t}{\Delta x^2}(\alpha'(u_i)u_{i+1})\\
-- \frac{\partial b_i}{\partial u_{i}}=& -b'(u_i)\\
+\frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\ 
+\frac{\partial A_{i,i}}{\partial u_i}u_i=&\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\ 
+A_{i,i}=&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))\\ 
+\frac{\partial A_{i,i+1}}{\partial u_i}u_{i+1}=&-\frac{\Delta t}{\Delta x^2}(\alpha'(u_i)u_{i+1})\\ 
+- \frac{\partial b_i}{\partial u_{i}}=& -b'(u_i)\\ 
 \end{align*}
 !et
 This gives the matrix
 !bt
 \begin{align*}
-J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\
-+&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i+1})-b'(u_i)\\
-J_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i-1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i-1})+\alpha(u_i))+\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i})\\
+J_{i,i} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})+\frac{\Delta t}{2\Delta x^2}(2\alpha'(u_i)u_{i})\\ 
++&1+\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i+1})+2\alpha(u_i)+\alpha(u_{i-1}))-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i+1})-b'(u_i)\\ 
+J_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i-1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_{i-1})+\alpha(u_i))+\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i-1})u_{i})\\ 
 J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i+1})-\frac{\Delta t}{2\Delta x^2}(\alpha(u_i)+\alpha(u_{i+1}))
 \end{align*}
 !et

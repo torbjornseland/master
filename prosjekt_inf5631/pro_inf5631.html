@@ -45,7 +45,7 @@ Automatically generated HTML file from Doconce source
                '___sec0'),
               (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
               (' Stability ', 3, None, '___sec2'),
-              (' Five point TODO ', 3, None, '___sec3'),
+              (' Five point TODO-HPL ', 3, None, '___sec3'),
               (' Travelling wavefront ', 2, None, '___sec4'),
               (' Motivation for the reaction-diffusion equation ',
                3,
@@ -127,14 +127,14 @@ MathJax.Hub.Config({
 <center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
 <center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <p>
-<center><h4>Aug 1, 2014</h4></center> <!-- date -->
+<center><h4>Aug 18, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
 <a href="#___sec0"> Density-Dependent Diffusion- Reaction Diffusion Model </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Fisher-Kolmogoroff equation </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Stability </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Five point TODO </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Five point TODO-HPL </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Travelling wavefront </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Motivation for the reaction-diffusion equation </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> The analytical solution </a><br>
@@ -295,7 +295,7 @@ $$
 \end{equation}
 $$
 
-<h3>Five point TODO  <a name="___sec3"></a></h3>
+<h3>Five point TODO-HPL  <a name="___sec3"></a></h3>
 
 <b>0- Plot amplification factor.</b>
 
@@ -320,9 +320,9 @@ $$
 Backward Euler
 $$
 \begin{align*}
-\frac{u^{n}-u^{n+1}}{\Delta t} =& au^n\\
-u^{n}=& \frac{u^n}{1+\Delta t a}\\
-u^{n}=& \left(\frac{1}{1+\Delta t a}\right)^nu^0\\
+\frac{u^{n}-u^{n+1}}{\Delta t} =& -au^n\\
+u^{n}=& \frac{u^n}{1-\Delta t a}\\
+u^{n}=& \left(\frac{1}{1-\Delta t a}\right)^nu^0\\
 u^{n}=& A_{be}^nu^0
 \end{align*}
 $$
@@ -361,7 +361,7 @@ a_k =& 1-\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)
 \end{align}
 $$
 
-\( a_k \) is not able to grow larger than 1, but \( a_k < -1 \) is still possible and will give oscillations. The worst case for \( sin^2(\frac{k\pi\Delta x}{2})=1 \), and can then do some calculations. To avoid this the following requirement has to be true. 
+\( a_k \) is not able to grow larger than 1, but \( a_k < -1 \) is still possible and will give oscillations. The worst case for \( sin^2(\frac{k\pi\Delta x}{2})=1 \). To avoid oscillations the following requirement has to be true. 
 $$
 \begin{align*}
 \Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)\leq 2\\
@@ -373,7 +373,7 @@ $$
 This gives a relation between \( \Delta t \) and \( \Delta x,\alpha,B \).
 
 <p>
-<b>2- Same for Backward Euler.</b>
+<b>2- Find stability for Backward euler when B<0 and \( \alpha>0 \).</b>
 The equation \eqref{eq:b_d} can be used here
 $$
 \begin{align*} 
@@ -385,22 +385,22 @@ $$
 Since \( B<0 \),the last term \( -B\Delta t \) will be positive. Then there will be no problem with the stability criterium, because \( a_k \) will always be in the inteval (0,1].
 
 <p>
-<b>3- Regn stabilitet for Forward Euler n&#229;r B>0. Legg vekt p&#229; hva som er prinsippet for stabilitet.</b>
+<b>3- Find stability for Forward Euler when B>0. Use the principle for stability.</b>
 
 <p>
 Here the criteria \eqref{eq:stab_crit} can be used.
 $$
 \begin{align*}
 |(a_k)^m| \leq& |a_k|^m\\
-\leq& \left(|1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})| + B\Delta t\right)\\
-\leq& \left(1+ B\Delta t\right)\\
+\leq& \left(|1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})| + B\Delta t\right)^m\\
+\leq& \left(1+ B\Delta t\right)^m\\
 \leq& e^{ B m \Delta t} = e^{B t_m}
 \end{align*}
 $$
 
 where the inequality below is used
 $$
-\begin{equation}
+\begin{equation} \label{eq:ine}
 (1+y)^m \leq e^{my},\hspace{8mm}m\geq0, y \geq -1
 \end{equation}
 $$
@@ -408,8 +408,8 @@ $$
 This means that it will always fulfill the requirement
 
 <p>
-<b>4. Anvend metoden i 3 p&#229; Backward Euler. Som sagt, tror jeg skjemaet alltid er stabilt mht "unormal" vekst, men du kan f&#229; oscillasjoner i Backward Euler for B>0.</b>
-The requirement in \eqref{eq:stab_crit} can be combined with the inequality above
+<b>4. Use the same principle for stability for Backward Euler.</b>
+The requirement in \eqref{eq:stab_crit} can be combined with the inequality equation \eqref{eq:ine}
 $$
 \begin{align*}
 |(a_k)^m| \leq& e^{Bt_m}\\
@@ -424,7 +424,7 @@ $$
 \end{equation}
 $$
 
-\( a_k \) then need to be in the interval [-1-B \( \Delta t \),1+B $\Delta t$].
+\( a_k \) then need to be in the interval [-1-B \( \Delta t \),1+B \( \Delta t \) ].
 $$
 \begin{equation}
 -1-B\Delta t \leq \frac{1}{1+\theta - B\Delta t } \leq 1+B\Delta t
@@ -469,7 +469,11 @@ $$
 
 
 <p>
-A couple of tests can be done. The value of \( B\Delta t \) and \( \theta \) can be sat to one. This should fulfill the requirement.
+
+<!-- begin inline comment -->
+<font color="red">[<b>Torbjorn 1</b>: <em>Dette er de 5 punktene du anbefalte meg &#229; gj&#248;re f&#248;r ferien. Kan dette se ut som en mulig l&#248;sning, HP?</em>]</font>
+<!-- end inline comment -->
+
 
 <p>
 Since the amplification factor, \( a_k \), has to be in the interval [-1,1], the denominator has to be [ \( -\infty \),-1] or [1, \( \infty \) ]. This means that one of the two terms under need to be fulfilled.
@@ -485,7 +489,7 @@ Here it seems that the worst case is when \( \sin^2(\frac{k\Delta x}{L}) = 1 \).
 <p>
 
 <!-- begin inline comment -->
-<font color="red">[<b>Torbjorn 1</b>: <em>Er usikker p&#229; om disse antagelsene er ok &#229; gj&#248;re for begge likningene?</em>]</font>
+<font color="red">[<b>Torbjorn 2</b>: <em>Er usikker p&#229; om disse antagelsene er ok &#229; gj&#248;re for begge likningene?</em>]</font>
 <!-- end inline comment -->
 
 $$
@@ -509,7 +513,7 @@ $$
 
 
 <!-- begin inline comment -->
-<font color="red">[<b>Torbjorn 2</b>: <em>Dette virker veldig rart??</em>]</font>
+<font color="red">[<b>Torbjorn 3</b>: <em>Dette virker veldig rart??</em>]</font>
 <!-- end inline comment -->
 <br />
 The same can be done for the next term,
@@ -523,7 +527,7 @@ $$
 
 
 <!-- begin inline comment -->
-<font color="red">[<b>Torbjorn 3</b>: <em>Her har jeg forel&#248;big ikke designet noen eksperimenter, fordi dette ser helt rart ut. Klarer ikke &#229; skj&#248;nne hvor jeg har feil. </em>]</font>
+<font color="red">[<b>Torbjorn 4</b>: <em>Her har jeg forel&#248;big ikke designet noen eksperimenter, fordi dette ser helt rart ut. Klarer ikke &#229; skj&#248;nne hvor jeg har feil. </em>]</font>
 <!-- end inline comment -->
 
 
