@@ -84,7 +84,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Jul 3, 2014</h4></center> <!-- date -->
+<center><h4>Aug 19, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -171,7 +171,47 @@ R_0 = \frac{rS_0}{a}
 \end{equation}
 $$
 
-If \( R_0 > 1 \) it will cause an epidemic reaction. This parameter is crucial in the understanding with the work with the disease. To be able to keep \( R_0 < 1 \) will prevent a dispersion. Global vaccination programs are an effective way to get control. Smallpox is an example on a disease that has been close to eradicating around the world. This is caused because of the reduction of Susceptible. But there is always a small chance for side effects when using vaccination. And therefore some people choose to skip it. This is quite critical for the fight of total eradication. Not only is this a big risk the specific person, but it also increase the number of Susceptible 
+If \( R_0 > 1 \) it will cause an epidemic reaction. This parameter is crucial in the understanding with the work with the disease. To be able to keep \( R_0 < 1 \) will prevent a dispersion. Global vaccination programs are an effective way to get control. Smallpox is an example on a disease that has been close to eradicating around the world. This is caused because of the reduction of Susceptible. But there is always a small chance for side effects when using vaccination. And therefore some people choose to skip it. This is quite critical for the fight of total eradication. Not only is it a big risk for the specific person, but it also increase the number of Susceptible. An important thing to remember is that an epidemic situation can quickly grow again if the reproduction rate reaches the threshold
+<br />
+<br />
+Some analytical studies can be done on the simple model by using \eqref{eq:SIR_model}.
+$$
+\begin{equation} 
+\frac{dI}{dS} = -\frac{(rS-a)I}{rSI} = -1 + \frac{\rho}{S},\hspace{8mm}\rho=\frac{a}{r}, (I\neq0).
+\end{equation}
+$$
+
+The singularities will all lie on the I=0 axis. This equation can be integrated and will then give phase plane trajectories in the (I,S) plane. This can be seen in the figure above.
+$$
+\begin{equation} \label{eq:constant}
+I+S-\rho \ln S = constant = I_0 + S_0 - \rho \ln S_0
+\end{equation}
+$$
+
+An observation is that all initial values satisfy \( I_0+S_0=N \) since \( R(0) = 0 \). This will change when \( t>0 \). If a disease appear it would be important to know the severity of the disease, and also if it can develops to an epidemic. Therefore the maximum value of I,$I_{max}$ which occurs when \( S=\rho \). At this point, \( \frac{dI}{dt}=0 \). This can be found by using \eqref{eq:constant}
+$$
+\begin{align*}
+I+S-\rho \ln S =& I_0 + S_0 - \rho \ln S_0\\
+I_{max}+\rho-\rho \ln \rho =& I_0 + S_0 - \rho \ln S_0\\
+I_{max}=&- \rho+\rho \ln \rho + I_0 + S_0 - \rho \ln S_0\\
+I_{max}=&N - \rho + \rho \ln\frac{\rho}{S_0}\\
+\end{align*}
+$$
+
+The trajectory in the figure above shows quite clear the difference between \( S_0 > \rho \) and \( S_0< \rho \). In the cases where \( S_0 \) is higher, an increasing of the I will happend. While a decreasing will happend when \( S_0 \) is lower. An example can be shown. The \( \rho \) in the simulation above is sat to 35. While \( N=100 \) for all trajectories. A calculation can be done on the lowest trajectory which has the initial conditions \( S_0= 90 \) and \( I_0= 10 \)
+$$
+\begin{align*}
+I_max =& N-\rho + \rho \ln \frac{\rho}{S_0}\\
+I_max =& 100-35 + 35 \ln \frac{35}{90}\\
+I_max =& 31.94
+\end{align*}
+$$
+
+This situation causes an epidemic situation since \( I_{max} \) is quite much higher than the initial condition. The figure above shows that the trajectory of this function starts decreasing after this point. In the two upper trajectories \( S_0< \rho \), then \( I \) will decrease from initial condition. \( I \) will move towards zero as \( t\rightarrow \infty \).
+<br />
+<br />
+
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 
