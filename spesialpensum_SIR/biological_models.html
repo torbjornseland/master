@@ -84,7 +84,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Aug 19, 2014</h4></center> <!-- date -->
+<center><h4>Aug 20, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -190,7 +190,7 @@ $$
 
 An observation is that all initial values satisfy \( I_0+S_0=N \) since \( R(0) = 0 \). This will change when \( t>0 \). If a disease appear it would be important to know the severity of the disease, and also if it can develops to an epidemic. Therefore the maximum value of I,$I_{max}$ which occurs when \( S=\rho \). At this point, \( \frac{dI}{dt}=0 \). This can be found by using \eqref{eq:constant}
 $$
-\begin{align*}
+\begin{align*} \label{eq:max_I}
 I+S-\rho \ln S =& I_0 + S_0 - \rho \ln S_0\\
 I_{max}+\rho-\rho \ln \rho =& I_0 + S_0 - \rho \ln S_0\\
 I_{max}=&- \rho+\rho \ln \rho + I_0 + S_0 - \rho \ln S_0\\
@@ -207,9 +207,46 @@ I_max =& 31.94
 \end{align*}
 $$
 
-This situation causes an epidemic situation since \( I_{max} \) is quite much higher than the initial condition. The figure above shows that the trajectory of this function starts decreasing after this point. In the two upper trajectories \( S_0< \rho \), then \( I \) will decrease from initial condition. \( I \) will move towards zero as \( t\rightarrow \infty \).
+This situation causes an epidemic situation since \( I_{max} \) is quite much higher than the initial condition. The figure above shows that the trajectory of this function starts decreasing after this point. In the two upper trajectories \( S_0< \rho \), then \( I \) will decrease from initial condition. \( I(\infty)\rightarrow 0 \) will move towards zero as \( t\rightarrow \infty \).
 <br />
 <br />
+The Susceptible, \( S \) will always has a decreasing solution since \( \frac{dS}{dt}<0 \) when \( S\neq0 \) and \( I\neq0 \). By using \eqref{eq:SIR_model},
+$$
+\begin{equation}
+\frac{dS}{dR} = -\frac{S}{\rho}
+\end{equation}
+$$
+
+By some integration the equation can be expressed
+$$
+\begin{equation} \label{eq:S_infty}
+S = S_0e^{-R/\rho} \geq S_0e^{-R/\rho} > 0
+\end{equation}
+$$
+
+As \( t\rightarrow \infty \) the total number of Susceptible will be in the range \( 0< S(\infty)\leq N \). This range can be reduced even more by knowing that \( I \) will increase as long \( S> \rho \). This will lead a decreasing for \( S \). The number of Susceptible will be \( 0< S(\infty)\leq \rho \). Since \( I \) will be zero when the time goes towards infinity, the Removed class can be described,$R(\infty)= N -S(\infty). Now this can be added into \eqref{eq:S_infty}, which gives,
+$$
+\begin{equation}
+S(\infty) = S_0 \exp\left(-\frac{N-S(\infty)}{\rho}\right)
+\end{equation}
+$$
+
+\( S(\infty) \) be found as the positive root in the transcendental equation. This can be used to find the total number of people who catch the disease.
+$$
+\begin{equation}
+I_{total} = I_0 + S_0 -S(\infty)
+\end{equation}
+$$
+
+This analysis is based on the important implication that the disease dies out because the Infective class goes towards zero, and not because of the lack of susceptibles. This is the case for all diseases and the important factor is the removal rate, \( \rho \). This will affect the number of susceptible that can be infected. This removal rate will also varies with respect to different parameters as population density, incubation time and the length of the period of sickness. The two equations (<a name="eq:max_I"></a>) and (<a name="eq:total_I"></a>) gives an understanding of the maximum number of infective and the total number, but this demands the exact number of \( \rho,I_0,S_0 \) and \( S \), which is quite hard to get exactly in a real situation. The challenging thing is often to know how many that are infected at each time. The easiest group to control, is the number of removed, \( R \). This group is assisted with medical help. So to model a realistic situation, the number of removed as a function of time \( dR/dt \) is a realistic model. Here the equations from earlier can be used.
+$$
+\begin{align*}
+\frac{dR}{dt} =& aI\\
+=& a(N-R-S)\\
+=& a(N-R-S_0e^{-R/\rho})
+\end{align*}
+$$
+
 
 <p>
 
