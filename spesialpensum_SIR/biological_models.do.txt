@@ -48,6 +48,11 @@ This model is called the Kermack-McKendrick(1927) model. Is is considered that t
 !et
 
 Therefore the total size of the population, $N$, will be constant. 
+!bt
+\begin{equation} label{eq:SIR_N}
+S(t)+I(t)+R(t) = N
+\end{equation}
+!et
 
 === Threshold phenomenon ===
 An important question to study when looking the at an epidemic model, is the threshold phenomenon. To cause an epidemic situation, the model need to fulfill $I(t)> I_0$ for some $t>0$, where $I_0$ describe the initial condition for Infective. The initial conditions can be given as,
@@ -131,14 +136,61 @@ $S(\infty)$ be found as the positive root in the transcendental equation. This c
 I_{total} = I_0 + S_0 -S(\infty)
 \end{equation}
 !et
-This analysis is based on the important implication that the disease dies out because the Infective class goes towards zero, and not because of the lack of susceptibles. This is the case for all diseases and the important factor is the removal rate, $\rho$. This will affect the number of susceptible that can be infected. This removal rate will also varies with respect to different parameters as population density, incubation time and the length of the period of sickness. The two equations (label{eq:max_I}) and (label{eq:total_I}) gives an understanding of the maximum number of infective and the total number, but this demands the exact number of $\rho,I_0,S_0$ and $S$, which is quite hard to get exactly in a real situation. The challenging thing is often to know how many that are infected at each time. The easiest group to control, is the number of removed, $R$. This group is assisted with medical help. So to model a realistic situation, the number of removed as a function of time $dR/dt$ is a realistic model. Here the equations from earlier can be used.
+This analysis is based on the important implication that the disease dies out because the Infective class goes towards zero, and not because of the lack of susceptibles. This is the case for all diseases and the important factor is the removal rate, $\rho$. This will affect the number of susceptible that can be infected. This removal rate will also varies with respect to different parameters as population density, incubation time and the length of the period of sickness. The two equations (label{eq:max_I}) and (label{eq:total_I}) gives an understanding of the maximum number of infective and the total number, but this demands the exact number of $\rho,I_0,S_0$ and $S$, which is quite hard to get exactly in a real situation. The challenging thing is often to know how many that are infected at each time. The easiest group to control, is the number of removed, $R$. This group is assisted with medical help. So to model a realistic situation, the number of removed as a function of time $dR/dt$ is a realistic model. Here the equations from (ref{eq:SIR_model}) ,(ref{eq:SIR_N}) and (ref{eq:S_infty}) can be used.
 !bt
-\begin{align*}
+\begin{align*} label{eq:dR_normal}
 \frac{dR}{dt} =& aI\\
 =& a(N-R-S)\\
 =& a(N-R-S_0e^{-R/\rho})
 \end{align*}
 !et
+This solution also demands several parameters as $a$,$r$,$S_0$ and $N$ to solve this numerically. Then it is normal to adjust the parameters after the epidemic to get the best result as possible. But it the epidemic is not to large, $R/\rho$ will be quite small, at least under 1. Then another model from Kermack and McKendrick(1927) can be used.
+!bt
+\begin{equation}
+\frac{dR}{dt} = a(N-S_0+(\frac{S_0}{\rho}-1)R-\frac{S_0R^2}{2\rho^2})
+\end{equation}
+!et
+By factoring the right-hand side of this equation, the equation can be integrated. After some complicated steps the equation can be given by
+!bt
+\begin{equation} label{eq:R_small}
+R(t) = \frac{\rho^2}{S_0}\left[\left(\frac{S_0}{\rho}-1\right)+\alpha \tanh\left(\frac{\alpha at}{2}-\phi\right)\right]
+\end{equation}
+!et
+where
+!bt
+\begin{equation}
+\alpha = \left[\left(\frac{S_0}{\rho}-1\right)+\frac{2S_0(N-S_0)}{\rho^2}\right]^{1/2}, \phi= \tanh^{-1}\frac{1}{\alpha}\left(\frac{S_0}{\rho}-1\right)
+\end{equation}
+!et
+This will give
+!bt
+\DeclareMathOperator{\sech}{sech}
+\begin{equation} label{eq:dR_small}
+\frac{dR}{dt} = \frac{a\alpha^2\rho^2}{2S_0}\sech^2\left(\frac{\alpha at}{2}-\phi\right)
+\end{equation}
+!et
+The advantage with (label{eq:dR_small}) is that this equation only consist of three parameters. This is easier to adjust to a real situation. If the exact number of the removed class, $R$, is collected and the epidemic situation is quite small, the model (ref{eq:R_small}) should be used. Both these two models demands that $R/\rho$ is quite small. It not the model (ref{dR_normal}) has to be used.
+<linebreak>
+<linebreak>
+=== Bombay Plague Epidemic ===
+The model (ref{dR_small}) was used by Kermack and McKendrick(1927) to model the epidemic in Bombay. The data that they were able to get was the number of deaths per week. By these result they were able to modify the equation to simulate the number of deaths per week. The three parameters were
+!bt
+\DeclareMathOperator{\sech}{sech}
+\begin{equation}
+\frac{dR}{dt} = 890\sech^2(0.2t-3.4)
+\end{equation}
+!et
+And the function of deaths per week can be modeled,
 
+FIGURE:[plots/Bombay_plague.png]
 
+=== Epidemic in an English Boarding School 1978 ===
+The British medical journal had in 1978 a report from a boarding school in England. One of the boys had brought with him a disease back to the school. Since this was a boarding school, they were totally isolated from other and a closed system to model with the system. The following parameters has been used for the simulation, $N=763$,$S_0=762$,$I_0=1$,$\rho=202$ and $r=2.18 x 10^{-3}$. Here $S_0 > \rho$ and an increasing of $I$ can be expected.
 
+FIGURE:[plots/English_boarding_school.png]
+
+By some variation in $\rho$, the results from the epidemic could turn out quite different. Here are some examples where $\rho$ varies from 50 up to 400.
+
+FIGURE:[plots/English_boarding_school_changes.png]
+
+A small $\rho$ gives an aggressive disease, since $I$ will increase until $S= \rho$. The class of infective will increase until the number of susceptible falls down to 50. This results in in a total majority of infected students. A large $\rho$ has the opposite effect. The total number of susceptible stays around 170 students, and will go towards steady number as $I(\infty)=0$.   
