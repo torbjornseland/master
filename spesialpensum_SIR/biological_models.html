@@ -46,7 +46,8 @@ Automatically generated HTML file from Doconce source
               (' Epidemic in an English Boarding School 1978 ',
                3,
                None,
-               '___sec4')]}
+               '___sec4'),
+              (' Zombification ', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -89,7 +90,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Aug 21, 2014</h4></center> <!-- date -->
+<center><h4>Aug 26, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -98,6 +99,7 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Threshold phenomenon </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Bombay Plague Epidemic </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Epidemic in an English Boarding School 1978 </a><br>
+<a href="#___sec5"> Zombification </a><br>
 </p>
 
 <h2>Introduction to epidemic models  <a name="___sec0"></a></h2>
@@ -266,7 +268,7 @@ $$
 \end{equation}
 $$
 
-By factoring the right-hand side of this equation, the equation can be integrated. After some complicated steps the equation can be given by
+By factoring the right-hand side of this equation, the equation can be integrated. After some complicated steps the equation can be given by \eqref{eq:dR_normal} is used in my equation
 $$
 \begin{equation} \label{eq:R_small}
 R(t) = \frac{\rho^2}{S_0}\left[\left(\frac{S_0}{\rho}-1\right)+\alpha \tanh\left(\frac{\alpha at}{2}-\phi\right)\right]
@@ -321,7 +323,69 @@ By some variation in \( \rho \), the results from the epidemic could turn out qu
 <center><p><img src="plots/English_boarding_school_changes.png" align="bottom" ></p></center>
 
 <p>
-A small \( \rho \) gives an aggressive disease, since \( I \) will increase until \( S= \rho \). The class of infective will increase until the number of susceptible falls down to 50. This results in in a total majority of infected students. A large \( \rho \) has the opposite effect. The total number of susceptible stays around 170 students, and will go towards steady number as \( I(\infty)=0 \).   
+A small \( \rho \) gives an aggressive disease, since \( I \) will increase until \( S= \rho \). The class of infective will increase until the number of susceptible falls down to 50. This results in in a total majority of infected students. A large \( \rho \) has the opposite effect. The total number of susceptible stays around 170 students, and will go towards steady number as \( I(\infty)=0 \).
+
+<h2>Zombification  <a name="___sec5"></a></h2>
+One of the worst epidemics that can affect the human population is a zombie attack. This will have a huge impact on the way humans to day live. Several movies and series has illustrated this type of situation, but by using mathematical models this is possible to simulate. There have been written a couple of papers about this.  Munz et al. used  the SIR model to simulate an possible upcoming zombiefication, where the infected class, \( I \), is switched with a zombie class, \( Z \). The following model was used,
+
+$$
+\begin{align*}
+\frac{dS}{dt} =& \Sigma -\beta SZ - \delta S \\
+\frac{dZ}{dt} =& \beta SZ + \zeta R - \alpha SZ\\
+\frac{dR}{dt} =& \delta S + \alpha SZ - \zeta R
+\end{align*}
+$$
+
+
+<p>
+This is a bit more complicated than the standard \( SIR \) model that was presented above. Here \( \Sigma \) describe the birthrate for new susceptibles. \( \frac{dS}{dt} \) is now able to be positive. \( \beta SZ \) describe the numbers of susceptible that become zombies, by interactions between the two groups. Similar as the case for \( rSI \). The last factor for the susceptible is \( \delta S \). This describe the number of naturals deaths among the group. \( \zeta R \) controls the number of removed that arises as zombies. To avoid total eradication the humans will try to fight back, \( \alpha SZ \), describe the number of zombies killed by humans in the zombie attacks. 
+<br />
+<br />
+This model was challenged by the paper from Langtangen, Mardal and R&#248;tnes, where they developed another model. They added another class, \( I \), which here describe infected humans. This is a pre-zombie stadium, before becoming zombies. There is also added a function \( \omega(t) \), which creates a massive attack from the humans. This is controlled by time and give the susceptibles a chance to fight back. The system:
+$$
+\begin{align*}
+\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS \\
+\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II\\
+\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+\end{align*}
+$$
+
+The new elements are the different \( \delta \)'s, which describe the probability that the specific type is killed or dies. This can only harm the humans,$S$, or the infected group,$I$. The probability for a human to wake up as a zombie is here controlled by \( \varrho \). This will have major impact on the amount of zombies. In the system from Munz et al. everyone ended up as zombies. But in this case the result can variy from everyone down to none, if \( \varrho=0 \). The function:
+$$
+\begin{equation}
+\omega(t) = a \sum^m_{i=0}\exp\left(\frac{1}{2}\left(\frac{t-T_i}{\sigma}\right)^2\right)
+\end{equation}
+$$
+
+controls the attacks from the susceptible will only be fired at choosen times. These are controlled by the parameters. \( a \) here works as a similar parameter as \( \alpha \), but will only active when the susceptible group is organized and ready to attack. \( T \) contains a list of numbers. This controls the time when the attacks will occur.
+<br />
+<br />
+An important factor while modelling a zombie attack is the parameters. Since the ODE system from Langtangen, Mardal and R&#248;tnes will be the model that will be used as a standard, the choice of parameters will be based on their paper. Here they have chosen to divide a zombie outbreak into three different phases. The TV series Walking dead will be used as a reference here.
+
+<p>
+<b>The initial phase.</b>
+<br />
+In this phase the disease is yet not known and humans often tries to save the sick ones by taking them to hospitals or get some kind of treatment. Because of this ignorance related to the disease, the number of infected humans is high. This phase is often quite short and humans soon starts realise that the risk of saving other is really high. Walking Dead never shows anything from this phase, but the viewer only sees the damages when the main character sheriff Rick Grimes wakes up at the local hospital after a coma caused shooting accident. What he wakes up to is the major damage caused in the initial phase and the society is in the hysterical phase.
+<br />
+<br />
+<b>The hysterical phase.</b>
+<br />
+Now the humans start to avoid the infected and some tries to fight them. The humans often gather in groups and try to find safe spots away from the zombies. Important emergency as weapons and food are their main priority. Barricades are build and the guarding is strict. When Rick Grimes wakes up, the hospital is abandoned and the halls are filled up with dead people. Quite fast he understand that he needs to reach safety and after a certain time he ends up in a camp far from the cities, where the zombies gathes.
+<br />
+<br />
+<b>The counter attack.</b>
+<br />
+The time for a counter attack. The group of human has been able to get resources to fight back. The number of zombies has grown much higher than the remaining human population. But because of good organization the humans are able to provide major damage on the zombies. This can be seen in the series when the zombies get to close the camp. They respond with fight and kills an amount of zombies before leaving the camp.
+<br />
+<br />
+The parameters that has been used in the modelling of the different phases are based in the movie "The Night of the living Dead". A thoroughly study of the parameters has been done by the authors, and this paper is not able to use the same amount of time. This would only result in a poor copy. But the values will be used. The first thing that is modeled is the initial phase. This is based on the situation where two humans runs into a zombie and one of then gets infected. The parameters for the simulation are set to \( S_0=60,I_0=3,\beta=0.0625,\alpha=a=0,\varrho=1,\delta_S =\delta_I = 0,\zeta=0 \). The program from LMR is used.
+
+<p>
+<center><p><img src="plots/LMR_zombie_initial_1.png" align="bottom" ></p></center>
+
+<p>
+Here a total eradication of the human population is about to happen in the 4 first hours. This is unlikely and \( \beta \) was adjusted to 0.03. This made the attacks from the zombies less effective. A deeper study is done on the effect of varying \( \beta \) 
 
 <!-- ------------------- end of main content --------------- -->
 
