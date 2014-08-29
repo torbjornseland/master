@@ -227,10 +227,11 @@ The new elements are the different $\delta$'s, which describe the probability th
 controls the attacks from the susceptible will only be fired at choosen times. These are controlled by the parameters. $a$ here works as a similar parameter as $\alpha$, but will only active when the susceptible group is organized and ready to attack. $T$ contains a list of numbers. This controls the time when the attacks will occur.
 <linebreak>
 <linebreak>
-An important factor while modelling a zombie attack is the parameters. Since the ODE system from Langtangen, Mardal and Røtnes will be the model that will be used as a standard, the choice of parameters will be based on their paper. Here they have chosen to divide a zombie outbreak into three different phases. The TV series Walking dead will be used as a reference here.
+=== Parameters used in the model ===
+An important factor while modelling a zombie attack is the parameters. In the ODE system from Langtangen, Mardal and Røtnes parameters from "The night of the living dead" was used. The TV series "Walking dead" has been study in detalj. The data will be based on the first five episodes and are constructed by watching the show carefully. The three phases in a zombie attack will be based on the form used in the paper from LMR.
 
 __The initial phase.__ <linebreak>
-In this phase the disease is yet not known and humans often tries to save the sick ones by taking them to hospitals or get some kind of treatment. Because of this ignorance related to the disease, the number of infected humans is high. This phase is often quite short and humans soon starts realise that the risk of saving other is really high. Walking Dead never shows anything from this phase, but the viewer only sees the damages when the main character sheriff Rick Grimes wakes up at the local hospital after a coma caused shooting accident. What he wakes up to is the major damage caused in the initial phase and the society is in the hysterical phase.
+In this phase the disease is yet not known and humans often tries to save the sick ones by taking them to hospitals or get some kind of treatment. Because of this ignorance related to the disease, the number of infected humans is high. This phase is often quite short and humans soon starts realise that the risk of saving other is really high. Walking Dead never shows anything from this phase, but the viewer only sees the damages when the main character sheriff Rick Grimes wakes up at the local hospital after a coma caused by shooting accident. What he wakes up to is the major damage caused in the initial phase and the society is in the hysterical phase.
 <linebreak>
 <linebreak>
 __The hysterical phase.__ <linebreak>
@@ -241,8 +242,30 @@ __The counter attack.__ <linebreak>
 The time for a counter attack. The group of human has been able to get resources to fight back. The number of zombies has grown much higher than the remaining human population. But because of good organization the humans are able to provide major damage on the zombies. This can be seen in the series when the zombies get to close the camp. They respond with fight and kills an amount of zombies before leaving the camp.
 <linebreak>
 <linebreak>
+ To denote the question about the time, the length of Ricks coma is essential. There are several factors that gives an indication of the time aspect. When Rick wakes up at the hospital he has grown a smooth beard of about 1 cm. This would correspond to 1 month in average for an European origin. He also has some flowers which has dried out, these also give the impression that there has been some weeks. The hospital is running on its emergency generator. This would probably not last for many days with a fully operational hospital. The hospital is as well as shut down when Rick wakes up. This will be a factor that can give the emergency generator a longer lifetime. Dr. Edwin Jenner gives the viewer in episode 5. Here he records a videolog describing his result.He tells the viewer that it was 63 days since the epidemic started spreading. By studying the first five episodes in detail, the series gives a sense that the time aspect has not been in focus. Therefore the different phases are constructed from the information that has been given. Rick Grimes has probably been in coma for a month and the number of zombies he meets the first days will give the indication of the numbers that will be used in the model. The total amount of people in the model will be based on the number of humans, dead and zombies seen in the first five episodes. The number of humans has been estimated to 62. 20 living in the camp with Rick, 40 humans in the old nursing home and the father and son in episode 1. The number of dead is estimated to 300. This is based on around 200 outside the hospital where Rick wakes up and about 100 elsewhere. The number of zombies are assume to be 360. These are based on the 30 outside the house of Morgan Jones and his son Duane, 300 zombies in the city Atlanta and 30 zombies attacking the camp. The total number will then be 722. Since these numbers are calculated for about a month after the outbreak of the disease and the initial phase probably are over in three days. After this the hysterical phase starts.Over the three first days when Rick is awake about 20 zombies are killed by humans and 1 human is killed by zombies. This can be used to calculate the final number in the initial phase. To do this calculation easier, a month is assumed to be 30 days and 27 days earlier. The numbers are set to:
+!bt
+\begin{align*}
+\frac{27}{3}*20 =& 180\\
+\frac{27}{3}*1 =& 9
+\end{align*}
+!et
+180 zombies and 9 humans are killed in this period. The final number for the initial phase can then be set to 71 humans, 540 zombies and 120 dead. This is the same number as for the initial values for the hysterical phase. Another question to discuss is the incubation time. Here there are two examples that can be used. The first transformation from human to zombie happens for Amy, who was bit in the arm by a zombie. The transformation happens in about 12 hours. The other character Jim has a slower transformation. This last for about two days before the rest of the group leave him alongside the road on their way to CDC(Center for Disease Control). An average of the incubation time can then be set to 24 hours based on these two transformations.
+<linebreak>
+<linebreak>
+Now the ODEmodel can be used to model the initial phase. $S_0 = 721$ and $Z_0 = 1$ while the two other groups are set to zero. $\beta$ can be found with the expression $\beta \Delta t S Z$ from the first ODE equation. After three days about 90 percent of the humans are killed. The probability for a human being infected will be sat to $\beta = 0.3$. The natural death rate is sat to $\delta_S = 2.2*10^{-5}$ based on cite{http://www.cdc.gov/nchs/fastats/deaths.html}. It is quite hard to find similar data 
+
+
+<linebreak>
+<linebreak>
 The parameters that has been used in the modelling of the different phases are based in the movie "The Night of the living Dead". A thoroughly study of the parameters has been done by the authors, and this paper is not able to use the same amount of time. This would only result in a poor copy. But the values will be used. The first thing that is modeled is the initial phase. This is based on the situation where two humans runs into a zombie and one of then gets infected. The parameters for the simulation are set to $S_0=60,I_0=3,\beta=0.0625,\alpha=a=0,\varrho=1,\delta_S =\delta_I = 0,\zeta=0$. The program from LMR is used.
 
 FIGURE:[plots/LMR_zombie_initial_1.png]
 
-Here a total eradication of the human population is about to happen in the 4 first hours. This is unlikely and $\beta$ was adjusted to 0.03. This made the attacks from the zombies less effective. A deeper study is done on the effect of varying $\beta$ 
+Here a total eradication of the human population is about to happen in the 4 first hours. This is unlikely and $\beta$ was adjusted to 0.03. This made the attacks from the zombies less effective. A deeper study is done on the effect of varying $\beta$ by LMR. Another assumption that can be done to get the model more realistic is to set the value of humans arriving the area higher. Here $\Sigma = 20$ is used. The number of infected,$I_0$ is sat to be zero in the initial stage and instead set $Z=1$.The model will be
+
+FIGURE:[plots/LMR_zombie_initial_2.png]
+
+
+===== Bibliography =====
+
+BIBFILE: papers.pub
