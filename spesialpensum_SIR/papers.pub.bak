@@ -10,16 +10,9 @@
    entrytype: book
 * reports
 ** Births: Final Data From 2012
-   key:         CBC_births_2012
+   key:         CBC_birth_2012
    author:      Joyce A. Martin, Brady E. Hamilton, Michelle J.K. Osterman, Sally C. Curtin, T.J. Mathews
    year:        2013
-   institution: Division of Vital Statistics
-   status:      published
-   entrytype:   techreport
-** Deaths:Preliminary Data for 2011
-   key:         CBC_deaths_2011
-   author:      Donna L.Hoyert, Jiaquan Xu
-   year:        2012
    institution: Division of Vital Statistics
    status:      published
    entrytype:   techreport
