@@ -4,7 +4,7 @@ DATE: today
 
 TOC: on
 
-===== Introduction to epidemic models =====
+======= Introduction to epidemic models =======
 Throughout the history large epidemic diseases has spread around the world. Often over large geographical areas. These diseases has done great harm on the population, and millions of people has died. Black Death and Cholera are epidemics that has moved over large distances, both into Europe. When Black Death came to Europe in 1347, it killed about a third of the population, which at that time was about 85 million. These diseases often gave physical symptoms, which has been important knowledge through history for preventing new outburst and to cure already infected humans. These diseases has various outbreaks, but often related to connection between humans and animals. Malaria is an example of a disease that transmits from mosquito to human. But there have been various explanations of the spread and cause of epidemics. AIDS(autoimmune deficiency syndrome) has been ascribed by many as a punishment sent by God.
 <linebreak>
 <linebreak>
@@ -22,7 +22,7 @@ Knowledge through history is important for the control of different epidemics, b
 <linebreak>
 There are four main microorganisms that can be disease-causing. These are; viruses, bacteria, parasites and fungi. This chapter will focus on the population dynamics. Spatiotemporal models will also be studied. These mathematical models has been important for the combating of the diseases. Both in describing the movement pattern but also in giving reasoned estimated numbers for the level of vaccination.
 
-===== Simple Epidemic models =====
+======= Simple Epidemic models =======
 These models that will be shown in this chapter, will have a constant population. This may differ from the real world. Another assumption that has to be done, is how the population interact. This has to be similar for the whole area that is modeled. The population can be divided into three different groups. The first group is Susceptible,$S$, which consist of humans that are healthy and at risk of becoming infected. Infective,$I$,this group has the disease or only carriers of the disease. This group can infect the Susceptible. The last group is the removed, $R$. This group consist of either dead or recovered recovered humans, often people that already have had the disease. The natural order for a human is,
 !bt
 \begin{equation}
@@ -54,7 +54,7 @@ S(t)+I(t)+R(t) = N
 \end{equation}
 !et
 
-=== Threshold phenomenon ===
+===== Threshold phenomenon =====
 An important question to study when looking the at an epidemic model, is the threshold phenomenon. To cause an epidemic situation, the model need to fulfill $I(t)> I_0$ for some $t>0$, where $I_0$ describe the initial condition for Infective. The initial conditions can be given as,
 !bt
 \begin{equation}
@@ -172,7 +172,7 @@ This will give
 The advantage with (label{eq:dR_small}) is that this equation only consist of three parameters. This is easier to adjust to a real situation. If the exact number of the removed class, $R$, is collected and the epidemic situation is quite small, the model (ref{eq:R_small}) should be used. Both these two models demands that $R/\rho$ is quite small. It not the model (ref{dR_normal}) has to be used.
 <linebreak>
 <linebreak>
-=== Bombay Plague Epidemic ===
+===== Bombay Plague Epidemic =====
 The model (ref{dR_small}) was used by Kermack and McKendrick(1927) to model the epidemic in Bombay. The data that they were able to get was the number of deaths per week. By these result they were able to modify the equation to simulate the number of deaths per week. The three parameters were
 !bt
 \DeclareMathOperator{\sech}{sech}
@@ -184,7 +184,7 @@ And the function of deaths per week can be modeled,
 
 FIGURE:[plots/Bombay_plague.png]
 
-=== Epidemic in an English Boarding School 1978 ===
+===== Epidemic in an English Boarding School 1978 =====
 The British medical journal had in 1978 a report from a boarding school in England. One of the boys had brought with him a disease back to the school. Since this was a boarding school, they were totally isolated from other and a closed system to model with the system. The following parameters has been used for the simulation, $N=763$,$S_0=762$,$I_0=1$,$\rho=202$ and $r=2.18 x 10^{-3}$. Here $S_0 > \rho$ and an increasing of $I$ can be expected.
 
 FIGURE:[plots/English_boarding_school.png]
@@ -195,7 +195,7 @@ FIGURE:[plots/English_boarding_school_changes.png]
 
 A small $\rho$ gives an aggressive disease, since $I$ will increase until $S= \rho$. The class of infective will increase until the number of susceptible falls down to 50. This results in in a total majority of infected students. A large $\rho$ has the opposite effect. The total number of susceptible stays around 170 students, and will go towards steady number as $I(\infty)=0$.   
 
-===== Zombification =====
+======= Zombification =======
 One of the worst epidemics that can affect the human population is a zombie attack. This will have a huge impact on the way humans to day live. Several movies and series has illustrated this type of situation, but by using mathematical models this is possible to simulate. There have been written a couple of papers about this.  Munz et al. used  the SIR model to simulate an possible upcoming zombiefication, where the infected class, $I$, is switched with a zombie class, $Z$. The following model was used,
 
 !bt
@@ -227,19 +227,11 @@ The new elements are the different $\delta$'s, which describe the probability th
 controls the attacks from the susceptible will only be fired at choosen times. These are controlled by the parameters. $a$ here works as a similar parameter as $\alpha$, but will only active when the susceptible group is organized and ready to attack. $T$ contains a list of numbers. This controls the time when the attacks will occur.
 <linebreak>
 <linebreak>
-=== Parameters used in the model ===
+===== Parameters used in the model =====
 An important factor while modelling a zombie attack is the parameters. In the ODE system from Langtangen, Mardal and Røtnes parameters from "The night of the living dead" was used. The TV series "Walking dead" has been study in detalj. The data will be based on the first five episodes and are constructed by watching the show carefully. The three phases in a zombie attack will be based on the form used in the paper from LMR.
 
-__The initial phase.__ <linebreak>
+=== The initial phase ===
 In this phase the disease is yet not known and humans often tries to save the sick ones by taking them to hospitals or get some kind of treatment. Because of this ignorance related to the disease, the number of infected humans is high. This phase is often quite short and humans soon starts realise that the risk of saving other is really high. Walking Dead never shows anything from this phase, but the viewer only sees the damages when the main character sheriff Rick Grimes wakes up at the local hospital after a coma caused by shooting accident. What he wakes up to is the major damage caused in the initial phase and the society is in the hysterical phase.
-<linebreak>
-<linebreak>
-__The hysterical phase.__ <linebreak>
-Now the humans start to avoid the infected and some tries to fight them. The humans often gather in groups and try to find safe spots away from the zombies. Important emergency as weapons and food are their main priority. Barricades are build and the guarding is strict. When Rick Grimes wakes up, the hospital is abandoned and the halls are filled up with dead people. Quite fast he understand that he needs to reach safety and after a certain time he ends up in a camp far from the cities, where the zombies gathes.
-<linebreak>
-<linebreak>
-__The counter attack.__ <linebreak>
-The time for a counter attack. The group of human has been able to get resources to fight back. The number of zombies has grown much higher than the remaining human population. But because of good organization the humans are able to provide major damage on the zombies. This can be seen in the series when the zombies get to close the camp. They respond with fight and kills an amount of zombies before leaving the camp.
 <linebreak>
 <linebreak>
  To denote the question about the time, the length of Ricks coma is essential. There are several factors that gives an indication of the time aspect. When Rick wakes up at the hospital he has grown a smooth beard of about 1 cm. This would correspond to 1 month in average for an European origin. He also has some flowers which has dried out, these also give the impression that there has been some weeks. The hospital is running on its emergency generator. This would probably not last for many days with a fully operational hospital. The hospital is as well as shut down when Rick wakes up. This will be a factor that can give the emergency generator a longer lifetime. Dr. Edwin Jenner gives the viewer in episode 5. Here he records a videolog describing his result.He tells the viewer that it was 63 days since the epidemic started spreading. By studying the first five episodes in detail, the series gives a sense that the time aspect has not been in focus. Therefore the different phases are constructed from the information that has been given. Rick Grimes has probably been in coma for a month and the number of zombies he meets the first days will give the indication of the numbers that will be used in the model. The total amount of people in the model will be based on the number of humans, dead and zombies seen in the first five episodes. The number of humans has been estimated to 62. 20 living in the camp with Rick, 40 humans in the old nursing home and the father and son in episode 1. The number of dead is estimated to 200. This is based on the amount of dead outside the hospital where Rick wakes up. The number of zombies are assume to be 360. These are based on the 30 outside the house of Morgan Jones and his son Duane, 300 zombies in the city Atlanta and 30 zombies attacking the camp. The total number will then be 622. Since these numbers are calculated for about a month after the outbreak of the disease and the initial phase probably are over in three days. After this the hysterical phase starts.Over the three first days when Rick is awake about 20 zombies are killed by humans and 1 human is killed by zombies. This can be used to calculate the final number in the initial phase. To do this calculation easier, a month is assumed to be 30 days and 27 days earlier. The numbers are set to:
@@ -265,10 +257,35 @@ These plots give an important knowledge in the effect of varying the parameters.
 
 FIGURE:[plots/WD_zombie_initial_2.png]
 
-Here the final values are $S_n=71.3,I_n=230.8,Z_n=298.9$ and $R_n=21$, which is quite close to the result from the movie. By looking at these changes, it is possible to argue for them. By increasing $\varrho$ to 1.37 reduces the incubation time. Now the average time will be about 17.5 hours which is quite realistic. The probability $\beta$ is quite sensitive and has a major effect only from small variations. This is due to the term that it is a part of. $\Delta t SZ \beta$. A couple of examples demonstrate this. $\Delta t = 1/24$, this is equivalent to one hour. When using the initial values for the classes $S$ and $Z$ and $\beta=0.01155$ from the second plot, the number of infected in the first hour will be $(1/24)*721*1*0.01155=0.34$. 1/3 of a human in the first hour seems as a slow and not very aggressive disease. But when the number of zombies slowly increase, this will affect the numbers of infected. By looking at the hour when the number is equal between humans and zombies, about 200. The number of infected this hour will be 19.25 per hour. This result in about 10 percent. By changing $\beta$ to the value from the first plot, the number of infected will be 500 per hour and it is quite easy to see that this will lead to eradication in a short amount of time. The last parameter $\alpha$ controls the number of zombies that dies in an interaction between zombies and humans. While humans still think that this is a disease that the infected can be saved from, it is still a chance that the result of a collision can end with a murder. By some adjustments these results can be seen as realistic values.       
+Here the final values are $S_n=71.3,I_n=230.8,Z_n=298.9$ and $R_n=21$, which is quite close to the result from the movie. By looking at these changes, it is possible to argue for them. By increasing $\varrho$ to 1.37 reduces the incubation time. Now the average time will be about 17.5 hours which is quite realistic. The probability $\beta$ is quite sensitive and has a major effect only from small variations. This is due to the term that it is a part of. $\Delta t SZ \beta$. A couple of examples demonstrate this. $\Delta t = 1/24$, this is equivalent to one hour. When using the initial values for the classes $S$ and $Z$ and $\beta=0.01155$ from the second plot, the number of infected in the first hour will be $(1/24)*721*1*0.01155=0.34$. 1/3 of a human in the first hour seems as a slow and not very aggressive disease. But when the number of zombies slowly increase, this will affect the numbers of infected. By looking at the hour when the number is equal between humans and zombies, about 200. The number of infected this hour will be 19.25 per hour. This result in about 10 percent. By changing $\beta$ to the value from the first plot, the number of infected will be 500 per hour and it is quite easy to see that this will lead to eradication in a short amount of time. The last parameter $\alpha$ controls the number of zombies that dies in an interaction between zombies and humans. While humans still think that this is a disease that the infected can be saved from, it is still a chance that the result of a collision can end with a murder. By some adjustments these results can be seen as realistic values.
+
+=== The hysterical phase ===
+Now the humans start to avoid the infected and some tries to fight them. The humans often gather in groups and try to find safe spots away from the zombies. Important emergency as weapons and food are their main priority. Barricades are build and the guarding is strict. When Rick Grimes wakes up, the hospital is abandoned and the halls are filled up with dead people. Quite fast he understand that he needs to reach safety and after a certain time he ends up in a camp outside Atlanta city, where the zombies are. A couple of elementary changes in the interaction between humans and infected/zombies. In the initial phase, the humans tried to help the infected humans. This result in a high percent of infected. While they now understand this risk and keep distance to those who are infected. This will affect $\beta$ which will have lower value. Another important assumption that the humans have done is the morality for a zombie kill. While this was seen as no opinion, this is now totally okay. The humans have started treat zombies and infected as a enemy instead as a sick allied. This result in a higher dead rate among the zombies, so $\alpha$ will be higher. These are the main changes.   
+<linebreak>
+<linebreak>
+The the hysterical model can be constructed based on the data found in the initial phase. First the initial values will be based on the final data from the initial phase. These are $S_0=71.3,I_0=230.8,Z_0=298.9$ and $R_0=21$. As the final result will be $S_n=62,I_n&Z_n=360$ and $R_n=200$. Here infected and zombies are added together. The time aspect will be modeled for 30 days, which result in ten times longer simulation. Since the final results are known here, a similar adjustment of the parameters can be done. Here some test simulations are done to get the range for the parameters. 
+
+FIGURE:[plots/check_parameters_hysterical.png, width=800] The final result for each combination can be shown as a grid. $\beta=[1*10^{-5},1.2*10^{-5}]$,$\varrho=[1,2]$ and $\alpha[2*10^{-4},2.2*10^{-4}]
+
+FIGURE:[plots/check_parameters_hysterical_2.png, width=800] The final result for each combination can be shown as a grid. $\beta=[1*10^{-5},1.2*10^{-5}]$,$\varrho=[1,2]$ and $\alpha[2*10^{-4},2.2*10^{-4}]
+
+This plot gives insight in how the parameters affects the final result. By decreasing $\beta$, it will essentially increase the number of humans that survive. But it will also increase the number of dead. This may at first glance seems quite strange. Should not the number of deaths decrease when the number of humans increase? This can be explained with the idea that was shown for $\beta$ in the initial phase. Since $\beta SZ$ gets smaller when $\beta$ get smaller, the combination of $SZ$ will stay higher for a longer time. This again affects $\alpha SZ$, which regulates the number of zombies that dies. The larger this combination is, the more zombies will die. Then by looking at $\alpha$, this mainly affect the number of removed, here the dead ones.
+<linebreak>
+<linebreak>
+By increasing $\alpha$, the number of removed also increase. But similar to the increasing of the removed it also has a slight increase on the number of susceptible. Here the argument for $\beta$ above can be reversed. Since a higher $\alpha$ leads to a higher death rate among the zombies, the combination $SZ$ will be smaller and the number infected humans caused by $\beta SZ$ is lower.     
+<linebreak>
+<linebreak>
+The last parameter, $\varrho$, has nearly no effect. The red dots are combined with a pull down to the right when increasing $\varrho$. This parameter varies most, but has the least impact. This can be explained with the long time aspect and the number of infected compared to the number of zombies. Since the number of zombies are that much higher, the transformation length from infected to zombie is almost negligible.  
+
+FIGURE:[plots/WD_zombie_hysterical_1.png] 
+
+=== The counter attack ===
+The time for a counter attack. The group of human has been able to get resources to fight back. The number of zombies has grown much higher than the remaining human population. But because of good organization the humans are able to provide major damage on the zombies. This can be seen in the series when the zombies get to close the camp. They respond with fight and kills an amount of zombies before leaving the camp.
+<linebreak>
+<linebreak>
 
 
 
-===== Bibliography =====
+======= Bibliography =======
 
 BIBFILE: papers.pub
