@@ -2,12 +2,13 @@ from math import exp
 import numpy as np
 import matplotlib.pyplot as plt
 
-def run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filename,plot,print_,S_0,I_0,Z_0,R_0):
-    def omega(t, a, sigma, T):
-        return a*sum(exp(-0.5*(t-T[i])**2/sigma) for i in range(len(T)))
+def omega(t, a, sigma, T):
+    return a*sum(exp(-0.5*(t-T[i])**2/sigma) for i in range(len(T)))
+
+def run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filename,plot,print_,S_0,I_0,Z_0,R_0,D):
 
     dt = 0.001
-    D = 30
+    #D = 30
     n = int(D/dt)
     T_tot = np.linspace(0,D,n+1)
     # time step measured in hours
@@ -36,7 +37,7 @@ def run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filena
         plt.plot(T_tot,I,label="I")
         plt.plot(T_tot,Z,label="Z")
         plt.plot(T_tot,R,label="R")
-        plt.axis([0,D,0,800])
+        plt.axis([0,D,0,400])
         plt.xlabel("days")
         plt.ylabel("humans")
         plt.legend()
@@ -70,6 +71,11 @@ if __name__ == "__main__":
     alpha = 0.000208;a = 0;sigma = 0.5;attacks = [5, 10, 18];filename = "plots/WD_zombie_hysterical_1.png"; 
     plot = True;print_= True; S_0 = 71.3; I_0 = 230.0; Z_0 = 298.9; R_0 = 21
     run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filename,plot,print_,S_0,I_0,Z_0,R_0)
+    """
+    Sigma = 3.45*10**(-5) ;beta = 0.000011; delta_S = 2.5*10**(-5);delta_I = delta_S ;rho = 1.5;zeta = 0
+    alpha = 0.000208;a = 0.00103;sigma = 0.005;attacks = [0.625];filename = "plots/WD_zombie_counter_1.png"; 
+    plot = True;print_= True; S_0 = 62; I_0 = 1; Z_0 = 359; R_0 = 200; D = 1
+    run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filename,plot,print_,S_0,I_0,Z_0,R_0,D)
     """
     def check_param(beta_list,rho_list,alpha_list,nr, title):
         S_n_list = []
@@ -111,4 +117,22 @@ if __name__ == "__main__":
     
     plt.savefig("plots/check_parameters_hysterical_2.png")
     plt.show()
-        
+     
+    t = np.linspace(0,0.25,101)
+    y = np.zeros(101)
+    a = 0.00103
+    sigma_list = [0.005]#,0.5,0.8]
+    T = [0.125]
+    for sigma in sigma_list:
+        area = 0
+        for i in range(101):
+            y[i] = omega(t[i], a, sigma, T)
+            area += y[i]
+        plt.plot(t,y,label="sigma=%s" %sigma)
+        area = area*(2./101)
+        print area
+    #plt.legend()
+    plt.title("a=0.9,T=1,sigma=0.1")
+    #plt.savefig("omega_function.png")
+    plt.show()
+    """
