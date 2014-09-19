@@ -96,7 +96,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Sep 17, 2014</h4></center> <!-- date -->
+<center><h4>Sep 19, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -499,7 +499,7 @@ After 200 days there will be about 15 humans and 12 zombies left. Now the humans
 
 <h3>The three phases in Walking Dead  <a name="___sec10"></a></h3>
 
-By adding these three phases together, the final result after the attack should be possible to match. The first simulation here will be done with the parameters used in the sections above. This will probably lead to a small mistake, since the result for the final number in each phase are given with decimals and the initial values in each phase are based on assumptions and round off numbers.
+By adding these three phases together, the final result after the attack should be possible to match. The first simulation here will be done with the parameters used in the sections above. This will probably lead to a small mistake, since the result for the final number in each phase are given with decimals and the initial values in each phase are based on assumptions and round off numbers. The different parameter values are listed below. These are obtained from the different simulations run above.
 <table border="1">
 <thead>
 <tr><th align="center">   parameter    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> </tr>
@@ -513,13 +513,19 @@ By adding these three phases together, the final result after the attack should 
 <tr><td align="center">   \( \mu \)           </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.14                </td> </tr>
 </tbody>
 </table>
-<p>
-<center><p><img src="plots/WD_zombie_all_phases_1.png" align="bottom" ></p></center>
 
 <p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Walking Dead simulated after 5 episodes. Based on the three different phases. </p></center>
+<p><img src="plots/WD_zombie_all_phases_1.png" align="bottom" ></p>
+</center>
+
+<p>
+This clearly shows the different phases and the change in the different values. The different values are shown in the table under, where the values are given at the initial time. The last column consist the final values after 34 days.
 <table border="1">
 <thead>
-<tr><th align="center">   ---------    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> <th align="center">    after ca    </th> </tr>
+<tr><th align="center">   ---------    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> <th align="center">  final values  </th> </tr>
 </thead>
 <tbody>
 <tr><td align="center">   S_0                 </td> <td align="center">   621                 </td> <td align="center">   71                  </td> <td align="center">   62                  </td> <td align="center">   58                  </td> </tr>
@@ -528,6 +534,9 @@ By adding these three phases together, the final result after the attack should 
 <tr><td align="center">   R_0                 </td> <td align="center">   0                   </td> <td align="center">   21                  </td> <td align="center">   202                 </td> <td align="center">   231                 </td> </tr>
 </tbody>
 </table>
+<br />
+<br />
+This model will be used as the basic model to be compared against. The biggest advantage with this model is that it is straight forward to calculate. It it easy and quite simple to understand. This is good if the target is to find the total number in each class measured over an area, but it gives no information about the spatial spread of the disease and will therefore be useless in the work on describing how fast a disease can spread abroad countries and borderlines. The  two next chapters will introduce more complicated models which will be compared to this ODE-system modeled here.
 
 <h1>Bibliography  <a name="___sec11"></a></h1>
 

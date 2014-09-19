@@ -318,7 +318,7 @@ FIGURE:[plots/WD_zombie_counter_series.png]
 After 200 days there will be about 15 humans and 12 zombies left. Now the humans are able to survive since they are more efficiency in battles. There are of course several things to discuss. How will the number of battles effect the humans and zombies. Will they be tired or more efficiency? What about weapons? What would happen if the group of zombies was much larger? This paper is based on the series and has therefore done some assumptions based on the information given in the movie.
 
 === The three phases in Walking Dead ===
-By adding these three phases together, the final result after the attack should be possible to match. The first simulation here will be done with the parameters used in the sections above. This will probably lead to a small mistake, since the result for the final number in each phase are given with decimals and the initial values in each phase are based on assumptions and round off numbers.
+By adding these three phases together, the final result after the attack should be possible to match. The first simulation here will be done with the parameters used in the sections above. This will probably lead to a small mistake, since the result for the final number in each phase are given with decimals and the initial values in each phase are based on assumptions and round off numbers. The different parameter values are listed below. These are obtained from the different simulations run above.
 |-------------------------------------------------------|
 |parameter|Initial phase|hysterical phase|counter attack|
 |-------------------------------------------------------|
@@ -329,17 +329,23 @@ By adding these three phases together, the final result after the attack should 
 |$\sigma$ |0            | 0              | 0.005        |
 |$\mu$    |0            | 0              | 0.14         |
 |-------------------------------------------------------|
+The simulation is run for 34 days. The three first days are in the initial phase, the resisting days are in the hysterical phase. The counter attack is released in day 33 and last for about 6 hours. The plot is shown above   
 
-FIGURE:[plots/WD_zombie_all_phases_1.png]
+FIGURE:[plots/WD_zombie_all_phases_1.png] Walking Dead simulated after 5 episodes. Based on the three different phases.
 
-|----------------------------------------------------------------|
-|---------|Initial phase|hysterical phase|counter attack|after ca|
-|----------------------------------------------------------------|
-|S_0      |621          | 71          | 62              |58      |
-|I_0      |0            | 231         | 0               |1       |
-|Z_0      |1            | 299         | 359             |332     |
-|R_0      |0            | 21          | 202             |231     |
-|----------------------------------------------------------------|
+This clearly shows the different phases and the change in the different values. The different values are shown in the table under, where the values are given at the initial time. The last column consist the final values after 34 days.
+|--------------------------------------------------------------------|
+|---------|Initial phase|hysterical phase|counter attack|final values|
+|--------------------------------------------------------------------|
+|S_0      |621          | 71          | 62              |58          |
+|I_0      |0            | 231         | 0               |1           |
+|Z_0      |1            | 299         | 359             |332         |
+|R_0      |0            | 21          | 202             |231         |
+|--------------------------------------------------------------------|
+Considering the uncertainty of the parameters, this simulation gives result close to the expected result. 
+<linebreak>
+<linebreak>
+This model will be used as the basic model to be compared against. The biggest advantage with this model is that it is straight forward to calculate. It it easy and quite simple to understand. This is good if the target is to find the total number in each class measured over an area, but it gives no information about the spatial spread of the disease and will therefore be useless in the work on describing how fast a disease can spread abroad countries and borderlines. The  two next chapters will introduce more complicated models which will be compared to this ODE-system modeled here.
 ======= Bibliography =======
 
 BIBFILE: papers.pub

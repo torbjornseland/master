@@ -129,7 +129,7 @@ Epidemic models
 % ----------------- end author(s) -------------------------
 
 \begin{center}
-Sep 15, 2014
+Sep 19, 2014
 \end{center}
 
 \vspace{1cm}
@@ -451,7 +451,76 @@ This simulation result in about 8-9 dead zombies. The total number should be hig
 \frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
 \end{align*}
 
+By using this model and change $a=0.0073$ and set $\mu=0.14$ the result can be reproduced.
 
+
+\begin{center}  % inline figure
+  \centerline{\includegraphics[width=0.9\linewidth]{plots/WD_zombie_counter_2.png}}
+\end{center}
+
+
+This simulation is modeled with the values given When Rich wake up, explained in the initial phase. The result after this day is that the humans are reduced to 58 humans. The number of infected are increased to 2.47, which can be explained with the two characters in the series, Amy and Jim. The number of dead is increased to 231, and is a combination of dead zombies and humans who are attacked. By modelling this for another day, the result will be a higher dead rate and a decreasing in the infected rate.
+\\
+\\
+An interesting situation is to check what will happen if this counter attack repeats it self for a series of time. Who will survive? An attack every other day will give the following result,
+
+
+\begin{center}  % inline figure
+  \centerline{\includegraphics[width=0.9\linewidth]{plots/WD_zombie_counter_series.png}}
+\end{center}
+
+
+After 200 days there will be about 15 humans and 12 zombies left. Now the humans are able to survive since they are more efficiency in battles. There are of course several things to discuss. How will the number of battles effect the humans and zombies. Will they be tired or more efficiency? What about weapons? What would happen if the group of zombies was much larger? This paper is based on the series and has therefore done some assumptions based on the information given in the movie.
+
+\paragraph{The three phases in Walking Dead.}
+By adding these three phases together, the final result after the attack should be possible to match. The first simulation here will be done with the parameters used in the sections above. This will probably lead to a small mistake, since the result for the final number in each phase are given with decimals and the initial values in each phase are based on assumptions and round off numbers. The different parameter values are listed below. These are obtained from the different simulations run above.
+
+\begin{quote}
+\begin{tabular}{cccc}
+\hline
+\multicolumn{1}{c}{ parameter } & \multicolumn{1}{c}{ Initial phase } & \multicolumn{1}{c}{ hysterical phase } & \multicolumn{1}{c}{ counter attack } \\
+\hline
+$\beta$          & 0.01155          & 0.000011         & 0.00011          \\
+$\varrho$        & 1.37             & 1.5              & 1.5              \\
+$\alpha$         & 0.00044          & 0.000208         & 0.000208         \\
+a                & 0                & 0                & 0.0073           \\
+$\sigma$         & 0                & 0                & 0.005            \\
+$\mu$            & 0                & 0                & 0.14             \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+
+
+\begin{figure}[ht]
+  \centerline{\includegraphics[width=0.9\linewidth]{plots/WD_zombie_all_phases_1.png}}
+  \caption{
+  Walking Dead simulated after 5 episodes. Based on the three different phases.
+  }
+\end{figure}
+%\clearpage % flush figures 
+
+
+This clearly shows the different phases and the change in the different values. The different values are shown in the table under, where the values are given at the initial time. The last column consist the final values after 34 days.
+
+\begin{quote}
+\begin{tabular}{ccccc}
+\hline
+\multicolumn{1}{c}{ --------- } & \multicolumn{1}{c}{ Initial phase } & \multicolumn{1}{c}{ hysterical phase } & \multicolumn{1}{c}{ counter attack } & \multicolumn{1}{c}{ final values } \\
+\hline
+S_0              & 621              & 71               & 62               & 58               \\
+I_0              & 0                & 231              & 0                & 1                \\
+Z_0              & 1                & 299              & 359              & 332              \\
+R_0              & 0                & 21               & 202              & 231              \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+\\
+\\
+This model will be used as the basic model to be compared against. The biggest advantage with this model is that it is straight forward to calculate. It it easy and quite simple to understand. This is good if the target is to find the total number in each class measured over an area, but it gives no information about the spatial spread of the disease and will therefore be useless in the work on describing how fast a disease can spread abroad countries and borderlines. The  two next chapters will introduce more complicated models which will be compared to this ODE-system modeled here.
 
 
 \bibliographystyle{plain}
