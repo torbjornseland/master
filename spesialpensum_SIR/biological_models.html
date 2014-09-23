@@ -96,7 +96,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Sep 22, 2014</h4></center> <!-- date -->
+<center><h4>Sep 23, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -115,7 +115,7 @@ MathJax.Hub.Config({
 </p>
 
 <h1>Introduction to the chapter  <a name="___sec0"></a></h1>
-This chapter will be split into two different parts. The first sections will be based on the chapter "Dynamic of Infectious Diseses" in Mathematical Biology by J.D Murray <a href="#murray2002mathematical">[1]</a>. This will give a history perspective on different epidemic diseases and their affect on the human population. Further a basic ODE system will be shown and study to see how this model can give information about the disease and if it is severe for the human population and can be called an epidemic disease.
+This chapter will be split into two different parts. The first sections will be based on the chapter "Dynamic of Infectious Diseses" in Mathematical Biology by J.D Murray <a href="#murray2002mathematical">[1]</a>. This will give a history perspective on different epidemic diseases and their affect on the human population. Further a basic ODE system will be shown and study to see how this model can give information about the disease and if it is severe for the human population, and then can be called an epidemic disease.
 <br />
 <br />
 The last part will be based on a scenario where the population face a zombification, one of the most critical and devastating epidemic diseases that can occur. Here the TV series Walking Dead will be used as reference, and the series will be tested against a model based on the SIR model explained in the first section. There have been a couple of papers on this modelling earlier, and this part will look into these models and try to adjust the system to the TV series.
@@ -142,9 +142,9 @@ There are four main microorganisms that can be disease-causing. These are; virus
 Most of the models shown here will have a constant population. This may differ from the real world. How the population interact is another assumption that has to be done. This has to be similar for the whole area that is modeled. The population can be divided into three different groups. 
 
 <ul>
-<li> *Susceptible*(\( S \)), which consist of humans that are healthy and at risk of becoming infected.</li> 
-<li> *Infective*(\( I \)),this group has the disease or are carriers of the disease. This group can infect the <em>Susceptible</em>.</li> 
-<li> *Removed*(\( R \)),t his group consist of either dead or recovered humans, often people that already have had the disease.</li> 
+<li> <em>Susceptible</em> (\( S \)), which consist of humans that are healthy and at risk of becoming infected.</li> 
+<li> <em>Infective</em> (\( I \)),this group has the disease or are carriers of the disease. This group can infect the <em>Susceptible</em>.</li> 
+<li> <em>Removed</em> (\( R \)),t his group consist of either dead or recovered humans, often people that already have had the disease.</li> 
 </ul>
 
 The natural order for a human is,
@@ -202,7 +202,7 @@ The expression inside the brackets controls the change in \( I \). The function 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  <a name="fig:threshold_phenomenon"></a> Several simulations with start position along the blue line. <em>Infective</em> increase until S = \( \frac{a}{r} \), which is sat to 35. Then Infectice decrease towards 0 </p></center>
+<center><p class="caption">Figure 1:  <a name="fig:threshold_phenomenon"></a> Several simulations with start position along the blue line. <em>Infective</em> increase until S = \( \frac{a}{r} \), which is sat to 35. Then <em>Infective</em> decrease towards 0 </p></center>
 <p><img src="plots/threshold_phenomenon.png" align="bottom" ></p>
 </center>
 
@@ -315,22 +315,33 @@ The parameter value \( \rho = \frac{a}{r} \) has a major impact on the result. T
 A small \( \rho \) gives an aggressive disease, since \( I \) will increase until \( S= \rho \). The <em>Infective</em> will increase until the number of <em>Susceptible</em> falls down to 50. This will result in a majority of infected students. A large \( \rho \) has the opposite effect. The total number of <em>Susceptible</em> stays around 170 students and will go towards a steady number as \( I(\infty)=0 \).
 
 <h1>Zombification  <a name="___sec5"></a></h1>
-One of the worst epidemics that can affect the human population is a zombie attack. This will have a huge impact on the way humans live today. Several movies and series has illustrated this type of situation, but it is time that the scientists also take this threat seriously. There have been written a couple of papers about this.  Munz et al.<a href="#munz2009zombies">[2]</a> used the SIR model to simulate an possible upcoming zombiefication, where the infected class, \( I \), is switched with a zombie class, \( Z \). The following model was used,
+One of the worst epidemics that can affect the human population is a zombie attack. This will have a huge impact on the way humans live today. Several movies and series has illustrated this type of situation, but it is time that the scientists also take this threat seriously. There have been written a couple of papers about this. Munz et. al[<a href="#munz2009zombies">[2]</a>] used the SEIR model to simulate an possible upcoming zombiefication, where the latent class(\( E \)), is replaced with an <em>Infected</em> class(\( I \)) and the <em>Infected</em> class(\( I \)) is replaced with a <em>Zombie</em> class(\( Z \)). Here it is important to know that the <em>Infected</em> class in the \( SIZR \) is not the same as in the \( SEIR \) model presented earlier. The following model was used,
 
 $$
 \begin{align*}
 \frac{dS}{dt} =& \Sigma -\beta SZ - \delta S \\
-\frac{dZ}{dt} =& \beta SZ + \zeta R - \alpha SZ\\
-\frac{dR}{dt} =& \delta S + \alpha SZ - \zeta R
+\frac{dI}{dt} =& \beta SZ - \rho I - \delta I\\
+\frac{dZ}{dt} =& \rho I + \zeta R - \alpha SZ\\
+\frac{dR}{dt} =& \delta S + \delta I + \alpha SZ - \zeta R
 \end{align*}
 $$
 
 
 <p>
-This is a bit more complicated than the standard \( SIR \) model that was presented above. Here \( \Sigma \) describe the birthrate for new *Susceptible*s. \( \frac{dS}{dt} \) is now able to be positive. \( \beta SZ \) describe the numbers of <em>Susceptible</em> that become zombies, by interactions between the two groups. Similar as the case for \( rSI \). The last factor for the <em>Susceptible</em> is \( \delta S \). This describe the number of naturals deaths among the group. \( \zeta R \) controls the number of <em>Removed</em> that arises as zombies. To avoid total eradication the humans will try to fight back, \( \alpha SZ \), describe the number of zombies killed by humans in the zombie attacks. 
+This is a bit more complicated than the standard \( SEIR \) model. A presentation of the parameters;
+
+<ul>
+<li> \( \Sigma \) describes the birthrate for new <em>Susceptible</em>. \( \frac{dS}{dt} \) is now able to be positive.</li> 
+<li> \( \beta SZ \) describes the numbers of <em>Susceptible</em> that become <em>Infected</em> , by interactions between zombies and humans. Similar as the case for \( rSI \) in the SIR model.</li> 
+<li> \( \delta \) describes the number of naturals deaths among the group. This is used in the <em>Susceptible</em> and the <em>Infected</em> group</li>
+<li> \( \rho I \) describes the probability for an infected human to wake up as a zombie.</li>
+<li> \( \zeta R \) controls the number of <em>Removed</em> that arises as <em>Zombie</em>.</li> 
+<li> \( \alpha SZ \) describes the number of zombies killed by humans in the zombie attacks.</li> 
+</ul>
+
 <br />
 <br />
-This model was challenged by the paper from Langtangen, Mardal and R&#248;tnes, where they developed another model. They added another class, \( I \), which here describe infected humans. This is a pre-zombie stadium, before becoming zombies. There is also added a function \( \omega(t) \), which creates a massive attack from the humans. This is controlled by time and give the *Susceptible*s a chance to fight back. The system:
+This model was challenged by Langtangen, Mardal and R&#248;tnes[<a href="#zombie-math">[3]</a>] now referred as LMR, where they developed another model based on the movie <em>The Night of The Living Dead</em>. They developed the model in another way with three important arguments. They argue that dead zombies cannot become functioning zombies again. Therefore \( \zeta \) will always be zero. They let the parameters in the model change with time, according to the phases and the parameters are estimated based on the movie. There is also added a function \( \omega(t) \), which creates a massive attack from the humans. This is controlled by a time variable and give the <em>Susceptible</em> a chance to fight back. The system:
 $$
 \begin{align*} \label{eq: LMR_model}
 \frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS \\
@@ -340,26 +351,34 @@ $$
 \end{align*}
 $$
 
-The new elements are the different \( \delta \)'s, which describe the probability that the specific type is killed or dies. This can only harm the humans,$S$, or the infected group,$I$. The probability for a human to wake up as a zombie is here controlled by \( \varrho \). This will have major impact on the amount of zombies. In the system from Munz et al. everyone ended up as zombies. But in this case the result can variy from everyone down to none, if \( \varrho=0 \). The function:
+The main change here is the \( \omega(t) \) introduced above. This is a Gaussian curve and can be seen under. The function,
 $$
 \begin{equation}
 \omega(t) = a \sum^m_{i=0}\exp\left(\frac{1}{2}\left(\frac{t-T_i}{\sigma}\right)^2\right)
 \end{equation}
 $$
 
-controls the attacks from the <em>Susceptible</em> will only be fired at choosen times. These are controlled by the parameters. \( a \) here works as a similar parameter as \( \alpha \), but will only active when the <em>Susceptible</em> group is organized and ready to attack. \( T \) contains a list of numbers. This controls the time when the attacks will occur.
+controls the attacks from the <em>Susceptible</em>, which will be fired at predefined time steps. These are controlled by the parameters. \( a \) here works as a similar parameter as \( \alpha \), but will only be activated when the <em>Susceptible</em> group is organized and ready to attack. \( T \) contains a list of numbers, which controls the time when the attacks will occur. \( \sigma \) controls the width. This function will be shown separately later when it is used.
 <br />
 <br />
 
 <h2>Parameters used in the model  <a name="___sec6"></a></h2>
-An important factor while modelling a zombie attack is the parameters. In the ODE system from Langtangen, Mardal and R&#248;tnes parameters from "The night of the living dead" was used. The TV series "Walking dead" has been study in detalj. The data will be based on the first five episodes and are constructed by watching the show carefully. The three phases in a zombie attack will be based on the form used in the paper from LMR.
+An important factor while modelling a zombie attack is the parameters. Parameters from the movie <em>The Night of The Living Dead</em> is used as parameters in the ODE system from LMR[<a href="#zombie-math">[3]</a>]. This thesis has study the TV series <em>Walking dead</em> in detail. The data will be based on the first five episodes and are constructed by watching the episodes carefully. The three phases in a zombie attack will be based on the form used in the paper from LMR[<a href="#zombie-math">[3]</a>].
 
 <h3>The initial phase  <a name="___sec7"></a></h3>
 
-In this phase the disease is yet not known and humans often tries to save the sick ones by taking them to hospitals or get some kind of treatment. Because of this ignorance related to the disease, the number of infected humans is high. This phase is often quite short and humans soon starts realise that the risk of saving other is really high. Walking Dead never shows anything from this phase, but the viewer only sees the damages when the main character sheriff Rick Grimes wakes up at the local hospital after a coma caused by shooting accident. What he wakes up to is the major damage caused in the initial phase and the society is in the hysterical phase.
+In this phase the disease is yet not known and humans try to save the sick ones by taking them to hospitals or get some kind of treatment. Because of this ignorance related to the disease, the number of infected humans is high. This phase is often quite short and humans soon starts realise that the risk of getting infected by saving other is really high. Walking Dead never shows anything from this phase, but the viewer only sees the damages done when the main character sheriff Rick Grimes wakes up at the local hospital. What he wakes up to is the major damage caused in the initial phase while the society has moved to the hysterical phase.
 <br />
 <br />
- To denote the question about the time, the length of Ricks coma is essential. There are several factors that gives an indication of the time aspect. When Rick wakes up at the hospital he has grown a smooth beard of about 1 cm. This would correspond to 1 month in average for an European origin. He also has some flowers which has dried out, these also give the impression that there has been some weeks. The hospital is running on its emergency generator. This would probably not last for many days with a fully operational hospital. The hospital is as well as shut down when Rick wakes up. This will be a factor that can give the emergency generator a longer lifetime. Dr. Edwin Jenner gives the viewer in episode 5. Here he records a videolog describing his result.He tells the viewer that it was 63 days since the epidemic started spreading. By studying the first five episodes in detail, the series gives a sense that the time aspect has not been in focus. Therefore the different phases are constructed from the information that has been given. Rick Grimes has probably been in coma for a month and the number of zombies he meets the first days will give the indication of the numbers that will be used in the model. The total amount of people in the model will be based on the number of humans, dead and zombies seen in the first five episodes. The number of humans has been estimated to 62. 20 living in the camp with Rick, 40 humans in the old nursing home and the father and son in episode 1. The number of dead is estimated to 200. This is based on the amount of dead outside the hospital where Rick wakes up. The number of zombies are assume to be 360. These are based on the 30 outside the house of Morgan Jones and his son Duane, 300 zombies in the city Atlanta and 30 zombies attacking the camp. The total number will then be 622. Since these numbers are calculated for about a month after the outbreak of the disease and the initial phase probably are over in three days. After this the hysterical phase starts.Over the three first days when Rick is awake about 20 zombies are killed by humans and 1 human is killed by zombies. This can be used to calculate the final number in the initial phase. To do this calculation easier, a month is assumed to be 30 days and 27 days earlier. The numbers are set to:
+ To denote the question about the time, the length of Ricks coma is essential. There are several factors that gives an indication of the time aspect. When Rick wakes up at the hospital he has grown a smooth beard of about 1 cm. This would correspond to 1 month in average for an European origin. He also has some flowers which has dried out, these also give the impression that there has been some weeks. The hospital is running on its emergency generator. This would probably not last for many days with a fully operational hospital, but the hospital is as well as shut down when Rick wakes up and can give the emergency generator a longer lifetime. Dr. Edwin Jenner gives the viewer some information in episode 5. Here he records a video log describing his result.He tells the viewer that it was 63 days since the epidemic started spreading. By studying the first five episodes in detail, the series gives a sense that the time aspect has not been in focus. Therefore the different phases are constructed from the information that has been given. Rick Grimes has probably been in coma for a month and the number of zombies he meets the first days will be the basis of the data that the numbers in the model will be based on. The total amount of objects in the model will be based on the number of humans, dead and zombies seen in the first five episodes. 
+
+<ul>
+ <li> The number of humans has been estimated to 62. 20 living in the camp with Rick, 40 humans in the old nursing home and the father and son in episode 1.</li> 
+ <li> The number of dead is estimated to 200. This is based on the amount of dead outside the hospital where Rick wakes up.</li> 
+ <li> The number of zombies are assume to be 360. These are based on the 30 outside the house of Morgan Jones and his son Duane, 300 zombies in the city Atlanta and 30 zombies attacking the camp.</li> 
+</ul>
+
+The total number will then be 622. Since these numbers are calculated for about a month after the outbreak of the disease and the initial phase probably are over in three days. After this the hysterical phase starts.Over the three first days when Rick is awake about 20 zombies are killed by humans and 1 human is killed by zombies. This can be used to calculate the final number in the initial phase. To do this calculation easier, a month is assumed to be 30 days and 27 days earlier. The numbers are set to:
 $$
 \begin{align*}
 \frac{27}{3}*20 =& 180\\
@@ -370,7 +389,7 @@ $$
 180 zombies and 9 humans are killed in this period. The final number for the initial phase can then be set to 71 humans, 540 zombies/infected and 20 dead. This is the same number as for the initial values for the hysterical phase. Another question to discuss is the incubation time. Here there are two examples that can be used. The first transformation from human to zombie happens for Amy, who was bit in the arm by a zombie. The transformation happens in about 12 hours. The other character Jim has a slower transformation. This last for about two days before the rest of the group leave him alongside the road on their way to CDC(Center for Disease Control). An average of the incubation time can then be set to 24 hours based on these two transformations.
 <br />
 <br />
-Now the ODEmodel can be used to model the initial phase. \( S_0 = 621 \) and \( Z_0 = 1 \) while the two other groups are set to zero. \( \beta \) can be found with the expression \( \beta \Delta t S Z \) from the first ODE equation. After three days about 90 percent of the humans are killed. The probability for a human being infected will be sat to \( \beta = 0.3 \). The natural death rate is sat to \( \delta_S = 2.2*10^{-5} \) based on <a href="#CBC_deaths_2011">[3]</a>. It is quite hard to find similar realistic data for infected humans, so \( \delta_I = \delta_S \). The number of births is sat to \( \Sigma = 3.45*10^{-5} \). This is based on data from CDC from 2012 <a href="#CBC_births_2012">[4]</a>. Since this is data for the initial phase, zombies are seen as infeteced humans that can be saved. Therefore \( \alpha = 0 \). And the two last parameters are also zero, \( a = \zeta = 0 \). This model will be:
+Now the ODEmodel can be used to model the initial phase. \( S_0 = 621 \) and \( Z_0 = 1 \) while the two other groups are set to zero. \( \beta \) can be found with the expression \( \beta \Delta t S Z \) from the first ODE equation. After three days about 90 percent of the humans are killed. The probability for a human being infected will be sat to \( \beta = 0.3 \). The natural death rate is sat to \( \delta_S = 2.2*10^{-5} \) based on <a href="#CBC_deaths_2011">[4]</a>. It is quite hard to find similar realistic data for infected humans, so \( \delta_I = \delta_S \). The number of births is sat to \( \Sigma = 3.45*10^{-5} \). This is based on data from CDC from 2012 <a href="#CBC_births_2012">[5]</a>. Since this is data for the initial phase, zombies are seen as infeteced humans that can be saved. Therefore \( \alpha = 0 \). And the two last parameters are also zero, \( a = \zeta = 0 \). This model will be:
 
 <p>
 <center><p><img src="plots/WD_zombie_initial_1.png" align="bottom" ></p></center>
@@ -447,7 +466,7 @@ To get some startvalues, \( SZ\omega(t)=30 \) can be used. Where \( \omega(t) \)
 <center><p><img src="plots/WD_zombie_counter_1.png" align="bottom" ></p></center>
 
 <p>
-This simulation result in about 8-9 dead zombies. The total number should be higher. Another problem is that no human died under this battle. The model from <a href="#zombie-math">[5]</a> is based on The Night of the Living Dead, where the amount of humans who are killed are close to zero. This is not the case in Walking dead. Therefore the risk is higher for humans in a counter attack. This solved by adding \( \mu \omega (t) SZ \), where \( \mu \) is the risk for human to get infected during this attack. The model \eqref{eq:LMR_model} can then be expand,
+This simulation result in about 8-9 dead zombies. The total number should be higher. Another problem is that no human died under this battle. The model from <a href="#zombie-math">[3]</a> is based on The Night of the Living Dead, where the amount of humans who are killed are close to zero. This is not the case in Walking dead. Therefore the risk is higher for humans in a counter attack. This solved by adding \( \mu \omega (t) SZ \), where \( \mu \) is the risk for human to get infected during this attack. The model \eqref{eq:LMR_model} can then be expand,
 
 $$
 \begin{align*} \label{eq: seland_model}
@@ -534,14 +553,6 @@ This model will be used as the basic model to be compared against. The biggest a
     4,
     pp. 133-150,
     2009.</li>
- <li> <a name="CBC_deaths_2011"></a> <b>D. L.Hoyert and J. Xu</b>. 
-    Deaths:Preliminary Data for 2011,
-    <em>Division of Vital Statistics</em>,
-    2012.</li>
- <li> <a name="CBC_births_2012"></a> <b>J. A. Martin, B. E. Hamilton, M. J. Osterman, S. C. Curtin and T. Mathews</b>. 
-    Births: Final Data From 2012,
-    <em>Division of Vital Statistics</em>,
-    2013.</li>
  <li> <a name="zombie-math"></a> <b>H. P. Langtangen, K.-A. Mardal and P. R\otnes</b>. 
     Escaping the Zombie Threat by Mathematics,
     Zombies in the Academy: living death in higher education,
@@ -549,6 +560,14 @@ This model will be used as the basic model to be compared against. The biggest a
     University of Chicago Press,
     Chapter 3.6,
     pp. pp. x-y,
+    2013.</li>
+ <li> <a name="CBC_deaths_2011"></a> <b>D. L.Hoyert and J. Xu</b>. 
+    Deaths:Preliminary Data for 2011,
+    <em>Division of Vital Statistics</em>,
+    2012.</li>
+ <li> <a name="CBC_births_2012"></a> <b>J. A. Martin, B. E. Hamilton, M. J. Osterman, S. C. Curtin and T. Mathews</b>. 
+    Births: Final Data From 2012,
+    <em>Division of Vital Statistics</em>,
     2013.</li>
 </ol>
 
