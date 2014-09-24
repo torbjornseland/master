@@ -1,0 +1,29 @@
+* books
+** {P}ython Scripting for Computational Science
+   key:       Langtangen_2012
+   author:    H. P. Langtangen
+   year:      2012
+   publisher: Springer
+   status:    published
+   series:    Texts in Computational Science and Engineering
+   edition:   Third
+   entrytype: book
+** Mathematical Biology: I. an Introduction
+   key:       murray2002mathematical
+   author:    J.D. Murray
+   year:      2002
+   publisher: Springer
+   url:       http://books.google.no/books?id=4WbpP90Gk1YC
+   status:    published
+   isbn:      9780387952239
+   series:    Interdisciplinary Applied Mathematics
+   lccn:      2001020448
+   entrytype: book
+** Introduction to Partial Differential Equations: a Computational Approach
+   key:       tveito2005introduction
+   author:    Aslak Tveito, Ragnar Winther
+   year:      2005
+   publisher: Springer
+   volume:    29
+   status:    published
+   entrytype: book

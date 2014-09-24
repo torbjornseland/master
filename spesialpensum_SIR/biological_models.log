@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.27)  19 SEP 2014 09:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.27)  23 SEP 2014 15:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**biological_models.tex
+**biological_models
 (./biological_models.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 26 languages loaded.
@@ -669,11 +669,7 @@ Package: placeins 2005/04/18  v 2.2
 
 
 Writing index file biological_models.idx
-(./biological_models.aux
-
-LaTeX Warning: Label `eq:dR_small' multiply defined.
-
-)
+(./biological_models.aux)
 \openout1 = `biological_models.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
@@ -806,38 +802,51 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \openout6 = `biological_models.toc'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--137
+Underfull \hbox (badness 10000) in paragraph at lines 121--125
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--137
+Underfull \hbox (badness 10000) in paragraph at lines 126--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--137
+Underfull \hbox (badness 10000) in paragraph at lines 126--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--137
+Underfull \hbox (badness 10000) in paragraph at lines 126--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--137
+Underfull \hbox (badness 10000) in paragraph at lines 126--142
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--142
 
  []
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 142--147
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 146.
+
+
+(/usr/share/texmf/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 146.
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--162
 
  []
 
-[2]
 
 ! Package inputenc Error: Unicode char \u8:  not set up for use with LaTeX.
 
@@ -845,421 +854,285 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.152 ...pecially sexually transmitted diseases. 
-                                                  The total number for the p...
+l.167 ...pecially sexually transmitted diseases. 
+                                                  The total number of the po...
 
 ? 
-
-LaTeX Warning: Reference `eq:SIR_model' on page 3 undefined on input line 167.
-
-[3] <plots/threshold_phenomenon.png, id=67, 578.16pt x 433.62pt>
+[3] <plots/threshold_phenomenon.png, id=65, 578.16pt x 433.62pt>
 File: plots/threshold_phenomenon.png Graphic file (type png)
 
 <use plots/threshold_phenomenon.png>
-Package pdftex.def Info: plots/threshold_phenomenon.png used on input line 175.
+Package pdftex.def Info: plots/threshold_phenomenon.png used on input line 190.
 
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
-
-LaTeX Warning: Reference `eq:SIR_model' on page 4 undefined on input line 186.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--187
+Underfull \hbox (badness 10000) in paragraph at lines 201--206
 
  []
 
-[4 <./plots/threshold_phenomenon.png>]
-
-LaTeX Warning: Reference `eq:SIR_model' on page 5 undefined on input line 210.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 206--211
-
- []
-
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.219 \begin{equation}
-                      
-? 
-! You can't use `\eqno' in math mode.
-\endmathdisplay@a ...\df@tag \@empty \else \veqno 
-                                                  \alt@tag \df@tag \fi \ifx ...
-l.221 \end{equation}
-                    
-? 
-! Missing \endgroup inserted.
+[4] [5 <./plots/threshold_phenomenon.png>]
+! Missing $ inserted.
 <inserted text> 
-                \endgroup 
-l.221 \end{equation}
-                    
-? 
+                $
+l.226 ...much higher than the initial condition I_
+                                                  0. The figure(\ref{fig:thr...
 
-! LaTeX Error: \begin{document} ended by \end{equation}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.221 \end{equation}
-                    
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.221 \end{equation}
-                    
-? 
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.221 \end{equation}
-                    
-? 
-[5]
-
-LaTeX Warning: Reference `eq:SIR_model' on page 6 undefined on input line 226.
-
-
-LaTeX Warning: Reference `eq:dR_normal' on page 6 undefined on input line 236.
-
-
-! LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.245 \DeclareMathOperator
-                          {\sech}{sech}
-? 
-! Undefined control sequence.
-l.245 \DeclareMathOperator{\sech
-                                }{sech}
-? 
-! Undefined control sequence.
-l.247 ...}{dt} = \frac{a\alpha^2\rho^2}{2S_0}\sech
-                                                  ^2\left(\frac{\alpha at}{2...
+l.226 .... In the two upper trajectories where $S_
+                                                  0< \rho$, the \emph{Infect...
 
 ? 
-[6]
 
-LaTeX Warning: Reference `dR_normal' on page 7 undefined on input line 249.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 248--252
-
+Overfull \hbox (294.49364pt too wide) in paragraph at lines 225--230
+\T1/lmr/m/n/10 (-20) the ini-tial con-di-tion I$[]\OML/lmm/m/it/10 :Thefigure\O
+T1/lmr/m/n/10 (-20) ([][]1[][])\OML/lmm/m/it/10 showsthatthetrajectoryofthisfun
+ctionstartsdecreasingafterthispoint:Inthetwouppertrajectorieswhere$\T1/lmr/m/n/
+10 (-20) S$[] \OML/lmm/m/it/10 <
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--252
+Underfull \hbox (badness 10000) in paragraph at lines 225--230
 
  []
 
-
-LaTeX Warning: Reference `dR_small' on page 7 undefined on input line 253.
-
-
-! LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.254 \DeclareMathOperator
-                          {\sech}{sech}
-? 
-! Undefined control sequence.
-l.254 \DeclareMathOperator{\sech
-                                }{sech}
-? 
-! Undefined control sequence.
-l.256 \frac{dR}{dt} = 890\sech
-                              ^2(0.2t-3.4)
-? 
-<plots/Bombay_plague.png, id=98, 578.16pt x 433.62pt>
-File: plots/Bombay_plague.png Graphic file (type png)
-
-<use plots/Bombay_plague.png>
-Package pdftex.def Info: plots/Bombay_plague.png used on input line 262.
-(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [7 <./plots/Bombay_plague.png>]
-<plots/English_boarding_school.png, id=107, 578.16pt x 433.62pt>
+[6] <plots/English_boarding_school.png, id=109, 578.16pt x 433.62pt>
 File: plots/English_boarding_school.png Graphic file (type png)
 
 <use plots/English_boarding_school.png>
 Package pdftex.def Info: plots/English_boarding_school.png used on input line 2
-71.
+61.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
-<plots/English_boarding_school_changes.png, id=108, 926.5014pt x 712.5822pt>
+<plots/English_boarding_school_changes.png, id=110, 926.5014pt x 712.5822pt>
 File: plots/English_boarding_school_changes.png Graphic file (type png)
 
 <use plots/English_boarding_school_changes.png>
 Package pdftex.def Info: plots/English_boarding_school_changes.png used on inpu
-t line 279.
+t line 273.
 (pdftex.def)             Requested size: 310.4979pt x 238.80621pt.
- [8 <./plots/English_boarding_school.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 294--298
+ [7] [8 <./plots/English_boarding_school.png> <./plots/English_boarding_school_
+changes.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 304--308
 
  []
 
-[9 <./plots/English_boarding_school_changes.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 307--311
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 317--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--311
+Underfull \hbox (badness 10000) in paragraph at lines 317--321
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--329
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 315--319
+
+LaTeX Warning: Reference `eq:LMR_model' on page 11 undefined on input line 341.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--342
 
  []
 
-[11]
-
-LaTeX Warning: Citation `CBC_deaths_2011' on page 12 undefined on input line 32
-6.
-
-
-LaTeX Warning: Citation `CBC_births_2012' on page 12 undefined on input line 32
-6.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 322--327
-
- []
-
-<plots/WD_zombie_initial_1.png, id=129, 578.16pt x 433.62pt>
+[11] <plots/WD_zombie_initial_1.png, id=146, 578.16pt x 433.62pt>
 File: plots/WD_zombie_initial_1.png Graphic file (type png)
 
 <use plots/WD_zombie_initial_1.png>
-Package pdftex.def Info: plots/WD_zombie_initial_1.png used on input line 330.
+Package pdftex.def Info: plots/WD_zombie_initial_1.png used on input line 345.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [12]
-<plots/check_parameters.png, id=134, 1042.8561pt x 871.5762pt>
+ [12 <./plots/WD_zombie_initial_1.png>]
+<plots/check_parameters.png, id=156, 1042.8561pt x 871.5762pt>
 File: plots/check_parameters.png Graphic file (type png)
 
 <use plots/check_parameters.png>
-Package pdftex.def Info: plots/check_parameters.png used on input line 339.
+Package pdftex.def Info: plots/check_parameters.png used on input line 358.
 (pdftex.def)             Requested size: 310.4979pt x 259.4933pt.
- [13 <./plots/WD_zombie_initial_1.png>]
-<plots/WD_zombie_initial_2.png, id=141, 578.16pt x 433.62pt>
+
+<plots/WD_zombie_initial_2.png, id=157, 578.16pt x 433.62pt>
 File: plots/WD_zombie_initial_2.png Graphic file (type png)
 
 <use plots/WD_zombie_initial_2.png>
-Package pdftex.def Info: plots/WD_zombie_initial_2.png used on input line 347.
+Package pdftex.def Info: plots/WD_zombie_initial_2.png used on input line 370.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [14 <./plots/check_parameters.png>]
+ [13 <./plots/check_parameters.png>]
 ! Misplaced alignment tab character &.
-l.357 ... As the final result will be $S_n=62,I_n&
-                                                  Z_n=360$ and $R_n=200$. He...
+l.384 ...As the final result will be $S_n=62,I_n &
+                                                   Z_n=360$ and $R_n=200$. H...
 
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--358
+Underfull \hbox (badness 10000) in paragraph at lines 381--385
 
  []
 
-[15 <./plots/WD_zombie_initial_2.png>]
-<plots/check_parameters_hysterical.png, id=154, 578.16pt x 433.62pt>
-File: plots/check_parameters_hysterical.png Graphic file (type png)
-
-<use plots/check_parameters_hysterical.png>
-Package pdftex.def Info: plots/check_parameters_hysterical.png used on input li
-ne 361.
-(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.364   }
-         
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.364   }
-         
-? 
-<plots/check_parameters_hysterical_2.png, id=155, 1353.6171pt x 897.5934pt>
+[14 <./plots/WD_zombie_initial_2.png>]
+<plots/check_parameters_hysterical_2.png, id=172, 1353.6171pt x 897.5934pt>
 File: plots/check_parameters_hysterical_2.png Graphic file (type png)
 
 <use plots/check_parameters_hysterical_2.png>
 Package pdftex.def Info: plots/check_parameters_hysterical_2.png used on input 
-line 371.
+line 388.
 (pdftex.def)             Requested size: 310.4979pt x 205.89429pt.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.374   }
-         
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.374   }
-         
-? 
-[16 <./plots/check_parameters_hysterical.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 379--386
+Underfull \hbox (badness 10000) in paragraph at lines 396--403
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--386
+Underfull \hbox (badness 10000) in paragraph at lines 396--403
 
  []
 
-<plots/WD_zombie_hysterical_1.png, id=162, 578.16pt x 433.62pt>
+[15 <./plots/check_parameters_hysterical_2.png>]
+<plots/WD_zombie_hysterical_1.png, id=179, 578.16pt x 433.62pt>
 File: plots/WD_zombie_hysterical_1.png Graphic file (type png)
 
 <use plots/WD_zombie_hysterical_1.png>
-Package pdftex.def Info: plots/WD_zombie_hysterical_1.png used on input line 38
-9.
+Package pdftex.def Info: plots/WD_zombie_hysterical_1.png used on input line 40
+6.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [17 <./plots/check_parameters_hysterical_2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 396--400
+ [16 <./plots/WD_zombie_hysterical_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 417--421
 
  []
 
-<plots/omega_function.png, id=169, 578.16pt x 433.62pt>
+<plots/omega_function.png, id=187, 578.16pt x 433.62pt>
 File: plots/omega_function.png Graphic file (type png)
 
 <use plots/omega_function.png>
-Package pdftex.def Info: plots/omega_function.png used on input line 403.
+Package pdftex.def Info: plots/omega_function.png used on input line 424.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.412 
+l.433 
       
 ? 
-[18 <./plots/WD_zombie_hysterical_1.png>]
-<plots/WD_zombie_counter_1.png, id=176, 578.16pt x 433.62pt>
+<plots/WD_zombie_counter_1.png, id=188, 578.16pt x 433.62pt>
 File: plots/WD_zombie_counter_1.png Graphic file (type png)
 
 <use plots/WD_zombie_counter_1.png>
-Package pdftex.def Info: plots/WD_zombie_counter_1.png used on input line 415.
+Package pdftex.def Info: plots/WD_zombie_counter_1.png used on input line 436.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [19 <./plots/omega_function.png>]
-
-LaTeX Warning: Citation `zombie-math' on page 20 undefined on input line 419.
 
 
-LaTeX Warning: Reference `eq:LMR_model' on page 20 undefined on input line 419.
+LaTeX Warning: Reference `eq:LMR_model' on page 17 undefined on input line 444.
 
 
-<plots/WD_zombie_counter_2.png, id=184, 578.16pt x 433.62pt>
+[17 <./plots/omega_function.png>]
+<plots/WD_zombie_counter_2.png, id=197, 578.16pt x 433.62pt>
 File: plots/WD_zombie_counter_2.png Graphic file (type png)
 
 <use plots/WD_zombie_counter_2.png>
-Package pdftex.def Info: plots/WD_zombie_counter_2.png used on input line 432.
+Package pdftex.def Info: plots/WD_zombie_counter_2.png used on input line 455.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [20 <./plots/WD_zombie_counter_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 436--440
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--467
 
  []
 
-<plots/WD_zombie_counter_series.png, id=190, 578.16pt x 433.62pt>
+[18 <./plots/WD_zombie_counter_1.png>]
+<plots/WD_zombie_counter_series.png, id=204, 578.16pt x 433.62pt>
 File: plots/WD_zombie_counter_series.png Graphic file (type png)
 
 <use plots/WD_zombie_counter_series.png>
 Package pdftex.def Info: plots/WD_zombie_counter_series.png used on input line 
-443.
+470.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [21 <./plots/WD_zombie_counter_2.png>] <plots/WD_zombie_all_phases_1.png, id=1
-96, 578.16pt x 433.62pt>
+ [19 <./plots/WD_zombie_counter_2.png>] <plots/WD_zombie_all_phases_1.png, id=2
+13, 578.16pt x 433.62pt>
 File: plots/WD_zombie_all_phases_1.png Graphic file (type png)
 
 <use plots/WD_zombie_all_phases_1.png>
-Package pdftex.def Info: plots/WD_zombie_all_phases_1.png used on input line 47
-1.
+Package pdftex.def Info: plots/WD_zombie_all_phases_1.png used on input line 50
+2.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [22 <./plots/WD_zombie_counter_series.png>]
+
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.486 S_
+l.517 S_
         0              & 621              & 71               & 62           ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.486 S_0              &
+l.517 S_0              &
                          621              & 71               & 62           ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.487 I_
+l.518 I_
         0              & 0                & 231              & 0            ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.487 I_0              &
+l.518 I_0              &
                          0                & 231              & 0            ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.488 Z_
+l.519 Z_
         0              & 1                & 299              & 359          ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.488 Z_0              &
+l.519 Z_0              &
                          1                & 299              & 359          ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.489 R_
+l.520 R_
         0              & 0                & 21               & 202          ...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.489 R_0              &
+l.520 R_0              &
                          0                & 21               & 202          ...
 
 ? 
 
-Overfull \hbox (30.55652pt too wide) in paragraph at lines 482--492
+Overfull \hbox (30.55652pt too wide) in paragraph at lines 513--523
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--498
+Underfull \hbox (badness 10000) in paragraph at lines 525--529
 
  []
 
-No file biological_models.bbl.
+[20 <./plots/WD_zombie_counter_series.png>] (./biological_models.bbl [21 <./plo
+ts/WD_zombie_all_phases_1.png>])
 No file biological_models.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 509.
-[23 <./plots/WD_zombie_all_phases_1.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 509.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 540.
+[22]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 540.
  (./biological_models.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 509.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 540.
 
 
  *File List*
@@ -1363,14 +1236,13 @@ biological_models.out
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 plots/threshold_phenomenon.png
-plots/Bombay_plague.png
 plots/English_boarding_school.png
 plots/English_boarding_school_changes.png
 plots/WD_zombie_initial_1.png
 plots/check_parameters.png
 plots/WD_zombie_initial_2.png
-plots/check_parameters_hysterical.png
 plots/check_parameters_hysterical_2.png
 plots/WD_zombie_hysterical_1.png
 plots/omega_function.png
@@ -1378,27 +1250,25 @@ plots/WD_zombie_counter_1.png
 plots/WD_zombie_counter_2.png
 plots/WD_zombie_counter_series.png
 plots/WD_zombie_all_phases_1.png
+biological_models.bbl
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 509.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 540.
 Package rerunfilecheck Info: File `biological_models.out' has not changed.
-(rerunfilecheck)             Checksum: 96BB47E49491BDC127E0327E67B55F5D;480.
+(rerunfilecheck)             Checksum: C805FD73D01ACFFD436AEA1F12630B2E;455.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 509.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 540.
  ) 
 Here is how much of TeX's memory you used:
- 10613 strings out of 494465
- 158541 string characters out of 6166361
- 284457 words of memory out of 5000000
- 13469 multiletter control sequences out of 15000+600000
- 47822 words of font info for 101 fonts, out of 8000000 for 9000
+ 10675 strings out of 494465
+ 159193 string characters out of 6166361
+ 286060 words of memory out of 5000000
+ 13479 multiletter control sequences out of 15000+600000
+ 54367 words of font info for 121 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 41i,8n,60p,2345b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,8n,60p,1509b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/u
 sr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/l
@@ -1407,11 +1277,12 @@ f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb>
-Output written on biological_models.pdf (23 pages, 761678 bytes).
+public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmsy7.pfb>
+Output written on biological_models.pdf (22 pages, 726847 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
- 194 compressed objects within 2 object streams
- 58 named destinations out of 1000 (max. 500000)
- 11908 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 288 PDF objects out of 1000 (max. 8388607)
+ 225 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 13946 words of extra memory for PDF output out of 14400 (max. 10000000)
 

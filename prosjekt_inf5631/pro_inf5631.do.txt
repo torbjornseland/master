@@ -16,9 +16,9 @@ u(0,t)=& 0\notag \\
 u(L,t)=& 0\notag
 \end{align}
 !et
-This model is a $\textit{Density-Dependent Diffusion-Reaction Diffusion Model}$, because of the $\alpha(u)$ function in the diffusion part. When $\alpha(u)$ is sat to be a constant, the model will be a ordinary $\textit{Reaction Diffusion model}$ [MB,I,449]. Here, $u$ denotes the concentration of the substance in one spatial dimension. This project will include a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will be a study on the affect of the reaction and diffusion term.
+This model is a *Density-Dependent Diffusion-Reaction Diffusion Model*, because of the $\alpha(u)$ function in the diffusion part. When $\alpha(u)$ is sat to be a constant, the model will be a ordinary *Reaction Diffusion model* cite{murray2002mathematical}. Here, $u$ denotes the concentration of the substance in one spatial dimension. This project will include a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will be a study on the affect of the reaction and diffusion term.
 ===== Fisher-Kolmogoroff equation =====
-The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results [^Murray].The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{M})$ in the general equation (ref{eq:reaction_diffusion}).
+The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results cite{murray2002mathematical}.The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{M})$ in the general equation (ref{eq:reaction_diffusion}).
 
 [^Murray]: J.D. Murray,Mathematical Biology, 3rd edition (Springer, Berlin, 2003)
 !bt
@@ -879,3 +879,9 @@ J_{i,i+1} =&\frac{\Delta t}{2\Delta x^2}(\alpha'(u_{i+1})u_{i})-\frac{\Delta t}{
 \end{align*}
 !et
 This matrix can be used to compute the Newton's method. 
+
+======= Bibliography =======
+
+BIBFILE: papers.pub
+
+

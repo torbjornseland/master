@@ -1,0 +1,242 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Stability analysis of the Fisher Kolmogoroff equation">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Fisher-Kolmogoroff equation ', 2, None, '___sec0'),
+              (' Analytical stability analysis ', 2, None, '___sec1'),
+              (' Stability ', 2, None, '___sec2'),
+              (' Amplification factor ', 3, None, '___sec3'),
+              (' Forward Euler for Fisher-Kolmogoroff when B<0 and $\\alpha > 0$ ',
+               3,
+               None,
+               '___sec4'),
+              (' Bibliography ', 1, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Stability analysis of the Fisher Kolmogoroff equation </title>
+
+<center><h1>Stability analysis of the Fisher Kolmogoroff equation </h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Torbj&#248;rn Seland -->
+
+<center>
+<b>Torbj&#248;rn Seland</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
+<center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<p>
+<center><h4>Sep 24, 2014</h4></center> <!-- date -->
+$$
+\newcommand{\p}[2] {#1_{\text{#2}}}
+$$
+
+<h2>Fisher-Kolmogoroff equation  <a name="___sec0"></a></h2>
+This little paper will be a study of the stability criteria for the Fisher-Kolmogoroff equation, now referred to as FK. This equation was first proposed by Fisher to describe the spread of an advantageous gene in a population. It was later developed by Kolmogoroff. The equation can be described 
+$$
+\begin{equation} \label{eq:fish_kol}
+\frac{\partial u}{\partial t} = \alpha\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{M})
+\end{equation}
+$$
+
+Where the first part describe the spatial spread and the second part describe the local chemical reaction.
+
+<h2>Analytical stability analysis  <a name="___sec1"></a></h2>
+A technique to find the analytical stability is by <em>Von Neumann's Stability Analysis</em>. This will be based on the technique from <em>Introduction to Partial Differential Equations</em> by Tveito & Winter <a href="#tveito2005introduction">[1]</a>
+
+<h2>Stability  <a name="___sec2"></a></h2>
+Some adjustments need to be done to FK to be able to solve it. The last part of \eqref{eq:fish_kol} describe the chemical reaction and is a nonlinear part. This will be simplified to a linear expression expressed with a constant \( B \) for the nonlinear part
+$$
+\begin{equation}
+B = r(1-\frac{u}{M})
+\end{equation}
+$$
+
+The FK equation can then be discretized as following
+$$
+\begin{equation} \label{eq:reac_stab}
+u_t = \alpha u_{xx} + Bu
+\end{equation}
+$$
+
+The main goal is to solve this equation numerically with a Backward Euler discretization ,referred as BE, for the time derivative and a Crank Nicolson discretization, referred as CN, for the spatial derivative. But this consist of a couple of problems. Therefore this will be done in five steps where Forward Euler discretization, referred as FE, will be compared to BE.
+
+<h3>Amplification factor  <a name="___sec3"></a></h3>
+
+The first task is to find the amplification factor for FE and BE on the following equation.
+$$
+\begin{equation}
+u' = -au, \hspace{8mm} a>0
+\end{equation}
+$$
+
+Forward Euler
+$$
+\begin{align*}
+\frac{u^{n+1}-u^n}{\Delta t} =& -au^n\\
+u^{n+1}=& (1-\Delta t a)u^n\\
+u^{n}=& (1-\Delta t a)^nu^0\\
+u^{n}=& \p{A}{fe}^nu^0
+\end{align*}
+$$
+
+Where the following amplification factor for FE is \( \p{A}{fe}= (1-\Delta t a) \) and can be see
+
+<p>
+Backward Euler
+$$
+\begin{align*}
+\frac{u^{n}-u^{n+1}}{\Delta t} =& -au^n\\
+u^{n}=& \frac{u^{n-1}}{1+\Delta t a}\\
+u^{n}=& \left(\frac{1}{1+\Delta t a}\right)^nu^0\\
+u^{n}=& A_{be}^nu^0
+\end{align*}
+$$
+
+The amplification factor for BE is \( \p{A}{be} = \left(\frac{1}{1+\Delta t a}\right) \)
+These amplification factors and the exact solution can be plotted against \( a*\Delta t \) which will give an indication on the stability for these amplification factors. 
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  <a name="fig:amp_simple"></a> Amplification factor plotted against \( a*\Delta t \) for BE,FE and the exact solution. </p></center>
+<p><img src="images/amplification_factor.png" align="bottom" height=400 width=500></p>
+</center>
+
+<p>
+Both amplification factors goes towards zero when \( a*\Delta t \) is small enough. This is quite as expected since a small \( \Delta t \) always will give a good solution. But in the case where \( a*\Delta t \) is large, the difference is more critical. BE is able to stay above the exact solution the whole time. This is quite easy to see by looking the amplification factor for BE. When increasing \( a*\Delta t \) the denominator will increase. This means that \( \p{A}{fe} \Rightarrow 0 \) when \( a*\Delta t \Rightarrow \infty \) and will therefore never give any problem with oscillation or growing solution. 
+<br />
+<br />
+For BE is this not the same case. When \( a*\Delta t \) decrease towards 0, the amplification factor will increase towards 1 similar as for FE and the exact solution. The problem arise when \( a*\Delta t \) become to large. From the figure(<a href="#fig:amp_simple">1</a>) it can be seen that the amplification factor reaches about -2 when \( a*\Delta t = 3 \). This would lead to major errors and a growing oscillation problem. To avoid this problem, the stability criteria for BE has to be found. To avoid an oscillating solution \( \p{A}{be}>0 \) has to be fulfilled.
+$$
+\begin{align*}
+\p{A}{be}>& 0\\
+(1-a\Delta t)>& 0\\
+1 >& a\Delta t
+\end{align*}
+$$
+
+The stability criteria for BE will therefore be \( a\Delta t < 1 \)
+
+<h3>Forward Euler for Fisher-Kolmogoroff when B<0 and \( \alpha > 0 \)  <a name="___sec4"></a></h3>
+
+Use the same idea as for Backward Euler in the section above. The equation can then be expressed.
+$$
+\begin{align} \label{eq:a_k_forward}
+\frac{a_k-1}{\Delta t} =& \alpha\frac{e^{-ik\pi \Delta x}-2+e^{ik\pi \Delta x}}{\Delta x^2} + B \notag\\
+a_k =& 1-\alpha\frac{4 \Delta t}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2}) + B\Delta t 
+\end{align}
+$$
+
+Since \( B \) is sat to be negative, a new variable \( D \) can be introduced
+$$
+\begin{equation} \label{eq:b_d}
+B = -D,\hspace{8mm} D>0
+\end{equation}
+$$
+
+And then use this.
+$$
+\begin{align} 
+a_k =& 1-\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D) 
+\end{align}
+$$
+
+\( a_k \) is not able to grow larger than 1, but \( a_k < -1 \) is still possible and will give oscillations. The worst case for \( sin^2(\frac{k\pi\Delta x}{2})=1 \). To avoid oscillations the following requirement has to be true. 
+$$
+\begin{align*}
+\Delta t(\frac{\alpha 4}{\Delta x^2}\sin^2(\frac{k\pi\Delta x}{2})+ D)\leq 2\\
+\Delta t(\frac{\alpha 4}{\Delta x^2}+ D)\leq 2\\
+\Delta t \leq \frac{2}{(\frac{4\alpha }{\Delta x^2}+ D)}
+\end{align*}
+$$
+
+This gives a relation between \( \Delta t \) and \( \Delta x,\alpha,B \).
+
+<h1>Bibliography  <a name="___sec5"></a></h1>
+
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="tveito2005introduction"></a> <b>A. Tveito and R. Winther</b>. 
+    <em>Introduction to Partial Differential Equations: a Computational Approach</em>,
+    Springer,
+    2005.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

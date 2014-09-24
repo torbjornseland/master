@@ -1,0 +1,37 @@
+* articles
+** When Zombies Attack!: Mathematical Modelling of an Outbreak of Zombie Infection
+   key:       munz2009zombies
+   author:    Philip Munz, Ioan Hudea, Joe Imad, Robert J. Smith
+   year:      2009
+   journal:   Infectious Disease Modelling Research Progress
+   volume:    4
+   pages:     133--150
+   status:    published
+   entrytype: article
+* chapters
+** Escaping the Zombie Threat by Mathematics
+   key:       zombie-math
+   author:    Hans Petter Langtangen, Kent-Andre Mardal, P{\aa}l R{\o}tnes
+   editor:    Chris Moore Andrew Whelan, Ruth Walker
+   year:      2013
+   booktitle: Zombies in the Academy: living death in higher education
+   publisher: University of Chicago Press
+   chapter:   3.6
+   pages:     x-y
+   status:    published
+   entrytype: inbook
+* reports
+** Births: Final Data From 2012
+   key:         CBC_births_2012
+   author:      Joyce A. Martin, Brady E. Hamilton, Michelle J.K. Osterman, Sally C. Curtin, T.J. Mathews
+   year:        2013
+   institution: Division of Vital Statistics
+   status:      published
+   entrytype:   techreport
+** Deaths:Preliminary Data for 2011
+   key:         CBC_deaths_2011
+   author:      Donna L.Hoyert, Jiaquan Xu
+   year:        2012
+   institution: Division of Vital Statistics
+   status:      published
+   entrytype:   techreport

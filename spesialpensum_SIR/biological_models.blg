@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: biological_models.aux
+The style file: plain.bst
+Database file #1: papers.bib
+Warning--can't use both author and editor fields in zombie-math
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            528 strings with 4880 characters,
+and the built_in function-call counts, 1596 in all, are:
+= -- 151
+> -- 89
+< -- 2
++ -- 35
+- -- 30
+* -- 108
+:= -- 287
+add.period$ -- 16
+call.type$ -- 5
+change.case$ -- 30
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 58
+empty$ -- 113
+format.name$ -- 30
+if$ -- 326
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 32
+preamble$ -- 1
+purify$ -- 25
+quote$ -- 0
+skip$ -- 36
+stack$ -- 0
+substring$ -- 62
+swap$ -- 10
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 1
+while$ -- 14
+width$ -- 6
+write$ -- 57
+(There was 1 warning)

@@ -1,11 +1,11 @@
-\contentsline {section}{\numberline {1}Introduction to epidemic models}{1}{section.1}
-\contentsline {section}{\numberline {2}Simple Epidemic models}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Threshold phenomenon}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Bombay Plague Epidemic}{7}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Epidemic in an English Boarding School 1978}{8}{subsection.2.3}
-\contentsline {section}{\numberline {3}Zombification}{9}{section.3}
-\contentsline {subsection}{\numberline {3.1}Parameters used in the model}{10}{subsection.3.1}
+\contentsline {section}{\numberline {1}Introduction to the chapter}{1}{section.1}
+\contentsline {section}{\numberline {2}Epidemic models}{2}{section.2}
+\contentsline {section}{\numberline {3}Simple Epidemic models}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Threshold phenomenon}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Epidemic in an English Boarding School 1978}{7}{subsection.3.2}
+\contentsline {section}{\numberline {4}Zombification}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Parameters used in the model}{10}{subsection.4.1}
 \contentsline {paragraph}{The initial phase.}{11}{section*.2}
-\contentsline {paragraph}{The hysterical phase.}{15}{section*.3}
-\contentsline {paragraph}{The counter attack.}{18}{section*.4}
-\contentsline {paragraph}{The three phases in Walking Dead.}{22}{section*.5}
+\contentsline {paragraph}{The hysterical phase.}{14}{section*.3}
+\contentsline {paragraph}{The counter attack.}{17}{section*.4}
+\contentsline {paragraph}{The three phases in Walking Dead.}{19}{section*.5}
