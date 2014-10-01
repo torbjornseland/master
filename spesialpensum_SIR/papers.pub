@@ -8,6 +8,36 @@
    pages:     133--150
    status:    published
    entrytype: article
+** Mathematical Modelling of the Transmission Dynamics of HIV Infection and AIDS: a Review
+   key:       isham1988mathematical
+   author:    Valerie Isham
+   year:      1988
+   journal:   Journal of the Royal Statistical Society. Series A (Statistics in Society)
+   publisher: JSTOR
+   pages:     5--49
+   status:    published
+   entrytype: article
+** Mathematical Analysis of HIV-1 Dynamics in Vivo
+   key:       perelson1999mathematical
+   author:    Alan S. Perelson, Patrick W. Nelson
+   year:      1999
+   journal:   SIAM review
+   publisher: SIAM
+   volume:    41
+   number:    1
+   pages:     3--44
+   status:    published
+   entrytype: article
+** Predicting the HIV/AIDS Epidemic and Measuring the Effect of Mobility in Mainland China
+   key:       xiao2013predicting
+   author:    Yanni Xiao, Sanyi Tang, Yicang Zhou, Robert J. Smith, Jianhong Wu, Ning Wang
+   year:      2013
+   journal:   Journal of theoretical biology
+   publisher: Elsevier
+   volume:    317
+   pages:     271--285
+   status:    published
+   entrytype: article
 * books
 ** {P}ython Scripting for Computational Science
    key:       Langtangen_2012
@@ -56,3 +86,10 @@
    institution: Division of Vital Statistics
    status:      published
    entrytype:   techreport
+* misc
+** "Walking Dead: Season 1"
+   key:       walking_dead
+   author:    "F. Darabont, G. A. Hurd"
+   year:      2010-2011
+   status:    published
+   entrytype: misc

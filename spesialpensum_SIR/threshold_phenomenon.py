@@ -8,9 +8,9 @@ r = 0.02
 a = 0.7
 rho = a/r
 
-plt.plot([N,0],[0,N],label="Possible startposition")
-plt.plot([rho,rho],[0,N-rho],label="Threshold value")
-S0_list = [100,90,80]#,70,60,50,40,30,20]
+plt.plot([N,0],[0,N])
+plt.plot([rho,rho],[0,N-rho])
+S0_list = [100,90,80,70,60,50,40,30,20]
 for j in S0_list:
     S_0 = j
     I_0 = N-S_0
@@ -42,10 +42,13 @@ for j in S0_list:
 
     plt.plot(S,I)
 plt.axis([0,N,0,N])
-plt.xlabel("S")
-plt.ylabel("I")
-plt.legend()
-#plt.savefig("plots/threshold_phenomenon.png")
+plt.xlabel("Susceptible (S)")
+plt.ylabel("Infective (I)")
+plt.title("Threshold phenomenon")
+plt.annotate("S+I=N",xy=(50,50),xytext=(70,70),arrowprops=dict(facecolor="black", shrink=0.05),)
+plt.text(33,-4,r"$\rho$")
+#plt.legend()
+plt.savefig("plots/threshold_phenomenon.png")
 plt.show()
 
 
