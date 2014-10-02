@@ -114,17 +114,17 @@ I+S-\rho \ln S = \textrm{constant} = I_0 + S_0 - \rho \ln S_0
 An observation is that all initial values satisfy $I_0+S_0=N$ since $R(0) = 0$. This will change when $t>0$. If a disease appears it would be important to know the severity of the disease and the chance of developing to an epidemic disease. Therefore the maximum value $\Imax$ which occurs when $S=\rho$ is crucial to know. At this point, $\frac{dI}{dt}=0$. This can be found by using (ref{eq:constant})
 !bt
 \begin{align} 
-I+S-\rho \ln S =& I_0 + S_0 - \rho \ln S_0 \nonumber \\
-\Imax+\rho-\rho \ln \rho =& I_0 + S_0 - \rho \ln S_0\nonumber \\
-\Imax=&- \rho+\rho \ln \rho + I_0 + S_0 - \rho \ln S_0\nonumber \\
+I+S-\rho \ln S =& I_0 + S_0 - \rho \ln S_0 \nonumber \\ 
+\Imax+\rho-\rho \ln \rho =& I_0 + S_0 - \rho \ln S_0\nonumber \\ 
+\Imax=&- \rho+\rho \ln \rho + I_0 + S_0 - \rho \ln S_0\nonumber \\ 
 \Imax=&N - \rho + \rho \ln\frac{\rho}{S_0} label{eq:max_I}
 \end{align}
 !et
 The different trajectories in the figure (ref{fig:threshold_phenomenon}) shows the difference between $S_0 > \rho$ and $S_0< \rho$. An increasing of *Infective* will occur in the cases where $S_0$ is higher. While a decreasing will happen when $S_0$ is lower. An example can be shown. The $\rho$ in the simulation in figure(ref{fig:threshold_phenomenon} is sat to 35. While $N=100$ for all trajectories. A calculation can be done on the lowest trajectory which has the initial conditions $S_0= 90$ and $I_0= 10$
 !bt
 \begin{align*}
-\Imax =& N-\rho + \rho \ln \frac{\rho}{S_0}\\
-\Imax =& 100-35 + 35 \ln \frac{35}{90}\\
+\Imax =& N-\rho + \rho \ln \frac{\rho}{S_0}\\ 
+\Imax =& 100-35 + 35 \ln \frac{35}{90}\\ 
 \Imax =& 31.94
 \end{align*}
 !et
@@ -135,7 +135,7 @@ The *Susceptible* will always have a decreasing solution since $\frac{dS}{dt}<0$
 !bt
 \begin{equation} label{eq:S_infty}
 	\begin{aligned}
-	\frac{dS}{dR} =& -\frac{S}{\rho}\\
+	\frac{dS}{dR} =& -\frac{S}{\rho}\\ 
 	S =& S_0e^{-R/\rho} 
 	\end{aligned}
 \end{equation}
@@ -162,8 +162,8 @@ This analysis is based on the implication that the disease dies out because the 
 !bt
 \begin{equation} label{eq:dR_normal}
 	\begin{aligned} 
-	\frac{dR}{dt} =& aI\\
-	=& a(N-R-S)\\
+	\frac{dR}{dt} =& aI\\ 
+	=& a(N-R-S)\\ 
 	=& a(N-R-S_0e^{-R/\rho}), R(0)=0,
 	\end{aligned}
 \end{equation}
@@ -179,14 +179,22 @@ The parameter value $\rho$ has a major impact on the result. The epidemic diseas
 
 FIGURE:[plots/English_boarding_school_changes.png] label{fig:rho_changes} A small $\rho$ gives an aggressive disease, since $I$ will increase until $S= \rho$. In the first plot where $\rho=50$, the *Infective* will increase until the number of *Susceptible* falls down to 50. This will result in a majority of infected students. In the last plot where $\rho=400$, the total number of *Susceptible* stays around 170 students and will go towards a steady number as $I(\infty)=0$.   
 
+
+
+|-------------------------------------------------|
+|               |                |                |
+|-------c---------------c----------------c--------|
+|<a href="plots/English_boarding_school_changes.png"><img src="plots/English_boarding_school_changes.png" width="300"></a> | <a href="plots/English_boarding_school_changes.png"><img src="plots/English_boarding_school_changes.png" width="300"></a> | <a href="plots/English_boarding_school_changes.png"><img src="plots/English_boarding_school_changes.png" width="300"></a> |
+|<a href="plots/English_boarding_school_changes.png"><img src="plots/English_boarding_school_changes.png" width="300"></a> | <a href="plots/English_boarding_school_changes.png"><img src="plots/English_boarding_school_changes.png" width="300"></a> | <a href="plots/English_boarding_school_changes.png"><img src="plots/English_boarding_school_changes.png" width="300"></a> |
+|-------------------------------------------------|
 ======= Zombification =======
 One of the worst epidemics that can affect the human population is a zombie attack. This will have a huge impact on the way humans live today. Several movies and series has illustrated this type of situation, but it is time that the scientists also take this threat seriously. There have been written a couple of papers about this. Munz et. alcite{munz2009zombies} used the SEIR model to simulate an possible upcoming zombiefication, where the latent class($E$), is replaced with an *Infected* class($I$) and the *Infected* class($I$) is replaced with a *Zombie* class($Z$). Here it is important to know that the *Infected* class in the $SIZR$ is not the same as in the $SEIR$ model presented earlier. The following model was used,
 
 !bt
 \begin{align*}
-\frac{dS}{dt} =& \Sigma -\beta SZ - \delta S \\
-\frac{dI}{dt} =& \beta SZ - \varrho I - \delta I\\
-\frac{dZ}{dt} =& \varrho I + \zeta R - \alpha SZ\\
+\frac{dS}{dt} =& \Sigma -\beta SZ - \delta S \\ 
+\frac{dI}{dt} =& \beta SZ - \varrho I - \delta I\\ 
+\frac{dZ}{dt} =& \varrho I + \zeta R - \alpha SZ\\ 
 \frac{dR}{dt} =& \delta S + \delta I + \alpha SZ - \zeta R
 \end{align*}
 !et
@@ -204,9 +212,9 @@ This model was challenged by Langtangen, Mardal and Røtnes cite{zombie-math} no
 !bt
 \begin{equation} label{eq:LMR_model}
 	\begin{aligned} 
-	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS \\
-	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II\\
-	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS \\ 
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II\\ 
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\ 
 	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
 	\end{aligned}
 \end{equation}
@@ -252,9 +260,9 @@ Now the ODE system (ref{eq:LMR_model})can be used to model the initial phase. Th
 !bt
 \begin{equation}
 	\begin{aligned}
-	\beta\Delta t S Z &= 0.1 S\\
-	3\beta   &= 0.1 \\
-	\beta &= 0.33 \\
+	\beta\Delta t S Z &= 0.1 S\\ 
+	3\beta   &= 0.1 \\ 
+	\beta &= 0.33 \\ 
 	\end{aligned}
 \end{equation}
 !et
@@ -317,13 +325,13 @@ To get some start values, $SZ\omega(t)=30$ can be used. Where $\omega(t)$ is the
 
 FIGURE:[plots/WD_zombie_counter_1.png] The counter attack. 8-9 zombies are killed and all humans survive
 
-This simulation in figure(ref{fig:zombie_counter_1}) result in some deaths,but the total number should be higher. Another problem is that no human died under this battle. The ODE model (cite{eq:LMR_model}) from cite{zombie-math} is based on *The Night of the Living Dead*, where the amount of humans who are killed are close to zero. This is not the case in *Walking dead*. Therefore the risk of dying is higher for human during a counter attack. This is solved by adding $\mu \omega (t) SZ$, where $\mu$ is the risk for a human to get infected compared to a zombie kill during this attack. The model (ref{eq:LMR_model}) can then be expand,
+This simulation in figure(ref{fig:zombie_counter_1}) result in some deaths,but the total number should be higher. Another problem is that no human died under this battle. The ODE model (ret{eq:LMR_model}) from cite{zombie-math} is based on *The Night of the Living Dead*, where the amount of humans who are killed are close to zero. This is not the case in *Walking dead*. Therefore the risk of dying is higher for human during a counter attack. This is solved by adding $\mu \omega (t) SZ$, where $\mu$ is the risk for a human to get infected compared to a zombie kill during this attack. The model (ref{eq:LMR_model}) can then be expand,
 
 !bt
 \begin{align*} label{eq: seland_model}
-\frac{dS}{dt} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS \\
-\frac{dI}{dt} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II\\
-\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+\frac{dS}{dt} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS \\ 
+\frac{dI}{dt} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II\\ 
+\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\ 
 \frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
 \end{align*}
 !et

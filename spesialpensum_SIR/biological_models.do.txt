@@ -317,7 +317,7 @@ To get some start values, $SZ\omega(t)=30$ can be used. Where $\omega(t)$ is the
 
 FIGURE:[plots/WD_zombie_counter_1.png] The counter attack. 8-9 zombies are killed and all humans survive
 
-This simulation in figure(ref{fig:zombie_counter_1}) result in some deaths,but the total number should be higher. Another problem is that no human died under this battle. The ODE model (cite{eq:LMR_model}) from cite{zombie-math} is based on *The Night of the Living Dead*, where the amount of humans who are killed are close to zero. This is not the case in *Walking dead*. Therefore the risk of dying is higher for human during a counter attack. This is solved by adding $\mu \omega (t) SZ$, where $\mu$ is the risk for a human to get infected compared to a zombie kill during this attack. The model (ref{eq:LMR_model}) can then be expand,
+This simulation in figure(ref{fig:zombie_counter_1}) result in some deaths,but the total number should be higher. Another problem is that no human died under this battle. The ODE model (ret{eq:LMR_model}) from cite{zombie-math} is based on *The Night of the Living Dead*, where the amount of humans who are killed are close to zero. This is not the case in *Walking dead*. Therefore the risk of dying is higher for human during a counter attack. This is solved by adding $\mu \omega (t) SZ$, where $\mu$ is the risk for a human to get infected compared to a zombie kill during this attack. The model (ref{eq:LMR_model}) can then be expand,
 
 !bt
 \begin{align*} label{eq: seland_model}

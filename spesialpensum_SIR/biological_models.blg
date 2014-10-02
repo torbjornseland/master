@@ -4,45 +4,45 @@ The top-level auxiliary file: biological_models.aux
 The style file: plain.bst
 Database file #1: papers.bib
 Warning--can't use both author and editor fields in zombie-math
-You've used 5 entries,
+You've used 9 entries,
             2118 wiz_defined-function locations,
-            528 strings with 4880 characters,
-and the built_in function-call counts, 1596 in all, are:
-= -- 151
-> -- 89
-< -- 2
-+ -- 35
-- -- 30
-* -- 108
-:= -- 287
-add.period$ -- 16
-call.type$ -- 5
-change.case$ -- 30
+            554 strings with 5542 characters,
+and the built_in function-call counts, 2908 in all, are:
+= -- 281
+> -- 155
+< -- 3
++ -- 61
+- -- 52
+* -- 197
+:= -- 506
+add.period$ -- 27
+call.type$ -- 9
+change.case$ -- 53
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 58
-empty$ -- 113
-format.name$ -- 30
-if$ -- 326
+cite$ -- 10
+duplicate$ -- 103
+empty$ -- 212
+format.name$ -- 52
+if$ -- 597
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 5
-newline$ -- 28
-num.names$ -- 10
-pop$ -- 32
+int.to.str$ -- 9
+missing$ -- 8
+newline$ -- 47
+num.names$ -- 18
+pop$ -- 56
 preamble$ -- 1
-purify$ -- 25
+purify$ -- 44
 quote$ -- 0
-skip$ -- 36
+skip$ -- 73
 stack$ -- 0
-substring$ -- 62
-swap$ -- 10
-text.length$ -- 2
+substring$ -- 142
+swap$ -- 19
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 32
 warning$ -- 1
-while$ -- 14
-width$ -- 6
-write$ -- 57
+while$ -- 29
+width$ -- 10
+write$ -- 98
 (There was 1 warning)
