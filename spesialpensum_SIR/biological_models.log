@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.27)  2 OCT 2014 10:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.27)  2 OCT 2014 15:32
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
-**biological_models
+**biological_models.tex
 (./biological_models.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 26 languages loaded.
@@ -831,6 +831,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--142
 
  []
 
+
+Overfull \hbox (8.63039pt too wide) in paragraph at lines 126--142
+\T1/lmr/m/n/10 (-20) There have been done sev-eral math-e-mat-i-cal stud-ies on
+ dif-fer-ent dis-eases. HIV/AIDS
+ []
+
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
@@ -872,29 +878,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 207--212
  []
 
 [5 <./plots/threshold_phenomenon.png>]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.232 ...much higher than the initial condition I_
-                                                  0. The figure(\ref{fig:thr...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.232 .... In the two upper trajectories where $S_
-                                                  0< \rho$, the \emph{Infect...
-
-? 
-
-Overfull \hbox (294.49364pt too wide) in paragraph at lines 231--236
-\T1/lmr/m/n/10 (-20) the ini-tial con-di-tion I$[]\OML/lmm/m/it/10 :Thefigure\O
-T1/lmr/m/n/10 (-20) ([][]1[][])\OML/lmm/m/it/10 showsthatthetrajectoryofthisfun
-ctionstartsdecreasingafterthispoint:Inthetwouppertrajectorieswhere$\T1/lmr/m/n/
-10 (-20) S$[] \OML/lmm/m/it/10 <
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 231--236
 
  []
@@ -966,14 +949,6 @@ File: plots/WD_zombie_initial_2.png Graphic file (type png)
 Package pdftex.def Info: plots/WD_zombie_initial_2.png used on input line 416.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.424 ...es for the classes $S$ and $Z$ and $\beta
-                                                  =0.01155$ from figure(\ref...
-
-? 
-
 Underfull \hbox (badness 10000) in paragraph at lines 427--431
 
  []
@@ -1031,40 +1006,11 @@ Package pdftex.def Info: plots/WD_zombie_counter_1.png used on input line 500.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
 
-LaTeX Warning: Reference `fig:zombie_counter_1' on page 18 undefined on input l
-ine 508.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.508 ...r this battle. The ODE model (ret{eq:LMR_
-                                                  model}) from \cite{zombie-...
-
-? 
-! Extra }, or forgotten $.
-l.508 ... battle. The ODE model (ret{eq:LMR_model}
-                                                  ) from \cite{zombie-math} ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.508 ...ter attack. This is solved by adding $\mu
-                                                   \omega (t) SZ$, where $\m...
-
-? 
-
-Overfull \hbox (828.92981pt too wide) in paragraph at lines 508--509
-\T1/lmr/m/n/10 (-20) ODE model (reteq:LMR$[]\OML/lmm/m/it/10 odel\OT1/lmr/m/n/1
-0 (-20) )\OML/lmm/m/it/10 from\OT1/lmr/m/n/10 (-20) [[]]\OML/lmm/m/it/10 isbase
-don[]; wheretheamountofhumanswhoarekilledareclosetozero:Thisisnotthecasein[]:Th
-ereforetheriskofdyingishigherforhumanduringacounterattack:Thisissolvedbyadding$
-$^^V!\OT1/lmr/m/n/10 (-20) (\OML/lmm/m/it/10 t\OT1/lmr/m/n/10 (-20) )\OML/lmm/m
-/it/10 SZ$\T1/lmr/m/n/10 (-20) ,
- []
+LaTeX Warning: Reference `eq:seland_model' on page 18 undefined on input line 5
+08.
 
 [18 <./plots/WD_zombie_hysterical_1.png>]
-<plots/WD_zombie_counter_2.png, id=250, 578.16pt x 433.62pt>
+<plots/WD_zombie_counter_2.png, id=252, 578.16pt x 433.62pt>
 File: plots/WD_zombie_counter_2.png Graphic file (type png)
 
 <use plots/WD_zombie_counter_2.png>
@@ -1075,7 +1021,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 527--531
 
  []
 
-<plots/WD_zombie_counter_series.png, id=253, 578.16pt x 433.62pt>
+<plots/WD_zombie_counter_series.png, id=255, 578.16pt x 433.62pt>
 File: plots/WD_zombie_counter_series.png Graphic file (type png)
 
 <use plots/WD_zombie_counter_series.png>
@@ -1083,33 +1029,18 @@ Package pdftex.def Info: plots/WD_zombie_counter_series.png used on input line
 534.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
  [19 <./plots/omega_function.png>]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.545 ...ter values are listed in table{ref:param_
-                                                  val}.
-? 
-! Extra }, or forgotten $.
-l.545 ...values are listed in table{ref:param_val}
-                                                  .
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.546 
-      
-? 
-<plots/WD_zombie_all_phases_1.png, id=262, 578.16pt x 433.62pt>
+
+LaTeX Warning: Reference `table:param_val' on page 20 undefined on input line 5
+45.
+
+[20 <./plots/WD_zombie_counter_1.png>]
+<plots/WD_zombie_all_phases_1.png, id=271, 578.16pt x 433.62pt>
 File: plots/WD_zombie_all_phases_1.png Graphic file (type png)
 
 <use plots/WD_zombie_all_phases_1.png>
 Package pdftex.def Info: plots/WD_zombie_all_phases_1.png used on input line 56
 8.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [20 <./plots/WD_zombie_counter_1.png>]
-
-LaTeX Warning: Reference `fig:all_phases' on page 21 undefined on input line 57
-6.
 
 
 LaTeX Warning: Reference `table:class_values' on page 21 undefined on input lin
@@ -1325,34 +1256,29 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 609.
- )
-(\end occurred inside a group at level 2)
-
-### simple group (level 2) entered at line 545 ({)
-### simple group (level 1) entered at line 508 ({)
-### bottom level 
+ ) 
 Here is how much of TeX's memory you used:
- 10727 strings out of 494465
- 160058 string characters out of 6166361
- 290009 words of memory out of 5000000
- 13509 multiletter control sequences out of 15000+600000
- 69277 words of font info for 127 fonts, out of 8000000 for 9000
+ 10724 strings out of 494465
+ 160012 string characters out of 6166361
+ 290109 words of memory out of 5000000
+ 13507 multiletter control sequences out of 15000+600000
+ 60694 words of font info for 125 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 41i,11n,60p,1602b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-math
-it.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fon
-ts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb>
-Output written on biological_models.pdf (24 pages, 740341 bytes).
+ 41i,11n,60p,1593b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/l
+m/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmsy7.pfb>
+Output written on biological_models.pdf (24 pages, 735778 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 287 compressed objects within 3 object streams
+ 356 PDF objects out of 1000 (max. 8388607)
+ 290 compressed objects within 3 object streams
  81 named destinations out of 1000 (max. 500000)
- 16002 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 14978 words of extra memory for PDF output out of 17280 (max. 10000000)
 
