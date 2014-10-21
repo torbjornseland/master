@@ -1,0 +1,420 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Geographic models with focus on Fisher Kolmogoroff equation">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 2, None, '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Simple system for spatial spread ', 2, None, '___sec2'),
+              (' From 1D to 2D ', 2, None, '___sec3'),
+              (' A gaussian wave ', 3, None, '___sec4'),
+              (' A gaussian function at 0,0 ', 3, None, '___sec5'),
+              (' Change in initial flow ', 3, None, '___sec6'),
+              (' Chage in the lambda ', 3, None, '___sec7'),
+              (' Epidemic in an English Boarding school 1978 ',
+               1,
+               None,
+               '___sec8'),
+              (' Appendix ', 1, None, '___sec9'),
+              (' Discretizate PDE system for a 2D model ',
+               2,
+               None,
+               '___sec10')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Geographic models with focus on Fisher Kolmogoroff equation</title>
+
+<center><h1>Geographic models with focus on Fisher Kolmogoroff equation</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Torbj&#248;rn Seland -->
+
+<center>
+<b>Torbj&#248;rn Seland</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Oct 20, 2014</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+&nbsp; &nbsp; &nbsp; <a href="#___sec0"> Introduction </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Fisher-Kolmogoroff equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Simple system for spatial spread </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> From 1D to 2D </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> A gaussian wave </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> A gaussian function at 0,0 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Change in initial flow </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Chage in the lambda </a><br>
+<a href="#___sec8"> Epidemic in an English Boarding school 1978 </a><br>
+<a href="#___sec9"> Appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Discretizate PDE system for a 2D model </a><br>
+</p>
+
+<h2>Introduction  <a name="___sec0"></a></h2>
+This chapter will introduce a new model for epidemic diseases. While the first chapter was based on a ODE system, will this chapter expand the system to consist of a geographic spread of epidemics. The two first sections will be based on chapters from Murray, while the last part will consist of a modelling of the zombiefication problem explained in chapter 1.
+
+<h2>Fisher-Kolmogoroff equation  <a name="___sec1"></a></h2>
+
+<h2>Simple system for spatial spread  <a name="___sec2"></a></h2>
+While the systems in the previous chapter only consisted of the temporal variable <b>t</b> in the functions, a spatial variable, <b>x</b> will now be introduced. This means that the position has an effect on the change in each class. The system that will be shown here, will be based on the simple ODE system presented in the previous chapter. The difference will be the diffusion part added to each equation. The system can be seen under 
+$$
+\begin{equation} \label{eq:simple_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+$$
+
+All three classes have the same diffusion coefficient, \( D \). \( rIS \) and \( aI \) will work in the same way as in the ODE system. Since this model taking into account the position, the idea is here to model a group of infective that moves into a uniform population with susceptible, which is spread around with the density \( S_0 \). Then the geotemporal spread can be seen. The problem will be consider as one-dimensional. The system will first be nondimensionalise by writing 
+$$
+\begin{equation} \label{eq:constants_nondimensional}
+	\begin{aligned}
+	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
+	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
+	\end{aligned}
+\end{equation}
+$$
+
+\( S_0 \) is here used as a representative population. Now the model\eqref{eq:simple_PDE} can be expressed under. Here the asterisks have been dropped.
+$$
+\begin{equation} \label{eq:simple_non_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+$$
+
+The three parameters \( r \), \( a \) and \( D \) have now been replaced by \( \lambda \). The <em>reproduction rate</em> that was presented for the ODE model in the previous chapter can be seen by \( 1/\lambda  \). This has here a couple of equivalent meanings. \( 1/\lambda \) can be seen as the number of secondary infections produced by one primary infected. It can also be used to measure two different time scales. The first one, \( 1/(rS_0) \), measure the contagious time of the disease. The second one can look at the life expectancy for an infective. This can be described \( 1/a \).
+<br />
+<br />
+The problem that this part will focus on, is the travelling wave. Here seen by a pulse of infected into a group of susceptible. Then a travelling wave solution has to be set,
+$$
+\begin{equation}
+I(x,t)=I(z),\quad S(x,t)=S(z),\quad R(x,t) = R(z),\quad z = x-ct,
+\end{equation}
+$$
+
+Here the value \( c \) will be the wave speed. This represents a wave of constant shape that travels in the positive x-direction. These can now be inserted into \eqref{eq:simple_non_PDE}. This gives the following ordinary system
+$$
+\begin{equation} \label{eq:ord_diff_sys}
+	\begin{aligned}
+	S'' + cS' - IS &= 0,\\
+	I'' + cI' + I(S-\lambda)&=0\\
+	R'' + cR  + I\lambda &=0
+	\end{aligned}
+\end{equation}
+$$
+
+This gives an eigenvalue problem to find the range of \( \lambda \) so that \( c \) always will be positive. The values of \( S \), \( I \) and \( R \) also has to stay nonnegative. This leads to
+$$
+\begin{equation}
+	\begin{aligned}
+	0 \leq S(-\infty) < S(\infty)&=1\\
+	I(-\infty)=I(\infty)&=0,\\
+	1 \geq R(-\infty)\geq R(\infty) &= 0
+	\end{aligned}
+\end{equation}
+$$
+
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/Travelling_wave.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>This simulation is based on \eqref{eq:ord_diff_sys} with \( \lambda=0.5 \). The initial data is sat to \( S(x,0)=1 \) and \( R(x,0)=0 \). The left side of the <em>Infective</em> class, $I(0,0), is based on a gaussian curve. The rest is sat to be zero.</em></p>
+
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Four plots </p></center>
+<p><img src="plots/trav_wave_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  This shows the epidemic wave measures at a certain point </p></center>
+<p><img src="plots/epidemic_wave_z_lambda_0_5.png" align="bottom" ></p>
+</center>
+
+<p>
+The system\eqref{eq:ord_diff_sys} is a fourth order phase space system. The lower bound time speed for \( c \) can be found. J.D Murray shows this in <em>kite{Murray}</em>. The <em>Infective</em> class in the system\eqref{eq:ord_diff_sys} can be linearised when \( z\rightarrow \infty \) $S\rightarrow 1$ and \( I \rightarrow 0 \). The result then become 
+$$
+\begin{equation}
+	I'' + cI' + I(S-\lambda) \approx 0 
+\end{equation}
+$$
+
+This can be found by
+$$
+\begin{equation}
+I(z) \varpropto \exp\left[(-c \pm {c^2 -4(1-\lambda)}^{1/2})z/2\right]
+\end{equation}
+$$
+
+It is required that \( I(z)\rightarrow 0 \), but not under. This means that the solution cannot oscillate around 0. If a travelling wave exist, it has to satisfy
+$$
+\begin{equation}
+	c \geq 2(1-\lambda)^{1/2}, \lambda< 1
+\end{equation}
+$$
+
+If \( \lambda > 1 \), no travelling wave will exist. Then the disease will die out. The terms defined in \eqref{eq:constants_nondimensional} will give the threshold conditions,
+$$
+\begin{equation}
+	\lambda = \frac{a}{rS_0} < 1
+\end{equation}
+$$
+
+This is the same value that was given for the ODE model in the previous chapter.
+
+<h2>From 1D to 2D  <a name="___sec3"></a></h2>
+Since an epidemic disease will spread geograpically, it will be interesting to look at the
+
+<h3>A gaussian wave  <a name="___sec4"></a></h3>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_gaussian.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Four plots </p></center>
+<p><img src="plots/2D_gauss_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<h3>A gaussian function at 0,0  <a name="___sec5"></a></h3>
+
+Travelling wave is similar wherever it is checked 
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_one_corner.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Four plots </p></center>
+<p><img src="plots/2D_gauss_one_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  Four plots </p></center>
+<p><img src="plots/TW_2D_corner_z_lambda_0_5.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+Compare the values from 1D and 2D by making a table
+Result: Looks from the plots that there is no change(as expected)
+
+<h3>Change in initial flow  <a name="___sec6"></a></h3>
+
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_initial_variable.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  Four plots </p></center>
+<p><img src="plots/2D_initial_variable_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 7:  Four plots </p></center>
+<p><img src="plots/TW_2D_initial_z_lambda_0_5.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+Result: Looks from the plots that the travelling wave appears ealier, but has the same size. This can be explained by "Child on a slede"
+
+<h3>Chage in the lambda  <a name="___sec7"></a></h3>
+
+<center><p><img src="plots/2D_lambda_variable.png" align="bottom" height=600 width=800></p></center>
+
+<h1>Epidemic in an English Boarding school 1978  <a name="___sec8"></a></h1>
+This example was presented in the previous chapter as an ODE system. This example was based on the book from J.D Murray.
+
+<p>
+Classes are uniformly spread and it is equal probability for contact. Modeled in the school yard on 100m2. The consentration of students are given in number of students per 1m2
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_british_school.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<center><p><img src="plots/2D_british_school_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_british_school_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+Introducing a Gaussian distribution
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_british_school_gauss.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<center><p><img src="plots/2D_british_school_gauss_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_british_school_gauss_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+Gaussain from the corner
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_british_school_gauss_corner.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<center><p><img src="plots/2D_british_school_gauss_corner_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_british_school_gauss_corner_number.png" align="bottom" height=600 width=800></p></center>
+
+<h1>Appendix  <a name="___sec9"></a></h1>
+
+<h2>Discretizate PDE system for a 2D model  <a name="___sec10"></a></h2>
+The following PDE system from \eqref{eq:simple_non_PDE} is discretized. Forward Euler is chosen for time derivative and Crank Nicolson for spatial derivative.
+$$
+\begin{equation}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + D\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + D\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \lambda I^{n}_{i,j}+D\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+Now the known values can be placed on the right side. The system will then be
+$$
+\begin{equation}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^{n}_{i,j}+\Delta t\left(-I^{n}_{i,j}S^{n}_{i,j} + D\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right)\right) \\
+    I^{n+1}_{i,j} &= I^{n}_{i,j}+\Delta t\left(I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + D\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right)\right) \\
+    R^{n+1}_{i,j} &= R^{n}_{i,j}+\Delta t\left(\lambda I^{n}_{i,j}+D\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right)\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
