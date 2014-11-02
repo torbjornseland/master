@@ -1,91 +1,108 @@
 import glob,os
 import numpy as np
 import matplotlib.pyplot as plt
-
-T = 40
-Nx = 100
-Nt = 4000
-X = 20
-lam = 0.5
-
-S = np.zeros(Nx+1)   #list of Susceptible
-S_1 = np.ones(Nx+1)#list of Susceptible in previous time step
-I = np.zeros(Nx+1)   #list of Susceptible
-I_1 = np.zeros(Nx+1)#list of Susceptible in previous time step
-R = np.zeros(Nx+1)   #list of Susceptible
-R_1 = np.zeros(Nx+1)#list of Susceptible in previous time step
-
-x = np.linspace(0,X,Nx+1)
-t = np.linspace(0,T,Nt+1)
-
-dt = t[1]-t[0]
-dx = x[1]-x[0]
-
-#Check travelling wave
-z = np.zeros(Nt+1)
-z_S = np.zeros(Nt+1)
-z_I = np.zeros(Nt+1)
-z_R = np.zeros(Nt+1)
-z_X = 15
-z_i = int(z_X/dx)
-
-def gauss(t,a,sigma,T):
-    return a*np.exp(-0.5*(t-T)**2/sigma)
-
-I_1[:] = gauss(x,0.2,0.5,0) #starts with a gauss function
-#I_1[:] += 0.1
-
-np.save("images/Sub%04d" % 0,S_1) #initial conditions
-np.save("images/Inf%04d" % 0,I_1) #initial conditions
-np.save("images/Rem%04d" % 0,R_1) #initial conditions
-
-#Initial cond for travelling wave
-z[0] = z_X
-z_S[0] = S_1[z_i]
-z_I[0] = I_1[z_i]
-z_R[0] = R_1[z_i]
+from plotmaker import trav_wave
 
 
-for n in range(1,Nt+1):
-    S[1:-1] = S_1[1:-1] + dt*(-S_1[1:-1]*I_1[1:-1]+(S_1[2:]-2*S_1[1:-1]+S_1[:-2])/dx**2)
-    I[1:-1] = I_1[1:-1] + dt*(S_1[1:-1]*I_1[1:-1]-lam*I_1[1:-1]+(I_1[2:]-2*I_1[1:-1]+I_1[:-2])/dx**2)
-    R[1:-1] = R_1[1:-1] + dt*(lam*I_1[1:-1]+(R_1[2:]-2*R_1[1:-1]+R_1[:-2])/dx**2)
+def simple_PDE(T,Nx,Nt,X,lam,beta,S_1,I_1,R_1,f,g,h):
+    S = np.zeros(Nx+3)   #list of Susceptible
+    #S_1 = np.ones(Nx+1)#list of Susceptible in previous time step
+    I = np.zeros(Nx+3)   #list of Susceptible
+    #I_1 = np.zeros(Nx+1)#list of Susceptible in previous time step
+    R = np.zeros(Nx+3)   #list of Susceptible
+    #R_1 = np.zeros(Nx+1)#list of Susceptible in previous time step
+    print T
+    print Nt
 
-    z[n] = z_X-n*dt
-    z_S[n] = S[z_i]
-    z_I[n] = I[z_i]
-    z_R[n] = R[z_i]
+    x = np.linspace(0,X,Nx+1)
+    t = np.linspace(0,T,Nt+1)
 
-    S[0] = S[2]
-    S[-1] = S[-3]
-    I[0] = I[2]
-    I[-1] = I[-3]
-    R[0] = R[2]
-    R[-1] =R[-3]
-    if (n%40 == 0):
-        np.save("images/Sub%04d" % (n/40),S)
-        np.save("images/Inf%04d" % (n/40),I)
-        np.save("images/Rem%04d" % (n/40),R)
+    dt = t[1]-t[0]
+    dx = x[1]-x[0]
+    print "dt=",dt
+    print "dx=",dx
+    print "dx^2=",dx**2
 
-    S_1[:] = S
-    I_1[:] = I 
-    R_1[:] = R 
+    #Check travelling wave
+    z = np.zeros(Nt+1)
+    z_S = np.zeros(Nt+1)
+    z_I = np.zeros(Nt+1)
+    z_R = np.zeros(Nt+1)
+    z_X = 15
+    z_i = int(z_X/dx)
 
-plt.plot(z,z_S,label="Susceptible")
-plt.plot(z,z_I,label="Infective")
-plt.plot(z,z_R,label="Removed")
-plt.xlabel("z")
-plt.axis([z_X-40,z_X,0,1])
-plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderaxespad=0.)
-plt.savefig("plots/epidemic_wave_z_lambda_0_5.png")
-plt.close()
-#plt.show()
+    def gauss(t,a,sigma,T):
+        return a*np.exp(-0.5*(t-T)**2/sigma)
 
-plotnames = ['images/Sub', 'images/Inf', 'images/Rem']
-moviename = 'plots/Travelling_wave'
-parameter_values = ['Sub','Inf','Rem']
-para_name = "Class"
-L = X
+    #I_1[:] = gauss(x,0.2,0.5,0) #starts with a gauss function
+    #I_1[:] += 0.1
+
+    np.save("images/Sub%04d" % 0,S_1) #initial conditions
+    np.save("images/Inf%04d" % 0,I_1) #initial conditions
+    np.save("images/Rem%04d" % 0,R_1) #initial conditions
+
+    #Initial cond for travelling wave
+    """
+    z[0] = z_X
+    z_S[0] = S_1[z_i]
+    z_I[0] = I_1[z_i]
+    z_R[0] = R_1[z_i]
+    """
+    #print "S---------------------"
+    #print S_1[1:-1]
+
+    #def lam():
+    #    return 1
+
+    lam = 1
+
+    def beta():
+        return 0 # S_1[1:-1]*I_1[1:-1]/R_1[1:-1] 
+    
+    print S_1[1:-1]
+    for n in range(1,Nt+1):
+        S[1:-1] = S_1[1:-1] + dt*(-S_1[1:-1]*I_1[1:-1]+beta()*R_1[1:-1]+(S_1[2:]-2*S_1[1:-1]+S_1[:-2])/dx**2+f(t[n-1],x))
+        I[1:-1] = I_1[1:-1] + dt*(S_1[1:-1]*I_1[1:-1]-lam*I_1[1:-1]+(I_1[2:]-2*I_1[1:-1]+I_1[:-2])/dx**2+g(t[n-1],x))
+        R[1:-1] = R_1[1:-1] + dt*(lam*I_1[1:-1]-beta()*R_1[1:-1]+(R_1[2:]-2*R_1[1:-1]+R_1[:-2])/dx**2+h(t[n-1],x))
+        """
+        z[n] = z_X-n*dt
+        z_S[n] = S[z_i]
+        z_I[n] = I[z_i]
+        z_R[n] = R[z_i]
+        """
+        S[0] = S[2]
+        S[-1] = S[-3]
+        I[0] = I[2]
+        I[-1] = I[-3]
+        R[0] = R[2]
+        R[-1] =R[-3]
+        if (n%40 == 0):
+            np.save("images/Sub%04d" % (n/40),S)
+            np.save("images/Inf%04d" % (n/40),I)
+            np.save("images/Rem%04d" % (n/40),R)
+
+        S_1[:] = S
+        I_1[:] = I 
+        R_1[:] = R
+        
+        
+        #print "n",n,S[1:-1]
+        
+
+    #Find area of Infective
+    #classnames = ['Susceptible', 'Infective','Removed']
+    #z_list = [z_S,z_I,z_R] 
+    #trav_wave(Nt,z,z_list,classnames,z_X,'1D')
+    
+
+    plotnames = ['images/Sub', 'images/Inf', 'images/Rem']
+    moviename = 'plots/Travelling_wave'
+    parameter_values = ['Sub','Inf','Rem']
+    para_name = "Class"
+    L = X
+
+    return t,x,S[1:-1],I[1:-1],R[1:-1]
+
 
 def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X):
     x_list = []
@@ -155,8 +172,8 @@ def add_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X):
         os.remove(filename)
 
 
-build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X)
-os.system('rm images/*')
+#build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X)
+#os.system('rm images/*')
 #plt.plot(r,I_1)
 #plt.plot(r,S_1)
 #plt.show()

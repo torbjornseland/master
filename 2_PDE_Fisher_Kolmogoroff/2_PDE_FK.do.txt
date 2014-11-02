@@ -61,7 +61,7 @@ Here the value $c$ will be the wave speed. This represents a wave of constant sh
 !et
 This gives an eigenvalue problem to find the range of $\lambda$ so that $c$ always will be positive. The values of $S$, $I$ and $R$ also has to stay nonnegative. This leads to
 !bt
-\begin{equation}
+\begin{equation} 
 	\begin{aligned}
 	0 \leq S(-\infty) < S(\infty)&=1\\
 	I(-\infty)=I(\infty)&=0,\\
@@ -70,11 +70,11 @@ This gives an eigenvalue problem to find the range of $\lambda$ so that $c$ alwa
 \end{equation}
 !et
 
-MOVIE:[plots/Travelling_wave.webm, height=500 width=600] This simulation is based on (ref{eq:ord_diff_sys}) with $\lambda=0.5$. The initial data is sat to $S(x,0)=1$ and $R(x,0)=0$. The left side of the *Infective* class, $I(0,0), is based on a gaussian curve. The rest is sat to be zero.
+#MOVIE:[plots/Travelling_wave.webm, height=500 width=600] This simulation is based on (ref{eq:ord_diff_sys}) with $\lambda=0.5$. The initial data is sat to $S(x,0)=1$ and $R(x,0)=0$. The left side of the *Infective* class, $I(0,0), is based on a gaussian curve. The rest is sat to be zero.
 
-FIGURE:[plots/trav_wave_sub.png,height=600 width=800 frac=0.8]Four plots 
+FIGURE:[plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} A gauss curve is inserted on the left side. This causes a travelling wave. The size is measured at $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
 
-FIGURE:[plots/epidemic_wave_z_lambda_0_5.png] This shows the epidemic wave measures at a certain point
+FIGURE:[plots/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the epidemic wave measures at at $x=15$ in figure(ref{fig:1D_sub})
 
 The system(ref{eq:ord_diff_sys}) is a fourth order phase space system. The lower bound time speed for $c$ can be found. J.D Murray shows this in *kite{Murray}*. The *Infective* class in the system(ref{eq:ord_diff_sys}) can be linearised when $z\rightarrow \infty$ $S\rightarrow 1$ and $I \rightarrow 0$. The result then become 
 !bt
@@ -101,83 +101,440 @@ If $\lambda > 1$, no travelling wave will exist. Then the disease will die out. 
 \end{equation}
 !et
 This is the same value that was given for the ODE model in the previous chapter.
+===== Verifying the solution =====
+=== Constant solution ===
+To verify this solution a couple of tests can be done one the system. The first test will be a constant test, where a known constant solution is given. A look at the previous system will give an idea on performing the test.
+!bt
+\begin{equation} label{eq:simple_non_PDE2}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+!et
+By setting the solutions to constants, $S = C_s,I=C_i,R=C_r$, the value of $C_i$ has to be 0. This is a poor test and several bugs can escape. The following system can be expanded by adding $\beta R$ to the system. This give the chance to check the value of $R$ and the constants can be set to a different value than 0.  
+!bt
+\begin{equation} label{eq:constant_PDE}
+	\begin{aligned}
+	C_IC_S &= \beta C_r \\
+	C_IC_S &= \lambda C_I \\
+	\lambda C_I &= -\beta C_R 
+	\end{aligned}
+\end{equation}
+!et
+The constant values can freely be chosen. Here they are sat to $C_S = 1.2,C_I=0.8,C_R=0.6$. This give $\lambda=1.2$ and $\beta=1.6$. A test can be made
+
+@@@CODE verify_sol.py fromto: def test_constant_solution@def test_manufactured_solution
+
+This test was fine and next test that can be done on the system is a Manufactured solution
+=== Manufactured solution ===
+By constructing a function to each equation in the system (ref{eq:simple_non_PDE}), a manufactured solution can be created. Here $S$,$I$ and $R$ are pre produced. The system will be
+!bt
+\begin{equation} label{eq:simple_non_PDE2}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2}+g(x,t),\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2}+h(x,t),
+	\end{aligned}
+\end{equation}
+!et
+where $f$,$g$ and $h$ are constructed functions to achieve the expected results for $S$, $I$ and $R$. In this case the functions will be:
+!bt
+\begin{equation}
+	\begin{aligned}
+	f(x,t) = \frac{\partial S}{\partial t} + IS - \frac{\partial^2 S}{\partial x^2}\\
+	g(x,t) = \frac{\partial I}{\partial t} - IS + \lambda I - \frac{\partial^2 I}{\partial x^2}\\
+	h(x,t) = \frac{\partial R}{\partial t} -\lambda I - \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+!et
+When choosing the expected function for the classes, it is important that the fulfill the boundary conditions
+!bt
+\begin{equation}
+    u_x(0,t) = u_x(X,t) = 0
+\end{equation}
+!et
+The quantities have here been sat to:
+!bt
+\begin{equation}
+	\begin{aligned}
+    S(x,t) = cos(\frac{\pi}{X}x)t\\
+    I(x,t) = cos(\frac{\pi}{X}x)t\\
+    R(x,t) = cos(\frac{\pi}{X}x)t
+	\end{aligned}
+\end{equation}
+!et
+Now `sympy` can be used to do the calculations
+
+!bc pycod
+>>> from sympy import *
+>>> x,t,lam = symbols('x t lam')
+>>> def s_simple(x,t):
+...     return cos(pi*x)*t
+... 
+>>> def i_simple(x,t):
+...     return cos(pi*x)*t
+... 
+>>> def r_simple(x,t):
+...     return cos(pi*x)*t
+... 
+>>> for x_point in 0,1:
+...     print "s_x(%s,t): ", % x_point,
+>>> for x_point in 0,1:
+...     print "s_x(%s,t): " % x_point,
+...     print diff(s_simple(x,t),x).subs(x,x_point).simplify()
+...     print "i_x(%s,t): " % x_point,
+...     print diff(i_simple(x,t),x).subs(x,x_point).simplify()
+...     print "r_x(%s,t): " % x_point,
+...     print diff(r_simple(x,t),x).subs(x,x_point).simplify()
+... 
+s_x(0,t):  0
+i_x(0,t):  0
+r_x(0,t):  0
+s_x(1,t):  0
+i_x(1,t):  0
+r_x(1,t):  0
+>>> s = s_simple(x,t)
+>>> i = i_simple(x,t)
+>>> r = r_simple(x,t)
+>>> f = diff(s,t)+i*s-diff(diff(s,x),x)
+>>> print f.simplify()
+(t**2*cos(pi*x) + pi**2*t + 1)*cos(pi*x)
+>>> g = diff(i,t)-i*s+lam*i-diff(diff(i,x),x)
+>>> print g.simplify()
+(lam*t - t**2*cos(pi*x) + pi**2*t + 1)*cos(pi*x)
+>>> h = diff(r,t)-lam*i-diff(diff(r,x),x)
+>>> print h.simplify()
+(-lam*t + pi**2*t + 1)*cos(pi*x)
+!ec
+The following manufactured test will then be
+@@@CODE verify_sol.py fromto: def test_manufactured_solution@def solver()
+!bt
+\begin{equation}
+	\begin{aligned}
+	S' &= -IS +\beta R + S_{''}\\
+	I' &= IS -\lambda I + I_{''}\\
+	R' &= \lambda I - \beta R + R_{''} 
+	\end{aligned}
+\end{equation}
+!et
+By using the two first equations, $\beta$ and $\lambda$ can be described with $S$,$I$ and $R$.
+!bt
+\begin{equation}
+ \beta = \frac{S'+IS-S_{''}}{R},\quad \lambda = \frac{IS+I_{''}-I'}{I}
+\end{equation}
+!et
+These two expressions can be inserted the last equation,
+
+!bt
+\begin{equation}
+	\begin{aligned}
+    R' &=\frac{IS+I_{''}-I'}{I}I-\frac{S'+IS-S_{''}}{R}R+R_{''}\\ 
+    S'+I'+R' &= S_{''}+I_{''}+R_{''} 
+	\end{aligned}
+\end{equation}
+!et
+This can be solved by setting $u'=u_{''}$ in $S$,$I$ and $R$. The three different groups are described as follows,
+!bt
+\begin{equation}
+	\begin{aligned}
+    S(t,x) &= ct+dx^2+e\\
+    I(t,x) &= ft+gx^2+h\\
+    R(t,x) &= it+jx^2+k
+	\end{aligned}
+\end{equation}
+!et
+Where,
+!bt
+\begin{equation}
+ c=2d,\quad f=2g,\quad i=2j
+\end{equation}
+!et
+===== Check the global error =====
 
 ===== From 1D to 2D =====
-Since an epidemic disease will spread geograpically, it will be interesting to look at the 
+Since an epidemic disease will spread geograpically, it will be interesting to look at the model in 2D. The following equation can then be discretized 
 === A gaussian wave ===
-MOVIE:[plots/2D_gaussian.webm, height=500 width=600]
+#MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
 
-FIGURE:[plots/2D_gauss_sub.png,height=600 width=800 frac=0.8]Four plots 
+FIGURE:[plots/2D_gauss_sub.png,height=600 width=800 frac=0.8]The PDE system (ref{eq:simple_non_PDE}) simulated for a 2D system with $\lambda=0.5$. A gauss wave from $x=0$.
 
 === A gaussian function at 0,0 ===
-Travelling wave is similar wherever it is checked 
 
-MOVIE:[plots/2D_one_corner.webm, height=500 width=600]
+MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
 
-FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]Four plots 
+FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian function from $x=0,y=0$ based on the PDE system (ref{eq:simple_non_PDE}) with $\lambda=0.5$  
 
-FIGURE:[plots/TW_2D_corner_z_lambda_0_5.png,height=600 width=800 frac=0.8]Four plots 
-
+FIGURE:[plots/TW_2D_corner_z_lambda_0_5.png,height=600 width=800 frac=0.8] The travelling wave measured at point 15,15. The wave moves quite similar to the 1D example above 
+1D
+1.4340793845
+1.43143259034 dt = $1\cdot10^{-3}$, dx = 0.05
+1.43195870243 dt = 0.0002, dx^2 = 0.000625
+|------------------------------------------|
+|1D wave       |2D wave line |2D wave point|
+|------------------------------------------|
+|1.43195870243 |1.43484000394|0            |
+|------------------------------------------|
 Compare the values from 1D and 2D by making a table
 Result: Looks from the plots that there is no change(as expected)
 
 === Change in initial flow ===
 
-MOVIE:[plots/2D_initial_variable.webm, height=500 width=600]
+MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
 
 FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8]Four plots 
 
-FIGURE:[plots/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8]Four plots 
+FIGURE:[plots/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] The wave appear earlier, but it has the same size. 
 
 
 Result: Looks from the plots that the travelling wave appears ealier, but has the same size. This can be explained by "Child on a slede"
 
 === Chage in the lambda ===
 
-FIGURE:[plots/2D_lambda_variable.png, height=600 width=800]
+FIGURE:[plots/2D_lambda_variable.png, height=600 width=800] With a small $\lambda$, the travelling wave will increase. And when $\lambda \rightarrow 1$ the wave will disappear.  
 
 ======= Epidemic in an English Boarding school 1978 =======
 This example was presented in the previous chapter as an ODE system. This example was based on the book from J.D Murray.
 
-Classes are uniformly spread and it is equal probability for contact. Modeled in the school yard on 100m2. The consentration of students are given in number of students per 1m2
+Classes are uniformly spread and it is equal probability for contact. The concentration of students are given in number of students per 1m2
+r will be reduced with Nx2, while a is the same.
 
-MOVIE:[plots/2D_british_school.webm, height=500 width=600]
+MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system
 
 FIGURE:[plots/2D_british_school_sub.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_british_school_number.png, height=600 width=800 frac=0.8]
+FIGURE:[plots/2D_british_school_number.png, height=600 width=800 frac=0.8] This PDE system gives the same results as the ODE system in the previous chapter. This is as expected since the students are uniformly spread and the diffusion is sat to 1 for all the classes
 
 Introducing a Gaussian distribution
 
-MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600]
+MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
 
 FIGURE:[plots/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_british_school_gauss_number.png, height=600 width=800 frac=0.8]
+FIGURE:[plots/2D_british_school_gauss_number.png, height=600 width=800 frac=0.8] This seems to have no effect and the spread of the disease is similar to the one above. But if a student is lucky to stand in one corner, he has a greater chance to stay healthy  
 
 Gaussain from the corner. This one gives other results. It has a slower diffusion.
 
-MOVIE:[plots/2D_british_school_gauss_corner.webm, height=500 width=600]
+MOVIE:[plots/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard
 
 FIGURE:[plots/2D_british_school_gauss_corner_sub.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_british_school_gauss_corner_number.png, height=600 width=800 frac=0.8]
+FIGURE:[plots/2D_british_school_gauss_corner_number.png, height=600 width=800 frac=0.8] This simulation gives another result. Here the number of infected increase later than in the previous examples
 
+!split
 ======= Zombiefication =======
 Create the same results as for the ODE simulation.
 
+Initial phase
+
+MOVIE:[plots/2D_zombie_initial_cond.webm, height=500 width=600] 
+
+FIGURE:[plots/2D_zombie_initial_cond_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_initial_cond_number.png, height=600 width=800 frac=0.8]Creates the same results as for the ODE system
+
+The three phases
+
+MOVIE:[plots/2D_zombie_three_phases.webm, height=500 width=600]
+
+FIGURE:[plots/2D_zombie_three_phases_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_number.png, height=600 width=800 frac=0.8] Same results as for the ODE system in the previous chapter
+
+Able to produce the same results as for the ODE
+
+ODE results
+
+---------------------
+time, 0.000000
+S_n 621.0
+I_n 0.0
+Z_n 1.0
+R_n 0.0
+---------------------
+time, 3.000000
+S_n 71.2973582098
+I_n 230.848367121
+Z_n 298.873127347
+R_n 20.9812508213
+---------------------
+time, 33.000000
+S_n 61.6100739089
+I_n 0.310909545827
+Z_n 358.579528667
+R_n 201.500626378
+---------------------
+time, 34.000000
+S_n 57.7976621629
+I_n 1.1578809554
+Z_n 331.784821898
+R_n 231.260807984
 
 
+PDE results
 
+---------------------
+time=0.000000
+Susceptible = 621.00
+Infective = 0.00
+Zombies = 1.00
+Removed = 0.00
+---------------------
+time=3.000000
+Susceptible = 71.54
+Infective = 230.57
+Zombies = 298.91
+Removed = 20.97
+---------------------
+time=33.000000
+Susceptible = 61.83
+Infective = 0.32
+Zombies = 357.89
+Removed = 201.96
+---------------------
+time=34.000000
+Susceptible = 58.02
+Infective = 1.16
+Zombies = 331.08
+Removed = 231.74
+
+=== Start from the middle ===
+Diffusion is 0 for the removed class. Gauss curve from the middle
+
+MOVIE:[plots/2D_zombie_three_phases_gauss.webm, height=500 width=600]
+
+FIGURE:[plots/2D_zombie_three_phases_gauss_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_gauss_number.png, height=600 width=800 frac=0.8] By using the same parameters, the result seems to be different. Can be explained by the fact that only a small part of the area is in contact with the infected one.It takes some time before everyone are connected to the disease.
+
+Values each phase with dt= $5 \cdot 10^{-4}$ 
+---------------------
+time=0.000000
+Susceptible = 621.00
+Infective = 0.00
+Zombies = 1.77
+Removed = 0.00
+---------------------
+time=3.000000
+Susceptible = 81.12
+Infective = 210.94
+Zombies = 310.11
+Removed = 20.60
+---------------------
+time=33.000000
+Susceptible = 70.55
+Infective = 0.34
+Zombies = 334.33
+Removed = 217.56
+---------------------
+time=34.000000
+Susceptible = 66.50
+Infective = 1.23
+Zombies = 305.86
+Removed = 249.19
+=== Variation in diffusion ===
+plots/2D_zombie_three_phases_initial_spread.webm, 
+MOVIE:[plots/2D_zombie_three_phases_initial_spread.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_initial_spread_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_initial_spread_number.png, height=600 width=800 frac=0.8]
+
+plots/2D_zombie_three_phases_initial_spread_2"
+
+MOVIE:[plots/2D_zombie_three_phases_initial_spread_2.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_initial_spread_2_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_initial_spread_2_number.png, height=600 width=800 frac=0.8]
+
+moviename = "plots/2D_zombie_three_phases_spatial_control"
+
+MOVIE:[plots/2D_zombie_three_phases_spatial_control.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_spatial_control_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_spatial_control_number.png, height=600 width=800 frac=0.8]
+
+moviename = "plots/2D_zombie_three_phases_spatial_control_3_init"
+
+MOVIE:[plots/2D_zombie_three_phases_spatial_control_3_init.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_number.png, height=600 width=800 frac=0.8]
+
+!split
+=== Where does the infected one arises ===
+
+Small town
+moviename = "plots/2D_zombie_three_phases_zombie_small_town"
+
+MOVIE:[plots/2D_zombie_three_phases_zombie_small_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_number.png, height=600 width=800 frac=0.8]
+
+MOVIE:[plots/2D_zombie_three_phases_zombie_small_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_surface_sub.png, height=600 width=800 frac=0.8]
+
+Middle town
+
+moviename = "plots/2D_zombie_three_phases_zombie_middle_town"
+
+MOVIE:[plots/2D_zombie_three_phases_zombie_middle_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_number.png, height=600 width=800 frac=0.8]
+
+MOVIE:[plots/2D_zombie_three_phases_zombie_middle_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png, height=600 width=800 frac=0.8]
+
+Large town
+moviename = "plots/2D_zombie_three_phases_zombie_large_town"
+
+MOVIE:[plots/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_number.png, height=600 width=800 frac=0.8]
+
+MOVIE:[plots/2D_zombie_three_phases_zombie_large_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_surface_sub.png, height=600 width=800 frac=0.8]
+
+=== Lock in different areas ===
+moviename = "plots/2D_zombie_three_phases_blindern_area"
+
+MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_blindern_area_contourf_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_blindern_area_number.png, height=600 width=800 frac=0.8]
+
+Three phases
+
+MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+FIGURE:[plots/2D_zombie_three_phases_blindern_area_3_ph_contourf_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_blindern_area_3_ph_number.png, height=600 width=800 frac=0.8]
+
+MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_surface.webm,height=500 width=600]
 ======= Appendix =======
-===== Discretizate PDE system for a 2D model =====
+===== Discretization PDE system for a 2D model =====
 The following PDE system from (ref{eq:simple_non_PDE}) is discretized. Forward Euler is chosen for time derivative and Crank Nicolson for spatial derivative.
 !bt
 \begin{equation}
 	\begin{aligned}
-    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + D\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) \\
-    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + D\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right) \\
-    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \lambda I^{n}_{i,j}+D\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right) 
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right) 
 	\end{aligned}
 \end{equation}
 !et
@@ -185,9 +542,30 @@ Now the known values can be placed on the right side. The system will then be
 !bt
 \begin{equation}
 	\begin{aligned}
-    S^{n+1}_{i,j} &= S^{n}_{i,j}+\Delta t\left(-I^{n}_{i,j}S^{n}_{i,j} + D\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right)\right) \\
-    I^{n+1}_{i,j} &= I^{n}_{i,j}+\Delta t\left(I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + D\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right)\right) \\
-    R^{n+1}_{i,j} &= R^{n}_{i,j}+\Delta t\left(\lambda I^{n}_{i,j}+D\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right)\right) 
+    S^{n+1}_{i,j} &= S^{n}_{i,j}+\Delta t\left(-I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right)\right) \\
+    I^{n+1}_{i,j} &= I^{n}_{i,j}+\Delta t\left(I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right)\right) \\
+    R^{n+1}_{i,j} &= R^{n}_{i,j}+\Delta t\left(\lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right)\right) 
+	\end{aligned}
+\end{equation}
+!et
+===== Discretization =====
+!bt
+\begin{equation} \label{eq:LMR_model}
+	\begin{aligned} 
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS + \nabla(\gamma_s(x)\nabla S) \\
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II+\nabla(\gamma_I(x)\nabla I)\\
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+ \nabla(\gamma_Z(x)\nabla Z)\\
+	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+	\end{aligned}
+\end{equation}
+!et
+The calculations will be shown for the diffusion part in the first equation. This idea will be used for the whole system
+
+!bt
+\begin{equation}
+	\begin{aligned}
+	\frac{dS}{dt} =& \nabla(\gamma_s(x)\nabla S) \\
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \left(\gamma(x_{i+1/2,j})\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) 
 	\end{aligned}
 \end{equation}
 !et

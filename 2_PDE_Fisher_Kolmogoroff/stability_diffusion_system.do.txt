@@ -1,0 +1,25 @@
+TITLE: Stabilitet for 2D diffusjonssystem 
+AUTHOR: Torbjørn Seland
+DATE: today
+
+TOC: on
+
+======= Diffusion system =======
+Jeg ønsker å finne stabilitetskriteriet for systemet under og lurer på om du har noen notater eller tips?
+!bt
+\begin{equation} label{eq:simple_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+!et
+
+Fra notatene dine i _Finite difference methods for diffusion processes_ i inf5620 forklarer du teknikken for en 1D diffusjonslikning.
+!bt
+\begin{equation}
+\frac{\partial u}{\partial t} =
+\dfc \frac{\partial^2 u}{\partial x^2},
+\end{equation}
+!et

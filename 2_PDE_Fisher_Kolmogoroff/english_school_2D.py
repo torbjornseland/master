@@ -1,7 +1,7 @@
 import numpy as np
 from plotmaker import *
 
-def english_school(T,Nx,Ny,Nt,X,Y,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename):
+def english_school(T,Nx,Ny,Nt,X,Y,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases):
     
     S = np.zeros([Nx+3,Ny+3])   #list of Susceptible
     S_1 = np.ones([Nx+3,Ny+3])  #list of Susceptible in previous time step
@@ -26,7 +26,7 @@ def english_school(T,Nx,Ny,Nt,X,Y,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename):
 
 
     I_1[:,:] = init_func(x,y) #starts with a init func 
-    S_1[:,:] *= 762 #starts with a init func 
+    S_1[:,:] = init_func(x,y)*762 #starts with a init func 
     #I_1[:] += 0.1
     
     #Volume
@@ -73,4 +73,5 @@ def english_school(T,Nx,Ny,Nt,X,Y,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename):
         I_1[:,:] = I 
         R_1[:,:] = R 
 
-    plot_volume(t,S_vol,I_vol,R_vol,moviename)
+    plot_volume(t,[S_vol,I_vol,R_vol],moviename,classnames,T)
+    print_phase(dt,t,phases,[S_vol,I_vol,R_vol],classnames)

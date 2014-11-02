@@ -31,7 +31,6 @@ def run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filena
                 if t < phases[j]:
                     val = j
                     break
-            print val
             omega_t = omega(t, a, sigma, attacks)
             S[i+1] = S[i] + dt*(Sigma - (beta[val]+mu*omega_t)*S[i]*Z[i] - delta_S*S[i])
             I[i+1] = I[i] + dt*((beta[val]+ mu*omega_t)*S[i]*Z[i] - rho[val]*I[i] - delta_I*I[i])
@@ -63,6 +62,7 @@ def run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filena
             ph_list.append(int(p/dt))
         for i in ph_list:
             print "---------------------"
+            print "time, %f" % (i*dt)
             print "S_n",S[i]
             print "I_n",I[i]
             print "Z_n",Z[i]
@@ -108,9 +108,9 @@ if __name__ == "__main__":
     for i in range(100):
         attacks.append(i*2)
     run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filename,plot,print_,S_0,I_0,Z_0,R_0,D,mu)
-    
+    """
     Sigma = 3.45*10**(-5) ;beta = [0.01155, 0.000011]; delta_S = 2.5*10**(-5);delta_I = delta_S ;rho = [1.37,1.5] ;zeta = 0
-    alpha = [0.00044,0.000208];a = 0.0073; sigma = 0.005;filename = "plots/WD_zombie_all_phases_1.png"; 
+    alpha = [0.00044,0.000208];a = 0.0073; sigma = 0.005;filename = "plots/WD_zombie_all_phases_2.png"; 
     plot = True;print_= True; S_0 = 621; I_0 = 0; Z_0 = 1; R_0 = 0; D = 34; mu = 0.14; attacks = [33.125]; phases = [3,34]; 
     ph_print = [0,3,33,34]
     run_program(Sigma,beta,delta_S,delta_I,rho,zeta,alpha,a,sigma,attacks,filename,plot,print_,S_0,I_0,Z_0,R_0,D,mu,phases, ph_print)
