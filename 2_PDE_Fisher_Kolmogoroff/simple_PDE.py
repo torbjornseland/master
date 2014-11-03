@@ -59,7 +59,7 @@ def simple_PDE(T,Nx,Nt,X,lam,beta,S_1,I_1,R_1,f,g,h):
     def beta():
         return 0 # S_1[1:-1]*I_1[1:-1]/R_1[1:-1] 
     
-    print S_1[1:-1]
+    #print S_1[1:-1]
     for n in range(1,Nt+1):
         S[1:-1] = S_1[1:-1] + dt*(-S_1[1:-1]*I_1[1:-1]+beta()*R_1[1:-1]+(S_1[2:]-2*S_1[1:-1]+S_1[:-2])/dx**2+f(t[n-1],x))
         I[1:-1] = I_1[1:-1] + dt*(S_1[1:-1]*I_1[1:-1]-lam*I_1[1:-1]+(I_1[2:]-2*I_1[1:-1]+I_1[:-2])/dx**2+g(t[n-1],x))
@@ -85,8 +85,7 @@ def simple_PDE(T,Nx,Nt,X,lam,beta,S_1,I_1,R_1,f,g,h):
         I_1[:] = I 
         R_1[:] = R
         
-        
-        #print "n",n,S[1:-1]
+
         
 
     #Find area of Infective

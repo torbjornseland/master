@@ -114,7 +114,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Oct 31, 2014</h4></center> <!-- date -->
+<center><h4>Nov 3, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -425,6 +425,19 @@ r_x(<span style="color: #666666">1</span>,t):  <span style="color: #666666">0</s
 (<span style="color: #666666">-</span>lam<span style="color: #666666">*</span>t <span style="color: #666666">+</span> pi<span style="color: #666666">**2*</span>t <span style="color: #666666">+</span> <span style="color: #666666">1</span>)<span style="color: #666666">*</span>cos(pi<span style="color: #666666">*</span>x)
 </pre></div>
 <p>
+Which give
+$$
+\begin{equation}
+	\begin{aligned}
+	f(x,t) &= (t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
+	g(x,t) &= (\lambda t - t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
+	h(x,t) &= (-\lambda t + \pi^2t + 1)\cos(\pi x)
+	\end{aligned}
+\end{equation}
+$$
+
+
+<p>
 The following manufactured test will then be
 <p>
 
@@ -435,28 +448,15 @@ The following manufactured test will then be
 <span style="color: #BA2121; font-style: italic">    reproduced (to machine precision) by any relevant method.</span>
 <span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
     
-    <span style="color: #408080; font-style: italic">#d = 1.2;c = 2*d;e = 0.8</span>
-    <span style="color: #408080; font-style: italic">#g = 1.3;f = 2*g;h = 0.8</span>
-    <span style="color: #408080; font-style: italic">#j = 1.4;i = 2*j;k = 0.8</span>
-
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">exact_solution_S</span>(t,x):
         <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>cos(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>t
-        <span style="color: #408080; font-style: italic">#return np.exp(-(np.pi**2)*t)*np.cos(np.pi*x)</span>
-        <span style="color: #408080; font-style: italic">#return np.exp(-(np.pi**2)*t)*np.cos(np.pi*x)</span>
-        <span style="color: #408080; font-style: italic">#return c*(X-2*x)*t + (d*x**2)*(X-(2/float(3))*x) + e</span>
 
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">exact_solution_I</span>(t,x):
         <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>cos(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>t
-        <span style="color: #408080; font-style: italic">#return np.exp(-(np.pi**2)*t)*np.cos(np.pi*x)</span>
-        <span style="color: #408080; font-style: italic">#return f*(X-2*x)*t + (g*x**2)*(X-(2/float(3))*x) + h</span>
 
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">exact_solution_R</span>(t,x):
         <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>cos(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>t
-        <span style="color: #408080; font-style: italic">#return np.exp(-(np.pi**2)*t)*np.cos(np.pi*x)</span>
-        <span style="color: #408080; font-style: italic">#return i*(X-2*x)*t + (j*x**2)*(X-(2/float(3))*x) + k</span>
 
-    <span style="color: #408080; font-style: italic">#def lam(t,x):</span>
-    <span style="color: #408080; font-style: italic">#    return exact_solution_S(t,x)</span>
 
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">beta</span>(t,x):
         <span style="color: #008000; font-weight: bold">return</span> exact_solution_S(t,x)<span style="color: #666666">*</span>exact_solution_I(t,x)<span style="color: #666666">/</span>exact_solution_R(t,x)
@@ -475,83 +475,84 @@ The following manufactured test will then be
     S_1 <span style="color: #666666">=</span> exact_solution_S(<span style="color: #666666">0</span>,np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0-</span>dx,X<span style="color: #666666">+</span>dx,Nx<span style="color: #666666">+3</span>))
     I_1 <span style="color: #666666">=</span> exact_solution_I(<span style="color: #666666">0</span>,np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0-</span>dx,X<span style="color: #666666">+</span>dx,Nx<span style="color: #666666">+3</span>))
     R_1 <span style="color: #666666">=</span> exact_solution_R(<span style="color: #666666">0</span>,np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0-</span>dx,X<span style="color: #666666">+</span>dx,Nx<span style="color: #666666">+3</span>))
-    <span style="color: #408080; font-style: italic">#print &quot;S_1&quot;,S_1[1:-1]</span>
      
     t,x,S,I,R <span style="color: #666666">=</span> simple_PDE(T,Nx,Nt,X,lam,beta,S_1,I_1,R_1,f,g,h)
     S_e <span style="color: #666666">=</span> exact_solution_S(t[<span style="color: #666666">-1</span>],x)
     I_e <span style="color: #666666">=</span> exact_solution_I(t[<span style="color: #666666">-1</span>],x)
     R_e <span style="color: #666666">=</span> exact_solution_R(t[<span style="color: #666666">-1</span>],x)
     
-    <span style="color: #408080; font-style: italic">#print &quot;S_e--------------&quot;</span>
-    <span style="color: #408080; font-style: italic">#for i in t:</span>
-        <span style="color: #408080; font-style: italic">#print &quot;t&quot;,i</span>
-        <span style="color: #408080; font-style: italic">#print &quot;x&quot;,x</span>
-        <span style="color: #408080; font-style: italic">#print exact_solution_I(i,x)</span>
-    <span style="color: #408080; font-style: italic">#print &quot;---------------&quot;</span>
-    difference <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(S_e <span style="color: #666666">-</span> S)<span style="color: #666666">.</span>max()  <span style="color: #408080; font-style: italic"># max deviation</span>
-    <span style="color: #408080; font-style: italic">#print &quot;S&quot;,S</span>
-    <span style="color: #408080; font-style: italic">#print &quot;S_e&quot;,S_e</span>
+    difference_S <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(S_e[<span style="color: #666666">0</span>] <span style="color: #666666">-</span> S[<span style="color: #666666">0</span>])<span style="color: #666666">.</span>max()  <span style="color: #408080; font-style: italic"># max deviation</span>
 
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;diff&quot;</span>,difference
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    for i in range(4):</span>
+<span style="color: #BA2121; font-style: italic">        print &quot;n&quot;,i,&quot;S_e&quot;,exact_solution_S(t[i],x)</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #408080; font-style: italic">#print &quot;S&quot;,S</span>
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;diff&quot;</span>,difference_S
     <span style="color: #408080; font-style: italic">#tol = 1E-14</span>
     <span style="color: #408080; font-style: italic">#assert difference &lt; tol</span>
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
-<span style="color: #BA2121; font-style: italic">    difference = abs(I_e - I).max()  # max deviation</span>
-<span style="color: #BA2121; font-style: italic">    print &quot;diff&quot;,difference</span>
-<span style="color: #BA2121; font-style: italic">    tol = 1E-14</span>
-<span style="color: #BA2121; font-style: italic">    assert difference &lt; tol</span>
-<span style="color: #BA2121; font-style: italic">   </span>
-<span style="color: #BA2121; font-style: italic">    difference = abs(R_e - R).max()  # max deviation</span>
-<span style="color: #BA2121; font-style: italic">    print &quot;R&quot;,R</span>
-<span style="color: #BA2121; font-style: italic">    print &quot;R_e&quot;,R_e</span>
-<span style="color: #BA2121; font-style: italic">    print &quot;diff&quot;,difference</span>
-<span style="color: #BA2121; font-style: italic">    tol = 1E-14</span>
-<span style="color: #BA2121; font-style: italic">    assert difference &lt; tol</span>
-<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    
+    difference_I <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(I_e <span style="color: #666666">-</span> I)<span style="color: #666666">.</span>max()  <span style="color: #408080; font-style: italic"># max deviation</span>
+    <span style="color: #408080; font-style: italic">#print &quot;diff&quot;,difference_I</span>
+    <span style="color: #408080; font-style: italic">#tol = 1E-14</span>
+    <span style="color: #408080; font-style: italic">#assert difference &lt; tol</span>
+   
+    difference_R <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(R_e <span style="color: #666666">-</span> R)<span style="color: #666666">.</span>max()  <span style="color: #408080; font-style: italic"># max deviation</span>
+    <span style="color: #408080; font-style: italic">#print &quot;diff&quot;,difference_R</span>
+    <span style="color: #408080; font-style: italic">#tol = 1E-14</span>
+    <span style="color: #408080; font-style: italic">#assert difference &lt; tol</span>
+    <span style="color: #008000; font-weight: bold">return</span> difference_S,difference_I,difference_R
 </pre></div>
+<p>
+The expected error can be found by some calculations. Here the susceptible class \( S \) will be calculated
 $$
 \begin{equation}
 	\begin{aligned}
-	S' &= -IS +\beta R + S_{''}\\
-	I' &= IS -\lambda I + I_{''}\\
-	R' &= \lambda I - \beta R + R_{''} 
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\
+	S^{n+1}_i &=S^{n}_i + \Delta t\left(-I^{n}_{i}S^{n}_{i} + \frac{S^{n}_{i-1}-2S^{n}_{i}+S^{n}_{i+1}}{\Delta x^2}+f(x,t)\right),\\
+	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{\cos(\pi (x-\Delta x))t-2\cos(\pi x)t+\cos(\pi (x+\Delta x))t}{\Delta x^2}+f(x,t)\right),
 	\end{aligned}
 \end{equation}
 $$
 
-By using the two first equations, \( \beta \) and \( \lambda \) can be described with \( S \),$I$ and \( R \).
-$$
-\begin{equation}
- \beta = \frac{S'+IS-S_{''}}{R},\quad \lambda = \frac{IS+I_{''}-I'}{I}
-\end{equation}
-$$
-
-These two expressions can be inserted the last equation,
+By using some trigonometric identities, the following rewriting can be done
 
 $$
 \begin{equation}
 	\begin{aligned}
-    R' &=\frac{IS+I_{''}-I'}{I}I-\frac{S'+IS-S_{''}}{R}R+R_{''}\\ 
-    S'+I'+R' &= S_{''}+I_{''}+R_{''} 
+    \cos(\pi(x+\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)-\sin(\pi x)\sin(\pi \Delta x)\\
+    \cos(\pi(x-\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)+\sin(\pi x)\sin(\pi \Delta x)
 	\end{aligned}
 \end{equation}
 $$
 
-This can be solved by setting \( u'=u_{''} \) in \( S \),$I$ and \( R \). The three different groups are described as follows,
+This can be used into \( \frac{\partial^2 S}{\partial x^2} \), and with some simplifications,
+
 $$
 \begin{equation}
 	\begin{aligned}
-    S(t,x) &= ct+dx^2+e\\
-    I(t,x) &= ft+gx^2+h\\
-    R(t,x) &= it+jx^2+k
+	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{2t\cos(\pi x)(\cos(\pi \Delta x)-1)}{\Delta x^2}+(t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\right),\\
+	S^{n+1}_i &=cos(\pi x)(t+\Delta t) + \Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\
 	\end{aligned}
 \end{equation}
 $$
 
-Where,
+This analysis of the expected result gives an indication on the error. When \( \Delta t \) or \( \Delta x \) goes towards 0, the last part of the equation,
 $$
 \begin{equation}
- c=2d,\quad f=2g,\quad i=2j
+\Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\
+\end{equation}
+$$
+
+will go towards 0 and the correct solution will be left. It is easy to see that \( \Delta t \) will lead to a correct solution. But it is harder to see for \( \Delta x \). By using L'Hopitals on the expression, the threshold for \( \Delta x \rightarrow 0 \) can be found.
+$$
+\begin{equation}
+	\begin{aligned}
+    \frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}\\
+    \frac{-2\pi(\sin(\pi \Delta x))}{2\Delta x}\\
+    \frac{-2\pi^2(\cos(\pi \Delta x))}{2}\\
+    \pi^2 
+	\end{aligned}
 \end{equation}
 $$
 

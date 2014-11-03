@@ -75,6 +75,7 @@ def test_manufactured_solution(T,Nt,X,Nx):
         
 
     dx = X/float(Nx)
+    dt = T/float(Nt)
     S_1 = exact_solution_S(0,np.linspace(0-dx,X+dx,Nx+3))
     I_1 = exact_solution_I(0,np.linspace(0-dx,X+dx,Nx+3))
     R_1 = exact_solution_R(0,np.linspace(0-dx,X+dx,Nx+3))
@@ -84,13 +85,17 @@ def test_manufactured_solution(T,Nt,X,Nx):
     I_e = exact_solution_I(t[-1],x)
     R_e = exact_solution_R(t[-1],x)
     
-    difference_S = abs(S_e[0] - S[0]).max()  # max deviation
+    difference_S = abs(S_e - S).max()  # max deviation
 
-    """
-    for i in range(4):
-        print "n",i,"S_e",exact_solution_S(t[i],x)
-    """
+    
+    #for i in range(4):
+    #    print "n",i,"S_e",exact_solution_S(t[i],x)
+    
     #print "S",S
+    #t_tot = np.sum(t[:-1])
+    #print "t_tot",t_tot
+    #difference_exp = t_tot*dt*np.cos(x*np.pi)*((2*(np.cos(np.pi*dx)-1))/dx**2+np.pi**2)
+    #print "diff_exp", (abs(difference_exp)).max()
     print "diff",difference_S
     #tol = 1E-14
     #assert difference < tol
@@ -127,15 +132,15 @@ def solver(I, a, b, T, dt, theta):
 
 #test_constant_solution()
 a = 15
-T = 1; Nt = [1000,10000]
-X = 1; Nx = 10
-for i in range(2):
-    d_s,d_i,d_r = test_manufactured_solution(T,Nt[i],X,Nx)
+T = 1; Nt = [(4*15)**2]
+X = 1; Nx = [10,20,30,40]
+for i in range(4):
+    d_s,d_i,d_r = test_manufactured_solution(T,Nt[0],X,Nx[i])
     if i > 0:
         #print "-----------------"
         #print "dt", T/float(Nt[i])     
         #print "dt_1", T/float(Nt[i-1])     
         #print "d_s",d_s
         #print "d_s_1",d_s_1
-        print "r",np.log(d_s_1/d_s)/np.log((T/float(Nt[i-1]))/(T/float(Nt[i])))
+        print "r",np.log(d_s_1/d_s)/np.log((T/float(Nx[i-1]))/(T/float(Nx[i])))
     d_s_1 = d_s

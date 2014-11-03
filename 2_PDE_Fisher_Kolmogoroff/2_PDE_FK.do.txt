@@ -208,49 +208,70 @@ r_x(1,t):  0
 >>> print h.simplify()
 (-lam*t + pi**2*t + 1)*cos(pi*x)
 !ec
-The following manufactured test will then be
-@@@CODE verify_sol.py fromto: def test_manufactured_solution@def solver()
+Which give
 !bt
 \begin{equation}
 	\begin{aligned}
-	S' &= -IS +\beta R + S_{''}\\
-	I' &= IS -\lambda I + I_{''}\\
-	R' &= \lambda I - \beta R + R_{''} 
+	f(x,t) &= (t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
+	g(x,t) &= (\lambda t - t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
+	h(x,t) &= (-\lambda t + \pi^2t + 1)\cos(\pi x)
 	\end{aligned}
 \end{equation}
 !et
-By using the two first equations, $\beta$ and $\lambda$ can be described with $S$,$I$ and $R$.
+
+The following manufactured test will then be
+@@@CODE verify_sol.py fromto: def test_manufactured_solution@def solver()
+
+The expected error can be found by some calculations. Here the susceptible class $S$ will be calculated
 !bt
 \begin{equation}
- \beta = \frac{S'+IS-S_{''}}{R},\quad \lambda = \frac{IS+I_{''}-I'}{I}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\
+	S^{n+1}_i &=S^{n}_i + \Delta t\left(-I^{n}_{i}S^{n}_{i} + \frac{S^{n}_{i-1}-2S^{n}_{i}+S^{n}_{i+1}}{\Delta x^2}+f(x,t)\right),\\
+	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{\cos(\pi (x-\Delta x))t-2\cos(\pi x)t+\cos(\pi (x+\Delta x))t}{\Delta x^2}+f(x,t)\right),
+	\end{aligned}
 \end{equation}
 !et
-These two expressions can be inserted the last equation,
+By using some trigonometric identities, the following rewriting can be done
 
 !bt
 \begin{equation}
 	\begin{aligned}
-    R' &=\frac{IS+I_{''}-I'}{I}I-\frac{S'+IS-S_{''}}{R}R+R_{''}\\ 
-    S'+I'+R' &= S_{''}+I_{''}+R_{''} 
+    \cos(\pi(x+\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)-\sin(\pi x)\sin(\pi \Delta x)\\
+    \cos(\pi(x-\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)+\sin(\pi x)\sin(\pi \Delta x)
 	\end{aligned}
 \end{equation}
 !et
-This can be solved by setting $u'=u_{''}$ in $S$,$I$ and $R$. The three different groups are described as follows,
+This can be used into $\frac{\partial^2 S}{\partial x^2}$, and with some simplifications,
+
 !bt
 \begin{equation}
 	\begin{aligned}
-    S(t,x) &= ct+dx^2+e\\
-    I(t,x) &= ft+gx^2+h\\
-    R(t,x) &= it+jx^2+k
+	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{2t\cos(\pi x)(\cos(\pi \Delta x)-1)}{\Delta x^2}+(t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\right),\\
+	S^{n+1}_i &=cos(\pi x)(t+\Delta t) + \Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\
 	\end{aligned}
 \end{equation}
 !et
-Where,
+This analysis of the expected result gives an indication on the error. When $\Delta t$ or $\Delta x$ goes towards 0, the last part of the equation,
 !bt
 \begin{equation}
- c=2d,\quad f=2g,\quad i=2j
+\Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\
 \end{equation}
 !et
+will go towards 0 and the correct solution will be left. It is easy to see that $\Delta t$ will lead to a correct solution. But it is harder to see for $\Delta x$. By using L'Hopitals on the expression, the threshold for $\Delta x \rightarrow 0$ can be found.
+!bt
+\begin{equation}
+	\begin{aligned}
+    \frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}\\
+    \frac{-2\pi(\sin(\pi \Delta x))}{2\Delta x}\\
+    \frac{-2\pi^2\cos(\pi \Delta x)}{2}\\
+	\end{aligned}
+\end{equation}
+!et
+This gives $-\pi^2$. 
+=== Convergence rate ===
+To check the program, the convergence rate can be checked. Since this discretization consist of a Forward Euler, a first order error is expected. This can be found by
+
 ===== Check the global error =====
 
 ===== From 1D to 2D =====
