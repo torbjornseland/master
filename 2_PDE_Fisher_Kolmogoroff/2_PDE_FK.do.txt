@@ -270,7 +270,56 @@ will go towards 0 and the correct solution will be left. It is easy to see that 
 !et
 This gives $-\pi^2$. 
 === Convergence rate ===
-To check the program, the convergence rate can be checked. Since this discretization consist of a Forward Euler, a first order error is expected. This can be found by
+To check the program, the convergence rate can be checked. By using the following term,
+!bt
+\begin{equation}
+    \epsilon = C_x\Delta x^2 + C_t \Delta t
+\end{equation}
+!et
+The error can be found. First the $Delta x$ can be found. Since a Crank Nicolson discretization has been used for the spatial derivative, a second order is expected. By setting $\Delta t \ll \Delta x$, the $C_t\Delta t \approx 0$, and the error term for $\Delta x$ can be found by
+!bt
+\begin{equation}
+    \epsilon \propto \Delta x^r
+\end{equation}
+!et
+Where $r=2$. Now $\Delta x$ can be measured for some values and the convergence rate can be found. By using the following equation, the error term for different $\Delta x$ can be compared against the error for these $\Delta x$ values.
+!bt
+\begin{equation}
+ r \simeq \frac{\log(\epsilon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
+\end{equation}
+!et
+The result can be seen in a table, where $\Delta t = 0.0001$
+|----------------------------------------|
+|-----|dx1=0.2|dx2=0.1|dx3=0.05|dx4=0.025|
+|----------------------------------------|
+|error|0.04017|0.00988|0.00246 | 0.00061 |
+|r    |       |2.02277|2.00563 |2.00140  |
+|----------------------------------------|
+As expected, the convergence rate goes towards 2. This is a good for checking that the discretization is done correct. A similar thing is harder to do for $\Delta t$, since a stability criterium on the form,
+!bt
+\begin{equation}
+\Delta t < \Delta x^2
+\end{equation}
+!et
+is expected. but here a stability problem will arise if $\Delta x \ll \Delta t$, therefore both values need to be reduced. In the discretization of the time derivative, Forward Euler was used. Therefore a 1.order error is expected. When finding the convergence rate for $\Delta t$, the 1.order error will be controlling.  
+|---------------------------------------------|
+|     r   |dx1=1/10|dx2=1/20|dx3=1/30|dx4=1/40|
+|---------------------------------------------|
+|dt=1/200 |9.8\cdot 10^{-3} |2.4\cdot 10^{-3}|6.1\cdot 10^{-4}|1.5\cdot 10^{-4}|
+|dt=1/400 |  
+|dt=1/800 | 
+|dt=1/1600|
+|---------------------------------------------|
+
+|---------------------------------------------|
+|     r   |dx1=1/10|dx2=1/20|dx3=1/30|dx4=1/40|
+|---------------------------------------------|
+|dt=1/1600|       |1.00267|1.00085 | 1.00042  |
+|dt=1/800 |       |1.00256|1.00081 | 1.00040  |
+|dt=1/400 |       |1.00230|1.00073 | 1.00036  |
+|dt=1/200 |       |1.00178|1.00056 | 1.00028  |
+|---------------------------------------------|
+
 
 ===== Check the global error =====
 
