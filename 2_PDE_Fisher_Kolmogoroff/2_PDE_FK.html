@@ -46,10 +46,10 @@ Automatically generated HTML file from Doconce source
               (' Constant solution ', 3, None, '___sec4'),
               (' Manufactured solution ', 3, None, '___sec5'),
               (' Convergence rate ', 3, None, '___sec6'),
-              (' Check the global error ', 2, None, '___sec7'),
-              (' From 1D to 2D ', 2, None, '___sec8'),
-              (' A gaussian wave ', 3, None, '___sec9'),
-              (' A gaussian function at 0,0 ', 3, None, '___sec10'),
+              (' The spatial error ', 3, None, '___sec7'),
+              (' The temporal error ', 3, None, '___sec8'),
+              (' Travelling wave in 2D ', 2, None, '___sec9'),
+              (' A gaussian wave ', 3, None, '___sec10'),
               (' Change in initial flow ', 3, None, '___sec11'),
               (' Chage in the lambda ', 3, None, '___sec12'),
               (' Epidemic in an English Boarding school 1978 ',
@@ -62,11 +62,9 @@ Automatically generated HTML file from Doconce source
               (' Where does the infected one arises ', 3, None, '___sec17'),
               (' Lock in different areas ', 3, None, '___sec18'),
               (' Appendix ', 1, None, '___sec19'),
-              (' Discretization PDE system for a 2D model ',
-               2,
-               None,
-               '___sec20'),
-              (' Discretization ', 2, None, '___sec21')]}
+              (' Discretization ', 2, None, '___sec20'),
+              (' 2D Gaussian function from x=0 ', 2, None, '___sec21'),
+              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec22')]}
 end of tocinfo -->
 
 <body>
@@ -115,7 +113,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 4, 2014</h4></center> <!-- date -->
+<center><h4>Nov 5, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -126,10 +124,10 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Constant solution </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Manufactured solution </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Convergence rate </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Check the global error </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> From 1D to 2D </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec9"> A gaussian wave </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> A gaussian function at 0,0 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> The spatial error </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> The temporal error </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Travelling wave in 2D </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> A gaussian wave </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Change in initial flow </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec12"> Chage in the lambda </a><br>
 <a href="#___sec13"> Epidemic in an English Boarding school 1978 </a><br>
@@ -139,8 +137,9 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec17"> Where does the infected one arises </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec18"> Lock in different areas </a><br>
 <a href="._2_PDE_FK002.html#___sec19"> Appendix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec20"> Discretization PDE system for a 2D model </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec21"> Discretization </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec20"> Discretization </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec21"> 2D Gaussian function from x=0 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec22"> 2D Gaussian function from x=0,y=0 </a><br>
 </p>
 
 <h2>Introduction  <a name="___sec0"></a></h2>
@@ -510,134 +509,126 @@ The following manufactured test will then be
     <span style="color: #408080; font-style: italic">#assert difference &lt; tol</span>
     <span style="color: #008000; font-weight: bold">return</span> difference_S,difference_I,difference_R
 </pre></div>
-<p>
-The expected error can be found by some calculations. Here the susceptible class \( S \) will be calculated
-$$
-\begin{equation}
-	\begin{aligned}
-	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\
-	S^{n+1}_i &=S^{n}_i + \Delta t\left(-I^{n}_{i}S^{n}_{i} + \frac{S^{n}_{i-1}-2S^{n}_{i}+S^{n}_{i+1}}{\Delta x^2}+f(x,t)\right),\\
-	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{\cos(\pi (x-\Delta x))t-2\cos(\pi x)t+\cos(\pi (x+\Delta x))t}{\Delta x^2}+f(x,t)\right),
-	\end{aligned}
-\end{equation}
-$$
-
-By using some trigonometric identities, the following rewriting can be done
-
-$$
-\begin{equation}
-	\begin{aligned}
-    \cos(\pi(x+\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)-\sin(\pi x)\sin(\pi \Delta x)\\
-    \cos(\pi(x-\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)+\sin(\pi x)\sin(\pi \Delta x)
-	\end{aligned}
-\end{equation}
-$$
-
-This can be used into \( \frac{\partial^2 S}{\partial x^2} \), and with some simplifications,
-
-$$
-\begin{equation}
-	\begin{aligned}
-	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{2t\cos(\pi x)(\cos(\pi \Delta x)-1)}{\Delta x^2}+(t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\right),\\
-	S^{n+1}_i &=cos(\pi x)(t+\Delta t) + \Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\
-	\end{aligned}
-\end{equation}
-$$
-
-This analysis of the expected result gives an indication on the error. When \( \Delta t \) or \( \Delta x \) goes towards 0, the last part of the equation,
-$$
-\begin{equation}
-\Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\
-\end{equation}
-$$
-
-will go towards 0 and the correct solution will be left. It is easy to see that \( \Delta t \) will lead to a correct solution. But it is harder to see for \( \Delta x \). By using L'Hopitals on the expression, the threshold for \( \Delta x \rightarrow 0 \) can be found.
-$$
-\begin{equation}
-	\begin{aligned}
-    \frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}\\
-    \frac{-2\pi(\sin(\pi \Delta x))}{2\Delta x}\\
-    \frac{-2\pi^2\cos(\pi \Delta x)}{2}\\
-	\end{aligned}
-\end{equation}
-$$
-
-This gives \( -\pi^2 \).
 
 <h3>Convergence rate  <a name="___sec6"></a></h3>
 
-To check the program, the convergence rate can be checked. By using the following term,
+The program can be controlled by checking the convergence rate. The error term can be described as  
 $$
-\begin{equation}
+\begin{equation} \tag{8}
     \epsilon = C_x\Delta x^2 + C_t \Delta t
 \end{equation}
 $$
 
-The error can be found. First the \( Delta x \) can be found. Since a Crank Nicolson discretization has been used for the spatial derivative, a second order is expected. By setting \( \Delta t \ll \Delta x \), the \( C_t\Delta t \approx 0 \), and the error term for \( \Delta x \) can be found by
+With equation(ref{eq:error}, the expected convergence rate can be found for both \( \Delta x \) and \( \Delta t \). To be able to separate the \( \Delta \)'s, the other value has to be close to eliminated. If the value for \( \Delta x \) wants to be found,  \( \Delta t \ll \Delta x \) has to be fullfilled. This will lead to \( C_t\Delta t \approx 0 \), and the error term for \( \Delta x \) can be found. The opposite thing can  be done for \( \Delta t \). A table for the error is produced for different values for \( \Delta t = 0.05 \) and \( \Delta x=0.1 \).
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">      </th> <th align="center">  dx  </th> <th align="center"> dx/2 </th> <th align="center"> dx/4 </th> <th align="center"> dx/8 </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   dt        </td> <td align="center">   9.8E-3    </td> <td align="center">   -         </td> <td align="center">   -         </td> <td align="center">   -         </td> </tr>
+<tr><td align="center">   dt/4      </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   -         </td> <td align="center">   -         </td> </tr>
+<tr><td align="center">   dt/8      </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   6.1E-4    </td> <td align="center">   -         </td> </tr>
+<tr><td align="center">   dt/16     </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   6.1E-4    </td> <td align="center">   1.5E-4    </td> </tr>
+</tbody>
+</table>
+<!-- 0.00988006143376,0.00246039081619,-,- -->
+<!-- 0.00988361769746,0.00246127510994,0.000614719954035 -->
+<!-- 0.00988450717896,0.00246149628689,0.000614775174047,0.000153656409034 -->
+
+<h3>The spatial error  <a name="___sec7"></a></h3>
+
+The table above gives an insight on how the error develops when reducing \( \Delta t \) and \( \Delta x \). By studying the row where \( \Delta t/16 \), the \( C_t \Delta t \) can be seen as close to negligible in equation(ref{eq:error}. The error can then be expressed 
 $$
 \begin{equation}
     \epsilon \propto \Delta x^r
 \end{equation}
 $$
 
-Where \( r=2 \). Now \( \Delta x \) can be measured for some values and the convergence rate can be found. By using the following equation, the error term for different \( \Delta x \) can be compared against the error for these \( \Delta x \) values.
+The value is expected to be \( r=2 \), since Crank Nicolson is used in the spatial discretization. This gives a 2.order error. By comparing the error for different \( \Delta x \), the convergence rate, \( r \), can be expressed, 
 $$
-\begin{equation}
- r \simeq \frac{\log(\epislon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
+\begin{equation} \tag{9}
+ r_{12} \simeq \frac{\log(\epsilon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
 \end{equation}
 $$
 
-The result can be seen in a table, where \( \Delta t = 0.0001 \)
+Since the table above has four different error values, these can be used to give three different convergence rates. \( \Delta x_1 = dx, \Delta x_2 = dx/2... \). The same labeling will be done for the different error values, \( \epsilon \).
 <table border="1">
 <thead>
-<tr><th align="center">  -----  </th> <th align="center"> dx1=0.2 </th> <th align="center"> dx2=0.1 </th> <th align="center"> dx3=0.05</th> <th align="center">dx4=0.025</th> </tr>
+<tr><th align="center">           ------          </th> <td align="center">\( \epsilon_1/\epsilon_2 \)</td> <td align="center">\( \epsilon_2/\epsilon_3 \)</td> <td align="center">\( \epsilon_3/\epsilon_4 \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   error        </td> <td align="center">   0.04017      </td> <td align="center">   0.00988      </td> <td align="center">   0.00246      </td> <td align="center">   0.00061      </td> </tr>
-<tr><td align="center">   r            </td> <td align="center">                </td> <td align="center">   2.02277      </td> <td align="center">   2.00563      </td> <td align="center">   2.00140      </td> </tr>
+<tr><td align="center">   r                              </td> <td align="center">   2.0056                         </td> <td align="center">   2.0014                         </td> <td align="center">   2.0004                         </td> </tr>
 </tbody>
 </table>
 
-<h2>Check the global error  <a name="___sec7"></a></h2>
+<h3>The temporal error  <a name="___sec8"></a></h3>
 
-<h2>From 1D to 2D  <a name="___sec8"></a></h2>
-Since an epidemic disease will spread geograpically, it will be interesting to look at the model in 2D. The following equation can then be discretized
+The temporal error is quite hard to find because the <em>Stability criteria</em> which is about
+$$
+\begin{equation} \tag{10}
+ 2\Delta t \leq \Delta x^2
+\end{equation}
+$$
 
-<h3>A gaussian wave  <a name="___sec9"></a></h3>
+This results in the case that \( \Delta x \ll \Delta t \) is impossible, because this only leads to an unstable solution. By looking at the column for \( \frac{\Delta x}{8} \), the only stable solution is for \( {\Delta t}{16} \). Therefore the technique used for the spatial error cannot be used here. By studying the diagonal numbers in the table, the expected convergence rate is fulfilled for both \( \Delta x \), which gives \( r = 2 \) and for \( \Delta t \) that gives \( r=1 \)
 
+<h2>Travelling wave in 2D  <a name="___sec9"></a></h2>
+The model can be discretized for a 2D simulation since an epidemic disease will spread geographically. The non dimensional system <a href="#mjx-eqn-3">(3)</a> used in the 1D simulation above can be discretized with Forward Euler in time and Crank Nicolson in space
+$$
+\begin{equation}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+Now the known values can be placed on the right side. The system will then be
+$$
+\begin{equation}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^{n}_{i,j}+\Delta t\left(-I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    I^{n+1}_{i,j} &= I^{n}_{i,j}+\Delta t\left(I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    R^{n+1}_{i,j} &= R^{n}_{i,j}+\Delta t\left(\lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right)\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+This results in an explicit system, which is easy to code. It consist of known values on the right side and only one unknown on the left side.
+
+<h3>A gaussian wave  <a name="___sec10"></a></h3>
+
+In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of infected spread along the x-axis. A similar thing can be done for the 2D simulation. A couple of simulations have been done for the 2D system. The first simulation is run for a Gaussian function along \( x=0 \) and the second simulation is run for a Gaussian function from \( x=0,y=0 \) for the infected humans as initial value. Both simulations can be seen in the Appendix.  
+
+<p>
+By studying the travelling wave at a certain point, the size of the epidemic wave can be measured. The two 
+
+<p>
 <!-- MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D. -->
+<!-- MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner. -->
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  The PDE system <a href="#mjx-eqn-3">(3)</a> simulated for a 2D system with \( \lambda=0.5 \). A gauss wave from \( x=0 \). </p></center>
-<p><img src="plots/2D_gauss_sub.png" align="bottom" height=600 width=800></p>
-</center>
-
-<h3>A gaussian function at 0,0  <a name="___sec10"></a></h3>
-
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_one_corner.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Starting the travelling wave from the corner.</em></p>
-
-
-<p>
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 4:  A gaussian function from \( x=0,y=0 \) based on the PDE system <a href="#mjx-eqn-3">(3)</a> with \( \lambda=0.5 \) </p></center>
-<p><img src="plots/2D_gauss_one_sub.png" align="bottom" height=600 width=800></p>
-</center>
-
-<p>
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 5:  The travelling wave measured at point 15,15. The wave moves quite similar to the 1D example above  1D 1.4340793845 1.43143259034 dt = \( 1\cdot10^{-3} \), dx = 0.05 1.43195870243 dt = 0.0002, dx^2 = 0.000625 |------------------------------------------| |1D wave       |2D wave line |2D wave point| |------------------------------------------| |1.43195870243 |1.43484000394|0            | |------------------------------------------| Compare the values from 1D and 2D by making a table Result: Looks from the plots that there is no change(as expected) </p></center>
+<center><p class="caption">Figure 3:  The travelling wave measured at point 15,15. The wave moves quite similar to the 1D example above  1D 1.4340793845 1.43143259034 dt = \( 1\cdot10^{-3} \), dx = 0.05 1.43195870243 dt = 0.0002, dx^2 = 0.000625 </p></center>
 <p><img src="plots/TW_2D_corner_z_lambda_0_5.png" align="bottom" height=600 width=800></p>
 </center>
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   1D wave   </th> <th align="center"> 2D wave line</th> <th align="center">2D wave point</th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   1.43195870243    </td> <td align="center">   1.43484000394    </td> <td align="center">   0                </td> </tr>
+</tbody>
+</table>
+<p>
+Compare the values from 1D and 2D by making a table
+Result: Looks from the plots that there is no change(as expected)
 
 <h3>Change in initial flow  <a name="___sec11"></a></h3>
 
@@ -653,14 +644,14 @@ Since an epidemic disease will spread geograpically, it will be interesting to l
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 6:  Four plots </p></center>
+<center><p class="caption">Figure 4:  Four plots </p></center>
 <p><img src="plots/2D_initial_variable_sub.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 7:  The wave appear earlier, but it has the same size. </p></center>
+<center><p class="caption">Figure 5:  The wave appear earlier, but it has the same size. </p></center>
 <p><img src="plots/TW_2D_initial_z_lambda_0_5.png" align="bottom" height=600 width=800></p>
 </center>
 
@@ -671,7 +662,7 @@ Result: Looks from the plots that the travelling wave appears ealier, but has th
 
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  With a small \( \lambda \), the travelling wave will increase. And when \( \lambda \rightarrow 1 \) the wave will disappear. </p></center>
+<center><p class="caption">Figure 6:  With a small \( \lambda \), the travelling wave will increase. And when \( \lambda \rightarrow 1 \) the wave will disappear. </p></center>
 <p><img src="plots/2D_lambda_variable.png" align="bottom" height=600 width=800></p>
 </center>
 
@@ -698,7 +689,7 @@ r will be reduced with Nx2, while a is the same.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 9:  This PDE system gives the same results as the ODE system in the previous chapter. This is as expected since the students are uniformly spread and the diffusion is sat to 1 for all the classes </p></center>
+<center><p class="caption">Figure 7:  This PDE system gives the same results as the ODE system in the previous chapter. This is as expected since the students are uniformly spread and the diffusion is sat to 1 for all the classes </p></center>
 <p><img src="plots/2D_british_school_number.png" align="bottom" height=600 width=800></p>
 </center>
 
@@ -721,7 +712,7 @@ Introducing a Gaussian distribution
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 10:  This seems to have no effect and the spread of the disease is similar to the one above. But if a student is lucky to stand in one corner, he has a greater chance to stay healthy </p></center>
+<center><p class="caption">Figure 8:  This seems to have no effect and the spread of the disease is similar to the one above. But if a student is lucky to stand in one corner, he has a greater chance to stay healthy </p></center>
 <p><img src="plots/2D_british_school_gauss_number.png" align="bottom" height=600 width=800></p>
 </center>
 
@@ -744,7 +735,7 @@ Gaussain from the corner. This one gives other results. It has a slower diffusio
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 11:  This simulation gives another result. Here the number of infected increase later than in the previous examples </p></center>
+<center><p class="caption">Figure 9:  This simulation gives another result. Here the number of infected increase later than in the previous examples </p></center>
 <p><img src="plots/2D_british_school_gauss_corner_number.png" align="bottom" height=600 width=800></p>
 </center>
 

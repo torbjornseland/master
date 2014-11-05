@@ -134,11 +134,11 @@ def solver(I, a, b, T, dt, theta):
 a = 15
 T = 1; Nt = [200,200*(2**2),200*(4**2),200*(8**2)]
 X = 1; Nx = [10,10*2,10*4,10*8]
-Nt = [400,400*(2**2),400*(3**2),400*(4**2)]
+#Nt = [400,400*(2**2),400*(3**2),400*(4**2)]
 #Nt = [800,800*(2**2),800*(3**2),800*(4**2)]
 #Nt = [1600,1600*(2**2),1600*(3**2),1600*(4**2)]
 for i in range(4):
-    d_s,d_i,d_r = test_manufactured_solution(T,Nt[i],X,Nx[i])
+    d_s,d_i,d_r = test_manufactured_solution(T,Nt[i],X,Nx[0])
     if i > 0:
         #print "-----------------"
         #print "dt", T/float(Nt[i])     

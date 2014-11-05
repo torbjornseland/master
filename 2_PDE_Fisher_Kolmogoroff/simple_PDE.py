@@ -76,11 +76,12 @@ def simple_PDE(T,Nx,Nt,X,lam,beta,S_1,I_1,R_1,f,g,h):
         I[-1] = I[-3]
         R[0] = R[2]
         R[-1] =R[-3]
+        """
         if (n%40 == 0):
             np.save("images/Sub%04d" % (n/40),S)
             np.save("images/Inf%04d" % (n/40),I)
             np.save("images/Rem%04d" % (n/40),R)
-
+        """
         S_1[:] = S
         I_1[:] = I 
         R_1[:] = R

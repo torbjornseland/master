@@ -32,20 +32,21 @@ def gauss_2D(x,y,a,sigma,x0,y0):
 
 #Geographic models
 #1D simple PDE
+"""
 T = 40
 Nx = 100
 Nt = 2000
 X = 20
 lam = 0.5
 si1D.simple_PDE(T,Nx,Nt,X,lam)
-
+"""
 
 # A gaussian wave
-"""
+
 T = 40
 X = 20
 Nt = 100000
-Nx = 600
+Nx = 100
 lam = 0.5
 z_X = 15
 z_Y = 15
@@ -53,9 +54,9 @@ x0 = 0
 def init_func(x,y):
     return gauss_2D(x,y,0.2,0.5,x0,y)   
 
-moviename = 'plots/2D_gaussian'
+moviename = 'plots/2D_gaussian2'
 si2D.produce_plot(T,Nx,Nx,Nt,X,X,lam,z_X,z_Y,init_func,classnames,t_wave=True)
-"""
+
 #
 """
 moviename = 'plots/2D_one_corner'

@@ -15,8 +15,8 @@ While the systems in the previous chapter only consisted of the temporal variabl
 !bt
 \begin{equation} label{eq:simple_PDE}
 	\begin{aligned}
-	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
-	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\ 
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\ 
 	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
 	\end{aligned}
 \end{equation}
@@ -25,7 +25,7 @@ All three classes have the same diffusion coefficient, $D$. $rIS$ and $aI$ will 
 !bt
 \begin{equation} label{eq:constants_nondimensional}
 	\begin{aligned}
-	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
+	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\ 
 	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
 	\end{aligned}
 \end{equation}
@@ -34,8 +34,8 @@ $S_0$ is here used as a representative population. Now the model(ref{eq:simple_P
 !bt
 \begin{equation} label{eq:simple_non_PDE}
 	\begin{aligned}
-	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
-	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\ 
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\ 
 	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
 	\end{aligned}
 \end{equation}
@@ -53,8 +53,8 @@ Here the value $c$ will be the wave speed. This represents a wave of constant sh
 !bt
 \begin{equation} label{eq:ord_diff_sys}
 	\begin{aligned}
-	S'' + cS' - IS &= 0,\\
-	I'' + cI' + I(S-\lambda)&=0\\
+	S'' + cS' - IS &= 0,\\ 
+	I'' + cI' + I(S-\lambda)&=0\\ 
 	R'' + cR  + I\lambda &=0
 	\end{aligned}
 \end{equation}
@@ -63,8 +63,8 @@ This gives an eigenvalue problem to find the range of $\lambda$ so that $c$ alwa
 !bt
 \begin{equation} 
 	\begin{aligned}
-	0 \leq S(-\infty) < S(\infty)&=1\\
-	I(-\infty)=I(\infty)&=0,\\
+	0 \leq S(-\infty) < S(\infty)&=1\\ 
+	I(-\infty)=I(\infty)&=0,\\ 
 	1 \geq R(-\infty)\geq R(\infty) &= 0
 	\end{aligned}
 \end{equation}
@@ -107,8 +107,8 @@ To verify this solution a couple of tests can be done one the system. The first 
 !bt
 \begin{equation} label{eq:simple_non_PDE2}
 	\begin{aligned}
-	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
-	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\ 
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\ 
 	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
 	\end{aligned}
 \end{equation}
@@ -117,8 +117,8 @@ By setting the solutions to constants, $S = C_s,I=C_i,R=C_r$, the value of $C_i$
 !bt
 \begin{equation} label{eq:constant_PDE}
 	\begin{aligned}
-	C_IC_S &= \beta C_r \\
-	C_IC_S &= \lambda C_I \\
+	C_IC_S &= \beta C_r \\ 
+	C_IC_S &= \lambda C_I \\ 
 	\lambda C_I &= -\beta C_R 
 	\end{aligned}
 \end{equation}
@@ -133,8 +133,8 @@ By constructing a function to each equation in the system (ref{eq:simple_non_PDE
 !bt
 \begin{equation} label{eq:simple_non_PDE2}
 	\begin{aligned}
-	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\
-	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2}+g(x,t),\\
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\ 
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2}+g(x,t),\\ 
 	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2}+h(x,t),
 	\end{aligned}
 \end{equation}
@@ -143,8 +143,8 @@ where $f$,$g$ and $h$ are constructed functions to achieve the expected results 
 !bt
 \begin{equation}
 	\begin{aligned}
-	f(x,t) = \frac{\partial S}{\partial t} + IS - \frac{\partial^2 S}{\partial x^2}\\
-	g(x,t) = \frac{\partial I}{\partial t} - IS + \lambda I - \frac{\partial^2 I}{\partial x^2}\\
+	f(x,t) = \frac{\partial S}{\partial t} + IS - \frac{\partial^2 S}{\partial x^2}\\ 
+	g(x,t) = \frac{\partial I}{\partial t} - IS + \lambda I - \frac{\partial^2 I}{\partial x^2}\\ 
 	h(x,t) = \frac{\partial R}{\partial t} -\lambda I - \frac{\partial^2 R}{\partial x^2},
 	\end{aligned}
 \end{equation}
@@ -159,8 +159,8 @@ The quantities have here been sat to:
 !bt
 \begin{equation}
 	\begin{aligned}
-    S(x,t) = cos(\frac{\pi}{X}x)t\\
-    I(x,t) = cos(\frac{\pi}{X}x)t\\
+    S(x,t) = cos(\frac{\pi}{X}x)t\\ 
+    I(x,t) = cos(\frac{\pi}{X}x)t\\ 
     R(x,t) = cos(\frac{\pi}{X}x)t
 	\end{aligned}
 \end{equation}
@@ -212,8 +212,8 @@ Which give
 !bt
 \begin{equation}
 	\begin{aligned}
-	f(x,t) &= (t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
-	g(x,t) &= (\lambda t - t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
+	f(x,t) &= (t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\ 
+	g(x,t) &= (\lambda t - t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\ 
 	h(x,t) &= (-\lambda t + \pi^2t + 1)\cos(\pi x)
 	\end{aligned}
 \end{equation}
@@ -221,101 +221,137 @@ Which give
 
 The following manufactured test will then be
 @@@CODE verify_sol.py fromto: def test_manufactured_solution@def solver()
-
-=== Convergence rate ===
-The program can be controlled by checking the convergence rate. The error term can be described as  
+## if MYVAR == "sphinx"
+    The expected error can be found by some calculations. Here the susceptible class $S$ will be calculated
 !bt
-\begin{equation} label{eq:error}
+\begin{equation}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\ 
+	S^{n+1}_i &=S^{n}_i + \Delta t\left(-I^{n}_{i}S^{n}_{i} + \frac{S^{n}_{i-1}-2S^{n}_{i}+S^{n}_{i+1}}{\Delta x^2}+f(x,t)\right),\\ 
+	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{\cos(\pi (x-\Delta x))t-2\cos(\pi x)t+\cos(\pi (x+\Delta x))t}{\Delta x^2}+f(x,t)\right),
+	\end{aligned}
+\end{equation}
+!et
+By using some trigonometric identities, the following rewriting can be done
+
+!bt
+\begin{equation}
+	\begin{aligned}
+    \cos(\pi(x+\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)-\sin(\pi x)\sin(\pi \Delta x)\\ 
+    \cos(\pi(x-\Delta x)) &= \cos(\pi x)\cos(\pi \Delta x)+\sin(\pi x)\sin(\pi \Delta x)
+	\end{aligned}
+\end{equation}
+!et
+This can be used into $\frac{\partial^2 S}{\partial x^2}$, and with some simplifications,
+
+!bt
+\begin{equation}
+	\begin{aligned}
+	S^{n+1}_i &=cos(\pi x)t+\Delta t\left( -(\cos(\pi x)t)^2 + \frac{2t\cos(\pi x)(\cos(\pi \Delta x)-1)}{\Delta x^2}+(t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\right),\\ 
+	S^{n+1}_i &=cos(\pi x)(t+\Delta t) + \Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\ 
+	\end{aligned}
+\end{equation}
+!et
+This analysis of the expected result gives an indication on the error. When $\Delta t$ or $\Delta x$ goes towards 0, the last part of the equation,
+!bt
+\begin{equation}
+\Delta t\cos(\pi x) t \left(\frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}+\pi^2\right),\\ 
+\end{equation}
+!et
+will go towards 0 and the correct solution will be left. It is easy to see that $\Delta t$ will lead to a correct solution. But it is harder to see for $\Delta x$. By using L'Hopitals on the expression, the threshold for $\Delta x \rightarrow 0$ can be found.
+!bt
+\begin{equation}
+	\begin{aligned}
+    \frac{2(\cos(\pi \Delta x)-1)}{\Delta x^2}\\ 
+    \frac{-2\pi(\sin(\pi \Delta x))}{2\Delta x}\\ 
+    \frac{-2\pi^2\cos(\pi \Delta x)}{2}\\ 
+	\end{aligned}
+\end{equation}
+!et
+This gives $-\pi^2$.
+# # endif
+=== Convergence rate ===
+To check the program, the convergence rate can be checked. By using the following term,
+!bt
+\begin{equation}
     \epsilon = C_x\Delta x^2 + C_t \Delta t
 \end{equation}
 !et
-With equation(ref{eq:error}, the expected convergence rate can be found for both $\Delta x$ and $\Delta t$. To be able to separate the $\Delta$'s, the other value has to be close to eliminated. If the value for $\Delta x$ wants to be found,  $\Delta t \ll \Delta x$ has to be fullfilled. This will lead to $C_t\Delta t \approx 0$, and the error term for $\Delta x$ can be found. The opposite thing can  be done for $\Delta t$. A table for the error is produced for different values for $\Delta t = 0.05$ and $\Delta x=0.1$.
-
-|-------------------------------------------|
-|         |dx       |dx/2   |dx/4   | dx/8  |
-|-------------------------------------------|
-|dt       |9.8E-3   |  -    |     - | -     |
-|dt/4     |9.9E-3   |2.5E-3 |     - | -     |
-|dt/8     |9.9E-3   |2.5E-3 |6.1E-4 | -     |
-|dt/16    |9.9E-3   |2.5E-3 |6.1E-4 |1.5E-4 |
-|-------------------------------------------|
-#0.00986586295419,-,-,- 
-#0.00988006143376,0.00246039081619,-,-
-#0.00988361769746,0.00246127510994,0.000614719954035
-#0.00988450717896,0.00246149628689,0.000614775174047,0.000153656409034
-
-=== The spatial error ===
-The table above gives an insight on how the error develops when reducing $\Delta t$ and $\Delta x$. By studying the row where $\Delta t/16$, the $C_t \Delta t$ can be seen as close to negligible in equation(ref{eq:error}. The error can then be expressed 
+The error can be found. First the $Delta x$ can be found. Since a Crank Nicolson discretization has been used for the spatial derivative, a second order is expected. By setting $\Delta t \ll \Delta x$, the $C_t\Delta t \approx 0$, and the error term for $\Delta x$ can be found by
 !bt
 \begin{equation}
     \epsilon \propto \Delta x^r
 \end{equation}
 !et
-The value is expected to be $r=2$, since Crank Nicolson is used in the spatial discretization. This gives a 2.order error. By comparing the error for different $\Delta x$, the convergence rate, $r$, can be expressed, 
+Where $r=2$. Now $\Delta x$ can be measured for some values and the convergence rate can be found. By using the following equation, the error term for different $\Delta x$ can be compared against the error for these $\Delta x$ values.
 !bt
-\begin{equation} label{eq:conv_rate}
- r_{12} \simeq \frac{\log(\epsilon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
+\begin{equation}
+ r \simeq \frac{\log(\epsilon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
 \end{equation}
 !et
-Since the table above has four different error values, these can be used to give three different convergence rates. $\Delta x_1 = dx, \Delta x_2 = dx/2...$. The same labeling will be done for the different error values, $\epsilon$.
-|------------------------------------------------------------------------------|
-|------|$\epsilon_1/\epsilon_2$|$\epsilon_2/\epsilon_3$|$\epsilon_3/\epsilon_4$|
-|------------------------------------------------------------------------------|
-| r    |2.0056|2.0014|2.0004|
-|------------------------------------------------------------------------------|
-Here the rate goes towards 2, and a 2.order convergence rate seems to be fulfilled.
-=== The temporal error ===
-The temporal error is quite hard to find because the *Stability criteria* which is about
+The result can be seen in a table, where $\Delta t = 0.0001$
+|----------------------------------------|
+|-----|dx1=0.2|dx2=0.1|dx3=0.05|dx4=0.025|
+|----------------------------------------|
+|error|0.04017|0.00988|0.00246 | 0.00061 |
+|r    |       |2.02277|2.00563 |2.00140  |
+|----------------------------------------|
+As expected, the convergence rate goes towards 2. This is a good for checking that the discretization is done correct. A similar thing is harder to do for $\Delta t$, since a stability criterium on the form,
 !bt
-\begin{equation} label{eq:stability_cr}
- 2\Delta t \leq \Delta x^2
+\begin{equation}
+\Delta t < \Delta x^2
 \end{equation}
 !et
-This results in the case that $\Delta x \ll \Delta t$ is impossible, because this only leads to an unstable solution. By looking at the column for $\frac{\Delta x}{8}$, the only stable solution is for ${\Delta t}{16}$. Therefore the technique used for the spatial error cannot be used here. By studying the diagonal numbers in the table, the expected convergence rate is fulfilled for both $\Delta x$, which gives $r = 2$ and for $\Delta t$ that gives $r=1$   
+is expected. but here a stability problem will arise if $\Delta x \ll \Delta t$, therefore both values need to be reduced. In the discretization of the time derivative, Forward Euler was used. Therefore a 1.order error is expected. When finding the convergence rate for $\Delta t$, the 1.order error will be controlling.  
+|-------------------------------------------|
+|         |h        |h/2    |h/4    | h/8   |
+|-------------------------------------------|
+|dt       |9.8E-3   |  -    |     - | -     |
+|dt/4     |9.9E-3   |2.5E-3 |     - | -     |
+|dt/8     |9.9E-3   |2.5E-3 |6.1E-4 | -     |
+|dt/16    |9.8E-3   |2.5E-3 |6.1E-4 |1.5E-4 |
+|-------------------------------------------|
+#0.00986586295419,-,-,- 
+#0.00988006143376,0.00246039081619,-,-
+#0.00988361769746,0.00246127510994,0.000614719954035
+0.00988450717896,0.00246149628689,0.000614775174047,0.000153656409034
 
-===== Travelling wave in 2D =====
-The model can be discretized for a 2D simulation since an epidemic disease will spread geographically. The non dimensional system (ref{eq:simple_non_PDE}) used in the 1D simulation above can be discretized with Forward Euler in time and Crank Nicolson in space
-!bt
-\begin{equation}
-	\begin{aligned}
-    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
-    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
-    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right) 
-	\end{aligned}
-\end{equation}
-!et
-Now the known values can be placed on the right side. The system will then be
-!bt
-\begin{equation}
-	\begin{aligned}
-    S^{n+1}_{i,j} &= S^{n}_{i,j}+\Delta t\left(-I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
-    I^{n+1}_{i,j} &= I^{n}_{i,j}+\Delta t\left(I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
-    R^{n+1}_{i,j} &= R^{n}_{i,j}+\Delta t\left(\lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right)\right) 
-	\end{aligned}
-\end{equation}
-!et
-This results in an explicit system, which is easy to code. It consist of known values on the right side and only one unknown on the left side.
+
+|---------------------------------------------|
+|     r   |dx1=1/10|dx2=1/20|dx3=1/30|dx4=1/40|
+|---------------------------------------------|
+|dt=1/1600|       |1.00267|1.00085 | 1.00042  |
+|dt=1/800 |       |1.00256|1.00081 | 1.00040  |
+|dt=1/400 |       |1.00230|1.00073 | 1.00036  |
+|dt=1/200 |       |1.00178|1.00056 | 1.00028  |
+|---------------------------------------------|
+
+
+===== Check the global error =====
+
+===== From 1D to 2D =====
+Since an epidemic disease will spread geograpically, it will be interesting to look at the model in 2D. The following equation can then be discretized 
 === A gaussian wave ===
-In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of infected spread along the x-axis. A similar thing can be done for the 2D simulation. A couple of simulations have been done for the 2D system. The first simulation is run for a Gaussian function along $x=0$ and the second simulation is run for a Gaussian function from $x=0,y=0$ for the infected humans as initial value. Both simulations can be seen in the Appendix.  
-
-By studying the travelling wave at a certain point, the size of the epidemic wave can be measured and compared.  
-
 #MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
-#MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
 
+FIGURE:[plots/2D_gauss_sub.png,height=600 width=800 frac=0.8]The PDE system (ref{eq:simple_non_PDE}) simulated for a 2D system with $\lambda=0.5$. A gauss wave from $x=0$.
+
+=== A gaussian function at 0,0 ===
+
+MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
+
+FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian function from $x=0,y=0$ based on the PDE system (ref{eq:simple_non_PDE}) with $\lambda=0.5$  
 
 FIGURE:[plots/TW_2D_corner_z_lambda_0_5.png,height=600 width=800 frac=0.8] The travelling wave measured at point 15,15. The wave moves quite similar to the 1D example above 
 1D
 1.4340793845
 1.43143259034 dt = $1\cdot10^{-3}$, dx = 0.05
 1.43195870243 dt = 0.0002, dx^2 = 0.000625
-
 |------------------------------------------|
 |1D wave       |2D wave line |2D wave point|
 |------------------------------------------|
 |1.43195870243 |1.43484000394|0            |
 |------------------------------------------|
-
 Compare the values from 1D and 2D by making a table
 Result: Looks from the plots that there is no change(as expected)
 
@@ -567,13 +603,34 @@ FIGURE:[plots/2D_zombie_three_phases_blindern_area_3_ph_number.png, height=600 w
 
 MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_surface.webm,height=500 width=600]
 ======= Appendix =======
+===== Discretization PDE system for a 2D model =====
+The following PDE system from (ref{eq:simple_non_PDE}) is discretized. Forward Euler is chosen for time derivative and Crank Nicolson for spatial derivative.
+!bt
+\begin{equation}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) \\ 
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right) \\ 
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right) 
+	\end{aligned}
+\end{equation}
+!et
+Now the known values can be placed on the right side. The system will then be
+!bt
+\begin{equation}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^{n}_{i,j}+\Delta t\left(-I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right)\right) \\ 
+    I^{n+1}_{i,j} &= I^{n}_{i,j}+\Delta t\left(I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y}\right)\right) \\ 
+    R^{n+1}_{i,j} &= R^{n}_{i,j}+\Delta t\left(\lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y}\right)\right) 
+	\end{aligned}
+\end{equation}
+!et
 ===== Discretization =====
 !bt
 \begin{equation} \label{eq:LMR_model}
 	\begin{aligned} 
-	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS + \nabla(\gamma_s(x)\nabla S) \\
-	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II+\nabla(\gamma_I(x)\nabla I)\\
-	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+ \nabla(\gamma_Z(x)\nabla Z)\\
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS + \nabla(\gamma_s(x)\nabla S) \\ 
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II+\nabla(\gamma_I(x)\nabla I)\\ 
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+ \nabla(\gamma_Z(x)\nabla Z)\\ 
 	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
 	\end{aligned}
 \end{equation}
@@ -583,15 +640,8 @@ The calculations will be shown for the diffusion part in the first equation. Thi
 !bt
 \begin{equation}
 	\begin{aligned}
-	\frac{dS}{dt} =& \nabla(\gamma_s(x)\nabla S) \\
+	\frac{dS}{dt} =& \nabla(\gamma_s(x)\nabla S) \\ 
     \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \left(\gamma(x_{i+1/2,j})\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) 
 	\end{aligned}
 \end{equation}
 !et
-===== 2D Gaussian function from x=0 =====
-
-FIGURE:[plots/2D_gauss_sub.png,height=600 width=800 frac=0.8]The PDE system (ref{eq:simple_non_PDE}) simulated for a 2D system with $\lambda=0.5$. A gauss wave from $x=0$.
-
-===== 2D Gaussian function from x=0,y=0 =====
-
-FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian function from $x=0,y=0$ based on the PDE system (ref{eq:simple_non_PDE}) with $\lambda=0.5$  
