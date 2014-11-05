@@ -233,7 +233,7 @@ def print_phase(dt,t,phases,vol_list,classnames):
             print "%s = %3.2f" %(classnames[j],vol[cn])
 
 
-def trav_wave(Nt,z,z_list,classnames,z_X,dim):
+def trav_wave(Nt,z,z_list,classnames,z_X,dim,moviename):
     if dim == '2D':
         z_X = np.sqrt(z_X**2+z_X**2) #Pythagoras
     I_area = np.zeros(Nt)
@@ -247,7 +247,7 @@ def trav_wave(Nt,z,z_list,classnames,z_X,dim):
     plt.xlabel("z")
     plt.axis([z_X-40,z_X,0,1])
     plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderaxespad=0.)
-    #plt.savefig("plots/epidemic_wave_z_lambda_0_5.png")
+    plt.savefig("%s_trav_wave.png" % moviename)
     plt.show()
     plt.close()
 

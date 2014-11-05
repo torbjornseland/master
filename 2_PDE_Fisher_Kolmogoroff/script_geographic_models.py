@@ -45,7 +45,7 @@ si1D.simple_PDE(T,Nx,Nt,X,lam)
 
 T = 40
 X = 20
-Nt = 100000
+Nt = 1000
 Nx = 100
 lam = 0.5
 z_X = 15
@@ -54,7 +54,7 @@ x0 = 0
 def init_func(x,y):
     return gauss_2D(x,y,0.2,0.5,x0,y)   
 
-moviename = 'plots/2D_gaussian2'
+moviename = 'plots/2D_gaussian'
 si2D.produce_plot(T,Nx,Nx,Nt,X,X,lam,z_X,z_Y,init_func,classnames,t_wave=True)
 
 #

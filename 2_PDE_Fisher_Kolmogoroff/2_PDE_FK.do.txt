@@ -298,35 +298,36 @@ This results in an explicit system, which is easy to code. It consist of known v
 === A gaussian wave ===
 In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of infected spread along the x-axis. A similar thing can be done for the 2D simulation. A couple of simulations have been done for the 2D system. The first simulation is run for a Gaussian function along $x=0$ and the second simulation is run for a Gaussian function from $x=0,y=0$ for the infected humans as initial value. Both simulations can be seen in the Appendix.  
 
-By studying the travelling wave at a certain point, the size of the epidemic wave can be measured and compared.  
+By studying the travelling wave at a certain point, the size of the epidemic wave can be measured and compared. In these two 2D simulations, the wave will be measured in the point (15,15) while the travelling wave in the 1D simulation was measured in point(15). The two travelling waves can be seen in the figure(ref{fig:2D_trav_wave}).
 
-#MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
-#MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
+FIGURE
+
+The shape of these two travelling waves are similar. The only difference is the time when the wave occur. The plot for 1D wave in fig(ref{fig:1D_trav_wave}) has the same shape. With a closer study, the area under the function can be measured for all three cases. The result can be seen in the table below.   
 
 
-FIGURE:[plots/TW_2D_corner_z_lambda_0_5.png,height=600 width=800 frac=0.8] The travelling wave measured at point 15,15. The wave moves quite similar to the 1D example above 
+
+#FIGURE:[plots/TW_2D_corner_z_lambda_0_5.png,height=600 width=800 frac=0.8] The travelling wave measured at point 15,15. The wave moves quite similar to the 1D example above 
 1D
 1.4340793845
 1.43143259034 dt = $1\cdot10^{-3}$, dx = 0.05
 1.43195870243 dt = 0.0002, dx^2 = 0.000625
 
+2D wave line: 
+1.43345609926 dt =0.0004, dx^2 =  0.0016
+
 |------------------------------------------|
 |1D wave       |2D wave line |2D wave point|
 |------------------------------------------|
-|1.43195870243 |1.43484000394|0            |
+|1.43          |1.43         |0            |
 |------------------------------------------|
 
-Compare the values from 1D and 2D by making a table
-Result: Looks from the plots that there is no change(as expected)
+The area in all three cases are similar. The size and shape will not be affected based on the expansion from 1D to 2D. But by studying the figure(ref{fig:2D_trav_wave}), the waves occur at different time in the two 2D simulations. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the $x=0$ axis, gets a wave of infected wash along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occur at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occur later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will start about 6 time steps later. This is also reasonable by looking at the plot.    
+
 
 === Change in initial flow ===
-
-MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
-
-FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8]Four plots 
+Another test that can be done to the travelling wave, is to check the size of the initial wave. The simulation is run with the same parameter as for the three simulations above and the only difference in the initial value for the infected group.   
 
 FIGURE:[plots/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] The wave appear earlier, but it has the same size. 
-
 
 Result: Looks from the plots that the travelling wave appears ealier, but has the same size. This can be explained by "Child on a slede"
 
@@ -595,3 +596,14 @@ FIGURE:[plots/2D_gauss_sub.png,height=600 width=800 frac=0.8]The PDE system (ref
 ===== 2D Gaussian function from x=0,y=0 =====
 
 FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian function from $x=0,y=0$ based on the PDE system (ref{eq:simple_non_PDE}) with $\lambda=0.5$  
+
+===== 2D Gaussian function from x=0,y=0 with higher initial value ===== 
+
+FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8]Four plots 
+
+
+## Movies
+#MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
+#MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
+#MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
+

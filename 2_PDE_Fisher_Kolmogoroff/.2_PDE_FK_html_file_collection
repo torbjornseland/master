@@ -1,8 +1,6 @@
 2_PDE_FK.html
 plots/trav_wave_sub.png
 plots/epidemic_wave_z_lambda_0_5.png
-plots/TW_2D_corner_z_lambda_0_5.png
-plots/2D_initial_variable_sub.png
 plots/TW_2D_initial_z_lambda_0_5.png
 plots/2D_lambda_variable.png
 plots/2D_british_school_sub.png
@@ -40,7 +38,7 @@ plots/2D_zombie_three_phases_blindern_area_3_ph_contourf_sub.png
 plots/2D_zombie_three_phases_blindern_area_3_ph_number.png
 plots/2D_gauss_sub.png
 plots/2D_gauss_one_sub.png
-plots/2D_initial_variable.webm
+plots/2D_initial_variable_sub.png
 plots/2D_british_school.webm
 plots/2D_british_school_gauss.webm
 plots/2D_british_school_gauss_corner.webm
@@ -60,6 +58,3 @@ plots/2D_zombie_three_phases_zombie_large_town_surface.webm
 plots/2D_zombie_three_phases_blindern_area_contourf.webm
 plots/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm
 plots/2D_zombie_three_phases_blindern_area_3_ph_surface.webm
-._2_PDE_FK000.html
-._2_PDE_FK001.html
-._2_PDE_FK002.html
