@@ -93,7 +93,7 @@ os.system('rm plots/lambda_*')
 
 #English boarding school
 #uniform spread
-
+"""
 trav_name = "plots/boadring"
 moviename = 'plots/2D_british_school'
 rho = 202
@@ -109,9 +109,9 @@ def init_func(x,y):
     return 1
 
 english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
-
-# uniform spread with adjusted parameters
 """
+# uniform spread with adjusted parameters
+
 dx = X/float(Nx)
 T = 15
 Nt = 1500
@@ -124,9 +124,11 @@ D_s = D_i = D_r = 1
 def init_func(x,y):
     return 1/float(X**2)
 phases = [0,5,10,15]
+
+english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
 """
 # Gauss center
-"""
+
 moviename = 'plots/2D_british_school_gauss'
 rho = 202
 r = 2.18*10**(-3)
@@ -138,6 +140,8 @@ sig = np.sqrt(V/(2*np.pi*A))
 
 def init_func(x,y):
     return gauss_2D(x,y,A,sig,x0,y0)
+
+english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
 """
 #Gauss corner
 """

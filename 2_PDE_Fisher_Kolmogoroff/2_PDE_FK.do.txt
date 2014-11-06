@@ -325,7 +325,7 @@ The area in all three cases are similar. The size and shape will not be affected
 Another test that can be done to the travelling wave, is to check if the size of the initial wave will affect the travelling wave. The simulation is run with the same parameter as for the three simulations above and the only difference is the initial value for the infected group. The Gaussian wave of infected are placed a point (0,0) as for right subplot in figure(ref{fig:2D_trav_wave}).The simulation can be seen in figure(ref{fig:initial_value}).  
 #Volume ordinary = 0.3141592653589793
 #Volume extreme = 157.07963267948966
-
+#Volume under graph 1.43345609926
 FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8] label{fig:initial_value} A major flow of infected spread outwards the field. After a certain time, the wave has past the area and the number in each class stabilize. 
 
 By measuring the travelling wave at (15,15), the size and shape can be compared with the second subplot in figure(ref{fig:2D_trav_wave}). This is done in figure(ref{fig:initial_trav_wave}).
@@ -347,16 +347,20 @@ To understand the result in figure(ref{fig:change_lambda}), the $\lambda $ funct
 When $\lambda \rightarrow 0$, this cause a major and aggressive travelling wave. In figure(ref{fig:change_lambda}), $\lambda$ is run with the value 0.01 in the first subplot. This result in a travelling wave of infected that eradicates the number of Susceptible in a short time. The wave stars decreasing when all Susceptible are infected. By looking at the equation(ref{eq:lambda}), a small value is caused by a small $a$ compared to $r$ and $S_0$. If $a$ is low, this result in few deaths/immune in the infected class. This means that this class will grow and be able to infect even more humans from the Susceptible class. The same thing will happen if $r$ is large. A result of this will cause an aggressive disease that will infect major part of the population. The same result will happen if $S_0$ is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a city than in the wilderness far from other humans.
 <linebreak>
 <linebreak>
-When $\lambda$ increases to 1, the disease will not be able to spread around. Then the number of infected will decrease, since the number of dead/immune infected are higher than the infected susceptible. After a certain time, the number of infected will die out. If $\lambda$ stays at 1, the number of infected will be equal the whole time. 
+If $\lambda$ increases above 1, the disease will not be able to spread. Then the number of infected will decrease, since the number of dead/immune infected are higher than the infected susceptible. After a certain time, the number of infected will die out. If $\lambda$ stays at 1, the number of infected will be equal the whole time. 
 
 ======= Epidemic in an English Boarding School 1978 =======
 I the previous chapter an example from the English boarding school was presented. This example was based on the book from J.D Murray and was modeled for a ODE system. By using the parameters a similar result should appear for the PDE system. The school had 763 students where one of the students brought with him a disease back to the school. The following number was used for the ODE system in chapter one. $N=763, S_0=762,I_0=1,R_0=0,\rho=202$ and $r = 2.18\cdot 10^{-3}$. 
+<linebreak>
+<linebreak>
+The first simulation that is done on the PDE system is produced with an uniform distributed concentration of the three classes all over the area. A person has a given volume of one cubic. The total volume of the whole group is spread over the area. The area is sat to be 10 x 10, which means that the height of one person will be $1/100$. Since the Infected group only consist of one person, the total height will be 0.01 for the whole area. The Susceptible group consist of 762 students and the total height in each point will be 7.62. The simulation can be seen in the Appendix. 
+<linebreak>
+<linebreak>
+The results from figure(ref{fig:Eng_PDE_uni}) are equal with the result from the ODE system modeled in the previous chapter. This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
 
-Classes are uniformly spread and it is equal probability for contact. The concentration of students are given in number of students per 1m2
-r will be reduced with Nx2, while a is the same.
+FIGURE:[plots/2D_british_school_number.png, height=600 width=800 frac=0.8] label{fig:Eng_PDE_uni} English Boarding School modeled over a uniform distributed area. 
 
-
-FIGURE:[plots/2D_british_school_number.png, height=600 width=800 frac=0.8] This PDE system gives the same results as the ODE system in the previous chapter. This is as expected since the students are uniformly spread and the diffusion is sat to 1 for all the classes
+ 
 
 Introducing a Gaussian distribution
 
