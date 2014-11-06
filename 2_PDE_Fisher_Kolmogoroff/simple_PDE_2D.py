@@ -1,7 +1,7 @@
 import numpy as np
 from plotmaker import *
 
-def produce_plot(T,Nx,Ny,Nt,X,Y,lam,z_X,z_Y,init_func,classnames,t_wave=False):
+def produce_plot(T,Nx,Ny,Nt,X,Y,lam,z_X,z_Y,init_func,classnames,moviename,t_wave=False):
     
     S = np.zeros([Nx+3,Ny+3])   #list of Susceptible
     S_1 = np.ones([Nx+3,Ny+3])  #list of Susceptible in previous time step
@@ -32,7 +32,8 @@ def produce_plot(T,Nx,Ny,Nt,X,Y,lam,z_X,z_Y,init_func,classnames,t_wave=False):
         z_R = np.zeros(Nt+1)
         z_x = int(z_X/dx)
         z_y = int(z_Y/dy)
-        z_xy = np.sqrt(z_X**2+z_Y**2) #Pythagoras
+        #z_xy = np.sqrt(z_X**2+z_Y**2) #Pythagoras
+        z_xy = z_X
 
     I_1[:,:] = init_func(x,y) #starts with a init func 
     #I_1[:] += 0.1
@@ -94,7 +95,7 @@ def produce_plot(T,Nx,Ny,Nt,X,Y,lam,z_X,z_Y,init_func,classnames,t_wave=False):
         R_1[:,:] = R 
 
     z_list = [z_S,z_I,z_R] 
-    trav_wave(Nt,z,z_list,classnames,z_X,'2D')
+    trav_wave(Nt,z,z_list,classnames,z_X,'1D',moviename)
     #plot_volume(t,S_vol,I_vol,R_vol)
 
 

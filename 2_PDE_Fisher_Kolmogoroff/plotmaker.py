@@ -246,7 +246,8 @@ def trav_wave(Nt,z,z_list,classnames,z_X,dim,moviename):
     
     plt.xlabel("z")
     plt.axis([z_X-40,z_X,0,1])
-    plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderaxespad=0.)
+    #plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderaxespad=0.)
+    plt.title('Gaussian function from one side')
     plt.savefig("%s_trav_wave.png" % moviename)
     plt.show()
     plt.close()

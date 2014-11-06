@@ -300,50 +300,61 @@ In the PDE system for the 1D equation, a Gaussian quantity of infected humans wa
 
 By studying the travelling wave at a certain point, the size of the epidemic wave can be measured and compared. In these two 2D simulations, the wave will be measured in the point (15,15) while the travelling wave in the 1D simulation was measured in point(15). The two travelling waves can be seen in the figure(ref{fig:2D_trav_wave}).
 
-FIGURE
+FIGURE:[plots/Trav_wave_2D.png, height=400 width=800 frac=0.8] label{fig:2D_trav_wave} Travelling wave measured at point (15,15) with two different initial values for the Infected class. The initial value is sat as a Gaussian line along (0,y) in the left plot and as a Gaussian point (0,0) in the right plot
 
-The shape of these two travelling waves are similar. The only difference is the time when the wave occur. The plot for 1D wave in fig(ref{fig:1D_trav_wave}) has the same shape. With a closer study, the area under the function can be measured for all three cases. The result can be seen in the table below.   
+The shape of these two travelling waves are similar. The only difference is the time when the wave occur. The plot for 1D wave in fig(ref{fig:1D_tw}) has the same shape. With a closer study, the area under the function can be measured for all three cases. The result can be seen in the table below.   
 
-
-
-#FIGURE:[plots/TW_2D_corner_z_lambda_0_5.png,height=600 width=800 frac=0.8] The travelling wave measured at point 15,15. The wave moves quite similar to the 1D example above 
-1D
-1.4340793845
-1.43143259034 dt = $1\cdot10^{-3}$, dx = 0.05
-1.43195870243 dt = 0.0002, dx^2 = 0.000625
-
-2D wave line: 
-1.43345609926 dt =0.0004, dx^2 =  0.0016
-
+#1D
+#1.4340793845
+#1.43143259034 dt = $1\cdot10^{-3}$, dx = 0.05
+#1.43195870243 dt = 0.0002, dx^2 = 0.000625
+#2D wave line: 
+#1.43345609926 dt =0.0004, dx^2 =  0.0016
+#2D wave point:
+1.43352971688
 |------------------------------------------|
 |1D wave       |2D wave line |2D wave point|
 |------------------------------------------|
-|1.43          |1.43         |0            |
+|1.43          |1.43         |1.43         |
 |------------------------------------------|
 
 The area in all three cases are similar. The size and shape will not be affected based on the expansion from 1D to 2D. But by studying the figure(ref{fig:2D_trav_wave}), the waves occur at different time in the two 2D simulations. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the $x=0$ axis, gets a wave of infected wash along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occur at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occur later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will start about 6 time steps later. This is also reasonable by looking at the plot.    
 
 
 === Change in initial flow ===
-Another test that can be done to the travelling wave, is to check the size of the initial wave. The simulation is run with the same parameter as for the three simulations above and the only difference in the initial value for the infected group.   
+Another test that can be done to the travelling wave, is to check if the size of the initial wave will affect the travelling wave. The simulation is run with the same parameter as for the three simulations above and the only difference is the initial value for the infected group. The Gaussian wave of infected are placed a point (0,0) as for right subplot in figure(ref{fig:2D_trav_wave}).The simulation can be seen in figure(ref{fig:initial_value}).  
+#Volume ordinary = 0.3141592653589793
+#Volume extreme = 157.07963267948966
 
-FIGURE:[plots/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] The wave appear earlier, but it has the same size. 
+FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8] label{fig:initial_value} A major flow of infected spread outwards the field. After a certain time, the wave has past the area and the number in each class stabilize. 
 
-Result: Looks from the plots that the travelling wave appears ealier, but has the same size. This can be explained by "Child on a slede"
+By measuring the travelling wave at (15,15), the size and shape can be compared with the second subplot in figure(ref{fig:2D_trav_wave}). This is done in figure(ref{fig:initial_trav_wave}).
 
-=== Chage in the lambda ===
+FIGURE:[plots/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] label{fig:initial_trav_wave} The travelling wave with a major increase of infected at the initial time. 
 
-FIGURE:[plots/2D_lambda_variable.png, height=600 width=800] With a small $\lambda$, the travelling wave will increase. And when $\lambda \rightarrow 1$ the wave will disappear.  
+The figure(ref{fig:initial_trav_wave}) shows a similar size and shape as for the other simulations run earlier. By increasing the initial value, the size of the travelling wave cannot be affected. But there is a difference in the time when the wave occur. In this simulation where the initial value is higher, the travelling wave reaches the measuring point (15,15) earlier. This can be explained by the idea of a ball dropped from height. If the ball is released or thrown to the ground, will only affect the acceleration of the ball, but not the terminal velocity. After a certain time the released ball and the thrown ball will reach the same maximum speed. This is also the case for the speed of the travelling wave. 
+=== Change in lambda ===
+The one thing that affects the speed and size, is the $\lambda$ variable in the PDE system(ref{eq:simple_non_PDE}). This $\lambda$ is a combination of $a$, which controls deaths among infected, $r$, which control the number of infected in a meeting between an infected and a susceptible. The last parameter in $\lambda$ is the concentration of Susceptible. By changing this parameter, the travelling wave will change in both size and shape. In figure(ref{fig:change_lambda}), the simulation is run with four different values of $\lambda$.
 
-======= Epidemic in an English Boarding school 1978 =======
-This example was presented in the previous chapter as an ODE system. This example was based on the book from J.D Murray.
+FIGURE:[plots/2D_lambda_variable.png, height=600 width=800] label{fig:change_lambda} The travelling wave simulated with $\lambda$ values in the range of 0.01 to 1
+
+To understand the result in figure(ref{fig:change_lambda}), the $\lambda $ function can be study,
+!bt
+\begin{equation} label{eq:lambda}
+ \lambda =\frac{a}{rS_0},
+\end{equation}
+!et
+When $\lambda \rightarrow 0$, this cause a major and aggressive travelling wave. In figure(ref{fig:change_lambda}), $\lambda$ is run with the value 0.01 in the first subplot. This result in a travelling wave of infected that eradicates the number of Susceptible in a short time. The wave stars decreasing when all Susceptible are infected. By looking at the equation(ref{eq:lambda}), a small value is caused by a small $a$ compared to $r$ and $S_0$. If $a$ is low, this result in few deaths/immune in the infected class. This means that this class will grow and be able to infect even more humans from the Susceptible class. The same thing will happen if $r$ is large. A result of this will cause an aggressive disease that will infect major part of the population. The same result will happen if $S_0$ is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a city than in the wilderness far from other humans.
+<linebreak>
+<linebreak>
+When $\lambda$ increases to 1, the disease will not be able to spread around. Then the number of infected will decrease, since the number of dead/immune infected are higher than the infected susceptible. After a certain time, the number of infected will die out. If $\lambda$ stays at 1, the number of infected will be equal the whole time. 
+
+======= Epidemic in an English Boarding School 1978 =======
+I the previous chapter an example from the English boarding school was presented. This example was based on the book from J.D Murray and was modeled for a ODE system. By using the parameters a similar result should appear for the PDE system. The school had 763 students where one of the students brought with him a disease back to the school. The following number was used for the ODE system in chapter one. $N=763, S_0=762,I_0=1,R_0=0,\rho=202$ and $r = 2.18\cdot 10^{-3}$. 
 
 Classes are uniformly spread and it is equal probability for contact. The concentration of students are given in number of students per 1m2
 r will be reduced with Nx2, while a is the same.
 
-MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system
-
-FIGURE:[plots/2D_british_school_sub.png, height=600 width=800 frac=0.8]
 
 FIGURE:[plots/2D_british_school_number.png, height=600 width=800 frac=0.8] This PDE system gives the same results as the ODE system in the previous chapter. This is as expected since the students are uniformly spread and the diffusion is sat to 1 for all the classes
 
@@ -599,11 +610,12 @@ FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian func
 
 ===== 2D Gaussian function from x=0,y=0 with higher initial value ===== 
 
-FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8]Four plots 
-
+===== English Boarding School =====
+FIGURE:[plots/2D_british_school_sub.png, height=600 width=800 frac=0.8]
 
 ## Movies
 #MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
 #MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
 #MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
+#MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system
 

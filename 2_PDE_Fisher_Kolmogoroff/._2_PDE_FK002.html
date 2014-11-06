@@ -51,8 +51,8 @@ Automatically generated HTML file from Doconce source
               (' Travelling wave in 2D ', 2, None, '___sec9'),
               (' A gaussian wave ', 3, None, '___sec10'),
               (' Change in initial flow ', 3, None, '___sec11'),
-              (' Chage in the lambda ', 3, None, '___sec12'),
-              (' Epidemic in an English Boarding school 1978 ',
+              (' Change in lambda ', 3, None, '___sec12'),
+              (' Epidemic in an English Boarding School 1978 ',
                1,
                None,
                '___sec13'),
@@ -64,7 +64,12 @@ Automatically generated HTML file from Doconce source
               (' Appendix ', 1, None, '___sec19'),
               (' Discretization ', 2, None, '___sec20'),
               (' 2D Gaussian function from x=0 ', 2, None, '___sec21'),
-              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec22')]}
+              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec22'),
+              (' 2D Gaussian function from x=0,y=0 with higher initial value ',
+               2,
+               None,
+               '___sec23'),
+              (' English Boarding School ', 2, None, '___sec24')]}
 end of tocinfo -->
 
 <body>
@@ -251,7 +256,7 @@ Three phases
 
 <h2>Discretization  <a name="___sec20"></a></h2>
 $$
-\begin{equation} \tag{11}
+\begin{equation} \tag{12}
 	\begin{aligned} 
 	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS + \nabla(\gamma_s(x)\nabla S) \\
 	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II+\nabla(\gamma_I(x)\nabla I)\\
@@ -287,6 +292,17 @@ $$
 <center><p class="caption">Figure 14:  A gaussian function from \( x=0,y=0 \) based on the PDE system <a href="._2_PDE_FK000.html#mjx-eqn-3">(3)</a> with \( \lambda=0.5 \) </p></center>
 <p><img src="plots/2D_gauss_one_sub.png" align="bottom" height=600 width=800></p>
 </center>
+
+<h2>2D Gaussian function from x=0,y=0 with higher initial value  <a name="___sec23"></a></h2>
+
+<h2>English Boarding School  <a name="___sec24"></a></h2>
+<center><p><img src="plots/2D_british_school_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<!-- MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D. -->
+<!-- MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner. -->
+<!-- MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave. -->
+<!-- MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system -->
 
 <p>
 <!-- begin bottom navigation -->

@@ -45,33 +45,40 @@ si1D.simple_PDE(T,Nx,Nt,X,lam)
 
 T = 40
 X = 20
-Nt = 1000
-Nx = 100
+Nt = 100000
+Nx = 500
 lam = 0.5
 z_X = 15
 z_Y = 15
 x0 = 0
+y0 = 0
+"""
 def init_func(x,y):
     return gauss_2D(x,y,0.2,0.5,x0,y)   
 
 moviename = 'plots/2D_gaussian'
-si2D.produce_plot(T,Nx,Nx,Nt,X,X,lam,z_X,z_Y,init_func,classnames,t_wave=True)
-
-#
+si2D.produce_plot(T,Nx,Nx,Nt,X,X,lam,z_X,z_Y,init_func,classnames,moviename,t_wave=True)
 """
-moviename = 'plots/2D_one_corner'
+# Gaussian corner
+"""
+moviename = 'plots/2D_gaussian_one_corner'
 lam = 0.5
 def init_func(x,y):
     return gauss_2D(x,y,0.2,0.5,x0,y0)   
+
+si2D.produce_plot(T,Nx,Nx,Nt,X,X,lam,z_X,z_Y,init_func,classnames,moviename,t_wave=True)
 """
+# Initial value
 """
 moviename = 'plots/2D_initial_variable'
 lam = 0.5
 def init_func(x,y):
     return gauss_2D(x,y,1,5,x0,y0)
-"""
+
+si2D.produce_plot(T,Nx,Nx,Nt,X,X,lam,z_X,z_Y,init_func,classnames,moviename,t_wave=True)
 """
 #Tesing variation in lambda
+"""
 def init_func(x,y):
     return gauss_2D(x,y,0.2,0.5,x0,y0)   
 lam_list = [0.01,0.3,0.7,1]
@@ -86,7 +93,7 @@ os.system('rm plots/lambda_*')
 
 #English boarding school
 #uniform spread
-"""
+
 trav_name = "plots/boadring"
 moviename = 'plots/2D_british_school'
 rho = 202
@@ -100,7 +107,9 @@ sig = 13/(2*np.pi)
 #    return gauss_2D(x,y,A,sig,x0,y0)
 def init_func(x,y):
     return 1
-"""
+
+english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
+
 # uniform spread with adjusted parameters
 """
 dx = X/float(Nx)
@@ -286,7 +295,6 @@ def alpha(t):
 
 """
 
-#english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
 #zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,D_s,D_i,D_z,D_r,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z)
 
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val)
