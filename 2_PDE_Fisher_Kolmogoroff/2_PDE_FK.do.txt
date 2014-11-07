@@ -364,28 +364,28 @@ label{table:british_number_table}
 |-------------------------------------------------------------------|
 |           | ODE system| PDE uniform dist  |PDE center |PDE corner |
 |-------------------------------------------------------------------|
-|5 Days     |           |                   |           |           |
+|5 Days     |-----------|-------------------|-----------|-----------|
 |-------------------------------------------------------------------|
-|Susceptible|           |444.62             |744.67     |           |
-|Infective  |           |209.56             |8.88       |           |
-|Removed    |           |108.82             |10.96      |           |
+|Susceptible|444.62     |444.62             |748.03     |757.33     |
+|Infective  |209.56     |209.56             |7.36       |2.35       |
+|Removed    |108.82     |108.82             |7.60      	|3.32       |
 |-------------------------------------------------------------------|
-|10 Days    |           |                   |           |           |
+|10 Days    |-----------|-------------------|-----------|-----------|
 |-------------------------------------------------------------------|
-|Susceptible|           |37.59              |688.86     |           |
-|Infective  |           |117.59             |27.06      |           |
-|Removed    |           |607.82             |48.59      |           |
+|Susceptible|37.59      |37.59              |697.71     |743.58     |
+|Infective  |117.59     |117.59             |24.43      |6.66       |
+|Removed    |607.82     |607.82             |40.86     	|12.76      |
 |-------------------------------------------------------------------|
-|15 Days    |           |                   |           |           |
+|15 Days    |-----------|-------------------|-----------|-----------|
 |-------------------------------------------------------------------|
-|Susceptible|           |21.09              |579.15     |           |
-|Infective  |           |17.30              |51.13      |           |
-|Removed    |           |724.62             |134.23     |           |
+|Susceptible|21.09      |21.09              |597.01     |717.02     |
+|Infective  |17.30      |17.30              |46.96      |12.37      |
+|Removed    |724.62     |724.62             |119.03     |33.61      |
 |-------------------------------------------------------------------|
 #dt = 1.5E-4
 #dx = 0.04
 #dx^2 = 1.6E-3
-
+#ODE = 1.5E-4
 
 === Introducing a Gaussian distribution of infective ===
 A reasonable assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student, the chance of being infected increase as closer you get to the infected student. To check in this affect the result, the volume of student is placed as a gauss function in the center of the schoolyard at initial time. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in figure(ref{fig:gauss_sub}) and the total total amount of students can be be seen in figure(ref{fig:british_number}).

@@ -96,10 +96,10 @@ os.system('rm plots/lambda_*')
 #English boarding school
 
 
-T = 100
-Nt = 2000
+T = 15
+Nt = 10000
 X = 100
-Nx = 200
+Nx = 1000
 z_X = z_Y = 0
 
 rho = 202
@@ -107,7 +107,7 @@ r = 2.18*10**(-3)*(X**2)
 a = r*rho/float(X**2)
 D_s = D_i = D_r = 1
 
-phases = [T]
+phases = [0,5,10,15]
 
 #uniform spread
 """
@@ -128,7 +128,7 @@ def init_func(x,y):
 english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
 """
 # uniform spread with adjusted parameters
-
+"""
 dx = X/float(Nx)
 trav_name = "plots/boadring"
 moviename = 'plots/2D_british_school_long'
@@ -139,7 +139,7 @@ max_val = (1/float(X**2))*762
 title = "Uniform distribution for the Infective class"
 english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases,title)
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
-
+"""
 # Gauss center
 
 moviename = 'plots/2D_british_school_gauss_long'
