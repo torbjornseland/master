@@ -26,7 +26,7 @@ def english_school(T,Nx,Ny,Nt,X,Y,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,cl
 
 
     I_1[:,:] = init_func(x,y) #starts with a init func 
-    S_1[:,:] = init_func(x,y)*762 #starts with a init func 
+    S_1[:,:] = (1/float(X*Y))*762 #starts with a init func 
     #I_1[:] += 0.1
     
     #Volume

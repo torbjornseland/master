@@ -118,7 +118,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 6, 2014</h4></center> <!-- date -->
+<center><h4>Nov 7, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -648,6 +648,7 @@ The area in all three cases are similar. The size and shape will not be affected
 Another test that can be done to the travelling wave, is to check if the size of the initial wave will affect the travelling wave. The simulation is run with the same parameter as for the three simulations above and the only difference is the initial value for the infected group. The Gaussian wave of infected are placed a point (0,0) as for right subplot in figure(<a href="#fig:2D_trav_wave">3</a>).The simulation can be seen in figure(<a href="#fig:initial_value">4</a>).  
 <!-- Volume ordinary = 0.3141592653589793 -->
 <!-- Volume extreme = 157.07963267948966 -->
+<!-- Volume under graph 1.43345609926 -->
 
 <p>
 <center> <!-- figure -->
@@ -691,22 +692,45 @@ $$
 When \( \lambda \rightarrow 0 \), this cause a major and aggressive travelling wave. In figure(<a href="#fig:change_lambda">6</a>), \( \lambda \) is run with the value 0.01 in the first subplot. This result in a travelling wave of infected that eradicates the number of Susceptible in a short time. The wave stars decreasing when all Susceptible are infected. By looking at the equation<a href="#mjx-eqn-11">(11)</a>, a small value is caused by a small \( a \) compared to \( r \) and \( S_0 \). If \( a \) is low, this result in few deaths/immune in the infected class. This means that this class will grow and be able to infect even more humans from the Susceptible class. The same thing will happen if \( r \) is large. A result of this will cause an aggressive disease that will infect major part of the population. The same result will happen if \( S_0 \) is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a city than in the wilderness far from other humans.
 <br />
 <br />
-When \( \lambda \) increases to 1, the disease will not be able to spread around. Then the number of infected will decrease, since the number of dead/immune infected are higher than the infected susceptible. After a certain time, the number of infected will die out. If \( \lambda \) stays at 1, the number of infected will be equal the whole time.
+If \( \lambda \) increases above 1, the disease will not be able to spread. Then the number of infected will decrease, since the number of dead/immune infected are higher than the infected susceptible. After a certain time, the number of infected will die out. If \( \lambda \) stays at 1, the number of infected will be equal the whole time.
 
 <h1>Epidemic in an English Boarding School 1978  <a name="___sec13"></a></h1>
 I the previous chapter an example from the English boarding school was presented. This example was based on the book from J.D Murray and was modeled for a ODE system. By using the parameters a similar result should appear for the PDE system. The school had 763 students where one of the students brought with him a disease back to the school. The following number was used for the ODE system in chapter one. \( N=763, S_0=762,I_0=1,R_0=0,\rho=202 \) and \( r = 2.18\cdot 10^{-3} \). 
-
-<p>
-Classes are uniformly spread and it is equal probability for contact. The concentration of students are given in number of students per 1m2
-r will be reduced with Nx2, while a is the same.
+<br />
+<br />
+The first simulation that is done on the PDE system is produced with an uniform distributed concentration of the three classes all over the area. A person has a given volume of one cubic. The total volume of the whole group is spread over the area. The area is sat to be 10 x 10, which means that the height of one person will be \( 1/100 \). Since the Infected group only consist of one person, the total height will be 0.01 for the whole area. The Susceptible group consist of 762 students and the total height in each point will be 7.62. The simulation can be seen in the Appendix. 
+<br />
+<br />
+The results from figure(<a href="#fig:Eng_PDE_uni">7</a>) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in the table <a href="#table:english_numbers">table:english_numbers</a>  This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 7:  This PDE system gives the same results as the ODE system in the previous chapter. This is as expected since the students are uniformly spread and the diffusion is sat to 1 for all the classes </p></center>
+<center><p class="caption">Figure 7:  <a name="fig:Eng_PDE_uni"></a> English Boarding School modeled over a uniform distributed area. </p></center>
 <p><img src="plots/2D_british_school_number.png" align="bottom" height=600 width=800></p>
 </center>
 
+<p>
+<a name="table:english_numbers"></a>
+<table border="1">
+<thead>
+<tr><th align="center">                </th> <th align="center">   ODE system   </th> <th align="center">PDE uniform dist</th> <th align="center">   PDE center   </th> <th align="center">   PDE corner   </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   5 Days              </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">   449.28              </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   10 Days             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   15 Days             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+</tbody>
+</table>
 <p>
 Introducing a Gaussian distribution
 

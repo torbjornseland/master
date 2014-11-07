@@ -42,16 +42,17 @@ si1D.simple_PDE(T,Nx,Nt,X,lam)
 """
 
 # A gaussian wave
-
+"""
 T = 40
 X = 20
 Nt = 100000
-Nx = 500
+Nx = 50
 lam = 0.5
 z_X = 15
 z_Y = 15
 x0 = 0
 y0 = 0
+"""
 """
 def init_func(x,y):
     return gauss_2D(x,y,0.2,0.5,x0,y)   
@@ -92,6 +93,21 @@ os.system('rm plots/lambda_*')
 """
 
 #English boarding school
+
+
+T = 15
+Nt = 1000
+X = 100
+Nx = 100
+z_X = z_Y = 0
+
+rho = 202
+r = 2.18*10**(-3)*(X**2)
+a = r*rho/float(X**2)
+D_s = D_i = D_r = 1
+
+phases = [0,5,10,15]
+
 #uniform spread
 """
 trav_name = "plots/boadring"
@@ -113,31 +129,24 @@ english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classn
 # uniform spread with adjusted parameters
 
 dx = X/float(Nx)
-T = 15
-Nt = 1500
 trav_name = "plots/boadring"
-moviename = 'plots/2D_british_school_adjusted_param'
-rho = 202
-r = 2.18*10**(-3)*(Nx**2)
-a = r*rho/float(Nx**2)
-D_s = D_i = D_r = 1
+moviename = 'plots/2D_british_school'
+volume_human = 0.0664
 def init_func(x,y):
     return 1/float(X**2)
 phases = [0,5,10,15]
-
+max_val = (1/float(X**2))*762
 english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
-"""
+build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
+
 # Gauss center
-
+"""
 moviename = 'plots/2D_british_school_gauss'
-rho = 202
-r = 2.18*10**(-3)
-a = r*rho
-D_s = D_i = D_r = 1
-V = 100
-A = 50
+V = 1
+A = 1
 sig = np.sqrt(V/(2*np.pi*A))
-
+x0 = X/float(2)
+y0 = X/float(2)
 def init_func(x,y):
     return gauss_2D(x,y,A,sig,x0,y0)
 

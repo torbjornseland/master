@@ -356,13 +356,40 @@ I the previous chapter an example from the English boarding school was presented
 The first simulation that is done on the PDE system is produced with an uniform distributed concentration of the three classes all over the area. A person has a given volume of one cubic. The total volume of the whole group is spread over the area. The area is sat to be 10 x 10, which means that the height of one person will be $1/100$. Since the Infected group only consist of one person, the total height will be 0.01 for the whole area. The Susceptible group consist of 762 students and the total height in each point will be 7.62. The simulation can be seen in the Appendix. 
 <linebreak>
 <linebreak>
-The results from figure(ref{fig:Eng_PDE_uni}) are equal with the result from the ODE system modeled in the previous chapter. This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
+The results from figure(ref{fig:Eng_PDE_uni}) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in ref{table:english_numbers}  This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
 
 FIGURE:[plots/2D_british_school_number.png, height=600 width=800 frac=0.8] label{fig:Eng_PDE_uni} English Boarding School modeled over a uniform distributed area. 
 
- 
+label{table:english_numbers}
+|-------------------------------------------------------------------|
+|           | ODE system| PDE uniform dist  |PDE center |PDE corner |
+|-------------------------------------------------------------------|
+|5 Days     |           |                   |           |           |
+|-------------------------------------------------------------------|
+|Susceptible|           |444.62             |           |           |
+|Infective  |           |209.56             |           |           |
+|Removed    |           |108.82             |           |           |
+|-------------------------------------------------------------------|
+|10 Days    |           |                   |           |           |
+|-------------------------------------------------------------------|
+|Susceptible|           |37.59              |           |           |
+|Infective  |           |117.59             |           |           |
+|Removed    |           |607.82             |           |           |
+|-------------------------------------------------------------------|
+|15 Days    |           |                   |           |           |
+|-------------------------------------------------------------------|
+|Susceptible|           |21.09              |           |           |
+|Infective  |           |17.30              |           |           |
+|Removed    |           |724.62             |           |           |
+|-------------------------------------------------------------------|
+#dt = 1.5E-4
+#dx = 0.04
+#dx^2 = 1.6E-3
 
-Introducing a Gaussian distribution
+
+=== Introducing a Gaussian distribution ===
+A reasonable assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student, the chance of being infected increase as closer you get to the infected student. A gauss curve is placed in the middle of the 
+
 
 MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
 

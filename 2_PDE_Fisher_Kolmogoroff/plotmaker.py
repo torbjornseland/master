@@ -38,7 +38,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val):
         #plt.suptitle(moviename)
         nt = (float(T)/Nt)*j
         plt.title("time = %1.1f" % nt)
-        plt.savefig("tmp%04d.png" % j)
+        plt.savefig("movie_images/tmp%04d.png" % j)
         
         if(j%sub_num == 0):
             print j,(j/sub_num)
@@ -48,8 +48,8 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val):
 
     os.system('doconce combine_images plots/2D_gauss_wave000* %s_sub.png' % moviename)
     os.system('rm plots/2D_gauss_wave000*')
-    os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('tmp%04d.png',moviename))
-    for filename in glob.glob('tmp*.png'):
+    os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('movie_images/tmp%04d.png',moviename))
+    for filename in glob.glob('movie_images/tmp*.png'):
         os.remove(filename)
 
 def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,classnames):
@@ -221,8 +221,8 @@ def plot_volume(t,vol_list,moviename,classnames,T,t_size=1,x_size=1):
     plt.ylabel('Number')
     plt.title('Initial phase modeled with PDE with equal propability')
     #plt.legend(bbox_to_anchor=(0.,.9,1.0,.102), loc=3,ncol=4,mode="expand",borderaxespad=0.)
-    plt.savefig('%s_number.png' % moviename)
-    #plt.show()
+    plt.show()
+    #plt.savefig('%s_number.png' % moviename)
     
 def print_phase(dt,t,phases,vol_list,classnames):
     for i in phases:
