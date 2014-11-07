@@ -356,54 +356,51 @@ I the previous chapter an example from the English boarding school was presented
 The first simulation that is done on the PDE system is produced with an uniform distributed concentration of the three classes all over the area. A person has a given volume of one cubic. The total volume of the whole group is spread over the area. The area is sat to be 10 x 10, which means that the height of one person will be $1/100$. Since the Infected group only consist of one person, the total height will be 0.01 for the whole area. The Susceptible group consist of 762 students and the total height in each point will be 7.62. The simulation can be seen in the Appendix. 
 <linebreak>
 <linebreak>
-The results from figure(ref{fig:Eng_PDE_uni}) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in ref{table:english_numbers}  This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
+The results from figure(ref{fig:british_number}) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in (ref{table:british_number_table})  This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
 
-FIGURE:[plots/2D_british_school_number.png, height=600 width=800 frac=0.8] label{fig:Eng_PDE_uni} English Boarding School modeled over a uniform distributed area. 
+FIGURE:[plots/british_number.png, height=1000 width=600 frac=0.8] label{fig:british_number} English Boarding School modeled over a uniform distributed area. 
 
-label{table:english_numbers}
+label{table:british_number_table}
 |-------------------------------------------------------------------|
 |           | ODE system| PDE uniform dist  |PDE center |PDE corner |
 |-------------------------------------------------------------------|
 |5 Days     |           |                   |           |           |
 |-------------------------------------------------------------------|
-|Susceptible|           |444.62             |           |           |
-|Infective  |           |209.56             |           |           |
-|Removed    |           |108.82             |           |           |
+|Susceptible|           |444.62             |744.67     |           |
+|Infective  |           |209.56             |8.88       |           |
+|Removed    |           |108.82             |10.96      |           |
 |-------------------------------------------------------------------|
 |10 Days    |           |                   |           |           |
 |-------------------------------------------------------------------|
-|Susceptible|           |37.59              |           |           |
-|Infective  |           |117.59             |           |           |
-|Removed    |           |607.82             |           |           |
+|Susceptible|           |37.59              |688.86     |           |
+|Infective  |           |117.59             |27.06      |           |
+|Removed    |           |607.82             |48.59      |           |
 |-------------------------------------------------------------------|
 |15 Days    |           |                   |           |           |
 |-------------------------------------------------------------------|
-|Susceptible|           |21.09              |           |           |
-|Infective  |           |17.30              |           |           |
-|Removed    |           |724.62             |           |           |
+|Susceptible|           |21.09              |579.15     |           |
+|Infective  |           |17.30              |51.13      |           |
+|Removed    |           |724.62             |134.23     |           |
 |-------------------------------------------------------------------|
 #dt = 1.5E-4
 #dx = 0.04
 #dx^2 = 1.6E-3
 
 
-=== Introducing a Gaussian distribution ===
-A reasonable assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student, the chance of being infected increase as closer you get to the infected student. A gauss curve is placed in the middle of the 
+=== Introducing a Gaussian distribution of infective ===
+A reasonable assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student, the chance of being infected increase as closer you get to the infected student. To check in this affect the result, the volume of student is placed as a gauss function in the center of the schoolyard at initial time. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in figure(ref{fig:gauss_sub}) and the total total amount of students can be be seen in figure(ref{fig:british_number}).
 
+FIGURE:[plots/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub}
 
-MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
-
-FIGURE:[plots/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8]
-
-FIGURE:[plots/2D_british_school_gauss_number.png, height=600 width=800 frac=0.8] This seems to have no effect and the spread of the disease is similar to the one above. But if a student is lucky to stand in one corner, he has a greater chance to stay healthy  
-
-Gaussain from the corner. This one gives other results. It has a slower diffusion.
-
-MOVIE:[plots/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard
-
-FIGURE:[plots/2D_british_school_gauss_corner_sub.png, height=600 width=800 frac=0.8]
-
-FIGURE:[plots/2D_british_school_gauss_corner_number.png, height=600 width=800 frac=0.8] This simulation gives another result. Here the number of infected increase later than in the previous examples
+<linebreak>
+<linebreak>
+By comparing the result from the uniform distributed PDE system and this simulation there are some interesting results. While the only difference between the two simulations is the placement of the infective. And this change has a major impact. Since the only one that can be infected are the students close to the infective, it restrict the spread of the epidemic. But the chance of getting infected in this area is major. The figure(ref{fig:gauss_sub}) shows that the amount of infective quickly grow in the center, where the infected one was placed. The last subplot also show  that the amount of removed in the center are closed to the maximum of the initial value of Susceptible. While the students along the boundary of the school seems to be unaffected after 15 days. This simulation show that the placement of the infective has a major role in the simulation.
+<linebreak>
+<linebreak>
+The placement of the Infective class also has an effect on the spread of the disease. The last column in (ref{table:british_number_table}) describe a simulation where the Gaussian function is placed in the corner(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. The table shows that the total number of infected is lower than for the centered placed Gaussian. This infected student is only able to spread the disease to a quarter of the population compared with the infected one in the center. The simulation can be seen in the Appendix.
+<linebreak>
+<linebreak>
+If the simulations are run for a longer time, the difference will decrease. After 100 days there will be about 18 Susceptible students left in the uniform distributed group, while there will be about 25 students in both of the Gaussian groups. The simulations can be seen in the Appendix.
 
 !split
 ======= Zombiefication =======
@@ -609,6 +606,8 @@ FIGURE:[plots/2D_zombie_three_phases_blindern_area_3_ph_contourf_sub.png, height
 FIGURE:[plots/2D_zombie_three_phases_blindern_area_3_ph_number.png, height=600 width=800 frac=0.8]
 
 MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_surface.webm,height=500 width=600]
+
+!split
 ======= Appendix =======
 ===== Discretization =====
 !bt
@@ -642,11 +641,25 @@ FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian func
 ===== 2D Gaussian function from x=0,y=0 with higher initial value ===== 
 
 ===== English Boarding School =====
+
 FIGURE:[plots/2D_british_school_sub.png, height=600 width=800 frac=0.8]
+
+=== Gaussian from the corner ===
+
+FIGURE:[plots/2D_british_school_gauss_corner_sub.png, height=600 width=800 frac=0.8]
+
+=== A long simulation on 100 Days ===
+
+FIGURE:[plots/2D_british_school_long_number.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_british_school_gauss_long_number.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_british_school_gauss_corner_long_number.png, height=600 width=800 frac=0.8]
 
 ## Movies
 #MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
 #MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
 #MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
 #MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system
-
+#MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
+#MOVIE:[plots/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard

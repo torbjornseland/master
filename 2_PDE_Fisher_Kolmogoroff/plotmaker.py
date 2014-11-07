@@ -211,7 +211,7 @@ def volume_engine(z_mat,size):
     volume = ((z_mat[:-1,:-1]+z_mat[:-1,1:]+z_mat[1:,:-1]+z_mat[1:,1:])/float(4))*size
     return volume.sum()
 
-def plot_volume(t,vol_list,moviename,classnames,T,t_size=1,x_size=1):
+def plot_volume(t,vol_list,moviename,classnames,T,title,t_size=1,x_size=1):
     #btt = 1.66116
     #x_size = 10*10
     for i in range(len(vol_list)):
@@ -219,10 +219,10 @@ def plot_volume(t,vol_list,moviename,classnames,T,t_size=1,x_size=1):
     plt.axis([0,T,0,800])
     plt.xlabel('Days')
     plt.ylabel('Number')
-    plt.title('Initial phase modeled with PDE with equal propability')
+    plt.title(title)
     #plt.legend(bbox_to_anchor=(0.,.9,1.0,.102), loc=3,ncol=4,mode="expand",borderaxespad=0.)
+    plt.savefig('%s_number.png' % moviename)
     plt.show()
-    #plt.savefig('%s_number.png' % moviename)
     
 def print_phase(dt,t,phases,vol_list,classnames):
     for i in phases:

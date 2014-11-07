@@ -56,20 +56,26 @@ Automatically generated HTML file from Doconce source
                1,
                None,
                '___sec13'),
-              (' Zombiefication ', 1, None, '___sec14'),
-              (' Start from the middle ', 3, None, '___sec15'),
-              (' Variation in diffusion ', 3, None, '___sec16'),
-              (' Where does the infected one arises ', 3, None, '___sec17'),
-              (' Lock in different areas ', 3, None, '___sec18'),
-              (' Appendix ', 1, None, '___sec19'),
-              (' Discretization ', 2, None, '___sec20'),
-              (' 2D Gaussian function from x=0 ', 2, None, '___sec21'),
-              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec22'),
+              (' Introducing a Gaussian distribution of infective ',
+               3,
+               None,
+               '___sec14'),
+              (' Zombiefication ', 1, None, '___sec15'),
+              (' Start from the middle ', 3, None, '___sec16'),
+              (' Variation in diffusion ', 3, None, '___sec17'),
+              (' Where does the infected one arises ', 3, None, '___sec18'),
+              (' Lock in different areas ', 3, None, '___sec19'),
+              (' Appendix ', 1, None, '___sec20'),
+              (' Discretization ', 2, None, '___sec21'),
+              (' 2D Gaussian function from x=0 ', 2, None, '___sec22'),
+              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec23'),
               (' 2D Gaussian function from x=0,y=0 with higher initial value ',
                2,
                None,
-               '___sec23'),
-              (' English Boarding School ', 2, None, '___sec24')]}
+               '___sec24'),
+              (' English Boarding School ', 2, None, '___sec25'),
+              (' Gaussian from the corner ', 3, None, '___sec26'),
+              (' A long simulation on 100 Days ', 3, None, '___sec27')]}
 end of tocinfo -->
 
 <body>
@@ -136,17 +142,20 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Change in initial flow </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec12"> Change in lambda </a><br>
 <a href="#___sec13"> Epidemic in an English Boarding School 1978 </a><br>
-<a href="._2_PDE_FK001.html#___sec14"> Zombiefication </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec15"> Start from the middle </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec16"> Variation in diffusion </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec17"> Where does the infected one arises </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec18"> Lock in different areas </a><br>
-<a href="._2_PDE_FK002.html#___sec19"> Appendix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec20"> Discretization </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec21"> 2D Gaussian function from x=0 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec22"> 2D Gaussian function from x=0,y=0 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec23"> 2D Gaussian function from x=0,y=0 with higher initial value </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec24"> English Boarding School </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec14"> Introducing a Gaussian distribution of infective </a><br>
+<a href="._2_PDE_FK001.html#___sec15"> Zombiefication </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec16"> Start from the middle </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec17"> Variation in diffusion </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec18"> Where does the infected one arises </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec19"> Lock in different areas </a><br>
+<a href="._2_PDE_FK002.html#___sec20"> Appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec21"> Discretization </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec22"> 2D Gaussian function from x=0 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec23"> 2D Gaussian function from x=0,y=0 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec24"> 2D Gaussian function from x=0,y=0 with higher initial value </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec25"> English Boarding School </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec26"> Gaussian from the corner </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec27"> A long simulation on 100 Days </a><br>
 </p>
 
 <h2>Introduction  <a name="___sec0"></a></h2>
@@ -701,81 +710,60 @@ I the previous chapter an example from the English boarding school was presented
 The first simulation that is done on the PDE system is produced with an uniform distributed concentration of the three classes all over the area. A person has a given volume of one cubic. The total volume of the whole group is spread over the area. The area is sat to be 10 x 10, which means that the height of one person will be \( 1/100 \). Since the Infected group only consist of one person, the total height will be 0.01 for the whole area. The Susceptible group consist of 762 students and the total height in each point will be 7.62. The simulation can be seen in the Appendix. 
 <br />
 <br />
-The results from figure(<a href="#fig:Eng_PDE_uni">7</a>) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in the table <a href="#table:english_numbers">table:english_numbers</a>  This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
+The results from figure(<a href="#fig:british_number">7</a>) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in (<a href="#table:british_number_table">table:british_number_table</a>)  This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 7:  <a name="fig:Eng_PDE_uni"></a> English Boarding School modeled over a uniform distributed area. </p></center>
-<p><img src="plots/2D_british_school_number.png" align="bottom" height=600 width=800></p>
+<center><p class="caption">Figure 7:  <a name="fig:british_number"></a> English Boarding School modeled over a uniform distributed area. </p></center>
+<p><img src="plots/british_number.png" align="bottom" height=1000 width=600></p>
 </center>
 
 <p>
-<a name="table:english_numbers"></a>
+<a name="table:british_number_table"></a>
 <table border="1">
 <thead>
 <tr><th align="center">                </th> <th align="center">   ODE system   </th> <th align="center">PDE uniform dist</th> <th align="center">   PDE center   </th> <th align="center">   PDE corner   </th> </tr>
 </thead>
 <tbody>
 <tr><td align="center">   5 Days              </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">   449.28              </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">   444.62              </td> <td align="center">   744.67              </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">   209.56              </td> <td align="center">   8.88                </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">   108.82              </td> <td align="center">   10.96               </td> <td align="center">                       </td> </tr>
 <tr><td align="center">   10 Days             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">   37.59               </td> <td align="center">   688.86              </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">   117.59              </td> <td align="center">   27.06               </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">   607.82              </td> <td align="center">   48.59               </td> <td align="center">                       </td> </tr>
 <tr><td align="center">   15 Days             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
-<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">                       </td> <td align="center">   21.09               </td> <td align="center">   579.15              </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Infective           </td> <td align="center">                       </td> <td align="center">   17.30               </td> <td align="center">   51.13               </td> <td align="center">                       </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">                       </td> <td align="center">   724.62              </td> <td align="center">   134.23              </td> <td align="center">                       </td> </tr>
 </tbody>
 </table>
-<p>
-Introducing a Gaussian distribution
+<!-- dx = 0.04 -->
+<!-- dx^2 = 1.6E-3 -->
 
-<p>
+<h3>Introducing a Gaussian distribution of infective  <a name="___sec14"></a></h3>
 
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_british_school_gauss.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>The sick one is placed in the center of the School area.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_british_school_gauss_sub.png" align="bottom" height=600 width=800></p></center>
+A reasonable assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student, the chance of being infected increase as closer you get to the infected student. To check in this affect the result, the volume of student is placed as a gauss function in the center of the schoolyard at initial time. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in figure(<a href="#fig:gauss_sub">8</a>) and the total total amount of students can be be seen in figure(<a href="#fig:british_number">7</a>).
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  This seems to have no effect and the spread of the disease is similar to the one above. But if a student is lucky to stand in one corner, he has a greater chance to stay healthy </p></center>
-<p><img src="plots/2D_british_school_gauss_number.png" align="bottom" height=600 width=800></p>
+<center><p class="caption">Figure 8:  <a name="fig:gauss_sub"></a> </p></center>
+<p><img src="plots/2D_british_school_gauss_sub.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
-Gaussain from the corner. This one gives other results. It has a slower diffusion.
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_british_school_gauss_corner.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>A wave of infected moves towards the school yard</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_british_school_gauss_corner_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 9:  This simulation gives another result. Here the number of infected increase later than in the previous examples </p></center>
-<p><img src="plots/2D_british_school_gauss_corner_number.png" align="bottom" height=600 width=800></p>
-</center>
+<br />
+<br />
+By comparing the result from the uniform distributed PDE system and this simulation there are some interesting results. While the only difference between the two simulations is the placement of the infective. And this change has a major impact. Since the only one that can be infected are the students close to the infective, it restrict the spread of the epidemic. But the chance of getting infected in this area is major. The figure(<a href="#fig:gauss_sub">8</a>) shows that the amount of infective quickly grow in the center, where the infected one was placed. The last subplot also show  that the amount of removed in the center are closed to the maximum of the initial value of Susceptible. While the students along the boundary of the school seems to be unaffected after 15 days. This simulation show that the placement of the infective has a major role in the simulation.
+<br />
+<br />
+The placement of the Infective class also has an effect on the spread of the disease. The last column in (<a href="#table:british_number_table">table:british_number_table</a>) describe a simulation where the Gaussian function is placed in the corner(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. The table shows that the total number of infected is lower than for the centered placed Gaussian. This infected student is only able to spread the disease to a quarter of the population compared with the infected one in the center. The simulation can be seen in the Appendix.
+<br />
+<br />
+If the simulations are run for a longer time, the difference will decrease. After 100 days there will be about 18 Susceptible students left in the uniform distributed group, while there will be about 25 students in both of the Gaussian groups. The simulations can be seen in the Appendix.
 
 <p>
 <p>

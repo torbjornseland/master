@@ -6,6 +6,7 @@ import simple_PDE_2D as si2D
 from english_school_2D import *
 from LMR_zombie_model_PDE import *
 from gamma_mapping import *
+import os
 
 #SIR models
 
@@ -95,10 +96,10 @@ os.system('rm plots/lambda_*')
 #English boarding school
 
 
-T = 15
-Nt = 1000
+T = 100
+Nt = 2000
 X = 100
-Nx = 100
+Nx = 200
 z_X = z_Y = 0
 
 rho = 202
@@ -106,7 +107,7 @@ r = 2.18*10**(-3)*(X**2)
 a = r*rho/float(X**2)
 D_s = D_i = D_r = 1
 
-phases = [0,5,10,15]
+phases = [T]
 
 #uniform spread
 """
@@ -130,44 +131,53 @@ english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classn
 
 dx = X/float(Nx)
 trav_name = "plots/boadring"
-moviename = 'plots/2D_british_school'
+moviename = 'plots/2D_british_school_long'
 volume_human = 0.0664
 def init_func(x,y):
     return 1/float(X**2)
-phases = [0,5,10,15]
 max_val = (1/float(X**2))*762
-english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
-build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
+title = "Uniform distribution for the Infective class"
+english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases,title)
+#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
 
 # Gauss center
-"""
-moviename = 'plots/2D_british_school_gauss'
+
+moviename = 'plots/2D_british_school_gauss_long'
 V = 1
 A = 1
-sig = np.sqrt(V/(2*np.pi*A))
+sig = V/(2*np.pi*A)
+print "sig",sig
 x0 = X/float(2)
 y0 = X/float(2)
+max_val = (1/float(X**2))*762
 def init_func(x,y):
     return gauss_2D(x,y,A,sig,x0,y0)
 
-english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases)
-"""
+title = "Centered Gaussian for the Infective class"
+english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases,title)
+#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
+
 #Gauss corner
-"""
-moviename = 'plots/2D_british_school_gauss_corner'
-rho = 202
-r = 2.18*10**(-3)
-a = r*rho
-D_s = D_i = D_r = 1
+
+moviename = 'plots/2D_british_school_gauss_corner_long'
+
 x0=0
 y0=0
-V = 400
-A = 100
-sig = np.sqrt(V/(2*np.pi*A))
+V = 4
+A = 1
+sig = V/(2*np.pi*A)
+title = "Corner located Gaussian for the Infective class"
+max_val = (1/float(X**2))*762
 
 def init_func(x,y):
     return gauss_2D(x,y,A,sig,x0,y0)
-"""
+
+english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases,title)
+#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
+
+#os.system("doconce combine_images -1 plots/2D_british_school_number.png plots/2D_british_school_gauss_number.png plots/2D_british_school_gauss_corner_number.png plots/british_number.png") 
+
+
 # Zombiefication
 """
 plotnames = ['images/Sub','images/Inf','images/Zom', 'images/Rem']

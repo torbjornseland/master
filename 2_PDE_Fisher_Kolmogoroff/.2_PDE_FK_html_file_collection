@@ -5,11 +5,8 @@ plots/Trav_wave_2D.png
 plots/2D_initial_variable_sub.png
 plots/TW_2D_initial_z_lambda_0_5.png
 plots/2D_lambda_variable.png
-plots/2D_british_school_number.png
+plots/british_number.png
 plots/2D_british_school_gauss_sub.png
-plots/2D_british_school_gauss_number.png
-plots/2D_british_school_gauss_corner_sub.png
-plots/2D_british_school_gauss_corner_number.png
 plots/2D_zombie_initial_cond_sub.png
 plots/2D_zombie_initial_cond_number.png
 plots/2D_zombie_three_phases_sub.png
@@ -40,8 +37,10 @@ plots/2D_zombie_three_phases_blindern_area_3_ph_number.png
 plots/2D_gauss_sub.png
 plots/2D_gauss_one_sub.png
 plots/2D_british_school_sub.png
-plots/2D_british_school_gauss.webm
-plots/2D_british_school_gauss_corner.webm
+plots/2D_british_school_gauss_corner_sub.png
+plots/2D_british_school_long_number.png
+plots/2D_british_school_gauss_long_number.png
+plots/2D_british_school_gauss_corner_long_number.png
 plots/2D_zombie_initial_cond.webm
 plots/2D_zombie_three_phases.webm
 plots/2D_zombie_three_phases_gauss.webm
