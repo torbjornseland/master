@@ -276,7 +276,7 @@ This results in the case that $\Delta x \ll \Delta t$ is impossible, because thi
 ===== Travelling wave in 2D =====
 The model can be discretized for a 2D simulation since an epidemic disease will spread geographically. The non dimensional system (ref{eq:simple_non_PDE}) used in the 1D simulation above can be discretized with Forward Euler in time and Crank Nicolson in space
 !bt
-\begin{equation}
+\begin{equation} label{eq:SIR_disc}
 	\begin{aligned}
     \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
     \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
@@ -400,152 +400,210 @@ By comparing the result from the uniform distributed PDE system and this simulat
 The placement of the Infective class also has an effect on the spread of the disease. The last column in (ref{table:british_number_table}) describe a simulation where the Gaussian function is placed in the corner(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. The table shows that the total number of infected is lower than for the centered placed Gaussian. This infected student is only able to spread the disease to a quarter of the population compared with the infected one in the center. The simulation can be seen in the Appendix.
 <linebreak>
 <linebreak>
-If the simulations are run for a longer time, the difference will decrease. After 100 days there will be about 18 Susceptible students left in the uniform distributed group, while there will be about 25 students in both of the Gaussian groups. The simulations can be seen in the Appendix.
+If the simulations are run for a longer time, the difference in each class will decrease. After 100 days there will be about 18 Susceptible students left in the uniform distributed group, while there will be about 25 students in both of the Gaussian groups. The simulations can be seen in the Appendix.
 
 !split
 ======= Zombiefication =======
-Create the same results as for the ODE simulation.
+The previous chapter studied a ODE system which was used to calculate the results of the TV series *Walking Dead*. This model was based on the system from LMR and was developed with an extra term in the  phase *counter attack*. The following system that was used in chapter *Epidemic models* can be expand with a diffusion term in each class. The PDE system can be seen in eq(ref{eq:seland_model})  
 
-Initial phase
+!bt
+\begin{align*} label{eq:seland_model}
+\frac{\partial S}{\partial dt} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +\nabla^2 S \\
+\frac{\partial I}{\partial dt} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+\nabla^2 I\\
+\frac{\partial Z}{\partial dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\+\nabla^2 Z\\
+\frac{\partial R}{\partial dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+\nabla^2 R 
+\end{align*}
+!et
+By discretize this with Forward Euler in time and Crank Nicolson in space as for the SIR model(ref{eq:SIR_disc}), the system can be expressed
+!bt
+\begin{equation} label{eq:SIZR_disc}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j}+\
+        \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j}+\
+        \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{Z^{n+1}_{i,j}-Z^n_{i,j}}{\Delta t} &= \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j}+\
+        \left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}
+        \left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right) 
+	\end{aligned}
+\end{equation}
+!et
+By setting the unknown on the left side and the known on the right, the following system can be computed
+!bt
+\begin{equation} label{eq:SIZR_disc2}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^n_{i,j} + \Delta t \left( \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j}+\
+        \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    I^{n+1}_{i,j} &= I^n_{i,j} + \Delta t \left((\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j}+\
+        \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    Z^{n+1}_{i,j} &= Z^n_{i,j} +\Delta t \left( \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j}+\
+        \left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    R^{n+1}_{i,j} &= R^n_{i,j} +\Delta t \left(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}
+        \left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right)\right) 
+	\end{aligned}
+\end{equation}
+!et
+To verify that the discretization has been done correct, a simulation with uniform distributed classes can be done. The result is the expected to be similar as for the ODE system in the previous chapter. A zombie attack can be separate into three different phases, explained in detail in the previous chapter. The first phase is short and is called the *initial phase*. This is a condition where the humans are unfamiliar with the disease and behave quite naive to the disease. This result in a high chance of getting infected. The next phase is called *Hysterical phase*. The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected. The last phase, which happens at the same time as the hysterical phase, is the counter attack. This phase is often started if the humans are attacked by zombies. The following parameter that was used for simulating the first episodes in *Walking Dead* will also be used here. These can be seen in (ref{table:param_val}). By compute the system for all three phases, the value in each phase can be compared with the ones from the ODE system in the previous chapter. This will give an indication if the discretization is done correct. 
 
-MOVIE:[plots/2D_zombie_initial_cond.webm, height=500 width=600] 
+label{table:param_val}
+|-------------------------------------------------------|
+|parameter|Initial phase|hysterical phase|counter attack|
+|-------------------------------------------------------|
+|$\beta$  |0.01155      | 0.000011       | 0.00011      |
+|$\varrho$|1.37         | 1.5            | 1.5          |
+|$\alpha$ |0.00044      | 0.000208       | 0.000208     |
+|a        |0            | 0              | 0.0073       |
+|$\sigma$ |0            | 0              | 0.005        |
+|$\mu$    |0            | 0              | 0.14         |
+|-------------------------------------------------------|
 
-FIGURE:[plots/2D_zombie_initial_cond_sub.png, height=600 width=800 frac=0.8]
+The simulation in figure(ref{fig:zombie_three_number}) seems to match the result from the ODE system. A closer check can be done by comparing the groups in each phase. This result can be seen in (ref{table:compare_phases_zombie}) 
 
-FIGURE:[plots/2D_zombie_initial_cond_number.png, height=600 width=800 frac=0.8]Creates the same results as for the ODE system
+FIGURE:[plots/2D_zombie_three_phases_number.png, height=600 width=800 frac=0.8] label{fig:zombie_three_number} Same results as for the ODE system in the previous chapter
 
-The three phases
+label{table:compare_phases_zombie}
+|-----------------------------------------------------------------------|
+|                   | ODE system| PDE uniform dist  | PDE gauss center  |
+|-----------------------------------------------------------------------|
+|Initial phase      |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |71.3       | 71.5              |81.12             |
+|Infected           |230.8      | 230.6             |210.94            |
+|Zombie             |298.9      | 298.9             |310.11            |
+|Removed            |21.0       | 21.0              |<:20.60             |
+|-----------------------------------------------------------------------|
+|Hysterical phase   |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |61.6       |61.8               |70.55              |
+|Infected           |0.3        |0.3                |0.34               |
+|Zombie             |358.6      |357.9              |334.33             |
+|Removed            |201.5      |202.0              |217.56             |
+|-----------------------------------------------------------------------|
+|Counter attack     |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |57.8       |58.2               |66.50              |
+|Infected           |1.2        |1.2                |1.23               |
+|Zombie             |331.8      |331.1              |305.86             |
+|Removed            |231.3      |231.7              |249.19             |
+|-----------------------------------------------------------------------|
 
-MOVIE:[plots/2D_zombie_three_phases.webm, height=500 width=600]
+These results shows that the PDE system gives the same result as for the ODE. The error can be controlled by decreasing the $\Delta t$ and $Delta x$ for the system. 
 
-FIGURE:[plots/2D_zombie_three_phases_sub.png, height=600 width=800 frac=0.8]
+##ODE results
+##
+##---------------------
+##time, 0.000000
+##S_n 621.0
+##I_n 0.0
+##Z_n 1.0
+##R_n 0.0
+##---------------------
+##time, 3.000000
+##S_n 71.2973582098
+##I_n 230.848367121
+##Z_n 298.873127347
+##R_n 20.9812508213
+##---------------------
+##time, 33.000000
+##S_n 61.6100739089
+##I_n 0.310909545827
+##Z_n 358.579528667
+##R_n 201.500626378
+##---------------------
+##time, 34.000000
+##S_n 57.7976621629
+##I_n 1.1578809554
+##Z_n 331.784821898
+##R_n 231.260807984
+##
+##
+##PDE results
+##
+##---------------------
+##time=0.000000
+##Susceptible = 621.00
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##---------------------
+##time=3.000000
+##Susceptible = 71.54
+##  Infective = 230.57
+##    Zombies = 298.91
+##    Removed = 20.97
+##---------------------
+##time=33.000000
+##Susceptible = 61.83
+##Infective =   0.32
+##Zombies =     357.89
+##Removed =     201.96
+##---------------------
+##time=34.000000
+##Susceptible = 58.02
+##Infective =   1.16
+##Zombies =     331.08
+##Removed =     231.74
+##Values each phase with dt= $5 \cdot 10^{-4}$ 
+##---------------------
+##time=0.000000
+##Susceptible = 621.00
+##Infective = 0.00
+##Zombies = 1.77
+##Removed = 0.00
+##---------------------
+##time=3.000000
+##Susceptible = 81.12
+##Infective =   210.94
+##Zombies =     310.11
+##Removed =     20.60
+##---------------------
+##time=33.000000
+##Susceptible = 70.55
+##Infective =   0.34
+##Zombies =     334.33
+##Removed =     217.56
+##---------------------
+##time=34.000000
+##Susceptible = 66.50
+##Infective =   1.23
+##Zombies =     305.86
+##Removed =     249.19
 
-FIGURE:[plots/2D_zombie_three_phases_number.png, height=600 width=800 frac=0.8] Same results as for the ODE system in the previous chapter
-
-Able to produce the same results as for the ODE
-
-ODE results
-
----------------------
-time, 0.000000
-S_n 621.0
-I_n 0.0
-Z_n 1.0
-R_n 0.0
----------------------
-time, 3.000000
-S_n 71.2973582098
-I_n 230.848367121
-Z_n 298.873127347
-R_n 20.9812508213
----------------------
-time, 33.000000
-S_n 61.6100739089
-I_n 0.310909545827
-Z_n 358.579528667
-R_n 201.500626378
----------------------
-time, 34.000000
-S_n 57.7976621629
-I_n 1.1578809554
-Z_n 331.784821898
-R_n 231.260807984
 
 
-PDE results
-
----------------------
-time=0.000000
-Susceptible = 621.00
-Infective = 0.00
-Zombies = 1.00
-Removed = 0.00
----------------------
-time=3.000000
-Susceptible = 71.54
-Infective = 230.57
-Zombies = 298.91
-Removed = 20.97
----------------------
-time=33.000000
-Susceptible = 61.83
-Infective = 0.32
-Zombies = 357.89
-Removed = 201.96
----------------------
-time=34.000000
-Susceptible = 58.02
-Infective = 1.16
-Zombies = 331.08
-Removed = 231.74
-
-=== Start from the middle ===
-Diffusion is 0 for the removed class. Gauss curve from the middle
-
-MOVIE:[plots/2D_zombie_three_phases_gauss.webm, height=500 width=600]
-
-FIGURE:[plots/2D_zombie_three_phases_gauss_sub.png, height=600 width=800 frac=0.8]
-
-FIGURE:[plots/2D_zombie_three_phases_gauss_number.png, height=600 width=800 frac=0.8] By using the same parameters, the result seems to be different. Can be explained by the fact that only a small part of the area is in contact with the infected one.It takes some time before everyone are connected to the disease.
-
-Values each phase with dt= $5 \cdot 10^{-4}$ 
----------------------
-time=0.000000
-Susceptible = 621.00
-Infective = 0.00
-Zombies = 1.77
-Removed = 0.00
----------------------
-time=3.000000
-Susceptible = 81.12
-Infective = 210.94
-Zombies = 310.11
-Removed = 20.60
----------------------
-time=33.000000
-Susceptible = 70.55
-Infective = 0.34
-Zombies = 334.33
-Removed = 217.56
----------------------
-time=34.000000
-Susceptible = 66.50
-Infective = 1.23
-Zombies = 305.86
-Removed = 249.19
 === Variation in diffusion ===
-plots/2D_zombie_three_phases_initial_spread.webm, 
-MOVIE:[plots/2D_zombie_three_phases_initial_spread.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+##plots/2D_zombie_three_phases_initial_spread.webm, 
+##MOVIE:[plots/2D_zombie_three_phases_initial_spread.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+##
+##FIGURE:[plots/2D_zombie_three_phases_initial_spread_sub.png, height=600 width=800 frac=0.8]
+##
+##FIGURE:[plots/2D_zombie_three_phases_initial_spread_number.png, height=600 width=800 frac=0.8]
+##
+##plots/2D_zombie_three_phases_initial_spread_2"
+##
+##MOVIE:[plots/2D_zombie_three_phases_initial_spread_2.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+##
+##FIGURE:[plots/2D_zombie_three_phases_initial_spread_2_sub.png, height=600 width=800 frac=0.8]
+##
+##FIGURE:[plots/2D_zombie_three_phases_initial_spread_2_number.png, height=600 width=800 frac=0.8]
+##
+##moviename = "plots/2D_zombie_three_phases_spatial_control"
+##
+##MOVIE:[plots/2D_zombie_three_phases_spatial_control.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+##
+##FIGURE:[plots/2D_zombie_three_phases_spatial_control_sub.png, height=600 width=800 frac=0.8]
+##
+##FIGURE:[plots/2D_zombie_three_phases_spatial_control_number.png, height=600 width=800 frac=0.8]
+##
+##moviename = "plots/2D_zombie_three_phases_spatial_control_3_init"
+##
+##MOVIE:[plots/2D_zombie_three_phases_spatial_control_3_init.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+##
+##FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_sub.png, height=600 width=800 frac=0.8]
+##
+##FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_number.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_zombie_three_phases_initial_spread_sub.png, height=600 width=800 frac=0.8]
-
-FIGURE:[plots/2D_zombie_three_phases_initial_spread_number.png, height=600 width=800 frac=0.8]
-
-plots/2D_zombie_three_phases_initial_spread_2"
-
-MOVIE:[plots/2D_zombie_three_phases_initial_spread_2.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-
-FIGURE:[plots/2D_zombie_three_phases_initial_spread_2_sub.png, height=600 width=800 frac=0.8]
-
-FIGURE:[plots/2D_zombie_three_phases_initial_spread_2_number.png, height=600 width=800 frac=0.8]
-
-moviename = "plots/2D_zombie_three_phases_spatial_control"
-
-MOVIE:[plots/2D_zombie_three_phases_spatial_control.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-
-FIGURE:[plots/2D_zombie_three_phases_spatial_control_sub.png, height=600 width=800 frac=0.8]
-
-FIGURE:[plots/2D_zombie_three_phases_spatial_control_number.png, height=600 width=800 frac=0.8]
-
-moviename = "plots/2D_zombie_three_phases_spatial_control_3_init"
-
-MOVIE:[plots/2D_zombie_three_phases_spatial_control_3_init.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-
-FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_sub.png, height=600 width=800 frac=0.8]
-
-FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_number.png, height=600 width=800 frac=0.8]
-
-!split
 === Where does the infected one arises ===
 
 Small town
@@ -656,6 +714,17 @@ FIGURE:[plots/2D_british_school_gauss_long_number.png, height=600 width=800 frac
 
 FIGURE:[plots/2D_british_school_gauss_corner_long_number.png, height=600 width=800 frac=0.8]
 
+===== Zombiefication =====
+=== Verify the initial phase ===
+
+FIGURE:[plots/2D_zombie_initial_cond_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_initial_cond_number.png, height=600 width=800 frac=0.8]Creates the same results as for the ODE system
+
+=== Three phases ===
+
+FIGURE:[plots/2D_zombie_three_phases_sub.png, height=600 width=800 frac=0.8]
+
 ## Movies
 #MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
 #MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
@@ -663,3 +732,5 @@ FIGURE:[plots/2D_british_school_gauss_corner_long_number.png, height=600 width=8
 #MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system
 #MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
 #MOVIE:[plots/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard
+#MOVIE:[plots/2D_zombie_initial_cond.webm, height=500 width=600] 
+#MOVIE:[plots/2D_zombie_three_phases.webm, height=500 width=600]

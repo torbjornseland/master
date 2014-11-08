@@ -61,21 +61,23 @@ Automatically generated HTML file from Doconce source
                None,
                '___sec14'),
               (' Zombiefication ', 1, None, '___sec15'),
-              (' Start from the middle ', 3, None, '___sec16'),
-              (' Variation in diffusion ', 3, None, '___sec17'),
-              (' Where does the infected one arises ', 3, None, '___sec18'),
-              (' Lock in different areas ', 3, None, '___sec19'),
-              (' Appendix ', 1, None, '___sec20'),
-              (' Discretization ', 2, None, '___sec21'),
-              (' 2D Gaussian function from x=0 ', 2, None, '___sec22'),
-              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec23'),
+              (' Variation in diffusion ', 3, None, '___sec16'),
+              (' Where does the infected one arises ', 3, None, '___sec17'),
+              (' Lock in different areas ', 3, None, '___sec18'),
+              (' Appendix ', 1, None, '___sec19'),
+              (' Discretization ', 2, None, '___sec20'),
+              (' 2D Gaussian function from x=0 ', 2, None, '___sec21'),
+              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec22'),
               (' 2D Gaussian function from x=0,y=0 with higher initial value ',
                2,
                None,
-               '___sec24'),
-              (' English Boarding School ', 2, None, '___sec25'),
-              (' Gaussian from the corner ', 3, None, '___sec26'),
-              (' A long simulation on 100 Days ', 3, None, '___sec27')]}
+               '___sec23'),
+              (' English Boarding School ', 2, None, '___sec24'),
+              (' Gaussian from the corner ', 3, None, '___sec25'),
+              (' A long simulation on 100 Days ', 3, None, '___sec26'),
+              (' Zombiefication ', 2, None, '___sec27'),
+              (' Verify the initial phase ', 3, None, '___sec28'),
+              (' Three phases ', 3, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -111,240 +113,276 @@ MathJax.Hub.Config({
 <!-- !split -->
 
 <h1>Zombiefication  <a name="___sec15"></a></h1>
-Create the same results as for the ODE simulation.
+The previous chapter studied a ODE system which was used to calculate the results of the TV series <em>Walking Dead</em>. This model was based on the system from LMR and was developed with an extra term in the  phase <em>counter attack</em>. The following system that was used in chapter <em>Epidemic models</em> can be expand with a diffusion term in each class. The PDE system can be seen in eq<a href="#mjx-eqn-13">(13)</a>  
+
+$$
+\begin{align*} \tag{13}
+\frac{\partial S}{\partial dt} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +\nabla^2 S \\
+\frac{\partial I}{\partial dt} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+\nabla^2 I\\
+\frac{\partial Z}{\partial dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\+\nabla^2 Z\\
+\frac{\partial R}{\partial dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+\nabla^2 R 
+\end{align*}
+$$
+
+By discretize this with Forward Euler in time and Crank Nicolson in space as for the SIR model<a href="._2_PDE_FK000.html#mjx-eqn-11">(11)</a>, the system can be expressed
+$$
+\begin{equation} \tag{14}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j}+\
+        \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j}+\
+        \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{Z^{n+1}_{i,j}-Z^n_{i,j}}{\Delta t} &= \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j}+\
+        \left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}
+        \left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+By setting the unknown on the left side and the known on the right, the following system can be computed
+$$
+\begin{equation} \tag{15}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^n_{i,j} + \Delta t \left( \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j}+\
+        \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    I^{n+1}_{i,j} &= I^n_{i,j} + \Delta t \left((\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j}+\
+        \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    Z^{n+1}_{i,j} &= Z^n_{i,j} +\Delta t \left( \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j}+\
+        \left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    R^{n+1}_{i,j} &= R^n_{i,j} +\Delta t \left(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}
+        \left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right)\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+To verify that the discretization has been done correct, a simulation with uniform distributed classes can be done. The result is the expected to be similar as for the ODE system in the previous chapter. A zombie attack can be separate into three different phases, explained in detail in the previous chapter. The first phase is short and is called the <em>initial phase</em>. This is a condition where the humans are unfamiliar with the disease and behave quite naive to the disease. This result in a high chance of getting infected. The next phase is called <em>Hysterical phase</em>. The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected. The last phase, which happens at the same time as the hysterical phase, is the counter attack. This phase is often started if the humans are attacked by zombies. The following parameter that was used for simulating the first episodes in <em>Walking Dead</em> will also be used here. These can be seen in (<a href="#table:param_val">table:param_val</a>). By compute the system for all three phases, the value in each phase can be compared with the ones from the ODE system in the previous chapter. This will give an indication if the discretization is done correct. 
 
 <p>
-Initial phase
-
+<a name="table:param_val"></a>
+<table border="1">
+<thead>
+<tr><th align="center">   parameter    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   \( \beta \)         </td> <td align="center">   0.01155             </td> <td align="center">   0.000011            </td> <td align="center">   0.00011             </td> </tr>
+<tr><td align="center">   \( \varrho \)       </td> <td align="center">   1.37                </td> <td align="center">   1.5                 </td> <td align="center">   1.5                 </td> </tr>
+<tr><td align="center">   \( \alpha \)        </td> <td align="center">   0.00044             </td> <td align="center">   0.000208            </td> <td align="center">   0.000208            </td> </tr>
+<tr><td align="center">   a                   </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.0073              </td> </tr>
+<tr><td align="center">   \( \sigma \)        </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.005               </td> </tr>
+<tr><td align="center">   \( \mu \)           </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.14                </td> </tr>
+</tbody>
+</table>
 <p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_initial_cond.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_initial_cond_sub.png" align="bottom" height=600 width=800></p></center>
+The simulation in figure(<a href="#fig:zombie_three_number">9</a>) seems to match the result from the ODE system. A closer check can be done by comparing the groups in each phase. This result can be seen in (<a href="#table:compare_phases_zombie">table:compare_phases_zombie</a>) 
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 9:  Creates the same results as for the ODE system </p></center>
-<p><img src="plots/2D_zombie_initial_cond_number.png" align="bottom" height=600 width=800></p>
-</center>
-
-<p>
-The three phases
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 10:  Same results as for the ODE system in the previous chapter </p></center>
+<center><p class="caption">Figure 9:  <a name="fig:zombie_three_number"></a> Same results as for the ODE system in the previous chapter </p></center>
 <p><img src="plots/2D_zombie_three_phases_number.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
-Able to produce the same results as for the ODE
+<a name="table:compare_phases_zombie"></a>
+<table border="1">
+<thead>
+<tr><th align="center">                   </th> <th align="center">     ODE system    </th> <th align="center">  PDE uniform dist </th> <th align="center">  PDE gauss center </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Initial phase          </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   71.3                   </td> <td align="center">   71.5                   </td> <td align="center">   81.12                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   230.8                  </td> <td align="center">   230.6                  </td> <td align="center">   210.94                 </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   298.9                  </td> <td align="center">   298.9                  </td> <td align="center">   310.11                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   21.0                   </td> <td align="center">   21.0                   </td> <td align="center">   <:20.60                </td> </tr>
+<tr><td align="center">   Hysterical phase       </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   61.6                   </td> <td align="center">   61.8                   </td> <td align="center">   70.55                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   0.3                    </td> <td align="center">   0.3                    </td> <td align="center">   0.34                   </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   358.6                  </td> <td align="center">   357.9                  </td> <td align="center">   334.33                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   201.5                  </td> <td align="center">   202.0                  </td> <td align="center">   217.56                 </td> </tr>
+<tr><td align="center">   Counter attack         </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   57.8                   </td> <td align="center">   58.2                   </td> <td align="center">   66.50                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   1.2                    </td> <td align="center">   1.2                    </td> <td align="center">   1.23                   </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   331.8                  </td> <td align="center">   331.1                  </td> <td align="center">   305.86                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   231.3                  </td> <td align="center">   231.7                  </td> <td align="center">   249.19                 </td> </tr>
+</tbody>
+</table>
+<p>
+These results shows that the PDE system gives the same result as for the ODE. The error can be controlled by decreasing the \( \Delta t \) and \( Delta x \) for the system. 
 
 <p>
-ODE results
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
 
-<p>
-<hr>
-time, 0.000000
-S_n 621.0
-I_n 0.0
-Z_n 1.0
-R_n 0.0
-<hr>
-time, 3.000000
-S_n 71.2973582098
-I_n 230.848367121
-Z_n 298.873127347
-R_n 20.9812508213
-<hr>
-time, 33.000000
-S_n 61.6100739089
-I_n 0.310909545827
-Z_n 358.579528667
-R_n 201.500626378
-<hr>
-time, 34.000000
-S_n 57.7976621629
-I_n 1.1578809554
-Z_n 331.784821898
-R_n 231.260807984
+<h3>Variation in diffusion  <a name="___sec16"></a></h3>
 
-<p>
-PDE results
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
 
-<p>
-<hr>
-time=0.000000
-Susceptible = 621.00
-Infective = 0.00
-Zombies = 1.00
-Removed = 0.00
-<hr>
-time=3.000000
-Susceptible = 71.54
-Infective = 230.57
-Zombies = 298.91
-Removed = 20.97
-<hr>
-time=33.000000
-Susceptible = 61.83
-Infective = 0.32
-Zombies = 357.89
-Removed = 201.96
-<hr>
-time=34.000000
-Susceptible = 58.02
-Infective = 1.16
-Zombies = 331.08
-Removed = 231.74
+<h3>Where does the infected one arises  <a name="___sec17"></a></h3>
 
-<h3>Start from the middle  <a name="___sec16"></a></h3>
-
-Diffusion is 0 for the removed class. Gauss curve from the middle
+Small town
+moviename = "plots/2D_zombie_three_phases_zombie_small_town"
 
 <p>
 
 <div>
 <video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_gauss.webm' type='video/webm; codecs="vp8, vorbis"'>
+    <source src='plots/2D_zombie_three_phases_zombie_small_town.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_zombie_small_town_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+Middle town
+
+<p>
+moviename = "plots/2D_zombie_three_phases_zombie_middle_town"
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_zombie_middle_town.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_zombie_middle_town_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+Large town
+moviename = "plots/2D_zombie_three_phases_zombie_large_town"
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_zombie_large_town.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_zombie_large_town_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
+
+<h3>Lock in different areas  <a name="___sec18"></a></h3>
+
+moviename = "plots/2D_zombie_three_phases_blindern_area"
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_blindern_area_contourf.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_blindern_area_contourf_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_blindern_area_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+Three phases
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
+
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_blindern_area_3_ph_contourf_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_blindern_area_3_ph_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/2D_zombie_three_phases_blindern_area_3_ph_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
 <p><em></em></p>
 
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_gauss_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 11:  By using the same parameters, the result seems to be different. Can be explained by the fact that only a small part of the area is in contact with the infected one.It takes some time before everyone are connected to the disease. </p></center>
-<p><img src="plots/2D_zombie_three_phases_gauss_number.png" align="bottom" height=600 width=800></p>
-</center>
-
-<p>
-Values each phase with dt= \( 5 \cdot 10^{-4} \) 
-<hr>
-time=0.000000
-Susceptible = 621.00
-Infective = 0.00
-Zombies = 1.77
-Removed = 0.00
-<hr>
-time=3.000000
-Susceptible = 81.12
-Infective = 210.94
-Zombies = 310.11
-Removed = 20.60
-<hr>
-time=33.000000
-Susceptible = 70.55
-Infective = 0.34
-Zombies = 334.33
-Removed = 217.56
-<hr>
-time=34.000000
-Susceptible = 66.50
-Infective = 1.23
-Zombies = 305.86
-Removed = 249.19
-
-<h3>Variation in diffusion  <a name="___sec17"></a></h3>
-
-plots/2D_zombie_three_phases_initial_spread.webm, 
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_initial_spread.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_initial_spread_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_initial_spread_number.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-plots/2D_zombie_three_phases_initial_spread_2"
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_initial_spread_2.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_initial_spread_2_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_initial_spread_2_number.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-moviename = "plots/2D_zombie_three_phases_spatial_control"
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_spatial_control.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_spatial_control_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_spatial_control_number.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-moviename = "plots/2D_zombie_three_phases_spatial_control_3_init"
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_spatial_control_3_init.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_spatial_control_3_init_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_spatial_control_3_init_number.png" align="bottom" height=600 width=800></p></center>
 
 <p>
 <p>
