@@ -605,7 +605,9 @@ These results shows that the PDE system gives the same result as for the ODE. Th
 ##FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_number.png, height=600 width=800 frac=0.8]
 
 === Where does the infected one arises ===
+In the previous section *English boarding school*, the placement of the infected was proven to have a major influence on the result. But here the *Susceptible* was uniformed distributed over the schoolyard. Based on the data from *Walking Dead*, the amount in each class was based on three different places where Rick went by. :w   
 
+ 
 Small town
 moviename = "plots/2D_zombie_three_phases_zombie_small_town"
 
