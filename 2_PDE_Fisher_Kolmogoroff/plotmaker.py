@@ -5,7 +5,7 @@ from mpl_toolkits.mplot3d import axes3d
 from matplotlib import cm
 import matplotlib.image as mpimg
 
-def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val):
+def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,phases,phase_name):
     x_list = []
     y_list = []
     surf_color = ['blue','green','red','cyan']
@@ -18,6 +18,14 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val):
     plotname = "%s*" %(plotnames[0])
     Nt = len(glob.glob(plotname))
     print Nt
+    ph_check = []
+    for ph in phases:
+        if ph == T:
+            ph_check.append(Nt-1)
+        else:
+            ph_check.append(int((Nt*ph)/T))
+
+    print "ph_check", ph_check
     sub_num = int((Nt-1)/3)
     for j in range(Nt):
         fig = plt.figure()
@@ -40,19 +48,22 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val):
         plt.title("time = %1.1f" % nt)
         plt.savefig("movie_images/tmp%04d.png" % j)
         
-        if(j%sub_num == 0):
-            print j,(j/sub_num)
-            plt.savefig("plots/2D_gauss_wave%04d.png" % (j/sub_num))
+        for ph in range(len(ph_check)):
+            if(j == ph_check[ph]):
+                print "sub"
+                print j,ph
+                plt.title("%s, time=%2.1f" % (phase_name[ph],(j*T/float(Nt))))
+                plt.savefig("plots/2D_gauss_wave%04d.png" % ph)
         
         plt.close()
 
     os.system('doconce combine_images plots/2D_gauss_wave000* %s_sub.png' % moviename)
     os.system('rm plots/2D_gauss_wave000*')
-    os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('movie_images/tmp%04d.png',moviename))
+    #os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('movie_images/tmp%04d.png',moviename))
     for filename in glob.glob('movie_images/tmp*.png'):
         os.remove(filename)
 
-def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,classnames):
+def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,classnames,phases,phase_name):
     x_list = []
     y_list = []
     surf_color = ['blue','green','red','cyan']
@@ -65,7 +76,11 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
     plotname = "%s*" %(plotnames[0])
     Nt = len(glob.glob(plotname))
     print Nt
-    sub_num = int(Nt/3)
+    #sub_num = int(Nt/3)
+    ph_check = []
+    for ph in phases:
+        ph_check.append(int((Nt*ph)/T))
+    
     for j in range(Nt):
         fig = plt.figure()
         for i in range(len(plotnames)):
@@ -96,15 +111,18 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
         fig.tight_layout()
         plt.savefig("movie_images/tmp_sub%04d.png" % j)
         
-        if(j%(sub_num-1) == 0 ):
-            print j
-            plt.savefig("plots/2D_gauss_wave%04d.png" % (j/(sub_num-1)))
+        for ph in range(len(ph_check)):
+            if(j == ph_check[ph]):
+                print "sub"
+                print j,ph
+                plt.suptitle(phase_name[ph])
+                plt.savefig("plots/2D_gauss_wave%04d.png" % ph)
         
         plt.close()
 
     os.system('doconce combine_images plots/2D_gauss_wave000* %s_surface_sub.png' % moviename)
     os.system('rm plots/2D_gauss_wave000*')
-    os.system('avconv -r 10 -i %s -vcodec libvpx %s_surface.webm -y' %('movie_images/tmp_sub%04d.png',moviename))
+    #os.system('avconv -r 10 -i %s -vcodec libvpx %s_surface.webm -y' %('movie_images/tmp_sub%04d.png',moviename))
     for filename in glob.glob('movie_images/tmp_sub*.png'):
         os.remove(filename)
 
@@ -252,3 +270,39 @@ def trav_wave(Nt,z,z_list,classnames,z_X,dim,moviename):
     plt.show()
     plt.close()
 
+def initial_susceptible_plot(plotname,moviename,para_name,L,T,z_X,max_val):
+    x_list = []
+    y_list = []
+    surf_color = ['blue','green','red','cyan']
+    
+    img = "%s%04d.npy" % (plotname,0)
+    print "img",img
+    len_x = len(np.load(img))
+    x,y = np.meshgrid(np.linspace(0,L,len_x),np.linspace(0,L,len_x))
+
+    plotname = "%s*" %(plotname)
+    Nt = len(glob.glob(plotname))
+    print Nt
+    sub_num = int((Nt-1)/3)
+    
+    fig = plt.figure()
+    
+    #img = "%s%04d.npy" % (plotname,0)
+    #label_name = "%s = %s" % (para_name, parameter_values[i])
+        #plt.plot(x_list[i],np.load(img),label=label_name)
+    #ax.plot_wireframe(x,y,np.load(img), rstride=10, cstride=10,color=surf_color[0])
+    CS = plt.contourf(x,y,np.load(img),50,cmap=cm.coolwarm,vmin=0,vmax=max_val,alpha=0.6) 
+    plt.title("Initial values for susceptible")
+    #plt.plot([z_X,z_X],[-0.1,1.1],'k')
+    #plt.text(z_X,-0.2,"x")
+    #plt.axis([0,L,-0.1,1.1])
+    #ax.set_xlim3d(0,L)
+    #ax.set_ylim3d(0,L)
+    #ax.set_zlim3d(0,max_val*1.1)
+    #plt.legend(loc=3)
+    #plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderaxespad=0.)
+    #plt.suptitle(moviename)
+    cbar_ax = fig.add_axes([0.90, 0.15, 0.05, 0.7])
+    fig.colorbar(CS,cax=cbar_ax)
+    plt.savefig(moviename)
+        

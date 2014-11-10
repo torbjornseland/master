@@ -605,7 +605,21 @@ These results shows that the PDE system gives the same result as for the ODE. Th
 ##FIGURE:[plots/2D_zombie_three_phases_spatial_control_3_init_number.png, height=600 width=800 frac=0.8]
 
 === Where does the infected one arises ===
-In the previous section *English boarding school*, the placement of the infected was proven to have a major influence on the result. But here the *Susceptible* was uniformed distributed over the schoolyard. Based on the data from *Walking Dead*, the amount in each class was based on three different places where Rick went by. :w   
+In the previous section *English boarding school*, the placement of the infected was proven to have a major influence on the result. But here the *Susceptible* was uniformed distributed over the schoolyard. Based on the data from *Walking Dead*, the amount in each class was based on three different places where Rick went by. Based on the TV series, it is hard to decide the geograpic distance between these three places. Therefore they have been placed with a certain distance from each other. The following simulation is done on a grid with size(20 x 20) with the following placement on the towns. Small(4,4) with size 21, middle(9,15) with size 200 and large(15,5) with size 400. Since these values was based on the humans and zombies seen in the series, these can be scaled up. The total population can be scaled up with 1000, so the large town can be seen as an area with a population of 400 000. The length can be measured in kilometre. Then the distance between the middle and large town will be 11.66 km. Compared to the distance between Oslo and Bærum(Sandvika) which is 15 km, the simulation can be seen as rough estimate of the area around Oslo.
+<linebreak>
+<linebreak>
+The diffusion term describe the diffusion for each class. This can be seen as the speed of each group. If the diffusion constant is large, the flow towards equilibrium will go faster. The values have been sat as follows. 
+* $D_s=1$, The *Susceptible* has a basic moving speed. The other classes are based on the speed of a healthy human.
+* $D_i=0.5$, The *Infected* are often injured caused by lately fights. This affect their moving speed
+* $D_z=0.9$, The average moving speed for a zombie. There are zombies with the moving speed of a human, but there are also cases where zombies edge them self forward with only one arm. This result in a major difference in speed and therefore a lower average speed for the zombies.
+* $D_r=0$, The removed are here seen as dead, therefore there are no moving speed.
+<linebreak>
+<linebreak>
+The parameters from (ref{table:param_val}) will be used here and the three phases will be modeled as shown for the uniformed distributed PDE system. This will be done for three different simulations with similar initial value for the susceptible class. The initial value can be seen in figure() and are based on the data given above. The difference in the three different simulations will be the placement of the zombie on. The zombie will be placed in center of the small, middle and large town.
+
+FIGURE: [plots/initial_value_susceptible.png, height=600 width=800 frac=0.8]
+
+
 
  
 Small town
@@ -615,11 +629,15 @@ MOVIE:[plots/2D_zombie_three_phases_zombie_small_town.webm, height=500 width=600
 
 FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_sub.png, height=600 width=800 frac=0.8]
 
+FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_2_sub.png, height=600 width=800 frac=0.8]
+
 FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_number.png, height=600 width=800 frac=0.8]
 
 MOVIE:[plots/2D_zombie_three_phases_zombie_small_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
 
 FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_surface_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_2_surface_sub.png, height=600 width=800 frac=0.8]
 
 Middle town
 

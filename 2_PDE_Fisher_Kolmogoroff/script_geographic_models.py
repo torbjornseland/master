@@ -9,12 +9,12 @@ from gamma_mapping import *
 import os
 
 #SIR models
-
+"""
 plotnames = ['images/Sub','images/Inf','images/Rem']
 classnames = ['Susceptible', 'Infective','Removed']
 parameter_values = ['Sub','Inf','Rem']
 para_name = "Class"
-
+"""
 
 #T = 34
 #Nx = 10
@@ -95,7 +95,7 @@ os.system('rm plots/lambda_*')
 
 #English boarding school
 
-
+"""
 T = 15
 Nt = 10000
 X = 100
@@ -108,7 +108,7 @@ a = r*rho/float(X**2)
 D_s = D_i = D_r = 1
 
 phases = [0,5,10,15]
-
+"""
 #uniform spread
 """
 trav_name = "plots/boadring"
@@ -141,7 +141,7 @@ english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classn
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
 """
 # Gauss center
-
+"""
 moviename = 'plots/2D_british_school_gauss_long'
 V = 1
 A = 1
@@ -156,9 +156,9 @@ def init_func(x,y):
 title = "Centered Gaussian for the Infective class"
 english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classnames,phases,title)
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val)
-
+"""
 #Gauss corner
-
+"""
 moviename = 'plots/2D_british_school_gauss_corner_long'
 
 x0=0
@@ -177,14 +177,14 @@ english_school(T,Nx,Nx,Nt,X,X,z_X,z_Y,init_func,a,r,D_s,D_i,D_r,moviename,classn
 
 #os.system("doconce combine_images -1 plots/2D_british_school_number.png plots/2D_british_school_gauss_number.png plots/2D_british_school_gauss_corner_number.png plots/british_number.png") 
 
-
-# Zombiefication
 """
+# Zombiefication
+
 plotnames = ['images/Sub','images/Inf','images/Zom', 'images/Rem']
 classnames = ['Susceptible', 'Infective', 'Zombies', 'Removed']
 parameter_values = ['Sub','Inf','Zom','Rem']
 para_name = "Class"
-"""
+
 # Initial phase
 """
 T = 3
@@ -231,75 +231,24 @@ moviename = "plots/2D_zombie_three_phases_gauss"
 Nt = 136000
 moviename = "plots/2D_zombie_three_phases_gauss_2"
 """
-# Different initial and diffusion
-"""
+#### Different initial and diffusion
 T = 34
-Nt = 68000
-Nx = 200
-X = 20
-#Z_1 = np.ones([Nx+3,Nx+3])*0.01
-#S_1 = np.ones([Nx+3,Nx+3])
-gamma_s = np.ones([Nx+3,Nx+3])
-gamma_i = np.ones([Nx+3,Nx+3])#*0.5
-gamma_z = np.ones([Nx+3,Nx+3])#*0.8
+Nt = 200
+Nx = 40
+X = 40
 
-[gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]] = gamma_mapping([gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]])
+phases = [0,3,33,34]
 
-#print gamma_s
-#print gamma_i
-#print gamma_z
-
-#S_1[:,:Nx/2] = 0.5
 z_X = z_Y = z_xy = 0
-#moviename = "plots/2D_zombie_three_phases_initial_spread"
-#moviename = "plots/2D_zombie_three_phases_initial_spread_2"
-moviename = "plots/2D_zombie_three_phases_blindern_area_3_ph"
-D_s = 1
-D_i = 0.5
-D_z = 0.9
-D_r = 0
 dx = X/float(Nx)
 x,y = np.meshgrid(np.linspace(0-dx,X+dx,Nx+3),np.linspace(0-dx,X+dx,Nx+3))
-"""
-#Initial conditions for Zombies
-"""
-V = 1
-A = 0.2
-sig = V/float(2*np.pi*A)
-Z_1 = gauss_2D(x,y,A,sig,10,10)
-"""
-#Initial conditions for Susceptible
-"""
-V_s = 21
-A_s = 0.5
-sig_s = V_s/float(2*np.pi*A_s)
-S_1 = gauss_2D(x,y,A_s,sig_s,4,4)
 
-V_s = 200
-A_s = 3
-sig_s = V_s/float(2*np.pi*A_s)
-S_1 += gauss_2D(x,y,A_s,sig_s,9,15)
-
-V_s = 400
-A_s = 4
-sig_s = V_s/float(2*np.pi*A_s)
-S_1 += gauss_2D(x,y,A_s,sig_s,15,5)
-
-#S_1 = init_func(x,y,5,8)*200
-#S_1 += init_func(x,y,3,3)*400
-#S_1 *= 621/float(Nx**2)
-
-if S_1.max() >= Z_1.max():
-    max_val = S_1.max()
-else:
-    max_val = Z_1.max()
-"""
 #parameter values
-"""
 av = (Nx**2)
 par_values = dict(Sigma=3.45*10**(-5),delta_S=2.2*10**(-5),delta_I=2.2*10**(-5),zeta=0,a=0.0073*X**2,sigma=0.005,mu=0.14)
 attacks = [33.125]
-phases = [0,3]#,33,34]
+phases = [0,3,33,34]
+phase_name = ["Initial value", "Initial phase","Hysterical phase","Counter attack"]
 def beta(t):
     if t < 3:
         return 0.01155*X**2
@@ -316,11 +265,86 @@ def alpha(t):
     else:
         return 0.000208*X**2
 
+
+
+#Initial conditions for Susceptible
+
+
+V_s = 21
+A_s = 0.5
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 = gauss_2D(x,y,A_s,sig_s,6,6)
+
+V_s = 200
+A_s = 3
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,12,25)
+
+V_s = 400
+A_s = 4
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,25,12)
+
+#S_1 = init_func(x,y,5,8)*200
+#S_1 += init_func(x,y,3,3)*400
+#S_1 *= 621/float(Nx**2)
+
+
+#Z_1 = np.ones([Nx+3,Nx+3])*0.01
+#S_1 = np.ones([Nx+3,Nx+3])
+gamma_s = np.ones([Nx+3,Nx+3])
+gamma_i = np.ones([Nx+3,Nx+3])*0.5
+gamma_z = np.ones([Nx+3,Nx+3])*0.9
+
+# print initial value for Susceptible
 """
+T = 0
+Z_1 = np.ones([Nx+3,Nx+3])*0.01
 
-#zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,D_s,D_i,D_z,D_r,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z)
+if S_1.max() >= Z_1.max():
+    max_val = S_1.max()
+else:
+    max_val = Z_1.max()
 
-#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val)
+moviename = "plots/initial_value_susceptible"
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z)
+initial_susceptible_plot(plotnames[0],moviename,para_name,X,T,z_xy,max_val)
+"""
+## Small town
+V = 1
+A = 0.2
+sig = V/float(2*np.pi*A)
+Z_1 = gauss_2D(x,y,A,sig,6,6)
+
+if S_1.max() >= Z_1.max():
+    max_val = S_1.max()
+else:
+    max_val = Z_1.max()
+
+
+moviename = "plots/2D_zombie_three_phases_zombie_small_town_2"
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z)
+build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
+#sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
+#contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
+
+## middle town
+
+#[gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]] = gamma_mapping([gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]])
+
+#print gamma_s
+#print gamma_i
+#print gamma_z
+
+#S_1[:,:Nx/2] = 0.5
+#moviename = "plots/2D_zombie_three_phases_initial_spread"
+#moviename = "plots/2D_zombie_three_phases_initial_spread_2"
+#moviename = "plots/2D_zombie_three_phases_blindern_area_3_ph"
+
+
+
+
+
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
 os.system('rm images/*')

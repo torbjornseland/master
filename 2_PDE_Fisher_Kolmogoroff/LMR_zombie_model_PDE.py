@@ -4,7 +4,7 @@ from plotmaker import *
 def omega(t, a, sigma, T):
     return a*sum(np.exp(-0.5*(t-T[i])**2/sigma) for i in range(len(T)))
 
-def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,D_s,D_i,D_z,D_r,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z):
+def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z):
     #parameters
     """
     Sigma = par_val[0]
@@ -58,6 +58,7 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,D_s,D_i,D_z,D_r,moviename,par_value
     
     #Volume
     S_vol[0] = volume_engine(S_1[1:-1,1:-1],dx*dy)
+    print "initial vol S",S_vol[0]
     I_vol[0] = volume_engine(I_1[1:-1,1:-1],dx*dy)
     Z_vol[0] = volume_engine(Z_1[1:-1,1:-1],dx*dy)
     R_vol[0] = volume_engine(R_1[1:-1,1:-1],dx*dy)
@@ -69,79 +70,80 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,D_s,D_i,D_z,D_r,moviename,par_value
 
         
     
-    #Initial cond for travelling wave
-    for n in range(1,Nt+1): 
-        if (n*dt % 1 == 0):
-            print n*dt
-        omega_t = omega(t[n], a, sigma, attacks)
+        #Initial cond for travelling wave
+    if (T != 0):
+        for n in range(1,Nt+1): 
+            if (n*dt % 1 == 0):
+                print n*dt
+            omega_t = omega(t[n], a, sigma, attacks)
 
-        # Only diffusion as a constant
-        """
-        S[1:-1,1:-1] = S_1[1:-1,1:-1] + dt*(Sigma -(beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-delta_S*S_1[1:-1,1:-1]+\
-                D_s*(((S_1[:-2,1:-1]-2*S_1[1:-1,1:-1]+S_1[2:,1:-1])/dx**2)+((S_1[1:-1,:-2]-2*S_1[1:-1,1:-1]+S_1[1:-1,2:])/dy**2)))
-        I[1:-1,1:-1] = I_1[1:-1,1:-1] + dt*((beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-rho(t[n])*I_1[1:-1,1:-1]-delta_I*I_1[1:-1,1:-1]+\
-                D_i*(((I_1[:-2,1:-1]-2*I_1[1:-1,1:-1]+I_1[2:,1:-1])/dx**2)+((I_1[1:-1,:-2]-2*I_1[1:-1,1:-1]+I_1[1:-1,2:])/dy**2)))
-        Z[1:-1,1:-1] = Z_1[1:-1,1:-1] + dt*(rho(t[n])*I_1[1:-1,1:-1]-(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]+zeta*R_1[1:-1,1:-1]+\
-                D_z*(((Z_1[:-2,1:-1]-2*Z_1[1:-1,1:-1]+Z_1[2:,1:-1])/dx**2)+((Z_1[1:-1,:-2]-2*Z_1[1:-1,1:-1]+Z_1[1:-1,2:])/dy**2)))
-        R[1:-1,1:-1] = R_1[1:-1,1:-1] + dt*(delta_S*S_1[1:-1,1:-1]+delta_I*I_1[1:-1,1:-1]-zeta*R_1[1:-1,1:-1]+(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]+\
-                D_r*(((R_1[:-2,1:-1]-2*R_1[1:-1,1:-1]+R_1[2:,1:-1])/dx**2)+((R_1[1:-1,:-2]-2*R_1[1:-1,1:-1]+R_1[1:-1,2:])/dy**2)))
-        """
-        # Controlled by gamma(x)
-        S[1:-1,1:-1] = S_1[1:-1,1:-1] + dt*(Sigma -(beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-delta_S*S_1[1:-1,1:-1]+\
-                ((gamma_s[:-2,1:-1]+gamma_s[1:-1,1:-1])*(S_1[:-2,1:-1]-S_1[1:-1,1:-1]))/(2*dx**2)-\
-                ((gamma_s[2:,1:-1]+gamma_s[1:-1,1:-1])*(S_1[1:-1,1:-1]-S_1[2:,1:-1]))/(2*dx**2)+\
-                ((gamma_s[1:-1,:-2]+gamma_s[1:-1,1:-1])*(S_1[1:-1,:-2]-S_1[1:-1,1:-1]))/(2*dy**2)-\
-                ((gamma_s[1:-1,2:]+gamma_s[1:-1,1:-1])*(S_1[1:-1,1:-1]-S_1[1:-1,2:]))/(2*dy**2))
-        I[1:-1,1:-1] = I_1[1:-1,1:-1] + dt*((beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-rho(t[n])*I_1[1:-1,1:-1]-delta_I*I_1[1:-1,1:-1]+
-                ((gamma_i[:-2,1:-1]+gamma_i[1:-1,1:-1])*(I_1[:-2,1:-1]-I_1[1:-1,1:-1]))/(2*dx**2)-\
-                ((gamma_i[2:,1:-1]+gamma_i[1:-1,1:-1])*(I_1[1:-1,1:-1]-I_1[2:,1:-1]))/(2*dx**2)+\
-                ((gamma_i[1:-1,:-2]+gamma_i[1:-1,1:-1])*(I_1[1:-1,:-2]-I_1[1:-1,1:-1]))/(2*dy**2)-\
-                ((gamma_i[1:-1,2:]+gamma_i[1:-1,1:-1])*(I_1[1:-1,1:-1]-I_1[1:-1,2:]))/(2*dy**2))
-        Z[1:-1,1:-1] = Z_1[1:-1,1:-1] + dt*(rho(t[n])*I_1[1:-1,1:-1]-(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]+zeta*R_1[1:-1,1:-1]+
-                ((gamma_z[:-2,1:-1]+gamma_z[1:-1,1:-1])*(Z_1[:-2,1:-1]-Z_1[1:-1,1:-1]))/(2*dx**2)-\
-                ((gamma_z[2:,1:-1]+gamma_z[1:-1,1:-1])*(Z_1[1:-1,1:-1]-Z_1[2:,1:-1]))/(2*dx**2)+\
-                ((gamma_z[1:-1,:-2]+gamma_z[1:-1,1:-1])*(Z_1[1:-1,:-2]-Z_1[1:-1,1:-1]))/(2*dy**2)-\
-                ((gamma_z[1:-1,2:]+gamma_z[1:-1,1:-1])*(Z_1[1:-1,1:-1]-Z_1[1:-1,2:]))/(2*dy**2))
-        R[1:-1,1:-1] = R_1[1:-1,1:-1] + dt*(delta_S*S_1[1:-1,1:-1]+delta_I*I_1[1:-1,1:-1]-zeta*R_1[1:-1,1:-1]+(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1])
+            # Only diffusion as a constant
+            """
+            S[1:-1,1:-1] = S_1[1:-1,1:-1] + dt*(Sigma -(beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-delta_S*S_1[1:-1,1:-1]+\
+                    D_s*(((S_1[:-2,1:-1]-2*S_1[1:-1,1:-1]+S_1[2:,1:-1])/dx**2)+((S_1[1:-1,:-2]-2*S_1[1:-1,1:-1]+S_1[1:-1,2:])/dy**2)))
+            I[1:-1,1:-1] = I_1[1:-1,1:-1] + dt*((beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-rho(t[n])*I_1[1:-1,1:-1]-delta_I*I_1[1:-1,1:-1]+\
+                    D_i*(((I_1[:-2,1:-1]-2*I_1[1:-1,1:-1]+I_1[2:,1:-1])/dx**2)+((I_1[1:-1,:-2]-2*I_1[1:-1,1:-1]+I_1[1:-1,2:])/dy**2)))
+            Z[1:-1,1:-1] = Z_1[1:-1,1:-1] + dt*(rho(t[n])*I_1[1:-1,1:-1]-(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]+zeta*R_1[1:-1,1:-1]+\
+                    D_z*(((Z_1[:-2,1:-1]-2*Z_1[1:-1,1:-1]+Z_1[2:,1:-1])/dx**2)+((Z_1[1:-1,:-2]-2*Z_1[1:-1,1:-1]+Z_1[1:-1,2:])/dy**2)))
+            R[1:-1,1:-1] = R_1[1:-1,1:-1] + dt*(delta_S*S_1[1:-1,1:-1]+delta_I*I_1[1:-1,1:-1]-zeta*R_1[1:-1,1:-1]+(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]+\
+                    D_r*(((R_1[:-2,1:-1]-2*R_1[1:-1,1:-1]+R_1[2:,1:-1])/dx**2)+((R_1[1:-1,:-2]-2*R_1[1:-1,1:-1]+R_1[1:-1,2:])/dy**2)))
+            """
+            # Controlled by gamma(x)
+            S[1:-1,1:-1] = S_1[1:-1,1:-1] + dt*(Sigma -(beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-delta_S*S_1[1:-1,1:-1]+\
+                    ((gamma_s[:-2,1:-1]+gamma_s[1:-1,1:-1])*(S_1[:-2,1:-1]-S_1[1:-1,1:-1]))/(2*dx**2)-\
+                    ((gamma_s[2:,1:-1]+gamma_s[1:-1,1:-1])*(S_1[1:-1,1:-1]-S_1[2:,1:-1]))/(2*dx**2)+\
+                    ((gamma_s[1:-1,:-2]+gamma_s[1:-1,1:-1])*(S_1[1:-1,:-2]-S_1[1:-1,1:-1]))/(2*dy**2)-\
+                    ((gamma_s[1:-1,2:]+gamma_s[1:-1,1:-1])*(S_1[1:-1,1:-1]-S_1[1:-1,2:]))/(2*dy**2))
+            I[1:-1,1:-1] = I_1[1:-1,1:-1] + dt*((beta(t[n])+mu*omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]-rho(t[n])*I_1[1:-1,1:-1]-delta_I*I_1[1:-1,1:-1]+
+                    ((gamma_i[:-2,1:-1]+gamma_i[1:-1,1:-1])*(I_1[:-2,1:-1]-I_1[1:-1,1:-1]))/(2*dx**2)-\
+                    ((gamma_i[2:,1:-1]+gamma_i[1:-1,1:-1])*(I_1[1:-1,1:-1]-I_1[2:,1:-1]))/(2*dx**2)+\
+                    ((gamma_i[1:-1,:-2]+gamma_i[1:-1,1:-1])*(I_1[1:-1,:-2]-I_1[1:-1,1:-1]))/(2*dy**2)-\
+                    ((gamma_i[1:-1,2:]+gamma_i[1:-1,1:-1])*(I_1[1:-1,1:-1]-I_1[1:-1,2:]))/(2*dy**2))
+            Z[1:-1,1:-1] = Z_1[1:-1,1:-1] + dt*(rho(t[n])*I_1[1:-1,1:-1]-(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1]+zeta*R_1[1:-1,1:-1]+
+                    ((gamma_z[:-2,1:-1]+gamma_z[1:-1,1:-1])*(Z_1[:-2,1:-1]-Z_1[1:-1,1:-1]))/(2*dx**2)-\
+                    ((gamma_z[2:,1:-1]+gamma_z[1:-1,1:-1])*(Z_1[1:-1,1:-1]-Z_1[2:,1:-1]))/(2*dx**2)+\
+                    ((gamma_z[1:-1,:-2]+gamma_z[1:-1,1:-1])*(Z_1[1:-1,:-2]-Z_1[1:-1,1:-1]))/(2*dy**2)-\
+                    ((gamma_z[1:-1,2:]+gamma_z[1:-1,1:-1])*(Z_1[1:-1,1:-1]-Z_1[1:-1,2:]))/(2*dy**2))
+            R[1:-1,1:-1] = R_1[1:-1,1:-1] + dt*(delta_S*S_1[1:-1,1:-1]+delta_I*I_1[1:-1,1:-1]-zeta*R_1[1:-1,1:-1]+(alpha(t[n]) + omega_t)*S_1[1:-1,1:-1]*Z_1[1:-1,1:-1])
 
-        S[0,:] = S[2,:]
-        S[-1,:] = S[-3,:]
-        S[:,0] = S[:,2]
-        S[:,-1] = S[:,-3]
+            S[0,:] = S[2,:]
+            S[-1,:] = S[-3,:]
+            S[:,0] = S[:,2]
+            S[:,-1] = S[:,-3]
 
-        I[0,:] = I[2,:]
-        I[-1,:] = I[-3,:]
-        I[:,0] = I[:,2]
-        I[:,-1] = I[:,-3]
-        
-        Z[0,:] = Z[2,:]
-        Z[-1,:] = Z[-3,:]
-        Z[:,0] = Z[:,2]
-        Z[:,-1] = Z[:,-3]
-        
-        R[0,:] = R[2,:]
-        R[-1,:] = R[-3,:]
-        R[:,0] = R[:,2]
-        R[:,-1] = R[:,-3]
+            I[0,:] = I[2,:]
+            I[-1,:] = I[-3,:]
+            I[:,0] = I[:,2]
+            I[:,-1] = I[:,-3]
+            
+            Z[0,:] = Z[2,:]
+            Z[-1,:] = Z[-3,:]
+            Z[:,0] = Z[:,2]
+            Z[:,-1] = Z[:,-3]
+            
+            R[0,:] = R[2,:]
+            R[-1,:] = R[-3,:]
+            R[:,0] = R[:,2]
+            R[:,-1] = R[:,-3]
 
-        #Volume
-        S_vol[n] = volume_engine(S[1:-1,1:-1],dx*dy)
-        I_vol[n] = volume_engine(I[1:-1,1:-1],dx*dy)
-        Z_vol[n] = volume_engine(Z[1:-1,1:-1],dx*dy)
-        R_vol[n] = volume_engine(R[1:-1,1:-1],dx*dy)
+            #Volume
+            S_vol[n] = volume_engine(S[1:-1,1:-1],dx*dy)
+            I_vol[n] = volume_engine(I[1:-1,1:-1],dx*dy)
+            Z_vol[n] = volume_engine(Z[1:-1,1:-1],dx*dy)
+            R_vol[n] = volume_engine(R[1:-1,1:-1],dx*dy)
 
-        if (n%mn == 0):
-            np.save("images/Sub%04d" % (n/mn),S[1:-1,1:-1])
-            np.save("images/Inf%04d" % (n/mn),I[1:-1,1:-1])
-            np.save("images/Zom%04d" % (n/mn),Z[1:-1,1:-1])
-            np.save("images/Rem%04d" % (n/mn),R[1:-1,1:-1])
+            if (n%mn == 0):
+                np.save("images/Sub%04d" % (n/mn),S[1:-1,1:-1])
+                np.save("images/Inf%04d" % (n/mn),I[1:-1,1:-1])
+                np.save("images/Zom%04d" % (n/mn),Z[1:-1,1:-1])
+                np.save("images/Rem%04d" % (n/mn),R[1:-1,1:-1])
 
-        S_1[:,:] = S
-        I_1[:,:] = I
-        Z_1[:,:] = Z 
-        R_1[:,:] = R 
+            S_1[:,:] = S
+            I_1[:,:] = I
+            Z_1[:,:] = Z 
+            R_1[:,:] = R 
 
-    plot_volume(t,[S_vol,I_vol,Z_vol,R_vol],moviename,classnames,T)
-    print_phase(dt,t,phases,[S_vol,I_vol,Z_vol,R_vol],classnames)
+    #plot_volume(t,[S_vol,I_vol,Z_vol,R_vol],moviename,classnames,T)
+    #print_phase(dt,t,phases,[S_vol,I_vol,Z_vol,R_vol],classnames)
 
 
