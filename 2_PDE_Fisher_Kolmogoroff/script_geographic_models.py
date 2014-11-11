@@ -310,7 +310,7 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 initial_susceptible_plot(plotnames[0],moviename,para_name,X,T,z_xy,max_val)
 """
 ## Small town
-"""
+print "Writing small town"
 V = 1
 A = 0.2
 sig = V/float(2*np.pi*A)
@@ -328,9 +328,8 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
-"""
 ## middle town
-"""
+print "Writing middle town"
 V = 1
 A = 0.2
 sig = V/float(2*np.pi*A)
@@ -348,7 +347,7 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
-"""
+
 ## large town
 print "large town"
 V = 1
