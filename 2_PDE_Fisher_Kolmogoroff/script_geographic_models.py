@@ -233,8 +233,8 @@ moviename = "plots/2D_zombie_three_phases_gauss_2"
 """
 #### Different initial and diffusion
 T = 34
-Nt = 100000
-Nx = 800
+Nt = 1000
+Nx = 40
 X = 40
 
 
@@ -323,12 +323,14 @@ else:
     max_val = Z_1.max()
 
 folder = "small_town_data"
+plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
 moviename = "plots/2D_zombie_three_phases_zombie_small_town_2"
 zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder)
-#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
+build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
 ## middle town
+"""
 print "Writing middle town"
 V = 1
 A = 0.2
@@ -347,8 +349,9 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
-
+"""
 ## large town
+"""
 print "large town"
 V = 1
 A = 0.2
@@ -368,7 +371,7 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
-
+"""
 
 
 

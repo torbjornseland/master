@@ -635,6 +635,29 @@ FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_number.png, height=600 w
 
 FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_number.png, height=600 width=800 frac=0.8]
 
+Small town
+time=0.000000
+Susceptible = 619.99
+Infective = 0.00
+Zombies = 1.00
+Removed = 0.00
+time=3.000000
+Susceptible = 603.74
+Infective = 2.96
+Zombies = 13.79
+Removed = 0.66
+time=33.000000
+Susceptible = 604.42
+Infective = 0.03
+Zombies = 6.25
+Removed = 12.14
+time=34.000000
+Susceptible = 604.21
+Infective = 0.08
+Zombies = 4.49
+Removed = 14.11
+
+
 === Lock in different areas ===
 To model a realistic zombie attack, humans ability to think logic is crucial in the fight. The moving speed was presented as a factor in the previous section. Another important skill that the *Susceptible* class hold, is the ability to decide if an area is safe. In the TV series *Walking Dead*, the humans build barricades to keep the zombies outside. This give the *Susceptible* class free areas where they can stay. To   
 
