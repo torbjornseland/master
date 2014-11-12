@@ -77,7 +77,9 @@ Automatically generated HTML file from Doconce source
               (' A long simulation on 100 Days ', 3, None, '___sec26'),
               (' Zombiefication ', 2, None, '___sec27'),
               (' Verify the initial phase ', 3, None, '___sec28'),
-              (' Three phases ', 3, None, '___sec29')]}
+              (' Three phases ', 3, None, '___sec29'),
+              (' middle town ', 3, None, '___sec30'),
+              (' large town ', 3, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -249,117 +251,38 @@ The diffusion term describe the diffusion for each class. This can be seen as th
 
 <br />
 <br />
-The parameters from (<a href="#table:param_val">table:param_val</a>) will be used here and the three phases will be modeled as shown for the uniformed distributed PDE system. This will be done for three different simulations with similar initial value for the susceptible class. The initial value can be seen in figure() and are based on the data given above. The difference in the three different simulations will be the placement of the zombie on. The zombie will be placed in center of the small, middle and large town.
+The parameters from (<a href="#table:param_val">table:param_val</a>) will be used here and the three phases will be modeled as shown for the uniformed distributed PDE system. This will be done for three different simulations with similar initial value for the susceptible class. The initial value can be seen in figure(<a href="#fig:initial_value_susceptible">10</a>) and are based on the data given above. The difference in the three different simulations will be the placement of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
 
 <p>
-<center><p><img src="plots/initial_value_susceptible.png" align="bottom" height=600 width=800></p></center>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 10:  <a name="fig:initial_value_susceptible"></a> </p></center>
+<p><img src="plots/initial_value_susceptible.png" align="bottom" height=600 width=800></p>
+</center>
 
 <p>
-Small town
-moviename = "plots/2D_zombie_three_phases_zombie_small_town"
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_zombie_small_town.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
+The figure() shows the simulation where the zombie is placed in the small town. The four subplots are from the different phases that arise under a zombie attack. The different classes have the same color as introduced in figure(<a href="#fig:zombie_three_number">9</a>). It is a challenge to separate the three groups <em>Infected</em>,*Zombie* and <em>Removed</em>, since they all have a low value at initial time. The development of the amount can easier be seen in the figure(), which also shows the result from the placement in the middle and large group. Since the amount of <em>Susceptible</em> is quite low in the small town where the Zombie arise, the disease is not able to infect to many before the society has moved to the next phase. Assuming that the broadcasting works okay for the first days. This result in a eradication of the disease in about a mounth. The table() shows that the number of zombies decrease towards zero after a month. 
 
 <p>
 <center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_sub.png" align="bottom" height=600 width=800></p></center>
 
 <p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_2_sub.png" align="bottom" height=600 width=800></p></center>
+By placing the Zombie in the middle town, the amount of zombies increase to a much higher level. The amount can be seen as the second sub figure in figure(). The damages are higher and after a month the total population of <em>Susceptible</em> will be reduced to around (300). The simulation can be seen in the Appendix. The last calculation done in the large town shows the major damages. Here the amount of zombies increase above the number of <em>Susceptible</em>. The <em>Infected</em> class also increase towards 100 around in the infected phase. This can be explained by the high number of meeting between susceptible and zombies. A plot that shows each class is produced for this simulation. This give a better overview of the concentration of the four groups during this simulation. Since the diffusion term for the <em>Removed</em> group is sat to zero, the <em>Removed</em> subplots gives an indication on the placement of the deaths. This seems to be grouped in the city. The amount of zombies also seems to be higher here. The major amount of <em>Susceptible</em> are in the middle town. This area was able to avoid the damages from the initial phase.
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+The result from the uniformed distributed simulation still is much higher for the <em>Zombie</em> class then for the large town. This shows that by using the parameters from the ODE system in a geographic area give no sense. A realistic assumption is that a zombie is restricted to a given area. Therefore the parameters will not be equal for all. The chance of getting infected is much higher if a susceptible is closed to an infected. There is also a greater chance of getting infected if the susceptible stay in a crowded area.
 
 <p>
 <center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_number.png" align="bottom" height=600 width=800></p></center>
 
 <p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_zombie_small_town_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_2_surface_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-Middle town
-
-<p>
-moviename = "plots/2D_zombie_three_phases_zombie_middle_town"
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_zombie_middle_town.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
 <center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_number.png" align="bottom" height=600 width=800></p></center>
 
 <p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_zombie_middle_town_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-Large town
-moviename = "plots/2D_zombie_three_phases_zombie_large_town"
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_zombie_large_town.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
 <center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_number.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_zombie_large_town_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em>Created with different diffusion constants. The groups of susceptible are placed in three different areas.</em></p>
-
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
 
 <h3>Lock in different areas  <a name="___sec18"></a></h3>
 
