@@ -310,6 +310,7 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 initial_susceptible_plot(plotnames[0],moviename,para_name,X,T,z_xy,max_val)
 """
 ## Small town
+"""
 print "Writing small town"
 V = 1
 A = 0.2
@@ -329,6 +330,7 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
+"""
 ## middle town
 """
 print "Writing middle town"
@@ -374,21 +376,13 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 """
 
 
+## Ten minutes at Fredereikkes place
+gamma_s = np.ones([Nx+3,Nx+3])
+gamma_i = np.ones([Nx+3,Nx+3])*0.5
+gamma_z = np.ones([Nx+3,Nx+3])*0.9
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#[gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]] = gamma_mapping([gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]])
+#Give the values
+[gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]] = gamma_mapping([gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]])
 
 #print gamma_s
 #print gamma_i
