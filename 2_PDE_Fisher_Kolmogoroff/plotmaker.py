@@ -11,7 +11,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,ph
     surf_color = ['blue','green','red','cyan']
     for i in plotnames:
         img = "%s%04d.npz" % (i,0)
-	arr = np.load(img)
+        arr = np.load(img)
         len_x = len(arr['arr_0'])
         x,y = np.meshgrid(np.linspace(0,L,len_x),np.linspace(0,L,len_x))
         x_list.append(x)
@@ -34,7 +34,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,ph
         for i in range(len(plotnames)):
             img = "%s%04d.npz" % (plotnames[i],j)
             label_name = "%s = %s" % (para_name, parameter_values[i])
-	    arr = np.load(img)
+            arr = np.load(img)
             #plt.plot(x_list[i],np.load(img),label=label_name)
             ax.plot_wireframe(x_list[i],y_list[i],arr['arr_0'], rstride=10, cstride=10,color=surf_color[i])
         #plt.plot([z_X,z_X],[-0.1,1.1],'k')
@@ -128,19 +128,26 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
     for filename in glob.glob('movie_images/tmp_sub*.png'):
         os.remove(filename)
 
-def contourf_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,classnames):
+def contourf_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,classnames,phases,phase_name):
     x_list = []
     y_list = []
     surf_color = ['blue','green','red','cyan']
     for i in plotnames:
-        img = "%s%04d.npy" % (i,0)
-        len_x = len(np.load(img))
+        img = "%s%04d.npz" % (i,0)
+        arr = np.load(img)
+        len_x = len(arr['arr_0'])
         x,y = np.meshgrid(np.linspace(0,L,len_x),np.linspace(0,L,len_x))
         x_list.append(x)
         y_list.append(y)
     plotname = "%s*" %(plotnames[0])
     Nt = len(glob.glob(plotname))
     print Nt
+    ph_check = []
+    for ph in phases:
+        if ph == T:
+            ph_check.append(Nt-1)
+        else:
+            ph_check.append(int((Nt*ph)/T))
     sub_num = int(Nt/3)
     origin = 'lower'
     img_b = mpimg.imread('Blindern.png')
@@ -152,12 +159,13 @@ def contourf_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val
             ax = fig.add_subplot(2,2,i+1)
             imgplot = plt.imshow(img_b)
             #ax.title("%s" % classnames[i])
-            img = "%s%04d.npy" % (plotnames[i],j)
+            img = "%s%04d.npz" % (plotnames[i],j)
+            arr = np.load(img)
             label_name = "%s = %s" % (para_name, parameter_values[i])
             #plt.plot(x_list[i],np.load(img),label=label_name)
             #ax.plot_wireframe(x_list[i],y_list[i],np.load(img), rstride=10, cstride=10,color=surf_color[i])
             #surf = ax.plot_surface(x_list[i],y_list[i],np.load(img), rstride=5, cstride=5,cmap=cm.coolwarm,linewidth=0, antialiased=False,vmin=0,vmax=max_val)
-            CS = ax.contourf(y,x,np.load(img),50,cmap=cm.coolwarm,origin=origin,vmin=0,vmax=max_val,alpha=0.6) 
+            CS = ax.contourf(y,x,arr['arr_0'],50,cmap=cm.coolwarm,origin=origin,vmin=0,vmax=max_val,alpha=0.5) 
             ax.set_title(classnames[i])
             #ax.set_zlim(0,max_val)
             #ax.set_xlim3d(0,L)
@@ -180,9 +188,12 @@ def contourf_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val
         print j
         plt.savefig("movie_images/tmp_contourf%04d.png" % j)
         
-        if(j%(sub_num-1) == 0 ):
-            print j
-            plt.savefig("plots/2D_gauss_wave%04d.png" % (j/(sub_num-1)))
+        for ph in range(len(ph_check)):
+            if(j == ph_check[ph]):
+                print "sub"
+                print j,ph
+                plt.suptitle("time=%2.1f" % ((j*T/float(Nt))))
+                plt.savefig("plots/2D_gauss_wave%04d.png" % ph)
         
         plt.close()
 
@@ -237,7 +248,7 @@ def plot_volume(t,vol_list,moviename,classnames,T,title,t_size=1,x_size=1):
     for i in range(len(vol_list)):
         plt.plot(t/t_size,vol_list[i]/x_size,label=classnames[i])
     plt.axis([0,T,0,800])
-    plt.xlabel('Days')
+    plt.xlabel('Hours')
     plt.ylabel('Number')
     plt.title(title)
     #plt.legend(bbox_to_anchor=(0.,.9,1.0,.102), loc=3,ncol=4,mode="expand",borderaxespad=0.)

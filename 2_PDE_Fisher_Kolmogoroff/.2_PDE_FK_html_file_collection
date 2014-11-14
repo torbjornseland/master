@@ -14,10 +14,9 @@ plots/2D_zombie_three_phases_zombie_large_town_surface_sub.png
 plots/2D_zombie_three_phases_zombie_small_town_number.png
 plots/2D_zombie_three_phases_zombie_middle_town_number.png
 plots/2D_zombie_three_phases_zombie_large_town_number.png
-plots/2D_zombie_three_phases_blindern_area_contourf_sub.png
-plots/2D_zombie_three_phases_blindern_area_number.png
-plots/2D_zombie_three_phases_blindern_area_3_ph_contourf_sub.png
-plots/2D_zombie_three_phases_blindern_area_3_ph_number.png
+plots/2D_Frederikke_contourf_sub.png
+plots/2D_compare_Frederikke.png
+plots/2D_Frederikke_random_contourf_sub.png
 plots/2D_gauss_sub.png
 plots/2D_gauss_one_sub.png
 plots/2D_british_school_sub.png
@@ -30,7 +29,6 @@ plots/2D_zombie_initial_cond_number.png
 plots/2D_zombie_three_phases_sub.png
 plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png
 plots/2D_zombie_three_phases_zombie_large_town_sub.png
-plots/2D_zombie_three_phases_blindern_area_3_ph_surface.webm
 ._2_PDE_FK000.html
 ._2_PDE_FK001.html
 ._2_PDE_FK002.html

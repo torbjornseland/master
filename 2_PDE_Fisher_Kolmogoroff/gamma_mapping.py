@@ -15,7 +15,7 @@ def gamma_mapping(gamma_list):
             if (img[int(j*h_re)][int(i*w_re)][0] == free_area): 
                 for gamma in gamma_list[1:]:
                     gamma[i,j] = 0
-
+                gamma_list[0][i,j] = 0.1
 
     
     return gamma_list

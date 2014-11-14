@@ -232,10 +232,10 @@ Nt = 136000
 moviename = "plots/2D_zombie_three_phases_gauss_2"
 """
 #### Different initial and diffusion
-T = 34
-Nt = 1000
-Nx = 40
-X = 40
+T = 10
+Nt = 40000
+Nx = 20
+X = 20
 
 
 z_X = z_Y = z_xy = 0
@@ -376,10 +376,41 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 """
 
 
-## Ten minutes at Fredereikkes place
-gamma_s = np.ones([Nx+3,Nx+3])
-gamma_i = np.ones([Nx+3,Nx+3])*0.5
-gamma_z = np.ones([Nx+3,Nx+3])*0.9
+## Ten minutes at Frederikkes place
+"""
+print "Frederikke"
+phases = [0,3,7,10]
+phase_name = ["time = 0", "time = 3","time = 7","time = 10"]
+
+#Initial values for Susceptible and Zombie
+V = 1
+A = 0.2
+sig = V/float(2*np.pi*A)
+Z_1 = gauss_2D(x,y,A,sig,10,8)
+
+V_s = 21
+A_s = 3
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 = gauss_2D(x,y,A_s,sig_s,4,4)
+
+V_s = 200
+A_s = 8
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,8,15)
+
+V_s = 400
+A_s = 10
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,13,8)
+
+if S_1.max() >= Z_1.max():
+    max_val = S_1.max()
+else:
+    max_val = Z_1.max()
+
+gamma_s = np.ones([Nx+3,Nx+3])*5
+gamma_i = np.ones([Nx+3,Nx+3])
+gamma_z = np.ones([Nx+3,Nx+3])
 
 #Give the values
 [gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]] = gamma_mapping([gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]])
@@ -388,7 +419,103 @@ gamma_z = np.ones([Nx+3,Nx+3])*0.9
 #print gamma_i
 #print gamma_z
 
+
+
+title = "Zombie attack at Frederikkeplassen"
+moviename = "plots/2D_Frederikke"
+folder = "Frederikke_data"
+plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
+gap = 1
+
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
+#contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
+"""
+#uniform distribution at Frederikke
+"""
+phases = [0,3,7,10]
+phase_name = ["time = 0", "time = 3","time = 7","time = 10"]
+
+S_start = 618.347685135
+S_1 = np.ones([Nx+3,Nx+3])*(1/float(X**2))*S_start
+Z_1 = np.ones([Nx+3,Nx+3])*(1/float(X**2))
+
+if S_1.max() >= Z_1.max():
+    max_val = S_1.max()
+else:
+    max_val = Z_1.max()
+
+gamma_s = np.ones([Nx+3,Nx+3])
+gamma_i = np.ones([Nx+3,Nx+3])
+gamma_z = np.ones([Nx+3,Nx+3])
+
+
+title = "Frederikkeplassen with unform distribution and diffusion"
+
+moviename = "plots/2D_Frederikke_uniform"
+folder = "Frederikke_uniform_data"
+plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
+gap = 1
+
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
+contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
+"""
+# random placed students
+print "random"
+phases = [0,3,7,10]
+phase_name = ["time = 0", "time = 3","time = 7","time = 10"]
+
+S_start = 618.347685135
+S_1 = 2*np.random.random((Nx+3,Nx+3))*(1/float(X**2))*S_start
+#S_1 = np.random.random((Nx+3,Nx+3))*(1/float(X**2))
+
+Z_1 = np.zeros([Nx+3,Nx+3])
+#S_1 = np.zeros([Nx+3,Nx+3])
+box_len = (Nx/X)+1
+print box_len
+
+V = 1
+A = 0.2
+sig = V/float(2*np.pi*A)
+Z_1 = gauss_2D(x,y,A,sig,10,8)
+
+#for i in range(618):
+#    ra_x = np.random.randint(1,Nx+1)
+#    ra_y = np.random.randint(1,Nx+1)
+#    S_1[ra_x:ra_x+box_len,ra_y:ra_y+box_len] += 1
+
+ra_x = np.random.randint(0,Nx)
+ra_y = np.random.randint(0,Nx)
+Z_1[ra_x:ra_x+box_len,ra_y:ra_y+box_len] += 1
+
+print Z_1
+print S_1
+
+if S_1.max() >= Z_1.max():
+    max_val = S_1.max()
+else:
+    max_val = Z_1.max()
+
+gamma_s = np.ones([Nx+3,Nx+3])*5
+gamma_i = np.ones([Nx+3,Nx+3])
+gamma_z = np.ones([Nx+3,Nx+3])
+
+#Give the values
+[gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]] = gamma_mapping([gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]])
+
+
+title = "Zombie attack at Frederikkeplassen random placement "
+moviename = "plots/2D_Frederikke_random"
+folder = "Frederikke_random_data"
+plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
+gap = 1
+
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
+#contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
+
+
 #S_1[:,:Nx/2] = 0.5
+
+
 #moviename = "plots/2D_zombie_three_phases_initial_spread"
 #moviename = "plots/2D_zombie_three_phases_initial_spread_2"
 #moviename = "plots/2D_zombie_three_phases_blindern_area_3_ph"

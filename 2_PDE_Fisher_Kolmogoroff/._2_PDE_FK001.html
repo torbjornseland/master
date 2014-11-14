@@ -64,23 +64,24 @@ Automatically generated HTML file from Doconce source
               (' Variation in diffusion ', 3, None, '___sec16'),
               (' Where does the infected one arises ', 3, None, '___sec17'),
               (' Lock in different areas ', 2, None, '___sec18'),
-              (' Ten minutes at Frederikkes place ', 3, None, '___sec19'),
-              (' Appendix ', 1, None, '___sec20'),
-              (' Discretization ', 2, None, '___sec21'),
-              (' 2D Gaussian function from x=0 ', 2, None, '___sec22'),
-              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec23'),
+              (' Ten minutes at Frederikkeplassen ', 3, None, '___sec19'),
+              (' random distribution ', 3, None, '___sec20'),
+              (' Appendix ', 1, None, '___sec21'),
+              (' Discretization ', 2, None, '___sec22'),
+              (' 2D Gaussian function from x=0 ', 2, None, '___sec23'),
+              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec24'),
               (' 2D Gaussian function from x=0,y=0 with higher initial value ',
                2,
                None,
-               '___sec24'),
-              (' English Boarding School ', 2, None, '___sec25'),
-              (' Gaussian from the corner ', 3, None, '___sec26'),
-              (' A long simulation on 100 Days ', 3, None, '___sec27'),
-              (' Zombiefication ', 2, None, '___sec28'),
-              (' Verify the initial phase ', 3, None, '___sec29'),
-              (' Three phases ', 3, None, '___sec30'),
-              (' middle town ', 3, None, '___sec31'),
-              (' large town ', 3, None, '___sec32')]}
+               '___sec25'),
+              (' English Boarding School ', 2, None, '___sec26'),
+              (' Gaussian from the corner ', 3, None, '___sec27'),
+              (' A long simulation on 100 Days ', 3, None, '___sec28'),
+              (' Zombiefication ', 2, None, '___sec29'),
+              (' Verify the initial phase ', 3, None, '___sec30'),
+              (' Three phases ', 3, None, '___sec31'),
+              (' middle town ', 3, None, '___sec32'),
+              (' large town ', 3, None, '___sec33')]}
 end of tocinfo -->
 
 <body>
@@ -335,41 +336,72 @@ $$
     Z^{n+1}_{i,j} &= Z^n_{i,j} +\Delta t \left( \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j}+\
         \frac{1}{2\Delta x^2}\left(\gamma_Z(x_{i-1,j})(Z^{n}_{i-1,j}-Z^{n}_{i,j})+\gamma_Z(x_{i,j})(Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j})+\gamma_Z(x_{i+1,j})(-Z^{n}_{i,j}+Z^{n}_{i+1,j})\right)+\
         \frac{1}{2\Delta y^2}\left(\gamma_Z(x_{i,j-1})(Z^{n}_{i,j-1}-Z^{n}_{i,j})+\gamma_Z(x_{i,j})(Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1})+\gamma_Z(x_{i,j+1})(-Z^{n}_{i,j}+Z^{n}_{i,j+1})\right)\right)\\
-    R^{n+1}_{i,j} &= R^n_{i,j} +\Delta t \left(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+\
-        \frac{1}{2\Delta x^2}\left(\gamma_R(x_{i-1,j})(R^{n}_{i-1,j}-R^{n}_{i,j})+\gamma_R(x_{i,j})(R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j})+\gamma_R(x_{i+1,j})(-R^{n}_{i,j}+R^{n}_{i+1,j})\right)+\
-        \frac{1}{2\Delta y^2}\left(\gamma_R(x_{i,j-1})(R^{n}_{i,j-1}-R^{n}_{i,j})+\gamma_R(x_{i,j})(R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1})+\gamma_R(x_{i,j+1})(-R^{n}_{i,j}+R^{n}_{i,j+1})\right)\right)\\
+    R^{n+1}_{i,j} &= R^n_{i,j} +\Delta t \left(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}\right)
 	\end{aligned}
 \end{equation}
 $$
 
-<h3>Ten minutes at Frederikkes place  <a name="___sec19"></a></h3>
+The diffusion term for the <em>Removed</em> class is take away, since dead people are not able to move. This system looks quite messy, but it is straight forward to calculate. All values on the right side are known values and the system is easy to solve. Now every point will has its own diffusion constant. This makes it easier to control the flow in each class. With a high diffusion constant, the diffusion will spread fast. When the diffusion constant goes towards zero, the flow will go towards a steady state. This will result in a set of ODE systems modeled for each point.
 
-<center><p><img src="plots/2D_zombie_three_phases_blindern_area_contourf_sub.png" align="bottom" height=600 width=800></p></center>
+<h3>Ten minutes at Frederikkeplassen  <a name="___sec19"></a></h3>
+
+Frederikkeplassen at the university is an area for an upcoming zombie attack. This simulation will try to model a ten minutes sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realise the danger and goes into the <em>Hysterical phase</em>. A map of Frederikkeplassen is used to define the safe and non save areas. The buildings are set as areas where only the <em>Susceptible</em> are allowed to move. This is done by setting the diffusion constant to zero for the <em>Zombie</em> and <em>Infected</em> class. Since the buildings will be safe spots for the <em>Susceptible</em>, an idea would be to express this in the diffusion term. This more difficult, since the concentrations in each class wants to go towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and 
+
+<p>
+<center><p><img src="plots/2D_Frederikke_contourf_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_compare_Frederikke.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+Free Areas
+time=0.000000
+Susceptible = 618.35
+Infective = 0.00
+Zombies = 1.00
+Removed = 0.00
+time=3.000000
+Susceptible = 252.72
+Infective = 75.69
+Zombies = 276.55
+Removed = 13.94
+time=7.000000
+Susceptible = 251.35
+Infective = 0.51
+Zombies = 325.54
+Removed = 41.26
+time=10.000000
+Susceptible = 249.84
+Infective = 0.38
+Zombies = 295.71
+Removed = 72.36
 
 <p>
 compare with uniform distributed
+time=0.000000
+Susceptible = 618.35
+Infective = 0.00
+Zombies = 1.00
+Removed = 0.00
+time=3.000000
+Susceptible = 72.23
+Infective = 229.65
+Zombies = 296.67
+Removed = 20.84
+time=7.000000
+Susceptible = 70.78
+Infective = 0.83
+Zombies = 498.72
+Removed = 49.12
+time=10.000000
+Susceptible = 69.69
+Infective = 0.25
+Zombies = 479.00
+Removed = 70.55
 
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_blindern_area_number.png" align="bottom" height=600 width=800></p></center>
+<h3>random distribution  <a name="___sec20"></a></h3>
 
-<p>
-Three phases
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_blindern_area_3_ph_contourf_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_blindern_area_3_ph_number.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-
-<div>
-<video  loop controls width='600' height='500' preload='none'>
-    <source src='plots/2D_zombie_three_phases_blindern_area_3_ph_surface.webm' type='video/webm; codecs="vp8, vorbis"'>
-</video>
-</div>
-<p><em></em></p>
-
+<center><p><img src="plots/2D_Frederikke_random_contourf_sub.png" align="bottom" height=600 width=800></p></center>
 
 <p>
 <p>

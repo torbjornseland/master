@@ -4,7 +4,7 @@ from plotmaker import *
 def omega(t, a, sigma, T):
     return a*sum(np.exp(-0.5*(t-T[i])**2/sigma) for i in range(len(T)))
 
-def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder):
+def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap):
     #parameters
     """
     Sigma = par_val[0]
@@ -17,7 +17,7 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,bet
     a = par_val[7]
     sigma = par_val[8]
     """
-    mn = int(Nt/200) #movie number, choose 100 uniformly distributed
+    mn = int(Nt/100) #movie number, choose 100 uniformly distributed
     print mn
     for args in par_values:
         exec("%s = %f" % (args, par_values[args]))
@@ -63,10 +63,10 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,bet
     Z_vol[0] = volume_engine(Z_1[1:-1,1:-1],dx*dy)
     R_vol[0] = volume_engine(R_1[1:-1,1:-1],dx*dy)
 
-    np.savez_compressed("%s/Sub%04d" % (folder,0),S_1[1:-1,1:-1]) #initial conditions
-    np.savez_compressed("%s/Inf%04d" % (folder,0),I_1[1:-1,1:-1]) #initial conditions
-    np.savez_compressed("%s/Zom%04d" % (folder,0),Z_1[1:-1,1:-1]) #initial conditions
-    np.savez_compressed("%s/Rem%04d" % (folder,0),R_1[1:-1,1:-1]) #initial conditions
+    np.savez_compressed("%s/Sub%04d" % (folder,0),S_1[1:-1:gap,1:-1:gap]) #initial conditions
+    np.savez_compressed("%s/Inf%04d" % (folder,0),I_1[1:-1:gap,1:-1:gap]) #initial conditions
+    np.savez_compressed("%s/Zom%04d" % (folder,0),Z_1[1:-1:gap,1:-1:gap]) #initial conditions
+    np.savez_compressed("%s/Rem%04d" % (folder,0),R_1[1:-1:gap,1:-1:gap]) #initial conditions
 
         
     
@@ -133,10 +133,10 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,bet
             R_vol[n] = volume_engine(R[1:-1,1:-1],dx*dy)
 
             if (n%mn == 0):
-                np.savez_compressed("%s/Sub%04d" % (folder,(n/mn)),S[1:-1,1:-1])
-                np.savez_compressed("%s/Inf%04d" % (folder,(n/mn)),I[1:-1,1:-1])
-                np.savez_compressed("%s/Zom%04d" % (folder,(n/mn)),Z[1:-1,1:-1])
-                np.savez_compressed("%s/Rem%04d" % (folder,(n/mn)),R[1:-1,1:-1])
+                np.savez_compressed("%s/Sub%04d" % (folder,(n/mn)),S[1:-1:gap,1:-1:gap])
+                np.savez_compressed("%s/Inf%04d" % (folder,(n/mn)),I[1:-1:gap,1:-1:gap])
+                np.savez_compressed("%s/Zom%04d" % (folder,(n/mn)),Z[1:-1:gap,1:-1:gap])
+                np.savez_compressed("%s/Rem%04d" % (folder,(n/mn)),R[1:-1:gap,1:-1:gap])
 
             S_1[:,:] = S
             I_1[:,:] = I
