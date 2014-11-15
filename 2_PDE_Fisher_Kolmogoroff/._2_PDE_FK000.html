@@ -1,90 +1,86 @@
 <!--
-Automatically generated HTML file from DocOnce source
+Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Geographic models with focus on Fisher Kolmogoroff equation">
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Geographic models">
 
-<title>Geographic models with focus on Fisher Kolmogoroff equation</title>
 
 
 <style type="text/css">
-/* blueish style */
+    /* blueish style */
 
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-/* pre style removed because it will interfer with pygments */
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
-div { text-align: justify; text-justify: inter-word; }
 </style>
-
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 2, None, '___sec0'),
-              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
-              (' Simple system for spatial spread ', 2, None, '___sec2'),
-              (' Verifying the solution ', 2, None, '___sec3'),
-              (' Constant solution ', 3, None, '___sec4'),
-              (' Manufactured solution ', 3, None, '___sec5'),
-              (' Convergence rate ', 3, None, '___sec6'),
-              (' The spatial error ', 3, None, '___sec7'),
-              (' The temporal error ', 3, None, '___sec8'),
-              (' Travelling wave in 2D ', 2, None, '___sec9'),
-              (' A gaussian wave ', 3, None, '___sec10'),
-              (' Change in initial flow ', 3, None, '___sec11'),
-              (' Change in lambda ', 3, None, '___sec12'),
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Simple system for spatial spread ', 1, None, '___sec1'),
+              (' Verifying the solution ', 2, None, '___sec2'),
+              (' Constant solution ', 3, None, '___sec3'),
+              (' Manufactured solution ', 3, None, '___sec4'),
+              (' Convergence rate ', 3, None, '___sec5'),
+              (' The spatial error ', 3, None, '___sec6'),
+              (' The temporal error ', 3, None, '___sec7'),
+              (' Travelling wave in 2D ', 2, None, '___sec8'),
+              (' A gaussian wave ', 3, None, '___sec9'),
+              (' Change in initial flow ', 3, None, '___sec10'),
+              (' Change in lambda ', 3, None, '___sec11'),
               (' Epidemic in an English Boarding School 1978 ',
                1,
                None,
-               '___sec13'),
+               '___sec12'),
               (' Introducing a Gaussian distribution of infective ',
                3,
                None,
-               '___sec14'),
-              (' Zombiefication ', 1, None, '___sec15'),
-              (' Variation in diffusion ', 3, None, '___sec16'),
-              (' Where does the infected one arises ', 3, None, '___sec17'),
-              (' Lock in different areas ', 2, None, '___sec18'),
-              (' Ten minutes at Frederikkeplassen ', 3, None, '___sec19'),
-              (' random distribution ', 3, None, '___sec20'),
-              (' Appendix ', 1, None, '___sec21'),
-              (' Discretization ', 2, None, '___sec22'),
-              (' 2D Gaussian function from x=0 ', 2, None, '___sec23'),
-              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec24'),
+               '___sec13'),
+              (' Zombiefication ', 1, None, '___sec14'),
+              (' Variation in diffusion ', 3, None, '___sec15'),
+              (' Where does the infected one arises ', 3, None, '___sec16'),
+              (' Lock in different areas ', 2, None, '___sec17'),
+              (' Ten minutes at Frederikkeplassen ', 3, None, '___sec18'),
+              (' random distribution ', 3, None, '___sec19'),
+              (' Appendix ', 1, None, '___sec20'),
+              (' Discretization ', 2, None, '___sec21'),
+              (' 2D Gaussian function from x=0 ', 2, None, '___sec22'),
+              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec23'),
               (' 2D Gaussian function from x=0,y=0 with higher initial value ',
                2,
                None,
-               '___sec25'),
-              (' English Boarding School ', 2, None, '___sec26'),
-              (' Gaussian from the corner ', 3, None, '___sec27'),
-              (' A long simulation on 100 Days ', 3, None, '___sec28'),
-              (' Zombiefication ', 2, None, '___sec29'),
-              (' Verify the initial phase ', 3, None, '___sec30'),
-              (' Three phases ', 3, None, '___sec31'),
-              (' middle town ', 3, None, '___sec32'),
-              (' large town ', 3, None, '___sec33')]}
+               '___sec24'),
+              (' English Boarding School ', 2, None, '___sec25'),
+              (' Gaussian from the corner ', 3, None, '___sec26'),
+              (' A long simulation on 100 Days ', 3, None, '___sec27'),
+              (' Zombiefication ', 2, None, '___sec28'),
+              (' Verify the initial phase ', 3, None, '___sec29'),
+              (' Three phases ', 3, None, '___sec30'),
+              (' middle town ', 3, None, '___sec31'),
+              (' large town ', 3, None, '___sec32')]}
 end of tocinfo -->
 
 <body>
@@ -95,33 +91,32 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
 
 
 
     
 <a name="part0000"></a>
-<p>
 <!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-</td><td>
-<div style="text-align: right;"><a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
-</p>
 
 <p>
 <!-- ------------------- main content ---------------------- -->
 
 
+<title>Geographic models </title>
 
-<center><h1>Geographic models with focus on Fisher Kolmogoroff equation</h1></center>  <!-- document title -->
+<center><h1>Geographic models </h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Torbj&#248;rn Seland -->
@@ -138,50 +133,46 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
-<p>
-&nbsp; &nbsp; &nbsp; <a href="#___sec0"> Introduction </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Fisher-Kolmogoroff equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Simple system for spatial spread </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Verifying the solution </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Constant solution </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Manufactured solution </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Convergence rate </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> The spatial error </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> The temporal error </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Travelling wave in 2D </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> A gaussian wave </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Change in initial flow </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec12"> Change in lambda </a><br>
-<a href="#___sec13"> Epidemic in an English Boarding School 1978 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec14"> Introducing a Gaussian distribution of infective </a><br>
-<a href="._2_PDE_FK001.html#___sec15"> Zombiefication </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec16"> Variation in diffusion </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec17"> Where does the infected one arises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec18"> Lock in different areas </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec19"> Ten minutes at Frederikkeplassen </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec20"> random distribution </a><br>
-<a href="._2_PDE_FK002.html#___sec21"> Appendix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec22"> Discretization </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec23"> 2D Gaussian function from x=0 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec24"> 2D Gaussian function from x=0,y=0 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec25"> 2D Gaussian function from x=0,y=0 with higher initial value </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec26"> English Boarding School </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec27"> Gaussian from the corner </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec28"> A long simulation on 100 Days </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec29"> Zombiefication </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec30"> Verify the initial phase </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec31"> Three phases </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec32"> middle town </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec33"> large town </a><br>
+<a href="#___sec0"> Introduction </a><br>
+<a href="#___sec1"> Simple system for spatial spread </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Verifying the solution </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Constant solution </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Manufactured solution </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Convergence rate </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> The spatial error </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> The temporal error </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Travelling wave in 2D </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec9"> A gaussian wave </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> Change in initial flow </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Change in lambda </a><br>
+<a href="#___sec12"> Epidemic in an English Boarding School 1978 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec13"> Introducing a Gaussian distribution of infective </a><br>
+<a href="._2_PDE_FK001.html#___sec14"> Zombiefication </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec15"> Variation in diffusion </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec16"> Where does the infected one arises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec17"> Lock in different areas </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec18"> Ten minutes at Frederikkeplassen </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec19"> random distribution </a><br>
+<a href="._2_PDE_FK002.html#___sec20"> Appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec21"> Discretization </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec22"> 2D Gaussian function from x=0 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec23"> 2D Gaussian function from x=0,y=0 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec24"> 2D Gaussian function from x=0,y=0 with higher initial value </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec25"> English Boarding School </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec26"> Gaussian from the corner </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec27"> A long simulation on 100 Days </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec28"> Zombiefication </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec29"> Verify the initial phase </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec30"> Three phases </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec31"> middle town </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec32"> large town </a><br>
 </p>
 
-<h2>Introduction  <a name="___sec0"></a></h2>
-This chapter will introduce a new model for epidemic diseases. While the first chapter was based on a ODE system, will this chapter expand the system to consist of a geographic spread of epidemics. The two first sections will be based on chapters from Murray, while the last part will consist of a modelling of the zombiefication problem explained in chapter 1.
+<h1>Introduction  <a name="___sec0"></a></h1>
+This chapter will introduce a new model for epidemic diseases. By expand the ODE system from previous chapter to consist of a geographic spread of epidemics. The first section <em>Simple system for spatial spread</em> will build on the simple SIR model presented in previous chapter and be based on Murray <a href="._2_PDE_FK002.html#murray2003mathematical">[1]</a>. A couple of tests will be done on the model to verify that the implementation is done correct. The parameters from <em>Epidemic from the English School</em> will be used in this model and the result will be compared against the ODE system. The position of the infected student will be compared against the number of infected each day. The last section <em>Zombiefication</em> will compare and develop the zombie model presented in the previous chapter.
 
-<h2>Fisher-Kolmogoroff equation  <a name="___sec1"></a></h2>
-
-<h2>Simple system for spatial spread  <a name="___sec2"></a></h2>
-While the systems in the previous chapter only consisted of the temporal variable <b>t</b> in the functions, a spatial variable, <b>x</b> will now be introduced. This means that the position has an effect on the change in each class. The system that will be shown here, will be based on the simple ODE system presented in the previous chapter. The difference will be the diffusion part added to each equation. The system can be seen under 
+<h1>Simple system for spatial spread  <a name="___sec1"></a></h1>
+A spatial variable, <b>x</b> will now be introduced to the new model. This means that the position has an effect on the change in each class. The system that will be shown here, will be based on the simple ODE system presented in the previous chapter. The difference will be the diffusion part added to each equation. The system can be seen in eq<a href="#mjx-eqn-1">(1)</a>. 
 $$
 \begin{equation} \tag{1}
 	\begin{aligned}
@@ -192,7 +183,7 @@ $$
 \end{equation}
 $$
 
-All three classes have the same diffusion coefficient, \( D \). \( rIS \) and \( aI \) will work in the same way as in the ODE system. Since this model taking into account the position, the idea is here to model a group of infective that moves into a uniform population with susceptible, which is spread around with the density \( S_0 \). Then the geotemporal spread can be seen. The problem will be consider as one-dimensional. The system will first be nondimensionalise by writing 
+All three classes have the same diffusion coefficient, \( D \). This give the three groups the same diffusion speed. This is not the    \( rIS \) and \( aI \) will work in the same way as in the ODE system. Since this model taking into account the position, the idea is here to model a group of infective that moves into a uniform population with susceptible, which is spread around with the density \( S_0 \). Then the geotemporal spread can be seen. The problem will be consider as one-dimensional. The system will first be nondimensionalise by writing 
 $$
 \begin{equation} \tag{2}
 	\begin{aligned}
@@ -294,9 +285,9 @@ $$
 
 This is the same value that was given for the ODE model in the previous chapter.
 
-<h2>Verifying the solution  <a name="___sec3"></a></h2>
+<h2>Verifying the solution  <a name="___sec2"></a></h2>
 
-<h3>Constant solution  <a name="___sec4"></a></h3>
+<h3>Constant solution  <a name="___sec3"></a></h3>
 
 To verify this solution a couple of tests can be done one the system. The first test will be a constant test, where a known constant solution is given. A look at the previous system will give an idea on performing the test.
 $$
@@ -324,7 +315,7 @@ The constant values can freely be chosen. Here they are sat to \( C_S = 1.2,C_I=
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_constant_solution</span>():
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
 <span style="color: #BA2121; font-style: italic">    Test problem where u=u_const is the exact solution, to be</span>
@@ -371,7 +362,7 @@ The constant values can freely be chosen. Here they are sat to \( C_S = 1.2,C_I=
 <p>
 This test was fine and next test that can be done on the system is a Manufactured solution
 
-<h3>Manufactured solution  <a name="___sec5"></a></h3>
+<h3>Manufactured solution  <a name="___sec4"></a></h3>
 
 By constructing a function to each equation in the system <a href="#mjx-eqn-3">(3)</a>, a manufactured solution can be created. Here \( S \),$I$ and \( R \) are pre produced. The system will be
 $$
@@ -417,7 +408,7 @@ Now <code>sympy</code> can be used to do the calculations
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x,t,lam <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;x t lam&#39;</span>)
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">s_simple</span>(x,t):
@@ -475,7 +466,7 @@ $$
 The following manufactured test will then be
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_manufactured_solution</span>(T,Nt,X,Nx):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
 <span style="color: #BA2121; font-style: italic">    Test problem where u=c*t+I is the exact solution, to be</span>
@@ -543,7 +534,7 @@ The following manufactured test will then be
     <span style="color: #008000; font-weight: bold">return</span> difference_S,difference_I,difference_R
 </pre></div>
 
-<h3>Convergence rate  <a name="___sec6"></a></h3>
+<h3>Convergence rate  <a name="___sec5"></a></h3>
 
 The program can be controlled by checking the convergence rate. The error term can be described as  
 $$
@@ -557,20 +548,20 @@ With equation(ref{eq:error}, the expected convergence rate can be found for both
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">     </th> <th align="center">  dx  </th> <th align="center"> dx/2 </th> <th align="center"> dx/4 </th> <th align="center"> dx/8 </th> </tr>
+<tr><th align="center">      </th> <th align="center">  dx  </th> <th align="center"> dx/2 </th> <th align="center"> dx/4 </th> <th align="center"> dx/8 </th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   dt       </td> <td align="center">   9.8E-3    </td> <td align="center">   -         </td> <td align="center">   -         </td> <td align="center">   -         </td> </tr>
-<tr><td align="center">   dt/4     </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   -         </td> <td align="center">   -         </td> </tr>
-<tr><td align="center">   dt/8     </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   6.1E-4    </td> <td align="center">   -         </td> </tr>
-<tr><td align="center">   dt/16    </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   6.1E-4    </td> <td align="center">   1.5E-4    </td> </tr>
+<tr><td align="center">   dt        </td> <td align="center">   9.8E-3    </td> <td align="center">   -         </td> <td align="center">   -         </td> <td align="center">   -         </td> </tr>
+<tr><td align="center">   dt/4      </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   -         </td> <td align="center">   -         </td> </tr>
+<tr><td align="center">   dt/8      </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   6.1E-4    </td> <td align="center">   -         </td> </tr>
+<tr><td align="center">   dt/16     </td> <td align="center">   9.9E-3    </td> <td align="center">   2.5E-3    </td> <td align="center">   6.1E-4    </td> <td align="center">   1.5E-4    </td> </tr>
 </tbody>
 </table>
 <!-- 0.00988006143376,0.00246039081619,-,- -->
 <!-- 0.00988361769746,0.00246127510994,0.000614719954035 -->
 <!-- 0.00988450717896,0.00246149628689,0.000614775174047,0.000153656409034 -->
 
-<h3>The spatial error  <a name="___sec7"></a></h3>
+<h3>The spatial error  <a name="___sec6"></a></h3>
 
 The table above gives an insight on how the error develops when reducing \( \Delta t \) and \( \Delta x \). By studying the row where \( \Delta t/16 \), the \( C_t \Delta t \) can be seen as close to negligible in equation(ref{eq:error}. The error can then be expressed 
 $$
@@ -589,16 +580,16 @@ $$
 Since the table above has four different error values, these can be used to give three different convergence rates. \( \Delta x_1 = dx, \Delta x_2 = dx/2... \). The same labeling will be done for the different error values, \( \epsilon \).
 <table border="1">
 <thead>
-<tr><th align="center"> </th> <td align="center">\( \epsilon_1/\epsilon_2 \)</td> <td align="center">\( \epsilon_2/\epsilon_3 \)</td> <td align="center">\( \epsilon_3/\epsilon_4 \)</td> </tr>
+<tr><th align="center">                           </th> <td align="center">\( \epsilon_1/\epsilon_2 \)</td> <td align="center">\( \epsilon_2/\epsilon_3 \)</td> <td align="center">\( \epsilon_3/\epsilon_4 \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   r    </td> <td align="center">   2.0056                         </td> <td align="center">   2.0014                         </td> <td align="center">   2.0004                         </td> </tr>
+<tr><td align="center">   r                              </td> <td align="center">   2.0056                         </td> <td align="center">   2.0014                         </td> <td align="center">   2.0004                         </td> </tr>
 </tbody>
 </table>
 <p>
 Here the rate goes towards 2, and a 2.order convergence rate seems to be fulfilled.
 
-<h3>The temporal error  <a name="___sec8"></a></h3>
+<h3>The temporal error  <a name="___sec7"></a></h3>
 
 The temporal error is quite hard to find because the <em>Stability criteria</em> which is about
 $$
@@ -609,7 +600,7 @@ $$
 
 This results in the case that \( \Delta x \ll \Delta t \) is impossible, because this only leads to an unstable solution. By looking at the column for \( \frac{\Delta x}{8} \), the only stable solution is for \( {\Delta t}{16} \). Therefore the technique used for the spatial error cannot be used here. By studying the diagonal numbers in the table, the expected convergence rate is fulfilled for both \( \Delta x \), which gives \( r = 2 \) and for \( \Delta t \) that gives \( r=1 \)
 
-<h2>Travelling wave in 2D  <a name="___sec9"></a></h2>
+<h2>Travelling wave in 2D  <a name="___sec8"></a></h2>
 The model can be discretized for a 2D simulation since an epidemic disease will spread geographically. The non dimensional system <a href="#mjx-eqn-3">(3)</a> used in the 1D simulation above can be discretized with Forward Euler in time and Crank Nicolson in space
 $$
 \begin{equation} \tag{11}
@@ -634,7 +625,7 @@ $$
 
 This results in an explicit system, which is easy to code. It consist of known values on the right side and only one unknown on the left side.
 
-<h3>A gaussian wave  <a name="___sec10"></a></h3>
+<h3>A gaussian wave  <a name="___sec9"></a></h3>
 
 In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of infected spread along the x-axis. A similar thing can be done for the 2D simulation. A couple of simulations have been done for the 2D system. The first simulation is run for a Gaussian function along \( x=0 \) and the second simulation is run for a Gaussian function from \( x=0,y=0 \) for the infected humans as initial value. Both simulations can be seen in the Appendix.  
 
@@ -662,16 +653,16 @@ The shape of these two travelling waves are similar. The only difference is the 
 1.43352971688
 <table border="1">
 <thead>
-<tr><th align="center">1D wave</th> <th align="center">2D wave line</th> <th align="center">2D wave point</th> </tr>
+<tr><th align="center">   1D wave   </th> <th align="center"> 2D wave line</th> <th align="center">2D wave point</th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   1.43       </td> <td align="center">   1.43            </td> <td align="center">   1.43             </td> </tr>
+<tr><td align="center">   1.43             </td> <td align="center">   1.43             </td> <td align="center">   1.43             </td> </tr>
 </tbody>
 </table>
 <p>
 The area in all three cases are similar. The size and shape will not be affected based on the expansion from 1D to 2D. But by studying the figure(<a href="#fig:2D_trav_wave">3</a>), the waves occur at different time in the two 2D simulations. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the \( x=0 \) axis, gets a wave of infected wash along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occur at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occur later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will start about 6 time steps later. This is also reasonable by looking at the plot.
 
-<h3>Change in initial flow  <a name="___sec11"></a></h3>
+<h3>Change in initial flow  <a name="___sec10"></a></h3>
 
 Another test that can be done to the travelling wave, is to check if the size of the initial wave will affect the travelling wave. The simulation is run with the same parameter as for the three simulations above and the only difference is the initial value for the infected group. The Gaussian wave of infected are placed a point (0,0) as for right subplot in figure(<a href="#fig:2D_trav_wave">3</a>).The simulation can be seen in figure(<a href="#fig:initial_value">4</a>).  
 <!-- Volume ordinary = 0.3141592653589793 -->
@@ -698,7 +689,7 @@ By measuring the travelling wave at (15,15), the size and shape can be compared 
 <p>
 The figure(<a href="#fig:initial_trav_wave">5</a>) shows a similar size and shape as for the other simulations run earlier. By increasing the initial value, the size of the travelling wave cannot be affected. But there is a difference in the time when the wave occur. In this simulation where the initial value is higher, the travelling wave reaches the measuring point (15,15) earlier. This can be explained by the idea of a ball dropped from height. If the ball is released or thrown to the ground, will only affect the acceleration of the ball, but not the terminal velocity. After a certain time the released ball and the thrown ball will reach the same maximum speed. This is also the case for the speed of the travelling wave.
 
-<h3>Change in lambda  <a name="___sec12"></a></h3>
+<h3>Change in lambda  <a name="___sec11"></a></h3>
 
 The one thing that affects the speed and size, is the \( \lambda \) variable in the PDE system<a href="#mjx-eqn-3">(3)</a>. This \( \lambda \) is a combination of \( a \), which controls deaths among infected, \( r \), which control the number of infected in a meeting between an infected and a susceptible. The last parameter in \( \lambda \) is the concentration of Susceptible. By changing this parameter, the travelling wave will change in both size and shape. In figure(<a href="#fig:change_lambda">6</a>), the simulation is run with four different values of \( \lambda \).
 
@@ -722,7 +713,7 @@ When \( \lambda \rightarrow 0 \), this cause a major and aggressive travelling w
 <br />
 If \( \lambda \) increases above 1, the disease will not be able to spread. Then the number of infected will decrease, since the number of dead/immune infected are higher than the infected susceptible. After a certain time, the number of infected will die out. If \( \lambda \) stays at 1, the number of infected will be equal the whole time.
 
-<h1>Epidemic in an English Boarding School 1978  <a name="___sec13"></a></h1>
+<h1>Epidemic in an English Boarding School 1978  <a name="___sec12"></a></h1>
 I the previous chapter an example from the English boarding school was presented. This example was based on the book from J.D Murray and was modeled for a ODE system. By using the parameters a similar result should appear for the PDE system. The school had 763 students where one of the students brought with him a disease back to the school. The following number was used for the ODE system in chapter one. \( N=763, S_0=762,I_0=1,R_0=0,\rho=202 \) and \( r = 2.18\cdot 10^{-3} \). 
 <br />
 <br />
@@ -742,28 +733,28 @@ The results from figure(<a href="#fig:british_number">7</a>) are equal with the 
 <a name="table:british_number_table"></a>
 <table border="1">
 <thead>
-<tr><th align="center">           </th> <th align="center"> ODE system</th> <th align="center">  PDE uniform dist </th> <th align="center"> PDE center</th> <th align="center"> PDE corner</th> </tr>
+<tr><th align="center">                   </th> <th align="center">     ODE system    </th> <th align="center">  PDE uniform dist </th> <th align="center">     PDE center    </th> <th align="center">     PDE corner    </th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   5 Days         </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   444.62         </td> <td align="center">   444.62                 </td> <td align="center">   748.03         </td> <td align="center">   757.33         </td> </tr>
-<tr><td align="center">   Infective      </td> <td align="center">   209.56         </td> <td align="center">   209.56                 </td> <td align="center">   7.36           </td> <td align="center">   2.35           </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   108.82         </td> <td align="center">   108.82                 </td> <td align="center">   7.60           </td> <td align="center">   3.32           </td> </tr>
-<tr><td align="center">   10 Days        </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   37.59          </td> <td align="center">   37.59                  </td> <td align="center">   697.71         </td> <td align="center">   743.58         </td> </tr>
-<tr><td align="center">   Infective      </td> <td align="center">   117.59         </td> <td align="center">   117.59                 </td> <td align="center">   24.43          </td> <td align="center">   6.66           </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   607.82         </td> <td align="center">   607.82                 </td> <td align="center">   40.86          </td> <td align="center">   12.76          </td> </tr>
-<tr><td align="center">   15 Days        </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   21.09          </td> <td align="center">   21.09                  </td> <td align="center">   597.01         </td> <td align="center">   717.02         </td> </tr>
-<tr><td align="center">   Infective      </td> <td align="center">   17.30          </td> <td align="center">   17.30                  </td> <td align="center">   46.96          </td> <td align="center">   12.37          </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   724.62         </td> <td align="center">   724.62                 </td> <td align="center">   119.03         </td> <td align="center">   33.61          </td> </tr>
+<tr><td align="center">   5 Days                 </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   444.62                 </td> <td align="center">   444.62                 </td> <td align="center">   748.03                 </td> <td align="center">   757.33                 </td> </tr>
+<tr><td align="center">   Infective              </td> <td align="center">   209.56                 </td> <td align="center">   209.56                 </td> <td align="center">   7.36                   </td> <td align="center">   2.35                   </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   108.82                 </td> <td align="center">   108.82                 </td> <td align="center">   7.60                   </td> <td align="center">   3.32                   </td> </tr>
+<tr><td align="center">   10 Days                </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   37.59                  </td> <td align="center">   37.59                  </td> <td align="center">   697.71                 </td> <td align="center">   743.58                 </td> </tr>
+<tr><td align="center">   Infective              </td> <td align="center">   117.59                 </td> <td align="center">   117.59                 </td> <td align="center">   24.43                  </td> <td align="center">   6.66                   </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   607.82                 </td> <td align="center">   607.82                 </td> <td align="center">   40.86                  </td> <td align="center">   12.76                  </td> </tr>
+<tr><td align="center">   15 Days                </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   21.09                  </td> <td align="center">   21.09                  </td> <td align="center">   597.01                 </td> <td align="center">   717.02                 </td> </tr>
+<tr><td align="center">   Infective              </td> <td align="center">   17.30                  </td> <td align="center">   17.30                  </td> <td align="center">   46.96                  </td> <td align="center">   12.37                  </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   724.62                 </td> <td align="center">   724.62                 </td> <td align="center">   119.03                 </td> <td align="center">   33.61                  </td> </tr>
 </tbody>
 </table>
 <!-- dx = 0.04 -->
 <!-- dx^2 = 1.6E-3 -->
 <!-- ODE = 1.5E-4 -->
 
-<h3>Introducing a Gaussian distribution of infective  <a name="___sec14"></a></h3>
+<h3>Introducing a Gaussian distribution of infective  <a name="___sec13"></a></h3>
 
 A reasonable assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student, the chance of being infected increase as closer you get to the infected student. To check in this affect the result, the volume of student is placed as a gauss function in the center of the schoolyard at initial time. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in figure(<a href="#fig:gauss_sub">8</a>) and the total total amount of students can be be seen in figure(<a href="#fig:british_number">7</a>).
 
@@ -788,12 +779,8 @@ If the simulations are run for a longer time, the difference in each class will 
 <p>
 <p>
 <!-- begin bottom navigation -->
-<table style="width: 100%"><tr><td>
-</td><td>
-<div style="text-align: right;"><a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
-</p>
 
 <!-- ------------------- end of main content --------------- -->
 

@@ -1,17 +1,14 @@
-TITLE: Geographic models with focus on Fisher Kolmogoroff equation
+TITLE: Geographic models 
 AUTHOR: Torbjørn Seland
 DATE: today
 
 TOC: on
 
-===== Introduction =====
-This chapter will introduce a new model for epidemic diseases. While the first chapter was based on a ODE system, will this chapter expand the system to consist of a geographic spread of epidemics. The two first sections will be based on chapters from Murray, while the last part will consist of a modelling of the zombiefication problem explained in chapter 1.
+======= Introduction =======
+This chapter will introduce a new model for epidemic diseases. By expand the ODE system from previous chapter to consist of a geographic spread of epidemics. The first section *Simple system for spatial spread* will build on the simple SIR model presented in previous chapter and be based on Murray cite{murray2003mathematical}. A couple of tests will be done on the model to verify that the implementation is done correct. The parameters from *Epidemic from the English School* will be used in this model and the result will be compared against the ODE system. The position of the infected student will be compared against the number of infected each day. The last section *Zombiefication* will compare and develop the zombie model presented in the previous chapter.
 
-===== Fisher-Kolmogoroff equation =====
-
-
-===== Simple system for spatial spread =====
-While the systems in the previous chapter only consisted of the temporal variable _t_ in the functions, a spatial variable, _x_ will now be introduced. This means that the position has an effect on the change in each class. The system that will be shown here, will be based on the simple ODE system presented in the previous chapter. The difference will be the diffusion part added to each equation. The system can be seen under 
+======= Simple system for spatial spread =======
+A spatial variable, _x_ will now be introduced to the new model. This means that the position has an effect on the change in each class. The system that will be shown here, will be based on the simple ODE system presented in the previous chapter. The difference will be the diffusion part added to each equation. The system can be seen in eq(ref{eq:simple_PDE}). 
 !bt
 \begin{equation} label{eq:simple_PDE}
 	\begin{aligned}
@@ -21,7 +18,7 @@ While the systems in the previous chapter only consisted of the temporal variabl
 	\end{aligned}
 \end{equation}
 !et
-All three classes have the same diffusion coefficient, $D$. $rIS$ and $aI$ will work in the same way as in the ODE system. Since this model taking into account the position, the idea is here to model a group of infective that moves into a uniform population with susceptible, which is spread around with the density $S_0$. Then the geotemporal spread can be seen. The problem will be consider as one-dimensional. The system will first be nondimensionalise by writing 
+All three classes have the same diffusion coefficient, $D$. This give the three groups the same diffusion speed. Often will this differ between groups and will be study later in *Zombiefication*.The two parts $rIS$ and $aI$ will work in the same way as in the ODE system. Since this model taking the position into account, the idea is to model a group of infective that moves into a uniform population with susceptible, which is spread around with the density $S_0$. Then the geotemporal spread can be seen. The problem will first be consider as one-dimensional. The system can be nondimensionalise by writing 
 !bt
 \begin{equation} label{eq:constants_nondimensional}
 	\begin{aligned}
@@ -30,7 +27,7 @@ All three classes have the same diffusion coefficient, $D$. $rIS$ and $aI$ will 
 	\end{aligned}
 \end{equation}
 !et
-$S_0$ is here used as a representative population. Now the model(ref{eq:simple_PDE}) can be expressed under. Here the asterisks have been dropped.
+$S_0$ is used as a representative population. Now the model(ref{eq:simple_PDE}) can be expressed as in eq(ref{eq:simple_non_PDE}). The asterisks have been dropped to make it easier to read.
 !bt
 \begin{equation} label{eq:simple_non_PDE}
 	\begin{aligned}
@@ -40,16 +37,15 @@ $S_0$ is here used as a representative population. Now the model(ref{eq:simple_P
 	\end{aligned}
 \end{equation}
 !et
-The three parameters $r$, $a$ and $D$ have now been replaced by $\lambda$. The *reproduction rate* that was presented for the ODE model in the previous chapter can be seen by $1/\lambda $. This has here a couple of equivalent meanings. $1/\lambda$ can be seen as the number of secondary infections produced by one primary infected. It can also be used to measure two different time scales. The first one, $1/(rS_0)$, measure the contagious time of the disease. The second one can look at the life expectancy for an infective. This can be described $1/a$.
-<linebreak>
-<linebreak>
-The problem that this part will focus on, is the travelling wave. Here seen by a pulse of infected into a group of susceptible. Then a travelling wave solution has to be set,
+The three parameters $r$, $a$ and $D$ have now been replaced by $\lambda$. The *reproduction rate* that was presented for the ODE model can be seen by $1/\lambda $. This has a couple of equivalent meanings. $1/\lambda$ can be seen as the number of secondary infections produced by one primary infected. It can also be used to measure two different time scales. The first one, $1/(rS_0)$, measure the contagious time of the disease. The second one can look at the life expectancy for an infective. This can be described $1/a$. 
+===== Travelling wave 1D =====
+The problem that this section will focus on, is the travelling wave. The travelling wave describe how a disease travel through geographic area of humans. This will be shown here by sending a pulse of infected into a group of susceptible. A travelling wave solution will be described as follows,
 !bt
 \begin{equation}
 I(x,t)=I(z),\quad S(x,t)=S(z),\quad R(x,t) = R(z),\quad z = x-ct,
 \end{equation}
 !et
-Here the value $c$ will be the wave speed. This represents a wave of constant shape that travels in the positive x-direction. These can now be inserted into (ref{eq:simple_non_PDE}). This gives the following ordinary system
+Here the value $c$ will be the wave speed. This represents a wave of constant shape that travels in the positive x-direction. These can now be inserted into (ref{eq:simple_non_PDE}). This gives the ordinary system(ref{eq:ord_diff_sys})
 !bt
 \begin{equation} label{eq:ord_diff_sys}
 	\begin{aligned}
@@ -72,9 +68,9 @@ This gives an eigenvalue problem to find the range of $\lambda$ so that $c$ alwa
 
 #MOVIE:[plots/Travelling_wave.webm, height=500 width=600] This simulation is based on (ref{eq:ord_diff_sys}) with $\lambda=0.5$. The initial data is sat to $S(x,0)=1$ and $R(x,0)=0$. The left side of the *Infective* class, $I(0,0), is based on a gaussian curve. The rest is sat to be zero.
 
-FIGURE:[plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} A gauss curve is inserted on the left side. This causes a travelling wave. The size is measured at $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
+FIGURE:[plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} A gauss curve is inserted on the left side. This causes an epidemic wave. The size is measured at $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
 
-FIGURE:[plots/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the epidemic wave measures at at $x=15$ in figure(ref{fig:1D_sub})
+FIGURE:[plots/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the travelling wave measures at at $x=15$ in figure(ref{fig:1D_sub})
 
 The system(ref{eq:ord_diff_sys}) is a fourth order phase space system. The lower bound time speed for $c$ can be found. J.D Murray shows this in *kite{Murray}*. The *Infective* class in the system(ref{eq:ord_diff_sys}) can be linearised when $z\rightarrow \infty$ $S\rightarrow 1$ and $I \rightarrow 0$. The result then become 
 !bt
@@ -900,3 +896,10 @@ FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_sub.png, height=600 width
 #MOVIE:[plots/2D_zombie_three_phases_zombie_large_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
 #MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
 #MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+##======= Bibliography =======
+
+##BIBFILE: $HOME/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub
+##BIBFILE: ~/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub
+##BIBFILE: ~/home/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub
+BIBFILE: ../bibliography/papers.pub
