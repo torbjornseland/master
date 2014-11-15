@@ -233,8 +233,8 @@ moviename = "plots/2D_zombie_three_phases_gauss_2"
 """
 #### Different initial and diffusion
 T = 10
-Nt = 40000
-Nx = 20
+Nt = 20000
+Nx = 200
 X = 20
 
 
@@ -317,6 +317,7 @@ A = 0.2
 sig = V/float(2*np.pi*A)
 Z_1 = gauss_2D(x,y,A,sig,6,6)
 title = "Zombie placed in small town:"
+gap = 1
 
 if S_1.max() >= Z_1.max():
     max_val = S_1.max()
@@ -325,9 +326,9 @@ else:
 
 folder = "small_town_data"
 plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
-moviename = "plots/2D_zombie_three_phases_zombie_small_town_2"
-zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder)
-build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
+moviename = "plots/2D_zombie_three_phases_zombie_small_town"
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
+#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
 """
@@ -340,14 +341,30 @@ sig = V/float(2*np.pi*A)
 Z_1 = gauss_2D(x,y,A,sig,12,25)
 title = "Zombie placed in middle town:"
 
+V_s = 21
+A_s = 0.5
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 = gauss_2D(x,y,A_s,sig_s,6,6)
+
+V_s = 200
+A_s = 3
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,12,25)
+
+V_s = 400
+A_s = 4
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,25,12)
+
 if S_1.max() >= Z_1.max():
     max_val = S_1.max()
 else:
     max_val = Z_1.max()
-
+gap = 1
 folder = "middle_town_data"
+plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
 moviename = "plots/2D_zombie_three_phases_zombie_middle_town_2"
-zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder)
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
@@ -361,21 +378,39 @@ sig = V/float(2*np.pi*A)
 Z_1 = gauss_2D(x,y,A,sig,25,12)
 title = "Zombie placed in large town:"
 
+V_s = 21
+A_s = 0.5
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 = gauss_2D(x,y,A_s,sig_s,6,6)
+
+V_s = 200
+A_s = 3
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,12,25)
+
+V_s = 400
+A_s = 4
+sig_s = V_s/float(2*np.pi*A_s)
+S_1 += gauss_2D(x,y,A_s,sig_s,25,12)
+
 if S_1.max() >= Z_1.max():
     max_val = S_1.max()
 else:
     max_val = Z_1.max()
 
-folder = "large_town_data"
-moviename = "plots/2D_zombie_three_phases_zombie_large_town_2"
-zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder)
+max_val = 4
 
-#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
+folder = "large_town_data"
+plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
+moviename = "plots/2D_zombie_three_phases_zombie_large_town_2"
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
+
+#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name,title)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
+
+
 """
-
-
 ## Ten minutes at Frederikkes place
 """
 print "Frederikke"
@@ -460,35 +495,21 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 """
 # random placed students
+
 print "random"
 phases = [0,3,7,10]
 phase_name = ["time = 0", "time = 3","time = 7","time = 10"]
 
 S_start = 618.347685135
-S_1 = 2*np.random.random((Nx+3,Nx+3))*(1/float(X**2))*S_start
-#S_1 = np.random.random((Nx+3,Nx+3))*(1/float(X**2))
+S_1 = (np.ones([Nx+3,Nx+3])*0.5+np.random.random((Nx+3,Nx+3)))*(1/float(X**2))*S_start
+
 
 Z_1 = np.zeros([Nx+3,Nx+3])
-#S_1 = np.zeros([Nx+3,Nx+3])
 box_len = (Nx/X)+1
-print box_len
-
-V = 1
-A = 0.2
-sig = V/float(2*np.pi*A)
-Z_1 = gauss_2D(x,y,A,sig,10,8)
-
-#for i in range(618):
-#    ra_x = np.random.randint(1,Nx+1)
-#    ra_y = np.random.randint(1,Nx+1)
-#    S_1[ra_x:ra_x+box_len,ra_y:ra_y+box_len] += 1
-
 ra_x = np.random.randint(0,Nx)
 ra_y = np.random.randint(0,Nx)
 Z_1[ra_x:ra_x+box_len,ra_y:ra_y+box_len] += 1
 
-print Z_1
-print S_1
 
 if S_1.max() >= Z_1.max():
     max_val = S_1.max()
@@ -503,14 +524,14 @@ gamma_z = np.ones([Nx+3,Nx+3])
 [gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]] = gamma_mapping([gamma_s[1:-1,1:-1],gamma_i[1:-1,1:-1],gamma_z[1:-1,1:-1]])
 
 
-title = "Zombie attack at Frederikkeplassen random placement "
+title = "Zombie attack at Frederikkeplassen with random placement "
 moviename = "plots/2D_Frederikke_random"
 folder = "Frederikke_random_data"
 plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
 gap = 1
 
 zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
-#contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
+contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 
 
 #S_1[:,:Nx/2] = 0.5

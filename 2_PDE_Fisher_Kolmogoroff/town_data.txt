@@ -1,0 +1,67 @@
+
+##Small town
+##time=0.000000
+##Susceptible = 619.99
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 603.74
+##Infective = 2.96
+##Zombies = 13.79
+##Removed = 0.66
+##time=33.000000
+##Susceptible = 604.42
+##Infective = 0.03
+##Zombies = 6.25
+##Removed = 12.14
+##time=34.000000
+##Susceptible = 604.21
+##Infective = 0.08
+##Zombies = 4.49
+##Removed = 14.11
+
+
+##Middle town
+##time=0.000000
+##Susceptible = 619.99
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 433.22
+##Infective = 25.51
+##Zombies = 155.27
+##Removed = 7.16
+##time=33.000000
+##Susceptible = 429.35
+##Infective = 0.18
+##Zombies = 87.31
+##Removed = 106.00
+##time=34.000000
+##Susceptible = 427.45
+##Infective = 0.59
+##Zombies = 73.70
+##Removed = 121.16
+
+##Large town
+time=0.000000
+Susceptible = 619.99
+Infective = 0.00
+Zombies = 1.00
+Removed = 0.00
+time=3.000000
+Susceptible = 259.20
+Infective = 50.94
+Zombies = 297.24
+Removed = 13.78
+time=33.000000
+Susceptible = 251.14
+Infective = 0.35
+Zombies = 178.45
+Removed = 192.90
+time=34.000000
+Susceptible = 247.33
+Infective = 1.17
+Zombies = 151.44
+Removed = 222.96

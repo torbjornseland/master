@@ -5,7 +5,7 @@ from mpl_toolkits.mplot3d import axes3d
 from matplotlib import cm
 import matplotlib.image as mpimg
 
-def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,phases,phase_name):
+def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,phases,phase_name,title):
     x_list = []
     y_list = []
     surf_color = ['blue','green','red','cyan']
@@ -36,7 +36,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,ph
             label_name = "%s = %s" % (para_name, parameter_values[i])
             arr = np.load(img)
             #plt.plot(x_list[i],np.load(img),label=label_name)
-            ax.plot_wireframe(x_list[i],y_list[i],arr['arr_0'], rstride=10, cstride=10,color=surf_color[i])
+            ax.plot_wireframe(x_list[i],y_list[i],arr['arr_0'], rstride=3, cstride=3,color=surf_color[i])
         #plt.plot([z_X,z_X],[-0.1,1.1],'k')
         #plt.text(z_X,-0.2,"x")
         #plt.axis([0,L,-0.1,1.1])
@@ -45,7 +45,7 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,ph
         ax.set_zlim3d(0,max_val*1.1)
         #plt.legend(loc=3)
         #plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderaxespad=0.)
-        #plt.suptitle(moviename)
+        #plt.suptitle(title)
         nt = (float(T)/Nt)*j
         plt.title("time = %1.1f" % nt)
         plt.savefig("movie_images/tmp%04d.png" % j)
@@ -70,8 +70,9 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
     y_list = []
     surf_color = ['blue','green','red','cyan']
     for i in plotnames:
-        img = "%s%04d.npy" % (i,0)
-        len_x = len(np.load(img))
+        img = "%s%04d.npz" % (i,0)
+        arr = np.load(img)
+        len_x = len(arr['arr_0'])
         x,y = np.meshgrid(np.linspace(0,L,len_x),np.linspace(0,L,len_x))
         x_list.append(x)
         y_list.append(y)
@@ -88,11 +89,12 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
         for i in range(len(plotnames)):
             ax = fig.add_subplot(2,2,i+1,projection='3d')
             #ax.title("%s" % classnames[i])
-            img = "%s%04d.npy" % (plotnames[i],j)
+            img = "%s%04d.npz" % (plotnames[i],j)
+            arr = np.load(img)
             label_name = "%s = %s" % (para_name, parameter_values[i])
             #plt.plot(x_list[i],np.load(img),label=label_name)
             #ax.plot_wireframe(x_list[i],y_list[i],np.load(img), rstride=10, cstride=10,color=surf_color[i])
-            surf = ax.plot_surface(x_list[i],y_list[i],np.load(img), rstride=5, cstride=5,cmap=cm.coolwarm,linewidth=0, antialiased=False,vmin=0,vmax=max_val)
+            surf = ax.plot_surface(x_list[i],y_list[i],arr['arr_0'], rstride=5, cstride=5,cmap=cm.coolwarm,linewidth=0, antialiased=False,vmin=0,vmax=max_val)
             ax.set_title(classnames[i])
             ax.set_zlim(0,max_val)
             ax.set_xlim3d(0,L)

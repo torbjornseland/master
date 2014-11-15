@@ -1,39 +1,42 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Geographic models with focus on Fisher Kolmogoroff equation">
 
+<title>Geographic models with focus on Fisher Kolmogoroff equation</title>
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -92,26 +95,27 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
     
 <a name="part0001"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._2_PDE_FK000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._2_PDE_FK002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._2_PDE_FK000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._2_PDE_FK002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- !split -->
@@ -166,15 +170,15 @@ To verify that the discretization has been done correct, a simulation with unifo
 <a name="table:param_val"></a>
 <table border="1">
 <thead>
-<tr><th align="center">   parameter    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> </tr>
+<tr><th align="center">  parameter  </th> <th align="center">Initial phase</th> <th align="center">hysterical phase</th> <th align="center">counter attack</th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   \( \beta \)         </td> <td align="center">   0.01155             </td> <td align="center">   0.000011            </td> <td align="center">   0.00011             </td> </tr>
-<tr><td align="center">   \( \varrho \)       </td> <td align="center">   1.37                </td> <td align="center">   1.5                 </td> <td align="center">   1.5                 </td> </tr>
-<tr><td align="center">   \( \alpha \)        </td> <td align="center">   0.00044             </td> <td align="center">   0.000208            </td> <td align="center">   0.000208            </td> </tr>
-<tr><td align="center">   a                   </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.0073              </td> </tr>
-<tr><td align="center">   \( \sigma \)        </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.005               </td> </tr>
-<tr><td align="center">   \( \mu \)           </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.14                </td> </tr>
+<tr><td align="center">   \( \beta \)      </td> <td align="center">   0.01155          </td> <td align="center">   0.000011            </td> <td align="center">   0.00011           </td> </tr>
+<tr><td align="center">   \( \varrho \)    </td> <td align="center">   1.37             </td> <td align="center">   1.5                 </td> <td align="center">   1.5               </td> </tr>
+<tr><td align="center">   \( \alpha \)     </td> <td align="center">   0.00044          </td> <td align="center">   0.000208            </td> <td align="center">   0.000208          </td> </tr>
+<tr><td align="center">   a                </td> <td align="center">   0                </td> <td align="center">   0                   </td> <td align="center">   0.0073            </td> </tr>
+<tr><td align="center">   \( \sigma \)     </td> <td align="center">   0                </td> <td align="center">   0                   </td> <td align="center">   0.005             </td> </tr>
+<tr><td align="center">   \( \mu \)        </td> <td align="center">   0                </td> <td align="center">   0                   </td> <td align="center">   0.14              </td> </tr>
 </tbody>
 </table>
 <p>
@@ -191,24 +195,24 @@ The simulation in figure(<a href="#fig:zombie_three_number">9</a>) seems to matc
 <a name="table:compare_phases_zombie"></a>
 <table border="1">
 <thead>
-<tr><th align="center">                   </th> <th align="center">     ODE system    </th> <th align="center">  PDE uniform dist </th> <th align="center">  PDE gauss center </th> </tr>
+<tr><th align="center">                </th> <th align="center"> ODE system</th> <th align="center">  PDE uniform dist </th> <th align="center">  PDE gauss center </th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   Initial phase          </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
-<tr><td align="center">   Susceptible            </td> <td align="center">   71.3                   </td> <td align="center">   71.5                   </td> <td align="center">   81.12                  </td> </tr>
-<tr><td align="center">   Infected               </td> <td align="center">   230.8                  </td> <td align="center">   230.6                  </td> <td align="center">   210.94                 </td> </tr>
-<tr><td align="center">   Zombie                 </td> <td align="center">   298.9                  </td> <td align="center">   298.9                  </td> <td align="center">   310.11                 </td> </tr>
-<tr><td align="center">   Removed                </td> <td align="center">   21.0                   </td> <td align="center">   21.0                   </td> <td align="center">   <:20.60                </td> </tr>
-<tr><td align="center">   Hysterical phase       </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
-<tr><td align="center">   Susceptible            </td> <td align="center">   61.6                   </td> <td align="center">   61.8                   </td> <td align="center">   70.55                  </td> </tr>
-<tr><td align="center">   Infected               </td> <td align="center">   0.3                    </td> <td align="center">   0.3                    </td> <td align="center">   0.34                   </td> </tr>
-<tr><td align="center">   Zombie                 </td> <td align="center">   358.6                  </td> <td align="center">   357.9                  </td> <td align="center">   334.33                 </td> </tr>
-<tr><td align="center">   Removed                </td> <td align="center">   201.5                  </td> <td align="center">   202.0                  </td> <td align="center">   217.56                 </td> </tr>
-<tr><td align="center">   Counter attack         </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
-<tr><td align="center">   Susceptible            </td> <td align="center">   57.8                   </td> <td align="center">   58.2                   </td> <td align="center">   66.50                  </td> </tr>
-<tr><td align="center">   Infected               </td> <td align="center">   1.2                    </td> <td align="center">   1.2                    </td> <td align="center">   1.23                   </td> </tr>
-<tr><td align="center">   Zombie                 </td> <td align="center">   331.8                  </td> <td align="center">   331.1                  </td> <td align="center">   305.86                 </td> </tr>
-<tr><td align="center">   Removed                </td> <td align="center">   231.3                  </td> <td align="center">   231.7                  </td> <td align="center">   249.19                 </td> </tr>
+<tr><td align="center">   Initial phase       </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   71.3           </td> <td align="center">   71.5                   </td> <td align="center">   81.12                  </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   230.8          </td> <td align="center">   230.6                  </td> <td align="center">   210.94                 </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   298.9          </td> <td align="center">   298.9                  </td> <td align="center">   310.11                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   21.0           </td> <td align="center">   21.0                   </td> <td align="center">   <:20.60                </td> </tr>
+<tr><td align="center">   Hysterical phase    </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   61.6           </td> <td align="center">   61.8                   </td> <td align="center">   70.55                  </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   0.3            </td> <td align="center">   0.3                    </td> <td align="center">   0.34                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   358.6          </td> <td align="center">   357.9                  </td> <td align="center">   334.33                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   201.5          </td> <td align="center">   202.0                  </td> <td align="center">   217.56                 </td> </tr>
+<tr><td align="center">   Counter attack      </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   57.8           </td> <td align="center">   58.2                   </td> <td align="center">   66.50                  </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   1.2            </td> <td align="center">   1.2                    </td> <td align="center">   1.23                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   331.8          </td> <td align="center">   331.1                  </td> <td align="center">   305.86                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   231.3          </td> <td align="center">   231.7                  </td> <td align="center">   249.19                 </td> </tr>
 </tbody>
 </table>
 <p>
@@ -266,28 +270,45 @@ The parameters from (<a href="#table:param_val">table:param_val</a>) will be use
 The figure() shows the simulation where the zombie is placed in the small town. The four subplots are from the different phases that arise under a zombie attack. The different classes have the same color as introduced in figure(<a href="#fig:zombie_three_number">9</a>). It is a challenge to separate the three groups <em>Infected</em>,*Zombie* and <em>Removed</em>, since they all have a low value at initial time. The development of the amount can easier be seen in the figure(), which also shows the result from the placement in the middle and large group. Since the amount of <em>Susceptible</em> is quite low in the small town where the Zombie arise, the disease is not able to infect to many before the society has moved to the next phase. Assuming that the broadcasting works okay for the first days. This result in a eradication of the disease in about a month. The table() shows that the number of zombies decrease towards zero after a month. 
 
 <p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_sub.png" align="bottom" height=600 width=800></p></center>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_2_sub.png" align="bottom" height=600 width=800></p></center>
 
 <p>
 By placing the Zombie in the middle town, the amount of zombies increase to a much higher level. The amount can be seen as the second sub figure in figure(). The damages are higher and after a month the total population of <em>Susceptible</em> will be reduced to around (300). The simulation can be seen in the Appendix. The last calculation done in the large town shows the major damages. Here the amount of zombies increase above the number of <em>Susceptible</em>. The <em>Infected</em> class also increase towards 100 around in the infected phase. This can be explained by the high number of meeting between susceptible and zombies. A plot that shows each class is produced for this simulation. This give a better overview of the concentration of the four groups during this simulation. Since the diffusion term for the <em>Removed</em> group is sat to zero, the <em>Removed</em> subplots gives an indication on the placement of the deaths. This seems to be grouped in the city. The amount of zombies also seems to be higher here. The major amount of <em>Susceptible</em> are in the middle town. This area was able to avoid the damages from the initial phase.
 
 <p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
-
-<p>
 The result from the uniformed distributed simulation still is much higher for the <em>Zombie</em> class then for the large town. This shows that by using the parameters from the ODE system in a geographic area give no sense. A realistic assumption is that a zombie is restricted to a given area. Therefore the parameters will not be equal for all. The chance of getting infected is much higher if a susceptible is closed to an infected. There is also a greater chance of getting infected if the susceptible stay in a crowded area.
 
 <p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_small_town_number.png" align="bottom" height=600 width=800></p></center>
+<center><p><img src="plots/2D_compare_towns.png" align="bottom" height=1000 width=400></p></center>
 
 <p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_number.png" align="bottom" height=600 width=800></p></center>
-
-<p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_number.png" align="bottom" height=600 width=800></p></center>
+<a name="table:compare_phases_zombie"></a>
+<table border="1">
+<thead>
+<tr><th align="center">                </th> <th align="center"> Small town</th> <th align="center">    Middle town    </th> <th align="center">       Large       </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Initial phase       </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   603.74         </td> <td align="center">   433.22                 </td> <td align="center">   259.20                 </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   2.96           </td> <td align="center">   25.51                  </td> <td align="center">   50.94                  </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   13.79          </td> <td align="center">   155.27                 </td> <td align="center">   297.24                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   0.66           </td> <td align="center">   7.16                   </td> <td align="center">   13.78                  </td> </tr>
+<tr><td align="center">   Hysterical phase    </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   604.42         </td> <td align="center">   429.35                 </td> <td align="center">   251.14                 </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   0.03           </td> <td align="center">   0.18                   </td> <td align="center">   0.35                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   6.25           </td> <td align="center">   87.31                  </td> <td align="center">   178.45                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   12.14          </td> <td align="center">   106.00                 </td> <td align="center">   192.90                 </td> </tr>
+<tr><td align="center">   Counter attack      </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   604.21         </td> <td align="center">   427.45                 </td> <td align="center">   247.33                 </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   0.08           </td> <td align="center">   0.59                   </td> <td align="center">   1.17                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   4.49           </td> <td align="center">   73.70                  </td> <td align="center">   151.44                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   14.11          </td> <td align="center">   121.16                 </td> <td align="center">   222.96                 </td> </tr>
+</tbody>
+</table>
 
 <h2>Lock in different areas  <a name="___sec18"></a></h2>
 
+<p>
 To model a realistic zombie attack, humans ability to think logic is crucial in the fight. The moving speed was presented as a factor in the previous section. Another important skill that the <em>Susceptible</em> class hold, is the ability to decide if an area is safe. In the TV series <em>Walking Dead</em>, the humans build barricades to keep the zombies outside. This give the <em>Susceptible</em> class free areas where they can stay. This idea can be transfer to the PDE system by rewrite the system <a href="#mjx-eqn-13">(13)</a> with spatial dependent diffusion term. The diffusion constant \( D_u \) is now replaced with a diffusion function \( \gamma_u(x) \) for \( u= S,I,Z,R \) which is spatial discretized.
 
 $$
@@ -351,65 +372,50 @@ Frederikkeplassen at the university is an area for an upcoming zombie attack. Th
 <center><p><img src="plots/2D_Frederikke_contourf_sub.png" align="bottom" height=600 width=800></p></center>
 
 <p>
-<center><p><img src="plots/2D_compare_Frederikke.png" align="bottom" height=600 width=800></p></center>
+<center><p><img src="plots/2D_compare_Frederikke.png" align="bottom" height=400 width=800></p></center>
 
 <p>
-Free Areas
-time=0.000000
-Susceptible = 618.35
-Infective = 0.00
-Zombies = 1.00
-Removed = 0.00
-time=3.000000
-Susceptible = 252.72
-Infective = 75.69
-Zombies = 276.55
-Removed = 13.94
-time=7.000000
-Susceptible = 251.35
-Infective = 0.51
-Zombies = 325.54
-Removed = 41.26
-time=10.000000
-Susceptible = 249.84
-Infective = 0.38
-Zombies = 295.71
-Removed = 72.36
-
-<p>
-compare with uniform distributed
-time=0.000000
-Susceptible = 618.35
-Infective = 0.00
-Zombies = 1.00
-Removed = 0.00
-time=3.000000
-Susceptible = 72.23
-Infective = 229.65
-Zombies = 296.67
-Removed = 20.84
-time=7.000000
-Susceptible = 70.78
-Infective = 0.83
-Zombies = 498.72
-Removed = 49.12
-time=10.000000
-Susceptible = 69.69
-Infective = 0.25
-Zombies = 479.00
-Removed = 70.55
+<!-- # -->
+<!-- # -->
+-
+<table border="1">
+<thead>
+<tr><th align="center">           </th> <th align="center">    Uniform distribution   </th> <th align="center">   Free areas  </th> <th align="center">Random placement</th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   3 Minutes      </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------    </td> <td align="center">   ----------------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   72.23                          </td> <td align="center">   252.72             </td> <td align="center">   524.77              </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   229.65                         </td> <td align="center">   75.69              </td> <td align="center">   26.07               </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   296.67                         </td> <td align="center">   276.55             </td> <td align="center">   66.51               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   20.84                          </td> <td align="center">   13.94              </td> <td align="center">   3.66                </td> </tr>
+<tr><td align="center">   7 Minutes      </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------    </td> <td align="center">   ----------------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   70.78                          </td> <td align="center">   251.35             </td> <td align="center">   524.23              </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   0.83                           </td> <td align="center">   0.51               </td> <td align="center">   0.20                </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   498.72                         </td> <td align="center">   325.54             </td> <td align="center">   81.88               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   49.12                          </td> <td align="center">   41.26              </td> <td align="center">   14.80               </td> </tr>
+<tr><td align="center">   10 Minutes     </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------    </td> <td align="center">   ----------------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   69.69                          </td> <td align="center">   249.84             </td> <td align="center">   523.61              </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   0.25                           </td> <td align="center">   0.38               </td> <td align="center">   0.16                </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   479.00                         </td> <td align="center">   295.71             </td> <td align="center">   69.67               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   70.55                          </td> <td align="center">   72.36              </td> <td align="center">   27.77               </td> </tr>
+</tbody>
+</table>
 
 <h3>random distribution  <a name="___sec20"></a></h3>
 
+<p>
 <center><p><img src="plots/2D_Frederikke_random_contourf_sub.png" align="bottom" height=600 width=800></p></center>
 
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._2_PDE_FK000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._2_PDE_FK002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._2_PDE_FK000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._2_PDE_FK002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 
