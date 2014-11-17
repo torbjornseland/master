@@ -135,7 +135,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 16, 2014</h4></center> <!-- date -->
+<center><h4>Nov 17, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -702,25 +702,25 @@ $$
 \end{equation}
 $$
 
-A major and aggressive travelling wave is caused by \( \lambda \rightarrow 0 \). In figure(<a href="#fig:change_lambda">6</a>), \( \lambda \) is run with the value 0.01 in the first subplot. This results in a travelling wave of infected that eradicates the <em>Susceptible</em> group in a short time. The wave stars decreasing when all <em>Susceptible</em> are infected. By looking at the equation<a href="#mjx-eqn-15">(15)</a>, a small value is caused by a small \( a \) compared to \( r \) and \( S_0 \). If \( a \) is low, this result in few deaths/immune in the infected class. This means that this class will grow and be able to infect even more from the <em>Susceptible</em> class. The same thing will happen if \( r \) is large. A result of this will cause an aggressive disease that infects  a major part of the population. The same result will happen if \( S_0 \) is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a city than in the wilderness, far from other humans.
+A major and aggressive travelling wave is caused by \( \lambda \rightarrow 0 \). In figure(<a href="#fig:change_lambda">6</a>), \( \lambda \) is run with the value 0.01 in the first subplot. This results in a travelling wave of infected that eradicates the <em>Susceptible</em> group in a short time. The wave starts to decreasing when all <em>Susceptible</em> are infected. By looking at the equation<a href="#mjx-eqn-15">(15)</a>, a small value is caused by a small \( a \) compared to \( r \) and \( S_0 \). If \( a \) is low, this result in few deaths/immune in the infected class. This means that this class will grow and be able to infect even more from the <em>Susceptible</em> class. The same thing will happen if \( r \) is large. A result of this will cause an aggressive disease that infects  a major part of the population. The same result will happen if \( S_0 \) is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a city than in the wilderness, far from other humans.
 <br />
 <br />
-If \( \lambda \) increases above 1, the disease will not be able to spread. Then the number of infected will decrease, since the number of dead/immune caused by the <em>Infected</em> group is higher than the amount of <em>Infected</em> humans from the <em>Susceptible</em> group. After a certain time, the number of infected will die out. If \( \lambda \) stays at 1, the number of infected will be equal the whole time.
+If \( \lambda \) increases above 1, the disease will not be able to spread. The number of infected will decrease, since the number of dead/immune caused by the <em>Infected</em> group is higher than the amount of <em>Infected</em> humans from the <em>Susceptible</em> group. After a certain time, the number of infected will die out. If \( \lambda \) stays at 1, the number of infected will be equal the whole time.
 
 <h1>Epidemic in an English Boarding School 1978  <a name="___sec13"></a></h1>
-An example from an English boarding school was presented in the previous chapter . This example was based on the book from J.D Murray <a href="._2_PDE_FK002.html#murray2002mathematical">[3]</a>, and was modeled for a ODE system. By using the parameters a similar result should appear for the PDE system. The school had 763 students where one of the students brought with him a disease back to the school. The following number was used for the ODE system in chapter one. \( N=763, S_0=762,I_0=1,R_0=0,\rho=202 \) and \( r = 2.18\cdot 10^{-3} \). 
+An example from an English boarding school was presented in the previous chapter . This example was based on the book from J.D Murray <a href="._2_PDE_FK002.html#murray2002mathematical">[3]</a>, and was modeled for a ODE system. A similar result should appear for the PDE system with same parameter values and a uniform distribution of the groups. The school had 763 students where one of the students brought a disease back to the school. The following number was used for the ODE system in chapter one. \( N=763, S_0=762,I_0=1,R_0=0,\rho=202 \) and \( r = 2.18\cdot 10^{-3} \). 
 <br />
 <br />
-The first simulation that is done on the PDE system is produced with an uniform distributed concentration of the three classes all over the area. A person has a given volume of one cubic. The total volume of the whole group is spread over the area. The area is sat to be 10 x 10, which means that the height of one person will be \( 1/100 \). Since the Infected group only consist of one person, the total height will be 0.01 for the whole area. The Susceptible group consist of 762 students and the total height in each point will be 7.62. The simulation can be seen in the Appendix. 
+The first simulation is produced with uniform distributed concentration, this is done to verify the implementation. A person is defined as one cubic. The total volume of the whole group is spread over the area. The area is sat to be 100 m x 100 m, which result in an average height of \( 1/10000 \) m per person. This is to get an uniformed distribution. This would of course be more difficult in the real life, particular if the person should be alive. Since the <em>Infected</em> group only consist of one person, the total height will be 0.0001 for the whole area. The <em>Susceptible</em> group consist of 762 students and the total height in each point will be 0.0762 The simulation can be seen in the Appendix. 
 <br />
 <br />
-The results from figure(<a href="#fig:british_number">7</a>) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in (<a href="#table:british_number_table">table:british_number_table</a>)  This is as expected since the diffusion term i negligible in this system and that it in reality is group of separate ODE systems modeled over an area.
+The results from the first subplot in figure(<a href="#fig:british_number">7</a>) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in (<a href="#table:british_number_table">table:british_number_table</a>). This is as expected since the diffusion term is negligible in this system and simulation is a group of separate ODE systems modeled at each point over an area.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 7:  <a name="fig:british_number"></a> English Boarding School modeled over a uniform distributed area. </p></center>
-<p><img src="plots/british_number.png" align="bottom" height=1000 width=600></p>
+<center><p class="caption">Figure 7:  <a name="fig:british_number"></a> English Boarding School modeled with three different initial values for the infected student. The amount of students in each group modeled over 15 days. Subplot 1: uniform distribution. Subplot 2: The student is placed as a Gaussian function in center. Subplot 3: The student is placed as a Gaussian function in the corner (0,0). </p></center>
+<p><img src="plots/british_number.png" align="bottom" height=1000 width=400></p>
 </center>
 
 <p>
@@ -750,25 +750,25 @@ The results from figure(<a href="#fig:british_number">7</a>) are equal with the 
 
 <h3>Introducing a Gaussian distribution of infective  <a name="___sec14"></a></h3>
 
-A reasonable assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student, the chance of being infected increase as closer you get to the infected student. To check in this affect the result, the volume of student is placed as a gauss function in the center of the schoolyard at initial time. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in figure(<a href="#fig:gauss_sub">8</a>) and the total total amount of students can be be seen in figure(<a href="#fig:british_number">7</a>).
+An assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student at initial time, the chance of being infected increase as closer you get to the infected student. The student in placed as a Gaussian function in the middle of the school yard, to see if this affect the result. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in figure(<a href="#fig:gauss_sub">8</a>) and the total total amount of students can be be seen in figure(<a href="#fig:british_number">7</a>).
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  <a name="fig:gauss_sub"></a> </p></center>
+<center><p class="caption">Figure 8:  <a name="fig:gauss_sub"></a> The student is placed in the center of the school yard as a Gaussian finction with height= 1 m and volume = 1 m^3. </p></center>
 <p><img src="plots/2D_british_school_gauss_sub.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
 <br />
 <br />
-By comparing the result from the uniform distributed PDE system and this simulation there are some interesting results. While the only difference between the two simulations is the placement of the infective. And this change has a major impact. Since the only one that can be infected are the students close to the infective, it restrict the spread of the epidemic. But the chance of getting infected in this area is major. The figure(<a href="#fig:gauss_sub">8</a>) shows that the amount of infective quickly grow in the center, where the infected one was placed. The last subplot also show  that the amount of removed in the center are closed to the maximum of the initial value of Susceptible. While the students along the boundary of the school seems to be unaffected after 15 days. This simulation show that the placement of the infective has a major role in the simulation.
+The results from the uniform distributed and Gaussian distributed simulations shows variously results. The difference between the simulations is the placement of the infective. This change has a major impact. Since the only one that can be infected with the Gaussian distribution are the students close to the infective, it restrict the spread of the epidemic. While the chance of getting infected in this area is higher. The figure(<a href="#fig:gauss_sub">8</a>) shows that the amount of infective quickly grow in the center, where the infected was placed. The last subplot also show that the amount of removed in the center are closed to the maximum of the initial value of Susceptible. While the students along the boundary of the school yard seems to be unaffected after 15 days. This simulation shows that the placement of the infective has a major role in the simulation.
 <br />
 <br />
-The placement of the Infective class also has an effect on the spread of the disease. The last column in (<a href="#table:british_number_table">table:british_number_table</a>) describe a simulation where the Gaussian function is placed in the corner(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. The table shows that the total number of infected is lower than for the centered placed Gaussian. This infected student is only able to spread the disease to a quarter of the population compared with the infected one in the center. The simulation can be seen in the Appendix.
+The placement of the infective, here as a Gaussian function, also affects the outcome. The last subplot in Fi.(<a href="#fig:british_number">7</a>) describes a simulation where the Gaussian function is placed in the corner(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. The table (<a href="#table:british_number_table">table:british_number_table</a>) shows that the total number of infected is lower than for the centered placed Gaussian. The infected student is only able to spread the disease to a quarter of the population compared to the infected one in the center. The simulation can be seen in the Appendix.
 <br />
 <br />
-If the simulations are run for a longer time, the difference in each class will decrease. After 100 days there will be about 18 Susceptible students left in the uniform distributed group, while there will be about 25 students in both of the Gaussian groups. The simulations can be seen in the Appendix.
+If the simulations are run for a longer time, the difference between each class will decrease. After 100 days there will be about 18 susceptible students left in the uniform distributed group, compared to 25 students in both of the Gaussian groups. The simulations can be seen in the Appendix.
 
 <p>
 <p>
