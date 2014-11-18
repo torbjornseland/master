@@ -1,0 +1,91 @@
+TITLE: Random walk
+AUTHOR: Torbjørn Seland
+DATE: today
+
+TOC: on
+
+===== Introduction =====
+The last chapter will study a third way to model epidemic disease. This will be done by using random walk. This technique quite different from the other models presented earlier, by using Monte Carlo simulations and probabilities instead of differential equations, which have been in focus earlier. The first section will be a study of Monte Carlo methods and Random walk based on the paper from M.H. Jensen Ref. cite{hjorth2011computational}. The next sections will use the parameters from *English Boarding School* and *Walking Dead* to see if a Random walk system can expand the knowledge about epidemics. The model will be compared to the ODE system and PDE system from the previous chapters.   
+
+===== Monte Carlo methods =====
+Techniques from Monte Carlo are widely used in several fields as chemistry, physics, medicine, biology and in finance Ref. cite{hjorth2011computational}. These numerical methods can be seen in general terms as statistical simulations methods, which use random numbers to perform the simulations. The Metropolis algorithm is a central algorithm in this field, and is considered as one of the top ten algorithms during the last century Ref. cite{hjorth2011computational}. A Monte Carlo strategy require four terms to be understood to use this method. These are:
+* Random variable
+* probability distribution functions (PDF)
+* moments of a PDE
+* the pertinent variance $\sigma ^2$
+
+=== Random variable ===
+Random variable can be seen as stochastic variable, where the outcome cannot be presumed. Examples as tossing dice, flipping coins or gambling are based on this principle. Although the outcome is unknown, knowledge about the probability and the range can be studied. The numbers in the *domain* for two dice are
+!bt
+\begin{equation*}
+{2,3,4,5,6,7,8,9,10,11,12}
+\end{equation*}
+!et
+with the corresponding *probabilities* are
+!bt
+\begin{equation*}
+{1,2,3,4,5,6,5,4,3,2,1}\frac{1}{36}
+\end{equation*}
+!et
+By throwing two dice once, there is no guarantee that the result will be 7, though this has the highest probability. But by repeating this operation, the distribution would reflect the *probabilities* above. A stochastic variable can either be discrete or continuous, but will in both cases be denoted as capital letters, $X,Y$. A discrete example is the example above, where the domain is given with exact values,${x_1,x_2,x_3,...,x_n}$. The continuous case can be seen as the probability in a given area. An example can be the distance from a dart to the center, after a random thrown at a dartboard.     
+
+=== probability distribution functions (PDF) ===
+The PDF is a function $p(x)$ on the domain that gives the probability or relative frequency for a outcome. In the discrete case, the function can be seen as
+!bt
+\begin{equation}
+p(x) = Prob(X=x)
+\end{equation}
+!et
+The PDF in the continuous is not able to directly depict the actual probability. The probability is instead defined as the density around $x$ with an infinitesimal interval. This can therefore be seen as an integral, since it is the density of the probability rather than the probability Ref.cite{hjorth2011computational}. This can be defined.
+!bt
+\begin{equation}
+ Prob(a\leq X \leq b) = \int^b_a p(x)dx
+\end{equation}
+!et
+And by quoting M.H. Jensen *Qualitatively speaking, a stochastic variable represents the values of numbers chosen as if by chance from some specified PDF so that the selection of a large set of these numbers reproduces this PDF.* Ref.cite{hjorth2011computational}. This sum up the relation between random variables and PDF. If this is not fulfilled, the group of stochastic variable does not fulfill the criteria for random numbers. 
+
+CDF- *cumulative probability distribution function*
+
+There are two properties that the PDF must fulfill. The first one is the size of $p(x)$. This has to be in the interval $0\geq p(x) \geq 1$, since the probability cannot be negative or larger than 1 for an event to happen. The sum of all events has to be 1, both for discrete and continuous PDFs, and can be seen as follows
+!bt
+\begin{equation}
+	\begin{aligned}
+    \sum_{x_i \in \mathbb{D}}\\
+    \int_{x \in \mathbb{D}}
+	\end{aligned}
+\end{equation} 
+!et
+
+There are several distributions that are essential when looking at continuous PDFs. The two ones that will be used in this chapter are the uniform distribution.
+!bt
+\begin{equation} label{eq:uni_dist}
+p(x) = \frac{1}{b-a}\theta(x-a)\theta(b-x)
+\end{equation}
+!et
+with:
+!bt
+\begin{equation}
+	\begin{aligned}
+    \theta(x) = 0,\quad x < 0 \\
+    \theta(x) = 1,\quad x \geq 0
+	\end{aligned}
+\end{equation}
+!et
+This distribution is natural to use, when a group of humans shall be evenly placed over an area. When comparing the ODE system from the first chapter and the uniformed distributed PDE system in previous chapter, Eq. (ref{eq:uni_dist}) is natural to use. To get a correct estimate, it is important that the set of random numbers is large enough. Gaussian distribution is the second one, this is often called normal distribution and can be seen in Eq.(ref{eq:gauss_dist})
+!bt
+\begin{equation} label{eq:gauss_dist}
+	\begin{aligned}
+    p(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp(-\frac{(x-\mu)^2}{2\sigma^2})
+	\end{aligned}
+\end{equation}
+!et
+This will give the same distribution as the Gaussian function used in the previous chapter. 
+
+
+=== moments of a PDF ===
+
+
+
+======= Bibliography =======
+
+BIBFILE: ../bibliography/papers.pub

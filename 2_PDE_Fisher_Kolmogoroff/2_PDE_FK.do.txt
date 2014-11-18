@@ -926,7 +926,7 @@ FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_sub.png, height=600 width
 #MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
 #MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
 
-##======= Bibliography =======
+======= Bibliography =======
 
 ##BIBFILE: $HOME/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub
 ##BIBFILE: ~/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub

@@ -32,7 +32,7 @@
    key:       xiao2013predicting
    author:    Yanni Xiao, Sanyi Tang, Yicang Zhou, Robert J. Smith, Jianhong Wu, Ning Wang
    year:      2013
-   journal:   Journal of theoretical biology
+   journal:   Journal of Object Technology
    publisher: Elsevier
    volume:    317
    pages:     271--285
@@ -58,6 +58,17 @@
    isbn:      9780387952239
    series:    Interdisciplinary Applied Mathematics
    lccn:      2001020448
+   entrytype: book
+** Mathematical Biology II: Spatial Models and Biomedical Applications
+   key:       murray2003mathematical
+   author:    J.D. Murray
+   year:      2003
+   publisher: Springer
+   url:       http://books.google.no/books?id=2d-RLuD\_MX8C
+   status:    published
+   isbn:      9780387952284
+   lccn:      2001020448
+   series:    Intercisciplinary Applied Mathematics: Mathematical Biology
    entrytype: book
 * chapters
 ** Escaping the Zombie Threat by Mathematics

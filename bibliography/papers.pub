@@ -38,6 +38,13 @@
    pages:     271--285
    status:    published
    entrytype: article
+** Computational Physics
+   key:       hjorth2011computational
+   author:    Morten Hjorth-Jensen
+   year:      2011
+   journal:   Lecture notes
+   status:    published
+   entrytype: article
 * books
 ** {P}ython Scripting for Computational Science
    key:       Langtangen_2012
@@ -67,8 +74,8 @@
    url:       http://books.google.no/books?id=2d-RLuD\_MX8C
    status:    published
    isbn:      9780387952284
-   lccn:      2001020448
    series:    Intercisciplinary Applied Mathematics: Mathematical Biology
+   lccn:      2001020448
    entrytype: book
 * chapters
 ** Escaping the Zombie Threat by Mathematics
