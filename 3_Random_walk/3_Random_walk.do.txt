@@ -27,7 +27,9 @@ with the corresponding *probabilities* are
 {1,2,3,4,5,6,5,4,3,2,1}\frac{1}{36}
 \end{equation*}
 !et
-By throwing two dice once, there is no guarantee that the result will be 7, though this has the highest probability. But by repeating this operation, the distribution would reflect the *probabilities* above. A stochastic variable can either be discrete or continuous, but will in both cases be denoted as capital letters, $X,Y$. A discrete example is the example above, where the domain is given with exact values,${x_1,x_2,x_3,...,x_n}$. The continuous case can be seen as the probability in a given area. An example can be the distance from a dart to the center, after a random thrown at a dartboard.     
+By throwing two dice once, there is no guarantee that the result will be 7, though this has the highest probability. But by repeating this operation, the distribution would reflect the *probabilities* above. A stochastic variable can either be discrete or continuous, but will in both cases be denoted as capital letters, $X,Y$. A discrete example is the example above, where the domain is given with exact values,${x_1,x_2,x_3,...,x_n}$. The continuous case can be seen as the probability in a given area. An example can be the distance from a dart to the center, after a random thrown at a dartboard.
+
+When using a computer to produce random number, they will in reality be pseudo random, since they have to be based on an algorithm. Therefore the choice of this algorithm is important. In this chapter, a generator of Marsaglia Ref. cite{marsaglia2003xorshift}
 
 === probability distribution functions (PDF) ===
 The PDF is a function $p(x)$ on the domain that gives the probability or relative frequency for a outcome. In the discrete case, the function can be seen as
@@ -83,6 +85,135 @@ This will give the same distribution as the Gaussian function used in the previo
 
 
 === moments of a PDF ===
+By define $h(x)$ as a arbitrary function, the *expectation value* can be written
+!bt
+\begin{equation}
+    \langle h \rangle_X \equiv \int h(x)p(x)dx
+\end{equation}
+!et
+Here defined on the domain of the stochastic variable $X$ with PDE $p(x)$. A more general way to write the expectation is by adding a power of,$n$, to the equation. This can now be seen as the *moments*. The $n$-th moment is defined
+!bt
+\begin{equation}
+    \langle x^n \rangle \equiv \int x^np(x)dx
+\end{equation}
+!et
+The value of $n$ can be sat to zero. This result in $\langle 1 \rangle$ and creates a normalization condition of $p$. The first order is called *mean* and are often defined with a $\mu$.
+!bt
+\begin{equation}
+    \langle x \rangle = \mu \equiv \int xp(x)dx
+\end{equation}
+!et
+This represents the average value of PDF and is often called the expectation value of $p$ Ref.cite{hjorth2011computational}.
+
+=== The pertinent variance $\sigma ^2$ ===
+*Central moments* is a special case of moments defined as
+!bt
+\begin{equation}
+    \langle (x-\langle x \rangle)^n \rangle \equiv \int (x-\langle x \rangle)^np(x)dx
+\end{equation}
+!et
+The first two central-moments are trivial and only result in 1 and 0, respectively for $n=0$ and $n=1$. But the second central-moment is more interesting to study. This is denoted as $\sigma^2_X$ or Var(X), called the variance. This can be shown.
+!bt
+\begin{equation}
+    \sigma^2_X  = \langle x^2\rangle -\langle x \rangle^2 
+\end{equation}
+!et
+The square root of the variance, $sigma = \sqrt{\langle (x-\langle x \rangle)^2 \rangle}$ is called *standard deviation*. This is the deviation from the mean of PDF, and can be seen as the spread around the mean of PDF.
+
+===== Random walks =====
+The previous section explained the technical aspects of Monte Carlo, as the principle and algorithms for producing random numbers. This section will study the importance of a proper selection of variables and importance sampling. The challenge when model a Monte Carlo simulation, is the appropriate selection of random states. It is important that this match the probability distribution, PDF. This will be done through a Markov process, which is a random walk with a selected probability for making a move. A good reason to choose Markov process, is that this will reach equilibrium state, after certain number of simulations. This can first be shown for a simple diffusion equation, which can be expanded to the simple PDE system used in the previous chapter.
+
+=== Diffusion equation and random walks ===
+The British Botanist R. Brown developed a theory by studying how pollen dispersed in water. This idea is called Brownian motion and can be used to describe a group of particles spreading. The function $w(x,t)dx$ can be defined as the probability of finding a given number of particles in an interval with size $dx$. This function is the $PDF$ as explained in the section above. The flux of particles that passing a point $x$, can be described by $j(x,t). This flow is proportionally with the gradient of the $PDF$,
+!bt
+\begin{equation}
+j(x,t) = -D\frac{\partial w(x,t)}{\partial x}
+\end{equation}
+!et
+$D$ is here the diffusion constant. This example can be seen as a closed experiment, where the concentration is conserved. The relation between the flux and the $PDF$ can also be expressed
+!bt
+\begin{equation}
+\frac{\partial j(x,t)}{\partial x} = -\frac{\partial w(x,t)}{\partial t} 
+\end{equation}
+!et
+And a diffusion equation can be expressed based on these two equations.
+!bt
+\begin{equation}
+\frac{\partial w(x,t)}{\partial t} = D\frac{\partial^2 w(x,t)}{\partial x^2} 
+\end{equation}
+!et
+The expectation value and the variance, $\sigma^2$, can be study. The expectation value for the function $f(x,t)$ can be defined as
+!bt
+\begin{equation}
+\langle f(x,t) \rangle = \int^{\infty}_{-\infty} f(x,t) w(x,t)dx
+\end{equation}
+!et
+The demands defined for the PDF in the previous section have to be fulfilled for $w(x,t)$. The normalization condition which is defined for this PDF require constraints for equation.
+!bt
+\begin{equation} label{eq:PDF_demands}
+w(x= \pm \infty,t) = 0,\quad \frac{\partial^nw(x,t)}{\partial x^n}|_{x=\pm\infty} = 0 
+\end{equation}
+!et
+This can be used to study the time derivative of the expectation value. The diffusion equation derived earlier can be used here.
+!bt
+\begin{equation}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = \int^{\infty}_{-\infty} f(x,t) \frac{\partial w(x,t)}{\partial t}dx = D \int^{\infty}_{-\infty} f(x,t) \frac{\partial^2 w(x,t)}{\partial x^2}dx
+\end{equation}
+!et
+By using integration by parts on the right side, the equation can be expressed,
+!bt
+\begin{equation} label{eq:disp_0}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = D f(x,t) \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} \frac{\partial w(x,t)}{\partial x}dx
+\end{equation}
+!et
+By using the demands from (ref{eq:PDF_demands}), the $\langle f(x,t) \rangle$ is independent of time. 
+!bt
+\begin{equation}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = 0
+\end{equation}
+!et
+Implying that if a simulation of a random walk with equal probability of jumping in each direction, will end up with the probability distribution centered around the initial position. This may not be the case for the variance. By using (ref{eq:disp_0}), the $\langle x^2 \rangle $ can be found. 
+!bt
+\begin{equation} 
+\frac{\partial \langle x^2 \rangle}{\partial t} = D x^2 \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} x\frac{\partial w(x,t)}{\partial x}dx
+\end{equation}
+!et
+Here, integration by parts can be used. This results in
+!bt
+\begin{equation}
+\frac{\partial \langle x^2 \rangle}{\partial t} = D x w(x,t)|_{x=\pm \infty} + 2D \int^{\infty}_{-\infty} w(x,t)dx = 2D
+\end{equation}
+!et
+this leads to
+!bt
+\begin{equation}
+\langle x^2 \rangle = 2Dt
+\end{equation}
+!et
+which gives the variance
+!bt
+\begin{equation}
+\langle x^2 \rangle -\langle x \rangle^2 = 2Dt
+\end{equation}
+!et
+
+
+
+
+
+
+
+
+
+
+!bt
+\begin{equation}
+\frac{\partial w(x,t)}{\partial x} = D \frac{\partial^2 w(x,t)}{\partial x^2}
+\end{equation}
+!et
+Can be reproduced
+
+
 
 
 

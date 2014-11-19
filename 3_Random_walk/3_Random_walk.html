@@ -47,7 +47,10 @@ Automatically generated HTML file from Doconce source
                None,
                '___sec3'),
               (' moments of a PDF ', 3, None, '___sec4'),
-              (' Bibliography ', 1, None, '___sec5')]}
+              (' The pertinent variance $\\sigma ^2$ ', 3, None, '___sec5'),
+              (' Random walks ', 2, None, '___sec6'),
+              (' Diffusion equation and random walks ', 3, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -90,7 +93,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 18, 2014</h4></center> <!-- date -->
+<center><h4>Nov 19, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -99,7 +102,10 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Random variable </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> probability distribution functions (PDF) </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> moments of a PDF </a><br>
-<a href="#___sec5"> Bibliography </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> The pertinent variance \( \sigma ^2 \) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Random walks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Diffusion equation and random walks </a><br>
+<a href="#___sec8"> Bibliography </a><br>
 </p>
 
 <h2>Introduction  <a name="___sec0"></a></h2>
@@ -132,6 +138,9 @@ $$
 $$
 
 By throwing two dice once, there is no guarantee that the result will be 7, though this has the highest probability. But by repeating this operation, the distribution would reflect the <em>probabilities</em> above. A stochastic variable can either be discrete or continuous, but will in both cases be denoted as capital letters, \( X,Y \). A discrete example is the example above, where the domain is given with exact values,${x_1,x_2,x_3,...,x_n}$. The continuous case can be seen as the probability in a given area. An example can be the distance from a dart to the center, after a random thrown at a dartboard.
+
+<p>
+When using a computer to produce random number, they will in reality be pseudo random, since they have to be based on an algorithm. Therefore the choice of this algorithm is important. In this chapter, a generator of Marsaglia Ref. <a href="#marsaglia2003xorshift">[2]</a>
 
 <h3>probability distribution functions (PDF)  <a name="___sec3"></a></h3>
 
@@ -197,7 +206,146 @@ This will give the same distribution as the Gaussian function used in the previo
 
 <h3>moments of a PDF  <a name="___sec4"></a></h3>
 
-<h1>Bibliography  <a name="___sec5"></a></h1>
+By define \( h(x) \) as a arbitrary function, the <em>expectation value</em> can be written
+$$
+\begin{equation}
+    \langle h \rangle_X \equiv \int h(x)p(x)dx
+\end{equation}
+$$
+
+Here defined on the domain of the stochastic variable \( X \) with PDE \( p(x) \). A more general way to write the expectation is by adding a power of,$n$, to the equation. This can now be seen as the <em>moments</em>. The \( n \)-th moment is defined
+$$
+\begin{equation}
+    \langle x^n \rangle \equiv \int x^np(x)dx
+\end{equation}
+$$
+
+The value of \( n \) can be sat to zero. This result in \( \langle 1 \rangle \) and creates a normalization condition of \( p \). The first order is called <em>mean</em> and are often defined with a \( \mu \).
+$$
+\begin{equation}
+    \langle x \rangle = \mu \equiv \int xp(x)dx
+\end{equation}
+$$
+
+This represents the average value of PDF and is often called the expectation value of \( p \) Ref.<a href="#hjorth2011computational">[1]</a>.
+
+<h3>The pertinent variance \( \sigma ^2 \)  <a name="___sec5"></a></h3>
+
+<em>Central moments</em> is a special case of moments defined as
+$$
+\begin{equation}
+    \langle (x-\langle x \rangle)^n \rangle \equiv \int (x-\langle x \rangle)^np(x)dx
+\end{equation}
+$$
+
+The first two central-moments are trivial and only result in 1 and 0, respectively for \( n=0 \) and \( n=1 \). But the second central-moment is more interesting to study. This is denoted as \( \sigma^2_X \) or Var(X), called the variance. This can be shown.
+$$
+\begin{equation}
+    \sigma^2_X  = \langle x^2\rangle -\langle x \rangle^2 
+\end{equation}
+$$
+
+The square root of the variance, \( sigma = \sqrt{\langle (x-\langle x \rangle)^2 \rangle} \) is called <em>standard deviation</em>. This is the deviation from the mean of PDF, and can be seen as the spread around the mean of PDF.
+
+<h2>Random walks  <a name="___sec6"></a></h2>
+The previous section explained the technical aspects of Monte Carlo, as the principle and algorithms for producing random numbers. This section will study the importance of a proper selection of variables and importance sampling. The challenge when model a Monte Carlo simulation, is the appropriate selection of random states. It is important that this match the probability distribution, PDF. This will be done through a Markov process, which is a random walk with a selected probability for making a move. A good reason to choose Markov process, is that this will reach equilibrium state, after certain number of simulations. This can first be shown for a simple diffusion equation, which can be expanded to the simple PDE system used in the previous chapter.
+
+<h3>Diffusion equation and random walks  <a name="___sec7"></a></h3>
+
+The British Botanist R. Brown developed a theory by studying how pollen dispersed in water. This idea is called Brownian motion and can be used to describe a group of particles spreading. The function \( w(x,t)dx \) can be defined as the probability of finding a given number of particles in an interval with size \( dx \). This function is the \( PDF \) as explained in the section above. The flux of particles that passing a point \( x \), can be described by $j(x,t). This flow is proportionally with the gradient of the \( PDF \),
+$$
+\begin{equation}
+j(x,t) = -D\frac{\partial w(x,t)}{\partial x}
+\end{equation}
+$$
+
+\( D \) is here the diffusion constant. This example can be seen as a closed experiment, where the concentration is conserved. The relation between the flux and the \( PDF \) can also be expressed
+$$
+\begin{equation}
+\frac{\partial j(x,t)}{\partial x} = -\frac{\partial w(x,t)}{\partial t} 
+\end{equation}
+$$
+
+And a diffusion equation can be expressed based on these two equations.
+$$
+\begin{equation}
+\frac{\partial w(x,t)}{\partial t} = D\frac{\partial^2 w(x,t)}{\partial x^2} 
+\end{equation}
+$$
+
+The expectation value and the variance, \( \sigma^2 \), can be study. The expectation value for the function \( f(x,t) \) can be defined as
+$$
+\begin{equation}
+\langle f(x,t) \rangle = \int^{\infty}_{-\infty} f(x,t) w(x,t)dx
+\end{equation}
+$$
+
+The demands defined for the PDF in the previous section have to be fulfilled for \( w(x,t) \). The normalization condition which is defined for this PDF require constraints for equation.
+$$
+\begin{equation} \label{eq:PDF_demands}
+w(x= \pm \infty,t) = 0,\quad \frac{\partial^nw(x,t)}{\partial x^n}|_{x=\pm\infty} = 0 
+\end{equation}
+$$
+
+This can be used to study the time derivative of the expectation value. The diffusion equation derived earlier can be used here.
+$$
+\begin{equation}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = \int^{\infty}_{-\infty} f(x,t) \frac{\partial w(x,t)}{\partial t}dx = D \int^{\infty}_{-\infty} f(x,t) \frac{\partial^2 w(x,t)}{\partial x^2}dx
+\end{equation}
+$$
+
+By using integration by parts on the right side, the equation can be expressed,
+$$
+\begin{equation} \label{eq:disp_0}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = D f(x,t) \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} \frac{\partial w(x,t)}{\partial x}dx
+\end{equation}
+$$
+
+By using the demands from \eqref{eq:PDF_demands}, the \( \langle f(x,t) \rangle \) is independent of time. 
+$$
+\begin{equation}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = 0
+\end{equation}
+$$
+
+Implying that if a simulation of a random walk with equal probability of jumping in each direction, will end up with the probability distribution centered around the initial position. This may not be the case for the variance. By using \eqref{eq:disp_0}, the \( \langle x^2 \rangle  \) can be found. 
+$$
+\begin{equation} 
+\frac{\partial \langle x^2 \rangle}{\partial t} = D x^2 \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} x\frac{\partial w(x,t)}{\partial x}dx
+\end{equation}
+$$
+
+Here, integration by parts can be used. This results in
+$$
+\begin{equation}
+\frac{\partial \langle x^2 \rangle}{\partial t} = D x w(x,t)|_{x=\pm \infty} + 2D \int^{\infty}_{-\infty} w(x,t)dx = 2D
+\end{equation}
+$$
+
+this leads to
+$$
+\begin{equation}
+\langle x^2 \rangle = 2Dt
+\end{equation}
+$$
+
+which gives the variance
+$$
+\begin{equation}
+\langle x^2 \rangle -\langle x \rangle^2 = 2Dt
+\end{equation}
+$$
+
+
+$$
+\begin{equation}
+\frac{\partial w(x,t)}{\partial x} = D \frac{\partial^2 w(x,t)}{\partial x^2}
+\end{equation}
+$$
+
+Can be reproduced
+
+<h1>Bibliography  <a name="___sec8"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -206,6 +354,12 @@ This will give the same distribution as the Gaussian function used in the previo
     Computational Physics,
     <em>Lecture notes</em>,
     2011.</li>
+ <li> <a name="marsaglia2003xorshift"></a> <b>G. Marsaglia</b>. 
+    Xorshift Rngs,
+    <em>Journal of Statistical Software</em>,
+    8(14),
+    pp. 1-6,
+    2003.</li>
 </ol>
 
 <!-- end bibliography -->

@@ -45,6 +45,16 @@
    journal:   Lecture notes
    status:    published
    entrytype: article
+** Xorshift Rngs
+   key:       marsaglia2003xorshift
+   author:    George Marsaglia
+   year:      2003
+   journal:   Journal of Statistical Software
+   volume:    8
+   number:    14
+   pages:     1--6
+   status:    published
+   entrytype: article
 * books
 ** {P}ython Scripting for Computational Science
    key:       Langtangen_2012
