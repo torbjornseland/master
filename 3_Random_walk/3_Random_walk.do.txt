@@ -196,22 +196,24 @@ which gives the variance
 \langle x^2 \rangle -\langle x \rangle^2 = 2Dt
 \end{equation}
 !et
-
-
-
-
-
-
-
-
-
-
+And the square root of the variance can be expressed,
 !bt
 \begin{equation}
-\frac{\partial w(x,t)}{\partial x} = D \frac{\partial^2 w(x,t)}{\partial x^2}
+\sqrt{\langle x^2 \rangle -\langle x \rangle^2} = \sqrt{2Dt}
 \end{equation}
 !et
-Can be reproduced
+By comparing this with the displacement of a free particle, which moves with the function $x(t)=vt$ from the initial point, will the diffusion process moves with $ \sqrt{\langle x^2 \rangle -\langle x \rangle^2} \propto \sqrt{t}$. This can be used to describe a random walk, and could say that a random walker escapes much more slowly than a free particle from the initial time. This can be seen in an example. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
