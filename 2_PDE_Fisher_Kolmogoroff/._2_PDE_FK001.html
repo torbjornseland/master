@@ -64,28 +64,28 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec14'),
               (' Zombiefication ', 1, None, '___sec15'),
-              (' Variation in diffusion ', 3, None, '___sec16'),
-              (' Where does the infected one arises ', 3, None, '___sec17'),
-              (' Lock in different areas ', 2, None, '___sec18'),
-              (' Ten minutes at Frederikkeplassen ', 3, None, '___sec19'),
-              (' random distribution ', 3, None, '___sec20'),
-              (' Appendix ', 1, None, '___sec21'),
-              (' Sympy to find manufactured solution ', 3, None, '___sec22'),
-              (' Discretization ', 2, None, '___sec23'),
-              (' 2D Gaussian function from x=0 ', 2, None, '___sec24'),
-              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec25'),
+              (' Where does the infected one arises ', 3, None, '___sec16'),
+              (' Lock in different areas ', 2, None, '___sec17'),
+              (' Ten minutes at Frederikkeplassen ', 3, None, '___sec18'),
+              (' random distribution ', 3, None, '___sec19'),
+              (' Appendix ', 1, None, '___sec20'),
+              (' Sympy to find manufactured solution ', 3, None, '___sec21'),
+              (' Discretization ', 2, None, '___sec22'),
+              (' 2D Gaussian function from x=0 ', 2, None, '___sec23'),
+              (' 2D Gaussian function from x=0,y=0 ', 2, None, '___sec24'),
               (' 2D Gaussian function from x=0,y=0 with higher initial value ',
                2,
                None,
-               '___sec26'),
-              (' English Boarding School ', 2, None, '___sec27'),
-              (' Gaussian from the corner ', 3, None, '___sec28'),
-              (' A long simulation on 100 Days ', 3, None, '___sec29'),
-              (' Zombiefication ', 2, None, '___sec30'),
-              (' Verify the initial phase ', 3, None, '___sec31'),
-              (' Three phases ', 3, None, '___sec32'),
-              (' middle town ', 3, None, '___sec33'),
-              (' large town ', 3, None, '___sec34')]}
+               '___sec25'),
+              (' English Boarding School ', 2, None, '___sec26'),
+              (' Gaussian from the corner ', 3, None, '___sec27'),
+              (' A long simulation on 100 Days ', 3, None, '___sec28'),
+              (' Zombiefication ', 2, None, '___sec29'),
+              (' Verify the initial phase ', 3, None, '___sec30'),
+              (' Three phases ', 3, None, '___sec31'),
+              (' middle town ', 3, None, '___sec32'),
+              (' large town ', 3, None, '___sec33'),
+              (' Bibliography ', 1, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -122,18 +122,19 @@ MathJax.Hub.Config({
 <!-- !split -->
 
 <h1>Zombiefication  <a name="___sec15"></a></h1>
-The previous chapter studied a ODE system which was used to calculate the results of the TV series <em>Walking Dead</em>. This model was based on the system from LMR and was developed with an extra term in the  phase <em>counter attack</em>. The following system that was used in chapter <em>Epidemic models</em> can be expand with a diffusion term in each class. The PDE system can be seen in eq<a href="#mjx-eqn-16">(16)</a>  
-
+The previous chapter studied a ODE system designed to calculate the number of humans,infected,zombies and dead during three phases in the TV series <em>Walking Dead</em>. The model was based on the model from Langtangen, Mardal and R&#248;tnes Ref.<a href="._2_PDE_FK002.html#zombie-math">[2]</a>, with an extra term in the <em>counter attack</em> phase. The ODE system from <em>Epidemic models</em> can be expanded with a diffusion term in each class to make a PDE system. This can be seen in eq<a href="#mjx-eqn-16">(16)</a>  
 $$
-\begin{align*} \tag{16}
-\frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
-\frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - D_i\delta_II+\nabla^2 I\\
-\frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z\\
-\frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
-\end{align*}
+\begin{equation} \tag{16}
+	\begin{aligned} 
+	\frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
+	\frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - D_i\delta_II+\nabla^2 I\\
+	\frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z\\
+	\frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
+	\end{aligned}
+\end{equation}
 $$
 
-By discretize this with Forward Euler in time and Crank Nicolson in space as for the SIR model<a href="._2_PDE_FK000.html#mjx-eqn-14">(14)</a>, the system can be expressed
+The system <a href="#mjx-eqn-16">(16)</a> can be solved numerically by discretization. Forward Euler is used for the time derivative and Crank Nicolson for the space derivative. This is solved with the same technique as the SIR model<a href="._2_PDE_FK000.html#mjx-eqn-14">(14)</a>. The system can be seen in Eq. <a href="#mjx-eqn-17">(17)</a>
 $$
 \begin{equation} \tag{17}
 	\begin{aligned}
@@ -149,7 +150,7 @@ $$
 \end{equation}
 $$
 
-By setting the unknown on the left side and the known on the right, the following system can be computed
+By setting the unknown on the left, the following system <a href="#mjx-eqn-18">(18)</a> can be solved. 
 $$
 \begin{equation} \tag{18}
 	\begin{aligned}
@@ -165,7 +166,7 @@ $$
 \end{equation}
 $$
 
-To verify that the discretization has been done correct, a simulation with uniform distributed classes can be done. The result is the expected to be similar as for the ODE system in the previous chapter. A zombie attack can be separate into three different phases, explained in detail in the previous chapter. The first phase is short and is called the <em>initial phase</em>. This is a condition where the humans are unfamiliar with the disease and behave quite naive to the disease. This result in a high chance of getting infected. The next phase is called <em>Hysterical phase</em>. The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected. The last phase, which happens at the same time as the hysterical phase, is the counter attack. This phase is often started if the humans are attacked by zombies. The following parameter that was used for simulating the first episodes in <em>Walking Dead</em> will also be used here. These can be seen in (<a href="#table:param_val">table:param_val</a>). By compute the system for all three phases, the value in each phase can be compared with the ones from the ODE system in the previous chapter. This will give an indication if the discretization is done correct. 
+A simulation with uniform distributed classes can be done to verify the implementation of the system. The result is expected to be similar to the ODE system in the previous chapter. A zombie attack can be separated into three different phases. The first phase is short and is called the <em>initial phase</em>. The humans are unfamiliar with the disease in this phase and acts quite naive to the disease. This result in a high chance of getting infected. The next phase is called <em>Hysterical phase</em>. The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected. The last phase, which happens at the same time as the hysterical phase, is the counter attack. This phase is often started when humans are attacked by zombies. The following parameter that was used for simulating the first episodes in <em>Walking Dead</em> will also be used here. These can be seen in (<a href="#table:param_val">table:param_val</a>). By compute the system for all three phases, the value in each phase can be compared with the ones from the ODE system in the previous chapter. This will give an indication if the discretization is done correct. 
 
 <p>
 <a name="table:param_val"></a>
@@ -188,9 +189,12 @@ The simulation in figure(<a href="#fig:zombie_three_number">9</a>) seems to matc
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 9:  <a name="fig:zombie_three_number"></a> Same results as for the ODE system in the previous chapter </p></center>
+<center><p class="caption">Figure 9:  <a name="fig:zombie_three_number"></a> The system <a href="#mjx-eqn-18">(18)</a> modeled with uniformed distributed classes. Initial values S_0 = 621,I_0 = 0, Z_0 = 0 R_0 = 0 with parameters from (<a href="#table:param_val">table:param_val</a>). </p></center>
 <p><img src="plots/2D_zombie_three_phases_number.png" align="bottom" height=600 width=800></p>
 </center>
+
+<p>
+The table is measured at the final time for each phase. The <em>Initial phase</em> lasts for three days and the values are measured at \( time=3 \). The <em>Hysterical phase</em> is a lasting phase, and will not stop until an eventual eradication. This is in this case measured at \( time=33 \), before the <em>Counter attack</em>. This phase last for some hours, and is measured at \( time=34 \), which is a day after the attack. 
 
 <p>
 <a name="table:compare_phases_zombie"></a>
@@ -203,7 +207,7 @@ The simulation in figure(<a href="#fig:zombie_three_number">9</a>) seems to matc
 <tr><td align="center">   Susceptible         </td> <td align="center">   71.3           </td> <td align="center">   71.5                   </td> <td align="center">   81.12                  </td> </tr>
 <tr><td align="center">   Infected            </td> <td align="center">   230.8          </td> <td align="center">   230.6                  </td> <td align="center">   210.94                 </td> </tr>
 <tr><td align="center">   Zombie              </td> <td align="center">   298.9          </td> <td align="center">   298.9                  </td> <td align="center">   310.11                 </td> </tr>
-<tr><td align="center">   Removed             </td> <td align="center">   21.0           </td> <td align="center">   21.0                   </td> <td align="center">   <:20.60                </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   21.0           </td> <td align="center">   21.0                   </td> <td align="center">   20.60                  </td> </tr>
 <tr><td align="center">   Hysterical phase    </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
 <tr><td align="center">   Susceptible         </td> <td align="center">   61.6           </td> <td align="center">   61.8                   </td> <td align="center">   70.55                  </td> </tr>
 <tr><td align="center">   Infected            </td> <td align="center">   0.3            </td> <td align="center">   0.3                    </td> <td align="center">   0.34                   </td> </tr>
@@ -217,7 +221,7 @@ The simulation in figure(<a href="#fig:zombie_three_number">9</a>) seems to matc
 </tbody>
 </table>
 <p>
-These results shows that the PDE system gives the same result as for the ODE. The error can be controlled by decreasing the \( \Delta t \) and \( Delta x \) for the system. 
+These results shows that the PDE system gives the same result as for the ODE. The small error can be explained by \( \Delta t \) and \( \Delta x \), and can be reduced to the expected error by decreasing these values.
 
 <p>
 <!-- # -->
@@ -225,40 +229,24 @@ These results shows that the PDE system gives the same result as for the ODE. Th
 <!-- # -->
 <!-- # -->
 
-<h3>Variation in diffusion  <a name="___sec16"></a></h3>
+<h3>Where does the infected one arises  <a name="___sec16"></a></h3>
 
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-<!-- # -->
-
-<h3>Where does the infected one arises  <a name="___sec17"></a></h3>
-
-In the previous section <em>English boarding school</em>, the placement of the infected was proven to have a major influence on the result. But here the <em>Susceptible</em> was uniformed distributed over the schoolyard. Based on the data from <em>Walking Dead</em>, the amount in each class was based on three different places where Rick went by. Based on the TV series, it is hard to decide the geograpic distance between these three places. Therefore they have been placed with a certain distance from each other. The following simulation is done on a grid with size(20 x 20) with the following placement on the towns. Small(4,4) with size 21, middle(9,15) with size 200 and large(15,5) with size 400. Since these values was based on the humans and zombies seen in the series, these can be scaled up. The total population can be scaled up with 1000, so the large town can be seen as an area with a population of 400 000. The length can be measured in kilometre. Then the distance between the middle and large town will be 11.66 km. Compared to the distance between Oslo and B&#230;rum(Sandvika) which is 15 km, the simulation can be seen as rough estimate of the area around Oslo.
+In the previous section <em>English boarding school</em>, the placement of the infected was proven to have a major influence on the result. But here the <em>Susceptible</em> was uniformed distributed over the schoolyard. Based on the study of <em>Walking Dead</em>, the amount in each class was seen in three different areas where Rick went by. Only by studying the TV series, it is hard to decide the geograpic distance between these three places. Therefore they have been placed with a certain distance from each other. The following simulation is done on a grid with size(40 x 40) with the following placement on the towns. Small town(6,6) with size 21, middle town(12,25) with size 200 and large town(25,12) with size 400. Since these values was based on the humans and zombies seen in the series, these can be scaled up. The total population can be scaled up by 1000, so the large town can be seen as an area with a population of 400 000. The length can be measured in kilometre. Then the distance between the middle and large town will be 18.38 km. Compared to the distance between Oslo and B&#230;rum(Sandvika) which is 15 km, the simulation can be seen as rough estimate of the area around Oslo. Of course with a frozen fjord and similar mobility for the whole area.  
 <br />
 <br />
-The diffusion term describe the diffusion for each class. This can be seen as the speed of each group. If the diffusion constant is large, the flow towards equilibrium will go faster. The values have been sat as follows. 
+The diffusion term describe the diffusion for each class. This can be seen as the speed for each group. If the diffusion constant is large, the flow towards equilibrium will go faster. The values have been sat as follows. 
 
 <ul>
 <li> \( D_s=1 \), The <em>Susceptible</em> has a basic moving speed. The other classes are based on the speed of a healthy human.</li>
-<li> \( D_i=0.5 \), The <em>Infected</em> are often injured caused by lately fights. This affect their moving speed</li>
-<li> \( D_z=0.9 \), The average moving speed for a zombie. There are zombies with the moving speed of a human, but there are also cases where zombies edge them self forward with only one arm. This result in a major difference in speed and therefore a lower average speed for the zombies.</li>
-<li> \( D_r=0 \), The removed are here seen as dead, therefore there are no moving speed.</li>
+<li> \( D_i=0.5 \), The <em>Infected</em> are often injured caused by recently fights. This affects their mobility</li>
+<li> \( D_z=0.9 \), The average moving speed for a zombie. There are zombies with the mobility of a human, but there are also cases where zombies drag them self forward with only one arm. This result in a major difference in speed and therefore a lower average speed for the zombies.</li>
+<li> \( D_r=0 \), The removed are here seen as dead, therefore there are no mobility.</li>
 </ul>
 
 <br />
 <br />
-The parameters from (<a href="#table:param_val">table:param_val</a>) will be used here and the three phases will be modeled as shown for the uniformed distributed PDE system. This will be done for three different simulations with similar initial value for the susceptible class. The initial value can be seen in figure(<a href="#fig:initial_value_susceptible">10</a>) and are based on the data given above. The difference in the three different simulations will be the placement of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
+The parameters from (<a href="#table:param_val">table:param_val</a>) will be used here, and the three phases will be modeled as shown for the uniformed distributed PDE system. The values will be used for three different simulations with similar initial value for the different classes. The initial values can be seen in figure(<a href="#fig:initial_value_susceptible">10</a>) and are based on the data given above. The difference in the three different simulations will be the placement of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
+[Torbj&#248;rn: Rettskriving stopp]
 
 <p>
 <center> <!-- figure -->
@@ -307,7 +295,7 @@ The result from the uniformed distributed simulation still is much higher for th
 </tbody>
 </table>
 
-<h2>Lock in different areas  <a name="___sec18"></a></h2>
+<h2>Lock in different areas  <a name="___sec17"></a></h2>
 
 <p>
 To model a realistic zombie attack, humans ability to think logic is crucial in the fight. The moving speed was presented as a factor in the previous section. Another important skill that the <em>Susceptible</em> class hold, is the ability to decide if an area is safe. In the TV series <em>Walking Dead</em>, the humans build barricades to keep the zombies outside. This give the <em>Susceptible</em> class free areas where they can stay. This idea can be transfer to the PDE system by rewrite the system <a href="#mjx-eqn-16">(16)</a> with spatial dependent diffusion term. The diffusion constant \( D_u \) is now replaced with a diffusion function \( \gamma_u(x) \) for \( u= S,I,Z,R \) which is spatial discretized.
@@ -365,7 +353,7 @@ $$
 
 The diffusion term for the <em>Removed</em> class is take away, since dead people are not able to move. This system looks quite messy, but it is straight forward to calculate. All values on the right side are known values and the system is easy to solve. Now every point will has its own diffusion constant. This makes it easier to control the flow in each class. With a high diffusion constant, the diffusion will spread fast. When the diffusion constant goes towards zero, the flow will go towards a steady state. This will result in a set of ODE systems modeled for each point.
 
-<h3>Ten minutes at Frederikkeplassen  <a name="___sec19"></a></h3>
+<h3>Ten minutes at Frederikkeplassen  <a name="___sec18"></a></h3>
 
 Frederikkeplassen at the university is an area for an upcoming zombie attack. This simulation will try to model a ten minutes sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realise the danger and goes into the <em>Hysterical phase</em>. A map of Frederikkeplassen is used to define the safe and non save areas. The buildings are set as areas where only the <em>Susceptible</em> are allowed to move. This is done by setting the diffusion constant to zero for the <em>Zombie</em> and <em>Infected</em> class. Since the buildings will be safe spots for the <em>Susceptible</em>, an idea would be to express this in the diffusion term. This more difficult, since the concentrations in each class wants to go towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and 
 
@@ -402,7 +390,7 @@ Frederikkeplassen at the university is an area for an upcoming zombie attack. Th
 </tbody>
 </table>
 
-<h3>random distribution  <a name="___sec20"></a></h3>
+<h3>random distribution  <a name="___sec19"></a></h3>
 
 <p>
 <center><p><img src="plots/2D_Frederikke_random_contourf_sub.png" align="bottom" height=600 width=800></p></center>
