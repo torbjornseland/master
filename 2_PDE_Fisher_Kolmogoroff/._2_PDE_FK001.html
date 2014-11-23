@@ -246,29 +246,36 @@ The diffusion term describe the diffusion for each class. This can be seen as th
 <br />
 <br />
 The parameters from (<a href="#table:param_val">table:param_val</a>) will be used here, and the three phases will be modeled as shown for the uniformed distributed PDE system. The values will be used for three different simulations with similar initial value for the different classes. The initial values can be seen in figure(<a href="#fig:initial_value_susceptible">10</a>) and are based on the data given above. The difference in the three different simulations will be the placement of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
-[Torbj&#248;rn: Rettskriving stopp]
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 10:  <a name="fig:initial_value_susceptible"></a> </p></center>
+<center><p class="caption">Figure 10:  <a name="fig:initial_value_susceptible"></a> The initial value for the <em>Susceptible</em> group for three simulations. Small group(6,6) with volume 21, middle group(12,25) with volume 200 and large group(25,12) with volume 400. All three groups are build up with a Gaussian function </p></center>
 <p><img src="plots/initial_value_susceptible.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
-The figure() shows the simulation where the zombie is placed in the small town. The four subplots are from the different phases that arise under a zombie attack. The different classes have the same color as introduced in figure(<a href="#fig:zombie_three_number">9</a>). It is a challenge to separate the three groups <em>Infected</em>,*Zombie* and <em>Removed</em>, since they all have a low value at initial time. The development of the amount can easier be seen in the figure(), which also shows the result from the placement in the middle and large group. Since the amount of <em>Susceptible</em> is quite low in the small town where the Zombie arise, the disease is not able to infect to many before the society has moved to the next phase. Assuming that the broadcasting works okay for the first days. This result in a eradication of the disease in about a month. The table() shows that the number of zombies decrease towards zero after a month. 
+The figure(<a href="#fig:large_town">11</a>) shows the simulation where the zombie is placed in the large town. The simulations of the small and middle town can be seen in the Appendix. The four subplots are from the different phases that arise under a zombie attack. The different classes have the same color as introduced in figure(<a href="#fig:zombie_three_number">9</a>). It is a challenge to separate the three groups <em>Infected</em>,*Zombie* and <em>Removed</em>, since they all have a low value at initial time. The development of the amount can easier be seen in the figure(<a href="#fig:compare_towns">12</a>), which also shows the result from the small and middle group. Since the amount of <em>Susceptible</em> is quite low in the small town where the Zombie arise, the disease is not able to infect to many before the society has moved to the next phase. Assuming that the broadcasting about the disease works okay for the first days. This result in a eradication of the disease in about a month. The table(<a href="#table:compare_phases_zombie">table:compare_phases_zombie</a>) shows that the number of zombies decrease towards zero after a month. 
 
 <p>
-<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_2_sub.png" align="bottom" height=600 width=800></p></center>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 11:  <a name="fig:large_town"></a> <em>Walking Dead</em> simulated with the infected at initial time in the large town. Subplots shown at each phase. </p></center>
+<p><img src="plots/2D_zombie_three_phases_zombie_large_town_2_sub.png" align="bottom" height=600 width=800></p>
+</center>
 
 <p>
-By placing the Zombie in the middle town, the amount of zombies increase to a much higher level. The amount can be seen as the second sub figure in figure(). The damages are higher and after a month the total population of <em>Susceptible</em> will be reduced to around (300). The simulation can be seen in the Appendix. The last calculation done in the large town shows the major damages. Here the amount of zombies increase above the number of <em>Susceptible</em>. The <em>Infected</em> class also increase towards 100 around in the infected phase. This can be explained by the high number of meeting between susceptible and zombies. A plot that shows each class is produced for this simulation. This give a better overview of the concentration of the four groups during this simulation. Since the diffusion term for the <em>Removed</em> group is sat to zero, the <em>Removed</em> subplots gives an indication on the placement of the deaths. This seems to be grouped in the city. The amount of zombies also seems to be higher here. The major amount of <em>Susceptible</em> are in the middle town. This area was able to avoid the damages from the initial phase.
+By placing the Zombie in the middle town, the amount of zombies increase to a much higher level. The amount can be seen as the second sub figure in figure(<a href="#fig:compare_towns">12</a>). The damages are higher and after a month the total population of <em>Susceptible</em> is reduced to 427. The last calculation done in the large town (<a href="#fig:large_town">11</a>) shows major damages. Here the amount of <em>Zombie</em> increase above the number of <em>Susceptible</em>. The <em>Infected</em> class also increase to above 100 after a couple of days in the infected phase. This can be explained by the high number of meetings between susceptible and zombies. By studying the second subplot in figure(<a href="#fig:large_town">11</a>), the zombies are grouped in the large town, while the middle and small town mostly consist of <em>Susceptible</em>. By counting the loss of <em>Susceptible</em> during the first phase, the table shows that this amount correspond to the size of the towns where the zombie was placed, given by the number 17,188 and 362 with the zombie in the small,middle and large group. The percent is highest in the middle town with 94 %. The percent in the large and small group are 90 % and 81 %. The simulation in the middle town has the highest percent because the large town also gets infected. These towns are coupled together, and the zombiefication is able to spread. The small town, which can be seen as Nesodden, has the lowest percent. This is not able to spread to the other towns, and cause less damages.  
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 12:  <a name="fig:compare_towns"></a> The values for each group counted during 34 days in <em>Walking Dead</em>. Initial phase from day 0 to day 3, Hysterical phase from day 3 to day 33 and Counter attack from day 33 to day 34. </p></center>
+<p><img src="plots/2D_compare_towns.png" align="bottom" height=1000 width=400></p>
+</center>
 
 <p>
 The result from the uniformed distributed simulation still is much higher for the <em>Zombie</em> class then for the large town. This shows that by using the parameters from the ODE system in a geographic area give no sense. A realistic assumption is that a zombie is restricted to a given area. Therefore the parameters will not be equal for all. The chance of getting infected is much higher if a susceptible is closed to an infected. There is also a greater chance of getting infected if the susceptible stay in a crowded area.
-
-<p>
-<center><p><img src="plots/2D_compare_towns.png" align="bottom" height=1000 width=400></p></center>
 
 <p>
 <a name="table:compare_phases_zombie"></a>
@@ -296,8 +303,7 @@ The result from the uniformed distributed simulation still is much higher for th
 </table>
 
 <h2>Lock in different areas  <a name="___sec17"></a></h2>
-
-<p>
+[Torbj&#248;rn: Retting stopp]
 To model a realistic zombie attack, humans ability to think logic is crucial in the fight. The moving speed was presented as a factor in the previous section. Another important skill that the <em>Susceptible</em> class hold, is the ability to decide if an area is safe. In the TV series <em>Walking Dead</em>, the humans build barricades to keep the zombies outside. This give the <em>Susceptible</em> class free areas where they can stay. This idea can be transfer to the PDE system by rewrite the system <a href="#mjx-eqn-16">(16)</a> with spatial dependent diffusion term. The diffusion constant \( D_u \) is now replaced with a diffusion function \( \gamma_u(x) \) for \( u= S,I,Z,R \) which is spatial discretized.
 
 $$
