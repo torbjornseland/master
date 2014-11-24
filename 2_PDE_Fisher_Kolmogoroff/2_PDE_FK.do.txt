@@ -612,8 +612,7 @@ label{table:compare_phases_zombie}
 ## dx = 40/800
 
 ===== Lock in different areas =====
-[Torbjørn: Retting stopp]
-To model a realistic zombie attack, humans ability to think logic is crucial in the fight. The moving speed was presented as a factor in the previous section. Another important skill that the *Susceptible* class hold, is the ability to decide if an area is safe. In the TV series *Walking Dead*, the humans build barricades to keep the zombies outside. This give the *Susceptible* class free areas where they can stay. This idea can be transfer to the PDE system by rewrite the system (ref{eq:seland_model}) with spatial dependent diffusion term. The diffusion constant $D_u$ is now replaced with a diffusion function $\gamma_u(x)$ for $u= S,I,Z,R$ which is spatial discretized.
+To model a realistic zombie attack, humans ability to think logic is crucial in the fight. The moving speed was presented as a factor in the previous section. Another important skill that the *Susceptible* class hold, is the ability to decide the safety of an area. In the TV series *Walking Dead*, the humans build barricades to keep the zombies outside. This give the *Susceptible* class free areas where they can stay. This idea can be transfer to the PDE system by rewrite the system (ref{eq:seland_model}) with spatial dependent diffusion term. The diffusion constant $D_u$ is now replaced with a diffusion function $\gamma_u(x)$ for $u= S,I,Z,R$ which is spatial discretized. Since a diffusion equation always goes towards equilibrium, this rewriting will only slow down/stop the selected class to diffuse into an area. In this case the *Zombie* class to diffuse into the buildings. 
 
 !bt
 \begin{equation} label{eq:seland_model_diff}
@@ -626,7 +625,7 @@ To model a realistic zombie attack, humans ability to think logic is crucial in 
 \end{equation}
 !et
 
-The difference for this system compared with (ref{eq:seland_model}) is the diffusion term in each equation. The discretization can be shown for for a general $\gamma$. This will be similar for all classes. A Crank nicolson discretization is used in space.
+The diffusion term is the difference between this system and system(ref{eq:seland_model}). The discretization can be shown for for a general $\gamma$. This will be similar for all classes. A Crank Nicolson discretization is used in space.
 
 !bt
 \begin{equation} label{eq:gamma}
@@ -638,7 +637,7 @@ The difference for this system compared with (ref{eq:seland_model}) is the diffu
     \end{aligned}
 \end{equation}
 !et
-Since the calculation is based on spatial points, the values inside the function of $\gamma$ need to be adjusted. This can be done by an aritmetic mean, which can be seen in eq(ref{eq:arith_mean}). The writing $q_{i+1/2}$ is used for the function $q(x_{i+1/2})$ with $x_{i+1/2} = x_i + 1/2 \Delta x$
+Since the calculation is based on spatial points, the values inside the function of $\gamma$ need to be adjusted. This can be done by an aritmetic mean. This can be seen in eq(ref{eq:arith_mean}). The writing $q_{i+1/2}$ is used for the function $q(x_{i+1/2})$ with $x_{i+1/2} = x_i + 1/2 \Delta x$
 !bt
 \begin{equation} label{eq:arith_mean}
 q_{i+1/2} \approx \frac{1}{2}(q_i +q_{i+1})
@@ -661,15 +660,18 @@ This arithmetic mean can be inserted for all $\gamma$'s in the system.By cleanin
 	\end{aligned}
 \end{equation}
 !et
-The diffusion term for the *Removed* class is take away, since dead people are not able to move. This system looks quite messy, but it is straight forward to calculate. All values on the right side are known values and the system is easy to solve. Now every point will has its own diffusion constant. This makes it easier to control the flow in each class. With a high diffusion constant, the diffusion will spread fast. When the diffusion constant goes towards zero, the flow will go towards a steady state. This will result in a set of ODE systems modeled for each point.
+The diffusion term for the *Removed* class is take away, since dead people are not able to move. This system looks quite messy, but it is straight forward to calculate. All values on the right side are known values and the system is easy to solve. Now every point will be controlled by its diffusion constant. This makes it easier to control the flow in each class. With a high diffusion constant, the diffusion will spread fast. When the diffusion constant goes towards zero, the flow will decrease towards zero flow. This will result in a set of ODE systems modeled for each point.
 ##S &= \nabla\left(\gamma(x) \nabla S)\right \\
+
 === Ten minutes at Frederikkeplassen ===
-Frederikkeplassen at the university is an area for an upcoming zombie attack. This simulation will try to model a ten minutes sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realise the danger and goes into the *Hysterical phase*. A map of Frederikkeplassen is used to define the safe and non save areas. The buildings are set as areas where only the *Susceptible* are allowed to move. This is done by setting the diffusion constant to zero for the *Zombie* and *Infected* class. Since the buildings will be safe spots for the *Susceptible*, an idea would be to express this in the diffusion term. This more difficult, since the concentrations in each class wants to go towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and 
+Frederikkeplassen at the university is a possible area for an upcoming zombie attack. This simulation will try to model a ten minutes sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realise the danger and goes into the *Hysterical phase*. A map of Frederikkeplassen is used to define the safe and non save areas. The buildings are set as areas where only the *Susceptible* are allowed to move. This is done by setting the diffusion constant to zero for the *Zombie* and *Infected* class. Since the buildings are safe spots for the *Susceptible*, an idea would be to express this in the diffusion term by forcing the *Susceptible* for other areas into the buildings. This more difficult, since the concentrations in each class wants to go towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and a slow inside the buildings. 
 
+FIGURE:[plots/2D_compare_Frederikke.png, height=400 width=800 frac=0.8] The amount in each group for two simulations of Frederikkeplassen modeled same parameters for 10 minutes. a)Plot with uniformed distributed groups and same diffusion constants for all classes. b)Plot based on figure(ref{fig:frederikke_area}) with different initial values for each group.     
 
-FIGURE:[plots/2D_Frederikke_contourf_sub.png, height=600 width=800 frac=0.8]
+Two simulations have been done on Frederikkeplassen. The first simulation is a solution based on the ODE system, with uniformed distributed classes, equal diffusion constants and no free areas for the *Susceptible*. The second simulation is model with three groups of *Susceptible*, as in the previous Section. The small group with 21 students is placed at point(4,4), the middle group with 200 students is placed at point(15,8) and the large group with 400 students is placed at point(8,13). The zombie is placed at point(8,10). The $\gamma(x)$ is sat to zero in the buildings for the *Zombie* and *Infected* class, and one in the rest of the area. For the *Susceptible* class, $gamma(x)$ is sat to 0.1 in the buildings, which causing slow diffusion. In the areas, the $\gamma(x)$ is sat to 5 for the *Susceptible*. The desired idea is to push them into  the buildings, but this will only happen if there is a lower concentration inside the buildings. Therefore this will not reflect a realistic flow of a *Susceptible* population.  
 
-FIGURE:[plots/2D_compare_Frederikke.png, height=400 width=800 frac=0.8]
+FIGURE:[plots/2D_Frederikke_contourf_sub.png, height=600 width=800 frac=0.8] Frederikkeplassen modeled with free areas for the *Susceptible* group. The diffusion function $\gamma(x)$ is sat to zero for the *Zombie* and *Infected* group in the buildings. The zombie at initial time is placed in the center of Frederikkeplassen
+
 
 
 

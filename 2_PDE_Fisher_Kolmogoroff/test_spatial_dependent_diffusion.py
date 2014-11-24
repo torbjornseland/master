@@ -137,7 +137,6 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,bet
                 np.savez_compressed("%s/Inf%04d" % (folder,(n/mn)),I[1:-1:gap,1:-1:gap])
                 np.savez_compressed("%s/Zom%04d" % (folder,(n/mn)),Z[1:-1:gap,1:-1:gap])
                 np.savez_compressed("%s/Rem%04d" % (folder,(n/mn)),R[1:-1:gap,1:-1:gap])
-			print "S",S[2]	
             S_1[:,:] = S
             I_1[:,:] = I
             Z_1[:,:] = Z 

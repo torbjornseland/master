@@ -11,8 +11,8 @@ plots/2D_zombie_three_phases_number.png
 plots/initial_value_susceptible.png
 plots/2D_zombie_three_phases_zombie_large_town_2_sub.png
 plots/2D_compare_towns.png
-plots/2D_Frederikke_contourf_sub.png
 plots/2D_compare_Frederikke.png
+plots/2D_Frederikke_contourf_sub.png
 plots/2D_Frederikke_random_contourf_sub.png
 plots/2D_gauss_sub.png
 plots/2D_gauss_one_sub.png
@@ -26,6 +26,3 @@ plots/2D_zombie_initial_cond_number.png
 plots/2D_zombie_three_phases_sub.png
 plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png
 plots/2D_zombie_three_phases_zombie_large_town_sub.png
-._2_PDE_FK000.html
-._2_PDE_FK001.html
-._2_PDE_FK002.html

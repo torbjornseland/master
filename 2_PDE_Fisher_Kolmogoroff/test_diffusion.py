@@ -28,10 +28,10 @@ S_1_1 = np.linspace(1,0,Nx+3)  #list of Susceptible in previous time step
 S_1_2 = np.linspace(1,0,Nx+3)  #list of Susceptible in previous time step
 S_1_3 = np.linspace(1,0,Nx+3)  #list of Susceptible in previous time step
 
-D_s = 1
+D_s = 0
 #gamma_s = np.linspace(0,5,Nx+3)
 #gamma_s = np.linspace(1,0,Nx+3)
-gamma_s = np.ones(Nx+3)
+gamma_s = np.ones(Nx+3)*2
 #gamma_s[:Nx/8] = gamma_s[:Nx/8]*0
 #gamma_s[-Nx/8:] = gamma_s[-Nx/8:]*0
 #gamma_s[3*Nx/8:-3*Nx/8] = gamma_s[3*Nx/8:-3*Nx/8]*0
