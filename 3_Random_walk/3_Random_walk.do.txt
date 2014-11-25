@@ -192,7 +192,7 @@ this leads to
 !et
 which gives the variance
 !bt
-\begin{equation}
+\begin{equation} label{eq:diff_var}
 \langle x^2 \rangle -\langle x \rangle^2 = 2Dt
 \end{equation}
 !et
@@ -202,12 +202,66 @@ And the square root of the variance can be expressed,
 \sqrt{\langle x^2 \rangle -\langle x \rangle^2} = \sqrt{2Dt}
 \end{equation}
 !et
-By comparing this with the displacement of a free particle, which moves with the function $x(t)=vt$ from the initial point, will the diffusion process moves with $ \sqrt{\langle x^2 \rangle -\langle x \rangle^2} \propto \sqrt{t}$. This can be used to describe a random walk, and could say that a random walker escapes much more slowly than a free particle from the initial time. This can be seen in an example. 
+By comparing this with the displacement of a free particle, which moves with the function $x(t)=vt$ from the initial point, will the diffusion process moves with $\sqrt{\langle x^2 \rangle -\langle x \rangle^2} \propto \sqrt{t}$. This can be used to describe a random walk, and could say that a random walker escapes much more slowly than a free particle from the initial time. This can be seen in an example. 
 
+=== Random walker ===
+Now the random walker can be introduced in 1D. This can either jump to the left or the right with a lenght $\Delta x = l$. It is equal probability for both directions. $L=R=1/2$. Then the average displacement will be 
+!bt
+\begin{equation}
+ \langle x(n) \rangle = \sum^n_i \Delta x_i = 0, \quad \Delta x_i = \pm l,
+\end{equation}
+!et
+after $n$ jumps. The variance can be found by first finding $\langle x(n)^2 \rangle$.
+!bt
+\begin{equation}
+\langle x(n)^2 \rangle = \left(\sum^n_i \Delta x_i\right)\left(\sum^n_j \Delta x_j\right) = \sum^n_i \Delta x_i^2 + \sum^n_i \Delta x_i \Delta x_j = l^2n
+\end{equation}
+!et
+The last term here will disappear after enough steps.  
+!bt
+\begin{equation}
+\sum^n_i \Delta x_i \Delta x_j = 0
+\end{equation}
+!et
+This gives the variance
+!bt
+\begin{equation}
+\langle x(n)^2 \rangle-\langle x(n) \rangle^2 = l^2n
+\end{equation}
+!et
+Now this variance from a random walker can be coupled with the variance from the diffusion equation in the section above. By setting $n = t/\Delta t$. The random walker gets the following variance
+!bt
+\begin{equation}
+\langle x(n)^2 \rangle-\langle x(n) \rangle^2 = l^2\frac{t}{\Delta t}
+\end{equation}
+!et
+Then the diffusion constant in (ref{eq:diff_var}) can be replaced by
+!bt
+\begin{equation}
+D = \frac{l^2}{\Delta t}
+\end{equation}
+!et
+And the variance between these can be compared.
 
+FIGURE:[plots/random_compare.png, height=500 width=800 frac=0.8] 10000 random walkers placed at x=0 at t=0. Every step has the length $\Delta x = 0.01$ and with a random step every $\Delta t = 0.01$.
 
+The standard deviation can be found for this simulation. This is given by the square root of the variance
+!bt
+\begin{equation}
+\sigma = \sqrt{l^2\frac{t}{\Delta t}}
+\end{equation}
+!et
 
+To study if the average random walker develops as expected, a table can with the outputs can be added. 
 
+|-----------------------------------------------|
+|-----------------------|time=2     |time=8     |
+|-----------------------------------------------|
+|average displacement   |0.000662   | -0.002416 |
+|standard deviation(SD) |0.1414     |  0.2828   |
+|percent inside SD      |70.96 %    |69.02 %    |
+|percent inside gauss   |           |           |
+|-----------------------------------------------|
 
 
 

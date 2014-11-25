@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.27)  15 NOV 2014 13:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.27)  25 NOV 2014 16:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**2_PDE_FK
+**2_PDE_FK.tex
 (./2_PDE_FK.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 26 languages loaded.
@@ -752,7 +752,7 @@ Package epstopdf Info: Source file: <plots/trav_wave_sub.eps>
 (epstopdf)                    size: 0 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/trav_wave_sub-eps-co
 nverted-to.pdf plots/trav_wave_sub.eps>
-(epstopdf)             \includegraphics on input line 175.
+(epstopdf)             \includegraphics on input line 190.
 Package epstopdf Info: Output file is already uptodate.
 
 !pdfTeX error: pdflatex (file ./plots/trav_wave_sub-eps-converted-to.pdf): read

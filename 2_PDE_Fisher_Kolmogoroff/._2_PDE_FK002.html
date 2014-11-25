@@ -1,42 +1,39 @@
 <!--
-Automatically generated HTML file from DocOnce source
+Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Geographic models">
 
-<title>Geographic models</title>
 
 
 <style type="text/css">
-/* blueish style */
+    /* blueish style */
 
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-/* pre style removed because it will interfer with pygments */
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
-div { text-align: justify; text-justify: inter-word; }
 </style>
-
 
 </head>
 
@@ -96,26 +93,24 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
 
 
 
     
 <a name="part0002"></a>
-<p>
 <!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-</td></tr></table>
+<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 <!-- end top navigation -->
-</p>
 
 <p>
 <!-- !split -->
@@ -124,9 +119,8 @@ MathJax.Hub.Config({
 
 <h3>Sympy to find manufactured solution  <a name="___sec21"></a></h3>
 
-<p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x,t,lam <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;x t lam&#39;</span>)
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">s_simple</span>(x,t):
@@ -193,19 +187,17 @@ $$
 
 <h2>2D Gaussian function from x=0  <a name="___sec23"></a></h2>
 
-<p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 13:  The PDE system <a href="._2_PDE_FK000.html#mjx-eqn-4">(4)</a> simulated for a 2D system with \( \lambda=0.5 \). A gauss wave from \( x=0 \). </p></center>
+<center><p class="caption">Figure 16:  The PDE system <a href="._2_PDE_FK000.html#mjx-eqn-4">(4)</a> simulated for a 2D system with \( \lambda=0.5 \). A gauss wave from \( x=0 \). </p></center>
 <p><img src="plots/2D_gauss_sub.png" align="bottom" height=600 width=800></p>
 </center>
 
 <h2>2D Gaussian function from x=0,y=0  <a name="___sec24"></a></h2>
 
-<p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 14:  A gaussian function from \( x=0,y=0 \) based on the PDE system <a href="._2_PDE_FK000.html#mjx-eqn-4">(4)</a> with \( \lambda=0.5 \) </p></center>
+<center><p class="caption">Figure 17:  A gaussian function from \( x=0,y=0 \) based on the PDE system <a href="._2_PDE_FK000.html#mjx-eqn-4">(4)</a> with \( \lambda=0.5 \) </p></center>
 <p><img src="plots/2D_gauss_one_sub.png" align="bottom" height=600 width=800></p>
 </center>
 
@@ -213,17 +205,14 @@ $$
 
 <h2>English Boarding School  <a name="___sec26"></a></h2>
 
-<p>
 <center><p><img src="plots/2D_british_school_sub.png" align="bottom" height=600 width=800></p></center>
 
 <h3>Gaussian from the corner  <a name="___sec27"></a></h3>
 
-<p>
 <center><p><img src="plots/2D_british_school_gauss_corner_sub.png" align="bottom" height=600 width=800></p></center>
 
 <h3>A long simulation on 100 Days  <a name="___sec28"></a></h3>
 
-<p>
 <center><p><img src="plots/2D_british_school_long_number.png" align="bottom" height=600 width=800></p></center>
 
 <p>
@@ -236,29 +225,25 @@ $$
 
 <h3>Verify the initial phase  <a name="___sec30"></a></h3>
 
-<p>
 <center><p><img src="plots/2D_zombie_initial_cond_sub.png" align="bottom" height=600 width=800></p></center>
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 15:  Creates the same results as for the ODE system </p></center>
+<center><p class="caption">Figure 18:  Creates the same results as for the ODE system </p></center>
 <p><img src="plots/2D_zombie_initial_cond_number.png" align="bottom" height=600 width=800></p>
 </center>
 
 <h3>Three phases  <a name="___sec31"></a></h3>
 
-<p>
 <center><p><img src="plots/2D_zombie_three_phases_sub.png" align="bottom" height=600 width=800></p></center>
 
 <h3>middle town  <a name="___sec32"></a></h3>
 
-<p>
 <center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
 
 <h3>large town  <a name="___sec33"></a></h3>
 
-<p>
 <center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_sub.png" align="bottom" height=600 width=800></p></center>
 
 <p>
@@ -281,7 +266,6 @@ $$
 
 <h1>Bibliography  <a name="___sec34"></a></h1>
 
-<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -309,12 +293,8 @@ $$
 
 <p>
 <!-- begin bottom navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-</td></tr></table>
+<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
 <!-- end bottom navigation -->
-</p>
 
 <!-- ------------------- end of main content --------------- -->
 

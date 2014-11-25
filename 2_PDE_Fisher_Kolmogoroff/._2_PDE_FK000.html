@@ -1,42 +1,39 @@
 <!--
-Automatically generated HTML file from DocOnce source
+Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Geographic models">
 
-<title>Geographic models</title>
 
 
 <style type="text/css">
-/* blueish style */
+    /* blueish style */
 
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-/* pre style removed because it will interfer with pygments */
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
-div { text-align: justify; text-justify: inter-word; }
 </style>
-
 
 </head>
 
@@ -96,31 +93,30 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
 
 
 
     
 <a name="part0000"></a>
-<p>
 <!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-</td><td>
-<div style="text-align: right;"><a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
-</p>
 
 <p>
 <!-- ------------------- main content ---------------------- -->
 
 
+<title>Geographic models </title>
 
 <center><h1>Geographic models </h1></center>  <!-- document title -->
 
@@ -135,11 +131,10 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 20, 2014</h4></center> <!-- date -->
+<center><h4>Nov 25, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="#___sec0"> Introduction </a><br>
 <a href="#___sec1"> Simple system for spatial spread </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Travelling wave 1D </a><br>
@@ -347,7 +342,7 @@ The values \( \beta \) and \( \lambda \) are based on the constants. These can b
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_constant_solution</span>():
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
 <span style="color: #BA2121; font-style: italic">    Test problem where u=u_const is the exact solution, to be</span>
@@ -456,7 +451,7 @@ A similar test made for the constant solution can be used here. While the consta
 The following manufactured test will then be
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_manufactured_solution</span>(T,Nt,X,Nx):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
 <span style="color: #BA2121; font-style: italic">    Test problem where u=c*t+I is the exact solution, to be</span>
@@ -539,13 +534,13 @@ With equation<a href="#mjx-eqn-11">(11)</a>, the expected convergence rate can b
 <a name="table:error_numbers"></a>
 <table border="1">
 <thead>
-<tr><th align="center">                         </th> <td align="center">\( \Delta x \)</td> <td align="center">\( \frac{\Delta x}{2} \)</td> <td align="center">\( \frac{\Delta x}{4} \)</td> <td align="center">\( \frac{\Delta x}{8} \)</td> </tr>
+<tr><th align="center">                         </th> <td align="center">      \( \Delta x \)     </td> <td align="center"> \( \frac{\Delta x}{2} \)</td> <td align="center"> \( \frac{\Delta x}{4} \)</td> <td align="center"> \( \frac{\Delta x}{8} \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   \( \Delta t      \)          </td> <td align="center">   9.8E-3            </td> <td align="center">   -                           </td> <td align="center">   -                           </td> <td align="center">   -                           </td> </tr>
-<tr><td align="center">   \( \frac{\Delta t}{4}  \)    </td> <td align="center">   9.9E-3            </td> <td align="center">   2.5E-3                      </td> <td align="center">   -                           </td> <td align="center">   -                           </td> </tr>
-<tr><td align="center">   \( \frac{\Delta t}{8}  \)    </td> <td align="center">   9.9E-3            </td> <td align="center">   2.5E-3                      </td> <td align="center">   6.1E-4                      </td> <td align="center">   -                           </td> </tr>
-<tr><td align="center">   \( \frac{\Delta t}{16} \)    </td> <td align="center">   9.9E-3            </td> <td align="center">   2.5E-3                      </td> <td align="center">   6.1E-4                      </td> <td align="center">   1.5E-4                      </td> </tr>
+<tr><td align="center">   \( \Delta t      \)          </td> <td align="center">   9.8E-3                       </td> <td align="center">   -                            </td> <td align="center">   -                            </td> <td align="center">   -                            </td> </tr>
+<tr><td align="center">   \( \frac{\Delta t}{4}  \)    </td> <td align="center">   9.9E-3                       </td> <td align="center">   2.5E-3                       </td> <td align="center">   -                            </td> <td align="center">   -                            </td> </tr>
+<tr><td align="center">   \( \frac{\Delta t}{8}  \)    </td> <td align="center">   9.9E-3                       </td> <td align="center">   2.5E-3                       </td> <td align="center">   6.1E-4                       </td> <td align="center">   -                            </td> </tr>
+<tr><td align="center">   \( \frac{\Delta t}{16} \)    </td> <td align="center">   9.9E-3                       </td> <td align="center">   2.5E-3                       </td> <td align="center">   6.1E-4                       </td> <td align="center">   1.5E-4                       </td> </tr>
 </tbody>
 </table>
 <!-- 0.00988006143376,0.00246039081619,-,- -->
@@ -571,10 +566,10 @@ $$
 Since the table above has four different error values, these can be used to give three different convergence rates. \( \Delta x_1 = \Delta x, \Delta x_2 = \Delta x/2... \). The same labeling will be done for the different error values, \( \epsilon \).
 <table border="1">
 <thead>
-<tr><th align="center"> </th> <td align="center">\( \epsilon_1/\epsilon_2 \)</td> <td align="center">\( \epsilon_2/\epsilon_3 \)</td> <td align="center">\( \epsilon_3/\epsilon_4 \)</td> </tr>
+<tr><th align="center">                           </th> <td align="center">\( \epsilon_1/\epsilon_2 \)</td> <td align="center">\( \epsilon_2/\epsilon_3 \)</td> <td align="center">\( \epsilon_3/\epsilon_4 \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   r    </td> <td align="center">   2.0056                         </td> <td align="center">   2.0014                         </td> <td align="center">   2.0004                         </td> </tr>
+<tr><td align="center">   r                              </td> <td align="center">   2.0056                         </td> <td align="center">   2.0014                         </td> <td align="center">   2.0004                         </td> </tr>
 </tbody>
 </table>
 <p>
@@ -647,10 +642,10 @@ The shape of the two travelling waves in figure(<a href="#fig:2D_trav_wave">3</a
 <a name="table:wave_values"></a>
 <table border="1">
 <thead>
-<tr><th align="center">1D wave</th> <th align="center">2D wave line</th> <th align="center">2D wave point</th> </tr>
+<tr><th align="center">   1D wave   </th> <th align="center"> 2D wave line</th> <th align="center">2D wave point</th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   1.43       </td> <td align="center">   1.43            </td> <td align="center">   1.43             </td> </tr>
+<tr><td align="center">   1.43             </td> <td align="center">   1.43             </td> <td align="center">   1.43             </td> </tr>
 </tbody>
 </table>
 <p>
@@ -727,21 +722,21 @@ The results from the first subplot in figure(<a href="#fig:british_number">7</a>
 <a name="table:british_number_table"></a>
 <table border="1">
 <thead>
-<tr><th align="center">           </th> <th align="center"> ODE system</th> <th align="center">  PDE uniform dist </th> <th align="center"> PDE center</th> <th align="center"> PDE corner</th> </tr>
+<tr><th align="center">                   </th> <th align="center">     ODE system    </th> <th align="center">  PDE uniform dist </th> <th align="center">     PDE center    </th> <th align="center">     PDE corner    </th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   5 Days         </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   444.62         </td> <td align="center">   444.62                 </td> <td align="center">   748.03         </td> <td align="center">   757.33         </td> </tr>
-<tr><td align="center">   Infective      </td> <td align="center">   209.56         </td> <td align="center">   209.56                 </td> <td align="center">   7.36           </td> <td align="center">   2.35           </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   108.82         </td> <td align="center">   108.82                 </td> <td align="center">   7.60           </td> <td align="center">   3.32           </td> </tr>
-<tr><td align="center">   10 Days        </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   37.59          </td> <td align="center">   37.59                  </td> <td align="center">   697.71         </td> <td align="center">   743.58         </td> </tr>
-<tr><td align="center">   Infective      </td> <td align="center">   117.59         </td> <td align="center">   117.59                 </td> <td align="center">   24.43          </td> <td align="center">   6.66           </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   607.82         </td> <td align="center">   607.82                 </td> <td align="center">   40.86          </td> <td align="center">   12.76          </td> </tr>
-<tr><td align="center">   15 Days        </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   21.09          </td> <td align="center">   21.09                  </td> <td align="center">   597.01         </td> <td align="center">   717.02         </td> </tr>
-<tr><td align="center">   Infective      </td> <td align="center">   17.30          </td> <td align="center">   17.30                  </td> <td align="center">   46.96          </td> <td align="center">   12.37          </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   724.62         </td> <td align="center">   724.62                 </td> <td align="center">   119.03         </td> <td align="center">   33.61          </td> </tr>
+<tr><td align="center">   5 Days                 </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   444.62                 </td> <td align="center">   444.62                 </td> <td align="center">   748.03                 </td> <td align="center">   757.33                 </td> </tr>
+<tr><td align="center">   Infective              </td> <td align="center">   209.56                 </td> <td align="center">   209.56                 </td> <td align="center">   7.36                   </td> <td align="center">   2.35                   </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   108.82                 </td> <td align="center">   108.82                 </td> <td align="center">   7.60                   </td> <td align="center">   3.32                   </td> </tr>
+<tr><td align="center">   10 Days                </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   37.59                  </td> <td align="center">   37.59                  </td> <td align="center">   697.71                 </td> <td align="center">   743.58                 </td> </tr>
+<tr><td align="center">   Infective              </td> <td align="center">   117.59                 </td> <td align="center">   117.59                 </td> <td align="center">   24.43                  </td> <td align="center">   6.66                   </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   607.82                 </td> <td align="center">   607.82                 </td> <td align="center">   40.86                  </td> <td align="center">   12.76                  </td> </tr>
+<tr><td align="center">   15 Days                </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   21.09                  </td> <td align="center">   21.09                  </td> <td align="center">   597.01                 </td> <td align="center">   717.02                 </td> </tr>
+<tr><td align="center">   Infective              </td> <td align="center">   17.30                  </td> <td align="center">   17.30                  </td> <td align="center">   46.96                  </td> <td align="center">   12.37                  </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   724.62                 </td> <td align="center">   724.62                 </td> <td align="center">   119.03                 </td> <td align="center">   33.61                  </td> </tr>
 </tbody>
 </table>
 <!-- dx = 0.04 -->
@@ -773,12 +768,8 @@ If the simulations are run for a longer time, the difference between each class 
 <p>
 <p>
 <!-- begin bottom navigation -->
-<table style="width: 100%"><tr><td>
-</td><td>
-<div style="text-align: right;"><a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
-</p>
 
 <!-- ------------------- end of main content --------------- -->
 
