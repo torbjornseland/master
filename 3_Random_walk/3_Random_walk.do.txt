@@ -243,7 +243,7 @@ D = \frac{l^2}{\Delta t}
 !et
 And the variance between these can be compared.
 
-FIGURE:[plots/random_compare.png, height=500 width=800 frac=0.8] 10000 random walkers placed at x=0 at t=0. Every step has the length $\Delta x = 0.01$ and with a random step every $\Delta t = 0.01$.
+FIGURE:[plots/random_compare.png, height=500 width=800 frac=0.8] label{fig:gauss_random} 10000 random walkers placed at x=0 at t=0. Every step has the length $\Delta x = 0.01$ and with a random step every $\Delta t = 0.01$.
 
 The standard deviation can be found for this simulation. This is given by the square root of the variance
 !bt
@@ -254,17 +254,31 @@ The standard deviation can be found for this simulation. This is given by the sq
 
 To study if the average random walker develops as expected, a table can with the outputs can be added. 
 
+label{table:gauss_random}
 |-----------------------------------------------|
 |-----------------------|time=2     |time=8     |
 |-----------------------------------------------|
 |average displacement   |0.000662   | -0.002416 |
 |standard deviation(SD) |0.1414     |  0.2828   |
 |percent inside SD      |70.96 %    |69.02 %    |
-|percent inside gauss   |           |           |
+|percent inside gauss   |68.26 %    |68.26 %    |
 |-----------------------------------------------|
 
+The average displacement and the standard deviation shows that a group of random walkes spread similar as a standard diffusion function. This result in a major group of random walkers. In the simulation in Fig.(ref{fig:gauss_random}), 10000 random walkers are used. By increasing the amount om random walkers, the precision will be better.
 
+===== Epidemic in an English Boarding School =====
+This example has been common for all three systems, and will be used in this chapter. The following system(ref{eq:simple_PDE}) from previous chapter, *Geographic models* will be implemented for random walkers to simulate the epidemic in the English Boarding School.
+!bt
+\begin{equation} label{eq:simple_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+!et
 
+In previous section, the diffusion term was
 
 
 

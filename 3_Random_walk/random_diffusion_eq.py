@@ -15,8 +15,6 @@ number32 = xor_shift_32(X,Y,Z,W)
 #for i in range(20):
     #print "64",number.random_value()
     #print "32",number32.random_value()
-def gauss_sig(x,sig):
-    return (1/(sig*np.sqrt(2*np.pi)))*np.exp(-(x**2)/(2*sig**2))
 
 class walker:
     def __init__(self,X,Y,Z,W,mu,sig,step):
@@ -33,6 +31,11 @@ class walker:
         return self.pos
 
 
+def gauss(x,T):
+    return 0.02*(1/np.sqrt(4*np.pi*D*T))*np.exp(-(x**2)/(4*D*T))
+
+def gauss_sm(x,T):
+    return (1/sm.sqrt(4*sm.pi*D*T))*sm.exp(-(x**2)/(4*D*T))
 
 def run_random(title,savefile,T):
     #Add a list of walkers:
@@ -72,8 +75,6 @@ def run_random(title,savefile,T):
 
     max_h = np.max(y)/float(N)
     plt.bar(x,y/float(N),width,align='center',label="random walk")
-    def gauss(x,T):
-        return 0.02*(1/np.sqrt(4*np.pi*D*T))*np.exp(-(x**2)/(4*D*T))
 
     plt.plot(x,gauss(x,T),'r',label="gauss function")
     #plt.plot(x,gauss(x,T*0.5),'g')
@@ -86,6 +87,18 @@ def run_random(title,savefile,T):
     plt.savefig(savefile)
     plt.show()
 
+def integrate_gauss(D,T,sig):
+    x = sm.Symbol('x')
+    print sm.integrate(gauss_sm(x,T),(x,-sig,sig))
+
 #T_list = [2,8]
 #for i in T_list:
 #    run_random("time = %s" % i ,"plots/random_%s_t.png" % i ,i)
+
+dx = 0.01
+dt = 0.01
+D = (dx**2/dt)*0.5
+T = 8
+sig = np.sqrt(((dx**2)*T)/dt)
+integrate_gauss(D,T,sig)
+
