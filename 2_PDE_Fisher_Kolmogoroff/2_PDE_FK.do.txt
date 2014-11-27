@@ -5,11 +5,11 @@ DATE: today
 TOC: on
 
 ======= Introduction =======
-This chapter will introduce a new model for epidemic diseases. By expand the ODE system from previous chapter to also consist a term for geographic spread of. The first section *Simple system for spatial spread* will build on the simple SIR model presented in previous chapter and be based on *Geographic spread and Control of epidemics* by Murray cite{murray2003mathematical}. The parameters from *English Boarding School* in previous chaper will be used for the model and the result will be compared between the models. The position of the infected student will be compared against the number of infected each day. The last section,*Zombiefication*, will study and expand the system from Langtangen, Mardal and Røtnes cite{zombie-math}. The results and parameter values used to calculate *Walking Dead* will be used to simulate the geographic result.
+This chapter will introduce a spatial model for epidemic diseases. The ODE system from previous chapter can be expand with a term for geographic spread of the disease. The first section *Simple system for spatial spread* will build on the simple SIR model presented in previous chapter and be based on *Geographic spread and Control of epidemics* by Murray cite{murray2003mathematical}. The parameters from *English Boarding School* in previous chaper will be used for the model and the results will be compared. The position of the infected student will be study to see if this affect the number of infected. The last section, *Zombiefication*, will study and expand the system from Langtangen, Mardal and Røtnes cite{zombie-math}. The results and parameter values used to calculate *Walking Dead* will be compared between the previous ODE system and variations of this PDE. 
  
 
 ======= Simple system for spatial spread =======
-A spatial variable, _x_ will now be introduced to the model. This result in both temporal and spatial variations. The difference from a standard ODE system will be the diffusion part added to each equation. The system can be seen in eq(ref{eq:simple_PDE}). 
+A spatial variable, _x_ will be introduced to the model. This result in both temporal and spatial variations. The difference from a standard ODE system will be the diffusion part added to each equation. The system can be seen in Eq.(ref{eq:simple_PDE}). 
 !bt
 \begin{equation} label{eq:simple_PDE}
 	\begin{aligned}
@@ -19,7 +19,7 @@ A spatial variable, _x_ will now be introduced to the model. This result in both
 	\end{aligned}
 \end{equation}
 !et
-With the following conditions for the boundary and initial values
+Here $S$ describes the *Susceptible* group, $I$ describes the *Infected* group and $R$ describes the *Removed* group. With the following conditions for the boundary and initial values
 !bt
 \begin{equation} label{eq:boundary_initial}
 	\begin{aligned}
@@ -37,16 +37,16 @@ This result in Neumann conditions at the boundary. The following implementation 
 	\end{aligned}
 \end{equation}
 !et
-This is solved by adding an extra point on each side, called ghost points. The values in these points are updated each time step with values from $u_1^n$ and $u_{X-1}^n$ each round. All three classes, $S,I,R$ have the same diffusion coefficient, $D$, for this system. This give the three groups the same diffusion speed. This can vary between systems. Section *Zombiefication*, will contain various diffusion constants. The two parts $rIS$ and $aI$ will work in the same way as in the ODE system. Since this model taking the position into account, the idea is to model a group of infective that moves into a uniform population with susceptible, which is spread around with the density $S_0$. Then the geotemporal spread can be seen. The problem will first be consider as one-dimensional. The system can be nondimensionalise by writing 
+This is solved by adding an extra point on each side, called ghost points. The values in these points are updated each time step with values from $u_1^n$ and $u_{X-1}^n$. All three classes, $S,I,R$ in Eq.(ref{simple_PDE}) have the same diffusion coefficient, $D$. This gives the three groups the same diffusion speed. This can vary between systems. Later in the chapter, in section *Zombiefication*, different diffusion terms are given for the groups. The two probabilities $rIS$ and $aI$ will work in the same way as for the ODE system. Since this model takes the position into account, a group of infective that moves into a uniform population with susceptible can be model. The group of *Susceptible* has the density $S_0$. A simulation can show the geotemporal spread of the disease. The problem can first be considered as one-dimensional. The system can be nondimensionalised by writing 
 !bt
 \begin{equation} label{eq:constants_nondimensional}
 	\begin{aligned}
 	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
 	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
 	\end{aligned}
-\end{equation}
+0\end{equation}
 !et
-$S_0$ is used as a representative population. Now the model(ref{eq:simple_PDE}) can be expressed as in eq(ref{eq:simple_non_PDE}). The asterisks have been dropped to make it easier to read.
+$S_0$ is used as a representative population. Now Eq.(ref{eq:simple_PDE}) can be expressed as in Eq.(ref{eq:simple_non_PDE}). The asterisks have been dropped to make it easier to read.
 !bt
 \begin{equation} label{eq:simple_non_PDE}
 	\begin{aligned}
@@ -56,15 +56,15 @@ $S_0$ is used as a representative population. Now the model(ref{eq:simple_PDE}) 
 	\end{aligned}
 \end{equation}
 !et
-The three parameters $r$, $a$ and $D$ have been replaced by $\lambda$. The *reproduction rate* that was presented for the ODE model can be seen as $1/\lambda $. This has a couple of equivalent meanings. $1/\lambda$ can be seen as the number of secondary infections produced by one primary infected. It can also be used to measure two different time scales. The first one, $1/(rS_0)$, measure the contagious time of the disease. The second one can look at the life expectancy for an infective. This can be described $1/a$. 
+The three parameters $r$, $a$ and $D$ have been replaced by $\lambda$. The *reproduction rate* that was presented for the ODE model can be seen as $1/\lambda $. This has a couple of equivalent meanings. $1/\lambda$ can be seen as the number of secondary infections produced by one primary infected. It can also be used to measure two different time scales. The first one, $1/(rS_0)$, measure the contagious time of the disease. The second one can look at the life expectancy for an infective. This can be described as $1/a$ cite{murray2003mathematical}. 
 ===== Travelling wave 1D =====
-This section will focus on the travelling wave. The travelling wave describe how a group of infected, in this case, travels through a geographic area of humans. This will be shown by sending a pulse of infected into a group of susceptible. A travelling wave solution will be described as follows,
+The travelling wave describes, in this case, how a group of infected travels through a geographic area of humans. This will be shown by sending a pulse of infected into a group of susceptible. A travelling wave solution can be described as follows,
 !bt
 \begin{equation} label{eq:trav_para}
 I(x,t)=I(z),\quad S(x,t)=S(z),\quad R(x,t) = R(z),\quad z = x-ct,
 \end{equation}
 !et
-The value $c$ describe the wave speed. This represents a wave of constant shape that travels in the positive x-direction. (ref{eq:trav_para}) can be inserted into (ref{eq:simple_non_PDE}). This result in the ordinary system(ref{eq:ord_diff_sys})
+The value $c$ describes the wave speed. This represents a wave of constant shape that travels in the positive x-direction. Eq.(ref{eq:trav_para}) can be inserted into Eq.(ref{eq:simple_non_PDE}). This result in the ordinary system Eq.(ref{eq:ord_diff_sys})
 !bt
 \begin{equation} label{eq:ord_diff_sys}
 	\begin{aligned}
@@ -84,14 +84,14 @@ This gives an eigenvalue problem. The value of $\lambda$ needs to stay in a rang
 	\end{aligned}
 \end{equation}
 !et
-
-An epidemic wave can be seen in figure(ref{fig:1D_sub}). The value of $\lambda$ is sat to 0.5. The initial value for *Susceptible* is 1 for the area and the *Removed* to 0. The *Infected* class has a Gauss curve around 0 at initial time. In the four subplot, the epidemic wave travel towards the other side. The value $z$, which is defined in (ref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case 15. This travelling wave is shown in figure(ref{fig:1D_tw}).       
+An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is sat to 0.5. The initial value for *Susceptible* is 1 for the area and the *Removed* is sat to 0. The *Infected* class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travel towards the other side. The value $z$, which is defined in Eq.(ref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
 
 FIGURE:[plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
 
 FIGURE:[plots/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the travelling wave measures at at $x=15$ in figure(ref{fig:1D_sub})
 
-The system(ref{eq:ord_diff_sys}) is a fourth order phase space system. The lower bound for $c$ can be found. J.D Murray shows this in cite{murray2003mathematical}. The *Infective* class in system(ref{eq:ord_diff_sys}) can be linearised when $z\rightarrow \infty$. This leads to $S\rightarrow 1$ and $I \rightarrow 0$. The result then become 
+<linebreak>
+The *Infective* class in Eq.(ref{eq:ord_diff_sys}) can be linearised when $z\rightarrow \infty$. This leads to $S\rightarrow 1$ and $I \rightarrow 0$. The result then become 
 !bt
 \begin{equation}
 	I'' + cI' + I(S-\lambda) \approx 0 
@@ -100,16 +100,16 @@ The system(ref{eq:ord_diff_sys}) is a fourth order phase space system. The lower
 This can be found by
 !bt
 \begin{equation}
-I(z) \varpropto \exp\left[(-c \pm {c^2 -4(1-\lambda)}^{1/2})z/2\right]
+I(z) \propto \exp\left[(-c \pm {c^2 -4(1-\lambda)}^{1/2})z/2\right]
 \end{equation}
 !et
-Since a concentration cannot be negative, it is required that $I(z)\rightarrow 0$. Therefore the solution has to avoid oscillation around 0. If a travelling wave exist, it has to satisfy
+Since it is required that $I(z)\rightarrow 0$ and $I(z) > 0, oscillations around 0 must be prevented. If a travelling wave exist, it has to satisfy
 !bt
 \begin{equation}
 	c \geq 2(1-\lambda)^{1/2}, \lambda < 1
 \end{equation}
 !et
-If $\lambda > 1$, no travelling wave will exist. Then the disease will die out. The terms defined in (ref{eq:constants_nondimensional}) will give the threshold conditions,
+If $\lambda > 1$, no travelling wave will exist. Then the disease will die out. The terms defined in Eq.(ref{eq:constants_nondimensional}) will give the threshold conditions,
 !bt
 \begin{equation}
 	\lambda = \frac{a}{rS_0} < 1
@@ -117,10 +117,10 @@ If $\lambda > 1$, no travelling wave will exist. Then the disease will die out. 
 !et
 This is the same value that was given for the ODE model in the previous chapter.
 ===== Verifying the solution =====
-To verify the implementation of the solution, a couple of tests can be done one the system. The system will be tested again a constant solution and a manufactured solution.   
+To verify the implementation of the solution, a couple of tests can be done one the system. The system will be tested with a constant solution and a manufactured solution.   
 
 === Constant solution ===
-A constant solution use preproduced constant values for for the concentrations $S$, $I$ and $R$. These can be replaced by $S = C_s,I=C_i,R=C_r$. The value of $C_i$ can only be 0 in system(ref{eq:simple_non_PDE}). This results in a poor test where several bugs can escape. The system can be expanded by adding a term $\beta R$ to the *Susceptible* class and subtract the same term from the *Removed* class. Then all three values can be tested. The system will then look: 
+A constant solution use preproduced constant values for for the concentrations $S$, $I$ and $R$. These can be replaced by $S = C_s,I=C_i,R=C_r$. The value of $C_i$ can only be 0 in Eq.(ref{eq:simple_non_PDE}). This results in a poor test where several bugs can escape. The system can be expanded by adding a term $\beta R$ to the *Susceptible* class and subtract the same term from the *Removed* class. Then all three values can be tested. The system will then look: 
 !bt
 \begin{equation} label{eq:simple_non_PDE2}
 	\begin{aligned}
@@ -140,14 +140,13 @@ By deriving (ref{eq:simple_non_PDE2}), the following system (ref{eq:constant_PDE
 	\end{aligned}
 \end{equation}
 !et
-
-The values $\beta$ and $\lambda$ are based on the constants. These can be chosen freely. Here they are sat to $C_s = 1.2,C_i=0.8,C_r=0.6$. This result in $\lambda= C_s = 1.2$ and $\beta= \frac{C_s C_i}{C_r}=1.6$. A test is made in python and can be seen in the code.
+The values $\beta$ and $\lambda$ are based on the constants $C_s,C_i,C_r$, which can be chosen freely. Here they are sat to $C_s = 1.2,C_i=0.8,C_r=0.6$. This result in $\lambda= C_s = 1.2$ and $\beta= \frac{C_s C_i}{C_r}=1.6$. A test is made in python and can be seen under.
 
 @@@CODE verify_sol.py fromto: def test_constant_solution@def test_manufactured_solution
 
-The test was run with no error, and the three constant values were produced correctly. This test is not good enough by it self to qualify the program, but an error here would result in a large error in the program that had to be fixed before the next test. 
+The test was run with no error, and the three constant values were produced correctly. This test is not good enough by it self to qualify the program, but an error here would result in a large error in the program. 
 === Manufactured solution ===
-By constructing a function to each equation in the system (ref{eq:simple_non_PDE}), a manufactured solution can be created. Here $S$,$I$ and $R$ are pre produced. The system will be
+By constructing a function to each equation in the Eq.(ref{eq:simple_non_PDE}), a manufactured solution can be created. Here $S$,$I$ and $R$ are pre produced. The system will be
 !bt
 \begin{equation} label{eq:simple_non_PDE2}
 	\begin{aligned}
@@ -167,7 +166,7 @@ where $f$,$g$ and $h$ are functions to achieve the expected results for $S$, $I$
 	\end{aligned}
 \end{equation}
 !et
-When choosing the expected function for the classes, it is important that the boundary conditions from (ref{eq:boundary_initial}) is fulfilled.
+When choosing the expected function for the classes, it is important that the boundary conditions from Eq.(ref{eq:boundary_initial}) is fulfilled.
 !bt
 \begin{equation}
     u_x(0,t) = u_x(X,t) = 0
@@ -183,21 +182,18 @@ The quantities have been sat to:
 	\end{aligned}
 \end{equation}
 !et
-Now `sympy` can be used to do the calculations for the three functions $f$, $g$ and $h$. The program can be seen in the Appendix. This result in the following equations seen in (ref{eq:manu_func}) 
-
-Which give
+Now `sympy` can be used to do the calculations for the three functions $f$, $g$ and $h$. The program can be seen in the Appendix. This result in the following equations seen in Eq.(ref{eq:manu_func}) 
 !bt
 \begin{equation} label{eq:manu_func}
 	\begin{aligned}
-	f(x,t) &= (t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
-	g(x,t) &= (\lambda t - t^2\cos(\pi x) + \pi^2t + 1)\cos(\pi x)\\
-	h(x,t) &= (-\lambda t + \pi^2t + 1)\cos(\pi x)
+	f(x,t) &= (t^2\cos(\frac{\pi}{X} x) + \frac{\pi}{X}^2t + 1)\cos(\frac{\pi}{X} x)\\
+	g(x,t) &= (\lambda t - t^2\cos(\frac{\pi}{X} x) + \frac{\pi}{X}^2t + 1)\cos(\frac{\pi}{X} x)\\
+	h(x,t) &= (-\lambda t + \frac{\pi}{X}^2t + 1)\cos(\frac{\pi}{X} x)
 	\end{aligned}
 \end{equation}
 !et
-A similar test made for the constant solution can be used here. While the constant test expected a difference on machine precition, this is not the case here. In this test, an expected convergence rate can be measured.
+A similar test made for the constant solution can be used here. While the constant test expected a difference on machine precision, this is not the case here. In this test, an expected convergence rate can be measured. The following manufactured test will be
 
-The following manufactured test will then be
 @@@CODE verify_sol.py fromto: def test_manufactured_solution@def solver()
 
 === Convergence rate ===
@@ -207,7 +203,7 @@ The program can be controlled by checking the convergence rate. The error term  
     \epsilon = C_x\Delta x^2 + C_t \Delta t
 \end{equation}
 !et
-With equation(ref{eq:error}), the expected convergence rate can be found for both $\Delta x$ and $\Delta t$. To be able to separate the $\Delta$'s, the other value has to be close to eliminated. To study the value $\Delta x$,  $\Delta t \ll \Delta x$ has to be fullfilled. This will lead to $C_t\Delta t \approx 0$, and the error term for $\Delta x$ can be found. The opposite thing can  be done for $\Delta t$. A table for the error is produced for different values for $\Delta t = 0.05$ and $\Delta x=0.1$.
+With Eq.(ref{eq:error}), the expected convergence rate can be found for both $\Delta x$ and $\Delta t$. To be able to separate the $\Delta$'s, the other value has to be close to eliminated. To study the value $\Delta x$,  $\Delta t \ll \Delta x$ has to be fullfilled. This will lead to $C_t\Delta t \approx 0$, and the error term for $\Delta x$ can be found. The opposite thing can  be done for $\Delta t$. A table for the error is produced for different values for $\Delta t = 0.05$ and $\Delta x=0.1$.
 
 label{table:error_numbers}
 |---------------------------------------------------------------------------------------------------------------|
@@ -224,19 +220,19 @@ label{table:error_numbers}
 #0.00988450717896,0.00246149628689,0.000614775174047,0.000153656409034
 
 === The spatial error ===
-The (ref{table:error_numbers}) gives information about the error when $\Delta t$ and $\Delta x$ are reduced. By studying the row where $\Delta t/16$, the $C_t \Delta t$ can be seen as close to negligible in equation(ref{eq:error}). The error can then be expressed 
+The Tab.(ref{table:error_numbers}) gives information about the error when $\Delta t$ and $\Delta x$ are reduced. By studying the row where $\Delta t/16$, the $C_t \Delta t$ can be seen as close to negligible in Eq.(ref{eq:error}). The error can be expressed 
 !bt
 \begin{equation}
     \epsilon \propto \Delta x^r
 \end{equation}
 !et
-The value is expected to be $r=2$, since Crank Nicolson is used in the spatial discretization. This gives a 2.order error. By comparing the error for different $\Delta x$, the convergence rate, $r$, can be expressed, 
+The value is expected to be $r=2$, since Crank Nicolson is used in the spatial discretization. By comparing the error for different $\Delta x$, the convergence rate, $r$, can be expressed, 
 !bt
 \begin{equation} label{eq:conv_rate}
  r_{12} \simeq \frac{\log(\epsilon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
 \end{equation}
 !et
-Since the table above has four different error values, these can be used to give three different convergence rates. $\Delta x_1 = \Delta x, \Delta x_2 = \Delta x/2...$. The same labeling will be done for the different error values, $\epsilon$.
+Since the table above has four different error values, these can be used to give three different convergence rates. $\Delta x_1 = \Delta x, \Delta x_2 = \Delta x/2...$. The same notation has been used for the different error values, $\epsilon$.
 |-------------------------------------------------------------------------------|
 |	|$\epsilon_1/\epsilon_2$|$\epsilon_2/\epsilon_3$|$\epsilon_3/\epsilon_4$|
 |-------------------------------------------------------------------------------|
@@ -246,16 +242,16 @@ Since the table above has four different error values, these can be used to give
 ##|------|$\epsilon_1/\epsilon_2$	|$\epsilon_2/\epsilon_3$|$\epsilon_3/\epsilon_4$|
 Here the rate goes towards 2, and a 2.order convergence rate seems to be fulfilled.
 === The temporal error ===
-The temporal error is hard to find since the *Stability criteria* expect $\Delta t$ to fulfill the criteria in (ref{eq:stability_cr}) to avoid oscillations.
+The temporal error is hard to find since the *Stability criteria* expect $\Delta t$ to fulfill the criteria in Eq.(ref{eq:stability_cr}) to avoid oscillations.
 !bt
 \begin{equation} label{eq:stability_cr}
- 2\Delta t \leq \Delta x^2
+ \Delta t \leq \frac{\Delta x^2}{2}
 \end{equation}
 !et
-This results in the case that $\Delta x \ll \Delta t$ is impossible, because this only leads to an unstable solution. By looking at the column for $\frac{\Delta x}{8}$, the only stable solution is for $\frac{\Delta t}{16}$. Therefore the technique used for the spatial error cannot be used here. By studying the diagonal numbers in the table, the expected convergence rate is fulfilled for both $\Delta x$, which gives $r = 2$ and for $\Delta t$ that gives $r=1$   
+This results in the case that $\Delta x \ll \Delta t$ is impossible, because this only leads to an unstable solution. By looking at the column for $\frac{\Delta x}{8}$, the only stable solution is for $\frac{\Delta t}{16}$. Therefore the technique used for the spatial error cannot be used here. By studying the diagonal numbers in the table, the expected convergence rate is fulfilled for both $\Delta x$, which gives $r = 2$ and for $\Delta t$, which gives $r=1$   
 
 ===== Travelling wave in 2D =====
-The system (ref{eq:simple_non_PDE}) can be discretized for a 2D area. This is more realistic when simulating a geographic spread of an epidemic disease. The non dimensional system  can be discretized with Forward Euler in time and Crank Nicolson in space
+The Eq.(ref{eq:simple_non_PDE}) can be discretized for a 2D area. This is more realistic when simulating a geographic spread of an epidemic disease. The non dimensional system  can be discretized with Forward Euler in time and Crank Nicolson in space
 !bt
 \begin{equation} label{eq:SIR_disc}
 	\begin{aligned}
@@ -277,14 +273,16 @@ The known values can be placed on the right side. The system will then be
 !et
 This results in an explicit system, which is easy to code. It consist of known values on the right side and only one unknown on the left side.
 === A gaussian wave ===
-In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of infected spread along the x-axis. A similar thing can be done for the 2D simulation. A couple of similar simulations have been produced for the 2D system. The first simulation is calculated with a Gaussian function along $x=0$ for the *Infected* at initial time. The second simulation has placed the Gaussian function at point $x=0,y=0$ for the *Infected* group at initial value. Both simulations can be seen in the Appendix.  
+In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of infected spread along the x-axis. A similar thing can be done for the 2D simulation. A couple of simulations have been produced for the 2D system. The first simulation is calculated with a Gaussian function along (0,y) for the *Infected* at initial time. The second simulation has placed the Gaussian function at point (0,0) for the *Infected* group at initial value. Both simulations can be seen in the Appendix.  
 <linebreak>
 <linebreak>
-By studying the travelling wave at a certain point, the size of the epidemic wave can be measured and compared. In these two 2D simulations in figure(ref{fig:2D_trav_wave}), the wave will be measured in the point (15,15) while the travelling wave in the 1D simulation was measured at point(15). The two travelling waves can be seen in the figure(ref{fig:2D_trav_wave}).
+The size of the epidemic wave can be measured and compared by studying the travelling wave at a certain point. In these two 2D simulations in Fig.(ref{fig:2D_trav_wave}), the wave will be measured in the point (15,15), while the travelling wave in the 1D simulation was measured at point(15). 
 
-FIGURE:[plots/Trav_wave_2D.png, height=400 width=800 frac=0.8] label{fig:2D_trav_wave} Travelling wave measured at point (15,15) with two different initial values for the Infected class. The initial value is sat as a Gaussian line along (0,y) in the left plot and as a Gaussian point (0,0) in the right plot
+FIGURE:[plots/Trav_wave_2D.png, height=400 width=800 frac=0.8] label{fig:2D_trav_wave} Travelling wave measured at point (15,15) with two different initial values for the *Infected* class. I:The initial value is sat as a Gaussian line along (0,y).II:The initial value is sat as a Gaussian point (0,0).
 
-The shape of the two travelling waves in figure(ref{fig:2D_trav_wave}) are similar. The only difference is the time when the wave occur. The plot for 1D wave in fig(ref{fig:1D_tw}) has the same shape. With a closer study, the area under the function can be measured for all three cases. The result can be seen in the (ref{table:wave_values})   
+<linebreak>
+<linebreak>
+The shape of the two travelling waves in Fig.(ref{fig:2D_trav_wave}) are similar. The only difference is the time when the wave occur. The plot for 1D wave in Fig.(ref{fig:1D_tw}) has the same shape. With a closer study, the area under the function can be measured in all three cases. The result can be seen in Tab.(ref{table:wave_values})   
 
 #1D
 #1.4340793845
@@ -302,45 +300,51 @@ label{table:wave_values}
 |1.43          |1.43         |1.43         |
 |------------------------------------------|
 
-The area in all three simulations moves towards the same area when $\Delta t$ and $\Delta x$ are reduced. The size and shape will not change by  expanding the system from 1D to 2D. But by studying the figure(ref{fig:2D_trav_wave}), the wave occur at different times. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the $x=0$ axis gets a wave of infected wash along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occur at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occur later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will reach the point 6.21 time steps later. This is also reasonable by looking at the plot.    
+The area in all three simulations approaching the same area when $\Delta t$ and $\Delta x$ are reduced. The size and shape will not change by  expanding the system from 1D to 2D. But by studying Fig.(ref{fig:2D_trav_wave}), the wave occur at different times. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the $x=0$ axis gets a wave of infected wash along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occurs at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occurs later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will reach the point 6.21 time steps later. This is also reasonable by looking at the plot.    
 
 === Change in initial flow ===
-By increasing the initial wave of *Infected*, the start value of *Infected* can be study. The simulation is run with the same parameters as for the three simulations above and the only difference is the initial value for the infected group. The Gaussian wave of infected are placed a point (0,0) as for right subplot in figure(ref{fig:2D_trav_wave}).The simulation can be seen in figure(ref{fig:initial_value}).  
+By increasing the initial wave of the *Infected* group, the initial value of *Infected* can be study. The simulation is run with the same parameters as for the three simulations above and the only difference is the initial value for the *Infected* group. The Gaussian wave of infected are placed a point (0,0) as for subplot II in Fig.(ref{fig:2D_trav_wave}). The simulation can be seen in Fig.(ref{fig:initial_value}).  
 #Volume ordinary = 0.3141592653589793
 #Volume extreme = 157.07963267948966
 #Volume under graph 1.43345609926
 
 FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8] label{fig:initial_value} A major flow of infected spread outwards the field. After a certain time, the wave has past the area and the number in each class stabilize. 
 
-By measuring the travelling wave at point(15,15), the size and shape can be compared with the second subplot in figure(ref{fig:2D_trav_wave}). The travelling wave for this simulation can be seen in figure(ref{fig:initial_trav_wave}) and the area for the travelling wave is measured to 1.43, which is similar with the three other simulations.
+<linebreak>
+<linebreak>
+The size and shape can be compared by measuring the travelling wave at point(15,15). The travelling wave for this simulation can be seen in Fig.(ref{fig:initial_trav_wave}) and the area for the travelling wave is measured to 1.43, which is similar with the three other simulations.
 
 FIGURE:[plots/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] label{fig:initial_trav_wave} The travelling wave with a major increase of infected at the initial time. 
 
-By increasing the initial value for the *Infected* group, the size of the travelling will not be affected. But there is a difference in the time when the wave occur. In the simulation where the initial value is higher, the travelling wave reaches the measuring point (15,15) earlier. This can be explained by the idea of a ball dropped from a large height. If the ball is released or thrown to the ground, will only affect the acceleration of the ball, not the terminal velocity. After a certain time the released ball and the thrown ball will reach the same maximum speed. This is also the case for the speed of the travelling wave. 
+<linebreak>
+<linebreak>
+The size of the travelling  wave will not be affected by changing the value for the *Infected* group. But there is a difference in the time when the wave occur. In the simulation where the initial value is higher, the travelling wave reaches the measuring point (15,15) earlier. This can be explained by the idea of a ball dropped from a large height. If the ball is released or thrown to the ground, will only affect the acceleration of the ball, not the terminal velocity. After a certain time the released ball and the thrown ball will reach the same maximum speed. This is the case for the speed of the travelling wave. 
 === Change in lambda ===
-The one thing that affects the speed and size, is the $\lambda$ variable in the PDE system(ref{eq:simple_non_PDE}). This $\lambda$ is a combination of $a$, which controls deaths among infected, $r$, which control the number of infected in a meeting between an infected and a susceptible. The last parameter in $\lambda$ is the concentration of Susceptible. By changing this parameter, the travelling wave will change in both size and shape. In figure(ref{fig:change_lambda}), the simulation is run with four different values of $\lambda$.
+The one thing that affects the speed and size, is the $\lambda$ variable in the PDE system(ref{eq:simple_non_PDE}). This $\lambda$ is a combination of $a$, which controls deaths among infected, $r$, which controls the number of infected in meetingings between infected and susceptible. The last parameter in $\lambda$ is the concentration of Susceptible, $S_0$. By changing this parameter, the travelling wave will change in both size and shape. In Fig.(ref{fig:change_lambda}), the simulation is run with four different values of $\lambda$.
 
 FIGURE:[plots/2D_lambda_variable.png, height=600 width=800] label{fig:change_lambda} The travelling wave simulated with $\lambda$ values in the range of 0.01 to 1.
 
-To understand the result in figure(ref{fig:change_lambda}), the $\lambda $ function can be study,
+<linebreak>
+<linebreak>
+To understand the results in Fig.(ref{fig:change_lambda}), the $\lambda $ function can be study,
 !bt
 \begin{equation} label{eq:lambda}
  \lambda =\frac{a}{rS_0},
 \end{equation}
 !et
-A major and aggressive travelling wave is caused by $\lambda \rightarrow 0$. In figure(ref{fig:change_lambda}), $\lambda$ is run with the value 0.01 in the first subplot. This results in a travelling wave of infected that eradicates the *Susceptible* group in a short time. The wave starts to decreasing when all *Susceptible* are infected. By looking at the equation(ref{eq:lambda}), a small value is caused by a small $a$ compared to $r$ and $S_0$. If $a$ is low, this result in few deaths/immune in the infected class. This means that this class will grow and be able to infect even more from the *Susceptible* class. The same thing will happen if $r$ is large. A result of this will cause an aggressive disease that infects  a major part of the population. The same result will happen if $S_0$ is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a city than in the wilderness, far from other humans.
+A major and aggressive travelling wave is caused when $\lambda \rightarrow 0$. In Fig.(ref{fig:change_lambda}), $\lambda$ is run with value 0.01 in the first subplot. This results in a travelling wave of infected that eradicates the *Susceptible* group in a short time. The wave starts decreasing when all *Susceptible* are infected. By looking at Eq.(ref{eq:lambda}), a small value is caused by a small $a$ compared to $r$ and $S_0$. If $a$ is low, this result in few deaths/immune in the *Infected* class. This means that the *Infected* class will grow and be able to infect even more humans from the *Susceptible* class. The same thing will happen if $r$ is large. A result of a large $r$ will cause an aggressive disease that infects  a major part of the population. The same result will happen if $S_0$ is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a crowded city than in the wilderness, far from other humans.
 <linebreak>
 <linebreak>
 If $\lambda$ increases above 1, the disease will not be able to spread. The number of infected will decrease, since the number of dead/immune caused by the *Infected* group is higher than the amount of *Infected* humans from the *Susceptible* group. After a certain time, the number of infected will die out. If $\lambda$ stays at 1, the number of infected will be equal the whole time. 
 
 ======= Epidemic in an English Boarding School 1978 =======
-An example from an English boarding school was presented in the previous chapter . This example was based on the book from J.D Murray cite{murray2002mathematical}, and was modeled for a ODE system. A similar result should appear for the PDE system with same parameter values and a uniform distribution of the groups. The school had 763 students where one of the students brought a disease back to the school. The following number was used for the ODE system in chapter one. $N=763, S_0=762,I_0=1,R_0=0,\rho=202$ and $r = 2.18\cdot 10^{-3}$. 
+An example from an English boarding school was presented in the previous chapter . This example was based on the book from J.D Murray cite{murray2002mathematical}, and was modeled for a ODE system. A similar result should appear for the PDE system with same parameter values and a uniform distribution of the groups. The school had 763 students where one of the students brought a disease back to the school. The following numbers were used for the ODE system in chapter one. $N=763, S_0=762,I_0=1,R_0=0,\rho=202$ and $r = 2.18\cdot 10^{-3}$. 
 <linebreak>
 <linebreak>
-The first simulation is produced with uniform distributed concentration, this is done to verify the implementation. A person is defined as one cubic. The total volume of the whole group is spread over the area. The area is sat to be 100 m x 100 m, which result in an average height of $1/10000$ m per person. This is to get an uniformed distribution. This would of course be more difficult in the real life, particular if the person should be alive. Since the *Infected* group only consist of one person, the total height will be 0.0001 for the whole area. The *Susceptible* group consist of 762 students and the total height in each point will be 0.0762 The simulation can be seen in the Appendix. 
+The first simulation is produced with uniform distributed concentration, this is done to verify the implementation. A person is defined as one cubic. The total volume of the whole group is spread over the area. The area is sat to be 100 m x 100 m, which result in an average height of $1/10000$ m per person. This is done to get an uniformed distribution. This would of course be more difficult in the real life, particular if the person should be alive. Since the *Infected* group only consists of one person, the total height will be 0.0001 for the whole area. The *Susceptible* group consist of 762 students and the total height at each point will be 0.0762 The simulation can be seen in the Appendix. 
 <linebreak>
 <linebreak>
-The results from the first subplot in figure(ref{fig:british_number}) are equal with the result from the ODE system modeled in the previous chapter.This can be seen in (ref{table:british_number_table}). This is as expected since the diffusion term is negligible in this system and simulation is a group of separate ODE systems modeled at each point over an area.
+The results from subplot I in Fig.(ref{fig:british_number}) are equal with the results from the ODE system modeled in the previous chapter.This can be seen in Tab.(ref{table:british_number_table}). This is as expected since the diffusion term is negligible in this system. The simulation results in a group of separate ODE systems modeled at each point over an area.
 
 FIGURE:[plots/british_number.png, height=1000 width=400 frac=0.8] label{fig:british_number} English Boarding School modeled with three different initial values for the infected student. The amount of students in each group modeled over 15 days. Subplot 1: uniform distribution. Subplot 2: The student is placed as a Gaussian function in center. Subplot 3: The student is placed as a Gaussian function in the corner (0,0). 
 
@@ -374,7 +378,7 @@ label{table:british_number_table}
 === Introducing a Gaussian distribution of infective ===
 An assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student at initial time, the chance of being infected increase as closer you get to the infected student. The student in placed as a Gaussian function in the middle of the school yard, to see if this affect the result. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in figure(ref{fig:gauss_sub}) and the total total amount of students can be be seen in figure(ref{fig:british_number}).
 
-FIGURE:[plots/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub} The student is placed in the center of the school yard as a Gaussian finction with height= 1 m and volume = 1 m^3. 	
+FIGURE:[plots/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub} The student is placed in the center of the school yard as a Gaussian finction with height= 1 m and volume = 1 m^3. 
 
 <linebreak>
 <linebreak>
