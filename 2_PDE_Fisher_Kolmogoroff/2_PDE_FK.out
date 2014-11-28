@@ -1,2 +1,15 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Simple system for spatial spread}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Travelling wave 1D}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Verifying the solution}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Travelling wave in 2D}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Epidemic in an English Boarding School 1978}{}% 6
+\BOOKMARK [1][-]{section.4}{Zombiefication}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Lock in different areas}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{Appendix}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{Discretization}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.2}{2D Gaussian function from x=0}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.3}{2D Gaussian function from x=0,y=0}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.4}{2D Gaussian function from x=0,y=0 with higher initial value}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.5}{English Boarding School}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.6}{Zombiefication}{section.5}% 15
