@@ -1,0 +1,42 @@
+TITLE: Presentation of special syllabus
+AUTHOR: Torbjørn Seland
+DATE: today
+
+!split
+===== Contents =====
+* Murray, James D. "Mathematical Biology: I. An Introduction." 2008
+    * Kap.10: \emph{Dynamics of Infectious Diseases(315-393)}\\
+        * Fokus på epidemier og modeller for dette. Beskrivelse av spredningsmodeller for AIDS, HIV mfl.
+* Murray, James D. "Mathematical Biology: II. Spatial Models and Biomedical Applications." 2004
+    * Kap.13: \emph{Geographic Spread and Control of Epidemics(661-720)}\\
+        * Fokus på spredning av epidemier. Modeller for rabiessmitte og SIR
+* Munz, Philip, et al. "When zombies attack!: mathematical modelling of an outbreak of zombie infection." Infectious Disease Modelling Research Progress 4 (2009): 133-150.
+    * Matematisk artikkel om skadene fra et eventuelt zombieangrep. Basert på ODE systemer og SIR modeller. 17 sider 
+* Langtangen, Hans Petter, Kent-Andre Mardal, and Pål Røtnes. "Escaping the zombie threat by mathematics." Zombies in the Academy–Living Death in Higher Education. Intellect Ltd (2013
+    * Artikkel om basert på 'When Zombies Attack!: Mathematical modelling of an outbreak of zombie infection'. Kritikk og utvikling av ODE-systemer. 29 sider
+
+!split
+===== Dynamics of Infectious Diseases =====
+!bt
+\begin{equation} label{eq:SIR_model}
+	\begin{aligned} 
+	\frac{dS}{dt} &= -rSI \\ 
+	\frac{dI}{dt} &= rSI-aI \\ 
+	\frac{dR}{dt} &= aI 
+	\end{aligned}
+\end{equation}
+!et
+
+* S describes the concentration of susceptible
+* I describes the concentration of infective
+* R describes the concentration of removed
+* r describes ht
+
+!split
+===== Threshold value =====
+To cause an epidemic situation, the model needs to fulfill $I(t)= I_0$ for some $t>0$
+!bt
+\begin{equation}
+S(0)=S_0 > 0,\hspace{8mm} I(0)=I_0>0,\hspace{8mm} R(0) =0.
+\end{equation}
+!et
