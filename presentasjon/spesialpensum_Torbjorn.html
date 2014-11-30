@@ -96,6 +96,25 @@ td.padding {
 
 
 
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
     
 
 
@@ -119,7 +138,7 @@ td.padding {
 <p>&nbsp;<br>
 <!-- institution(s) -->
 <p>&nbsp;<br>
-<center><h4>Nov 28, 2014</h4></center> <!-- date -->
+<center><h4>Nov 30, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -178,6 +197,468 @@ td.padding {
 
 
 <section>
+
+<h2>Dynamics of Infectious Diseases  <a name="___sec1"></a></h2>
+
+The model consist of three different groups
+
+<ul>
+<p><li> <em>Susceptible</em> (\( S \)), who are humans that are healthy and at risk of becoming infected.</li> 
+<p><li> <em>Infective</em> (\( I \)), who are humans who have the disease or are carriers of the disease. This group can infect the <em>Susceptible</em>.</li> 
+<p><li> <em>Removed</em> (\( R \)),who are dead or recovering humans, often people that already have had the disease.</li>
+</ul>
+<p>
+
+A simple epidemic model can be expressed as follows
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{1}
+	\begin{aligned} 
+	\frac{dS}{dt} &= -rSI \\ 
+	\frac{dI}{dt} &= rSI-aI \\ 
+	\frac{dR}{dt} &= aI 
+	\end{aligned}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Here \( r \) describes the the transmission from the <em>Susceptible</em> group to the <em>Infected</em> group. \( a \) describes the percent of infected that dies. Since the system is closed, the total number will be constant.
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\frac{dS}{dt} + \frac{dI}{dt} + \frac{dR}{dt} = 0
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Therefore the total size of the population, \( N \), will be constant. 
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{2}
+S(t)+I(t)+R(t) = N
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+</section>
+
+
+<section>
+
+<h2>Threshold value  <a name="___sec2"></a></h2>
+To cause an epidemic situation, the model needs to fulfill \( I(t)= I_0 \) for some \( t>0 \)
+<p>&nbsp;<br>
+$$
+\begin{equation}
+S(0)=S_0 > 0,\hspace{8mm} I(0)=I_0>0,\hspace{8mm} R(0) =0.
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+The initial conditions for <em>Susceptible</em> and <em>Infective</em> combined with \( r \) and \( a \) will control the epidemic situation. These will affect the spread of the infection. From equation <a href="#mjx-eqn-1">(1)</a> the function for <em>Infective</em> at initial time can be written,
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\left[\frac{dI}{dt}\right]_{t=0} = I_0(rS_0-a)
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+The expression inside the brackets controls the change in \( I \). The function will increase if \( S_0 > \frac{a}{r} \), this will therefore be the threshold value for the function. The threshold value will be described by the variable \( \rho \),
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{3}
+\rho = \frac{a}{r}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+This can be shown with some phase trajectories of the <em>Susceptible</em> and the <em>Infective</em> in figure(<a href="#fig:threshold_phenomenon">1</a>).  
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  <a name="fig:threshold_phenomenon"></a> Simulations of the SIR model <a href="#mjx-eqn-1">(1)</a> with start positions along the blue line. \( I \) increases until \( S \) is equal to the threshold value \( \rho \), which is sat to 35. Then \( I \) is reduced to 0. In the simulations where \( S_0 < \rho \), no epidemic situation is achieved. </p></center>
+<p><img src="../spesialpensum_SIR/plots/threshold_phenomenon.png" align="bottom" ></p>
+</center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>English boarding school  <a name="___sec3"></a></h2>
+The British medical journal had in 1978 a report from a boarding school in England. One of the boys had brought with him a disease back to the school. Since this was a boarding school, they were totally isolated from others and had a closed system to model <a href="#murray2002mathematical">[1]</a> (p.~325). The simulation can be seen in figure(<a href="#fig:english_boarding">2</a>)  
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  <a name="fig:english_boarding"></a> An English boarding school is modeled for 15 days with the following parameters: \( N=763 \), \( S_0=762 \), \( I_0=1 \), \( R_0=0 \), \( \rho=202 \) and \( r=2.18 x 10^{-3} \). An increasing of <em>Infective</em> can be seen since \( S_0 > \rho \). </p></center>
+<p><img src="../spesialpensum_SIR/plots/English_boarding_school.png" align="bottom" ></p>
+</center>
+
+<p>
+The parameter value \( \rho \) has a major impact on the result. The epidemic disease could turn out quite different than in the situation in figure(<a href="#fig:english_boarding">2</a>) by variations in \( a \) and \( r \). Figure(<a href="#fig:rho_changes">3</a>) consist of some examples where \( \rho \) varies from 50 to 400.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  <a name="fig:rho_changes"></a> In the first plot where \( \rho=50 \), the <em>Infective</em> will increase until the number of <em>Susceptible</em> falls down to 50. This will result in a majority of infected students. In the last plot where \( \rho=400 \), the total number of <em>Susceptible</em> stays around 170 students and will go towards a steady number as \( I(\infty)=0 \). </p></center>
+<p><img src="../spesialpensum_SIR/plots/English_boarding_school_changes.png" align="bottom" ></p>
+</center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>When Zombies Attack!  <a name="___sec4"></a></h1>
+
+<h2>Basic model  <a name="___sec5"></a></h2>
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+\frac{dS}{dt} =& \Sigma -\beta SZ - \delta S \\
+\frac{dI}{dt} =& \beta SZ - \varrho I - \delta I\\
+\frac{dZ}{dt} =& \varrho I + \zeta R - \alpha SZ\\
+\frac{dR}{dt} =& \delta S + \delta I + \alpha SZ - \zeta R
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+This is a bit more complicated than the standard \( SEIR \) model. A presentation of the parameters;
+
+<ul>
+<p><li> \( \Sigma \) describes the birthrate for new <em>Susceptible</em>. \( \frac{dS}{dt} \) is now able to be positive. This is now not a closed system.</li> 
+<p><li> \( \beta SZ \) describes the numbers of <em>Susceptible</em> that become <em>Infected</em> , based on interactions between zombies and humans. Similar as the case for \( rSI \) in the SIR model.</li> 
+<p><li> \( \delta \) describes the number of naturals deaths among the group. This is used in the <em>Susceptible</em> and the <em>Infected</em> group</li>
+<p><li> \( \varrho I \) describes the probability for an infected human to wake up as a zombie.</li>
+<p><li> \( \zeta R \) controls the number of <em>Removed</em> that arises as <em>Zombie</em>.</li> 
+<p><li> \( \alpha SZ \) describes the number of zombies killed by humans in the zombie attacks.</li> 
+</ul>
+<p>
+
+This ODE satisfy
+<p>&nbsp;<br>
+$$
+\begin{equation}
+S'+I'+Z'+R' = \Sigma
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Which leads to
+<p>&nbsp;<br>
+$$
+\begin{equation}
+S + I + Z + R \rightarrow  \infty
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+When \( t \rightarrow \infty \) and \( \Sigma \neq 0 \), \( S \) cannot go towards infinity, which results in a "doomsday" and this will lead to a collapse of the civilisation.
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Escaping the zombie Threat by Mathematics  <a name="___sec6"></a></h1>
+
+<h2>LMR model  <a name="___sec7"></a></h2>
+In the paper from Munz et. al <a href="#munz2009zombies">[2]</a> the doomsday was nearly inevitable. This is criticized by Langtagen, Mardal and Røtnes. In the paper <em>Escaping the zombie Threat by Mathematics</em> <a href="#zombie-math">[3]</a>, the doomsday scenario is questioned.
+
+<ul>
+<p><li> Counter attack can be performed earlier and with more destruction</li>
+<p><li> Magic is not involved. Laws of physics and biology are used</li>
+</ul>
+<p>
+
+The model that they use:
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{4}
+	\begin{aligned} 
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS \\
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II\\
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+	\end{aligned}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+The main change is the \( \omega(t) \). This is a Gaussian curve and can be seen in eq<a href="#mjx-eqn-5">(5)</a>.
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{5}
+\omega(t) = a \sum^m_{i=0}\exp\left(\frac{1}{2}\left(\frac{t-T_i}{\sigma}\right)^2\right)
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+\( \omega(t) \) controls the attacks from the <em>Susceptible</em>, which will be fired at predefined time steps. These are controlled by the three parameters. 
+
+<ul>
+<p><li> \( a \) here works as a similar parameter as \( \alpha \), but will only be activated when the <em>Susceptible</em> group is organized and ready to attack.</li> 
+<p><li> \( T \) contains a list of numbers, which controls the time when the attacks will occur.</li>
+<p><li> \( \sigma \) controls the length of the attack.</li> 
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Use model to simulate Walking Dead  <a name="___sec8"></a></h2>
+In <em>Escaping the zombie Threat by Mathematics</em> <a href="#zombie-math">[3]</a>, the movie <em>The Night of The Living Dead</em> is used. These simulations are based on the TV series <em>Walking Dead</em>. The paper divide a zombie outbreaks into three phases:
+
+<ul>
+<p><li> <b>Initial phase</b> : The humans are unfamiliar with the disease in this phase and acts quite naive to the disease. This result in a high chance of getting infected. Lasts for a short period. In this case, three days</li> 
+<p><li> <b>Hysterical phase</b> : The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected.</li> 
+<p><li> <b>Counter attack</b> : The last phase, which happens at the same time as the hysterical phase. This phase is often started when humans are attacked by zombies. They will then respond with a counter attack to save themselves.</li>
+</ul>
+<p>
+
+Data from the TV series by close studies.
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   ---------    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> <th align="center">  final values  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   S_0                 </td> <td align="center">   621                 </td> <td align="center">   71                  </td> <td align="center">   62                  </td> <td align="center">   58                  </td> </tr>
+<tr><td align="center">   I_0                 </td> <td align="center">   0                   </td> <td align="center">   540                 </td> <td align="center">   360                 </td> <td align="center">   332                 </td> </tr>
+<tr><td align="center">   Z_0                 </td> <td align="center">   1                   </td> <td align="center">   ---                 </td> <td align="center">   ---                 </td> <td align="center">   ---                 </td> </tr>
+<tr><td align="center">   R_0                 </td> <td align="center">   0                   </td> <td align="center">   20                  </td> <td align="center">   200                 </td> <td align="center">   232                 </td> </tr>
+</tbody>
+</table>
+<p>
+To be able to achieve these results, the parameters have to be adjusted. To model all three phases, the parameters in in the table are used 
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   parameter    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   \( \beta \)         </td> <td align="center">   0.01155             </td> <td align="center">   0.000011            </td> <td align="center">   0.00011             </td> </tr>
+<tr><td align="center">   \( \varrho \)       </td> <td align="center">   1.37                </td> <td align="center">   1.5                 </td> <td align="center">   1.5                 </td> </tr>
+<tr><td align="center">   \( \alpha \)        </td> <td align="center">   0.00044             </td> <td align="center">   0.000208            </td> <td align="center">   0.000208            </td> </tr>
+<tr><td align="center">   a                   </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.0073              </td> </tr>
+<tr><td align="center">   \( \sigma \)        </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.005               </td> </tr>
+<tr><td align="center">   \( \mu \)           </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.14                </td> </tr>
+</tbody>
+</table>
+<p>
+This result in the simulation
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  <a name="fig:all_phases"></a> Walking Dead simulated after 5 episodes. Based on the three different phases. </p></center>
+<p><img src="../spesialpensum_SIR/plots/WD_zombie_all_phases_1.png" align="bottom" ></p>
+</center>
+
+<p>
+The results can be seen in the following table
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   ---------    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> <th align="center">  final values  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   S_0                 </td> <td align="center">   621                 </td> <td align="center">   71                  </td> <td align="center">   62                  </td> <td align="center">   58                  </td> </tr>
+<tr><td align="center">   I_0                 </td> <td align="center">   0                   </td> <td align="center">   231                 </td> <td align="center">   0                   </td> <td align="center">   1                   </td> </tr>
+<tr><td align="center">   Z_0                 </td> <td align="center">   1                   </td> <td align="center">   299                 </td> <td align="center">   359                 </td> <td align="center">   332                 </td> </tr>
+<tr><td align="center">   R_0                 </td> <td align="center">   0                   </td> <td align="center">   21                  </td> <td align="center">   202                 </td> <td align="center">   231                 </td> </tr>
+</tbody>
+</table>
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Murray PDE  <a name="___sec9"></a></h1>
+
+<h2>Travelling wave  <a name="___sec10"></a></h2>
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{6}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+This problem can be nondimensionalized by writing
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{7}
+	\begin{aligned}
+	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
+	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
+	\end{aligned}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+And the following system can be study:
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{8}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+An epidemic wave can be seen in Fig.(<a href="#fig:1D_sub">5</a>). The value of \( \lambda \) is sat to 0.5. The initial value for <em>Susceptible</em> is 1 for the area and the <em>Removed</em> is sat to 0. The <em>Infected</em> class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(<a href="#fig:1D_sub">5</a>), the epidemic wave travel towards the other side. The value \( z \), which is defined in Eq.\eqref{eq:trav_para}, is used to plot the travelling wave measured at a specific point, in this case \( x=15 \). This travelling wave is shown in figure(<a href="#fig:1D_tw">6</a>).       
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  <a name="fig:1D_sub"></a> The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter \( \lambda=0.5 \). The size is measured at point \( x=15 \) and can be seen in figure (<a href="#fig:1D_tw">6</a>). </p></center>
+<p><img src="../2_PDE_Fisher_Kolmogoroff/plots/trav_wave_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  <a name="fig:1D_tw"></a> This shows the travelling wave measures at at \( x=15 \) in figure(<a href="#fig:1D_sub">5</a>) </p></center>
+<p><img src="../2_PDE_Fisher_Kolmogoroff/plots/epidemic_wave_z_lambda_0_5.png" align="bottom" ></p>
+</center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Geographic spread  <a name="___sec11"></a></h2>
+The model <a href="#mjx-eqn-4">(4)</a> can be expanded with a diffusion term added to each equation
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{9}
+	\begin{aligned} 
+	\frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
+	\frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+D_i\nabla^2 I\\
+	\frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z\\
+	\frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
+	\end{aligned}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+This system can be modeled with a uniform distributed groups, which results in the following simulation
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='../2_PDE_Fisher_Kolmogoroff/plots/2D_zombie_three_phases.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+And gives the same values 
+<table border="1">
+<thead>
+<tr><th align="center">                   </th> <th align="center">     ODE system    </th> <th align="center">  PDE uniform dist </th> <th align="center">  PDE gauss center </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Initial phase          </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   71.3                   </td> <td align="center">   71.5                   </td> <td align="center">   81.12                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   230.8                  </td> <td align="center">   230.6                  </td> <td align="center">   210.94                 </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   298.9                  </td> <td align="center">   298.9                  </td> <td align="center">   310.11                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   21.0                   </td> <td align="center">   21.0                   </td> <td align="center">   20.60                  </td> </tr>
+<tr><td align="center">   Hysterical phase       </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   61.6                   </td> <td align="center">   61.8                   </td> <td align="center">   70.55                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   0.3                    </td> <td align="center">   0.3                    </td> <td align="center">   0.34                   </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   358.6                  </td> <td align="center">   357.9                  </td> <td align="center">   334.33                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   201.5                  </td> <td align="center">   202.0                  </td> <td align="center">   217.56                 </td> </tr>
+<tr><td align="center">   Counter attack         </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   57.8                   </td> <td align="center">   58.2                   </td> <td align="center">   66.50                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   1.2                    </td> <td align="center">   1.2                    </td> <td align="center">   1.23                   </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   331.8                  </td> <td align="center">   331.1                  </td> <td align="center">   305.86                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   231.3                  </td> <td align="center">   231.7                  </td> <td align="center">   249.19                 </td> </tr>
+</tbody>
+</table>
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='../2_PDE_Fisher_Kolmogoroff/plots/2D_zombie_three_phases_gauss.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Bibliography  <a name="___sec12"></a></h1>
+
+<!-- begin bibliography -->
+
+<ol>
+ <p><li> <a name="murray2002mathematical"></a> <b>J. Murray</b>. 
+    <em>Mathematical Biology: I. an Introduction</em>,
+    Springer,
+    2002,
+    <a href="http://books.google.no/books?id=4WbpP90Gk1YC" target="_self"><tt>http://books.google.no/books?id=4WbpP90Gk1YC</tt></a>.</li>
+ <p><li> <a name="munz2009zombies"></a> <b>P. Munz, I. Hudea, J. Imad and R. J. Smith</b>. 
+    When Zombies Attack!: Mathematical Modelling of an Outbreak of Zombie Infection,
+    <em>Infectious Disease Modelling Research Progress</em>,
+    4,
+    pp. 133-150,
+    2009.</li>
+ <p><li> <a name="zombie-math"></a> <b>H. P. Langtangen, K.-A. Mardal and P. R\otnes</b>. 
+    Escaping the Zombie Threat by Mathematics,
+    Zombies in the Academy: living death in higher education,
+    edited by <b>C. M. A. Whelan and R. Walker</b>,
+    University of Chicago Press,
+    Chapter 3.6,
+    pp. pp. x-y,
+    2013.</li>
+</ol>
+<p>
+
+<!-- end bibliography -->
 
 
 </section>

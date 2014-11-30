@@ -17,6 +17,13 @@ DATE: today
 
 !split
 ===== Dynamics of Infectious Diseases =====
+
+The model consist of three different groups
+* *Susceptible* ($S$), who are humans that are healthy and at risk of becoming infected. 
+* *Infective* ($I$), who are humans who have the disease or are carriers of the disease. This group can infect the *Susceptible*. 
+* *Removed* ($R$),who are dead or recovering humans, often people that already have had the disease.
+
+A simple epidemic model can be expressed as follows
 !bt
 \begin{equation} label{eq:SIR_model}
 	\begin{aligned} 
@@ -26,12 +33,20 @@ DATE: today
 	\end{aligned}
 \end{equation}
 !et
+Here $r$ describes the the transmission from the *Susceptible* group to the *Infected* group. $a$ describes the percent of infected that dies. Since the system is closed, the total number will be constant.
 
-* S describes the concentration of susceptible
-* I describes the concentration of infective
-* R describes the concentration of removed
-* r describes ht
+!bt
+\begin{equation}
+\frac{dS}{dt} + \frac{dI}{dt} + \frac{dR}{dt} = 0
+\end{equation}
+!et
 
+Therefore the total size of the population, $N$, will be constant. 
+!bt
+\begin{equation} label{eq:SIR_N}
+S(t)+I(t)+R(t) = N
+\end{equation}
+!et
 !split
 ===== Threshold value =====
 To cause an epidemic situation, the model needs to fulfill $I(t)= I_0$ for some $t>0$
@@ -40,3 +55,226 @@ To cause an epidemic situation, the model needs to fulfill $I(t)= I_0$ for some 
 S(0)=S_0 > 0,\hspace{8mm} I(0)=I_0>0,\hspace{8mm} R(0) =0.
 \end{equation}
 !et
+The initial conditions for *Susceptible* and *Infective* combined with $r$ and $a$ will control the epidemic situation. These will affect the spread of the infection. From equation (ref{eq:SIR_model}) the function for *Infective* at initial time can be written,
+!bt
+\begin{equation}
+\left[\frac{dI}{dt}\right]_{t=0} = I_0(rS_0-a)
+\end{equation}
+!et
+The expression inside the brackets controls the change in $I$. The function will increase if $S_0 > \frac{a}{r}$, this will therefore be the threshold value for the function. The threshold value will be described by the variable $\rho$,
+!bt
+\begin{equation} label{eq:threshold_value}
+\rho = \frac{a}{r}
+\end{equation}
+!et
+This can be shown with some phase trajectories of the *Susceptible* and the *Infective* in figure(ref{fig:threshold_phenomenon}).  
+
+FIGURE:[../spesialpensum_SIR/plots/threshold_phenomenon.png]label{fig:threshold_phenomenon} Simulations of the SIR model (ref{eq:SIR_model}) with start positions along the blue line. $I$ increases until $S$ is equal to the threshold value $\rho$, which is sat to 35. Then $I$ is reduced to 0. In the simulations where $S_0 < \rho$, no epidemic situation is achieved.    
+
+!split
+===== English boarding school =====
+The British medical journal had in 1978 a report from a boarding school in England. One of the boys had brought with him a disease back to the school. Since this was a boarding school, they were totally isolated from others and had a closed system to model cite[p.~325]{murray2002mathematical}. The simulation can be seen in figure(ref{fig:english_boarding})  
+
+FIGURE:[../spesialpensum_SIR/plots/English_boarding_school.png] label{fig:english_boarding} An English boarding school is modeled for 15 days with the following parameters: $N=763$, $S_0=762$, $I_0=1$, $R_0=0$, $\rho=202$ and $r=2.18 x 10^{-3}$. An increasing of *Infective* can be seen since $S_0 > \rho$.
+
+The parameter value $\rho$ has a major impact on the result. The epidemic disease could turn out quite different than in the situation in figure(ref{fig:english_boarding}) by variations in $a$ and $r$. Figure(ref{fig:rho_changes}) consist of some examples where $\rho$ varies from 50 to 400.
+
+FIGURE:[../spesialpensum_SIR/plots/English_boarding_school_changes.png] label{fig:rho_changes} In the first plot where $\rho=50$, the *Infective* will increase until the number of *Susceptible* falls down to 50. This will result in a majority of infected students. In the last plot where $\rho=400$, the total number of *Susceptible* stays around 170 students and will go towards a steady number as $I(\infty)=0$.   
+
+!split
+======= When Zombies Attack! =======
+===== Basic model =====
+
+!bt
+\begin{align*}
+\frac{dS}{dt} =& \Sigma -\beta SZ - \delta S \\
+\frac{dI}{dt} =& \beta SZ - \varrho I - \delta I\\
+\frac{dZ}{dt} =& \varrho I + \zeta R - \alpha SZ\\
+\frac{dR}{dt} =& \delta S + \delta I + \alpha SZ - \zeta R
+\end{align*}
+!et
+This is a bit more complicated than the standard $SEIR$ model. A presentation of the parameters;
+* $\Sigma$ describes the birthrate for new *Susceptible*. $\frac{dS}{dt}$ is now able to be positive. This is now not a closed system. 
+* $\beta SZ$ describes the numbers of *Susceptible* that become *Infected* , based on interactions between zombies and humans. Similar as the case for $rSI$ in the SIR model. 
+* $\delta$ describes the number of naturals deaths among the group. This is used in the *Susceptible* and the *Infected* group
+* $\varrho I$ describes the probability for an infected human to wake up as a zombie.
+* $\zeta R$ controls the number of *Removed* that arises as *Zombie*. 
+* $\alpha SZ$ describes the number of zombies killed by humans in the zombie attacks. 
+
+This ODE satisfy
+!bt
+\begin{equation}
+S'+I'+Z'+R' = \Sigma
+\end{equation}
+!et
+Which leads to
+!bt
+\begin{equation}
+S + I + Z + R \rightarrow  \infty
+\end{equation}
+!et
+When $t \rightarrow \infty$ and $\Sigma \neq 0$, $S$ cannot go towards infinity, which results in a "doomsday" and this will lead to a collapse of the civilisation.
+
+!split
+======= Escaping the zombie Threat by Mathematics =======
+===== LMR model =====
+In the paper from Munz et. al cite{munz2009zombies} the doomsday was nearly inevitable. This is criticized by Langtagen, Mardal and Røtnes. In the paper *Escaping the zombie Threat by Mathematics* cite{zombie-math}, the doomsday scenario is questioned.
+* Counter attack can be performed earlier and with more destruction
+* Magic is not involved. Laws of physics and biology are used
+
+The model that they use:
+!bt
+\begin{equation} label{eq:LMR_model}
+	\begin{aligned} 
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS \\
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II\\
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+	\end{aligned}
+\end{equation}
+!et
+The main change is the $\omega(t)$. This is a Gaussian curve and can be seen in eq(ref{eq:omega}).
+!bt
+\begin{equation} label{eq:omega}
+\omega(t) = a \sum^m_{i=0}\exp\left(\frac{1}{2}\left(\frac{t-T_i}{\sigma}\right)^2\right)
+\end{equation}
+!et
+
+$\omega(t)$ controls the attacks from the *Susceptible*, which will be fired at predefined time steps. These are controlled by the three parameters. 
+* $a$ here works as a similar parameter as $\alpha$, but will only be activated when the *Susceptible* group is organized and ready to attack. 
+* $T$ contains a list of numbers, which controls the time when the attacks will occur.
+* $\sigma$ controls the length of the attack. 
+
+!split
+===== Use model to simulate Walking Dead =====
+In *Escaping the zombie Threat by Mathematics* cite{zombie-math}, the movie *The Night of The Living Dead* is used. These simulations are based on the TV series *Walking Dead*. The paper divide a zombie outbreaks into three phases:
+* _Initial phase_ : The humans are unfamiliar with the disease in this phase and acts quite naive to the disease. This result in a high chance of getting infected. Lasts for a short period. In this case, three days 
+* _Hysterical phase_ : The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected. 
+* _Counter attack_ : The last phase, which happens at the same time as the hysterical phase. This phase is often started when humans are attacked by zombies. They will then respond with a counter attack to save themselves.
+
+Data from the TV series by close studies.
+
+|--------------------------------------------------------------------|
+|---------|Initial phase|hysterical phase|counter attack|final values|
+|--------------------------------------------------------------------|
+|S_0      |621          | 71          | 62              |58          |
+|I_0      |0            | 540         | 360             |332         |
+|Z_0      |1            | ---         | ---             |---         |
+|R_0      |0            | 20          | 200             |232         |
+|--------------------------------------------------------------------|
+
+To be able to achieve these results, the parameters have to be adjusted. To model all three phases, the parameters in in the table are used 
+
+|-------------------------------------------------------|
+|parameter|Initial phase|hysterical phase|counter attack|
+|-------------------------------------------------------|
+|$\beta$  |0.01155      | 0.000011       | 0.00011      |
+|$\varrho$|1.37         | 1.5            | 1.5          |
+|$\alpha$ |0.00044      | 0.000208       | 0.000208     |
+|a        |0            | 0              | 0.0073       |
+|$\sigma$ |0            | 0              | 0.005        |
+|$\mu$    |0            | 0              | 0.14         |
+|-------------------------------------------------------|
+
+This result in the simulation
+
+FIGURE:[../spesialpensum_SIR/plots/WD_zombie_all_phases_1.png] label{fig:all_phases} Walking Dead simulated after 5 episodes. Based on the three different phases.
+
+The results can be seen in the following table
+
+|--------------------------------------------------------------------|
+|---------|Initial phase|hysterical phase|counter attack|final values|
+|--------------------------------------------------------------------|
+|S_0      |621          | 71          | 62              |58          |
+|I_0      |0            | 231         | 0               |1           |
+|Z_0      |1            | 299         | 359             |332         |
+|R_0      |0            | 21          | 202             |231         |
+|--------------------------------------------------------------------|
+
+!split
+======= Murray PDE =======
+===== Travelling wave =====
+!bt
+\begin{equation} label{eq:simple_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+!et
+This problem can be nondimensionalized by writing
+!bt
+\begin{equation} label{eq:constants_nondimensional}
+	\begin{aligned}
+	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
+	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
+	\end{aligned}
+\end{equation}
+!et
+And the following system can be study:
+!bt
+\begin{equation} label{eq:simple_non_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+!et
+An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is sat to 0.5. The initial value for *Susceptible* is 1 for the area and the *Removed* is sat to 0. The *Infected* class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travel towards the other side. The value $z$, which is defined in Eq.(ref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
+
+FIGURE:[../2_PDE_Fisher_Kolmogoroff/plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
+
+FIGURE:[../2_PDE_Fisher_Kolmogoroff/plots/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the travelling wave measures at at $x=15$ in figure(ref{fig:1D_sub})
+
+!split
+===== Geographic spread =====
+The model (ref{eq:LMR_model}) can be expanded with a diffusion term added to each equation
+!bt
+\begin{equation} label{eq:seland_model}
+	\begin{aligned} 
+	\frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
+	\frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+D_i\nabla^2 I\\
+	\frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z\\
+	\frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
+	\end{aligned}
+\end{equation}
+!et
+
+This system can be modeled with a uniform distributed groups, which results in the following simulation
+
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/plots/2D_zombie_three_phases.webm, height=500 width=600]
+
+And gives the same values 
+|-----------------------------------------------------------------------|
+|                   | ODE system| PDE uniform dist  | PDE gauss center  |
+|-----------------------------------------------------------------------|
+|Initial phase      |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |71.3       | 71.5              |81.12             |
+|Infected           |230.8      | 230.6             |210.94            |
+|Zombie             |298.9      | 298.9             |310.11            |
+|Removed            |21.0       | 21.0              |20.60             |
+|-----------------------------------------------------------------------|
+|Hysterical phase   |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |61.6       |61.8               |70.55              |
+|Infected           |0.3        |0.3                |0.34               |
+|Zombie             |358.6      |357.9              |334.33             |
+|Removed            |201.5      |202.0              |217.56             |
+|-----------------------------------------------------------------------|
+|Counter attack     |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |57.8       |58.2               |66.50              |
+|Infected           |1.2        |1.2                |1.23               |
+|Zombie             |331.8      |331.1              |305.86             |
+|Removed            |231.3      |231.7              |249.19             |
+|-----------------------------------------------------------------------|
+
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/plots/2D_zombie_three_phases_gauss.webm, height=500 width=600]
+
+!split
+======= Bibliography =======
+
+BIBFILE: ../bibliography/papers.pub

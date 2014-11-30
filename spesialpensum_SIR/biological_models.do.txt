@@ -357,7 +357,7 @@ The simulation is run for 34 days. The three first days are in the initial phase
 
 FIGURE:[plots/WD_zombie_all_phases_1.png] label{fig:all_phases} Walking Dead simulated after 5 episodes. Based on the three different phases.
 
-Figure(ref{fig:all_phases}) clearly shows that the change in parameter values affect the different phases. The different values are shown in the table(ref{table:class_values}), where the values are given at the initial time. The last column consist of the final values after 34 days.
+Figure(ref{fig:all_phases}) clearly shows that the change in parameter values affect the different phases. The different values are shown in the table(ref{table:class_values}), where the values are given at the initial time. The last column consists of the final values after 34 days.
 |--------------------------------------------------------------------|
 |---------|Initial phase|hysterical phase|counter attack|final values|
 |--------------------------------------------------------------------|
@@ -375,4 +375,4 @@ Considering the uncertainty of the parameters, this simulation gives a result cl
 This model will be used as the basic model to compare against. The biggest advantage with this model is that it is straight forward to calculate. It it easy and quite simple to understand. This is good if the goal is to find the total number in each class measured over an area, but it gives no information about the spatial spread of the disease. This will therefore be useless in the work on describing how fast a disease can spread abroad countries and borderlines. The two next chapters will introduce more complicated models which will be compared to this ODE-system modeled here.
 ======= Bibliography =======
 
-BIBFILE: papers.pub
+BIBFILE: ../bibliography/papers.pub

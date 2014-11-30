@@ -44,7 +44,7 @@ This is solved by adding an extra point on each side, called ghost points. The v
 	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
 	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
 	\end{aligned}
-0\end{equation}
+\end{equation}
 !et
 $S_0$ is used as a representative population. Now Eq.(ref{eq:simple_PDE}) can be expressed as in Eq.(ref{eq:simple_non_PDE}). The asterisks have been dropped to make it easier to read.
 !bt
