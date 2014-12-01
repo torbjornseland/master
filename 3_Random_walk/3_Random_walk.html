@@ -51,7 +51,11 @@ Automatically generated HTML file from Doconce source
               (' Random walks ', 2, None, '___sec6'),
               (' Diffusion equation and random walks ', 3, None, '___sec7'),
               (' Random walker ', 3, None, '___sec8'),
-              (' Bibliography ', 1, None, '___sec9')]}
+              (' Epidemic in an English Boarding School ',
+               2,
+               None,
+               '___sec9'),
+              (' Bibliography ', 1, None, '___sec10')]}
 end of tocinfo -->
 
 <body>
@@ -94,7 +98,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 26, 2014</h4></center> <!-- date -->
+<center><h4>Dec 1, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -107,7 +111,8 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Random walks </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Diffusion equation and random walks </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> Random walker </a><br>
-<a href="#___sec9"> Bibliography </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Epidemic in an English Boarding School </a><br>
+<a href="#___sec10"> Bibliography </a><br>
 </p>
 
 <h2>Introduction  <a name="___sec0"></a></h2>
@@ -396,7 +401,7 @@ And the variance between these can be compared.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  10000 random walkers placed at x=0 at t=0. Every step has the length \( \Delta x = 0.01 \) and with a random step every \( \Delta t = 0.01 \). </p></center>
+<center><p class="caption">Figure 1:  <a name="fig:gauss_random"></a> 10000 random walkers placed at x=0 at t=0. Every step has the length \( \Delta x = 0.01 \) and with a random step every \( \Delta t = 0.01 \). </p></center>
 <p><img src="plots/random_compare.png" align="bottom" height=500 width=800></p>
 </center>
 
@@ -413,6 +418,7 @@ $$
 To study if the average random walker develops as expected, a table can with the outputs can be added. 
 
 <p>
+<a name="table:gauss_random"></a>
 <table border="1">
 <thead>
 <tr><th align="center">-----------------------</th> <th align="center">         time=2        </th> <th align="center">         time=8        </th> </tr>
@@ -424,8 +430,39 @@ To study if the average random walker develops as expected, a table can with the
 <tr><td align="center">   percent inside gauss       </td> <td align="center">   68.26 %                    </td> <td align="center">   68.26 %                    </td> </tr>
 </tbody>
 </table>
+<p>
+The average displacement and the standard deviation shows that a group of random walkes spread similar as a standard diffusion function. This result in a major group of random walkers. In the simulation in Fig.(<a href="#fig:gauss_random">1</a>), 10000 random walkers are used. By increasing the amount om random walkers, the precision will be better.
 
-<h1>Bibliography  <a name="___sec9"></a></h1>
+<h2>Epidemic in an English Boarding School  <a name="___sec9"></a></h2>
+This example has been common for all three systems, and will be used in this chapter. The following system\eqref{eq:simple_PDE} from previous chapter, <em>Geographic models</em> will be implemented for random walkers to simulate the epidemic in the English Boarding School.
+$$
+\begin{equation} \label{eq:simple_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+$$
+
+
+<p>
+In previous section, the diffusion term was
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='plots/english_school.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<!-- MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+
+<h1>Bibliography  <a name="___sec10"></a></h1>
 
 <!-- begin bibliography -->
 

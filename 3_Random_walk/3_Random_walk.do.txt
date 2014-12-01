@@ -280,6 +280,10 @@ This example has been common for all three systems, and will be used in this cha
 
 In previous section, the diffusion term was
 
+MOVIE:[plots/english_school.webm, height=500 width=600]
+
+#MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
 
 
 

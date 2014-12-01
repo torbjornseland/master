@@ -7,11 +7,12 @@ import numpy as np
 
 
 class creature(object):
-    def __init__(self,X,Y,step,getcolor):
+    def __init__(self,X,Y,id_step,getcolor):
         self.x = rd.randint(0,X)
         self.y = rd.randint(0,Y)
         self.X = X
         self.Y = Y
+        self.my_id = id_
         self.step = step
         self.getcolor = getcolor
         self.no_steps = 0
@@ -55,6 +56,9 @@ class creature(object):
     def get_pos(self):
         return self.x,self.y
     
+    def get_id(self):
+        return self.my_id
+    
     def coordinates(self):
         return (self.x, self.y)
 
@@ -82,7 +86,83 @@ class infected(creature):
         super(infected,self).__init__(*args)
 
     def update(self,everyone):
-        super(infected,self).update(everyone)
+        r_min = min_size
+        mx_min = 0
+        my_min = 0
+        mx_way = 1
+        my_way = 1
+        
+        test_x = self.x
+        test_y = self.y
+        
+        i = int(self.x*grid_size/X)
+        j = int(self.y*grid_size/Y)
+        
+        if(i == grid_size):
+            print "inne her"
+            i = 0
+        if(j == grid_size):
+            print "inne j"
+            j = 0
+        
+        Zombie_force = [] 
+        Human_force = [] 
+
+        for k in range(3):
+            for l in range(3):
+                Zombie_force.extend(ZMO[i+k,j+l])
+                Human_force.extend(HMO[i+k,j+l])
+                #del HMO[i+k,j+l][:] #Only allowed to do one battle each round
+
+        #Fighting
+        z_power = len(Zombie_force)
+        h_power = len(Human_force)
+       
+        if(h_power != 0):
+            for k in range(h_power):
+                human_infec = rd.random()
+                if(human_infec < (HI+0.0*z_power)):
+                    everyone[Human_force[k]].getcolor = 'c' #Human getting infected
+
+                                        
+
+        if(self.getcolor == 'r'): 
+            if (self.no_steps == 0):
+                self.direction = rd.uniform(0,2*pi)
+                self.no_steps = rd.randint(1,20)
+    
+            test_x = self.x + step_x*cos(self.direction) 
+            test_y = self.y + step_y*sin(self.direction)
+            self.no_steps -= 1
+         
+    
+    
+            #Removing zombie from position  
+            count_pos = 0
+            for k in ZMO[i+1,j+1]:
+                if(k == self.my_id):
+                    del ZMO[i+1,j+1][count_pos]
+                count_pos += 1
+
+            if(test_x > X):
+                self.x = test_x -X
+            elif(test_x < 0):
+                self.x = X + test_x
+            else:
+                self.x = test_x
+            
+            if(test_y > Y):
+                self.y = test_y -Y
+            elif(test_y < 0):
+                self.y = Y + test_y
+            else:
+                self.y = test_y
+                
+            #Giving the zombie a new position
+            i = int(self.x*grid_size/X)
+            j = int(self.y*grid_size/Y)
+            ZMO[i+1,j+1].append(self.my_id)
+            #print "each round ZMN", ZMN    
 
     def walk(self):
         super(infected,self).walk()
@@ -174,20 +254,40 @@ steps = 100
 makeplot = True
 makegraph = True
 savefile = "plots/english_school"
-SN = 10
-IN = 10
+SN = 621
+IN = 1
 X = 20
 Y = 20
 step = 0.1
+grid_size = 10
+
+grid_x = (X/float(grid_size))
+grid_y = (Y/float(grid_size))
+
+ZMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
+ZMN = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
+for i in range(grid_size+2):
+    for j in range(grid_size+2):
+        ZMO[i,j] = [] 
+        ZMN[i,j] = [] 
+
+HMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Human matrix old
+for i in range(grid_size+2):
+    for j in range(grid_size+2):
+        HMO[i,j] = [] 
+
 
 susceptible_ = []
-for i in range(0,SN):       #Making zombies
-    s = susceptible(X,Y,step,'b')
+for id_ in range(0,SN):       #Making zombies
+    s = susceptible(X,Y,id_,step,'b')
     susceptible_.append(s)
+    x,y = s.coordinates()
+    x_start = 
+    ZMO[x_start+1,y_start+1].append(i)  #Zombie matrix old
 
 infected_ = []
 for i in range(0,IN):       #Making zombies
-    i_ = infected(X,Y,step,'r')
+    i_ = infected(X,Y,id_+SN,step,'r')
     infected_.append(i_)
 
 everyone = susceptible_ + infected_ 
