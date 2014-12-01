@@ -1,0 +1,331 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Project inf5631">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Density-Dependent Diffusion- Reaction Diffusion Model ',
+               1,
+               None,
+               '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Travelling wavefront ', 2, None, '___sec2'),
+              (' Motivation for the reaction-diffusion equation ',
+               3,
+               None,
+               '___sec3'),
+              (' The analytical solution ', 3, None, '___sec4'),
+              (' Reaction term ', 1, None, '___sec5'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec6'),
+              (" Fisher's equation ", 3, None, '___sec7'),
+              (' Carrying capacity ', 3, None, '___sec8'),
+              (' Reproduction rate ', 3, None, '___sec9'),
+              (' Scaling ', 3, 'section:scaling', 'section:scaling'),
+              (' Spatial diffusion ', 1, None, '___sec11'),
+              (' Boundary conditions ', 3, None, '___sec12'),
+              (' Linear system/equation ', 2, None, '___sec13'),
+              (' Nonlinear equation ', 2, None, '___sec14'),
+              (' Picard Iteration ', 3, None, '___sec15'),
+              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec16'),
+              (' Spatial derivative wrapped with an absolute value ',
+               3,
+               None,
+               '___sec17'),
+              (' Spatial derivative wrapped with an absolute value powered by m ',
+               3,
+               None,
+               '___sec18'),
+              (' Solution for the biological equation ', 1, None, '___sec19'),
+              (' Fisher-Komogoroff equation ', 3, None, '___sec20'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec22'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec23'),
+              (' Further work ', 1, None, '___sec24'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec25'),
+              (' Dirichlet boundary condition ', 3, None, '___sec26'),
+              (' Neumann boundary condition ', 3, None, '___sec27'),
+              (" Newton's method ", 2, None, '___sec28'),
+              (' Bibliography ', 1, None, '___sec29')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<a name="part0000"></a>
+<!-- begin top navigation -->
+<a href="._project_report001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Project inf5631 </title>
+
+<center><h1>Project inf5631 </h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Torbj&#248;rn Seland -->
+
+<center>
+<b>Torbj&#248;rn Seland</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Departments of Mathematics, University of Oslo</b></center>
+<center>[2] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<p>
+<center><h4>Dec 1, 2014</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<a href="#___sec0"> Density-Dependent Diffusion- Reaction Diffusion Model </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Fisher-Kolmogoroff equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Travelling wavefront </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Motivation for the reaction-diffusion equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> The analytical solution </a><br>
+<a href="._project_report001.html#___sec5"> Reaction term </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._project_report001.html#___sec6"> Fisher-Kolmogoroff term </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report001.html#___sec7"> Fisher's equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report001.html#___sec8"> Carrying capacity </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report001.html#___sec9"> Reproduction rate </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report001.html#section:scaling"> Scaling </a><br>
+<a href="._project_report002.html#___sec11"> Spatial diffusion </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec12"> Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec13"> Linear system/equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec14"> Nonlinear equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec15"> Picard Iteration </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec16"> \( \alpha(u) \) as a linear function </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec17"> Spatial derivative wrapped with an absolute value </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec18"> Spatial derivative wrapped with an absolute value powered by m </a><br>
+<a href="._project_report003.html#___sec19"> Solution for the biological equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report003.html#___sec20"> Fisher-Komogoroff equation </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report003.html#___sec21"> \( \alpha(u)= u \) </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report003.html#___sec22"> \( \alpha(u)=|\nabla u| \) </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report003.html#___sec23"> \( \alpha(u)=|\nabla u|^m \) </a><br>
+<a href="._project_report004.html#___sec24"> Further work </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._project_report004.html#___sec25"> Changes in the Boundary conditions </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report004.html#___sec26"> Dirichlet boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report004.html#___sec27"> Neumann boundary condition </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._project_report004.html#___sec28"> Newton's method </a><br>
+<a href="._project_report004.html#___sec29"> Bibliography </a><br>
+</p>
+
+<h1>Density-Dependent Diffusion- Reaction Diffusion Model  <a name="___sec0"></a></h1>
+The efficiency of computers have increased vastly over the last few decades, giving scientists and engineers new tools to describe the dynamics of the world around us. It has also affected the way biological processes are viewed and described. This project will focus on numerical methods to solve the reaction diffusion equation Ref.<a href="#mjx-eqn-1">(1)</a>. Reaction-diffusion systems explain how the concentration of one or more substances change under the influence of local chemical reactions, here \( f(u) \), and diffusion, which results in spatial dispersion. These systems are applied in fields as chemistry, biology, geology, physics and ecology. 
+$$
+\begin{align} \tag{1}
+u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
+u(x,0) =& I(x)\notag \\
+u(0,t)=& 0\notag \\
+u(L,t)=& 0\notag
+\end{align}
+$$
+
+This model is a <em>Density-Dependent Diffusion-Reaction Diffusion Model</em>, caused by the \( \alpha(u) \) function in the diffusion part. When \( \alpha(u) \) is sat to be a constant, the model will be a ordinary <em>Reaction Diffusion model</em> <a href="._project_report004.html#murray2002mathematical">[1]</a>. Here, \( u \) denotes the concentration of the substance in one spatial dimension. This project includes a general introduction to the Fisher-Kolmogoroff equation, which is a reaction diffusion equation. To verify the numerical solution, this will be compared to an analytical solution by using travelling wavefront. The last part will study the reaction and diffusion terms.
+
+<h2>Fisher-Kolmogoroff equation  <a name="___sec1"></a></h2>
+The main focus in this project will be at the Fisher-Kolmogoroff equation, now referred as FK . This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results Ref.<a href="._project_report004.html#murray2002mathematical">[1]</a>.The FK can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{M}) \) in Eq.<a href="#mjx-eqn-1">(1)</a>.
+
+<p>
+<!-- [^Murray]: J.D. Murray,Mathematical Biology, 3rd edition (Springer, Berlin, 2003) -->
+$$
+\begin{equation} \tag{2}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{M})
+\end{equation}
+$$
+
+<h2>Travelling wavefront  <a name="___sec2"></a></h2>
+
+<h3>Motivation for the reaction-diffusion equation  <a name="___sec3"></a></h3>
+
+A travelling wave is a wave that travels without any change in the shape and the speed can be given by a constant. This means that by following the wave with the same speed as the wave speed, it would be no changes in the wave. A mathematical expression for this is
+$$
+\begin{equation} \tag{3}
+u(x,t) = u(x-ct) = u(z), z = x-ct
+\end{equation}
+$$
+
+So if \( x-ct \) is a constant, then \( u \) will be a constant. If we look for a travelling wave solution of the <a href="#mjx-eqn-3">(3)</a>, the partial differential equations can be written as ordinary differential equations. 
+$$
+\begin{equation}
+	\begin{aligned}
+    \frac{\partial u}{\partial t} &= -c\frac{du}{dz} \\
+    \frac{\partial u}{\partial x} &= \frac{du}{dz}
+	\end{aligned}
+\end{equation}
+$$
+
+The concentration of the quantities cannot be negative and \( u(z) \) has to be bounded by \( z \). These are two physical assumptions that has to be done. An example of the quantities is the human population. This can be seen as a concentration between 0 and 1. Inserting the ordinary differential equations into a standard diffusion equation under
+$$
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
+\end{equation}
+$$
+
+Will give
+
+$$
+\begin{equation}
+k\frac{d^2u}{dx^2} + \frac{du}{dt} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/D} 
+\end{equation}
+$$
+
+Here \( A \) and \( B \) will be integration constants. The physical assumption above requires \( u(z) \) to be bounded by \( z \). Then \( B \) needs to be zero, since the exponential gets unbounded when \( z\rightarrow -\infty \). Then the wave solutions ends up as \( u(z)=A \), which is a constant value, and not a wave solution. Therefore the reaction term \( f(u) \) was applied to the equation. This term can exhibit travelling wave solution. A major factor for the mathematical theory in reaction diffusion equations.
+
+<h3>The analytical solution  <a name="___sec4"></a></h3>
+
+FK is a nice equation to use when analyzing standard techniques for the single-species model with diffusion dispersal Ref.(<a href="._project_report004.html#murray2002mathematical">[1]</a>). It is convenient to rescale the equation by writing,(rescaling is explained thoroughly in (<a href="._project_report001.html#section:scaling">Scaling</a>)) 
+$$
+t* = rt,	x* = x(\frac{r}{k})^{1/2}
+$$
+
+The carrying capacity, \( M \), will be sat to one. This gives a travelling wavefront between 0 and 1.
+$$
+\begin{equation} \tag{4}
+\frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)
+\end{equation}
+$$
+
+Since \( M=1 \), the steady states are \( u=0 \) and \( u=1 \), which are respectively unstable and stable. If the solution represents a travelling wave, the shape of the wave will move with the speed \( c \). The travelling wave can then be shown stationary.
+$$
+u(x,t) = u(x-ct) = U(z),\hspace{8 mm} x-ct = z
+$$
+
+\( U(z) \) will be used instead of \( u(u) \). This is to avoid any confusion of the terminology. The assumption \( c \geq 0 \) is done. Substituting this traveling wavefront into Eq.<a href="#mjx-eqn-4">(4)</a>, gives
+$$
+\begin{equation} \tag{5}
+U'' +cU' + U(1-U) = 0
+\end{equation}
+$$
+
+An analytical solution of this can be written
+$$
+\begin{equation} \tag{6}
+U(z) = \frac{1}{(1+ae^{bz})^s}
+\end{equation}
+$$
+
+Here \( a \), \( b \) and \( s \) are positive constants. These can be found by substituting Eq.<a href="#mjx-eqn-6">(6)</a> into Eq.<a href="#mjx-eqn-5">(5)</a>. This is done in detail by Murray et. al Ref.(<a href="._project_report004.html#murray2002mathematical">[1]</a>)
+. To achieve that \( z=0 \) corresponds to \( U=1/2 \), the constant \( a \) can be sat to \( a=\sqrt{2}-1 \) . The other constans are
+$$
+s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
+$$
+
+The function for the analytical wavefront solution will then be,
+$$
+\begin{equation}
+U(z) = \frac{1}{[1+(\sqrt{2}-1)=e^{\frac{z}{\sqrt{6}}}]^2}
+\end{equation}
+$$
+
+The wavefront will look like this
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/wave_front_analytical.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Wavefront with analytical solution</em></p>
+
+
+<p>
+Then the numerical soultion can be compared with the analytical. Here dt varies from 0.4 to 0.02.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/reac_constant_wavefront_dt.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Analytical solution plotted with numerical solutions</em></p>
+
+
+<p>
+The numerical solution has here got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries dont affect the error estimate.
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   dt   </th> <th align="center"> error  </th> <th align="center"> order  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   0.4         </td> <td align="center">   0.967214    </td> <td align="center">   0.0         </td> </tr>
+<tr><td align="center">   0.08        </td> <td align="center">   0.408244    </td> <td align="center">   0.53        </td> </tr>
+<tr><td align="center">   0.02        </td> <td align="center">   0.131734    </td> <td align="center">   0.81        </td> </tr>
+</tbody>
+</table>
+<p>
+This table shows how the error goes towards zero when dt goes towards zero. The order of the error also moves towars 1, which is the expected order for the dt.
+<p>
+<!-- begin bottom navigation -->
+<a href="._project_report001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
