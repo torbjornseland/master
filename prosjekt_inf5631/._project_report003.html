@@ -1,39 +1,42 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Project inf5631">
 
+<title>Project inf5631</title>
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -84,26 +87,27 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
     
 <a name="part0003"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._project_report004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- !split -->
@@ -133,7 +137,7 @@ This simulation shows how the reaction term and the spatial diffusion term affec
 
 
 <p>
-The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the two parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is dominated. But when \( \alpha=10 \), the solution diffuses fast towards zero, and the diffusion term becomes dominated. The simulations under shows the effect that the carrying capacity and reproduction rate have on the equation.
+The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the two parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term dominates the solution. But when \( \alpha=10 \), the solution diffuses fast towards zero, and the diffusion term becomes dominated. The simulations below show the effect that the carrying capacity and reproduction rate have on the equation.
 
 <p>
 
@@ -146,7 +150,7 @@ The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \)
 
 
 <p>
-The points in center are able to reach towards the carrying capacity, while \( \alpha \) drags the points at the boundary towards 0. 
+The points in the center are able to reach towards the carrying capacity, while \( \alpha \) drags the points at the boundary towards 0. 
 
 <p>
 
@@ -155,15 +159,15 @@ The points in center are able to reach towards the carrying capacity, while \( \
     <source src='paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>Variations in the reproduction rate. Same function as the first animation. Parameters are set to \( M=1 \) and $k=1$</em></p>
+<p><em>Variations in the reproduction rate. Same function as the first animation. Parameters are set to \( M=1 \) and \( k=1 \)</em></p>
 
 
 <p>
-When the reproduction rate is to weak, the solution will not reach the capacity state, which is set to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \). The reproduction rate and the boundary conditions works here against each other.
+When the reproduction rate is too weak, the solution will not reach the capacity state, which is set to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \). The reproduction rate and the boundary conditions here work against each other.
 
 <h3>\( \alpha(u)= u \)  <a name="___sec20"></a></h3>
 
-The simulations are produced in the same way as for the FK in the section above. The results are quite similar to the constant solution, but the shape is little bit different. 
+The simulations are produced in the same way as for the FK in the section above. The results are quite similar to the constant solution, but the shape is a bit different. 
 
 <p>
 
@@ -185,11 +189,11 @@ This simulation shows that the carrying capacity will affect the solution in the
     <source src='paramovies/reac_ordinary_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>Variations in the reproduction rate. Same function as the animation above. The carrying capacity is set to $M=1$</em></p>
+<p><em>Variations in the reproduction rate. Same function as the animation above. The carrying capacity is set to \( M=1 \)</em></p>
 
 
 <p>
-The reproduction rate affects the speed and strength towards the carrying capacity. The concentration in the center point can be studied for \( r=1 \) and $r=3. Since the reproduction rate is strong enough for both simulations, the difference between them the time. This is faster for \( r=3 \), as this fills up faster.
+The reproduction rate affects the speed and strength towards the carrying capacity. The concentration in the center point can be studied for \( r=1 \) and $r=3. Since the reproduction rate is strong enough for both simulations, the difference between them is the time. This is faster for \( r=3 \), as this fills up faster.
 
 <h3>\( \alpha(u)=|\nabla u| \)  <a name="___sec21"></a></h3>
 
@@ -215,11 +219,11 @@ The value of \( \alpha(u) \)  around the center will be close to 0, since the di
     <source src='paramovies/reac_abs_std_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>Variations in the reproduction rate. Same function as the animation above. The carrying capacity is set to $M=1$</em></p>
+<p><em>Variations in the reproduction rate. Same function as the animation above. The carrying capacity is set to \( M=1 \)</em></p>
 
 
 <p>
-This simulation is run for twice as long time as the other simulations. The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level for previous \( \alpha \). Now the function increases towards the carrying capacity. Since the shape of the function is quite flat in the center, the diffusion term becomes weaker. The reproduction rate has not become any stronger, but this is now enough to increase the concentration.
+This simulation is run for twice as long as the other simulations. The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level for previous \( \alpha \). Now the function increases towards the carrying capacity. Since the shape of the function is quite flat in the center, the diffusion term becomes weaker. The reproduction rate has not become any stronger, but this is now enough to increase the concentration.
 
 <h3>\( \alpha(u)=|\nabla u|^m \)  <a name="___sec22"></a></h3>
 
@@ -232,22 +236,22 @@ The diffusion part becomes weaker as the derivative of \( u \) goes towards 0. T
     <source src='paramovies/reac_abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>The function in the diffusion term is sat to $\alpha(u)=|\nabla u|^m$</em></p>
+<p><em>The function in the diffusion term is sat to \( \alpha(u)=|\nabla u|^m \)</em></p>
 
 
 <p>
-The power term, \( m \), in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases. This gives the reaction term a chance to increase up to the carrying capacity. Since the concentration is in the interval [0,1]. A power term above 1 will with a concentration under 1 will always lead to a lower value, and the diffusion term will be weaker.
-
-<p>
-The power term, \( m \), in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases, when the derivative of \( u \) is under 1. This gives the reaction term a chance to increase up to the carrying capacity.  A power term above 1 combined with a derivative of \( u \) under 1 will lead to a lower value, and the diffusion term will be weaker.
+The power term, \( m \), in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases, when the derivative of \( u \) is under 1. This gives the reaction term a chance to increase up to the carrying capacity.  A power term above 1 combined with a derivative of \( u \) under 1 will lead to a lower value, and the diffusion term will be weaker. 
 
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._project_report004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 

@@ -1,39 +1,42 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Project inf5631">
 
+<title>Project inf5631</title>
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -84,24 +87,26 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
     
 <a name="part0004"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+</td></tr></table>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- !split -->
@@ -126,7 +131,7 @@ An analogous description of Dirichlet boundary conditions can be found in the wa
 
 <h3>Neumann boundary condition  <a name="___sec26"></a></h3>
 
-Another way to study the boundary conditions is by reflecting boundaries. The boundary can be set to \( u=0 \), which changes the sign at the boundaries or \( u_x=0 \), that reflects the same value. This can be implemented with Neumann boundary condition, explained in detail in the papers from the course inf5620 by Langtangen.
+Another way to study the boundary conditions is by reflecting boundaries. The boundary can be set to \( u=0 \), which changes the sign at the boundaries or \( u_x=0 \), that reflects the same value. This can be implemented with Neumann boundary condition, explained in detail in the papers from the course inf5620/*inf->INF*/ by Langtangen.
 
 $$
 \begin{equation}
@@ -149,7 +154,7 @@ u_{-1}^n =& u_1^n
 $$
 
 The same thing can be done for \( L \).
-The simulation under compares Dirichlet with Neumann. The reaction term is set to be zero to see how the boundary affects the diffusion term.
+The simulation under compares Dirichlet bounday conditions with Neumann boundary conditions. The reaction term is set to be zero to see how the boundary affects the diffusion term.
 
 <p>
 
@@ -162,7 +167,7 @@ The simulation under compares Dirichlet with Neumann. The reaction term is set t
 
 
 <p>
-Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are set to be zero. Assume that the concentration of \( u \) is the temperature in a room. The walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. Here the temperature is set to be zero, but any number would have caused an equilibrium state.
+Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are set to be zero. Assume that the concentration of \( u \) is the temperature in a room. The walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls have a specific temperature. Here the temperature is set to be zero, but any number would have caused an equilibrium state.
 
 <h2>Newton's method  <a name="___sec27"></a></h2>
 Newtons method is another way to handle non linear equations. 
@@ -189,7 +194,7 @@ $$
 \end{equation}
 $$
 
-A Jacobian matrix is required for this method. \( F(u) = A(u)u - b(u) \) needs to be differentiate for all values of \( u \). \( F \) will be
+A Jacobian matrix is required for this method. \( F(u) = A(u)u - b(u) \) needs to be differentiated for all values of \( u \). \( F \) will be
 $$
 \begin{equation*}
 F_i = A_{i,i-1}(u_{i-1},u_i)u_{i-1}+A_{i,i}(u_{i-1},u_{i},u_{i+1})u_{i}+A_{i,i+1}(u_i,u_{i+1})u_{i+1}-b_i(u^{n-1}_i)
@@ -212,7 +217,7 @@ J_{i,i+1}=& \frac{\partial F_i}{\partial u_{i+1}}= \frac{\partial A_{i,i}}{\part
 \end{align*}
 $$
 
-The method demands a lot of calculating. Every part of \( J_{i,i} \) will be computed under, as an example. The same principles are used for \( J_{i,i-1} \) and \( J_{i,i+1} \).
+The method demands a lot of calculating. Every part of \( J_{i,i} \) will be computed below, as an example. The same principles are used for \( J_{i,i-1} \) and \( J_{i,i+1} \).
 $$
 \begin{align*}
 \frac{\partial A_{i,i-1}}{\partial u_i}u_{i-1}=&-\frac{\Delta t}{2\Delta x^2}(\alpha'(u_i)u_{i-1})\\
@@ -237,6 +242,7 @@ This matrix can be used to compute the Newton's method.
 
 <h1>Bibliography  <a name="___sec28"></a></h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -253,8 +259,12 @@ This matrix can be used to compute the Newton's method.
 
 <p>
 <!-- begin bottom navigation -->
-<a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+</td></tr></table>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 

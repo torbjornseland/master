@@ -1,39 +1,42 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Project inf5631">
 
+<title>Project inf5631</title>
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -84,26 +87,27 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
     
 <a name="part0001"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- !split -->
@@ -116,7 +120,7 @@ u_t = f(u)
 \end{equation}
 $$
 
-The equation can be discretized and solved numerically. This can be used to study the properties.
+The equation can be discretized and solved numerically. This can be used to study its properties.
 $$
 \begin{equation} \tag{8}
 	\begin{aligned}
@@ -127,7 +131,7 @@ $$
 \end{equation}
 $$
 
-This gives a linear equation \( Au = b \) that easy can be solved.
+This gives a linear equation \( Au = b \) that is easy to solve.
 
 <h2>Fisher-Kolmogoroff term  <a name="___sec6"></a></h2>
 A Fisher-Kolmogoroff term, now referred as FK, is a nonlinear term which often arises from biological applications. It takes the form \( ru(1-u/M) \), where \( r \) describes the linear reproduction and \( M \) describes the carrying capacity of the environment. The local chemical reaction will then be.
@@ -145,17 +149,17 @@ u^n_i(1-\Delta t r(1-\frac{u^n_i}{M})) =& u^{n-1}_i
 \end{align*}
 $$
 
-Since this solution gives a nonlinear equation, Picard iteration can be used to solve the equation. The idea with Picard iteration is to replace one of the \( u \) values in the nonlinear part with a known \( u\_ \).  In the first iteration, the value of \( u\_ \) will be set to the previous time step, 
+Since this solution gives a nonlinear equation, Picard iteration can be used to solve the equation. The idea in Picard iteration is to replace one of the \( u \) values in the nonlinear part with a known \( u\_ \).  In the first iteration, the value of \( u\_ \) will be set to the previous time step, 
 $$
 \begin{equation*}
 	u\_ = u^{n-1}
 \end{equation*}
 $$
 
-The correct value of \( u \) can be compared with the pre produced \( u\_ \) each round. If the difference between them are less than a predefined limit, the new solution is accepted. If not, the new \( u\_ \) will be a combination of \( u\_ \) and \( u \). How the combination is weighted is called relaxation. 
+The correct value of \( u \) can be compared with the pre-produced \( u\_ \) each round. If the difference between them is less than a predefined limit, the new solution is accepted. If not, the new \( u\_ \) will be a combination of \( u\_ \) and \( u \). How the combination is weighted is called relaxation. 
 $$
 \begin{equation*}
-u\_ = \gamma u + (1-\gamma)u\_,\qquad 0<= \gamma <=1
+u\_ = \gamma u + (1-\gamma)u\_,\qquad 0 < = \gamma < =1
 \end{equation*}
 $$
 
@@ -166,11 +170,11 @@ $$
 \end{align*}
 $$
 
-Since \( u\_ \) is an approximation to \( u \),  the value of \( u\_ \) needs to be refined until it fulfills the expected error
+Since \( u\_ \) is an approximation to \( u \),  the value of \( u\_ \) needs to be refined until it fulfills the expected error.
 
 <h3>Fisher's equation  <a name="___sec7"></a></h3>
 
-The parameters are set to \( r=1 \) and \( M=1 \). This is called Fisher's equation.The reaction term in Fisher will look like this.
+The parameters are set to \( r=1 \) and \( M=1 \). This is called Fisher's equation.The reaction term in Fisher will look like this:
 
 <p>
 
@@ -183,7 +187,7 @@ The parameters are set to \( r=1 \) and \( M=1 \). This is called Fisher's equat
 
 
 <p>
-The simulation in Fig.<a href="#fig:fisher_eq">fig:fisher_eq</a> shows a smooth flow towards the carrying capacity, which is set to 1. All points moves towards the steady state with the same speed. As defined in Eq.ref{eq:reaction_diffusion}, the boundary are set to 0. This is difficult to see based on this simulation. Another animation is done in Fig.<a href="#fig:boundary_ver">fig:boundary_ver</a>. This animation is simulated with ten points, and the boundary points can be seen as 0. Since there are no spatial influence on the model, each point will move towards the steady state, independent of the other points. Therefore the neighbours to the boundary points will rise towards the carrying capacity. 
+The simulation in Fig.<a href="#fig:fisher_eq">fig:fisher_eq</a> shows a smooth flow towards the carrying capacity, which is set to 1. All points move towards the steady state with the same speed. As defined in Eq.ref{eq:reaction_diffusion}, the boundary is set to 0. This is difficult to see based on this simulation. Another animation is done in Fig.<a href="#fig:boundary_ver">fig:boundary_ver</a>. This animation is simulated with ten points, and the boundary points can be seen as 0. Since there is no spatial influence on the model, each point will move towards the steady state, independent of the other points. Therefore the neighbours to the boundary points will rise towards the carrying capacity. 
 
 <p>
 
@@ -196,7 +200,7 @@ The simulation in Fig.<a href="#fig:fisher_eq">fig:fisher_eq</a> shows a smooth 
 
 <h3>Carrying capacity  <a name="___sec8"></a></h3>
 
-The  influence from carrying capacity on the function can be studied by variations of \( M \). This simulation has the purpose to illustrate the effect of varying the carrying capacity.
+The  influence from carrying capacity on the function can be studied by variations of \( M \). This simulation has the purpose of illustrating the effect of varying the carrying capacity.
 
 <p>
 
@@ -209,7 +213,7 @@ The  influence from carrying capacity on the function can be studied by variatio
 
 
 <p>
-All simulations goes towards their carrying capacity and stabilizes themselves here. The reproduction rate, \( r \), has been set equal to 1 for all simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all cases.
+In the above animation the carrying capacity is approached in all simulations, and the result is stable. The reproduction rate, \( r \), has been set to 1 for all simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all cases.
 
 <h3>Reproduction rate  <a name="___sec9"></a></h3>
 
@@ -226,7 +230,7 @@ A similar simulation can be done for the reproduction rate, \( r \). Here with f
 
 
 <p>
-This controls the speed towards carrying capacity. A larger reproduction rate will bring the solution faster
+The reproduction rate controls the speed towards carrying capacity. A larger reproduction rate will bring the solution faster
 towards the steady state, which is controlled by \( M \). The carrying capacity is set to \( M=0.8 \).
 
 <h3>Scaling <a name="section:scaling"></a></h3>
@@ -238,7 +242,7 @@ $$
 \end{equation}
 $$
 
-Here \( u_c \) and \( t_c \) are characteristic sizes of the range for \( u \) and \( t \). These values are set to be.
+Here \( u_c \) and \( t_c \) are characteristic sizes of the range for \( u \) and \( t \). These values are set to be:
 $$
 \begin{equation}
 u_c = M,\hspace{8 mm} t_c = \frac{1}{r}
@@ -279,10 +283,13 @@ This can be plotted for different values of \( M \)
 The model breaks down if \( M=0 \), since this gives a nonexistent initial condition. 
 <p>
 <!-- begin bottom navigation -->
-<a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
-
-<a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 
