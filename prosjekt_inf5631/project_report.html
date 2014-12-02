@@ -61,14 +61,8 @@ Automatically generated HTML file from Doconce source
               (' Linear system/equation ', 2, None, '___sec13'),
               (' Nonlinear equation ', 2, None, '___sec14'),
               (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
-              (' Spatial derivative wrapped with an absolute value ',
-               3,
-               None,
-               '___sec16'),
-              (' Spatial derivative wrapped with an absolute value powered by m ',
-               3,
-               None,
-               '___sec17'),
+              (' \\alpha(u) = |\\nabla(u)| ', 3, None, '___sec16'),
+              (' \\alpha(u) = |\\nabla(u)|^m ', 3, None, '___sec17'),
               (' Solution for the biological equation ', 1, None, '___sec18'),
               (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
               (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
@@ -151,8 +145,8 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec13"> Linear system/equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec14"> Nonlinear equation </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec15"> \( \alpha(u) \) = u </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec16"> Spatial derivative wrapped with an absolute value </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec17"> Spatial derivative wrapped with an absolute value powered by m </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec16"> \alpha(u) = |\nabla(u)| </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report002.html#___sec17"> \alpha(u) = |\nabla(u)|^m </a><br>
 <a href="._project_report003.html#___sec18"> Solution for the biological equation </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report003.html#___sec19"> Fisher-Kolmogoroff equation </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._project_report003.html#___sec20"> \( \alpha(u)= u \) </a><br>
@@ -232,7 +226,7 @@ $$
 t* = rt,	x* = x(\frac{r}{k})^{1/2}
 $$
 
-These values can be inserted into Eq.ref{eq:fish_kol}. The carrying capacity, \( M \), will be sat to 1. This gives a travelling wavefront between 0 and 1. The asterisks are dropped for notational simplicity.
+These values can be inserted into Eq.ref{eq:fish_kol}. The carrying capacity, \( M \), will be set to 1. This gives a travelling wavefront between 0 and 1. The asterisks are dropped for notational simplicity.
 $$
 \begin{equation} \tag{4}
 \frac{\partial u}{\partial t} = \frac{\partial^2u}{\partial x^2}+u(1-u)

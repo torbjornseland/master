@@ -61,14 +61,8 @@ Automatically generated HTML file from Doconce source
               (' Linear system/equation ', 2, None, '___sec13'),
               (' Nonlinear equation ', 2, None, '___sec14'),
               (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
-              (' Spatial derivative wrapped with an absolute value ',
-               3,
-               None,
-               '___sec16'),
-              (' Spatial derivative wrapped with an absolute value powered by m ',
-               3,
-               None,
-               '___sec17'),
+              (' \\alpha(u) = |\\nabla(u)| ', 3, None, '___sec16'),
+              (' \\alpha(u) = |\\nabla(u)|^m ', 3, None, '___sec17'),
               (' Solution for the biological equation ', 1, None, '___sec18'),
               (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
               (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
@@ -126,7 +120,7 @@ $$
 
 <h3>Fisher-Kolmogoroff equation  <a name="___sec19"></a></h3>
 
-This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity, \( M \), as shown in the section above. The diffusion term will at the same time try to drag the function towards its equilibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values, \( k \), in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation <a href="._project_report000.html#mjx-eqn-2">(2)</a>
+This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is set by the carrying capacity, \( M \), as shown in the section above. The diffusion term will at the same time try to drag the function towards its equilibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values, \( k \), in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation <a href="._project_report000.html#mjx-eqn-2">(2)</a>
 
 <p>
 
@@ -135,11 +129,11 @@ This simulation shows how the reaction term and the spatial diffusion term affec
     <source src='paramovies/reac_constant_2.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>r=1,M=1</em></p>
+<p><em>The reaction diffusion equation Eq.<a href="._project_report000.html#mjx-eqn-1">(1)</a> with \( \alpha(u)=k \) and a \( f(u) = ru(1-\frac{u}{M}) \). The parameters for are set to \( r=1 \) and \( M=1 \).</em></p>
 
 
 <p>
-The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is dominated. But when \( \alpha=10 \), the solution diffuses fast towards zero, and the diffusion term becomes dominated. The simulations under shows the influence of variations in the capacity and reproduction rate.
+The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the two parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is dominated. But when \( \alpha=10 \), the solution diffuses fast towards zero, and the diffusion term becomes dominated. The simulations under shows the effect that the carrying capacity and reproduction rate have on the equation.
 
 <p>
 
@@ -148,11 +142,11 @@ The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \)
     <source src='paramovies/reac_constant_M.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>r=1,$\alpha$=1</em></p>
+<p><em>Variations in the carrying capacity. Same function as the previous animation. Parameters are set to \( r=1 \) and $k=1</em></p>
 
 
 <p>
-Here they tend towards their capacity, while \( \alpha \) drags them down at the boundary.
+The points in center are able to reach towards the carrying capacity, while \( \alpha \) drags the points at the boundary towards 0. 
 
 <p>
 
@@ -161,11 +155,11 @@ Here they tend towards their capacity, while \( \alpha \) drags them down at the
     <source src='paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>M=1,$\alpha$=1</em></p>
+<p><em>Variations in the reproduction rate. Same function as the first animation. Parameters are set to \( M=1 \) and $k=1$</em></p>
 
 
 <p>
-When the reproduction rate is to weak, the solution will not reach the capacity state, which is sat to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \).
+When the reproduction rate is to weak, the solution will not reach the capacity state, which is set to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \). The reproduction rate and the boundary conditions works here against each other.
 
 <h3>\( \alpha(u)= u \)  <a name="___sec20"></a></h3>
 
@@ -178,11 +172,11 @@ The simulations are produced in the same way as for the FK in the section above.
     <source src='paramovies/reac_ordinary_M.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em></em></p>
+<p><em>The reaction diffusion equation Eq.<a href="._project_report000.html#mjx-eqn-1">(1)</a> with \( \alpha(u)=u \) and a \( f(u) = ru(1-\frac{u}{M}) \). The reproduction rate is set to \( r=1 \) .</em></p>
 
 
 <p>
-This simulation shows that the carrying capacity will affect the solution in the same way as for the constant solution above
+This simulation shows that the carrying capacity will affect the solution in the same way as for the constant solution above. The difference here is the value of \( \alpha(u) \). The value will here depend on the concentration in the point, while the section above had the same constant in all points. When the concentration is over 1, the diffusion term will be stronger than for constant solution. However, when the concentration get close to 0, the diffusion term decreases. This is the case for the points close to the boundaries
 
 <p>
 
@@ -191,11 +185,15 @@ This simulation shows that the carrying capacity will affect the solution in the
     <source src='paramovies/reac_ordinary_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em></em></p>
+<p><em>Variations in the reproduction rate. Same function as the animation above. The carrying capacity is set to $M=1$</em></p>
+
+
+<p>
+The reproduction rate affects the speed and strength towards the carrying capacity. The concentration in the center point can be studied for \( r=1 \) and $r=3. Since the reproduction rate is strong enough for both simulations, the difference between them the time. This is faster for \( r=3 \), as this fills up faster.
 
 <h3>\( \alpha(u)=|\nabla u| \)  <a name="___sec21"></a></h3>
 
-The carrying capacity acts quite as expected, but the reaction term is more interesting to look at.
+The simulations of carrying capacity and the reaction term are quite similar to the animations above. But the concentrations are higher in the center 
 
 <p>
 
@@ -204,8 +202,11 @@ The carrying capacity acts quite as expected, but the reaction term is more inte
     <source src='paramovies/reac_abs_std_M.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em></em></p>
+<p><em>The reaction diffusion equation Eq.<a href="._project_report000.html#mjx-eqn-1">(1)</a> with \( \alpha(u)=|\nabla u| \) and a \( f(u) = ru(1-\frac{u}{M}) \). The reproduction rate is set to \( r=1 \).</em></p>
 
+
+<p>
+The value of \( \alpha(u) \)  around the center will be close to 0, since the diffusion term is affected by the derivative of the concentration. Therefore the points in the center are able to reach the carrying capacity. 
 
 <p>
 
@@ -214,25 +215,33 @@ The carrying capacity acts quite as expected, but the reaction term is more inte
     <source src='paramovies/reac_abs_std_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em></em></p>
+<p><em>Variations in the reproduction rate. Same function as the animation above. The carrying capacity is set to $M=1$</em></p>
 
 
 <p>
-The simulation for changes in the reproduction is run for twice as long time as the other simulations. The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level. Since the diffusion for \( \alpha \) after a certain time step is quite weak, the reproduction rate has now a major influence and dominates more that for the simulations above .
+This simulation is run for twice as long time as the other simulations. The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level for previous \( \alpha \). Now the function increases towards the carrying capacity. Since the shape of the function is quite flat in the center, the diffusion term becomes weaker. The reproduction rate has not become any stronger, but this is now enough to increase the concentration.
 
 <h3>\( \alpha(u)=|\nabla u|^m \)  <a name="___sec22"></a></h3>
 
+The diffusion part becomes weaker as the derivative of \( u \) goes towards 0. This happens when the concentration for each point reaches the carrying capacity.
+
+<p>
 
 <div>
 <video  loop controls width='375' height='365' preload='none'>
     <source src='paramovies/reac_abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em></em></p>
+<p><em>The function in the diffusion term is sat to $\alpha(u)=|\nabla u|^m$</em></p>
 
 
 <p>
 The power term, \( m \), in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases. This gives the reaction term a chance to increase up to the carrying capacity. Since the concentration is in the interval [0,1]. A power term above 1 will with a concentration under 1 will always lead to a lower value, and the diffusion term will be weaker.
+
+<p>
+The power term, \( m \), in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases, when the derivative of \( u \) is under 1. This gives the reaction term a chance to increase up to the carrying capacity.  A power term above 1 combined with a derivative of \( u \) under 1 will lead to a lower value, and the diffusion term will be weaker.
+
+<p>
 <p>
 <!-- begin bottom navigation -->
 <a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
