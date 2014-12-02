@@ -3,6 +3,8 @@ AUTHOR: Torbjørn Seland
 DATE: today
 
 
+#doconce format html project_torbjorn.do.txt --pygments_html_style=native --keep_pygments_html_bg --encoding=utf-8
+#doconce slides_html project_torbjorn reveal --html_slide_theme=darkgray
 !split
 ======= Short presentation of project =======
 Study of the Density-Dependent Diffusion-Reaction-Diffusion Model Ref.(ref{eq:reaction_diffusion})
@@ -33,7 +35,7 @@ u(x,t) = u(x-ct) = u(z), z = x-ct
 
 The numerical solutions can be compared with the analytical, to check the  effect from $\Delta t$. Here $\Delta t$ varies from 0.4 to 0.02.
 
-MOVIE: [../prosjekt_inf5631/paramovies/reac_constant_wavefront_dt.webm, height=500,width=600]Analytical solution plotted with numerical solutions
+MOVIE: [plots/reac_constant_wavefront_dt.webm, height=500,width=600]Analytical solution plotted with numerical solutions
 
 The numerical solution has got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries don't affect the error estimate.
 
