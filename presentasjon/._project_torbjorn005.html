@@ -1,0 +1,149 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Presentation of project in inf5631">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Short presentation of project ', 1, None, '___sec0'),
+              (' Travelling wavefront ', 1, None, '___sec1'),
+              (' Reaction term ', 1, None, '___sec2'),
+              (' Carrying capacity ', 2, None, '___sec3'),
+              (' Reproduction rate ', 2, None, '___sec4'),
+              (' Diffusion term ', 1, None, '___sec5'),
+              (' A linear solution ', 2, None, '___sec6'),
+              (' Non linear solution ', 2, None, '___sec7'),
+              (' Solution for the biological model ', 1, None, '___sec8'),
+              (' Standard Fisher-Kolmogoroff equation ', 2, None, '___sec9')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<a name="part0005"></a>
+<!-- begin top navigation -->
+<a href="._project_torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split -->
+
+<h1>Solution for the biological model  <a name="___sec8"></a></h1>
+The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="._project_torbjorn001.html#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. The Fisher Kolmogoroff can be inserted in the reaction term, \( f(u) \).
+$$
+\begin{align} \tag{6}
+A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
+\end{align}                               
+$$
+
+<h2>Standard Fisher-Kolmogoroff equation  <a name="___sec9"></a></h2>
+This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity, \( M \), as shown in the section above. The diffusion term will at the same time try to drag the function towards its equilibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values, \( k \), in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation 
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_2.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>r=1,M=1</em></p>
+
+
+<p>
+The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is dominated. But when \( \alpha=10 \), the solution diffuses fast towards zero, and the diffusion term becomes dominated. The simulations under shows the influence of variations in the capacity and reproduction rate.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_M.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>r=1, $\alpha$=1</em></p>
+
+
+<p>
+Here they tend towards their capacity, while \( \alpha \) drags them down at the boundary.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>M=1, $\alpha$=1</em></p>
+
+
+<p>
+When the reproduction rate is to weak, the solution will not reach the capacity state, which is sat to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \).
+
+<p>
+
+<p>
+<!-- begin bottom navigation -->
+<a href="._project_torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

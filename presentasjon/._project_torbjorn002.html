@@ -73,37 +73,58 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0002"></a>
 <!-- begin top navigation -->
-<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_torbjorn003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
-
-<title>Presentation of project in inf5631</title>
-
-<center><h1>Presentation of project in inf5631</h1></center>  <!-- document title -->
-
-<p>
-<!-- author(s): Torbj&#248;rn Seland -->
-
-<center>
-<b>Torbj&#248;rn Seland</b> 
-</center>
+<h1>Travelling wavefront  <a name="___sec1"></a></h1>
+The idea is to study the size of the wave with constant speed \( c \)
+$$
+\begin{equation} \tag{2}
+u(x,t) = u(x-ct) = u(z), z = x-ct
+\end{equation}
+$$
 
 
 <p>
-<!-- institution(s) -->
+The numerical solutions can be compared with the analytical, to check the  effect from \( \Delta t \). Here \( \Delta t \) varies from 0.4 to 0.02.
+
 <p>
-<center><h4>Dec 2, 2014</h4></center> <!-- date -->
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='plots/reac_constant_wavefront_dt.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Analytical solution plotted with numerical solutions</em></p>
+
+
 <p>
-<!-- doconce format html project_torbjorn.do.txt --pygments_html_style=native --keep_pygments_html_bg --encoding=utf-8 -->
-<!-- doconce slides_html project_torbjorn reveal --html_slide_theme=darkgray -->
+The numerical solution has got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries don't affect the error estimate.
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   dt   </th> <th align="center"> error  </th> <th align="center"> order  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   0.4         </td> <td align="center">   0.967214    </td> <td align="center">   0.0         </td> </tr>
+<tr><td align="center">   0.08        </td> <td align="center">   0.408244    </td> <td align="center">   0.53        </td> </tr>
+<tr><td align="center">   0.02        </td> <td align="center">   0.131734    </td> <td align="center">   0.81        </td> </tr>
+</tbody>
+</table>
+<p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_torbjorn003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

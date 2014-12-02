@@ -73,37 +73,82 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0003"></a>
 <!-- begin top navigation -->
-<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._project_torbjorn002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
+<h1>Reaction term  <a name="___sec2"></a></h1>
+The reaction term describes the change in concentration in a certain point. This variation is only affected
+by the local chemical reaction.
+$$
+\begin{equation} \tag{3}
+u_t = f(u)
+\end{equation}
+$$
 
-<title>Presentation of project in inf5631</title>
+To see the properties of this equation, it can be discretized and solved numerically for
+different values of \( f(u) \).
 
-<center><h1>Presentation of project in inf5631</h1></center>  <!-- document title -->
+$$
+\begin{align*}
+u_t =& f(u)\\
+\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
+\end{align*}
+$$
+
+This gives a linear equation \( Au = b \) that easy can be solved. Here the Fisher Kolmogoroff is used
+$$
+\begin{equation}
+f(u) = ru(1-\frac{u}{M})
+\end{equation}
+$$
+
+<h2>Carrying capacity  <a name="___sec3"></a></h2>
+Carrying capacity describes the maximum concentration for each point.
 
 <p>
-<!-- author(s): Torbj&#248;rn Seland -->
 
-<center>
-<b>Torbj&#248;rn Seland</b> 
-</center>
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/time.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
 
 
 <p>
-<!-- institution(s) -->
+All simulations goes towards their carrying capacity and stabilizes here. The reproduction rate, \( r \), has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all cases.
+
+<h2>Reproduction rate  <a name="___sec4"></a></h2>
+The reproduction rate controls the speed of reproduction
+
 <p>
-<center><h4>Dec 2, 2014</h4></center> <!-- date -->
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/time_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
 <p>
-<!-- doconce format html project_torbjorn.do.txt --pygments_html_style=native --keep_pygments_html_bg --encoding=utf-8 -->
-<!-- doconce slides_html project_torbjorn reveal --html_slide_theme=darkgray -->
+This controls the speed towards carrying capacity. A larger reproduction rate will bring the solution faster
+towards the steady state, which is controlled by \( M \). The carrying capacity is sat to \( M=0.8 \).
+
+<p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._project_torbjorn002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
