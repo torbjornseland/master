@@ -138,7 +138,7 @@ This gives a linear equation $Au = b$ that easy can be solved.
 ===== Fisher-Kolmogoroff term =====
 A Fisher-Kolmogoroff term, now referred as FK, is a nonlinear term which often arises from biological applications. It takes the form $ru(1-u/M)$, where $r$ describes the linear reproduction and $M$ describes the carrying capacity of the environment. The local chemical reaction will then be.
 !bt
-\begin{equation} label{fish_term}
+\begin{equation} label{eq:fish_term}
 f(u) = ru(1-\frac{u}{M})
 \end{equation}
 !et
@@ -193,7 +193,7 @@ towards the steady state, which is controlled by $M$. The carrying capacity is s
 
 === Scaling ===
 label{section:scaling}
-The Eq.ref{eq:rec_term} with the chemical term set as Fisher, Eq.ref{eq:fish_term} can be scaled to give a better overview of the parameters $r$ and $M$.  This technique will make it possible to look at only one or a few dimensionless numbers. The idea by scaling is to get the solution dimensionless by stretching $u$ and $t$ in the problem. A new function $\bar u(\bar t)$, with
+The Eq.(ref{eq:rec_term}) with the chemical term set as Fisher, Eq.(ref{eq:fish_term}) can be scaled to give a better overview of the parameters $r$ and $M$.  This technique will make it possible to look at only one or a few dimensionless numbers. The idea by scaling is to get the solution dimensionless by stretching $u$ and $t$ in the problem. A new function $\bar u(\bar t)$, with
 !bt
 \begin{equation}
 \bar u = \frac{u}{u_c}, \hspace{8 mm} \bar t = \frac{t}{t_c}
@@ -221,27 +221,26 @@ The initial condition for $\bar u$ can be found by using the initial condition f
 \bar u(x,0) = \frac{u(x,0)}{u_c} = \frac{gauss(x)}{M}
 \end{equation*}
 !et
-This can now be plotted for different values of $M$
+This can be plotted for different values of $M$
 
 MOVIE: [movies/scaling.webm, height=300,width=375] Solution by scaling 
 
 The model breaks down if $M=0$, since this gives a nonexistent initial condition. 
 !split
 ======= Spatial diffusion =======
-The first part of the Eq.(ref{eq:reaction_diffusion}) describes the spatial flow. This describes the influcence from the neighours on $u_i$.
+The first part in the diffusion equation, Eq.(ref{eq:reaction_diffusion}), describes the spatial flow. This describes the influences from the neighbours on $u_i$.
 !bt
 \begin{equation}
 	u_t = \nabla \cdot \alpha(u)\nabla u
 \end{equation}
 !et
-The function $\alpha(u)$ has a major influence on the spatial term and affects the diffusion of the model. To solve this equation numerically, the equation needs to be discretized.
+The function $\alpha(u)$ has a major influence on the spatial term and affects the diffusion of the model. To solve this equation numerically, the equation has to be discretized.
 !bt
 \begin{equation*}
 	\left[D_t^-u=D_x(\alpha(u) D_x u)\right]
 \end{equation*}
 !et
-Backward Euler is used for the time discrete and Crank Nicolson for the spatial
-discrete. 
+Backward Euler is used for discretization in time and Crank Nicolson is used for discretization in space.
 !bt
 \begin{align*}
 	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\
@@ -272,7 +271,7 @@ A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
 \tag{14}
 \end{equation}
 !et
-The matrix $A$ will be tridiagonal with the values.
+The matrix $A$ will be tridiagonal with the values:
 !bt
 \begin{align} label{eq:matrix_spatial}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
@@ -280,9 +279,9 @@ A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 \end{align}                               
 !et
-In the cases where the function $\alpha(u)$ contains $u$, it will provide a non-linear term.
+A non linear term will arise when $\alpha(u)$ contains $u$.
 === Boundary conditions ===
-The boundary conditions are specified to be zero. Implementing these boundary conditions requires changes the following terms in the matrix, A.
+The boundary conditions are specified to be zero. The matrix A requires changes by implementing these boundary conditions.
 !bt
 \begin{align*}
 A_{0,0} &= 1,\\
@@ -299,9 +298,9 @@ b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\
 b_{N_x} &= 0 
 \end{align*}
 !et
-This decision affects the equilibrium state. 
+This decision affects the equilibrium state, since the boundary values are forced to be 0. 
 ===== Linear system/equation =====
-The only solution for a linear equation is to replace $\alpha$ by a constant.
+The only solution for a linear equation is to replace $\alpha$ with a constant.
 !bt
 \begin{equation}
 	\alpha(u) = k
@@ -315,33 +314,26 @@ A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
 \end{align*}                               
 !et
-The movie under represents different values for $k$
+The animation under represents different values for $k$. All simulations diffuses towards the equilibrium state, which is 0 because of the boundary conditions. A large $k$ results in a fast diffusion. By decreasing the constant, $k$ towards 0,  the diffusion will decrease towards 0.
 
-MOVIE: [paramovies/constant.webm, height=300,width=375]
+MOVIE: [paramovies/constant.webm, height=300,width=375] A linear diffusion term simulated with four different values, 0.01,0.1,1 and 10 for the value $k$  
 
-##N=Nx=200,T=L=10
-
-The size of $\alpha$ controls the speed of the diffusion. A large $\alpha$ will get the function faster towards equilibrium. 
 
 ===== Nonlinear equation =====
-All $\alpha$'s that include $u$ will give a non-linear equation.Picard Iteration can be used to solve this non-linear equation. This method is explained thorough in $\textit{Reaction term}$. 
-=== Picard Iteration ===
-=== $\alpha(u)$ as a linear function ===
+The diffusion term will be non linear for all $\alpha$'s that includes $u$. Picard Iteration can be used to solve non-linear equations. This method is explained in the previous section 
+=== $\alpha(u)$ = u ===
 !bt
 \begin{equation}
 	\alpha(u) = u\\
 \end{equation}
 !et
-
-Since Crank Nicolson is only applied for one step in the general calculation for $\alpha$, arithmetic mean
-can be used to get values from $u$.
+Arithmetic mean can be used to calculate the values for $u$, since Crank Nicolson is only applied for one step in the general calculation of  $\alpha$.
 !bt
 \begin{equation*}
 	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
 \end{equation*}
 !et
-
-Then $u$ can be inserted in the matrix(ref{eq:matrix_spatial}).
+Then $u$ can be used in the matrix(ref{eq:matrix_spatial}).
 !bt
 \begin{align*} 
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
@@ -357,21 +349,21 @@ A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
 \end{align*}                               
 !et
-The function will be produced with different error tolerance. First a simulation where only the previous value $u\_$ is used in matrix A. This is equivalent to a very large error tolerance. Then the error tolerance will be reduced in order to carry out a proper Picard Iteration.
+The function will be produced with different error tolerances. First a simulation where the previous value $u\_$ is used in matrix A. This is equivalent to a very large error tolerance. The error tolerance will then be reduced in order to carry out a proper Picard Iteration.
 
-MOVIE: [submovies/ordinary_sub.webm, height=300,width=375]ordinary with different tolerance for Picard Iteration
+MOVIE: [submovies/ordinary_sub.webm, height=300,width=375] Animation of different simulations run with different error tolerance for Picard Iteration-
 
-These results show us the behavior of $u\_$ when it varies from a large error tolerance,the previous time step, up to a error tolerance of $10^{-7}$. The simulation without any Picard Iteration gives a discontinuity in each direction. This becomes smaller the closer $u\_$ goes towards $u$. 
-
+These results shows the behavior of $u\_$ when it varies from a large error tolerance,the previous time step, up to a error tolerance of $10^{-7}$. The simulation without any Picard Iteration gives a discontinuity in each direction. This becomes smaller the closer $u\_$ goes towards $u$. 
+<linebreak>
+<linebreak>
 An important aspect to be aware of when working with diffusion equation, is that the result after a certain time will be close to equal in all the simulations. This happens because of the equilibrium principle. An example of this is the temperature in a room. The diffusion will cause it to go towards a smooth and balanced temperature in each point of the room. Therefore it is more interesting to look at the movement towards the equilibrium than the final result.
-
 === Spatial derivative wrapped with an absolute value ===
 !bt
 \begin{equation}
 \alpha(u) = |\nabla(u)|
 \end{equation}
 !et
-Since CN in used one time on this, it can be used again. This will give integer numbers in spatial direction for $u$.
+Since Crank Nicolson is used one time for $\alpha(u)$,  this can be used again for this equation. This will give integer numbers in spatial direction for $u$.
 !bt
 \begin{align*}
 \alpha(u_{i+\frac{1}{2}}) =& \left|\nabla(u_{i+\frac{1}{2}})\right|\\
@@ -387,7 +379,7 @@ A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\rig
 A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\right|)
 \end{align*}                               
 !et
-To use this with Picard Iteration, $u\$ need to replace $u$. $\Delta x$ can be moved out of the fraction, because $\Delta x > 0$.
+The value of $u$ needs to be replaced with $u\_$. A Picard Iteration can be used.
 !bt
 \begin{align} label{eq:matrix_absolute}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\
@@ -397,18 +389,20 @@ A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}
 !et
 The first simulation consists of a large error tolerance while the second one has a tolerance of $10^{-5}$.
 
-MOVIE: [movies/spatial_abs_std.webm, height=300,width=375]abs_std
+MOVIE: [movies/spatial_abs_std.webm, height=300,width=375] Animation of a diffusion equation with $\alpha(u) = |\nabla(u)|$. A large error tolerance is used for Picard.
 
-MOVIE: [movies/spatial_abs_std_picard_tol__5.webm,height=300,width=375]abs_std_picard tol = 10^-5
+This simulation results in a function with a noise error in both directions. This is largest when the values between the points are largest. This is at initial time. When the diffusion goes towards equilibrium at 0,  will the difference between neighbouring points decrease. This results in a smoother solution.
 
-The first simulation starts with a discontinuity in each directions and smoothes out as the time gets larger.While the last plot with a small tolerance gives a smoother curve. 
+MOVIE: [movies/spatial_abs_std_picard_tol__5.webm,height=300,width=375] The same simulation as the previous animation. Here the error tolerance is set to 10^-5
+
+Since the error tolerance is set to 10^-5, the simulation is smooth for the values in the animation. A smaller error tolerance gives a more correct solution. But it also demands a higher computational power. It is therefore important to choose the error tolerance based on the expected results
 === Spatial derivative wrapped with an absolute value powered by m ===
 !bt
 \begin{equation}
 	\alpha(u) = |\nabla(u)|^m
 \end{equation}
 !et
-This equation is solved in the exact same manner as the equation above. The matrix(ref{eq:matrix_absolute}) A from the section above can be used. A power, $m$, can be added in the matrix.
+This equation is solved in the exact same way as the equation above. The matrix(ref{eq:matrix_absolute}) A from the section above can be used. A power, $m$, is added to the matrix.
 !bt
 \begin{align} label{eq:matrix_absolute}
 A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
@@ -417,10 +411,9 @@ A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}
 \end{align}                               
 !et
 
-MOVIE: [paramovies/abs_std_power.webm, height=300,width=375]Powered by m
+MOVIE: [paramovies/abs_std_power.webm, height=300,width=375] Animation of different values of $\alpha(u) = |\nabla(u)|^m$, where the power term, $m$, is changed
 
-Here the length of the simulation, $T$, is sat to be quite large. This is to show the effect of the power term in this function. The function moves quite fast towards zero when the power term is low. But it seems that the equilibrium state for all these are at zero. The power term only affects the speed.
-
+Here, the length of the simulation, $T$, is set to be quite large. This is to show the effect of the power term in this function. The function moves faster towards zero when the power term is low, however it seems that the equilibrium state for all simulations are 0. The power term  and the concentration of $u$ affects the speed. When the concentration goes towards 0, the value of $\alpha$ will move towards 0. Since the concentration is under 1,  a power term above 1 will decrease the solution.  
 !split
 ======= Solution for the biological equation =======
 The combination of the reaction part and the spatial part gives the reaction-diffusion equation(ref{eq:reaction_diffusion}). This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. The Fisher Kolmogoroff can be inserted in the reaction term, $f(u)$.

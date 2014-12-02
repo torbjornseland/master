@@ -60,27 +60,26 @@ Automatically generated HTML file from Doconce source
               (' Boundary conditions ', 3, None, '___sec12'),
               (' Linear system/equation ', 2, None, '___sec13'),
               (' Nonlinear equation ', 2, None, '___sec14'),
-              (' Picard Iteration ', 3, None, '___sec15'),
-              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec16'),
+              (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
               (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
-               '___sec17'),
+               '___sec16'),
               (' Spatial derivative wrapped with an absolute value powered by m ',
                3,
                None,
-               '___sec18'),
-              (' Solution for the biological equation ', 1, None, '___sec19'),
-              (' Fisher-Kolmogoroff equation ', 3, None, '___sec20'),
-              (' $\\alpha(u)= u$ ', 3, None, '___sec21'),
-              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec22'),
-              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec23'),
-              (' Further work ', 1, None, '___sec24'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec25'),
-              (' Dirichlet boundary condition ', 3, None, '___sec26'),
-              (' Neumann boundary condition ', 3, None, '___sec27'),
-              (" Newton's method ", 2, None, '___sec28'),
-              (' Bibliography ', 1, None, '___sec29')]}
+               '___sec17'),
+              (' Solution for the biological equation ', 1, None, '___sec18'),
+              (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec22'),
+              (' Further work ', 1, None, '___sec23'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec24'),
+              (' Dirichlet boundary condition ', 3, None, '___sec25'),
+              (' Neumann boundary condition ', 3, None, '___sec26'),
+              (" Newton's method ", 2, None, '___sec27'),
+              (' Bibliography ', 1, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -113,11 +112,11 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Further work  <a name="___sec24"></a></h1>
+<h1>Further work  <a name="___sec23"></a></h1>
 
-<h2>Changes in the Boundary conditions  <a name="___sec25"></a></h2>
+<h2>Changes in the Boundary conditions  <a name="___sec24"></a></h2>
 
-<h3>Dirichlet boundary condition  <a name="___sec26"></a></h3>
+<h3>Dirichlet boundary condition  <a name="___sec25"></a></h3>
 
 There are several ways to describe the boundary conditions for a differential equation.
 Dirichlet has been used in this paper. The boundaries has been sat to zero.
@@ -131,7 +130,7 @@ $$
 <p>
 An analogous description of Dirichelt boundary conditions can be found in the wave equation. Attaching a rope to a wall, and inducing oscillations allows us to describe the displacement of the rope with the wave equation. The end of the rope attached to the wall will always have zero displacement since it is, in fact, attached.
 
-<h3>Neumann boundary condition  <a name="___sec27"></a></h3>
+<h3>Neumann boundary condition  <a name="___sec26"></a></h3>
 
 Another way to look at the boundary conditions is by reflecting boundaries. The boundary can be sat to \( u=0 \), which changes the sign at the boundaries or \( u_x \), that reflects the same value. This can be implemented with Neumann boundary condition, explained in detail in the papers from the course inf5620 by Langtangen.
 $$
@@ -170,7 +169,7 @@ The simulation under compares Dirichlet with Neumann. The reaction term is sat t
 <p>
 Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. Dirichlet goes towards zero because the boundary values are sat to be zero. Assume that the concentration of \( u \) is the temperature in a room. The walls will have a large influence on the temperature. Neumann can be explained as wall covered with styrofoam, where the walls are totally isolated. With Dirichlet, the walls has a specific temperature. Here the temperature is sat to be zero, but any number would have caused an equilibrium state.
 
-<h2>Newton's method  <a name="___sec28"></a></h2>
+<h2>Newton's method  <a name="___sec27"></a></h2>
 Newtons method is another way to handle non linear equations. 
 $$
 \begin{equation}
@@ -241,7 +240,7 @@ $$
 
 This matrix can be used to compute the Newton's method.
 
-<h1>Bibliography  <a name="___sec29"></a></h1>
+<h1>Bibliography  <a name="___sec28"></a></h1>
 
 <!-- begin bibliography -->
 

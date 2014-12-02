@@ -60,27 +60,26 @@ Automatically generated HTML file from Doconce source
               (' Boundary conditions ', 3, None, '___sec12'),
               (' Linear system/equation ', 2, None, '___sec13'),
               (' Nonlinear equation ', 2, None, '___sec14'),
-              (' Picard Iteration ', 3, None, '___sec15'),
-              (' $\\alpha(u)$ as a linear function ', 3, None, '___sec16'),
+              (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
               (' Spatial derivative wrapped with an absolute value ',
                3,
                None,
-               '___sec17'),
+               '___sec16'),
               (' Spatial derivative wrapped with an absolute value powered by m ',
                3,
                None,
-               '___sec18'),
-              (' Solution for the biological equation ', 1, None, '___sec19'),
-              (' Fisher-Kolmogoroff equation ', 3, None, '___sec20'),
-              (' $\\alpha(u)= u$ ', 3, None, '___sec21'),
-              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec22'),
-              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec23'),
-              (' Further work ', 1, None, '___sec24'),
-              (' Changes in the Boundary conditions ', 2, None, '___sec25'),
-              (' Dirichlet boundary condition ', 3, None, '___sec26'),
-              (' Neumann boundary condition ', 3, None, '___sec27'),
-              (" Newton's method ", 2, None, '___sec28'),
-              (' Bibliography ', 1, None, '___sec29')]}
+               '___sec17'),
+              (' Solution for the biological equation ', 1, None, '___sec18'),
+              (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec22'),
+              (' Further work ', 1, None, '___sec23'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec24'),
+              (' Dirichlet boundary condition ', 3, None, '___sec25'),
+              (' Neumann boundary condition ', 3, None, '___sec26'),
+              (" Newton's method ", 2, None, '___sec27'),
+              (' Bibliography ', 1, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -115,7 +114,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1>Solution for the biological equation  <a name="___sec19"></a></h1>
+<h1>Solution for the biological equation  <a name="___sec18"></a></h1>
 The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="._project_report000.html#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. The Fisher Kolmogoroff can be inserted in the reaction term, \( f(u) \).
 $$
 \begin{align} \tag{14}
@@ -125,7 +124,7 @@ A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 \end{align}                               
 $$
 
-<h3>Fisher-Kolmogoroff equation  <a name="___sec20"></a></h3>
+<h3>Fisher-Kolmogoroff equation  <a name="___sec19"></a></h3>
 
 This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity, \( M \), as shown in the section above. The diffusion term will at the same time try to drag the function towards its equilibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values, \( k \), in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation <a href="._project_report000.html#mjx-eqn-2">(2)</a>
 
@@ -168,7 +167,7 @@ Here they tend towards their capacity, while \( \alpha \) drags them down at the
 <p>
 When the reproduction rate is to weak, the solution will not reach the capacity state, which is sat to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \).
 
-<h3>\( \alpha(u)= u \)  <a name="___sec21"></a></h3>
+<h3>\( \alpha(u)= u \)  <a name="___sec20"></a></h3>
 
 The simulations are produced in the same way as for the FK in the section above. The results are quite similar to the constant solution, but the shape is little bit different. 
 
@@ -194,7 +193,7 @@ This simulation shows that the carrying capacity will affect the solution in the
 </div>
 <p><em></em></p>
 
-<h3>\( \alpha(u)=|\nabla u| \)  <a name="___sec22"></a></h3>
+<h3>\( \alpha(u)=|\nabla u| \)  <a name="___sec21"></a></h3>
 
 The carrying capacity acts quite as expected, but the reaction term is more interesting to look at.
 
@@ -221,7 +220,7 @@ The carrying capacity acts quite as expected, but the reaction term is more inte
 <p>
 The simulation for changes in the reproduction is run for twice as long time as the other simulations. The interesting observation here is \( r=0.1 \). This has usually been quite stable at a low level. Since the diffusion for \( \alpha \) after a certain time step is quite weak, the reproduction rate has now a major influence and dominates more that for the simulations above .
 
-<h3>\( \alpha(u)=|\nabla u|^m \)  <a name="___sec23"></a></h3>
+<h3>\( \alpha(u)=|\nabla u|^m \)  <a name="___sec22"></a></h3>
 
 
 <div>
