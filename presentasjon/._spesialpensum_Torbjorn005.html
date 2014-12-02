@@ -79,35 +79,62 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0005"></a>
 <!-- begin top navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
+<h1>When Zombies Attack!  <a name="___sec4"></a></h1>
 
-<title>Presentation of special syllabus</title>
+<h2>Basic model  <a name="___sec5"></a></h2>
 
-<center><h1>Presentation of special syllabus</h1></center>  <!-- document title -->
+$$
+\begin{align*}
+\frac{dS}{dt} =& \Sigma -\beta SZ - \delta S \\
+\frac{dI}{dt} =& \beta SZ - \varrho I - \delta I\\
+\frac{dZ}{dt} =& \varrho I + \zeta R - \alpha SZ\\
+\frac{dR}{dt} =& \delta S + \delta I + \alpha SZ - \zeta R
+\end{align*}
+$$
 
-<p>
-<!-- author(s): Torbj&#248;rn Seland -->
+This is a bit more complicated than the standard \( SEIR \) model. A presentation of the parameters;
 
-<center>
-<b>Torbj&#248;rn Seland</b> 
-</center>
+<ul>
+<li> \( \Sigma \) describes the birthrate for new <em>Susceptible</em>. \( \frac{dS}{dt} \) is now able to be positive. This is now not a closed system.</li> 
+<li> \( \beta SZ \) describes the numbers of <em>Susceptible</em> that become <em>Infected</em> , based on interactions between zombies and humans. Similar as the case for \( rSI \) in the SIR model.</li> 
+<li> \( \delta \) describes the number of naturals deaths among the group. This is used in the <em>Susceptible</em> and the <em>Infected</em> group</li>
+<li> \( \varrho I \) describes the probability for an infected human to wake up as a zombie.</li>
+<li> \( \zeta R \) controls the number of <em>Removed</em> that arises as <em>Zombie</em>.</li> 
+<li> \( \alpha SZ \) describes the number of zombies killed by humans in the zombie attacks.</li> 
+</ul>
 
+This ODE satisfy
+$$
+\begin{equation}
+S'+I'+Z'+R' = \Sigma
+\end{equation}
+$$
 
-<p>
-<!-- institution(s) -->
-<p>
-<center><h4>Dec 2, 2014</h4></center> <!-- date -->
+Which leads to
+$$
+\begin{equation}
+S + I + Z + R \rightarrow  \infty
+\end{equation}
+$$
+
+When \( t \rightarrow \infty \) and \( \Sigma \neq 0 \), \( S \) cannot go towards infinity, which results in a "doomsday" and this will lead to a collapse of the civilisation.
+
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

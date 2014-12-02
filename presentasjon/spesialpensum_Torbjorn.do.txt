@@ -222,7 +222,7 @@ And the following system can be study:
 	\end{aligned}
 \end{equation}
 !et
-An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is sat to 0.5. The initial value for *Susceptible* is 1 for the area and the *Removed* is sat to 0. The *Infected* class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travel towards the other side. The value $z$, which is defined in Eq.(ref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
+An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is sat to 0.5. The initial value for *Susceptible* is 1 for the area and the *Removed* is sat to 0. The *Infected* class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travel towards the other side. The value $z$, which is defined in Eq. rref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
 
 FIGURE:[../2_PDE_Fisher_Kolmogoroff/plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
 

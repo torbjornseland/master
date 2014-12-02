@@ -79,35 +79,60 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0006"></a>
 <!-- begin top navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn005.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn007.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
+<h1>Escaping the zombie Threat by Mathematics  <a name="___sec6"></a></h1>
 
-<title>Presentation of special syllabus</title>
+<h2>LMR model  <a name="___sec7"></a></h2>
+In the paper from Munz et. al <a href="._spesialpensum_Torbjorn010.html#munz2009zombies">[2]</a> the doomsday was nearly inevitable. This is criticized by Langtagen, Mardal and R&#248;tnes. In the paper <em>Escaping the zombie Threat by Mathematics</em> <a href="._spesialpensum_Torbjorn010.html#zombie-math">[3]</a>, the doomsday scenario is questioned.
 
-<center><h1>Presentation of special syllabus</h1></center>  <!-- document title -->
+<ul>
+<li> Counter attack can be performed earlier and with more destruction</li>
+<li> Magic is not involved. Laws of physics and biology are used</li>
+</ul>
+
+The model that they use:
+$$
+\begin{equation} \tag{4}
+	\begin{aligned} 
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS \\
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II\\
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+	\end{aligned}
+\end{equation}
+$$
+
+The main change is the \( \omega(t) \). This is a Gaussian curve and can be seen in eq<a href="#mjx-eqn-5">(5)</a>.
+$$
+\begin{equation} \tag{5}
+\omega(t) = a \sum^m_{i=0}\exp\left(\frac{1}{2}\left(\frac{t-T_i}{\sigma}\right)^2\right)
+\end{equation}
+$$
+
 
 <p>
-<!-- author(s): Torbj&#248;rn Seland -->
+\( \omega(t) \) controls the attacks from the <em>Susceptible</em>, which will be fired at predefined time steps. These are controlled by the three parameters. 
 
-<center>
-<b>Torbj&#248;rn Seland</b> 
-</center>
+<ul>
+<li> \( a \) here works as a similar parameter as \( \alpha \), but will only be activated when the <em>Susceptible</em> group is organized and ready to attack.</li> 
+<li> \( T \) contains a list of numbers, which controls the time when the attacks will occur.</li>
+<li> \( \sigma \) controls the length of the attack.</li> 
+</ul>
 
-
-<p>
-<!-- institution(s) -->
-<p>
-<center><h4>Dec 2, 2014</h4></center> <!-- date -->
-<p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn005.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn007.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

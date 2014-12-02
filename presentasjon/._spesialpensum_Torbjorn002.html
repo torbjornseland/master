@@ -79,35 +79,59 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0002"></a>
 <!-- begin top navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
+<h2>Dynamics of Infectious Diseases  <a name="___sec1"></a></h2>
 
-<title>Presentation of special syllabus</title>
+The model consist of three different groups
 
-<center><h1>Presentation of special syllabus</h1></center>  <!-- document title -->
+<ul>
+<li> <em>Susceptible</em> (\( S \)), who are humans that are healthy and at risk of becoming infected.</li> 
+<li> <em>Infective</em> (\( I \)), who are humans who have the disease or are carriers of the disease. This group can infect the <em>Susceptible</em>.</li> 
+<li> <em>Removed</em> (\( R \)),who are dead or recovering humans, often people that already have had the disease.</li>
+</ul>
+
+A simple epidemic model can be expressed as follows
+$$
+\begin{equation} \tag{1}
+	\begin{aligned} 
+	\frac{dS}{dt} &= -rSI \\ 
+	\frac{dI}{dt} &= rSI-aI \\ 
+	\frac{dR}{dt} &= aI 
+	\end{aligned}
+\end{equation}
+$$
+
+Here \( r \) describes the the transmission from the <em>Susceptible</em> group to the <em>Infected</em> group. \( a \) describes the percent of infected that dies. Since the system is closed, the total number will be constant.
+
+$$
+\begin{equation}
+\frac{dS}{dt} + \frac{dI}{dt} + \frac{dR}{dt} = 0
+\end{equation}
+$$
+
 
 <p>
-<!-- author(s): Torbj&#248;rn Seland -->
+Therefore the total size of the population, \( N \), will be constant. 
+$$
+\begin{equation} \tag{2}
+S(t)+I(t)+R(t) = N
+\end{equation}
+$$
 
-<center>
-<b>Torbj&#248;rn Seland</b> 
-</center>
-
-
-<p>
-<!-- institution(s) -->
-<p>
-<center><h4>Dec 2, 2014</h4></center> <!-- date -->
-<p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

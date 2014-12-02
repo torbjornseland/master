@@ -1,0 +1,167 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Presentation of special syllabus">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Contents ', 2, None, '___sec0'),
+              (' Dynamics of Infectious Diseases ', 2, None, '___sec1'),
+              (' Threshold value ', 2, None, '___sec2'),
+              (' English boarding school ', 2, None, '___sec3'),
+              (' When Zombies Attack! ', 1, None, '___sec4'),
+              (' Basic model ', 2, None, '___sec5'),
+              (' Escaping the zombie Threat by Mathematics ',
+               1,
+               None,
+               '___sec6'),
+              (' LMR model ', 2, None, '___sec7'),
+              (' Use model to simulate Walking Dead ', 2, None, '___sec8'),
+              (' Murray PDE ', 1, None, '___sec9'),
+              (' Travelling wave ', 2, None, '___sec10'),
+              (' Geographic spread ', 2, None, '___sec11'),
+              (' Bibliography ', 1, None, '___sec12')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<a name="part0009"></a>
+<!-- begin top navigation -->
+<a href="._spesialpensum_Torbjorn008.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn010.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split -->
+
+<h2>Geographic spread  <a name="___sec11"></a></h2>
+The model <a href="._spesialpensum_Torbjorn006.html#mjx-eqn-4">(4)</a> can be expanded with a diffusion term added to each equation
+$$
+\begin{equation} \tag{9}
+	\begin{aligned} 
+	\frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
+	\frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+D_i\nabla^2 I\\
+	\frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z\\
+	\frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
+	\end{aligned}
+\end{equation}
+$$
+
+
+<p>
+This system can be modeled with a uniform distributed groups, which results in the following simulation
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='../2_PDE_Fisher_Kolmogoroff/plots/2D_zombie_three_phases.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+And gives the same values 
+<table border="1">
+<thead>
+<tr><th align="center">                   </th> <th align="center">     ODE system    </th> <th align="center">  PDE uniform dist </th> <th align="center">  PDE gauss center </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Initial phase          </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   71.3                   </td> <td align="center">   71.5                   </td> <td align="center">   81.12                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   230.8                  </td> <td align="center">   230.6                  </td> <td align="center">   210.94                 </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   298.9                  </td> <td align="center">   298.9                  </td> <td align="center">   310.11                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   21.0                   </td> <td align="center">   21.0                   </td> <td align="center">   20.60                  </td> </tr>
+<tr><td align="center">   Hysterical phase       </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   61.6                   </td> <td align="center">   61.8                   </td> <td align="center">   70.55                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   0.3                    </td> <td align="center">   0.3                    </td> <td align="center">   0.34                   </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   358.6                  </td> <td align="center">   357.9                  </td> <td align="center">   334.33                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   201.5                  </td> <td align="center">   202.0                  </td> <td align="center">   217.56                 </td> </tr>
+<tr><td align="center">   Counter attack         </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible            </td> <td align="center">   57.8                   </td> <td align="center">   58.2                   </td> <td align="center">   66.50                  </td> </tr>
+<tr><td align="center">   Infected               </td> <td align="center">   1.2                    </td> <td align="center">   1.2                    </td> <td align="center">   1.23                   </td> </tr>
+<tr><td align="center">   Zombie                 </td> <td align="center">   331.8                  </td> <td align="center">   331.1                  </td> <td align="center">   305.86                 </td> </tr>
+<tr><td align="center">   Removed                </td> <td align="center">   231.3                  </td> <td align="center">   231.7                  </td> <td align="center">   249.19                 </td> </tr>
+</tbody>
+</table>
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='../2_PDE_Fisher_Kolmogoroff/plots/2D_zombie_three_phases_gauss.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<a href="._spesialpensum_Torbjorn008.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn010.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

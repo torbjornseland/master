@@ -35,7 +35,7 @@ u(x,t) = u(x-ct) = u(z), z = x-ct
 
 The numerical solutions can be compared with the analytical, to check the  effect from $\Delta t$. Here $\Delta t$ varies from 0.4 to 0.02.
 
-MOVIE: [plots/reac_constant_wavefront_dt.webm, height=500,width=600]Analytical solution plotted with numerical solutions
+MOVIE: [../prosjekt_inf5631/paramovies/reac_constant_wavefront_dt.webm, height=500,width=600]Analytical solution plotted with numerical solutions
 
 The numerical solution has got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries don't affect the error estimate.
 

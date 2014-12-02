@@ -1,0 +1,171 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Presentation of special syllabus">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Contents ', 2, None, '___sec0'),
+              (' Dynamics of Infectious Diseases ', 2, None, '___sec1'),
+              (' Threshold value ', 2, None, '___sec2'),
+              (' English boarding school ', 2, None, '___sec3'),
+              (' When Zombies Attack! ', 1, None, '___sec4'),
+              (' Basic model ', 2, None, '___sec5'),
+              (' Escaping the zombie Threat by Mathematics ',
+               1,
+               None,
+               '___sec6'),
+              (' LMR model ', 2, None, '___sec7'),
+              (' Use model to simulate Walking Dead ', 2, None, '___sec8'),
+              (' Murray PDE ', 1, None, '___sec9'),
+              (' Travelling wave ', 2, None, '___sec10'),
+              (' Geographic spread ', 2, None, '___sec11'),
+              (' Bibliography ', 1, None, '___sec12')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<a name="part0007"></a>
+<!-- begin top navigation -->
+<a href="._spesialpensum_Torbjorn006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn008.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split -->
+
+<h2>Use model to simulate Walking Dead  <a name="___sec8"></a></h2>
+In <em>Escaping the zombie Threat by Mathematics</em> <a href="._spesialpensum_Torbjorn010.html#zombie-math">[3]</a>, the movie <em>The Night of The Living Dead</em> is used. These simulations are based on the TV series <em>Walking Dead</em>. The paper divide a zombie outbreaks into three phases:
+
+<ul>
+<li> <b>Initial phase</b> : The humans are unfamiliar with the disease in this phase and acts quite naive to the disease. This result in a high chance of getting infected. Lasts for a short period. In this case, three days</li> 
+<li> <b>Hysterical phase</b> : The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected.</li> 
+<li> <b>Counter attack</b> : The last phase, which happens at the same time as the hysterical phase. This phase is often started when humans are attacked by zombies. They will then respond with a counter attack to save themselves.</li>
+</ul>
+
+Data from the TV series by close studies.
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   ---------    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> <th align="center">  final values  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   S_0                 </td> <td align="center">   621                 </td> <td align="center">   71                  </td> <td align="center">   62                  </td> <td align="center">   58                  </td> </tr>
+<tr><td align="center">   I_0                 </td> <td align="center">   0                   </td> <td align="center">   540                 </td> <td align="center">   360                 </td> <td align="center">   332                 </td> </tr>
+<tr><td align="center">   Z_0                 </td> <td align="center">   1                   </td> <td align="center">   ---                 </td> <td align="center">   ---                 </td> <td align="center">   ---                 </td> </tr>
+<tr><td align="center">   R_0                 </td> <td align="center">   0                   </td> <td align="center">   20                  </td> <td align="center">   200                 </td> <td align="center">   232                 </td> </tr>
+</tbody>
+</table>
+<p>
+To be able to achieve these results, the parameters have to be adjusted. To model all three phases, the parameters in in the table are used 
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   parameter    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   \( \beta \)         </td> <td align="center">   0.01155             </td> <td align="center">   0.000011            </td> <td align="center">   0.00011             </td> </tr>
+<tr><td align="center">   \( \varrho \)       </td> <td align="center">   1.37                </td> <td align="center">   1.5                 </td> <td align="center">   1.5                 </td> </tr>
+<tr><td align="center">   \( \alpha \)        </td> <td align="center">   0.00044             </td> <td align="center">   0.000208            </td> <td align="center">   0.000208            </td> </tr>
+<tr><td align="center">   a                   </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.0073              </td> </tr>
+<tr><td align="center">   \( \sigma \)        </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.005               </td> </tr>
+<tr><td align="center">   \( \mu \)           </td> <td align="center">   0                   </td> <td align="center">   0                   </td> <td align="center">   0.14                </td> </tr>
+</tbody>
+</table>
+<p>
+This result in the simulation
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  <a name="fig:all_phases"></a> Walking Dead simulated after 5 episodes. Based on the three different phases. </p></center>
+<p><img src="../spesialpensum_SIR/plots/WD_zombie_all_phases_1.png" align="bottom" ></p>
+</center>
+
+<p>
+The results can be seen in the following table
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   ---------    </th> <th align="center"> Initial phase  </th> <th align="center">hysterical phase</th> <th align="center"> counter attack </th> <th align="center">  final values  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   S_0                 </td> <td align="center">   621                 </td> <td align="center">   71                  </td> <td align="center">   62                  </td> <td align="center">   58                  </td> </tr>
+<tr><td align="center">   I_0                 </td> <td align="center">   0                   </td> <td align="center">   231                 </td> <td align="center">   0                   </td> <td align="center">   1                   </td> </tr>
+<tr><td align="center">   Z_0                 </td> <td align="center">   1                   </td> <td align="center">   299                 </td> <td align="center">   359                 </td> <td align="center">   332                 </td> </tr>
+<tr><td align="center">   R_0                 </td> <td align="center">   0                   </td> <td align="center">   21                  </td> <td align="center">   202                 </td> <td align="center">   231                 </td> </tr>
+</tbody>
+</table>
+<p>
+<p>
+<!-- begin bottom navigation -->
+<a href="._spesialpensum_Torbjorn006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn008.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

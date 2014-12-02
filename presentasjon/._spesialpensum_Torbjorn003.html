@@ -79,35 +79,53 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
+<a name="part0003"></a>
 <!-- begin top navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
-<!-- ------------------- main content ---------------------- -->
+<!-- !split -->
 
+<h2>Threshold value  <a name="___sec2"></a></h2>
+To cause an epidemic situation, the model needs to fulfill \( I(t)= I_0 \) for some \( t>0 \)
+$$
+\begin{equation}
+S(0)=S_0 > 0,\hspace{8mm} I(0)=I_0>0,\hspace{8mm} R(0) =0.
+\end{equation}
+$$
 
-<title>Presentation of special syllabus</title>
+The initial conditions for <em>Susceptible</em> and <em>Infective</em> combined with \( r \) and \( a \) will control the epidemic situation. These will affect the spread of the infection. From equation <a href="._spesialpensum_Torbjorn002.html#mjx-eqn-1">(1)</a> the function for <em>Infective</em> at initial time can be written,
+$$
+\begin{equation}
+\left[\frac{dI}{dt}\right]_{t=0} = I_0(rS_0-a)
+\end{equation}
+$$
 
-<center><h1>Presentation of special syllabus</h1></center>  <!-- document title -->
+The expression inside the brackets controls the change in \( I \). The function will increase if \( S_0 > \frac{a}{r} \), this will therefore be the threshold value for the function. The threshold value will be described by the variable \( \rho \),
+$$
+\begin{equation} \tag{3}
+\rho = \frac{a}{r}
+\end{equation}
+$$
+
+This can be shown with some phase trajectories of the <em>Susceptible</em> and the <em>Infective</em> in figure(<a href="#fig:threshold_phenomenon">1</a>).  
 
 <p>
-<!-- author(s): Torbj&#248;rn Seland -->
-
-<center>
-<b>Torbj&#248;rn Seland</b> 
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  <a name="fig:threshold_phenomenon"></a> Simulations of the SIR model <a href="._spesialpensum_Torbjorn002.html#mjx-eqn-1">(1)</a> with start positions along the blue line. \( I \) increases until \( S \) is equal to the threshold value \( \rho \), which is sat to 35. Then \( I \) is reduced to 0. In the simulations where \( S_0 < \rho \), no epidemic situation is achieved. </p></center>
+<p><img src="../spesialpensum_SIR/plots/threshold_phenomenon.png" align="bottom" ></p>
 </center>
 
-
-<p>
-<!-- institution(s) -->
-<p>
-<center><h4>Dec 2, 2014</h4></center> <!-- date -->
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._spesialpensum_Torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._spesialpensum_Torbjorn002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

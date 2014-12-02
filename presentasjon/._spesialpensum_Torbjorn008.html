@@ -1,0 +1,156 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Presentation of special syllabus">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Contents ', 2, None, '___sec0'),
+              (' Dynamics of Infectious Diseases ', 2, None, '___sec1'),
+              (' Threshold value ', 2, None, '___sec2'),
+              (' English boarding school ', 2, None, '___sec3'),
+              (' When Zombies Attack! ', 1, None, '___sec4'),
+              (' Basic model ', 2, None, '___sec5'),
+              (' Escaping the zombie Threat by Mathematics ',
+               1,
+               None,
+               '___sec6'),
+              (' LMR model ', 2, None, '___sec7'),
+              (' Use model to simulate Walking Dead ', 2, None, '___sec8'),
+              (' Murray PDE ', 1, None, '___sec9'),
+              (' Travelling wave ', 2, None, '___sec10'),
+              (' Geographic spread ', 2, None, '___sec11'),
+              (' Bibliography ', 1, None, '___sec12')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<a name="part0008"></a>
+<!-- begin top navigation -->
+<a href="._spesialpensum_Torbjorn007.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn009.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split -->
+
+<h1>Murray PDE  <a name="___sec9"></a></h1>
+
+<h2>Travelling wave  <a name="___sec10"></a></h2>
+$$
+\begin{equation} \tag{6}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+$$
+
+This problem can be nondimensionalized by writing
+$$
+\begin{equation} \tag{7}
+	\begin{aligned}
+	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
+	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
+	\end{aligned}
+\end{equation}
+$$
+
+And the following system can be study:
+$$
+\begin{equation} \tag{8}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+$$
+
+An epidemic wave can be seen in Fig.(<a href="#fig:1D_sub">5</a>). The value of \( \lambda \) is sat to 0.5. The initial value for <em>Susceptible</em> is 1 for the area and the <em>Removed</em> is sat to 0. The <em>Infected</em> class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(<a href="#fig:1D_sub">5</a>), the epidemic wave travel towards the other side. The value \( z \), which is defined in Eq. rref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case \( x=15 \). This travelling wave is shown in figure(<a href="#fig:1D_tw">6</a>).       
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  <a name="fig:1D_sub"></a> The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter \( \lambda=0.5 \). The size is measured at point \( x=15 \) and can be seen in figure (<a href="#fig:1D_tw">6</a>). </p></center>
+<p><img src="../2_PDE_Fisher_Kolmogoroff/plots/trav_wave_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  <a name="fig:1D_tw"></a> This shows the travelling wave measures at at \( x=15 \) in figure(<a href="#fig:1D_sub">5</a>) </p></center>
+<p><img src="../2_PDE_Fisher_Kolmogoroff/plots/epidemic_wave_z_lambda_0_5.png" align="bottom" ></p>
+</center>
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<a href="._spesialpensum_Torbjorn007.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._spesialpensum_Torbjorn009.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
