@@ -484,15 +484,16 @@ u = 0|_{\partial \Omega}
 \end{equation}
 !et
 
-An analogous description of Dirichelt boundary conditions can be found in the wave equation. Attaching a rope to a wall, and inducing oscillations allows us to describe the displacement of the rope with the wave equation. The end of the rope attached to the wall will always have zero displacement since it is, in fact, attached.
+An analogous description of Dirichlet boundary conditions can be found in the wave equation. Attaching a rope between two walls, and inducing oscillations allows us to describe the displacement of the rope with the wave equation. The end of the rope attached to the wall will always have zero displacement since it is, in fact, attached.
 === Neumann boundary condition ===
-Another way to look at the boundary conditions is by reflecting boundaries. The boundary can be set to $u=0$, which changes the sign at the boundaries or $u_x$, that reflects the same value. This can be implemented with Neumann boundary condition, explained in detail in the papers from the course inf5620 by Langtangen.
+Another way to study the boundary conditions is by reflecting boundaries. The boundary can be set to $u=0$, which changes the sign at the boundaries or $u_x=0$, that reflects the same value. This can be implemented with Neumann boundary condition, explained in detail in the papers from the course inf5620 by Langtangen.
+
 !bt
 \begin{equation}
- \frac{\partial u}{\partial n} \equiv \normalvec\cdot\nabla u = 0
+ \frac{\partial u}{\partial n} \equiv \mathbf{n}\cdot\nabla u = 0
 \end{equation}
 !et
-Where $\normalvec$ describes the normal vector.The boundaries can be described  
+Where $\mathbf{n}$ describes the normal vector.The boundaries can be described  
 !bt
 \left.\frac{\partial}{\partial n}\right\vert_{x=0,L} =
 \frac{\partial}{\partial x}
@@ -500,7 +501,7 @@ Where $\normalvec$ describes the normal vector.The boundaries can be described
 If the equation is discretized at the boundaries, it gives
 !bt
 \begin{align*}
-\frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0
+\frac{u_{-1}^n - u_1^n}{2\Delta x} =& 0 \\
 u_{-1}^n =& u_1^n
 \end{align*}
 !et
