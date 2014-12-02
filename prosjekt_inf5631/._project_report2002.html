@@ -1,0 +1,388 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Project inf5631">
+
+<title>Project inf5631</title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Density-Dependent Diffusion- Reaction Diffusion Model ',
+               1,
+               None,
+               '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Travelling wavefront ', 2, None, '___sec2'),
+              (' Motivation for the reaction-diffusion equation ',
+               3,
+               None,
+               '___sec3'),
+              (' The analytical solution ', 3, None, '___sec4'),
+              (' Reaction term ', 1, None, '___sec5'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec6'),
+              (" Fisher's equation ", 3, None, '___sec7'),
+              (' Carrying capacity ', 3, None, '___sec8'),
+              (' Reproduction rate ', 3, None, '___sec9'),
+              (' Scaling ', 3, 'section:scaling', 'section:scaling'),
+              (' Spatial diffusion ', 1, None, '___sec11'),
+              (' Boundary conditions ', 3, None, '___sec12'),
+              (' Linear system/equation ', 2, None, '___sec13'),
+              (' Nonlinear equation ', 2, None, '___sec14'),
+              (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
+              (' \\alpha(u) = |\\nabla(u)| ', 3, None, '___sec16'),
+              (' \\alpha(u) = |\\nabla(u)|^m ', 3, None, '___sec17'),
+              (' Solution for the biological equation ', 1, None, '___sec18'),
+              (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec22'),
+              (' Further work ', 1, None, '___sec23'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec24'),
+              (' Dirichlet boundary condition ', 3, None, '___sec25'),
+              (' Neumann boundary condition ', 3, None, '___sec26'),
+              (" Newton's method ", 2, None, '___sec27'),
+              (' Bibliography ', 1, None, '___sec28')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0002"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report2001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report2003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1>Spatial diffusion  <a name="___sec11"></a></h1>
+The first part in the diffusion equation, Eq.<a href="._project_report2000.html#mjx-eqn-1">(1)</a>, describes the spatial flow. This describes the influences from the neighbours on \( u_i \).
+$$
+\begin{equation}
+	u_t = \nabla \cdot \alpha(u)\nabla u
+\end{equation}
+$$
+
+The function \( \alpha(u) \) has a major influence on the spatial term and affects the diffusion of the model. To solve this equation numerically, the equation has to be discretized.
+$$
+\begin{equation*}
+	\left[D_t^-u=D_x(\alpha(u) D_x u)\right]
+\end{equation*}
+$$
+
+Backward Euler is used for discretization in time and Crank Nicolson is used for discretization in space.
+$$
+\begin{align*}
+	\frac{u^n_i-u^{n-1}_i}{\Delta t}=& \frac{1}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)\\
+	u^{n-1}_i=&u^n_i- \frac{\Delta t}{\Delta x^2}\left(\alpha_{i+\frac{1}{2}}(u_{i+1}-u_i)-\alpha_{i-\frac{1}{2}}(u_{i}-u_{i-1})\right)
+\end{align*}
+$$
+
+This is assembled to a linear system.
+$$
+\begin{equation}
+A =
+\left(
+\begin{array}{cccccccccc}
+A_{0,0} & A_{0,1} & 0
+&\cdots &
+\cdots & \cdots & \cdots &
+\cdots & 0 \\
+A_{1,0} & A_{1,1} & A_{1,2} & \ddots &   & &  & &  \vdots \\
+0 & A_{2,1} & A_{2,2} & A_{2,3} &
+\ddots & &  &  & \vdots \\
+\vdots & \ddots &  & \ddots & \ddots & 0 &  & & \vdots \\
+\vdots &  & \ddots & \ddots & \ddots & \ddots & \ddots & & \vdots \\
+\vdots & &  & 0 & A_{i,i-1} & A_{i,i} & A_{i,i+1} & \ddots & \vdots \\
+\vdots & & &  & \ddots & \ddots & \ddots &\ddots  & 0 \\
+\vdots & & & &  &\ddots  & \ddots &\ddots  & A_{N_x-1,N_x} \\
+0 &\cdots & \cdots &\cdots & \cdots & \cdots  & 0 & A_{N_x,N_x-1} & A_{N_x,N_x}
+\end{array}
+\right)
+\tag{14}
+\end{equation}
+$$
+
+The matrix \( A \) will be tridiagonal with the values:
+$$
+\begin{align} \tag{10}
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
+\end{align}                               
+$$
+
+A non linear term will arise when \( \alpha(u) \) contains \( u \).
+
+<h3>Boundary conditions  <a name="___sec12"></a></h3>
+
+The boundary conditions are specified to be zero. The matrix A requires changes by implementing these boundary conditions.
+$$
+\begin{align*}
+A_{0,0} &= 1,\\
+A_{0,1} &= 0,\\
+A_{N_x,N_x-1} &= 0,\\
+A_{N_x,N_x} &= 1
+\end{align*}
+$$
+
+The b array with known values will be
+$$
+\begin{align*}
+b_0 &= 0,\\
+b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\
+b_{N_x} &= 0 
+\end{align*}
+$$
+
+This decision affects the equilibrium state, since the boundary values are forced to be 0.
+
+<h2>Linear system/equation  <a name="___sec13"></a></h2>
+The only solution for a linear equation is to replace \( \alpha \) with a constant.
+$$
+\begin{equation}
+	\alpha(u) = k
+\end{equation}
+$$
+
+Use the matrix from<a href="#mjx-eqn-10">(10)</a> and insert the function \( \alpha(u) \). This gives the matrix:
+$$
+\begin{align*} \tag{11}
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
+\end{align*}                               
+$$
+
+The animation under represents different values for \( k \). All simulations diffuses towards the equilibrium state, which is 0 because of the boundary conditions. A large \( k \) results in a fast diffusion. By decreasing the constant \( k \) towards 0 the diffusion will decrease towards 0.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/constant.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>A linear diffusion term simulated with four different values, 0.01,0.1,1 and 10 for the value \( k \)</em></p>
+
+<h2>Nonlinear equation  <a name="___sec14"></a></h2>
+The diffusion term will be non linear for all $\alpha$s that includes \( u \). Picard Iteration can be used to solve non-linear equations. This method is explained in the previous section
+
+<h3>\( \alpha(u) \) = u  <a name="___sec15"></a></h3>
+
+$$
+\begin{equation}
+	\alpha(u) = u\\
+\end{equation}
+$$
+
+Arithmetic mean can be used to calculate the values for \( u \), since Crank Nicolson is applied for only one step in the general calculation of \( \alpha \).
+$$
+\begin{equation*}
+	\alpha_{i\pm\frac{1}{2}} =\frac{1}{2}(\alpha_i+\alpha_{i\pm1}) 
+\end{equation*}
+$$
+
+Then \( u \) can be used in the matrix<a href="#mjx-eqn-10">(10)</a>.
+$$
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u_{i+1}+2u_{i}+u_{i-1})\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i}+u_{i-1})\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u_{i+1}+u_{i})
+\end{align*}                               
+$$
+
+This gives a nonlinear problem. \( u \) can here be replaced by \( u\_ \).
+$$
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
+\end{align*}                               
+$$
+
+The function will be produced with different error tolerances. First a simulation where the previous value \( u\_ \) is used in matrix A. This is equivalent to a very large error tolerance. The error tolerance will then be reduced in order to carry out a proper Picard Iteration.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='submovies/ordinary_sub.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Animation of different simulations run with different error tolerance for Picard Iteration-</em></p>
+
+
+<p>
+These results shows the behavior of \( u\_ \) when it varies from a large error tolerance,the previous time step, up to a error tolerance of \( 10^{-7} \). The simulation without any Picard Iteration gives a discontinuity in each direction. This becomes smaller the closer \( u\_ \) goes towards \( u \). 
+<br />
+<br />
+An important aspect to be aware of when working with diffusion equation is that the result after a certain time will be close to equal in all the simulations. This happens because of the equilibrium principle. An example of this is the temperature in a room. The diffusion will cause it to go towards a smooth and balanced temperature in each point of the room. Therefore it is more interesting to look at the movement towards the equilibrium than the final result.
+
+<h3>\alpha(u) = |\nabla(u)|  <a name="___sec16"></a></h3>
+
+$$
+\begin{equation}
+\alpha(u) = |\nabla(u)|
+\end{equation}
+$$
+
+Since Crank Nicolson is used one time for \( \alpha(u) \),  this can be used again for this equation. This will give integer numbers in spatial direction for \( u \).
+$$
+\begin{align*}
+\alpha(u_{i+\frac{1}{2}}) =& \left|\nabla(u_{i+\frac{1}{2}})\right|\\
+\alpha(u_{i+\frac{1}{2}}) =& \left|\frac{u_{i+1}-u_i}{\Delta x}\right|
+\end{align*}
+$$
+
+The same can be done for \( \alpha_{i-\frac{1}{2}} \). Both solutions can be inserted in
+the matrix A.
+$$
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|+ \left|\frac{u_{i+1}-u_i}{\Delta x}\right|)\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_i-u_{i-1}}{\Delta x}\right|)\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u_{i+1}-u_i}{\Delta x}\right|)
+\end{align*}                               
+$$
+
+The value of \( u \) needs to be replaced with \( u\_ \). A Picard Iteration can be used.
+$$
+\begin{align} \tag{13}
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|)\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|)
+\end{align}                               
+$$
+
+The first simulation utilizes a large error tolerance while the second one has a tolerance of \( 10^{-5} \).
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/spatial_abs_std.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Animation of a diffusion equation with \( \alpha(u) = |\nabla(u)| \). A large error tolerance is used for Picard.</em></p>
+
+
+<p>
+This simulation results in a function with a noise error in both directions. This is largest when the values between the points are largest. This is at initial time. When the diffusion goes towards equilibrium at 0, the difference between neighbouring points will decrease. This results in a smoother solution.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='300' preload='none'>
+    <source src='movies/spatial_abs_std_picard_tol__5.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>The same simulation as the previous animation. Here the error tolerance is set to 10^-5</em></p>
+
+
+<p>
+Since the error tolerance is set to 10^-5, the simulation is smooth for the values in the animation. A smaller error tolerance gives a more correct solution, however it also demands a higher computational power. It is therefore important to choose the error tolerance based on the expected results
+
+<h3>\alpha(u) = |\nabla(u)|^m  <a name="___sec17"></a></h3>
+
+$$
+\begin{equation}
+	\alpha(u) = |\nabla(u)|^m
+\end{equation}
+$$
+
+This equation is solved in the exact same way as the equation above. The matrix<a href="#mjx-eqn-13">(13)</a> A from the section above can be used. A power, \( m \), is added to the matrix.
+$$
+\begin{align} \tag{13}
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)
+\end{align}                               
+$$
+
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Animation of different values of \( \alpha(u) = |\nabla(u)|^m \), where the power term, \( m \), is changed</em></p>
+
+
+<p>
+Here, the length of the simulation, \( T \), is set to be quite large. This is to show the effect of the power term in this function. The function moves faster towards zero when the power term is low, however it seems that the equilibrium state for all simulations are 0. The power term  and the derivative of \( u \) affects the speed. When the concentration goes towards 0 this results in a flatter shape. The value of \( \alpha \) will move towards 0 as the derivative moves towards 0. Since the concentration is under 1,  a power term above 1 will decrease the solution.  
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report2001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report2003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

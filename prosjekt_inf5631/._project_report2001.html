@@ -1,0 +1,300 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Project inf5631">
+
+<title>Project inf5631</title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Density-Dependent Diffusion- Reaction Diffusion Model ',
+               1,
+               None,
+               '___sec0'),
+              (' Fisher-Kolmogoroff equation ', 2, None, '___sec1'),
+              (' Travelling wavefront ', 2, None, '___sec2'),
+              (' Motivation for the reaction-diffusion equation ',
+               3,
+               None,
+               '___sec3'),
+              (' The analytical solution ', 3, None, '___sec4'),
+              (' Reaction term ', 1, None, '___sec5'),
+              (' Fisher-Kolmogoroff term ', 2, None, '___sec6'),
+              (" Fisher's equation ", 3, None, '___sec7'),
+              (' Carrying capacity ', 3, None, '___sec8'),
+              (' Reproduction rate ', 3, None, '___sec9'),
+              (' Scaling ', 3, 'section:scaling', 'section:scaling'),
+              (' Spatial diffusion ', 1, None, '___sec11'),
+              (' Boundary conditions ', 3, None, '___sec12'),
+              (' Linear system/equation ', 2, None, '___sec13'),
+              (' Nonlinear equation ', 2, None, '___sec14'),
+              (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
+              (' \\alpha(u) = |\\nabla(u)| ', 3, None, '___sec16'),
+              (' \\alpha(u) = |\\nabla(u)|^m ', 3, None, '___sec17'),
+              (' Solution for the biological equation ', 1, None, '___sec18'),
+              (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
+              (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
+              (' $\\alpha(u)=|\\nabla u|$ ', 3, None, '___sec21'),
+              (' $\\alpha(u)=|\\nabla u|^m$ ', 3, None, '___sec22'),
+              (' Further work ', 1, None, '___sec23'),
+              (' Changes in the Boundary conditions ', 2, None, '___sec24'),
+              (' Dirichlet boundary condition ', 3, None, '___sec25'),
+              (' Neumann boundary condition ', 3, None, '___sec26'),
+              (" Newton's method ", 2, None, '___sec27'),
+              (' Bibliography ', 1, None, '___sec28')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0001"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report2000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report2002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1>Reaction term  <a name="___sec5"></a></h1>
+The reaction term describes the change in concentration in a certain point. This variation is only affected by the local chemical reaction.
+$$
+\begin{equation} \tag{7}
+u_t = f(u)
+\end{equation}
+$$
+
+The equation can be discretized and solved numerically. This can be used to study its properties.
+$$
+\begin{equation} \tag{8}
+	\begin{aligned}
+    u_t =& f(u)\\
+    \frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+    u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
+	\end{aligned}
+\end{equation}
+$$
+
+This gives a linear equation \( Au = b \) that is easy to solve.
+
+<h2>Fisher-Kolmogoroff term  <a name="___sec6"></a></h2>
+A Fisher-Kolmogoroff term, now referred as FK, is a nonlinear term which often arises from biological applications. It takes the form \( ru(1-u/M) \), where \( r \) describes the linear reproduction and \( M \) describes the carrying capacity of the environment. The local chemical reaction will then be.
+$$
+\begin{equation} \tag{9}
+f(u) = ru(1-\frac{u}{M})
+\end{equation}
+$$
+
+The function \( f(u) \) can be replaced by the FK term in Eq.ref{eq:gen_chem}
+$$
+\begin{align*}
+u^n_i-\Delta t ru^n_i(1-\frac{u^n_i}{M}) =& u^{n-1}_i\\
+u^n_i(1-\Delta t r(1-\frac{u^n_i}{M})) =& u^{n-1}_i
+\end{align*}
+$$
+
+Since this solution gives a nonlinear equation, Picard iteration can be used to solve the equation. The idea in Picard iteration is to replace one of the \( u \) values in the nonlinear part with a known \( u\_ \).  In the first iteration, the value of \( u\_ \) will be set to the previous time step, 
+$$
+\begin{equation*}
+	u\_ = u^{n-1}
+\end{equation*}
+$$
+
+The correct value of \( u \) can be compared with the pre-produced \( u\_ \) each round. If the difference between them is less than a predefined limit, the new solution is accepted. If not, the new \( u\_ \) will be a combination of \( u\_ \) and \( u \). How the combination is weighted is called relaxation. 
+$$
+\begin{equation*}
+u\_ = \gamma u + (1-\gamma)u\_,\qquad 0 < = \gamma < =1
+\end{equation*}
+$$
+
+The new equation will be
+$$
+\begin{align*}
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{M}))=& u^{n-1}_i\\
+\end{align*}
+$$
+
+Since \( u\_ \) is an approximation to \( u \),  the value of \( u\_ \) needs to be refined until it fulfills the expected error.
+
+<h3>Fisher's equation  <a name="___sec7"></a></h3>
+
+The parameters are set to \( r=1 \) and \( M=1 \). This is called Fisher's equation.The reaction term in Fisher will look like this:
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/time_der_r_1_0_m_1_0.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em><a name="fig:fisher_eq"></a> Animation of the Fisher's equation with the reproduction rate as 1 and the carrying capacity as 1. The initial value is set as a Gaussian function</em></p>
+
+
+<p>
+The simulation in Fig.<a href="#fig:fisher_eq">fig:fisher_eq</a> shows a smooth flow towards the carrying capacity, which is set to 1. All points move towards the steady state with the same speed. As defined in Eq.ref{eq:reaction_diffusion}, the boundary is set to 0. This is difficult to see based on this simulation. Another animation is done in Fig.<a href="#fig:boundary_ver">fig:boundary_ver</a>. This animation is simulated with ten points, and the boundary points can be seen as 0. Since there is no spatial influence on the model, each point will move towards the steady state, independent of the other points. Therefore the neighbours to the boundary points will rise towards the carrying capacity. 
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/constant_fisher_few_points.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em><a name="fig:boundary_ver"></a> Animation to verify that the boundary points. Only ten points are used to see the values in each point. Same parameters as for Fig.<a href="#fig:fisher_eq">fig:fisher_eq</a>.</em></p>
+
+<h3>Carrying capacity  <a name="___sec8"></a></h3>
+
+The  influence from carrying capacity on the function can be studied by variations of \( M \). This simulation has the purpose of illustrating the effect of varying the carrying capacity.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/time.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Animation of the effect by varying the carrying capacity. The reproduction rate is set to 1 for all simulations</em></p>
+
+
+<p>
+In the above animation the carrying capacity is approached in all simulations, and the result is stable. The reproduction rate, \( r \), has been set to 1 for all simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all cases.
+
+<h3>Reproduction rate  <a name="___sec9"></a></h3>
+
+A similar simulation can be done for the reproduction rate, \( r \). Here with focus on the effect of varying the reproduction.
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='paramovies/time_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Animation of the effect by varying the reproduction rate. The carrying capacity is set to 0.8</em></p>
+
+
+<p>
+The reproduction rate controls the speed towards carrying capacity. A larger reproduction rate will bring the solution faster
+towards the steady state, which is controlled by \( M \). The carrying capacity is set to \( M=0.8 \).
+
+<h3>Scaling <a name="section:scaling"></a></h3>
+
+The Eq.<a href="#mjx-eqn-7">(7)</a> with the chemical term set as Fisher, Eq.<a href="#mjx-eqn-9">(9)</a> can be scaled to give a better overview of the parameters \( r \) and \( M \).  This technique will make it possible to look at only one or a few dimensionless numbers. The idea by scaling is to get the solution dimensionless by stretching \( u \) and \( t \) in the problem. A new function \( \bar u(\bar t) \), with
+$$
+\begin{equation}
+\bar u = \frac{u}{u_c}, \hspace{8 mm} \bar t = \frac{t}{t_c}
+\end{equation}
+$$
+
+Here \( u_c \) and \( t_c \) are characteristic sizes of the range for \( u \) and \( t \). These values are set to be:
+$$
+\begin{equation}
+u_c = M,\hspace{8 mm} t_c = \frac{1}{r}
+\end{equation}
+$$
+
+Fisher is inserted for \( f(u) \).
+$$
+\begin{align*}
+\frac{\partial u}{\partial t} = ru(1-\frac{u}{M})\\
+\frac{\partial (u_c\bar u)}{\partial \bar t}\frac{\partial \bar t}{\partial t} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+u_c\frac{\partial \bar u}{\partial \bar t}\frac{1}{t_c} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = t_c r\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = \bar u(1-\bar u)
+\end{align*}
+$$
+
+The initial condition for \( \bar u \) can be found by using the initial condition from \( u(x,0)= gauss(x) \).
+$$
+\begin{equation*}
+\bar u(x,0) = \frac{u(x,0)}{u_c} = \frac{gauss(x)}{M}
+\end{equation*}
+$$
+
+This can be plotted for different values of \( M \)
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+    <source src='movies/scaling.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Solution by scaling</em></p>
+
+
+<p>
+The model breaks down if \( M=0 \), since this gives a nonexistent initial condition. 
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._project_report2000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._project_report2002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
