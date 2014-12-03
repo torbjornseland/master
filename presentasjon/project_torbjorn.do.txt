@@ -18,26 +18,90 @@ u(L,t)=& 0\notag
 !et
 
 Overview of the presentation
+* Fisher-Kolmogoroff equation
 * Travelling wavefront
 * Reaction term
 * Diffusion term
 * Solution of the biological equation
+* Further work
 
 
 !split
+======= Fisher Kolmogoroff equation =======
+* The Fisher-Kolmogoroff equation, now referred as FK.The FK can be produced by replacing $\alpha(u)=k$, where $k$ is a constant, and $f(u) = ru(1-\frac{u}{M})$ in Eq.(ref{eq:reaction_diffusion}).
+* This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population. 
+* Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results Ref.cite{murray2002mathematical}. 
+!bt
+\begin{equation} label{eq:fish_kol}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{M})
+\end{equation}
+!et
+!split
 ======= Travelling wavefront =======
-The idea is to study the size of the wave with constant speed $c$
+===== Motivation for the travelling wavefront =====
+A wave that travels without any changes in the shape and has a speed given by a constant, is called a travelling wave. 
 !bt
 \begin{equation} label{eq:wave_constant}
 u(x,t) = u(x-ct) = u(z), z = x-ct
 \end{equation}
 !et
+If we look for a travelling wave solution of the (ref{eq:wave_constant}), the partial differential equation can be written as ordinary differential equations. 
+!bt
+\begin{equation}
+	\begin{aligned}
+    \frac{\partial u}{\partial t} &= -c\frac{du}{dz} \\
+    \frac{\partial u}{\partial x} &= \frac{du}{dz}
+	\end{aligned}
+\end{equation}
+!et
+To be physically realistic, the concentration of the quantity cannot be negative and $u(z)$ has to be bounded by $z$. The ordinary differential equations can be inserted into a standard diffusion equation. 
+!bt
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
+\end{equation}
+!et
+Will give
+!bt
+\begin{equation}
+k\frac{d^2u}{dx^2} + c\frac{du}{dx} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/k} 
+\end{equation}
+!et
+Then $B$ needs to be zero, since the exponential becomes unbounded when $z\rightarrow -\infty$. Then the wave solution ends up as $u(z)=A$, which is a constant value, and not a wave solution. The reaction term, $f(u)$, was therefore added to the equation. This term can exhibit travelling wave solutions. 
 
-The numerical solutions can be compared with the analytical, to check the  effect from $\Delta t$. Here $\Delta t$ varies from 0.4 to 0.02.
+!split
+===== Analytical solution =====
+The Fisher Kolmogoroff is a good equation to use when studying the Diffusion-Reacion equation. The equation can be rescaled. And this results in
+the equation
+!bt
+\begin{equation} label{eq:ord_diff}
+U'' +cU' + U(1-U) = 0
+\end{equation}
+!et
+An analytical solution of Eq.ref{eq:ord_diff} can be written
+!bt
+\begin{equation} label{eq:ana_sol}
+U(z) = \frac{1}{(1+ae^{bz})^s}
+\end{equation}
+!et
+Here $a$, $b$ and $s$ are positive constants. The values are set to
+!bt
+a = \sqrt{2}-1,\hspace{8mm} s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
+!et
+The function for the analytical wavefront solution will then be,
+!bt
+\begin{equation}
+U(z) = \frac{1}{[1+(\sqrt{2}-1)=e^{\frac{z}{\sqrt{6}}}]^2}
+\end{equation}
+!et
+The analytical simulation of the wavefront can be seen in Fig.ref{fig:wavefront_analytical} below. 
 
-MOVIE: [../prosjekt_inf5631/paramovies/reac_constant_wavefront_dt.webm, height=500,width=600]Analytical solution plotted with numerical solutions
+MOVIE: [movies/wave_front_analytical.webm, height=300,width=375] label{fig:wavefront_analytical} Animation of a analytical wavefront with parameter values set to $a=\sqrt{2}-1$, $s=2$, $b=\frac{1}{\sqrt{6}}$ and $c=\frac{5}{\sqrt{6}}$. x values along the x-axis and the concentration along the y-axis
 
-The numerical solution has got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries don't affect the error estimate.
+The numerical solution with different $\Delta t$ can be compared to the analytical solution. Here $\Delta t$ varies from 0.4 to 0.02. This simulation can be seen in Fig.ref{fig:compare_wavefronts}
+
+MOVIE: [paramovies/reac_constant_wavefront_dt.webm, height=300,width=375] label{fig:compare_wavefronts} Animation of an analytical solution plotted against numerical solutions. The values of $\Delta t$ are 0.4,0.08 and 0.02
+
+The numerical solutions have got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is done to prevent the boundaries from affecting the error estimate. By studying the simulation, one can see that the numerical solution simulated with $\Delta t = 0.4$ gives a large error, and will consequently be useless. The smallest error is given by $\Delta t = 0.02$. This is first seen when the analytical solution reaches $x=40$
 
 |------c--------------c--------------c-------|
 | dt           | error        | order        |
@@ -46,6 +110,8 @@ The numerical solution has got the exact analytical solution as initial conditio
 | 0.08         | 0.408244     | 0.53         |
 | 0.02         | 0.131734     | 0.81	     |
 |--------------------------------------------|
+
+This table shows how the error goes to zero when $\Delta t$ goes towards zero. The order of the error approaches , which is the expected order for $\Delta t$ dt.
 
 !split
 ======= Reaction term =======
@@ -193,3 +259,6 @@ MOVIE: [../prosjekt_inf5631/paramovies/reac_constant_r.webm, height=500,width=60
 When the reproduction rate is to weak, the solution will not reach the capacity state, which is sat to 1. When $r$ becomes stronger, the solution reaches the carrying capacity, $M$.
 
 
+======= Bibliography =======
+
+BIBFILE: ../bibliography/papers.pub

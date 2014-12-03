@@ -166,10 +166,12 @@ $$
 Overview of the presentation
 
 <ul>
+<p><li> Fisher-Kolmogoroff equation</li>
 <p><li> Travelling wavefront</li>
 <p><li> Reaction term</li>
 <p><li> Diffusion term</li>
 <p><li> Solution of the biological equation</li>
+<p><li> Further work</li>
 </ul>
 <p>
 
@@ -179,32 +181,146 @@ Overview of the presentation
 
 <section>
 
-<h1>Travelling wavefront  <a name="___sec1"></a></h1>
-The idea is to study the size of the wave with constant speed \( c \)
+<h1>Fisher Kolmogoroff equation  <a name="___sec1"></a></h1>
+
+<ul>
+<p><li> The Fisher-Kolmogoroff equation, now referred as FK.The FK can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{M}) \) in Eq.<a href="#mjx-eqn-1">(1)</a>.</li>
+<p><li> This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population.</li> 
+<p><li> Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results Ref.<a href="#murray2002mathematical">[1]</a>.</li> 
+</ul>
+<p>
+
 <p>&nbsp;<br>
 $$
 \begin{equation} \tag{2}
-u(x,t) = u(x-ct) = u(z), z = x-ct
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}+ru(1-\frac{u}{M})
 \end{equation}
 $$
 <p>&nbsp;<br>
 
 
+</section>
+
+
+<section>
+
+<h1>Travelling wavefront  <a name="___sec2"></a></h1>
+
+<h2>Motivation for the travelling wavefront  <a name="___sec3"></a></h2>
+
+<ul>
+<p><li> A wave that travels without any changes in the shape and has a speed given by a constant, is called a travelling wave.</li> 
+</ul>
 <p>
-The numerical solutions can be compared with the analytical, to check the  effect from \( \Delta t \). Here \( \Delta t \) varies from 0.4 to 0.02.
+
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{3}
+u(x,t) = u(x-ct) = u(z), z = x-ct
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+If we look for a travelling wave solution of the <a href="#mjx-eqn-3">(3)</a>, the partial differential equation can be written as ordinary differential equations. 
+<p>&nbsp;<br>
+$$
+\begin{equation}
+	\begin{aligned}
+    \frac{\partial u}{\partial t} &= -c\frac{du}{dz} \\
+    \frac{\partial u}{\partial x} &= \frac{du}{dz}
+	\end{aligned}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+To be physically realistic, the concentration of the quantity cannot be negative and \( u(z) \) has to be bounded by \( z \). The ordinary differential equations can be inserted into a standard diffusion equation. 
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2u}{\partial x^2}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Will give
+<p>&nbsp;<br>
+$$
+\begin{equation}
+k\frac{d^2u}{dx^2} + c\frac{du}{dx} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/k} 
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Then \( B \) needs to be zero, since the exponential becomes unbounded when \( z\rightarrow -\infty \). Then the wave solution ends up as \( u(z)=A \), which is a constant value, and not a wave solution. The reaction term, \( f(u) \), was therefore added to the equation. This term can exhibit travelling wave solutions. 
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Analytical solution  <a name="___sec4"></a></h2>
+The Fisher Kolmogoroff is a good equation to use when studying the Diffusion-Reacion equation. The equation can be rescaled. And this results in
+the equation
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{4}
+U'' +cU' + U(1-U) = 0
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+An analytical solution of Eq.ref{eq:ord_diff} can be written
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{5}
+U(z) = \frac{1}{(1+ae^{bz})^s}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Here \( a \), \( b \) and \( s \) are positive constants. The values are set to
+<p>&nbsp;<br>
+$$
+a = \sqrt{2}-1,\hspace{8mm} s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
+$$
+<p>&nbsp;<br>
+
+The function for the analytical wavefront solution will then be,
+<p>&nbsp;<br>
+$$
+\begin{equation}
+U(z) = \frac{1}{[1+(\sqrt{2}-1)=e^{\frac{z}{\sqrt{6}}}]^2}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+The analytical simulation of the wavefront can be seen in Fig.<a href="#fig:wavefront_analytical">fig:wavefront_analytical</a> below. 
 
 <p>
 
 <div>
-<video  loop controls width='600' height='365' preload='none'>
-    <source src='../prosjekt_inf5631/paramovies/reac_constant_wavefront_dt.webm' type='video/webm; codecs="vp8, vorbis"'>
+<video  loop controls width='375' height='365' preload='none'>
 </video>
 </div>
-<p><em>Analytical solution plotted with numerical solutions</em></p>
+<p><em><a name="fig:wavefront_analytical"></a> Animation of a analytical wavefront with parameter values set to \( a=\sqrt{2}-1 \), \( s=2 \), \( b=\frac{1}{\sqrt{6}} \) and \( c=\frac{5}{\sqrt{6}} \). x values along the x-axis and the concentration along the y-axis</em></p>
 
 
 <p>
-The numerical solution has got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries don't affect the error estimate.
+The numerical solution with different \( \Delta t \) can be compared to the analytical solution. Here \( \Delta t \) varies from 0.4 to 0.02. This simulation can be seen in Fig.<a href="#fig:compare_wavefronts">fig:compare_wavefronts</a>
+
+<p>
+
+<div>
+<video  loop controls width='375' height='365' preload='none'>
+</video>
+</div>
+<p><em><a name="fig:compare_wavefronts"></a> Animation of an analytical solution plotted against numerical solutions. The values of \( \Delta t \) are 0.4,0.08 and 0.02</em></p>
+
+
+<p>
+The numerical solutions have got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is done to prevent the boundaries from affecting the error estimate. By studying the simulation, one can see that the numerical solution simulated with \( \Delta t = 0.4 \) gives a large error, and will consequently be useless. The smallest error is given by \( \Delta t = 0.02 \). This is first seen when the analytical solution reaches \( x=40 \)
 
 <p>
 <table border="1">
@@ -218,18 +334,21 @@ The numerical solution has got the exact analytical solution as initial conditio
 </tbody>
 </table>
 <p>
+This table shows how the error goes to zero when \( \Delta t \) goes towards zero. The order of the error approaches , which is the expected order for \( \Delta t \) dt.
+
+<p>
 
 </section>
 
 
 <section>
 
-<h1>Reaction term  <a name="___sec2"></a></h1>
+<h1>Reaction term  <a name="___sec5"></a></h1>
 The reaction term describes the change in concentration in a certain point. This variation is only affected
 by the local chemical reaction.
 <p>&nbsp;<br>
 $$
-\begin{equation} \tag{3}
+\begin{equation} \tag{6}
 u_t = f(u)
 \end{equation}
 $$
@@ -257,7 +376,7 @@ f(u) = ru(1-\frac{u}{M})
 $$
 <p>&nbsp;<br>
 
-<h2>Carrying capacity  <a name="___sec3"></a></h2>
+<h2>Carrying capacity  <a name="___sec6"></a></h2>
 Carrying capacity describes the maximum concentration for each point.
 
 <p>
@@ -273,7 +392,7 @@ Carrying capacity describes the maximum concentration for each point.
 <p>
 All simulations goes towards their carrying capacity and stabilizes here. The reproduction rate, \( r \), has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all cases.
 
-<h2>Reproduction rate  <a name="___sec4"></a></h2>
+<h2>Reproduction rate  <a name="___sec7"></a></h2>
 The reproduction rate controls the speed of reproduction
 
 <p>
@@ -297,7 +416,7 @@ towards the steady state, which is controlled by \( M \). The carrying capacity 
 
 <section>
 
-<h1>Diffusion term  <a name="___sec5"></a></h1>
+<h1>Diffusion term  <a name="___sec8"></a></h1>
 <p>&nbsp;<br>
 $$
 \begin{equation}
@@ -318,7 +437,7 @@ $$
 This will result in a tridiagonal matrix A with the values
 <p>&nbsp;<br>
 $$
-\begin{align} \tag{4}
+\begin{align} \tag{7}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -349,7 +468,7 @@ b_{N_x} &= 0
 $$
 <p>&nbsp;<br>
 
-<h2>A linear solution  <a name="___sec6"></a></h2>
+<h2>A linear solution  <a name="___sec9"></a></h2>
 <p>&nbsp;<br>
 $$
 \begin{equation}
@@ -361,7 +480,7 @@ $$
 Gives the following tridiagonal matrix
 <p>&nbsp;<br>
 $$
-\begin{align*} \tag{5}
+\begin{align*} \tag{8}
 A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
@@ -380,7 +499,7 @@ The simulation can be seem under
 </div>
 <p><em></em></p>
 
-<h2>Non linear solution  <a name="___sec7"></a></h2>
+<h2>Non linear solution  <a name="___sec10"></a></h2>
 <p>&nbsp;<br>
 $$
 \begin{equation}
@@ -424,11 +543,11 @@ These results shows the behavior of \( u\_ \) when it varies from a large error 
 
 <section>
 
-<h1>Solution for the biological model  <a name="___sec8"></a></h1>
+<h1>Solution for the biological model  <a name="___sec11"></a></h1>
 The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. The Fisher Kolmogoroff can be inserted in the reaction term, \( f(u) \).
 <p>&nbsp;<br>
 $$
-\begin{align} \tag{6}
+\begin{align} \tag{9}
 A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -436,7 +555,7 @@ A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 $$
 <p>&nbsp;<br>
 
-<h2>Standard Fisher-Kolmogoroff equation  <a name="___sec9"></a></h2>
+<h2>Standard Fisher-Kolmogoroff equation  <a name="___sec12"></a></h2>
 This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity, \( M \), as shown in the section above. The diffusion term will at the same time try to drag the function towards its equilibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values, \( k \), in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation 
 
 <p>
@@ -478,7 +597,20 @@ Here they tend towards their capacity, while \( \alpha \) drags them down at the
 <p>
 When the reproduction rate is to weak, the solution will not reach the capacity state, which is sat to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \).
 
+<h1>Bibliography  <a name="___sec13"></a></h1>
+
+<!-- begin bibliography -->
+
+<ol>
+ <p><li> <a name="murray2002mathematical"></a> <b>J. Murray</b>. 
+    <em>Mathematical Biology: I. an Introduction</em>,
+    Springer,
+    2002,
+    <a href="http://books.google.no/books?id=4WbpP90Gk1YC" target="_self"><tt>http://books.google.no/books?id=4WbpP90Gk1YC</tt></a>.</li>
+</ol>
 <p>
+
+<!-- end bibliography -->
 
 
 </section>

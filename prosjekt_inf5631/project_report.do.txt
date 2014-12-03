@@ -53,7 +53,7 @@ Will give
 
 !bt
 \begin{equation}
-k\frac{d^2u}{dx^2} + c\frac{du}{dx} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/k} 
+k\frac{d^2u}{dz^2} + c\frac{du}{dz} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/k} 
 \end{equation}
 !et
 Here $A$ and $B$ will be integration constants. The physical assumption is bounded by $z$. Then $B$ needs to be zero, since the exponential becomes unbounded when $z\rightarrow -\infty$. Then the wave solution ends up as $u(z)=A$, which is a constant value, and not a wave solution. The reaction term, $f(u)$, was therefore added to the equation. This term can exhibit travelling wave solutions. 
