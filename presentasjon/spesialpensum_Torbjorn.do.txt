@@ -2,23 +2,27 @@ TITLE: Presentation of special syllabus
 AUTHOR: Torbjørn Seland
 DATE: today
 
+#doconce format html spesialpensum_Torbjorn.do.txt --pygments_html_style=native --keep_pygments_html_bg --encoding=utf-8
+#doconce slides_html spesialpensum_Torbjorn.html reveal --html_slide_theme=darkgray
+
 !split
 ===== Contents =====
-* Murray, James D. "Mathematical Biology: I. An Introduction." 2008
-    * Kap.10: \emph{Dynamics of Infectious Diseases(315-393)}\\
-        * Fokus på epidemier og modeller for dette. Beskrivelse av spredningsmodeller for AIDS, HIV mfl.
-* Murray, James D. "Mathematical Biology: II. Spatial Models and Biomedical Applications." 2004
-    * Kap.13: \emph{Geographic Spread and Control of Epidemics(661-720)}\\
-        * Fokus på spredning av epidemier. Modeller for rabiessmitte og SIR
-* Munz, Philip, et al. "When zombies attack!: mathematical modelling of an outbreak of zombie infection." Infectious Disease Modelling Research Progress 4 (2009): 133-150.
-    * Matematisk artikkel om skadene fra et eventuelt zombieangrep. Basert på ODE systemer og SIR modeller. 17 sider 
-* Langtangen, Hans Petter, Kent-Andre Mardal, and Pål Røtnes. "Escaping the zombie threat by mathematics." Zombies in the Academy–Living Death in Higher Education. Intellect Ltd (2013
-    * Artikkel om basert på 'When Zombies Attack!: Mathematical modelling of an outbreak of zombie infection'. Kritikk og utvikling av ODE-systemer. 29 sider
+* Murray, James D. *Mathematical Biology: I. An Introduction.* 2008
+    * Kap.10: *Dynamics of Infectious Diseases*
+        * Focus on simple ODE systems, threshold values and examples
+* Murray, James D. *Mathematical Biology: II. Spatial Models and Biomedical Applications.* 2004
+    * Kap.13: *Geographic Spread and Control of Epidemics*
+        * Focus on simple PDE systems, travelling wave and examples
+* Munz, Philip, et. al *When zombies attack!: Mathematical modelling of an outbreak of zombie infection.* Infectious Disease Modelling Research Progress 4 (2009)
+    * Mathematical article about the damages from a zombie attack. Based on simple ODE systems.
+* Langtangen, Hans Petter, Kent-Andre Mardal, and Pål Røtnes. *Escaping the zombie threat by mathematics.* Zombies in the Academy–Living Death in Higher Education. Intellect Ltd (2013)
+    * Mathematical article based on the paper *When Zombies Attack!: Mathematical modelling of an outbreak of zombie infection*. Criticism and improving of the ODE system given in Munz et. al
 
 !split
-===== Dynamics of Infectious Diseases =====
+===== Basic ODE system ===== 
+#Dynamics of Infectious Diseases
 
-The model consist of three different groups
+The model consists of three different groups
 * *Susceptible* ($S$), who are humans that are healthy and at risk of becoming infected. 
 * *Infective* ($I$), who are humans who have the disease or are carriers of the disease. This group can infect the *Susceptible*. 
 * *Removed* ($R$),who are dead or recovering humans, often people that already have had the disease.
@@ -33,7 +37,9 @@ A simple epidemic model can be expressed as follows
 	\end{aligned}
 \end{equation}
 !et
-Here $r$ describes the the transmission from the *Susceptible* group to the *Infected* group. $a$ describes the percent of infected that dies. Since the system is closed, the total number will be constant.
+Where,
+* $r$ describes the the transmission from the *Susceptible* group to the *Infected* group. 
+* $a$ describes the percent of infected that dies. Since the system is closed, the total number will be constant.
 
 !bt
 \begin{equation}
@@ -49,13 +55,13 @@ S(t)+I(t)+R(t) = N
 !et
 !split
 ===== Threshold value =====
-To cause an epidemic situation, the model needs to fulfill $I(t)= I_0$ for some $t>0$
+To cause an epidemic situation, the model needs to fulfill $I(t) > I_0$ for some $t>0$
 !bt
 \begin{equation}
 S(0)=S_0 > 0,\hspace{8mm} I(0)=I_0>0,\hspace{8mm} R(0) =0.
 \end{equation}
 !et
-The initial conditions for *Susceptible* and *Infective* combined with $r$ and $a$ will control the epidemic situation. These will affect the spread of the infection. From equation (ref{eq:SIR_model}) the function for *Infective* at initial time can be written,
+The initial conditions for *Susceptible* and *Infective* combined with $r$ and $a$ controls the epidemic situation. From equation (ref{eq:SIR_model}), the function for *Infective* at initial time is,
 !bt
 \begin{equation}
 \left[\frac{dI}{dt}\right]_{t=0} = I_0(rS_0-a)
@@ -69,15 +75,15 @@ The expression inside the brackets controls the change in $I$. The function will
 !et
 This can be shown with some phase trajectories of the *Susceptible* and the *Infective* in figure(ref{fig:threshold_phenomenon}).  
 
-FIGURE:[../spesialpensum_SIR/plots/threshold_phenomenon.png]label{fig:threshold_phenomenon} Simulations of the SIR model (ref{eq:SIR_model}) with start positions along the blue line. $I$ increases until $S$ is equal to the threshold value $\rho$, which is sat to 35. Then $I$ is reduced to 0. In the simulations where $S_0 < \rho$, no epidemic situation is achieved.    
+FIGURE:[../spesialpensum_SIR/plots/threshold_phenomenon.png]label{fig:threshold_phenomenon} Simulations of the SIR model (ref{eq:SIR_model}) with start positions along the blue line. $I$ increases until $S$ is equal to the threshold value $\rho$, which is set to 35. Then $I$ is reduced to 0. In the simulations where $S_0 < \rho$, no epidemic situation is achieved.    
 
 !split
 ===== English boarding school =====
-The British medical journal had in 1978 a report from a boarding school in England. One of the boys had brought with him a disease back to the school. Since this was a boarding school, they were totally isolated from others and had a closed system to model cite[p.~325]{murray2002mathematical}. The simulation can be seen in figure(ref{fig:english_boarding})  
+The British medical journal published a report from a boarding school in England in 1978. One of the boys had brought with him a disease back to the school. Since this was a boarding school, they were totally isolated from others and had a closed system to model cite[p.~325]{murray2002mathematical}. The simulation can be seen in figure(ref{fig:english_boarding}) 
 
 FIGURE:[../spesialpensum_SIR/plots/English_boarding_school.png] label{fig:english_boarding} An English boarding school is modeled for 15 days with the following parameters: $N=763$, $S_0=762$, $I_0=1$, $R_0=0$, $\rho=202$ and $r=2.18 x 10^{-3}$. An increasing of *Infective* can be seen since $S_0 > \rho$.
 
-The parameter value $\rho$ has a major impact on the result. The epidemic disease could turn out quite different than in the situation in figure(ref{fig:english_boarding}) by variations in $a$ and $r$. Figure(ref{fig:rho_changes}) consist of some examples where $\rho$ varies from 50 to 400.
+The parameter value $\rho$ has a major impact on the result. The epidemic disease could turn out quite different than in the situation in figure(ref{fig:english_boarding}) by variations in $a$ and $r$. Figure(ref{fig:rho_changes}) consists of four subplot where $\rho$ varies from 50 to 400.
 
 FIGURE:[../spesialpensum_SIR/plots/English_boarding_school_changes.png] label{fig:rho_changes} In the first plot where $\rho=50$, the *Infective* will increase until the number of *Susceptible* falls down to 50. This will result in a majority of infected students. In the last plot where $\rho=400$, the total number of *Susceptible* stays around 170 students and will go towards a steady number as $I(\infty)=0$.   
 
@@ -93,7 +99,7 @@ FIGURE:[../spesialpensum_SIR/plots/English_boarding_school_changes.png] label{fi
 \frac{dR}{dt} =& \delta S + \delta I + \alpha SZ - \zeta R
 \end{align*}
 !et
-This is a bit more complicated than the standard $SEIR$ model. A presentation of the parameters;
+This is a bit more complicated than the standard $SIR$ model above. A presentation of the parameters;
 * $\Sigma$ describes the birthrate for new *Susceptible*. $\frac{dS}{dt}$ is now able to be positive. This is now not a closed system. 
 * $\beta SZ$ describes the numbers of *Susceptible* that become *Infected* , based on interactions between zombies and humans. Similar as the case for $rSI$ in the SIR model. 
 * $\delta$ describes the number of naturals deaths among the group. This is used in the *Susceptible* and the *Infected* group
@@ -120,9 +126,10 @@ When $t \rightarrow \infty$ and $\Sigma \neq 0$, $S$ cannot go towards infinity,
 ===== LMR model =====
 In the paper from Munz et. al cite{munz2009zombies} the doomsday was nearly inevitable. This is criticized by Langtagen, Mardal and Røtnes. In the paper *Escaping the zombie Threat by Mathematics* cite{zombie-math}, the doomsday scenario is questioned.
 * Counter attack can be performed earlier and with more destruction
-* Magic is not involved. Laws of physics and biology are used
+* Magic is not involved. Laws of physics and biology are used, therefore $\zeta = 0$
+* The parameters will change over time, split into different phases 
 
-The model that they use:
+The model they use:
 !bt
 \begin{equation} label{eq:LMR_model}
 	\begin{aligned} 
@@ -133,7 +140,7 @@ The model that they use:
 	\end{aligned}
 \end{equation}
 !et
-The main change is the $\omega(t)$. This is a Gaussian curve and can be seen in eq(ref{eq:omega}).
+The main change in the system is the $\omega(t)$. This is a Gaussian curve and can be seen in eq(ref{eq:omega}).
 !bt
 \begin{equation} label{eq:omega}
 \omega(t) = a \sum^m_{i=0}\exp\left(\frac{1}{2}\left(\frac{t-T_i}{\sigma}\right)^2\right)
@@ -145,14 +152,16 @@ $\omega(t)$ controls the attacks from the *Susceptible*, which will be fired at 
 * $T$ contains a list of numbers, which controls the time when the attacks will occur.
 * $\sigma$ controls the length of the attack. 
 
+FIGURE:[../spesialpensum_SIR/plots/omega_function.png] label{fig:omega_function} $\omega (t)$ is a Gaussian function where $a$ controls the maximum value, $T$ controls the time for maximum value and $\sigma$ controls the length of the attack.   
+
 !split
-===== Use model to simulate Walking Dead =====
+===== Walking Dead =====
 In *Escaping the zombie Threat by Mathematics* cite{zombie-math}, the movie *The Night of The Living Dead* is used. These simulations are based on the TV series *Walking Dead*. The paper divide a zombie outbreaks into three phases:
 * _Initial phase_ : The humans are unfamiliar with the disease in this phase and acts quite naive to the disease. This result in a high chance of getting infected. Lasts for a short period. In this case, three days 
 * _Hysterical phase_ : The humans are now more familiar with the situation and tries to avoid the infected ones. This result in a lower chance of getting infected. 
 * _Counter attack_ : The last phase, which happens at the same time as the hysterical phase. This phase is often started when humans are attacked by zombies. They will then respond with a counter attack to save themselves.
 
-Data from the TV series by close studies.
+The expected amount in each group for the different phases. Based by close studies of the TV series of *Walking Dead* 
 
 |--------------------------------------------------------------------|
 |---------|Initial phase|hysterical phase|counter attack|final values|
@@ -163,7 +172,7 @@ Data from the TV series by close studies.
 |R_0      |0            | 20          | 200             |232         |
 |--------------------------------------------------------------------|
 
-To be able to achieve these results, the parameters have to be adjusted. To model all three phases, the parameters in in the table are used 
+The parameters have to be adjusted to be able to achieve these results. To model all three phases, the parameters in in the table are used. 
 
 |-------------------------------------------------------|
 |parameter|Initial phase|hysterical phase|counter attack|
@@ -192,7 +201,7 @@ The results can be seen in the following table
 |--------------------------------------------------------------------|
 
 !split
-======= Murray PDE =======
+======= Simple PDE model =======
 ===== Travelling wave =====
 !bt
 \begin{equation} label{eq:simple_PDE}
@@ -222,9 +231,11 @@ And the following system can be study:
 	\end{aligned}
 \end{equation}
 !et
-An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is sat to 0.5. The initial value for *Susceptible* is 1 for the area and the *Removed* is sat to 0. The *Infected* class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travel towards the other side. The value $z$, which is defined in Eq. rref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
+An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is set to 0.5. The initial value for *Susceptible* is 1 for the area and the *Removed* is set to 0. The *Infected* class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travel towards the other side. The value $z$, which is defined in Eq. rref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
 
-FIGURE:[../2_PDE_Fisher_Kolmogoroff/plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/plots/Travelling_wave.webm,height=600 width=800] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
+
+By measure the the values at a spesific point, the travelling wave can be measured.
 
 FIGURE:[../2_PDE_Fisher_Kolmogoroff/plots/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the travelling wave measures at at $x=15$ in figure(ref{fig:1D_sub})
 
