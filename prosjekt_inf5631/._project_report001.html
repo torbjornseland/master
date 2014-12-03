@@ -1,42 +1,39 @@
 <!--
-Automatically generated HTML file from DocOnce source
+Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Project inf5631">
 
-<title>Project inf5631</title>
 
 
 <style type="text/css">
-/* blueish style */
+    /* blueish style */
 
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-/* pre style removed because it will interfer with pygments */
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
-div { text-align: justify; text-justify: inter-word; }
 </style>
-
 
 </head>
 
@@ -64,8 +61,8 @@ div { text-align: justify; text-justify: inter-word; }
               (' Linear system/equation ', 2, None, '___sec13'),
               (' Nonlinear equation ', 2, None, '___sec14'),
               (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
-              (' \\alpha(u) = |\\nabla(u)| ', 3, None, '___sec16'),
-              (' \\alpha(u) = |\\nabla(u)|^m ', 3, None, '___sec17'),
+              (' $\\alpha(u) = |\\nabla(u)|$ ', 3, None, '___sec16'),
+              (' $\\alpha(u) = |\\nabla(u)|^m$ ', 3, None, '___sec17'),
               (' Solution for the biological equation ', 1, None, '___sec18'),
               (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
               (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
@@ -87,27 +84,26 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
 
 
 
     
 <a name="part0001"></a>
-<p>
 <!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-<div style="text-align: right;"><a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
-</p>
 
 <p>
 <!-- !split -->
@@ -159,7 +155,7 @@ $$
 The correct value of \( u \) can be compared with the pre-produced \( u\_ \) each round. If the difference between them is less than a predefined limit, the new solution is accepted. If not, the new \( u\_ \) will be a combination of \( u\_ \) and \( u \). How the combination is weighted is called relaxation. 
 $$
 \begin{equation*}
-u\_ = \gamma u + (1-\gamma)u\_,\qquad 0 < = \gamma < =1
+u\_ = \gamma u + (1-\gamma)u\_,\qquad 0<= \gamma <=1
 \end{equation*}
 $$
 
@@ -283,13 +279,10 @@ This can be plotted for different values of \( M \)
 The model breaks down if \( M=0 \), since this gives a nonexistent initial condition. 
 <p>
 <!-- begin bottom navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-<div style="text-align: right;"><a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._project_report000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_report002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
-</p>
 
 <!-- ------------------- end of main content --------------- -->
 

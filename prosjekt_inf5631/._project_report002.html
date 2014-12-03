@@ -1,42 +1,39 @@
 <!--
-Automatically generated HTML file from DocOnce source
+Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Project inf5631">
 
-<title>Project inf5631</title>
 
 
 <style type="text/css">
-/* blueish style */
+    /* blueish style */
 
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-/* pre style removed because it will interfer with pygments */
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
-div { text-align: justify; text-justify: inter-word; }
 </style>
-
 
 </head>
 
@@ -64,8 +61,8 @@ div { text-align: justify; text-justify: inter-word; }
               (' Linear system/equation ', 2, None, '___sec13'),
               (' Nonlinear equation ', 2, None, '___sec14'),
               (' $\\alpha(u)$ = u ', 3, None, '___sec15'),
-              (' \\alpha(u) = |\\nabla(u)| ', 3, None, '___sec16'),
-              (' \\alpha(u) = |\\nabla(u)|^m ', 3, None, '___sec17'),
+              (' $\\alpha(u) = |\\nabla(u)|$ ', 3, None, '___sec16'),
+              (' $\\alpha(u) = |\\nabla(u)|^m$ ', 3, None, '___sec17'),
               (' Solution for the biological equation ', 1, None, '___sec18'),
               (' Fisher-Kolmogoroff equation ', 3, None, '___sec19'),
               (' $\\alpha(u)= u$ ', 3, None, '___sec20'),
@@ -87,27 +84,26 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
 
 
 
     
 <a name="part0002"></a>
-<p>
 <!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._project_report001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-<div style="text-align: right;"><a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._project_report001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
-</p>
 
 <p>
 <!-- !split -->
@@ -220,7 +216,7 @@ The animation under represents different values for \( k \). All simulations dif
     <source src='paramovies/constant.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>A linear diffusion term simulated with four different values, 0.01,0.1,1 and 10 for the value \( k \)</em></p>
+<p><em>A linear diffusion term simulated with four different values, 0.01,0.1,1 and 10 for the value $k$</em></p>
 
 <h2>Nonlinear equation  <a name="___sec14"></a></h2>
 The diffusion term will be non linear for all $\alpha$s that includes \( u \). Picard Iteration can be used to solve non-linear equations. This method is explained in the previous section
@@ -276,7 +272,7 @@ These results shows the behavior of \( u\_ \) when it varies from a large error 
 <br />
 An important aspect to be aware of when working with diffusion equation is that the result after a certain time will be close to equal in all the simulations. This happens because of the equilibrium principle. An example of this is the temperature in a room. The diffusion will cause it to go towards a smooth and balanced temperature in each point of the room. Therefore it is more interesting to look at the movement towards the equilibrium than the final result.
 
-<h3>\alpha(u) = |\nabla(u)|  <a name="___sec16"></a></h3>
+<h3>\( \alpha(u) = |\nabla(u)| \)  <a name="___sec16"></a></h3>
 
 $$
 \begin{equation}
@@ -339,7 +335,7 @@ This simulation results in a function with a noise error in both directions. Thi
 <p>
 Since the error tolerance is set to 10^-5, the simulation is smooth for the values in the animation. A smaller error tolerance gives a more correct solution, however it also demands a higher computational power. It is therefore important to choose the error tolerance based on the expected results
 
-<h3>\alpha(u) = |\nabla(u)|^m  <a name="___sec17"></a></h3>
+<h3>\( \alpha(u) = |\nabla(u)|^m \)  <a name="___sec17"></a></h3>
 
 $$
 \begin{equation}
@@ -371,13 +367,10 @@ $$
 Here, the length of the simulation, \( T \), is set to be quite large. This is to show the effect of the power term in this function. The function moves faster towards zero when the power term is low, however it seems that the equilibrium state for all simulations are 0. The power term  and the derivative of \( u \) affects the speed. When the concentration goes towards 0 this results in a flatter shape. The value of \( \alpha \) will move towards 0 as the derivative moves towards 0. Since the concentration is under 1,  a power term above 1 will decrease the solution.  
 <p>
 <!-- begin bottom navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._project_report001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-<div style="text-align: right;"><a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
+<a href="._project_report001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._project_report003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
-</p>
 
 <!-- ------------------- end of main content --------------- -->
 

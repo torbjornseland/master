@@ -357,7 +357,7 @@ These results shows the behavior of $u\_$ when it varies from a large error tole
 <linebreak>
 <linebreak>
 An important aspect to be aware of when working with diffusion equation is that the result after a certain time will be close to equal in all the simulations. This happens because of the equilibrium principle. An example of this is the temperature in a room. The diffusion will cause it to go towards a smooth and balanced temperature in each point of the room. Therefore it is more interesting to look at the movement towards the equilibrium than the final result.
-=== \alpha(u) = |\nabla(u)| ===
+=== $\alpha(u) = |\nabla(u)|$ ===
 !bt
 \begin{equation}
 \alpha(u) = |\nabla(u)|
@@ -396,7 +396,7 @@ This simulation results in a function with a noise error in both directions. Thi
 MOVIE: [movies/spatial_abs_std_picard_tol__5.webm,height=300,width=375] The same simulation as the previous animation. Here the error tolerance is set to 10^-5
 
 Since the error tolerance is set to 10^-5, the simulation is smooth for the values in the animation. A smaller error tolerance gives a more correct solution, however it also demands a higher computational power. It is therefore important to choose the error tolerance based on the expected results
-=== \alpha(u) = |\nabla(u)|^m ===
+=== $\alpha(u) = |\nabla(u)|^m$ ===
 !bt
 \begin{equation}
 	\alpha(u) = |\nabla(u)|^m

@@ -1,57 +1,100 @@
-<!--
-Automatically generated HTML file from Doconce source
-(https://github.com/hplgit/doconce/)
--->
-<html>
-<head>
+<!DOCTYPE html>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Presentation of project in inf5631">
 
 
 
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
 <style type="text/css">
-    /* blueish style */
-
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
-
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
 </style>
 
 </head>
 
-<!-- tocinfo
-{'highest level': 1,
- 'sections': [(' Short presentation of project ', 1, None, '___sec0'),
-              (' Travelling wavefront ', 1, None, '___sec1'),
-              (' Reaction term ', 1, None, '___sec2'),
-              (' Carrying capacity ', 2, None, '___sec3'),
-              (' Reproduction rate ', 2, None, '___sec4'),
-              (' Diffusion term ', 1, None, '___sec5'),
-              (' A linear solution ', 2, None, '___sec6'),
-              (' Non linear solution ', 2, None, '___sec7'),
-              (' Solution for the biological model ', 1, None, '___sec8'),
-              (' Standard Fisher-Kolmogoroff equation ', 2, None, '___sec9')]}
-end of tocinfo -->
-
 <body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
 
 
 
@@ -73,12 +116,10 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
-<!-- begin top navigation -->
-<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
-<!-- end top navigation -->
 
-<p>
+
+
+<section>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -87,29 +128,503 @@ MathJax.Hub.Config({
 <center><h1>Presentation of project in inf5631</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Torbj&#248;rn Seland -->
+<!-- author(s): Torbjørn Seland -->
 
 <center>
-<b>Torbj&#248;rn Seland</b> 
+<b>Torbjørn Seland</b> 
 </center>
 
 
-<p>
+<p>&nbsp;<br>
 <!-- institution(s) -->
-<p>
-<center><h4>Dec 2, 2014</h4></center> <!-- date -->
+<p>&nbsp;<br>
+<center><h4>Dec 3, 2014</h4></center> <!-- date -->
 <p>
 <!-- doconce format html project_torbjorn.do.txt --pygments_html_style=native --keep_pygments_html_bg --encoding=utf-8 -->
 <!-- doconce slides_html project_torbjorn reveal --html_slide_theme=darkgray -->
-<p>
-<!-- begin bottom navigation -->
-<a href="._project_torbjorn001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
-<!-- end bottom navigation -->
 
-<!-- ------------------- end of main content --------------- -->
+</section>
+
+
+<section>
+
+<h1>Short presentation of project  <a name="___sec0"></a></h1>
+Study of the Density-Dependent Diffusion-Reaction-Diffusion Model Ref.<a href="#mjx-eqn-1">(1)</a>
+<p>&nbsp;<br>
+$$
+\begin{align} \tag{1}
+u_t =& \nabla \cdot \alpha(u)\nabla u + f(u)\\
+u(x,0) =& I(x)\notag \\
+u(0,t)=& 0\notag \\
+u(L,t)=& 0\notag
+\end{align}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Overview of the presentation
+
+<ul>
+<p><li> Travelling wavefront</li>
+<p><li> Reaction term</li>
+<p><li> Diffusion term</li>
+<p><li> Solution of the biological equation</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h1>Travelling wavefront  <a name="___sec1"></a></h1>
+The idea is to study the size of the wave with constant speed \( c \)
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{2}
+u(x,t) = u(x-ct) = u(z), z = x-ct
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+The numerical solutions can be compared with the analytical, to check the  effect from \( \Delta t \). Here \( \Delta t \) varies from 0.4 to 0.02.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_wavefront_dt.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Analytical solution plotted with numerical solutions</em></p>
+
+
+<p>
+The numerical solution has got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is to prevent that the boundaries don't affect the error estimate.
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">   dt   </th> <th align="center"> error  </th> <th align="center"> order  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   0.4         </td> <td align="center">   0.967214    </td> <td align="center">   0.0         </td> </tr>
+<tr><td align="center">   0.08        </td> <td align="center">   0.408244    </td> <td align="center">   0.53        </td> </tr>
+<tr><td align="center">   0.02        </td> <td align="center">   0.131734    </td> <td align="center">   0.81        </td> </tr>
+</tbody>
+</table>
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Reaction term  <a name="___sec2"></a></h1>
+The reaction term describes the change in concentration in a certain point. This variation is only affected
+by the local chemical reaction.
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{3}
+u_t = f(u)
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+To see the properties of this equation, it can be discretized and solved numerically for
+different values of \( f(u) \).
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u_t =& f(u)\\
+\frac{u^n_i-u^{n-1}_i}{\Delta t}=& f(u^n_i)\\
+u^n_i-\Delta t f(u^n_i) =& u^{n-1}_i
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+This gives a linear equation \( Au = b \) that easy can be solved. Here the Fisher Kolmogoroff is used
+<p>&nbsp;<br>
+$$
+\begin{equation}
+f(u) = ru(1-\frac{u}{M})
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<h2>Carrying capacity  <a name="___sec3"></a></h2>
+Carrying capacity describes the maximum concentration for each point.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/time.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+All simulations goes towards their carrying capacity and stabilizes here. The reproduction rate, \( r \), has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all cases.
+
+<h2>Reproduction rate  <a name="___sec4"></a></h2>
+The reproduction rate controls the speed of reproduction
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/time_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+This controls the speed towards carrying capacity. A larger reproduction rate will bring the solution faster
+towards the steady state, which is controlled by \( M \). The carrying capacity is sat to \( M=0.8 \).
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Diffusion term  <a name="___sec5"></a></h1>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+	u_t = \nabla \cdot \alpha(u)\nabla u
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+The function \( \alpha(u) \) has a major influence on the spatial term and affects the diffusion of the model. To solve this equation numerically, the equation needs to be discretized.
+<p>&nbsp;<br>
+$$
+\begin{equation*}
+	\left[D_t^-u=D_x(\alpha(u) D_x u)\right]
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+This will result in a tridiagonal matrix A with the values
+<p>&nbsp;<br>
+$$
+\begin{align} \tag{4}
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
+\end{align}                               
+$$
+<p>&nbsp;<br>
+
+The boundary conditions are specified to be zero. Implementing these boundary conditions requires changes the following terms in the matrix, A.
+<p>&nbsp;<br>
+$$
+\begin{align*}
+A_{0,0} &= 1,\\
+A_{0,1} &= 0,\\
+A_{N_x,N_x-1} &= 0,\\
+A_{N_x,N_x} &= 1
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+The b array with known values will be
+<p>&nbsp;<br>
+$$
+\begin{align*}
+b_0 &= 0,\\
+b_i &= u^{n-1}_i,\quad i=1,\ldots,N_x-1,\\
+b_{N_x} &= 0 
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+<h2>A linear solution  <a name="___sec6"></a></h2>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+	\alpha(u) = k
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Gives the following tridiagonal matrix
+<p>&nbsp;<br>
+$$
+\begin{align*} \tag{5}
+A_{i,i} =& 1+\frac{\Delta t}{\Delta x^2}(2k)=1+\frac{2k\Delta t}{\Delta x^2}\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(k)=-\frac{k \Delta t}{\Delta x^2}\\
+\end{align*}                               
+$$
+<p>&nbsp;<br>
+
+The simulation can be seem under
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/constant.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+<h2>Non linear solution  <a name="___sec7"></a></h2>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+	\alpha(u) = u\\
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+This gives a nonlinear problem. \( u \) can here be replaced by \( u\_ \).
+<p>&nbsp;<br>
+$$
+\begin{align*} 
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+2u\__{i}+u\__{i-1})\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i}+u\__{i-1})\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
+\end{align*}                               
+$$
+<p>&nbsp;<br>
+
+The function will be produced with different error tolerance. First a simulation where only the previous value \( u\_ \) is used in matrix A. This is equivalent to a very large error tolerance. Then the error tolerance will be reduced in order to carry out a proper Picard Iteration.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/submovies/ordinary_sub.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>ordinary with different tolerance for Picard Iteration</em></p>
+
+
+<p>
+These results shows the behavior of \( u\_ \) when it varies from a large error tolerance,the previous time step, up to a error tolerance of \( 10^{-7} \). The simulation without any Picard Iteration gives a discontinuity in each direction. This becomes smaller the closer \( u\_ \) goes towards \( u \). 
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Solution for the biological model  <a name="___sec8"></a></h1>
+The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. The Fisher Kolmogoroff can be inserted in the reaction term, \( f(u) \).
+<p>&nbsp;<br>
+$$
+\begin{align} \tag{6}
+A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
+\end{align}                               
+$$
+<p>&nbsp;<br>
+
+<h2>Standard Fisher-Kolmogoroff equation  <a name="___sec9"></a></h2>
+This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity, \( M \), as shown in the section above. The diffusion term will at the same time try to drag the function towards its equilibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values, \( k \), in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation 
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_2.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>r=1,M=1</em></p>
+
+
+<p>
+The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is dominated. But when \( \alpha=10 \), the solution diffuses fast towards zero, and the diffusion term becomes dominated. The simulations under shows the influence of variations in the capacity and reproduction rate.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_M.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>r=1, $\alpha$=1</em></p>
+
+
+<p>
+Here they tend towards their capacity, while \( \alpha \) drags them down at the boundary.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>M=1, $\alpha$=1</em></p>
+
+
+<p>
+When the reproduction rate is to weak, the solution will not reach the capacity state, which is sat to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \).
+
+<p>
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
 
 
 </body>
 </html>
-    
-
