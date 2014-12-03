@@ -184,7 +184,7 @@ Overview of the presentation
 <h1>Fisher Kolmogoroff equation  <a name="___sec1"></a></h1>
 
 <ul>
-<p><li> The Fisher-Kolmogoroff equation, now referred as FK.The FK can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{M}) \) in Eq.<a href="#mjx-eqn-1">(1)</a>.</li>
+<p><li> The Fisher-Kolmogoroff equation can be produced by replacing \( \alpha(u)=k \), where \( k \) is a constant, and \( f(u) = ru(1-\frac{u}{M}) \) in Eq.<a href="#mjx-eqn-1">(1)</a>.</li>
 <p><li> This was proposed as a one-dimensional model by Fisher(1937) to describe the spread of an advantageous gene in a population.</li> 
 <p><li> Kolmogoroff et al.(1937) did a study of this equation and obtained some of the basic analytical results Ref.<a href="#murray2002mathematical">[1]</a>.</li> 
 </ul>
@@ -207,12 +207,7 @@ $$
 <h1>Travelling wavefront  <a name="___sec2"></a></h1>
 
 <h2>Motivation for the travelling wavefront  <a name="___sec3"></a></h2>
-
-<ul>
-<p><li> A wave that travels without any changes in the shape and has a speed given by a constant, is called a travelling wave.</li> 
-</ul>
-<p>
-
+A wave that travels without any changes in the shape and has a constant, is called a travelling wave. 
 <p>&nbsp;<br>
 $$
 \begin{equation} \tag{3}
@@ -246,7 +241,7 @@ Will give
 <p>&nbsp;<br>
 $$
 \begin{equation}
-k\frac{d^2u}{dx^2} + c\frac{du}{dx} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/k} 
+k\frac{d^2u}{dz^2} + c\frac{du}{dz} = 0,\hspace{8mm} \Rightarrow \hspace{8mm} u(z) = A + Be^{-cz/k} 
 \end{equation}
 $$
 <p>&nbsp;<br>
@@ -261,7 +256,7 @@ Then \( B \) needs to be zero, since the exponential becomes unbounded when \( z
 <section>
 
 <h2>Analytical solution  <a name="___sec4"></a></h2>
-The Fisher Kolmogoroff is a good equation to use when studying the Diffusion-Reacion equation. The equation can be rescaled. And this results in
+The equation can be rescaled. And this results in
 the equation
 <p>&nbsp;<br>
 $$
@@ -271,16 +266,7 @@ U'' +cU' + U(1-U) = 0
 $$
 <p>&nbsp;<br>
 
-An analytical solution of Eq.ref{eq:ord_diff} can be written
-<p>&nbsp;<br>
-$$
-\begin{equation} \tag{5}
-U(z) = \frac{1}{(1+ae^{bz})^s}
-\end{equation}
-$$
-<p>&nbsp;<br>
-
-Here \( a \), \( b \) and \( s \) are positive constants. The values are set to
+An analytical solution of Eq.<a href="#mjx-eqn-4">(4)</a> can be written, with the following parameter values
 <p>&nbsp;<br>
 $$
 a = \sqrt{2}-1,\hspace{8mm} s= 2,\hspace{8mm}b = \frac{1}{\sqrt{6}},\hspace{8mm}c=\frac{5}{\sqrt{6}}
@@ -296,31 +282,33 @@ U(z) = \frac{1}{[1+(\sqrt{2}-1)=e^{\frac{z}{\sqrt{6}}}]^2}
 $$
 <p>&nbsp;<br>
 
-The analytical simulation of the wavefront can be seen in Fig.<a href="#fig:wavefront_analytical">fig:wavefront_analytical</a> below. 
+The analytical simulation: 
 
 <p>
 
 <div>
-<video  loop controls width='375' height='365' preload='none'>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/movies/wave_front_analytical.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em><a name="fig:wavefront_analytical"></a> Animation of a analytical wavefront with parameter values set to \( a=\sqrt{2}-1 \), \( s=2 \), \( b=\frac{1}{\sqrt{6}} \) and \( c=\frac{5}{\sqrt{6}} \). x values along the x-axis and the concentration along the y-axis</em></p>
+<p><em><a name="fig:wavefront_analytical"></a></em></p>
 
 
 <p>
-The numerical solution with different \( \Delta t \) can be compared to the analytical solution. Here \( \Delta t \) varies from 0.4 to 0.02. This simulation can be seen in Fig.<a href="#fig:compare_wavefronts">fig:compare_wavefronts</a>
+The numerical solution with different \( \Delta t \) can be compared to the analytical solution. Here \( \Delta t \) varies from 0.4 to 0.02. 
 
 <p>
 
 <div>
-<video  loop controls width='375' height='365' preload='none'>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_constant_wavefront_dt.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em><a name="fig:compare_wavefronts"></a> Animation of an analytical solution plotted against numerical solutions. The values of \( \Delta t \) are 0.4,0.08 and 0.02</em></p>
+<p><em><a name="fig:compare_wavefronts"></a></em></p>
 
 
 <p>
-The numerical solutions have got the exact analytical solution as initial condition. The boundary has been updated each time step to the correct analytical solution. This is done to prevent the boundaries from affecting the error estimate. By studying the simulation, one can see that the numerical solution simulated with \( \Delta t = 0.4 \) gives a large error, and will consequently be useless. The smallest error is given by \( \Delta t = 0.02 \). This is first seen when the analytical solution reaches \( x=40 \)
+This table shows how the error goes to zero when \( \Delta t \) goes towards zero. The order of the error approaches , which is the expected order for \( \Delta t \) dt.
 
 <p>
 <table border="1">
@@ -334,9 +322,6 @@ The numerical solutions have got the exact analytical solution as initial condit
 </tbody>
 </table>
 <p>
-This table shows how the error goes to zero when \( \Delta t \) goes towards zero. The order of the error approaches , which is the expected order for \( \Delta t \) dt.
-
-<p>
 
 </section>
 
@@ -348,15 +333,14 @@ The reaction term describes the change in concentration in a certain point. This
 by the local chemical reaction.
 <p>&nbsp;<br>
 $$
-\begin{equation} \tag{6}
+\begin{equation} \tag{5}
 u_t = f(u)
 \end{equation}
 $$
 <p>&nbsp;<br>
 
 To see the properties of this equation, it can be discretized and solved numerically for
-different values of \( f(u) \).
-
+different values of \( f(u) \). Backward Euler is used for the discretization.
 <p>&nbsp;<br>
 $$
 \begin{align*}
@@ -376,7 +360,44 @@ f(u) = ru(1-\frac{u}{M})
 $$
 <p>&nbsp;<br>
 
-<h2>Carrying capacity  <a name="___sec6"></a></h2>
+<h2>Picard Iteration  <a name="___sec6"></a></h2>
+A Fisher-Kolmogoroff term is nonlinear, and a method is required to solve this term. Here, Picard is used. 
+<p>&nbsp;<br>
+$$
+\begin{equation} \tag{6}
+f(u) = ru(1-\frac{u}{M})
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+The idea in Picard iteration is to replace one of the \( u \) values in the nonlinear part with a known \( u\_ \). 
+<p>&nbsp;<br>
+$$
+\begin{equation*}
+	u\_ = u^{n-1}
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+The value of \( u \) can be compared with the pre-produced \( u\_ \) each round. This can be adjusted to the expected error tolerance. A new \( u\_ \) can be produced by relaxation:
+<p>&nbsp;<br>
+$$
+\begin{equation*}
+u\_ = \gamma u + (1-\gamma)u\_,\qquad 0<= \gamma <=1
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+The new equation will be
+<p>&nbsp;<br>
+$$
+\begin{align*}
+	u^n_i(1- \Delta t r(1-\frac{u\__i^n}{M}))=& u^{n-1}_i\\
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+<h2>Carrying capacity  <a name="___sec7"></a></h2>
 Carrying capacity describes the maximum concentration for each point.
 
 <p>
@@ -390,9 +411,9 @@ Carrying capacity describes the maximum concentration for each point.
 
 
 <p>
-All simulations goes towards their carrying capacity and stabilizes here. The reproduction rate, \( r \), has been set equal to one for all the simulations in order to isolate the effect of varying the carrying capacity. The time from initial conditions to final conditions is quite similar in all cases.
+All simulations goes towards their carrying capacity and stabilizes here.
 
-<h2>Reproduction rate  <a name="___sec7"></a></h2>
+<h2>Reproduction rate  <a name="___sec8"></a></h2>
 The reproduction rate controls the speed of reproduction
 
 <p>
@@ -407,7 +428,7 @@ The reproduction rate controls the speed of reproduction
 
 <p>
 This controls the speed towards carrying capacity. A larger reproduction rate will bring the solution faster
-towards the steady state, which is controlled by \( M \). The carrying capacity is sat to \( M=0.8 \).
+towards the steady state.
 
 <p>
 
@@ -416,7 +437,70 @@ towards the steady state, which is controlled by \( M \). The carrying capacity 
 
 <section>
 
-<h1>Diffusion term  <a name="___sec8"></a></h1>
+<h2>Scaling  <a name="___sec9"></a></h2>
+The function can be scaled to give a better overview of the parameters \( r \) and \( M \). The idea is get the solution dimensionless. A new function \( \bar u(\bar t) \) with:
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\bar u = \frac{u}{u_c}, \hspace{8 mm} \bar t = \frac{t}{t_c}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Here \( u_c \) and \( t_c \) are characteristic sizes of the range for \( u \) and \( t \). These values are set to be:
+<p>&nbsp;<br>
+$$
+\begin{equation}
+u_c = M,\hspace{8 mm} t_c = \frac{1}{r}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+Fisher is inserted for \( f(u) \).
+<p>&nbsp;<br>
+$$
+\begin{align*}
+\frac{\partial u}{\partial t} = ru(1-\frac{u}{M})\\
+\frac{\partial (u_c\bar u)}{\partial \bar t}\frac{\partial \bar t}{\partial t} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+u_c\frac{\partial \bar u}{\partial \bar t}\frac{1}{t_c} = ru_c\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = t_c r\bar u(1-\frac{u_c\bar u}{M})\\
+\frac{\partial \bar u}{\partial \bar t} = \bar u(1-\bar u)
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+The initial condition for \( \bar u \) can be found by using the initial condition from \( u(x,0)= gauss(x) \).
+<p>&nbsp;<br>
+$$
+\begin{equation*}
+\bar u(x,0) = \frac{u(x,0)}{u_c} = \frac{gauss(x)}{M}
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+This can be plotted for different values of \( M \)
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/movies/scaling.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+The model breaks down if \( M=0 \), since this gives a nonexistent initial condition. 
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Diffusion term  <a name="___sec10"></a></h1>
 <p>&nbsp;<br>
 $$
 \begin{equation}
@@ -468,7 +552,7 @@ b_{N_x} &= 0
 $$
 <p>&nbsp;<br>
 
-<h2>A linear solution  <a name="___sec9"></a></h2>
+<h2>A linear solution  <a name="___sec11"></a></h2>
 <p>&nbsp;<br>
 $$
 \begin{equation}
@@ -499,7 +583,18 @@ The simulation can be seem under
 </div>
 <p><em></em></p>
 
-<h2>Non linear solution  <a name="___sec10"></a></h2>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Nonlinear solutions  <a name="___sec12"></a></h2>
+
+<h3>\( \alpha(u) \) = u  <a name="___sec13"></a></h3>
+
 <p>&nbsp;<br>
 $$
 \begin{equation}
@@ -521,7 +616,7 @@ A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(u\__{i+1}+u\__{i})
 $$
 <p>&nbsp;<br>
 
-The function will be produced with different error tolerance. First a simulation where only the previous value \( u\_ \) is used in matrix A. This is equivalent to a very large error tolerance. Then the error tolerance will be reduced in order to carry out a proper Picard Iteration.
+The function will be produced with different error tolerance. Picard iteration is used.
 
 <p>
 
@@ -532,9 +627,73 @@ The function will be produced with different error tolerance. First a simulation
 </div>
 <p><em>ordinary with different tolerance for Picard Iteration</em></p>
 
+<h3>\( \alpha(u) = |\nabla(u)| \)  <a name="___sec14"></a></h3>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\alpha(u) = |\nabla(u)|
+\end{equation}
+$$
+<p>&nbsp;<br>
+
 
 <p>
-These results shows the behavior of \( u\_ \) when it varies from a large error tolerance,the previous time step, up to a error tolerance of \( 10^{-7} \). The simulation without any Picard Iteration gives a discontinuity in each direction. This becomes smaller the closer \( u\_ \) goes towards \( u \). 
+The first simulation utilizes a large error tolerance while the second one has a tolerance of \( 10^{-5} \).
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/movies/spatial_abs_std.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Animation of a diffusion equation with \( \alpha(u) = |\nabla(u)| \). A large error tolerance is used for Picard.</em></p>
+
+
+<p>
+The noise error in the animation decreases as the function is flattened. The same simulation can be run with the error tolerance set to \( 10^{-5} \)
+
+<p>
+
+<div>
+<video  loop controls width='600' height='500' preload='none'>
+    <source src='../prosjekt_inf5631/movies/spatial_abs_std_picard_tol__5.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>The same simulation as the previous animation. Here the error tolerance is set to 10^-5</em></p>
+
+<h3>\( \alpha(u) = |\nabla(u)|^m \)  <a name="___sec15"></a></h3>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+	\alpha(u) = |\nabla(u)|^m
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+This equation is solved in the exact same way as the equation above. The matrix<a href="#mjx-eqn-9">(9)</a> A from the section above can be used. A power, \( m \), is added to the matrix.
+<p>&nbsp;<br>
+$$
+\begin{align} \tag{9}
+A_{i,i} =& 1+\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m+ \left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)\notag\\
+A_{i,i-1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__i-u\__{i-1}}{\Delta x}\right|^m)\notag\\
+A_{i,i+1} =&-\frac{\Delta t}{2\Delta x^2}(\left|\frac{u\__{i+1}-u\__i}{\Delta x}\right|^m)
+\end{align}                               
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
 
 <p>
 
@@ -543,11 +702,11 @@ These results shows the behavior of \( u\_ \) when it varies from a large error 
 
 <section>
 
-<h1>Solution for the biological model  <a name="___sec11"></a></h1>
-The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="#mjx-eqn-1">(1)</a>. This can be inserted in a matrix. This is done by using the two linear equations from the earlier sections. The Fisher Kolmogoroff can be inserted in the reaction term, \( f(u) \).
+<h1>Solution for the biological model  <a name="___sec16"></a></h1>
+The combination of the reaction part and the spatial part gives the reaction-diffusion equation<a href="#mjx-eqn-1">(1)</a>. This can be inserted in a tridiagonal matrix.
 <p>&nbsp;<br>
 $$
-\begin{align} \tag{9}
+\begin{align} \tag{10}
 A_{i,i} =& 1+\Delta t(r(1-\frac{u^n_i}{m})+\frac{\alpha(u_{i+\frac{1}{2}})+\alpha(u_{i-\frac{1}{2}})}{\Delta x^2})\notag\\
 A_{i,i-1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i-\frac{1}{2}}))\notag\\
 A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
@@ -555,21 +714,22 @@ A_{i,i+1} =&-\frac{\Delta t}{\Delta x^2}(\alpha(u_{i+\frac{1}{2}}))
 $$
 <p>&nbsp;<br>
 
-<h2>Standard Fisher-Kolmogoroff equation  <a name="___sec12"></a></h2>
-This simulation shows how the reaction term and the spatial diffusion term affects each other.The reaction term will go towards equilibrium state which is sat by the carrying capacity, \( M \), as shown in the section above. The diffusion term will at the same time try to drag the function towards its equilibrium state. The reaction term is defined as a Fisher Kolmogoroff term, while the diffusion part consist of different constant values, \( k \), in the \( \alpha(u) \). This gives a Fisher Kolmogoroff equation 
 
 <p>
+The Fisher Kolmogoroff equation is used in the reaction term, \( f(u) \).
+
+<h2>Linear solutions  <a name="___sec17"></a></h2>
 
 <div>
 <video  loop controls width='600' height='365' preload='none'>
     <source src='../prosjekt_inf5631/paramovies/reac_constant_2.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>r=1,M=1</em></p>
+<p><em></em></p>
 
 
 <p>
-The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. While the constant \( \alpha \) varies from 0.01 up to 10. This equation shows how the parts affects each other. When \( \alpha=0.01 \), it is not able to drag the diffusion towards zero. The reaction term is dominated. But when \( \alpha=10 \), the solution diffuses fast towards zero, and the diffusion term becomes dominated. The simulations under shows the influence of variations in the capacity and reproduction rate.
+The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \), for the reaction term. 
 
 <p>
 
@@ -578,7 +738,7 @@ The setup for this simulation is a standard Fisher where \( r=1 \) and \( M=1 \)
     <source src='../prosjekt_inf5631/paramovies/reac_constant_M.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>r=1, $\alpha$=1</em></p>
+<p><em></em></p>
 
 
 <p>
@@ -591,13 +751,94 @@ Here they tend towards their capacity, while \( \alpha \) drags them down at the
     <source src='../prosjekt_inf5631/paramovies/reac_constant_r.webm' type='video/webm; codecs="vp8, vorbis"'>
 </video>
 </div>
-<p><em>M=1, $\alpha$=1</em></p>
+<p><em></em></p>
 
 
 <p>
 When the reproduction rate is to weak, the solution will not reach the capacity state, which is sat to 1. When \( r \) becomes stronger, the solution reaches the carrying capacity, \( M \).
 
-<h1>Bibliography  <a name="___sec13"></a></h1>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Nonlinear solutions  <a name="___sec18"></a></h2>
+
+<h3>\( \alpha(u)=|\nabla u| \)  <a name="___sec19"></a></h3>
+
+Here, \( \alpha \) is set to,
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\alpha(u) = |\nabla(u)|
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_abs_std_r.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>Variations in the reproduction rate. Same function as the animation above. The carrying capacity is set to $M=1$</em></p>
+
+
+<p>
+This simulation is run for twice as long as the other simulations. The interesting observation here is \( r=0.1 \).
+
+<h3>\( \alpha(u)=|\nabla u|^m \)  <a name="___sec20"></a></h3>
+
+The diffusion part becomes weaker as the derivative of \( u \) goes towards 0.
+
+<p>
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_abs_std_power.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em>The function in the diffusion term is sat to $\alpha(u)=|\nabla u|^m$</em></p>
+
+
+<p>
+The strength of the diffusion term decreases as the power increases, when the derivative of \( u \) is under 1. 
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Further work  <a name="___sec21"></a></h1>
+
+<h2>Dirichlet vs Neumann boundary condition  <a name="___sec22"></a></h2>
+
+
+<div>
+<video  loop controls width='600' height='365' preload='none'>
+    <source src='../prosjekt_inf5631/paramovies/reac_boundary.webm' type='video/webm; codecs="vp8, vorbis"'>
+</video>
+</div>
+<p><em></em></p>
+
+
+<p>
+Neumann preserves the area under the function, while Dirichlet smoothes it towards zero. 
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Bibliography  <a name="___sec23"></a></h1>
 
 <!-- begin bibliography -->
 

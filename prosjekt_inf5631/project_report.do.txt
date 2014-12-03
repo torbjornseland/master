@@ -467,7 +467,6 @@ The diffusion part becomes weaker as the derivative of $u$ goes towards 0. This 
 
 MOVIE: [paramovies/reac_abs_std_power.webm, height=300,width=375] The function in the diffusion term is sat to $\alpha(u)=|\nabla u|^m$
 
-
 The power term, $m$, in the spatial diffusion term changes here. The reaction term consist of a standard Fisher. The strength of the diffusion term decreases as the power increases, when the derivative of $u$ is under 1. This gives the reaction term a chance to increase up to the carrying capacity.  A power term above 1 combined with a derivative of $u$ under 1 will lead to a lower value, and the diffusion term will be weaker. 
 
 !split
