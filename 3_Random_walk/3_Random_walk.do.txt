@@ -267,9 +267,11 @@ label{table:gauss_random}
 The average displacement and the standard deviation shows that a group of random walkes spread similar as a standard diffusion function. This result in a major group of random walkers. In the simulation in Fig.(ref{fig:gauss_random}), 10000 random walkers are used. By increasing the amount om random walkers, the precision will be better.
 
 ===== Epidemic in an English Boarding School =====
-This example has been common for all three systems, and will be used in this chapter. A random walker will after enough steps cover the whole area. This will also be the case for an infected student. A simulation is done for a student placed in a random position with random walk. The position of the student is measured at every 10. minute.  
+This example has been common for all three systems, and will be used in this chapter. The chance of getting infected requires a meeting between  infected person and a susceptible person..A random walker will after enough steps cover the whole area. A simulation is done for a student with a random position at initial time. A random step is performed every ten minutes with the lenght 3.96 m. The simulation is performed for 15 days, which results in 21600 random steps.
 
-FIGURE:[plots/random_walk_days.png, heigh=500 width=800 frac=0.8]
+FIGURE:[plots/random_walk_days.png, height=300 width=900 frac=0.8] label{fig:random_walker_days} The positions a random walker has covered in 1,5 and 15 days. A random step with lenght 3.96 m is performed every minute. The positions are plotted for every ten minutes. 
+
+By simulating the random walk
 
 !bt
 \begin{equation} label{eq:simple_PDE}

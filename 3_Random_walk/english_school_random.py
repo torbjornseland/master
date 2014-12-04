@@ -5,9 +5,12 @@ import os, sys,glob
 import random as rd
 import numpy as np
 
+from script_random_walk import get_ZMO, set_ZMO, get_HMO, set_HMO
+
 
 class creature(object):
-    def __init__(self,X,Y,id_,step,getcolor):
+
+    def __init__(self,X,Y,id_,step,getcolor,grid_size):
         self.x = rd.randint(0,X)
         self.y = rd.randint(0,Y)
         self.X = X
@@ -19,6 +22,7 @@ class creature(object):
         self.getcolor = getcolor
         self.no_steps = 0
         self.direction = 0
+        self.grid_size = grid_size
 
     def update(self, everyone):
         c = 1
@@ -113,18 +117,24 @@ class infected(creature):
         test_x = self.x
         test_y = self.y
         
-        i = int(self.x*grid_size/X)
-        j = int(self.y*grid_size/Y)
+        i = int(self.x*self.grid_size/self.X)
+        j = int(self.y*self.grid_size/self.Y)
         
-        if(i == grid_size):
+        if(i == self.grid_size):
             print "inne her"
             i = 0
-        if(j == grid_size):
+        if(j == self.grid_size):
             print "inne j"
             j = 0
         
         Zombie_force = [] 
         Human_force = [] 
+
+        ZMO = get_ZMO()
+        HMO = get_HMO()
+        print "---------------"
+        print "id",self.my_id
+        print ZMO
 
         for k in range(3):
             for l in range(3):
@@ -136,7 +146,7 @@ class infected(creature):
         z_power = len(Zombie_force)
         h_power = len(Human_force)
         #print "h_power",h_power
-        print "z_power",z_power
+        #print "z_power",z_power
        
         if(h_power != 0):
             for k in range(h_power):
@@ -156,7 +166,7 @@ class infected(creature):
             self.no_steps -= 1
          
     
-    
+
             #Removing zombie from position  
             count_pos = 0
             for k in ZMO[i+1,j+1]:
@@ -164,25 +174,28 @@ class infected(creature):
                     del ZMO[i+1,j+1][count_pos]
                 count_pos += 1
 
-            if(test_x > X):
-                self.x = test_x -X
+
+            if(test_x > self.X):
+                self.x = test_x -self.X
             elif(test_x < 0):
-                self.x = X + test_x
+                self.x = self.X + test_x
             else:
                 self.x = test_x
             
-            if(test_y > Y):
-                self.y = test_y -Y
+            if(test_y > self.Y):
+                self.y = test_y -self.Y
             elif(test_y < 0):
-                self.y = Y + test_y
+                self.y = self.Y + test_y
             else:
                 self.y = test_y
                 
             #Giving the zombie a new position
-            i = int(self.x*grid_size/X)
-            j = int(self.y*grid_size/Y)
+            i = int(self.x*self.grid_size/self.X)
+            j = int(self.y*self.grid_size/self.Y)
             ZMO[i+1,j+1].append(self.my_id)
-            #print "each round ZMN", ZMN    
+            print ZMO
+            
+            set_ZMO(ZMO)
 
     def walk(self):
         super(infected,self).walk()
@@ -259,159 +272,20 @@ def one_step(everyone):
     return x,y,c
 
 def first_step(everyone):
+    x = np.zeros(len(everyone))
+    y = np.zeros(len(everyone))
+    c = [0]*len(everyone)
+    counter = 0
     for e in everyone:
         p = e.coordinates()
-        x.append(p[0])
-        y.append(p[1])
-        c.append(e.color())
+        x[counter] = p[0]
+        y[counter] = p[1]
+        c[counter] = e.color()
     
+        counter += 1
     return x,y,c
 
 #################Script##########################
 #ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode = read_command_line()
 
-save_gap = 10
-steps = 21600
-print_plot = [1440,7200,21600]
-title_p = ['1 day', '5 days', '15 days']
-savename = ['plots/random_walk_1day.png' , 'plots/random_walk_5days.png', 'plots/random_walk_15days.png']
-makeplot = False #True
-makegraph = False
-savefile = "plots/english_school"
-SN = 1
-IN = 0
-X = 100
-Y = 100
-step = 3.96
-grid_size = 10
-HI = 0.5 
-path_x = []
-path_y = []
-
-grid_x = (X/float(grid_size))
-grid_y = (Y/float(grid_size))
-
-ZMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
-ZMN = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
-for i in range(grid_size+2):
-    for j in range(grid_size+2):
-        ZMO[i,j] = [] 
-        ZMN[i,j] = [] 
-
-HMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Human matrix old
-for i in range(grid_size+2):
-    for j in range(grid_size+2):
-        HMO[i,j] = [] 
-
-
-susceptible_ = []
-for id_ in range(0,SN):       #Making zombies
-    s = susceptible(X,Y,id_,step,'b')
-    susceptible_.append(s)
-    x,y = s.coordinates()
-    path_x.append(x)
-    path_y.append(y)
-    x_start =int((x*grid_size)/X) 
-    print x_start
-    y_start =int((y*grid_size)/Y) 
-    HMO[x_start+1,y_start+1].append(id_)  #Zombie matrix old
-
-infected_ = []
-for id_ in range(0,IN):       #Making zombies
-    i_ = infected(HI,X,Y,id_+SN,step,'r')
-    infected_.append(i_)
-    x,y = i_.coordinates()
-    print "x",x
-    x_start =int((x*grid_size)/X) 
-    y_start =int((y*grid_size)/Y) 
-    print "x_start",x_start
-    print "id",id_ + SN
-    ZMO[x_start+1,y_start+1].append(id_+SN)  #Zombie matrix old
-
-print "start HMO", HMO
-print "start ZMO", ZMO
-everyone = susceptible_ + infected_ 
-x = []
-y = []
-c = []
-
-#files = []
-
-counter = 0
-
-steps_array = np.linspace(0,steps,steps+1) 
-susceptible_array = np.zeros(steps+1)
-infected_array = np.zeros(steps+1)
-removed_array = np.zeros(steps+1)
-
-susceptible_array[0] = len(susceptible_)
-infected_array[0] = len(infected_)
-
-for i in range(0,steps):
-
-    if(counter == 0):
-        x, y, c = first_step(everyone)
-    else:
-        x, y, c = one_step(everyone)    
-
-    #print ZMO
-    if (i%save_gap==0):
-        path_x.append(x[0])
-        path_y.append(y[0])
-    for j in range(len(print_plot)):
-        if print_plot[j] == i:
-            plt.plot(path_x, path_y, 'o')
-            plt.axis([0,X,0,Y])
-            plt.title(title_p[j])
-            plt.savefig(savename[j])
-            plt.show()
-
-
-    if (makeplot and (i%save_gap==0)):
-        fig = plt.figure()
-        #imgplot = plt.imshow(img)
-        plt.scatter(x,y, c=c)
-        plt.axis([0,X,0,Y])
-        plt.savefig('moviefiles/tmp%04d.png' % (i/save_gap))
-        plt.close()
-
-    
-    if makegraph:
-        for e in everyone:
-            if (e.color() == 'r'):
-                infected_array[i+1] = infected_array[i+1]+ 1
-            elif (e.color() == 'b'):
-                susceptible_array[i+1] = susceptible_array[i+1]+ 1
-            else:
-                removed_array[i+1] = removed_array[i+1] + 1
-    
-
-    counter += 1
-makepath = True
-if makepath:
-    plt.plot(path_x, path_y, 'o')
-    plt.axis([0,X,0,Y])
-    plt.title(title_p[-1])
-    plt.savefig(savename[-1])
-    plt.show()
-
-if makeplot:
-    #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
-    #os.system('avconv -r 10 -i %s -vcodec libx264 %s' %('moviefiles/tmp%04d.png',savefile))
-    os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('moviefiles/tmp%04d.png',savefile))
-
-    for filename in glob.glob('moviefiles/tmp*.png'):
-        os.remove(filename)
-
-
-
-    
-if makegraph:
-    plt.plot(steps_array, susceptible_array,'b',label='Susceptible')
-    plt.plot(steps_array, infected_array,'r', label='Infected')
-    plt.plot(steps_array, removed_array,'k', label='Removed')
-    plt.legend()
-
-    plt.axis([0,steps,0,len(everyone)])
-    #plt.show()
     
