@@ -7,12 +7,14 @@ import numpy as np
 
 
 class creature(object):
-    def __init__(self,X,Y,id_step,getcolor):
+    def __init__(self,X,Y,id_,step,getcolor):
         self.x = rd.randint(0,X)
         self.y = rd.randint(0,Y)
         self.X = X
         self.Y = Y
         self.my_id = id_
+        self.step_x = step
+        self.step_y = step
         self.step = step
         self.getcolor = getcolor
         self.no_steps = 0
@@ -29,19 +31,35 @@ class creature(object):
         test_y = self.y + self.step*sin(self.direction)
         self.no_steps -= 1  
         
+        """
+        #Through the wall
         if(test_x > self.X):
             self.x = test_x - self.X
         elif(test_x < 0):
             self.x = self.X + test_x
         else:
             self.x = test_x
-            
         if(test_y > self.Y):
             self.y = test_y -self.Y
         elif(test_y < 0):
             self.y = self.Y + test_y
         else:
             self.y = test_y
+        """
+        if(test_x > self.X):
+            self.x = 2*self.X- test_x
+        elif(test_x < 0):
+            self.x = - test_x
+        else:
+            self.x = test_x
+
+        if(test_y > self.Y):
+            self.y = 2*self.Y - test_y
+        elif(test_y < 0):
+            self.y = - test_y
+        else:
+            self.y = test_y
+
 
     def walk(self):
         if rd.random() > 0.5:
@@ -82,15 +100,15 @@ class susceptible(creature):
         return super(susceptible,self).color()
 
 class infected(creature):
-    def __init__(self,*args):
+    def __init__(self,HI,*args):
         super(infected,self).__init__(*args)
-
+        self.HI = HI
     def update(self,everyone):
-        r_min = min_size
-        mx_min = 0
-        my_min = 0
-        mx_way = 1
-        my_way = 1
+        #r_min = min_size
+        #mx_min = 0
+        #my_min = 0
+        #mx_way = 1
+        #my_way = 1
         
         test_x = self.x
         test_y = self.y
@@ -117,12 +135,14 @@ class infected(creature):
         #Fighting
         z_power = len(Zombie_force)
         h_power = len(Human_force)
+        #print "h_power",h_power
+        print "z_power",z_power
        
         if(h_power != 0):
             for k in range(h_power):
                 human_infec = rd.random()
-                if(human_infec < (HI+0.0*z_power)):
-                    everyone[Human_force[k]].getcolor = 'c' #Human getting infected
+                if(human_infec < (self.HI+0.0*z_power)):
+                    everyone[Human_force[k]].getcolor = 'r' #Human getting infected
 
                                         
 
@@ -131,8 +151,8 @@ class infected(creature):
                 self.direction = rd.uniform(0,2*pi)
                 self.no_steps = rd.randint(1,20)
     
-            test_x = self.x + step_x*cos(self.direction) 
-            test_y = self.y + step_y*sin(self.direction)
+            test_x = self.x + self.step_x*cos(self.direction) 
+            test_y = self.y + self.step_y*sin(self.direction)
             self.no_steps -= 1
          
     
@@ -250,16 +270,23 @@ def first_step(everyone):
 #################Script##########################
 #ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode = read_command_line()
 
-steps = 100
-makeplot = True
-makegraph = True
+save_gap = 10
+steps = 21600
+print_plot = [1440,7200,21600]
+title_p = ['1 day', '5 days', '15 days']
+savename = ['plots/random_walk_1day.png' , 'plots/random_walk_5days.png', 'plots/random_walk_15days.png']
+makeplot = False #True
+makegraph = False
 savefile = "plots/english_school"
-SN = 621
-IN = 1
-X = 20
-Y = 20
-step = 0.1
+SN = 1
+IN = 0
+X = 100
+Y = 100
+step = 3.96
 grid_size = 10
+HI = 0.5 
+path_x = []
+path_y = []
 
 grid_x = (X/float(grid_size))
 grid_y = (Y/float(grid_size))
@@ -282,14 +309,27 @@ for id_ in range(0,SN):       #Making zombies
     s = susceptible(X,Y,id_,step,'b')
     susceptible_.append(s)
     x,y = s.coordinates()
-    x_start = 
-    ZMO[x_start+1,y_start+1].append(i)  #Zombie matrix old
+    path_x.append(x)
+    path_y.append(y)
+    x_start =int((x*grid_size)/X) 
+    print x_start
+    y_start =int((y*grid_size)/Y) 
+    HMO[x_start+1,y_start+1].append(id_)  #Zombie matrix old
 
 infected_ = []
-for i in range(0,IN):       #Making zombies
-    i_ = infected(X,Y,id_+SN,step,'r')
+for id_ in range(0,IN):       #Making zombies
+    i_ = infected(HI,X,Y,id_+SN,step,'r')
     infected_.append(i_)
+    x,y = i_.coordinates()
+    print "x",x
+    x_start =int((x*grid_size)/X) 
+    y_start =int((y*grid_size)/Y) 
+    print "x_start",x_start
+    print "id",id_ + SN
+    ZMO[x_start+1,y_start+1].append(id_+SN)  #Zombie matrix old
 
+print "start HMO", HMO
+print "start ZMO", ZMO
 everyone = susceptible_ + infected_ 
 x = []
 y = []
@@ -313,13 +353,26 @@ for i in range(0,steps):
         x, y, c = first_step(everyone)
     else:
         x, y, c = one_step(everyone)    
-    
-    if makeplot:
+
+    #print ZMO
+    if (i%save_gap==0):
+        path_x.append(x[0])
+        path_y.append(y[0])
+    for j in range(len(print_plot)):
+        if print_plot[j] == i:
+            plt.plot(path_x, path_y, 'o')
+            plt.axis([0,X,0,Y])
+            plt.title(title_p[j])
+            plt.savefig(savename[j])
+            plt.show()
+
+
+    if (makeplot and (i%save_gap==0)):
         fig = plt.figure()
         #imgplot = plt.imshow(img)
         plt.scatter(x,y, c=c)
         plt.axis([0,X,0,Y])
-        plt.savefig('moviefiles/tmp%04d.png'% counter)
+        plt.savefig('moviefiles/tmp%04d.png' % (i/save_gap))
         plt.close()
 
     
@@ -334,6 +387,13 @@ for i in range(0,steps):
     
 
     counter += 1
+makepath = True
+if makepath:
+    plt.plot(path_x, path_y, 'o')
+    plt.axis([0,X,0,Y])
+    plt.title(title_p[-1])
+    plt.savefig(savename[-1])
+    plt.show()
 
 if makeplot:
     #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
@@ -347,11 +407,11 @@ if makeplot:
 
     
 if makegraph:
-    plt.plot(steps_array, susceptible_array,'r',label='Susceptible')
-    plt.plot(steps_array, infected_array,'b', label='Infected')
+    plt.plot(steps_array, susceptible_array,'b',label='Susceptible')
+    plt.plot(steps_array, infected_array,'r', label='Infected')
     plt.plot(steps_array, removed_array,'k', label='Removed')
     plt.legend()
 
     plt.axis([0,steps,0,len(everyone)])
-    plt.show()
+    #plt.show()
     
