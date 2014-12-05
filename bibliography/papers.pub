@@ -115,9 +115,9 @@
    status:      published
    entrytype:   techreport
 * misc
-** "Walking Dead: Season 1"
+** Walking Dead: Season 1
    key:       walking_dead
-   author:    "F. Darabont, G. A. Hurd"
+   author:    F. Darabont, G. A. Hurd
    year:      2010-2011
    status:    published
    entrytype: misc

@@ -1,8 +1,8 @@
-\contentsline {section}{\numberline {1}Introduction to the chapter}{1}{section.1}
-\contentsline {section}{\numberline {2}Epidemic models}{2}{section.2}
-\contentsline {section}{\numberline {3}Simple Epidemic models}{3}{section.3}
+\contentsline {section}{\numberline {1}Introduction To The Chapter}{1}{section.1}
+\contentsline {section}{\numberline {2}Epidemic Models}{2}{section.2}
+\contentsline {section}{\numberline {3}Simple Epidemic Models}{3}{section.3}
 \contentsline {subsection}{\numberline {3.1}Threshold phenomenon}{4}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Epidemic in an English Boarding School 1978}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Epidemic in an English Boarding School 1978}{8}{subsection.3.2}
 \contentsline {section}{\numberline {4}Zombification}{9}{section.4}
 \contentsline {subsection}{\numberline {4.1}Threshold phenomenon}{11}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Parameters used in the model}{12}{subsection.4.2}

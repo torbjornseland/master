@@ -1,39 +1,42 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Geographic models">
 
+<title>Geographic models</title>
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -43,28 +46,31 @@ Automatically generated HTML file from Doconce source
               (' Simple system for spatial spread ', 1, None, '___sec1'),
               (' Travelling wave 1D ', 2, None, '___sec2'),
               (' Verifying the solution ', 2, None, '___sec3'),
-              (' Constant solution ', 3, None, '___sec4'),
-              (' Manufactured solution ', 3, None, '___sec5'),
-              (' Convergence rate ', 3, None, '___sec6'),
-              (' The spatial error ', 3, None, '___sec7'),
-              (' The temporal error ', 3, None, '___sec8'),
+              (' Constant solution ', 2, None, '___sec4'),
+              (' Manufactured solution ', 2, None, '___sec5'),
+              (' Convergence rate ', 2, None, '___sec6'),
+              (' The spatial error ', 2, None, '___sec7'),
+              (' The temporal error ', 2, None, '___sec8'),
               (' Travelling wave in 2D ', 2, None, '___sec9'),
-              (' A gaussian wave ', 3, None, '___sec10'),
+              (' A gaussian wave ', 2, None, '___sec10'),
               (' Change in initial flow ', 3, None, '___sec11'),
               (' Change in lambda ', 3, None, '___sec12'),
               (' Epidemic in an English Boarding School 1978 ',
                1,
                None,
                '___sec13'),
-              (' Introducing a Gaussian distribution of infective ',
-               3,
+              (' Introducing a Gaussian distribution of infected ',
+               2,
                None,
                '___sec14'),
               (' Zombiefication ', 1, None, '___sec15'),
-              (' Where does the infected one arises ', 3, None, '___sec16'),
-              (' Lock in different areas ', 2, None, '___sec17'),
+              (' The position of the *Infected* group ', 2, None, '___sec16'),
+              (' Free areas for the *Susceptible* group ',
+               2,
+               None,
+               '___sec17'),
               (' Ten minutes at Frederikkeplassen ', 3, None, '___sec18'),
-              (' random distribution ', 3, None, '___sec19'),
+              (' Random distribution ', 2, None, '___sec19'),
               (' Appendix ', 1, None, '___sec20'),
               (' Sympy to find manufactured solution ', 3, None, '___sec21'),
               (' Discretization ', 2, None, '___sec22'),
@@ -92,31 +98,21 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
     
-<a name="part0000"></a>
-<!-- begin top navigation -->
-<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
-<!-- end top navigation -->
-
-<p>
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Geographic models </title>
 
 <center><h1>Geographic models </h1></center>  <!-- document title -->
 
@@ -131,54 +127,55 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Nov 28, 2014</h4></center> <!-- date -->
+<center><h4>Dec 5, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="#___sec0"> Introduction </a><br>
 <a href="#___sec1"> Simple system for spatial spread </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Travelling wave 1D </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Verifying the solution </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Constant solution </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Manufactured solution </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Convergence rate </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> The spatial error </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> The temporal error </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Constant solution </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Manufactured solution </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Convergence rate </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> The spatial error </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> The temporal error </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Travelling wave in 2D </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> A gaussian wave </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> A gaussian wave </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Change in initial flow </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec12"> Change in lambda </a><br>
 <a href="#___sec13"> Epidemic in an English Boarding School 1978 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec14"> Introducing a Gaussian distribution of infective </a><br>
-<a href="._2_PDE_FK001.html#___sec15"> Zombiefication </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec16"> Where does the infected one arises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec17"> Lock in different areas </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec18"> Ten minutes at Frederikkeplassen </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK001.html#___sec19"> random distribution </a><br>
-<a href="._2_PDE_FK002.html#___sec20"> Appendix </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec21"> Sympy to find manufactured solution </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec22"> Discretization </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec23"> 2D Gaussian function from x=0 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec24"> 2D Gaussian function from x=0,y=0 </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec25"> 2D Gaussian function from x=0,y=0 with higher initial value </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec26"> English Boarding School </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec27"> Gaussian from the corner </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec28"> A long simulation on 100 Days </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec29"> Zombiefication </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec30"> Verify the initial phase </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec31"> Three phases </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec32"> middle town </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._2_PDE_FK002.html#___sec33"> large town </a><br>
-<a href="._2_PDE_FK002.html#___sec34"> Bibliography </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Introducing a Gaussian distribution of infected </a><br>
+<a href="#___sec15"> Zombiefication </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> The position of the <em>Infected</em> group </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Free areas for the <em>Susceptible</em> group </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Ten minutes at Frederikkeplassen </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Random distribution </a><br>
+<a href="#___sec20"> Appendix </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec21"> Sympy to find manufactured solution </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Discretization </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> 2D Gaussian function from x=0 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> 2D Gaussian function from x=0,y=0 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> 2D Gaussian function from x=0,y=0 with higher initial value </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec26"> English Boarding School </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec27"> Gaussian from the corner </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec28"> A long simulation on 100 Days </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Zombiefication </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec30"> Verify the initial phase </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Three phases </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec32"> middle town </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec33"> large town </a><br>
+<a href="#___sec34"> Bibliography </a><br>
 </p>
 
 <h1>Introduction  <a name="___sec0"></a></h1>
-This chapter will introduce a spatial model for epidemic diseases. The ODE system from previous chapter can be expand with a term for geographic spread of the disease. The first section <em>Simple system for spatial spread</em> will build on the simple SIR model presented in previous chapter and be based on <em>Geographic spread and Control of epidemics</em> by Murray <a href="._2_PDE_FK002.html#murray2003mathematical">[1]</a>. The parameters from <em>English Boarding School</em> in previous chaper will be used for the model and the results will be compared. The position of the infected student will be study to see if this affect the number of infected. The last section, <em>Zombiefication</em>, will study and expand the system from Langtangen, Mardal and R&#248;tnes <a href="._2_PDE_FK002.html#zombie-math">[2]</a>. The results and parameter values used to calculate <em>Walking Dead</em> will be compared between the previous ODE system and variations of this PDE.
+This chapter will introduce a spatial model for epidemic diseases. The ODE system from the previously chapter can be expanded with a term for geographic spread of the disease. The first section <em>Simple system for spatial spread</em> will be based on the simple SIR model presented in previously chapter, and the chapter <em>Geographic spread and Control of epidemics</em> by Murray <a href="#murray2003mathematical">[1]</a>. The parameters from the <em>English Boarding School</em> in the previously chapter will be used for the model and the results will be compared. The position of the infected student will be studied to see if it affects the number in the <em>Infected</em> group. The last section, <em>Zombiefication</em>, will study and expand the system from Langtangen, Mardal and R&#248;tnes <a href="#zombie-math">[2]</a>. The results and parameter values used to calculate <em>Walking Dead</em> will be compared with the previously ODE system and variations of this PDE.
 
 <h1>Simple system for spatial spread  <a name="___sec1"></a></h1>
-A spatial variable, <b>x</b> will be introduced to the model. This result in both temporal and spatial variations. The difference from a standard ODE system will be the diffusion part added to each equation. The system can be seen in Eq.<a href="#mjx-eqn-1">(1)</a>. 
+A spatial variable, <b>x</b>, will be introduced to the model. This results in both temporal and spatial variations. The difference from a standard ODE system will be the diffusion part added to each equation. The system can be seen in Eq.\eqref{eq:simple_PDE}. 
 $$
-\begin{equation} \tag{1}
+\begin{equation} \label{eq:simple_PDE}
 	\begin{aligned}
 	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
 	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
@@ -187,9 +184,9 @@ $$
 \end{equation}
 $$
 
-Here \( S \) describes the <em>Susceptible</em> group, \( I \) describes the <em>Infected</em> group and \( R \) describes the <em>Removed</em> group. With the following conditions for the boundary and initial values
+Here \( S \) describes the <em>Susceptible</em> group, \( I \) describes the <em>Infected</em> group and \( R \) describes the <em>Removed</em> group. The following conditions are set for the boundary and initial values:
 $$
-\begin{equation} \tag{2}
+\begin{equation} \label{eq:boundary_initial}
 	\begin{aligned}
 	u_x(0,t) &= u_x(X,t) = 0,\quad u = S,I,R\\
 	u(x,0) &= f_u(x),\quad u= S,I,R
@@ -197,29 +194,29 @@ $$
 \end{equation}
 $$
 
-This result in Neumann conditions at the boundary. The following implementation can be used at the boundary
+This results in Neumann conditions at the boundary. The following implementation can be used at the boundary
 $$
 \begin{equation}
 	\begin{aligned}
-	\frac{u_{-1}^n - u_1^n}{2\Delta x} &= 0
+	\frac{u_{-1}^n - u_1^n}{2\Delta x} &= 0 \\
 	u_{-1}^n &= u_1^n
 	\end{aligned}
 \end{equation}
 $$
 
-This is solved by adding an extra point on each side, called ghost points. The values in these points are updated each time step with values from \( u_1^n \) and \( u_{X-1}^n \). All three classes, \( S,I,R \) in Eq.<a href="#mjx-eqn-1">(1)</a> have the same diffusion coefficient, \( D \). This gives the three groups the same diffusion speed. This can vary between systems. Later in the chapter, in section <em>Zombiefication</em>, different diffusion terms are given for the groups. The two probabilities \( rIS \) and \( aI \) will work in the same way as for the ODE system. Since this model takes the position into account, a group of infective that moves into a uniform population with susceptible can be model. The group of <em>Susceptible</em> has the density \( S_0 \). A simulation can show the geotemporal spread of the disease. The problem can first be considered as one-dimensional. The system can be nondimensionalised by writing 
+This is solved by adding an extra point on each side, called ghost points. The values in these ghost points are updated every time step with values from \( u_1^n \) and \( u_{X-1}^n \). All three groups, \( S,I,R \) in Eq.\eqref{eq:simple_PDE} have the same diffusion coefficient, \( D \). This gives the three groups the same diffusion speed. This can vary between systems. Later in the chapter, in section <em>Zombiefication</em>, different diffusion terms are given to the groups. The two probabilities \( rIS \) and \( aI \) will work in the same way as in the ODE system. Since this model takes the position into account, a group of <em>Infected</em> that move into a uniform population with <em>Susceptible</em> can be model. The group of <em>Susceptible</em> has the density \( S_0 \). A simulation can show the geotemporal spread of the disease. The problem can first be considered as one-dimensional. The system can be nondimensionalised by writing 
 $$
-\begin{equation} \tag{3}
+\begin{equation} \label{eq:constants_nondimensional}
 	\begin{aligned}
 	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
 	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
 	\end{aligned}
-0\end{equation}
+\end{equation}
 $$
 
-\( S_0 \) is used as a representative population. Now Eq.<a href="#mjx-eqn-1">(1)</a> can be expressed as in Eq.<a href="#mjx-eqn-4">(4)</a>. The asterisks have been dropped to make it easier to read.
+\( S_0 \) is used as a representative population. Now Eq.\eqref{eq:simple_PDE} can be expressed as in Eq.\eqref{eq:simple_non_PDE}. The asterisks have been dropped to make it easier to read.
 $$
-\begin{equation} \tag{4}
+\begin{equation} \label{eq:simple_non_PDE}
 	\begin{aligned}
 	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
 	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
@@ -228,19 +225,19 @@ $$
 \end{equation}
 $$
 
-The three parameters \( r \), \( a \) and \( D \) have been replaced by \( \lambda \). The <em>reproduction rate</em> that was presented for the ODE model can be seen as \( 1/\lambda  \). This has a couple of equivalent meanings. \( 1/\lambda \) can be seen as the number of secondary infections produced by one primary infected. It can also be used to measure two different time scales. The first one, \( 1/(rS_0) \), measure the contagious time of the disease. The second one can look at the life expectancy for an infective. This can be described as \( 1/a \) <a href="._2_PDE_FK002.html#murray2003mathematical">[1]</a>.
+The three parameters \( r \), \( a \) and \( D \) have been replaced by \( \lambda \). The <em>reproduction rate</em> that was presented for the ODE model can be seen as \( 1/\lambda  \). This has equivalent meanings. \( 1/\lambda \) can be seen as the number of secondary infections produced by one primary infected. It can also be used to measure two different time scales. The first one, \( 1/(rS_0) \), measures the contagious time of the disease. The second one looks at the life expectancy for an infected. This can be described as \( 1/a \) <a href="#murray2003mathematical">[1]</a>.
 
 <h2>Travelling wave 1D  <a name="___sec2"></a></h2>
-The travelling wave describes, in this case, how a group of infected travels through a geographic area of humans. This will be shown by sending a pulse of infected into a group of susceptible. A travelling wave solution can be described as follows,
+In this case the travelling wave describes how a group of <em>Infected</em> travels through a geographic area of <em>Susceptible</em>. This will be shown by sending a pulse from the <em>Infected</em> group into a group of <em>Susceptible</em>. A travelling wave solution can be described as follows,
 $$
-\begin{equation} \tag{5}
+\begin{equation} \label{eq:trav_para}
 I(x,t)=I(z),\quad S(x,t)=S(z),\quad R(x,t) = R(z),\quad z = x-ct,
 \end{equation}
 $$
 
-The value \( c \) describes the wave speed. This represents a wave of constant shape that travels in the positive x-direction. Eq.<a href="#mjx-eqn-5">(5)</a> can be inserted into Eq.<a href="#mjx-eqn-4">(4)</a>. This result in the ordinary system Eq.<a href="#mjx-eqn-6">(6)</a>
+The value \( c \) describes the wave speed. This represents a wave of constant shape that travels in the positive x-direction. Eq.\eqref{eq:trav_para} can be inserted into Eq.\eqref{eq:simple_non_PDE}. This result in the ordinary system Eq.\eqref{eq:ord_diff_sys}
 $$
-\begin{equation} \tag{6}
+\begin{equation} \label{eq:ord_diff_sys}
 	\begin{aligned}
 	S'' + cS' - IS &= 0,\\
 	I'' + cI' + I(S-\lambda)&=0\\
@@ -249,7 +246,7 @@ $$
 \end{equation}
 $$
 
-This gives an eigenvalue problem. The value of \( \lambda \) needs to stay in a range where \( c > 0 \) is fulfilled. The values \( S \), \( I \) and \( R \) have to stay nonnegative. This leads to
+This makes an eigenvalue problem. The value of \( \lambda \) needs to stay in a range where \( c > 0 \) is fulfilled. The values \( S \), \( I \) and \( R \) have to stay nonnegative. This leads to
 $$
 \begin{equation} 
 	\begin{aligned}
@@ -260,7 +257,7 @@ $$
 \end{equation}
 $$
 
-An epidemic wave can be seen in Fig.(<a href="#fig:1D_sub">1</a>). The value of \( \lambda \) is sat to 0.5. The initial value for <em>Susceptible</em> is 1 for the area and the <em>Removed</em> is sat to 0. The <em>Infected</em> class has a Gauss curve around 0 at initial time. In the four subplots in Fig.(<a href="#fig:1D_sub">1</a>), the epidemic wave travel towards the other side. The value \( z \), which is defined in Eq.<a href="#mjx-eqn-5">(5)</a>, is used to plot the travelling wave measured at a specific point, in this case \( x=15 \). This travelling wave is shown in figure(<a href="#fig:1D_tw">2</a>).       
+An epidemic wave can be seen in Fig.(<a href="#fig:1D_sub">1</a>). The value of \( \lambda \) is set to 0.5. The initial value of <em>Susceptible</em> is 1 for the area and the <em>Removed</em> is set to 0. The <em>Infected</em> group has a Gauss curve around 0 at initial time. In the four subplots in Fig.(<a href="#fig:1D_sub">1</a>), the epidemic wave travels towards the other side. The value \( z \), which is defined in Eq.\eqref{eq:trav_para}, is used to plot the travelling wave measured at a specific point, in this case \( x=15 \). This travelling wave is shown in figure(<a href="#fig:1D_tw">2</a>).       
 
 <p>
 <center> <!-- figure -->
@@ -278,7 +275,7 @@ An epidemic wave can be seen in Fig.(<a href="#fig:1D_sub">1</a>). The value of 
 
 <p>
 <br />
-The <em>Infective</em> class in Eq.<a href="#mjx-eqn-6">(6)</a> can be linearised when \( z\rightarrow \infty \). This leads to \( S\rightarrow 1 \) and \( I \rightarrow 0 \). The result then become 
+The <em>Infective</em> group in Eq.\eqref{eq:ord_diff_sys} can be linearised when \( z\rightarrow \infty \). This leads to \( S\rightarrow 1 \) and \( I \rightarrow 0 \). The result then become 
 $$
 \begin{equation}
 	I'' + cI' + I(S-\lambda) \approx 0 
@@ -299,23 +296,22 @@ $$
 \end{equation}
 $$
 
-If \( \lambda > 1 \), no travelling wave will exist. Then the disease will die out. The terms defined in Eq.<a href="#mjx-eqn-3">(3)</a> will give the threshold conditions,
+If \( \lambda > 1 \), no travelling wave will exist. Then the disease will die out. The terms defined in Eq.\eqref{eq:constants_nondimensional} will give the threshold conditions,
 $$
 \begin{equation}
 	\lambda = \frac{a}{rS_0} < 1
 \end{equation}
 $$
 
-This is the same value that was given for the ODE model in the previous chapter.
+This is the same value that was given for the ODE model in the previously chapter.
 
 <h2>Verifying the solution  <a name="___sec3"></a></h2>
-To verify the implementation of the solution, a couple of tests can be done one the system. The system will be tested with a constant solution and a manufactured solution.
+To verify the implementation of the solution, a couple of tests can be done one the system in Eq.\eqref{eq:simple_non_PDE}. The system will be tested with a constant solution and a manufactured solution.
 
-<h3>Constant solution  <a name="___sec4"></a></h3>
-
-A constant solution use preproduced constant values for for the concentrations \( S \), \( I \) and \( R \). These can be replaced by \( S = C_s,I=C_i,R=C_r \). The value of \( C_i \) can only be 0 in Eq.<a href="#mjx-eqn-4">(4)</a>. This results in a poor test where several bugs can escape. The system can be expanded by adding a term \( \beta R \) to the <em>Susceptible</em> class and subtract the same term from the <em>Removed</em> class. Then all three values can be tested. The system will then look: 
+<h2>Constant solution  <a name="___sec4"></a></h2>
+A constant solution uses preproduced constant values for the concentrations \( S \), \( I \) and \( R \). These can be replaced by \( S = C_s,I=C_i,R=C_r \). The value of \( C_i \) can only be 0 in Eq.\eqref{eq:simple_non_PDE}. This results in a poor test where several bugs can escape. The system can be expanded by adding a term \( \beta R \) to the <em>Susceptible</em> group and subtracting the same term from the <em>Removed</em> group. Then all three values can be tested. The system will then look like this: 
 $$
-\begin{equation} \tag{9}
+\begin{equation} \label{eq:simple_non_PDE2}
 	\begin{aligned}
 	\frac{\partial S}{\partial t} &= -IS + \beta R + \frac{\partial^2 S}{\partial x^2},\\
 	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
@@ -324,9 +320,9 @@ $$
 \end{equation}
 $$
 
-By deriving <a href="#mjx-eqn-9">(9)</a>, the following system <a href="#mjx-eqn-8">(8)</a> has to be solved
+By deriving Eq.\eqref{eq:simple_non_PDE2}, the following system Eq.\eqref{eq:constant_PDE} has to be solved
 $$
-\begin{equation} \tag{8}
+\begin{equation} \label{eq:constant_PDE}
 	\begin{aligned}
 	C_iC_s &= \beta C_r \\
 	C_iC_s &= \lambda C_i \\
@@ -335,11 +331,11 @@ $$
 \end{equation}
 $$
 
-The values \( \beta \) and \( \lambda \) are based on the constants \( C_s,C_i,C_r \), which can be chosen freely. Here they are sat to \( C_s = 1.2,C_i=0.8,C_r=0.6 \). This result in \( \lambda= C_s = 1.2 \) and \( \beta= \frac{C_s C_i}{C_r}=1.6 \). A test is made in python and can be seen under.
+The values \( \beta \) and \( \lambda \) are based on the constants \( C_s,C_i,C_r \), which can be chosen freely. Here they are set to \( C_s = 1.2,C_i=0.8,C_r=0.6 \). This results in \( \lambda= C_s = 1.2 \) and \( \beta= \frac{C_s C_i}{C_r}=1.6 \). A test is made in python and can be seen below.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_constant_solution</span>():
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
 <span style="color: #BA2121; font-style: italic">    Test problem where u=u_const is the exact solution, to be</span>
@@ -384,13 +380,12 @@ The values \( \beta \) and \( \lambda \) are based on the constants \( C_s,C_i,C
     <span style="color: #008000; font-weight: bold">assert</span> difference <span style="color: #666666">&lt;</span> tol
 </pre></div>
 <p>
-The test was run with no error, and the three constant values were produced correctly. This test is not good enough by it self to qualify the program, but an error here would result in a large error in the program.
+The test was run with no error, and the three constant values were produced correctly. This test is not good enough to qualify the program alone, however an error here would result in a large error in the program.
 
-<h3>Manufactured solution  <a name="___sec5"></a></h3>
-
-By constructing a function to each equation in the Eq.<a href="#mjx-eqn-4">(4)</a>, a manufactured solution can be created. Here \( S \),$I$ and \( R \) are pre produced. The system will be
+<h2>Manufactured solution  <a name="___sec5"></a></h2>
+By constructing a function to each equation in the Eq.\eqref{eq:simple_non_PDE}, a manufactured solution can be created. Here \( S \),$I$ and \( R \) are pre produced. The system will be
 $$
-\begin{equation} \tag{9}
+\begin{equation} \label{eq:simple_non_PDE2}
 	\begin{aligned}
 	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\
 	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2}+g(x,t),\\
@@ -410,14 +405,14 @@ $$
 \end{equation}
 $$
 
-When choosing the expected function for the classes, it is important that the boundary conditions from Eq.<a href="#mjx-eqn-2">(2)</a> is fulfilled.
+When choosing the expected function for the groups, it is important that the boundary conditions from Eq.\eqref{eq:boundary_initial} is fulfilled.
 $$
 \begin{equation}
     u_x(0,t) = u_x(X,t) = 0
 \end{equation}
 $$
 
-The quantities have been sat to:
+The quantities have been set to:
 $$
 \begin{equation}
 	\begin{aligned}
@@ -428,9 +423,9 @@ $$
 \end{equation}
 $$
 
-Now <code>sympy</code> can be used to do the calculations for the three functions \( f \), \( g \) and \( h \). The program can be seen in the Appendix. This result in the following equations seen in Eq.<a href="#mjx-eqn-10">(10)</a> 
+Now <code>sympy</code> can be used to do the calculations for the three functions \( f \), \( g \) and \( h \). The program can be seen in the Appendix. This results in the following equations seen in Eq.\eqref{eq:manu_func} 
 $$
-\begin{equation} \tag{10}
+\begin{equation} \label{eq:manu_func}
 	\begin{aligned}
 	f(x,t) &= (t^2\cos(\frac{\pi}{X} x) + \frac{\pi}{X}^2t + 1)\cos(\frac{\pi}{X} x)\\
 	g(x,t) &= (\lambda t - t^2\cos(\frac{\pi}{X} x) + \frac{\pi}{X}^2t + 1)\cos(\frac{\pi}{X} x)\\
@@ -443,7 +438,7 @@ A similar test made for the constant solution can be used here. While the consta
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_manufactured_solution</span>(T,Nt,X,Nx):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
 <span style="color: #BA2121; font-style: italic">    Test problem where u=c*t+I is the exact solution, to be</span>
@@ -511,37 +506,35 @@ A similar test made for the constant solution can be used here. While the consta
     <span style="color: #008000; font-weight: bold">return</span> difference_S,difference_I,difference_R
 </pre></div>
 
-<h3>Convergence rate  <a name="___sec6"></a></h3>
-
+<h2>Convergence rate  <a name="___sec6"></a></h2>
 The program can be controlled by checking the convergence rate. The error term  for this equation can be described as  
 $$
-\begin{equation} \tag{11}
+\begin{equation} \label{eq:error}
     \epsilon = C_x\Delta x^2 + C_t \Delta t
 \end{equation}
 $$
 
-With Eq.<a href="#mjx-eqn-11">(11)</a>, the expected convergence rate can be found for both \( \Delta x \) and \( \Delta t \). To be able to separate the \( \Delta \)'s, the other value has to be close to eliminated. To study the value \( \Delta x \),  \( \Delta t \ll \Delta x \) has to be fullfilled. This will lead to \( C_t\Delta t \approx 0 \), and the error term for \( \Delta x \) can be found. The opposite thing can  be done for \( \Delta t \). A table for the error is produced for different values for \( \Delta t = 0.05 \) and \( \Delta x=0.1 \).
+With Eq.\eqref{eq:error}, the expected convergence rate can be found for both \( \Delta x \) and \( \Delta t \). To be able to separate the $\Delta$s, the other value has to be close to eliminated. To study the value \( \Delta x \), the following term has to be fullfilled: \( \Delta t \ll \Delta x \). This will lead to \( C_t\Delta t \approx 0 \), and the error term for \( \Delta x \) can be found. The opposite thing can  be done for \( \Delta t \). A table for the error is produced for different values for \( \Delta t = 0.05 \) and \( \Delta x=0.1 \).
 
 <p>
 <a name="table:error_numbers"></a>
 <table border="1">
 <thead>
-<tr><th align="center">                         </th> <td align="center">      \( \Delta x \)     </td> <td align="center"> \( \frac{\Delta x}{2} \)</td> <td align="center"> \( \frac{\Delta x}{4} \)</td> <td align="center"> \( \frac{\Delta x}{8} \)</td> </tr>
+<tr><th align="center">                         </th> <td align="center">\( \Delta x \)</td> <td align="center">\( \frac{\Delta x}{2} \)</td> <td align="center">\( \frac{\Delta x}{4} \)</td> <td align="center">\( \frac{\Delta x}{8} \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   \( \Delta t      \)          </td> <td align="center">   9.8E-3                       </td> <td align="center">   -                            </td> <td align="center">   -                            </td> <td align="center">   -                            </td> </tr>
-<tr><td align="center">   \( \frac{\Delta t}{4}  \)    </td> <td align="center">   9.9E-3                       </td> <td align="center">   2.5E-3                       </td> <td align="center">   -                            </td> <td align="center">   -                            </td> </tr>
-<tr><td align="center">   \( \frac{\Delta t}{8}  \)    </td> <td align="center">   9.9E-3                       </td> <td align="center">   2.5E-3                       </td> <td align="center">   6.1E-4                       </td> <td align="center">   -                            </td> </tr>
-<tr><td align="center">   \( \frac{\Delta t}{16} \)    </td> <td align="center">   9.9E-3                       </td> <td align="center">   2.5E-3                       </td> <td align="center">   6.1E-4                       </td> <td align="center">   1.5E-4                       </td> </tr>
+<tr><td align="center">   \( \Delta t      \)          </td> <td align="center">   9.8E-3            </td> <td align="center">   -                           </td> <td align="center">   -                           </td> <td align="center">   -                           </td> </tr>
+<tr><td align="center">   \( \frac{\Delta t}{4}  \)    </td> <td align="center">   9.9E-3            </td> <td align="center">   2.5E-3                      </td> <td align="center">   -                           </td> <td align="center">   -                           </td> </tr>
+<tr><td align="center">   \( \frac{\Delta t}{8}  \)    </td> <td align="center">   9.9E-3            </td> <td align="center">   2.5E-3                      </td> <td align="center">   6.1E-4                      </td> <td align="center">   -                           </td> </tr>
+<tr><td align="center">   \( \frac{\Delta t}{16} \)    </td> <td align="center">   9.9E-3            </td> <td align="center">   2.5E-3                      </td> <td align="center">   6.1E-4                      </td> <td align="center">   1.5E-4                      </td> </tr>
 </tbody>
 </table>
 <!-- 0.00988006143376,0.00246039081619,-,- -->
 <!-- 0.00988361769746,0.00246127510994,0.000614719954035 -->
 <!-- 0.00988450717896,0.00246149628689,0.000614775174047,0.000153656409034 -->
 
-<h3>The spatial error  <a name="___sec7"></a></h3>
-
-The Tab.(<a href="#table:error_numbers">table:error_numbers</a>) gives information about the error when \( \Delta t \) and \( \Delta x \) are reduced. By studying the row where \( \Delta t/16 \), the \( C_t \Delta t \) can be seen as close to negligible in Eq.<a href="#mjx-eqn-11">(11)</a>. The error can be expressed 
+<h2>The spatial error  <a name="___sec7"></a></h2>
+The Tab.(<a href="#table:error_numbers">table:error_numbers</a>) gives information about the error when \( \Delta t \) and \( \Delta x \) are reduced. By studying the row where \( \Delta t/16 \), the \( C_t \Delta t \) can be seen as close to negligible in Eq.\eqref{eq:error}. The error can be expressed 
 $$
 \begin{equation}
     \epsilon \propto \Delta x^r
@@ -550,7 +543,7 @@ $$
 
 The value is expected to be \( r=2 \), since Crank Nicolson is used in the spatial discretization. By comparing the error for different \( \Delta x \), the convergence rate, \( r \), can be expressed, 
 $$
-\begin{equation} \tag{12}
+\begin{equation} \label{eq:conv_rate}
  r_{12} \simeq \frac{\log(\epsilon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
 \end{equation}
 $$
@@ -558,30 +551,29 @@ $$
 Since the table above has four different error values, these can be used to give three different convergence rates. \( \Delta x_1 = \Delta x, \Delta x_2 = \Delta x/2... \). The same notation has been used for the different error values, \( \epsilon \).
 <table border="1">
 <thead>
-<tr><th align="center">                           </th> <td align="center">\( \epsilon_1/\epsilon_2 \)</td> <td align="center">\( \epsilon_2/\epsilon_3 \)</td> <td align="center">\( \epsilon_3/\epsilon_4 \)</td> </tr>
+<tr><th align="center"> </th> <td align="center">\( \epsilon_1/\epsilon_2 \)</td> <td align="center">\( \epsilon_2/\epsilon_3 \)</td> <td align="center">\( \epsilon_3/\epsilon_4 \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   r                              </td> <td align="center">   2.0056                         </td> <td align="center">   2.0014                         </td> <td align="center">   2.0004                         </td> </tr>
+<tr><td align="center">   r    </td> <td align="center">   2.0056                         </td> <td align="center">   2.0014                         </td> <td align="center">   2.0004                         </td> </tr>
 </tbody>
 </table>
 <p>
 Here the rate goes towards 2, and a 2.order convergence rate seems to be fulfilled.
 
-<h3>The temporal error  <a name="___sec8"></a></h3>
-
-The temporal error is hard to find since the <em>Stability criteria</em> expect \( \Delta t \) to fulfill the criteria in Eq.<a href="#mjx-eqn-13">(13)</a> to avoid oscillations.
+<h2>The temporal error  <a name="___sec8"></a></h2>
+The temporal error is hard to find since the <em>Stability criteria</em> expects \( \Delta t \) to fulfill the criteria in Eq.\eqref{eq:stability_cr} to avoid oscillations.
 $$
-\begin{equation} \tag{13}
+\begin{equation} \label{eq:stability_cr}
  \Delta t \leq \frac{\Delta x^2}{2}
 \end{equation}
 $$
 
-This results in the case that \( \Delta x \ll \Delta t \) is impossible, because this only leads to an unstable solution. By looking at the column for \( \frac{\Delta x}{8} \), the only stable solution is for \( \frac{\Delta t}{16} \). Therefore the technique used for the spatial error cannot be used here. By studying the diagonal numbers in the table, the expected convergence rate is fulfilled for both \( \Delta x \), which gives \( r = 2 \) and for \( \Delta t \), which gives \( r=1 \)
+As a result, \( \Delta x \ll \Delta t \) is impossible, because this only leads to an unstable solution. By looking at the column for \( \frac{\Delta x}{8} \), the only stable solution is for \( \frac{\Delta t}{16} \). Therefore the technique used for the spatial error cannot be used here. By studying the diagonal numbers in the table, the expected convergence rate is fulfilled for both \( \Delta x \), which gives \( r = 2 \) and for \( \Delta t \), which gives \( r=1 \)
 
 <h2>Travelling wave in 2D  <a name="___sec9"></a></h2>
-The Eq.<a href="#mjx-eqn-4">(4)</a> can be discretized for a 2D area. This is more realistic when simulating a geographic spread of an epidemic disease. The non dimensional system  can be discretized with Forward Euler in time and Crank Nicolson in space
+The Eq.\eqref{eq:simple_non_PDE} can be discretized for a 2D area. This is more realistic when simulating a geographic spread of an epidemic disease. The non dimensional system  can be discretized with Forward Euler in time and Crank Nicolson in space
 $$
-\begin{equation} \tag{14}
+\begin{equation} \label{eq:SIR_disc}
 	\begin{aligned}
     \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
     \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
@@ -601,26 +593,25 @@ $$
 \end{equation}
 $$
 
-This results in an explicit system, which is easy to code. It consist of known values on the right side and only one unknown on the left side.
+This results in an explicit system, which is easy to code. It consists of known values on the right side and only one unknown value on the left side.
 
-<h3>A gaussian wave  <a name="___sec10"></a></h3>
-
-In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of infected spread along the x-axis. A similar thing can be done for the 2D simulation. A couple of simulations have been produced for the 2D system. The first simulation is calculated with a Gaussian function along (0,y) for the <em>Infected</em> at initial time. The second simulation has placed the Gaussian function at point (0,0) for the <em>Infected</em> group at initial value. Both simulations can be seen in the Appendix.  
+<h2>A gaussian wave  <a name="___sec10"></a></h2>
+In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of <em>Infected</em> spreading along the x-axis. A similar procedure can be done for the 2D simulation. A couple of simulations have been produced for the 2D system. The first simulation is calculated with a Gaussian function along the points(0,y) for the <em>Infected</em> group at initial time. The second simulation has placed the Gaussian function at point(0,0) for the <em>Infected</em> group at initial value. Both simulations can be seen in the Appendix.  
 <br />
 <br />
-The size of the epidemic wave can be measured and compared by studying the travelling wave at a certain point. In these two 2D simulations in Fig.(<a href="#fig:2D_trav_wave">3</a>), the wave will be measured in the point (15,15), while the travelling wave in the 1D simulation was measured at point(15). 
+The size of the epidemic wave can be measured and compared by studying the travelling wave at a certain point. In these two 2D simulations in Fig.(<a href="#fig:2D_trav_wave">3</a>), the wave are measured in the point (15,15), while the travelling wave in the 1D simulation was measured at point(15). 
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  <a name="fig:2D_trav_wave"></a> Travelling wave measured at point (15,15) with two different initial values for the <em>Infected</em> class. I:The initial value is sat as a Gaussian line along (0,y).II:The initial value is sat as a Gaussian point (0,0). </p></center>
+<center><p class="caption">Figure 3:  <a name="fig:2D_trav_wave"></a> Travelling wave measured at point (15,15) with two different initial values for the <em>Infected</em> group. I:The initial value is set as a Gaussian line along (0,y).II:The initial value is set as a Gaussian point (0,0). </p></center>
 <p><img src="plots/Trav_wave_2D.png" align="bottom" height=400 width=800></p>
 </center>
 
 <p>
 <br />
 <br />
-The shape of the two travelling waves in Fig.(<a href="#fig:2D_trav_wave">3</a>) are similar. The only difference is the time when the wave occur. The plot for 1D wave in Fig.(<a href="#fig:1D_tw">2</a>) has the same shape. With a closer study, the area under the function can be measured in all three cases. The result can be seen in Tab.(<a href="#table:wave_values">table:wave_values</a>)   
+The shapes of the two travelling waves in Fig.(<a href="#fig:2D_trav_wave">3</a>) are similar. The only difference is the time when the wave occurs. The plot for 1D wave in Fig.(<a href="#fig:1D_tw">2</a>) has the same shape. With a closer study, the area under the function can be measured in all three cases. The result can be seen in Tab.(<a href="#table:wave_values">table:wave_values</a>)   
 
 <p>
 <!-- 1D -->
@@ -636,18 +627,18 @@ The shape of the two travelling waves in Fig.(<a href="#fig:2D_trav_wave">3</a>)
 <a name="table:wave_values"></a>
 <table border="1">
 <thead>
-<tr><th align="center">   1D wave   </th> <th align="center"> 2D wave line</th> <th align="center">2D wave point</th> </tr>
+<tr><th align="center">1D wave</th> <th align="center">2D wave line</th> <th align="center">2D wave point</th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   1.43             </td> <td align="center">   1.43             </td> <td align="center">   1.43             </td> </tr>
+<tr><td align="center">   1.43       </td> <td align="center">   1.43            </td> <td align="center">   1.43             </td> </tr>
 </tbody>
 </table>
 <p>
-The area in all three simulations approaching the same area when \( \Delta t \) and \( \Delta x \) are reduced. The size and shape will not change by  expanding the system from 1D to 2D. But by studying Fig.(<a href="#fig:2D_trav_wave">3</a>), the wave occur at different times. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the \( x=0 \) axis gets a wave of infected wash along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occurs at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occurs later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will reach the point 6.21 time steps later. This is also reasonable by looking at the plot.
+The area in all three simulations approach the same area when \( \Delta t \) and \( \Delta x \) are reduced. The size and shape will not change by  expanding the system from 1D to 2D. However, by studying Fig.(<a href="#fig:2D_trav_wave">3</a>), one can see that the wave occurs at different times. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the \( x=0 \) axis gets a wave from the <em>Infected</em> group that flows along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occurs at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occurs later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will reach the point 6.21 time steps later. This is a reasonable conclusion based on the plot.
 
 <h3>Change in initial flow  <a name="___sec11"></a></h3>
 
-By increasing the initial wave of the <em>Infected</em> group, the initial value of <em>Infected</em> can be study. The simulation is run with the same parameters as for the three simulations above and the only difference is the initial value for the <em>Infected</em> group. The Gaussian wave of infected are placed a point (0,0) as for subplot II in Fig.(<a href="#fig:2D_trav_wave">3</a>). The simulation can be seen in Fig.(<a href="#fig:initial_value">4</a>).  
+By increasing the initial wave of the <em>Infected</em> group, the initial value of <em>Infected</em> can be studied. The simulation is run with the same parameters as for the three simulations above and the only difference is the initial value for the <em>Infected</em> group. The Gaussian wave of <em>Infected</em> is placed at point(0,0) as for subplot II in Fig.(<a href="#fig:2D_trav_wave">3</a>). The simulation can be seen in Fig.(<a href="#fig:initial_value">4</a>).  
 <!-- Volume ordinary = 0.3141592653589793 -->
 <!-- Volume extreme = 157.07963267948966 -->
 <!-- Volume under graph 1.43345609926 -->
@@ -655,30 +646,30 @@ By increasing the initial wave of the <em>Infected</em> group, the initial value
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 4:  <a name="fig:initial_value"></a> A major flow of infected spread outwards the field. After a certain time, the wave has past the area and the number in each class stabilize. </p></center>
+<center><p class="caption">Figure 4:  <a name="fig:initial_value"></a> A major flow of <em>Infected</em> spread outwards in the field. After a certain time, the wave has passed the area and the number in each group stabilized. </p></center>
 <p><img src="plots/2D_initial_variable_sub.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
 <br />
 <br />
-The size and shape can be compared by measuring the travelling wave at point(15,15). The travelling wave for this simulation can be seen in Fig.(<a href="#fig:initial_trav_wave">5</a>) and the area for the travelling wave is measured to 1.43, which is similar with the three other simulations.
+The size and shape can be compared by measuring the travelling wave at point(15,15). The travelling wave for this simulation can be seen in Fig.(<a href="#fig:initial_trav_wave">5</a>) and the area for the travelling wave is measured to 1.43, which is similar to the three other simulations.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 5:  <a name="fig:initial_trav_wave"></a> The travelling wave with a major increase of infected at the initial time. </p></center>
+<center><p class="caption">Figure 5:  <a name="fig:initial_trav_wave"></a> The travelling wave with a major increase of <em>Infected</em> at the initial time. </p></center>
 <p><img src="plots/TW_2D_initial_z_lambda_0_5.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
 <br />
 <br />
-The size of the travelling  wave will not be affected by changing the value for the <em>Infected</em> group. But there is a difference in the time when the wave occur. In the simulation where the initial value is higher, the travelling wave reaches the measuring point (15,15) earlier. This can be explained by the idea of a ball dropped from a large height. If the ball is released or thrown to the ground, will only affect the acceleration of the ball, not the terminal velocity. After a certain time the released ball and the thrown ball will reach the same maximum speed. This is the case for the speed of the travelling wave.
+The size of the travelling  wave will not be affected by changing the value of the <em>Infected</em> group. However there is a difference in the time when the wave occurs. In the simulation where the initial value is higher, the travelling wave reaches the measuring point (15,15) earlier. This can be explained by the idea of a ball dropped from a large height. If the ball is released or thrown to the ground, it will only affect the acceleration of the ball, not the terminal velocity. After a certain time the released ball and the thrown ball will reach the same maximum speed. This is the case for the speed of the travelling wave.
 
 <h3>Change in lambda  <a name="___sec12"></a></h3>
 
-The one thing that affects the speed and size, is the \( \lambda \) variable in the PDE system<a href="#mjx-eqn-4">(4)</a>. This \( \lambda \) is a combination of \( a \), which controls deaths among infected, \( r \), which controls the number of infected in meetingings between infected and susceptible. The last parameter in \( \lambda \) is the concentration of Susceptible, \( S_0 \). By changing this parameter, the travelling wave will change in both size and shape. In Fig.(<a href="#fig:change_lambda">6</a>), the simulation is run with four different values of \( \lambda \).
+The one thing that affects the speed and size, is the \( \lambda \) variable in the PDE system\eqref{eq:simple_non_PDE}. This \( \lambda \) is a combination of \( a \), which controls deaths among the <em>Infected</em> group, \( r \), which controls the number from the <em>Susceptible</em> group that gets infected in meetings between the <em>Infected</em> and <em>Susceptible</em> groups. The last parameter in \( \lambda \) is the concentration of Susceptible, \( S_0 \). By changing this parameter, the travelling wave will change in both size and shape. In Fig.(<a href="#fig:change_lambda">6</a>), the simulation is run with four different values of \( \lambda \).
 
 <p>
 <center> <!-- figure -->
@@ -690,86 +681,583 @@ The one thing that affects the speed and size, is the \( \lambda \) variable in 
 <p>
 <br />
 <br />
-To understand the results in Fig.(<a href="#fig:change_lambda">6</a>), the \( \lambda  \) function can be study,
+To understand the results in Fig.(<a href="#fig:change_lambda">6</a>), the \( \lambda  \) function can be studied,
 $$
-\begin{equation} \tag{15}
+\begin{equation} \label{eq:lambda}
  \lambda =\frac{a}{rS_0},
 \end{equation}
 $$
 
-A major and aggressive travelling wave is caused when \( \lambda \rightarrow 0 \). In Fig.(<a href="#fig:change_lambda">6</a>), \( \lambda \) is run with value 0.01 in the first subplot. This results in a travelling wave of infected that eradicates the <em>Susceptible</em> group in a short time. The wave starts decreasing when all <em>Susceptible</em> are infected. By looking at Eq.<a href="#mjx-eqn-15">(15)</a>, a small value is caused by a small \( a \) compared to \( r \) and \( S_0 \). If \( a \) is low, this result in few deaths/immune in the <em>Infected</em> class. This means that the <em>Infected</em> class will grow and be able to infect even more humans from the <em>Susceptible</em> class. The same thing will happen if \( r \) is large. A result of a large \( r \) will cause an aggressive disease that infects  a major part of the population. The same result will happen if \( S_0 \) is large. Then there are several possible humans to infect. Therefore a outburst of a disease is more critically in a crowded city than in the wilderness, far from other humans.
+A major and aggressive travelling wave is caused when \( \lambda \rightarrow 0 \). In Fig.(<a href="#fig:change_lambda">6</a>), \( \lambda \) is run with value 0.01 in the first subplot. This results in a travelling wave of <em>Infected</em> that eradicates the <em>Susceptible</em> group in a short time. The wave starts decreasing when all <em>Susceptible</em> are infected. By looking at Eq.\eqref{eq:lambda},one can see that a small value is caused by a small \( a \) compared to \( r \) and \( S_0 \). If \( a \) is low, this results in few deaths/immune in the <em>Infected</em> group. This means that the <em>Infected</em> group will grow and be able to infect even more humans from the <em>Susceptible</em> group. The same thing will happen if \( r \) is large. A result of a large \( r \) will be an aggressive disease that infects  a major part of the population. The same result will happen if \( S_0 \) is large. Then there are several possible humans to infect. Therefore an outburst of a disease is more critical in a crowded city than in the wilderness, far from other humans.
 <br />
 <br />
-If \( \lambda \) increases above 1, the disease will not be able to spread. The number of infected will decrease, since the number of dead/immune caused by the <em>Infected</em> group is higher than the amount of <em>Infected</em> humans from the <em>Susceptible</em> group. After a certain time, the number of infected will die out. If \( \lambda \) stays at 1, the number of infected will be equal the whole time.
+If \( \lambda \) increases above 1, the disease will not be able to spread. The number of <em>Infected</em> will decrease, since the number in the <em>Removed</em> group caused by the <em>Infected</em> group is higher than the amount of <em>Infected</em> humans from the <em>Susceptible</em> group. After a certain time, the number of <em>Infected</em> will die out. If \( \lambda \) stays at 1, the number of <em>Infected</em> will be equal the whole time.
 
 <h1>Epidemic in an English Boarding School 1978  <a name="___sec13"></a></h1>
-An example from an English boarding school was presented in the previous chapter . This example was based on the book from J.D Murray <a href="._2_PDE_FK002.html#murray2002mathematical">[3]</a>, and was modeled for a ODE system. A similar result should appear for the PDE system with same parameter values and a uniform distribution of the groups. The school had 763 students where one of the students brought a disease back to the school. The following numbers were used for the ODE system in chapter one. \( N=763, S_0=762,I_0=1,R_0=0,\rho=202 \) and \( r = 2.18\cdot 10^{-3} \). 
+An example from an English boarding school was presented in the previously chapter <em>Epidemic models</em> . This example was based on the book from J.D Murray <a href="#murray2002mathematical">[3]</a>, and was modeled for an ODE system. A similar result should appear for the PDE system with the same parameter values and a uniform distribution of the groups. The school had 763 students, and one of the students brought a disease back to the school. The following numbers were used for the ODE system in chapter one. \( N=763, S_0=762,I_0=1,R_0=0,\rho=202 \) and \( r = 2.18\cdot 10^{-3} \). 
 <br />
 <br />
-The first simulation is produced with uniform distributed concentration, this is done to verify the implementation. A person is defined as one cubic. The total volume of the whole group is spread over the area. The area is sat to be 100 m x 100 m, which result in an average height of \( 1/10000 \) m per person. This is done to get an uniformed distribution. This would of course be more difficult in the real life, particular if the person should be alive. Since the <em>Infected</em> group only consists of one person, the total height will be 0.0001 for the whole area. The <em>Susceptible</em> group consist of 762 students and the total height at each point will be 0.0762 The simulation can be seen in the Appendix. 
+The first simulation is produced with uniform distributed concentration, This is done to verify the implementation. A person is defined as one cubic. The total volume of the whole group is spread over the area. The area is set to be 100 m x 100 m, which results in an average height of \( 1/10000 \) m per person. This is done to get a uniformed distribution. This would of course be more difficult in real life, particularly if the person would be alive. Since the <em>Infected</em> group only consists of one person, the total height will be 0.0001 for the whole area. The <em>Susceptible</em> group consists of 762 students and the total height at each point will be 0.0762 The simulation can be seen in the Appendix. 
 <br />
 <br />
-The results from subplot I in Fig.(<a href="#fig:british_number">7</a>) are equal with the results from the ODE system modeled in the previous chapter.This can be seen in Tab.(<a href="#table:british_number_table">table:british_number_table</a>). This is as expected since the diffusion term is negligible in this system. The simulation results in a group of separate ODE systems modeled at each point over an area.
+The results from subplot I in Fig.(<a href="#fig:british_number">7</a>) are equal to the results from the ODE system modeled in the previously chapter.This can be seen in Tab.(<a href="#table:british_number_table">table:british_number_table</a>). This is as expected, since the diffusion term is negligible in this system. The simulation results in a group of separate ODE systems modeled over an area.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 7:  <a name="fig:british_number"></a> English Boarding School modeled with three different initial values for the infected student. The amount of students in each group modeled over 15 days. Subplot 1: uniform distribution. Subplot 2: The student is placed as a Gaussian function in center. Subplot 3: The student is placed as a Gaussian function in the corner (0,0). </p></center>
-<p><img src="plots/british_number.png" align="bottom" height=1000 width=400></p>
+<p><img src="plots/british_number.png" align="bottom" height=600 width=300></p>
 </center>
 
 <p>
 <a name="table:british_number_table"></a>
 <table border="1">
 <thead>
-<tr><th align="center">                   </th> <th align="center">     ODE system    </th> <th align="center">  PDE uniform dist </th> <th align="center">     PDE center    </th> <th align="center">     PDE corner    </th> </tr>
+<tr><th align="center">           </th> <th align="center"> ODE system</th> <th align="center">  PDE uniform dist </th> <th align="center"> PDE center</th> <th align="center"> PDE corner</th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   5 Days                 </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
-<tr><td align="center">   Susceptible            </td> <td align="center">   444.62                 </td> <td align="center">   444.62                 </td> <td align="center">   748.03                 </td> <td align="center">   757.33                 </td> </tr>
-<tr><td align="center">   Infective              </td> <td align="center">   209.56                 </td> <td align="center">   209.56                 </td> <td align="center">   7.36                   </td> <td align="center">   2.35                   </td> </tr>
-<tr><td align="center">   Removed                </td> <td align="center">   108.82                 </td> <td align="center">   108.82                 </td> <td align="center">   7.60                   </td> <td align="center">   3.32                   </td> </tr>
-<tr><td align="center">   10 Days                </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
-<tr><td align="center">   Susceptible            </td> <td align="center">   37.59                  </td> <td align="center">   37.59                  </td> <td align="center">   697.71                 </td> <td align="center">   743.58                 </td> </tr>
-<tr><td align="center">   Infective              </td> <td align="center">   117.59                 </td> <td align="center">   117.59                 </td> <td align="center">   24.43                  </td> <td align="center">   6.66                   </td> </tr>
-<tr><td align="center">   Removed                </td> <td align="center">   607.82                 </td> <td align="center">   607.82                 </td> <td align="center">   40.86                  </td> <td align="center">   12.76                  </td> </tr>
-<tr><td align="center">   15 Days                </td> <td align="center">   -----------            </td> <td align="center">   -------------------    </td> <td align="center">   -----------            </td> <td align="center">   -----------            </td> </tr>
-<tr><td align="center">   Susceptible            </td> <td align="center">   21.09                  </td> <td align="center">   21.09                  </td> <td align="center">   597.01                 </td> <td align="center">   717.02                 </td> </tr>
-<tr><td align="center">   Infective              </td> <td align="center">   17.30                  </td> <td align="center">   17.30                  </td> <td align="center">   46.96                  </td> <td align="center">   12.37                  </td> </tr>
-<tr><td align="center">   Removed                </td> <td align="center">   724.62                 </td> <td align="center">   724.62                 </td> <td align="center">   119.03                 </td> <td align="center">   33.61                  </td> </tr>
+<tr><td align="center">   5 Days         </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   444.62         </td> <td align="center">   444.62                 </td> <td align="center">   748.03         </td> <td align="center">   757.33         </td> </tr>
+<tr><td align="center">   Infective      </td> <td align="center">   209.56         </td> <td align="center">   209.56                 </td> <td align="center">   7.36           </td> <td align="center">   2.35           </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   108.82         </td> <td align="center">   108.82                 </td> <td align="center">   7.60           </td> <td align="center">   3.32           </td> </tr>
+<tr><td align="center">   10 Days        </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   37.59          </td> <td align="center">   37.59                  </td> <td align="center">   697.71         </td> <td align="center">   743.58         </td> </tr>
+<tr><td align="center">   Infective      </td> <td align="center">   117.59         </td> <td align="center">   117.59                 </td> <td align="center">   24.43          </td> <td align="center">   6.66           </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   607.82         </td> <td align="center">   607.82                 </td> <td align="center">   40.86          </td> <td align="center">   12.76          </td> </tr>
+<tr><td align="center">   15 Days        </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -----------    </td> <td align="center">   -----------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   21.09          </td> <td align="center">   21.09                  </td> <td align="center">   597.01         </td> <td align="center">   717.02         </td> </tr>
+<tr><td align="center">   Infective      </td> <td align="center">   17.30          </td> <td align="center">   17.30                  </td> <td align="center">   46.96          </td> <td align="center">   12.37          </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   724.62         </td> <td align="center">   724.62                 </td> <td align="center">   119.03         </td> <td align="center">   33.61          </td> </tr>
 </tbody>
 </table>
 <!-- dx = 0.04 -->
 <!-- dx^2 = 1.6E-3 -->
 <!-- ODE = 1.5E-4 -->
 
-<h3>Introducing a Gaussian distribution of infective  <a name="___sec14"></a></h3>
-
-An assumption to make is that a person is not able to be evenly distributed over an area. In this example with only one infected student at initial time, the chance of being infected increase as closer you get to the infected student. The student si represented by a Gaussian function in the middle of the school yard, to see if the position affects the result. The height is sat to 1 and the volume of the Gauss function is sat to 1 cubic. The simulation can be seen in Fig.(<a href="#fig:gauss_sub">8</a>) and the total amount of students of each group can be be seen in Fig.(<a href="#fig:british_number">7</a>).
+<h2>Introducing a Gaussian distribution of infected  <a name="___sec14"></a></h2>
+An assumption one can make is that a person is not able to be evenly distributed over an area. In this example, with only one infected student at initial time, the chance of being infected increases the closer the <em>Susceptible</em> group gets the infected student. The student is represented by a Gaussian function in the middle of the school yard, to see if the position affects the result. The height is set to 1 and the volume of the Gauss function is set to 1 cubic. The simulation can be seen in Fig.(<a href="#fig:gauss_sub">8</a>) and the total amount of students in each group can be be seen in Fig.(<a href="#fig:british_number">7</a>).
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  <a name="fig:gauss_sub"></a> The student is placed in the center of the school yard as a Gaussian finction with height= 1 m and volume = 1 m^3. </p></center>
+<center><p class="caption">Figure 8:  <a name="fig:gauss_sub"></a> The infected student is placed in the center as a Gaussian function at initial time. The height of the Gaussian function is set to 1 m and volume is set to 1 cubic. </p></center>
 <p><img src="plots/2D_british_school_gauss_sub.png" align="bottom" height=600 width=800></p>
 </center>
 
 <p>
 <br />
 <br />
-The results from the uniform distributed and Gaussian distributed simulations shows variously results. The position of the infective is the difference between the simulations. This has a major impact. Since the only ones that can be infected by the Gaussian distribution are the students close to the infected, this restricts the spread of the epidemic. The chance of getting infected in this area is higher. The Fig.(<a href="#fig:gauss_sub">8</a>) shows that the amount of <em>Infective</em> quickly grow in the center, where the infected was placed. Subplot IV in Fig.(<a href="#fig:gauss_sub">8</a>) shows that the amount of removed in the center is closed to the maximum of the initial value of <em>Susceptible</em>. While the students along the boundary of the school yard seems to be unaffected after 15 days. This simulation shows that the placement of the infective has a major role in the simulation.
+The results from the uniform distributed and Gaussian distributed simulations show various results. The initial position of the <em>Infected</em> group is the difference between the simulations. This has a major impact. Since the only ones that can be infected by the Gaussian distribution are the students close to the infected student, this restricts the spread of the epidemic. The chance of getting infected in this area is higher. The Fig.(<a href="#fig:gauss_sub">8</a>) shows that the amount of <em>Infective</em> quickly grows in the center, where the infected was placed. Subplot IV in Fig.(<a href="#fig:gauss_sub">8</a>) shows that the amount from the <em>Removed</em> group in the center is close to the maximum of the initial value of <em>Susceptible</em>, while the students along the boundary of the schoolyard seem to be unaffected after 15 days. This simulation shows that the position of the <em>Infected</em> group has a major role in the simulation.
 <br />
 <br />
-The position of the infective, here as a Gaussian function, also affects the outcome. Subplot III in Fig.(<a href="#fig:british_number">7</a>) describes a simulation where the Gaussian function is placed in the corner(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. Tab.(<a href="#table:british_number_table">table:british_number_table</a>) shows that the total number of infected is lower than for the centered placed Gaussian. The infected student is only able to spread the disease to a quarter of the population compared to the infected in the center. The simulation can be seen in the Appendix.
+The position of the <em>Infected</em> group, here as a Gaussian function, also affects the outcome. Subplot III in Fig.(<a href="#fig:british_number">7</a>) describes a simulation where the Gaussian function is placed in the corner with position(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. Tab.(<a href="#table:british_number_table">table:british_number_table</a>) shows that the total number of <em>Infected</em> is lower than for the centered placed Gaussian function. The infected student is only able to spread the disease to a quarter of the population compared to the infected student in the center. The simulation can be seen in the Appendix.
 <br />
 <br />
-If the simulations are run for a longer time, the difference between each class will decrease. After 100 days there will be about 18 susceptible students left in the uniform distributed group, compared to 25 students in both of the Gaussian groups. The simulations can be seen in the Appendix.
+If the simulations are run for a long time, the difference between each group will decrease. After 100 days there will be about 18 students in the <em>Susceptible</em> group in the uniform distributed simulation, compared to 25 students in both of the Gaussian simulations. The simulations can be seen in the Appendix.
 
 <p>
+<!-- !split -->
+
+<h1>Zombiefication  <a name="___sec15"></a></h1>
+The previous chapter studied an ODE system designed to calculate the number in the four groups: <em>Susceptible</em>, <em>Infected</em>, <em>Zombie</em> and <em>Removed</em> during the five first episodes in the TV series <em>Walking Dead</em> Ref.<a href="#walking_dead">[4]</a>. The model was based on the model from Langtangen, Mardal and R&#248;tnes Ref.<a href="#zombie-math">[2]</a>, with an extra term in the <em>counter attack</em> phase. The ODE system from the chapter <em>Epidemic models</em> can be expanded with a diffusion term in each group to make a PDE system. This can be seen in Eq.\eqref{eq:seland_model}  
+$$
+\begin{equation} \label{eq:seland_model}
+	\begin{aligned} 
+	\frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
+	\frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+D_i\nabla^2 I\\
+	\frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z\\
+	\frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
+	\end{aligned}
+\end{equation}
+$$
+
+The Eq.\eqref{eq:seland_model} can be solved numerically by discretization. Forward Euler is used for the time derivative and Crank Nicolson for the space derivative. This is solved with the same technique as for the SIR model\eqref{eq:SIR_disc}. The system can be seen in Eq.\eqref{eq:SIZR_disc}
+$$
+\begin{equation} \label{eq:SIZR_disc}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j} \\
+        &+D_s\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j} \\
+        &+D_i\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{Z^{n+1}_{i,j}-Z^n_{i,j}}{\Delta t} &= \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j} \\
+        &+D_z\left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j} \\
+        &+D_r\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+By setting the unknown to the left, the following system \eqref{eq:SIZR_disc2} can be solved: 
+$$
+\begin{equation} \label{eq:SIZR_disc2}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^n_{i,j} + \Delta t \Bigl( \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j} \\
+        &+ D_s\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) \\
+    I^{n+1}_{i,j} &= I^n_{i,j} + \Delta t \Bigl((\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j} \\
+        &+ D_i\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) \\ 
+    Z^{n+1}_{i,j} &= Z^n_{i,j} +\Delta t \Bigl( \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j} \\
+        &+D_z\left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) \\
+    R^{n+1}_{i,j} &= R^n_{i,j} +\Delta t \Bigl(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j} \\
+        &+D_r\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) 
+	\end{aligned}
+\end{equation}
+$$
+
+A simulation with uniform distributed groups can be done to verify the implementation of the system. The result is expected to be similar to the ODE system in the previous chapter. A zombie attack can be separated into three different phases, based on the paper from Langtangen, Mardal and R&#248;tnes <a href="#zombie-math">[2]</a>. The first phase is short, and it is called the <em>Initial phase</em>. The humans are unfamiliar with the disease in this phase and are as a consequence quite naive to the disease. This result in a high chance of getting infected. The next phase is called the <em>Hysterical phase</em>. The humans are now more familiar with the situation and try to avoid the <em>Infected</em> group. This result in a lower chance of getting infected. The last phase, which happens at the same time as the <em>Hysterical phase</em>, is the <em>Counter attack</em>. This phase is often initiated when humans are attacked by zombies. The following parameters that were used for simulating the first episodes of <em>Walking Dead</em> will be used here. These can be seen in Tab.(<a href="#table:param_val">table:param_val</a>). By computing the system for all three phases, the value in each phase can be compared to the ones from the ODE system. This will give an indication of whether the discretization is done correct. 
+
 <p>
-<!-- begin bottom navigation -->
-<a href="._2_PDE_FK001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
-<!-- end bottom navigation -->
+<a name="table:param_val"></a>
+<table border="1">
+<thead>
+<tr><th align="center">  parameter  </th> <th align="center">Initial phase</th> <th align="center">hysterical phase</th> <th align="center">counter attack</th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   \( \beta \)      </td> <td align="center">   0.01155          </td> <td align="center">   0.000011            </td> <td align="center">   0.00011           </td> </tr>
+<tr><td align="center">   \( \varrho \)    </td> <td align="center">   1.37             </td> <td align="center">   1.5                 </td> <td align="center">   1.5               </td> </tr>
+<tr><td align="center">   \( \alpha \)     </td> <td align="center">   0.00044          </td> <td align="center">   0.000208            </td> <td align="center">   0.000208          </td> </tr>
+<tr><td align="center">   a                </td> <td align="center">   0                </td> <td align="center">   0                   </td> <td align="center">   0.0073            </td> </tr>
+<tr><td align="center">   \( \sigma \)     </td> <td align="center">   0                </td> <td align="center">   0                   </td> <td align="center">   0.005             </td> </tr>
+<tr><td align="center">   \( \mu \)        </td> <td align="center">   0                </td> <td align="center">   0                   </td> <td align="center">   0.14              </td> </tr>
+</tbody>
+</table>
+<p>
+The simulation in Fig.(<a href="#fig:zombie_three_number">9</a>) seems to match the results from the ODE system. A closer check can be done by comparing the groups in each phase. This result can be seen in Tab.(<a href="#table:compare_phases_zombie">table:compare_phases_zombie</a>) 
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 9:  <a name="fig:zombie_three_number"></a> The Eq.\eqref{eq:SIZR_disc2} modeled with uniformed distributed groups. Initial values S_0 = 621,I_0 = 0, Z_0 = 0 R_0 = 0 with parameters from (<a href="#table:param_val">table:param_val</a>). </p></center>
+<p><img src="plots/2D_zombie_three_phases_number.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<br />
+<br />
+The initial values for the four groups are set to \( S_0=621 \), \( I_0=0 \), \( Z_0=1 \) and \( R_0= 0 \) in all simulations. The values in Tab.(<a href="#table:compare_phases_zombie">table:compare_phases_zombie</a>) are measured at the final time for each phase. The <em>Initial phase</em> lasts for three days and the values are measured at \( time=3 \). The <em>Hysterical phase</em> is a continuous phase, and will not stop until an eventual eradication. The values are therefore given before the <em>Counter attack</em> at \( time=33 \). The <em>Counter attack</em> lasts for some hours, and is measured at \( time=34 \), which is a day after the attack. The value of \( \Delta t \) is set to 1E-3. 
+
+<p>
+<a name="table:compare_phases_zombie"></a>
+<table border="1">
+<thead>
+<tr><th align="center">                </th> <th align="center"> ODE system</th> <th align="center">  PDE uniform dist </th> <th align="center">  PDE gauss center </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Initial phase       </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   71.3           </td> <td align="center">   71.3                   </td> <td align="center">   81.12                  </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   230.8          </td> <td align="center">   230.8                  </td> <td align="center">   210.94                 </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   298.9          </td> <td align="center">   298.9                  </td> <td align="center">   310.11                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   21.0           </td> <td align="center">   21.0                   </td> <td align="center">   20.60                  </td> </tr>
+<tr><td align="center">   Hysterical phase    </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   61.6           </td> <td align="center">   61.6                   </td> <td align="center">   70.55                  </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   0.3            </td> <td align="center">   0.3                    </td> <td align="center">   0.34                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   358.6          </td> <td align="center">   355.6                  </td> <td align="center">   334.33                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   201.5          </td> <td align="center">   201.5                  </td> <td align="center">   217.56                 </td> </tr>
+<tr><td align="center">   Counter attack      </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   57.8           </td> <td align="center">   57.8                   </td> <td align="center">   66.50                  </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   1.2            </td> <td align="center">   1.2                    </td> <td align="center">   1.23                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   331.8          </td> <td align="center">   331.8                  </td> <td align="center">   305.86                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   231.3          </td> <td align="center">   231.3                  </td> <td align="center">   249.19                 </td> </tr>
+</tbody>
+</table>
+<p>
+These results shows that the PDE system gives the same results as the ODE system.
+
+<p>
+<!-- # -->
+<!-- # -->
+<!-- # -->
+<!-- # -->
+
+<h2>The position of the <em>Infected</em> group  <a name="___sec16"></a></h2>
+In the previous section, <em>English boarding school</em>, the location of the <em>Infected</em> group was proven to have a major influence on the result. However here the <em>Susceptible</em> group was uniformly distributed over the schoolyard. The number in each group, based on the study of <em>Walking Dead</em>, was seen in three different locations in the TV series. By only studying the TV series, it is hard to decide the geographical distance between these three locations. Therefore they have been placed with a certain distance from each other. The following simulations are done on a grid with size(40 x 40) with the following positions for the towns: Small town(6,6) with size 21, middle town(12,25) with size 200 and large town(25,12) with size 400. Since these values were based on the humans and zombies seen in the series, these can be scaled up by 1000 to correspond a realistic population. A large town can be seen as an area with a population of 400 000. The length can be measured in kilometres. Then the distance between the middle and large town will be 18.38 km. Compared to the distance between Oslo and B&#230;rum(Sandvika) which is 15 km, the simulation can be seen as a rough estimate of the area around Oslo, if the fjord is frozen and the mobility for the area is similar.
+<br />
+<br />
+The diffusion term describes the diffusion for each group. This can be seen as the speed towards equilibrium for each group. If the diffusion constant is large, the flow towards equilibrium will go faster. The values have been set as follows. 
+
+<ul>
+<li> \( D_s=1 \), The <em>Susceptible</em> has a basic moving speed. The other groups are based on the speed of a healthy human.</li>
+<li> \( D_i=0.5 \), The <em>Infected</em> are often injured caused by recent fights. This affects their mobility.</li>
+<li> \( D_z=0.9 \), The average moving speed for a zombie. There are zombies with the mobility of a human, but there are also zombies that drag themselves forward with only one arm. This results in a major difference in speed and therefore a lower average speed for the zombies.</li>
+<li> \( D_r=0 \), The removed are here seen as dead, therefore there is no mobility.</li>
+</ul>
+
+<br />
+<br />
+The parameters from Tab.(<a href="#table:param_val">table:param_val</a>) will be used here, and the three phases will be modeled as shown for the uniformed distributed PDE system. The values will be used for three different simulations with the similar initial value for the different groups. The position of initial values can be seen in Fig.(<a href="#fig:initial_value_susceptible">10</a>) and are based on the data given for each town above. The difference in the three simulations will be the position of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 10:  <a name="fig:initial_value_susceptible"></a> The initial value for the <em>Susceptible</em> group for three simulations. Small group(6,6) with volume 21, middle group(12,25) with volume 200 and large group(25,12) with volume 400. All three groups are build up with a Gaussian function. </p></center>
+<p><img src="plots/initial_value_susceptible.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<br />
+<br />
+Fig.(<a href="#fig:large_town">11</a>) shows the simulation where the zombie is placed in the large town. The simulations of the small and middle town can be seen in the Appendix. The four subplots are from the different phases that arise during a zombie attack. The different groups have the same color as introduced in Fig.(<a href="#fig:zombie_three_number">9</a>). It is difficult to separate the three groups <em>Infected</em>, <em>Zombie</em> and <em>Removed</em>, since they all have a low value at initial time. The development of the amount can easier be seen in the Fig.(<a href="#fig:compare_towns">12</a>), which also shows the results from the small and middle town. Since the amount of <em>Susceptible</em> is quite low in the small town where the zombie arises, the disease is not able to infect too many before the society has moved to the next phase, assuming that the broadcasting about the disease works okay for the first days. This results in an eradication of the disease in about a month. The table(<a href="#table:compare_phases_zombie">table:compare_phases_zombie</a>) shows that the number of zombies decreases towards zero after a month. 
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 11:  <a name="fig:large_town"></a> <em>Walking Dead</em> simulated with the zombie at initial time in the large town. Subplots shown at each phase. </p></center>
+<p><img src="plots/2D_zombie_three_phases_zombie_large_town_2_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<br />
+<br />
+By placing the zombie in the middle town, the amount in the <em>Zombie</em> group increases to a higher level. The amount can be seen as subplot II in Fig.(<a href="#fig:compare_towns">12</a>). The damages are higher, and after a month the total population of <em>Susceptible</em> is reduced to 427. The last calculation done for the large town in Fig.(<a href="#fig:large_town">11</a>) shows major damages. Here the amount in the <em>Zombie</em> group increases above the number of <em>Susceptible</em>. The <em>Infected</em> group also increases to above 100 after a couple of days in the initial phase. This can be explained by the high number of meetings between susceptible and zombies. By studying the subplot II in Fig.(<a href="#fig:large_town">11</a>), the zombies are grouped in the large town, while the middle and small town mostly consist of <em>Susceptible</em>. By counting the loss of <em>Susceptible</em> during the first phase, the Tab.(<a href="#table:compare_towns">table:compare_towns</a>) shows that this amount corresponds with the size of the towns where the zombie was placed, given by the number 17,188 and 362 in the small,middle and large group. The percent is highest in the middle town with 94 percent. The percent in the large and small group are 90 and 81.  The simulation in the middle town has the highest percent because the <em>Susceptible</em> group in the large town also gets infected. These towns are coupled together, and the epidemic disease is able to spread. The small town, which can be seen as Nesodden(a peninsula outside Oslo), has the lowest percent. The reason is that the disease is not able to spread to the other towns, and therefore is causes less damage.  
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 12:  <a name="fig:compare_towns"></a> The values for each group counted during 34 days in <em>Walking Dead</em>. Initial phase from day 0 to day 3, Hysterical phase from day 3 to day 33 and Counter attack from day 33 to day 34. </p></center>
+<p><img src="plots/2D_compare_towns.png" align="bottom" height=1000 width=400></p>
+</center>
+
+<p>
+<br />
+<br />
+The results from the uniformed distributed simulation is still much higher for the <em>Zombie</em> group the in these three simulations. This shows that using the parameters from the ODE system in a geographical area makes little sense. A realistic assumption is that a zombie is restricted to a given area, and therefore the parameters will not be equal for all. The chance of getting infected is much higher if a person from the  <em>Susceptible</em> group is close to an infected. There is also a greater chance of getting infected if the <em>Susceptible</em> group has a high density. 
+
+<p>
+<a name="table:compare_towns"></a>
+<table border="1">
+<thead>
+<tr><th align="center">                </th> <th align="center"> Small town</th> <th align="center">    Middle town    </th> <th align="center">       Large       </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Initial phase       </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   603.74         </td> <td align="center">   433.22                 </td> <td align="center">   259.20                 </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   2.96           </td> <td align="center">   25.51                  </td> <td align="center">   50.94                  </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   13.79          </td> <td align="center">   155.27                 </td> <td align="center">   297.24                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   0.66           </td> <td align="center">   7.16                   </td> <td align="center">   13.78                  </td> </tr>
+<tr><td align="center">   Hysterical phase    </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   604.42         </td> <td align="center">   429.35                 </td> <td align="center">   251.14                 </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   0.03           </td> <td align="center">   0.18                   </td> <td align="center">   0.35                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   6.25           </td> <td align="center">   87.31                  </td> <td align="center">   178.45                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   12.14          </td> <td align="center">   106.00                 </td> <td align="center">   192.90                 </td> </tr>
+<tr><td align="center">   Counter attack      </td> <td align="center">   -----------    </td> <td align="center">   -------------------    </td> <td align="center">   -------------------    </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   604.21         </td> <td align="center">   427.45                 </td> <td align="center">   247.33                 </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   0.08           </td> <td align="center">   0.59                   </td> <td align="center">   1.17                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   4.49           </td> <td align="center">   73.70                  </td> <td align="center">   151.44                 </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   14.11          </td> <td align="center">   121.16                 </td> <td align="center">   222.96                 </td> </tr>
+</tbody>
+</table>
+
+<h2>Free areas for the <em>Susceptible</em> group  <a name="___sec17"></a></h2>
+To model a realistic zombie attack, humans ability to think logically is crucial in the fight. The mobility was presented as a factor in the previous section. Another important skill that the <em>Susceptible</em> group holds, is the ability to decide the safety of an area. In the TV series <em>Walking Dead</em>, the humans build barricades to keep the zombies outside. This gives the <em>Susceptible</em> group free areas where they can stay. This idea can be transfered to the PDE system by rewriting the Eq.\eqref{eq:seland_model} with spatial dependent diffusion terms. The diffusion constant \( D_u \) is now replaced with a diffusion function \( \gamma_u(x) \) for \( u= S,I,Z,R \), which is spatial discretized. Since a diffusion equation always goes towards equilibrium, this rewriting will only slow down/stop the selected group to diffuse into an area. In this case it will stop the <em>Zombie</em> group from diffusing into the buildings. 
+$$
+\begin{equation} \label{eq:seland_model_diff}
+    \begin{aligned} 
+    \frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +\nabla(\gamma_S(x) \nabla S) \\
+    \frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - D_i\delta_II+\nabla(\gamma_I(x) \nabla I)\\
+    \frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+\nabla(\gamma_Z(x) \nabla Z)\\
+    \frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+\nabla(\gamma_R(x) \nabla R) 
+    \end{aligned}
+\end{equation}
+$$
+
+The diffusion term is the difference between this system and Eq.\eqref{eq:seland_model}. The discretization can be shown for for a general \( \gamma \). This will be similar for all groups. A Crank Nicolson discretization is used in space.
+$$
+\begin{equation} \label{eq:gamma}
+    \begin{aligned}
+    &=\nabla(\gamma(x) \nabla S) \\
+    &=(\gamma(x) S_x)_x+(\gamma(x) S_y)_y \\
+    &= \left(\gamma(x) \frac{S^{n}_{i+1/2,j}-S^{n}_{i-1/2,j}}{\Delta x}\right)_x+\left(\gamma(x) \frac{S^{n}_{i,j+1/2}-S^{n}_{i,j-1/2}}{\Delta y}\right)_y \\
+    &= \left(\frac{\gamma(x_{i+1/2,j})(S^{n}_{i+1,j}-S^{n}_{i,j})-\gamma(x_{i-1/2,j})(S^{n}_{i,j}-S^{n}_{i-1,j})}{\Delta x^2}\right) \\
+    &+ \left(\frac{\gamma(x_{i,j+1/2})(S^{n}_{i,j+1}-S^{n}_{i,j})-\gamma(x_{i,j-1/2})(S^{n}_{i,j}-S^{n}_{i,j-})}{\Delta y^2}\right)
+    \end{aligned}
+\end{equation}
+$$
+
+Since the calculations are based on spatial points, the values inside the function of \( \gamma \) need to be adjusted. This can be done by the use of an arithmetic mean, which can be seen in Eq.\eqref{eq:arith_mean}. The notation \( q_{i+1/2} \) is a simplification of the function \( q(x_{i+1/2}) \) with \( x_{i+1/2} = x_i + 1/2 \Delta x \)
+$$
+\begin{equation} \label{eq:arith_mean}
+q_{i+1/2} \approx \frac{1}{2}(q_i +q_{i+1})
+\end{equation}
+$$
+
+This arithmetic mean can be inserted for all \( \gamma \)'s in the system. The system can be expressed:
+$$
+\begin{equation} \label{eq:SIZR_disc3}
+	\begin{aligned}
+    S^{n+1}_{i,j}   &= S^n_{i,j} + \Delta t \Bigl( \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j} \\
+                    &+ \frac{1}{2\Delta x^2}\left(\gamma_S(x_{i-1,j})(S^{n}_{i-1,j}-S^{n}_{i,j})+\gamma_S(x_{i,j})(S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j})+\gamma_S(x_{i+1,j})(-S^{n}_{i,j}+S^{n}_{i+1,j})\right) \\
+                    &+ \frac{1}{2\Delta y^2}\left(\gamma_S(x_{i,j-1})(S^{n}_{i,j-1}-S^{n}_{i,j})+\gamma_S(x_{i,j})(S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1})+\gamma_S(x_{i,j+1})(-S^{n}_{i,j}+S^{n}_{i,j+1})\right)\Bigr)\\
+    I^{n+1}_{i,j}   &= I^n_{i,j} + \Delta t \Bigl((\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j} \\
+                    &+ \frac{1}{2\Delta x^2}\left(\gamma_I(x_{i-1,j})(I^{n}_{i-1,j}-I^{n}_{i,j})+\gamma_I(x_{i,j})(I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j})+\gamma_I(x_{i+1,j})(-I^{n}_{i,j}+I^{n}_{i+1,j})\right) \\
+                    &+ \frac{1}{2\Delta y^2}\left(\gamma_I(x_{i,j-1})(I^{n}_{i,j-1}-I^{n}_{i,j})+\gamma_I(x_{i,j})(I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1})+\gamma_I(x_{i,j+1})(-I^{n}_{i,j}+I^{n}_{i,j+1})\right)\Bigr)\\
+    Z^{n+1}_{i,j}   &= Z^n_{i,j} +\Delta t \Bigl( \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j} \\
+                    &+ \frac{1}{2\Delta x^2}\left(\gamma_Z(x_{i-1,j})(Z^{n}_{i-1,j}-Z^{n}_{i,j})+\gamma_Z(x_{i,j})(Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j})+\gamma_Z(x_{i+1,j})(-Z^{n}_{i,j}+Z^{n}_{i+1,j})\right) \\
+                    &+ \frac{1}{2\Delta y^2}\left(\gamma_Z(x_{i,j-1})(Z^{n}_{i,j-1}-Z^{n}_{i,j})+\gamma_Z(x_{i,j})(Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1})+\gamma_Z(x_{i,j+1})(-Z^{n}_{i,j}+Z^{n}_{i,j+1})\right)\Bigr)\\
+    R^{n+1}_{i,j}   &= R^n_{i,j} +\Delta t \left(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}\right)
+	\end{aligned}
+\end{equation}
+$$
+
+The diffusion term for the <em>Removed</em> group is taken away, since dead people are not able to move. This system looks quite messy, but it is straight forward to calculate. All values on the right side are known values and the system is easy to solve. Now every point will be controlled by the diffusion constants given in \( \gamma(x) \). This makes it easier to control the flow in each group. With a high diffusion constant, the diffusion will spread fast. When the diffusion constant goes towards zero, the flow will decrease towards zero flow. This will result in a set of ODE systems modeled for each point.
+
+<h3>Ten minutes at Frederikkeplassen  <a name="___sec18"></a></h3>
+
+Frederikkeplassen at the University of Oslo is a possible area for an upcoming zombie attack. This simulation will try to model a ten minute sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realize the danger and transitions into the <em>Hysterical phase</em>. A map of Frederikkeplassen is used to define the safe and critical areas. The buildings are set as areas where only the <em>Susceptible</em> are allowed to move. This is done by setting the diffusion constant to zero for the <em>Zombie</em> and <em>Infected</em> groups. Since the buildings are safe spots for the <em>Susceptible</em>, an idea would be to express this in the diffusion term by forcing the <em>Susceptible</em> for other areas into the buildings. This is more difficult, since the concentrations in each group wants to diffuse towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and a slow diffusion inside the buildings. 
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 13:  <a name="fig:frederikke_numbers"></a> The amount in each group for two simulations of Frederikkeplassen modeled same parameters for 10 minutes/hours. a)Plot with uniformed distributed groups and same diffusion constants for all groups. b)Plot based on figure(<a href="#fig:frederikke_free_area">14</a>) with different initial values for each group. </p></center>
+<p><img src="plots/2D_compare_Frederikke.png" align="bottom" height=400 width=800></p>
+</center>
+
+<p>
+<br />
+<br />
+Two simulations have been done at Frederikkeplassen. The amount in each group can be seen in Fig.(<a href="#fig:frederikke_numbers">13</a>). The first simulation has a solution based on the ODE system, with uniformed distributed groups, equal diffusion constants and no free areas for the <em>Susceptible</em>. The second simulation is modeled with three groups of <em>Susceptible</em>, as in the previous section. The small group with 21 students is placed at point(4,4), the middle group with 200 students is placed at point(15,8) and the large group with 400 students is placed at point(8,13). The zombie is placed at point(8,10). The \( \gamma(x) \) is set to zero in the buildings for the <em>Zombie</em> and <em>Infected</em> group, and one in the rest of the area. For the <em>Susceptible</em> group, \( \gamma(x) \) is set to 0.1 in the buildings, which causes slow diffusion. In the outside areas, \( \gamma(x) \) is set to 5 for the <em>Susceptible</em>. The desired result is to push them into the buildings, but this will only happen if there is a lower concentration inside the buildings. Therefore this will not reflect a realistic flow of a <em>Susceptible</em> population. This simulation can be seen in Fig.(<a href="#fig:frederikke_free_area">14</a>)  
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 14:  <a name="fig:frederikke_free_area"></a> Frederikkeplassen modeled with free areas for the <em>Susceptible</em> group. The diffusion function \( \gamma(x) \) is set to zero for the <em>Zombie</em> and <em>Infected</em> group in the buildings. The zombie at initial time is placed in the center of Frederikkeplassen </p></center>
+<p><img src="plots/2D_Frederikke_contourf_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<br />
+<br />
+The results in Tab.(<a href="#table:frederikke_table">table:frederikke_table</a>) shows that the three first minutes are crucial. The number after three minutes shows that only 72 humans survived the attack in the uniformed solution, compared to 252 in the free areas. Even more survived in the simulation with the random placement. This will be discussed in the next section. The number in the <em>Zombie</em> group is quite similar in <em>Uniformed distribution</em> and <em>Free areas</em> measured at \( t=3 \). However at \( t=7 \) the difference is major. This can be explained by looking at Fig.(<a href="#fig:frederikke_free_area">14</a>) and the building with the middle group placed inside. When the zombie starts attacking at \( t=0 \), the large group is exposed. This group is placed close to the zombie and the position is in an open area. The zombie can attack right away and the number in the <em>Infected</em> and <em>Zombie</em> groups increases fast. In the two first minutes, a major part of the large group is infected and the <em>Zombie</em> group starts to spread. After 2-3 minutes, the group has reached the buildings with the middle group. Here the diffusion is set to 0, and the spread of zombies stop. Since the diffusion variable for the <em>Susceptible</em> is quite low inside the buildings, it takes time before the group diffuses. Maybe the right diffusion value along the buildings would be 0, to avoid any leakage. This would again cause problem for the diffusion of <em>Susceptible</em> into the buildings. It is also reasonable to think that the <em>Susceptible</em> group needs to diffuse after a certain time. The lack of supplies would force them out.
+
+<p>
+<!-- # -->
+<!-- # -->
+
+<p>
+<a name="table:frederikke_table"></a>
+<table border="1">
+<thead>
+<tr><th align="center">           </th> <th align="center">    Uniform distribution   </th> <th align="center">   Free areas  </th> <th align="center">Random placement</th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   3 Minutes      </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------    </td> <td align="center">   ----------------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   72.23                          </td> <td align="center">   252.72             </td> <td align="center">   524.77              </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   229.65                         </td> <td align="center">   75.69              </td> <td align="center">   26.07               </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   296.67                         </td> <td align="center">   276.55             </td> <td align="center">   66.51               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   20.84                          </td> <td align="center">   13.94              </td> <td align="center">   3.66                </td> </tr>
+<tr><td align="center">   7 Minutes      </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------    </td> <td align="center">   ----------------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   70.78                          </td> <td align="center">   251.35             </td> <td align="center">   524.23              </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   0.83                           </td> <td align="center">   0.51               </td> <td align="center">   0.20                </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   498.72                         </td> <td align="center">   325.54             </td> <td align="center">   81.88               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   49.12                          </td> <td align="center">   41.26              </td> <td align="center">   14.80               </td> </tr>
+<tr><td align="center">   10 Minutes     </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------    </td> <td align="center">   ----------------    </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   69.69                          </td> <td align="center">   249.84             </td> <td align="center">   523.61              </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   0.25                           </td> <td align="center">   0.38               </td> <td align="center">   0.16                </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   479.00                         </td> <td align="center">   295.71             </td> <td align="center">   69.67               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   70.55                          </td> <td align="center">   72.36              </td> <td align="center">   27.77               </td> </tr>
+</tbody>
+</table>
+
+<h2>Random distribution  <a name="___sec19"></a></h2>
+This random distribution of <em>Susceptible</em> and <em>Zombie</em> is simulated with the idea of the next chapter. The volume of the <em>Susceptible</em> group is randomly placed over the area. The volume is similar to the two other simulations in Tab.(<a href="#table:frederikke_table">table:frederikke_table</a>). The zombie is described with a Gaussian function at a random position. The simulation has the same \( \gamma(x) \) as the simulation of the free areas, but the result is different. This simulation was done a couple of times, and resulted in different solutions each time. The position of the zombie had a major influence on the result. If the position of the zombie was in the center, the amount of <em>Infeced</em> and <em>Zombie</em> was larger than if the position of the zombie was in the corner. A specific random simulation cannot be compared with the two other simulations, but the range of the solutions be used. The result shows that the number of zombies at \( time=3 \) never exceeded the result from the free areas. A random position of people will never reach the amount when the <em>Zombie</em> group is uniformed distributed.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 15:  <a name="fig:frederikke_random"></a> Random position of the <em>Susceptible</em> and <em>Zombie</em> group. Simulated with free areas inside the buildings. </p></center>
+<p><img src="plots/2D_Frederikke_random_contourf_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<p>
+<!-- !split -->
+
+<h1>Appendix  <a name="___sec20"></a></h1>
+
+<h3>Sympy to find manufactured solution  <a name="___sec21"></a></h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x,t,lam <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;x t lam&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">s_simple</span>(x,t):
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">return</span> cos(pi<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>t
+<span style="color: #666666">...</span> 
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">i_simple</span>(x,t):
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">return</span> cos(pi<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>t
+<span style="color: #666666">...</span> 
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">r_simple</span>(x,t):
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">return</span> cos(pi<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>t
+<span style="color: #666666">...</span> 
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> x_point <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">0</span>,<span style="color: #666666">1</span>:
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;s_x(</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">,t): &quot;</span>, <span style="color: #666666">%</span> x_point,
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> x_point <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">0</span>,<span style="color: #666666">1</span>:
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;s_x(</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">,t): &quot;</span> <span style="color: #666666">%</span> x_point,
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> diff(s_simple(x,t),x)<span style="color: #666666">.</span>subs(x,x_point)<span style="color: #666666">.</span>simplify()
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;i_x(</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">,t): &quot;</span> <span style="color: #666666">%</span> x_point,
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> diff(i_simple(x,t),x)<span style="color: #666666">.</span>subs(x,x_point)<span style="color: #666666">.</span>simplify()
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;r_x(</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">,t): &quot;</span> <span style="color: #666666">%</span> x_point,
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> diff(r_simple(x,t),x)<span style="color: #666666">.</span>subs(x,x_point)<span style="color: #666666">.</span>simplify()
+<span style="color: #666666">...</span> 
+s_x(<span style="color: #666666">0</span>,t):  <span style="color: #666666">0</span>
+i_x(<span style="color: #666666">0</span>,t):  <span style="color: #666666">0</span>
+r_x(<span style="color: #666666">0</span>,t):  <span style="color: #666666">0</span>
+s_x(<span style="color: #666666">1</span>,t):  <span style="color: #666666">0</span>
+i_x(<span style="color: #666666">1</span>,t):  <span style="color: #666666">0</span>
+r_x(<span style="color: #666666">1</span>,t):  <span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s <span style="color: #666666">=</span> s_simple(x,t)
+<span style="color: #666666">&gt;&gt;&gt;</span> i <span style="color: #666666">=</span> i_simple(x,t)
+<span style="color: #666666">&gt;&gt;&gt;</span> r <span style="color: #666666">=</span> r_simple(x,t)
+<span style="color: #666666">&gt;&gt;&gt;</span> f <span style="color: #666666">=</span> diff(s,t)<span style="color: #666666">+</span>i<span style="color: #666666">*</span>s<span style="color: #666666">-</span>diff(diff(s,x),x)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> f<span style="color: #666666">.</span>simplify()
+(t<span style="color: #666666">**2*</span>cos(pi<span style="color: #666666">*</span>x) <span style="color: #666666">+</span> pi<span style="color: #666666">**2*</span>t <span style="color: #666666">+</span> <span style="color: #666666">1</span>)<span style="color: #666666">*</span>cos(pi<span style="color: #666666">*</span>x)
+<span style="color: #666666">&gt;&gt;&gt;</span> g <span style="color: #666666">=</span> diff(i,t)<span style="color: #666666">-</span>i<span style="color: #666666">*</span>s<span style="color: #666666">+</span>lam<span style="color: #666666">*</span>i<span style="color: #666666">-</span>diff(diff(i,x),x)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> g<span style="color: #666666">.</span>simplify()
+(lam<span style="color: #666666">*</span>t <span style="color: #666666">-</span> t<span style="color: #666666">**2*</span>cos(pi<span style="color: #666666">*</span>x) <span style="color: #666666">+</span> pi<span style="color: #666666">**2*</span>t <span style="color: #666666">+</span> <span style="color: #666666">1</span>)<span style="color: #666666">*</span>cos(pi<span style="color: #666666">*</span>x)
+<span style="color: #666666">&gt;&gt;&gt;</span> h <span style="color: #666666">=</span> diff(r,t)<span style="color: #666666">-</span>lam<span style="color: #666666">*</span>i<span style="color: #666666">-</span>diff(diff(r,x),x)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> h<span style="color: #666666">.</span>simplify()
+(<span style="color: #666666">-</span>lam<span style="color: #666666">*</span>t <span style="color: #666666">+</span> pi<span style="color: #666666">**2*</span>t <span style="color: #666666">+</span> <span style="color: #666666">1</span>)<span style="color: #666666">*</span>cos(pi<span style="color: #666666">*</span>x)
+</pre></div>
+
+<h2>Discretization  <a name="___sec22"></a></h2>
+$$
+\begin{equation} \label{eq:LMR_model}
+	\begin{aligned} 
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS + \nabla(\gamma_s(x)\nabla S) \\
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II+\nabla(\gamma_I(x)\nabla I)\\
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+ \nabla(\gamma_Z(x)\nabla Z)\\
+	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+	\end{aligned}
+\end{equation}
+$$
+
+The calculations will be shown for the diffusion part in the first equation. This idea will be used for the whole system
+
+$$
+\begin{equation}
+	\begin{aligned}
+	\frac{dS}{dt} =& \nabla(\gamma_s(x)\nabla S) \\
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \left(\gamma(x_{i+1/2,j})\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) 
+	\end{aligned}
+\end{equation}
+$$
+
+<h2>2D Gaussian function from x=0  <a name="___sec23"></a></h2>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 16:  The PDE system \eqref{eq:simple_non_PDE} simulated for a 2D system with \( \lambda=0.5 \). A gauss wave from \( x=0 \). </p></center>
+<p><img src="plots/2D_gauss_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<h2>2D Gaussian function from x=0,y=0  <a name="___sec24"></a></h2>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 17:  A gaussian function from \( x=0,y=0 \) based on the PDE system \eqref{eq:simple_non_PDE} with \( \lambda=0.5 \) </p></center>
+<p><img src="plots/2D_gauss_one_sub.png" align="bottom" height=600 width=800></p>
+</center>
+
+<h2>2D Gaussian function from x=0,y=0 with higher initial value  <a name="___sec25"></a></h2>
+
+<h2>English Boarding School  <a name="___sec26"></a></h2>
+
+<p>
+<center><p><img src="plots/2D_british_school_sub.png" align="bottom" height=600 width=800></p></center>
+
+<h3>Gaussian from the corner  <a name="___sec27"></a></h3>
+
+<p>
+<center><p><img src="plots/2D_british_school_gauss_corner_sub.png" align="bottom" height=600 width=800></p></center>
+
+<h3>A long simulation on 100 Days  <a name="___sec28"></a></h3>
+
+<p>
+<center><p><img src="plots/2D_british_school_long_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_british_school_gauss_long_number.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center><p><img src="plots/2D_british_school_gauss_corner_long_number.png" align="bottom" height=600 width=800></p></center>
+
+<h2>Zombiefication  <a name="___sec29"></a></h2>
+
+<h3>Verify the initial phase  <a name="___sec30"></a></h3>
+
+<p>
+<center><p><img src="plots/2D_zombie_initial_cond_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 18:  Creates the same results as for the ODE system </p></center>
+<p><img src="plots/2D_zombie_initial_cond_number.png" align="bottom" height=600 width=800></p>
+</center>
+
+<h3>Three phases  <a name="___sec31"></a></h3>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_sub.png" align="bottom" height=600 width=800></p></center>
+
+<h3>middle town  <a name="___sec32"></a></h3>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png" align="bottom" height=600 width=800></p></center>
+
+<h3>large town  <a name="___sec33"></a></h3>
+
+<p>
+<center><p><img src="plots/2D_zombie_three_phases_zombie_large_town_sub.png" align="bottom" height=600 width=800></p></center>
+
+<p>
+<!-- MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D. -->
+<!-- MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner. -->
+<!-- MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave. -->
+<!-- MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system -->
+<!-- MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area. -->
+<!-- MOVIE:[plots/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard -->
+<!-- MOVIE:[plots/2D_zombie_initial_cond.webm, height=500 width=600] -->
+<!-- MOVIE:[plots/2D_zombie_three_phases.webm, height=500 width=600] -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_zombie_small_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_zombie_small_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_zombie_middle_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_zombie_middle_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_zombie_large_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+<!-- MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
+
+<h1>Bibliography  <a name="___sec34"></a></h1>
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="murray2003mathematical"></a> <b>J. Murray</b>. 
+    <em>Mathematical Biology II: Spatial Models and Biomedical Applications</em>,
+    Springer,
+    2003,
+    <a href="http://books.google.no/books?id=2d-RLuD\_MX8C" target="_self"><tt>http://books.google.no/books?id=2d-RLuD\_MX8C</tt></a>.</li>
+ <li> <a name="zombie-math"></a> <b>H. P. Langtangen, K.-A. Mardal and P. R\otnes</b>. 
+    Escaping the Zombie Threat by Mathematics,
+    Zombies in the Academy: living death in higher education,
+    edited by <b>C. M. A. Whelan and R. Walker</b>,
+    University of Chicago Press,
+    Chapter 3.6,
+    pp. pp. x-y,
+    2013.</li>
+ <li> <a name="murray2002mathematical"></a> <b>J. Murray</b>. 
+    <em>Mathematical Biology: I. an Introduction</em>,
+    Springer,
+    2002,
+    <a href="http://books.google.no/books?id=4WbpP90Gk1YC" target="_self"><tt>http://books.google.no/books?id=4WbpP90Gk1YC</tt></a>.</li>
+ <li> <a name="walking_dead"></a> <b>F. Darabont and G. A. Hurd</b>. 
+    Walking Dead: Season 1,
+    2010-2011.</li>
+</ol>
+
+<!-- end bibliography -->
 
 <!-- ------------------- end of main content --------------- -->
 

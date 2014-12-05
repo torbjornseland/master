@@ -198,12 +198,58 @@ D_s = D_i = D_z = D_r = 1
 # Three phases
 
 #Standard
-"""
-moviename = "plots/2D_zombie_three_phases"
+T = 34
+Nt = 34000
+Nx = 20
+X = 20
+dx = X/float(Nx)
+z_X = z_Y = 0
+
+
+av = (Nx**2)
+par_values = dict(Sigma=0,delta_S=0,delta_I=0,zeta=0,a=0.0073*X**2,sigma=0.005,mu=0.14)
+attacks = [33.125]
+phases = [0,1,3,33,34]
+phase_name = ["Initial value", "Initial phase","Hysterical phase","Counter attack"]
+def beta(t):
+    if t <= 3:
+        return 0.01155*X**2
+    else:
+        return 0.000011*X**2
+def rho(t):
+    if t <= 3:
+        return 1.37
+    else:
+        return 1.5
+def alpha(t):
+    if t <= 3:
+        return 0.00044*X**2
+    else:
+        return 0.000208*X**2
+
+Z_1 = np.ones([Nx+3,Nx+3])*float(1)/(X**2)
+S_1 = np.ones([Nx+3,Nx+3])*float(621)/(X**2)
+moviename = "plots/2D_zombie_three_phases_check"
 D_s = D_i = D_z = D_r = 1
+gamma_s = np.ones([Nx+3,Nx+3])
+gamma_i = np.ones([Nx+3,Nx+3])
+gamma_z = np.ones([Nx+3,Nx+3])
+title = "test"
+gap = 100
+
 def init_func(x,y):
     return 1
-"""
+
+
+
+folder = "three_phases_check"
+plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
+zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
+
+#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name,title)
+#sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
+#contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
+
 #Gauss from Center
 """
 T = 34
@@ -232,6 +278,7 @@ Nt = 136000
 moviename = "plots/2D_zombie_three_phases_gauss_2"
 """
 #### Different initial and diffusion
+"""
 T = 10
 Nt = 20000
 Nx = 200
@@ -265,10 +312,10 @@ def alpha(t):
         return 0.000208*X**2
 
 
-
+"""
 #Initial conditions for Susceptible
 
-
+"""
 V_s = 21
 A_s = 0.5
 sig_s = V_s/float(2*np.pi*A_s)
@@ -294,7 +341,7 @@ S_1 += gauss_2D(x,y,A_s,sig_s,25,12)
 gamma_s = np.ones([Nx+3,Nx+3])
 gamma_i = np.ones([Nx+3,Nx+3])*0.5
 gamma_z = np.ones([Nx+3,Nx+3])*0.9
-
+"""
 # print initial value for Susceptible
 """
 T = 0
@@ -495,7 +542,7 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 """
 # random placed students
-
+"""
 print "random"
 phases = [0,3,7,10]
 phase_name = ["time = 0", "time = 3","time = 7","time = 10"]
@@ -532,7 +579,7 @@ gap = 1
 
 zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
 contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
-
+"""
 
 #S_1[:,:Nx/2] = 0.5
 

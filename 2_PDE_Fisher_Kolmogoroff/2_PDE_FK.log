@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.4.27)  28 NOV 2014 12:25
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.11.15)  5 DEC 2014 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **2_PDE_FK
 (./2_PDE_FK.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 26 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -712,23 +712,11 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 [1
 
-] [2]
+] [2] [3]
 File: plots/trav_wave_sub.eps Graphic file (type eps)
  <plots/trav_wave_sub.eps>
 File: plots/epidemic_wave_z_lambda_0_5.eps Graphic file (type eps)
  <plots/epidemic_wave_z_lambda_0_5.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.208 T
-       he \emph{Infective} class in Eq.(\ref{eq:ord_diff_sys}) can be linear...
-
-? 
-[3]
 
 ! LaTeX Error: Bad math environment delimiter.
 
@@ -736,19 +724,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.217 \begin{equation}
+l.221 \begin{equation}
                       
 ? 
 ! You can't use `\eqno' in math mode.
 \endmathdisplay@a ...\df@tag \@empty \else \veqno 
                                                   \alt@tag \df@tag \fi \ifx ...
-l.219 \end{equation}
+l.223 \end{equation}
                     
 ? 
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.219 \end{equation}
+l.223 \end{equation}
                     
 ? 
 
@@ -758,23 +746,23 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.219 \end{equation}
+l.223 \end{equation}
                     
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.219 \end{equation}
+l.223 \end{equation}
                     
 ? 
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.219 \end{equation}
+l.223 \end{equation}
                     
 ? 
 
-Overfull \hbox (212.37563pt too wide) in paragraph at lines 215--221
+Overfull \hbox (212.37563pt too wide) in paragraph at lines 219--225
 \T1/lmr/m/n/10 Since it is re-quired that $\OML/lmm/m/it/10 I\OT1/lmr/m/n/10 (\
 OML/lmm/m/it/10 z\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 ! \OT1/lmr/m/n/10 0$ \T1/lm
 r/m/n/10 and $\OML/lmm/m/it/10 I\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 z\OT1/lmr/m/n
@@ -783,8 +771,8 @@ r/m/n/10 and $\OML/lmm/m/it/10 I\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 z\OT1/lmr/m/n
 tosatisfy[]c \OMS/lmsy/m/n/10 ^^U
  []
 
-[4]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 247.
+[4] [5]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 251.
 
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -793,412 +781,118 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [5] [6] [7] [8]
-Overfull \hbox (12.564pt too wide) detected at line 465
-[][] []
- []
-
-[9]
-Overfull \hbox (35.30016pt too wide) detected at line 473
+ [6] [7] [8] [9]
+Overfull \hbox (12.564pt too wide) detected at line 469
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--480
-
+Overfull \hbox (35.30016pt too wide) detected at line 477
+[][] []
  []
 
-File: plots/Trav_wave_2D.eps Graphic file (type eps)
-<plots/Trav_wave_2D.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.492 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.493 T
-       he shape of the two travelling waves in Fig.(\ref{fig:2D_trav_wave}) ...
-
-? 
 [10]
+File: plots/Trav_wave_2D.eps Graphic file (type eps)
+ <plots/Trav_wave_2D.eps> [11]
 File: plots/2D_initial_variable_sub.eps Graphic file (type eps)
  <plots/2D_initial_variable_sub.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.536 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.537 T
-       he size and shape can be compared by measuring the travelling wave at...
-
-? 
 File: plots/TW_2D_initial_z_lambda_0_5.eps Graphic file (type eps)
-<plots/TW_2D_initial_z_lambda_0_5.eps>
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.550 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.551 T
-       he size of the travelling  wave will not be affected by changing the ...
-
-? 
-[11]
+<plots/TW_2D_initial_z_lambda_0_5.eps> [12]
 File: plots/2D_lambda_variable.eps Graphic file (type eps)
  <plots/2D_lambda_variable.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.566 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.567 T
-       o understand the results in Fig.(\ref{fig:change_lambda}), the $\lamb...
-
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 570--575
-
- []
-
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 577--584
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 577--584
-
- []
-
-[14]
+[13] [14]
 File: plots/british_number.eps Graphic file (type eps)
  <plots/british_number.eps>
 
-LaTeX Warning: Float too large for page by 230.3714pt on input line 591.
+LaTeX Warning: Float too large for page by 230.3714pt on input line 659.
 
 
-Overfull \hbox (50.47256pt too wide) in paragraph at lines 598--621
+Overfull \hbox (50.47256pt too wide) in paragraph at lines 666--689
 [][] 
  []
 
 File: plots/2D_british_school_gauss_sub.eps Graphic file (type eps)
-<plots/2D_british_school_gauss_sub.eps>
-! Missing $ inserted.
-<inserted text> 
-                $
-l.636   }
-         
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.636   }
-         
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.636   }
-         
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.636   }
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.642 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.643 T
-       he results from the uniform distributed and Gaussian distributed simu...
-
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 643--650
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 643--650
-
- []
-
-[15] [16] [17] [18]
-
-LaTeX Warning: Citation `walking_dead' on page 19 undefined on input line 653.
-
-[19
+<plots/2D_british_school_gauss_sub.eps> [15] [16] [17] [18] [19
 
 ]
 File: plots/2D_zombie_three_phases_number.eps Graphic file (type eps)
- <plots/2D_zombie_three_phases_number.eps>
+
+<plots/2D_zombie_three_phases_number.eps>
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.715   }
+l.807   }
          
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.715   }
+l.807   }
          
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.715   }
+l.807   }
          
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.715   }
+l.807   }
          
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.721 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.722 T
-       he initial values for the four groups are set to $S_0=621$, $I_0=0$, ...
-
 ? 
 [20]
-Overfull \hbox (36.25067pt too wide) in paragraph at lines 727--753
+Overfull \hbox (36.25067pt too wide) in paragraph at lines 827--853
 [][] 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 765--769
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 878.
 
- []
-
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 770.
-
-(/usr/share/texmf/tex/latex/lm/omslmr.fd
+ (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 770.
-
-Underfull \hbox (badness 10000) in paragraph at lines 779--783
-
- []
-
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 878.
+ [22]
 File: plots/initial_value_susceptible.eps Graphic file (type eps)
-<plots/initial_value_susceptible.eps> [22]
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.795 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.796 F
-       ig.(\ref{fig:large_town}) shows the simulation where the zombie is pl...
-
-? 
+<plots/initial_value_susceptible.eps> [23]
 File: plots/2D_zombie_three_phases_zombie_large_town_2_sub.eps Graphic file (ty
 pe eps)
-<plots/2D_zombie_three_phases_zombie_large_town_2_sub.eps>
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.809 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.810 B
-       y placing the Zombie in the middle town, the amount of zombies increa...
-
-? 
-[23]
+<plots/2D_zombie_three_phases_zombie_large_town_2_sub.eps> [24]
 File: plots/2D_compare_towns.eps Graphic file (type eps)
- <plots/2D_compare_towns.eps>
 
-LaTeX Warning: Float too large for page by 205.00404pt on input line 818.
+<plots/2D_compare_towns.eps>
+
+LaTeX Warning: Float too large for page by 205.00404pt on input line 950.
 
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.823 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.824 T
-       he results from the uniformed distributed simulation is still much hi...
-
-? 
-
-Overfull \hbox (0.63875pt too wide) in paragraph at lines 829--855
+Overfull \hbox (0.63875pt too wide) in paragraph at lines 969--995
 [][] 
  []
 
-[24] [25]
-Overfull \hbox (122.23366pt too wide) detected at line 896
+[25]
+Overfull \hbox (122.23366pt too wide) detected at line 1036
 [][] []
  []
 
 [26]
 File: plots/2D_compare_Frederikke.eps Graphic file (type eps)
- <plots/2D_compare_Frederikke.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.913 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.914 T
-       wo simulations have been done on Frederikkeplassen. The amount in eac...
-
-? 
+ <plots/2D_compare_Frederikke.eps> [27]
 File: plots/2D_Frederikke_contourf_sub.eps Graphic file (type eps)
+
 <plots/2D_Frederikke_contourf_sub.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.927 \\
-        
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.928 T
-       he results in Tab.(\ref{table:frederikke_table}) shows that the three...
-
-? 
-[27]
-Overfull \hbox (26.91551pt too wide) in paragraph at lines 938--964
+Overfull \hbox (26.91551pt too wide) in paragraph at lines 1094--1120
 [][] 
  []
 
+[28]
 File: plots/2D_Frederikke_random_contourf_sub.eps Graphic file (type eps)
-<plots/2D_Frederikke_random_contourf_sub.eps> [28] [29] [30] [31] [32
+ <plots/2D_Frederikke_random_contourf_sub.eps> [29] [30] [31] [32] [33
 
 ]
 File: plots/2D_gauss_sub.eps Graphic file (type eps)
@@ -1208,10 +902,10 @@ File: plots/2D_gauss_one_sub.eps Graphic file (type eps)
  <plots/2D_gauss_one_sub.eps>
 File: plots/2D_british_school_sub.eps Graphic file (type eps)
 
-<plots/2D_british_school_sub.eps> [33] [34]
+<plots/2D_british_school_sub.eps>
 File: plots/2D_british_school_gauss_corner_sub.eps Graphic file (type eps)
 
-<plots/2D_british_school_gauss_corner_sub.eps> [35]
+<plots/2D_british_school_gauss_corner_sub.eps> [34] [35]
 File: plots/2D_british_school_long_number.eps Graphic file (type eps)
 
 <plots/2D_british_school_long_number.eps>
@@ -1221,10 +915,10 @@ File: plots/2D_british_school_gauss_long_number.eps Graphic file (type eps)
 File: plots/2D_british_school_gauss_corner_long_number.eps Graphic file (type e
 ps)
 
-<plots/2D_british_school_gauss_corner_long_number.eps>
+<plots/2D_british_school_gauss_corner_long_number.eps> [37]
 File: plots/2D_zombie_initial_cond_sub.eps Graphic file (type eps)
 
-<plots/2D_zombie_initial_cond_sub.eps> [37]
+<plots/2D_zombie_initial_cond_sub.eps>
 File: plots/2D_zombie_initial_cond_number.eps Graphic file (type eps)
 
 <plots/2D_zombie_initial_cond_number.eps>
@@ -1234,17 +928,17 @@ File: plots/2D_zombie_three_phases_sub.eps Graphic file (type eps)
 File: plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.eps Graphic f
 ile (type eps)
 
-<plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.eps>
+<plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.eps> [39]
 File: plots/2D_zombie_three_phases_zombie_large_town_sub.eps Graphic file (type
  eps)
 
-<plots/2D_zombie_three_phases_zombie_large_town_sub.eps> [39] (./2_PDE_FK.bbl)
-(./2_PDE_FK.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1163.
- [40]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1163.
+<plots/2D_zombie_three_phases_zombie_large_town_sub.eps> (./2_PDE_FK.bbl
+[40]) (./2_PDE_FK.ind)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1321.
+ [41]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1321.
  (./2_PDE_FK.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1163.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1321.
 
 
  *File List*
@@ -1369,25 +1063,22 @@ plots/2D_zombie_three_phases_zombie_large_town_sub.eps
 2_PDE_FK.ind
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1163.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1321.
 
 Package rerunfilecheck Info: File `2_PDE_FK.out' has not changed.
-(rerunfilecheck)             Checksum: 89B815F3D68460120E6EF3F49E116C7C;1036.
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: DDE33904219DEEDA69F0F222FC18742A;1703.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1163.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1321.
  ) 
 Here is how much of TeX's memory you used:
- 8676 strings out of 494466
- 131174 string characters out of 6166387
- 261509 words of memory out of 5000000
- 11721 multiletter control sequences out of 15000+600000
- 51305 words of font info for 52 fonts, out of 8000000 for 9000
- 350 hyphenation exceptions out of 8191
- 41i,11n,35p,1640b,502s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 8688 strings out of 493305
+ 131367 string characters out of 6139896
+ 265531 words of memory out of 5000000
+ 11947 multiletter control sequences out of 15000+600000
+ 55576 words of font info for 53 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 41i,11n,35p,1663b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 2_PDE_FK.dvi (40 pages, 158912 bytes).
+Output written on 2_PDE_FK.dvi (41 pages, 166740 bytes).
