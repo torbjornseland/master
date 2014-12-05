@@ -17,14 +17,14 @@ def set_ZMO(ZMO):
     ZMO = ZMO
 
 def get_HMO():
-    return ZMO
+    return HMO
 
-def set_HMO(ZMO):
+def set_HMO(HMO):
     HMO = HMO
 
 if __name__ == '__main__':
     #General for english school
-    steps = 100
+    steps = 3
     X = 100
     Y = 100
     step = 3.96
@@ -52,14 +52,14 @@ if __name__ == '__main__':
     """
     # English school simulation 
     save_gap = 10
-    makeplot = True
-    makegraph = True 
+    makeplot = False#True
+    makegraph = False
     makepath = False
     savefile = "plots/english_school"
-    SN = 10             #Susceptible number
-    IN = 10             #Infected number
+    SN = 5             #Susceptible number
+    IN = 5             #Infected number
 
-    HI = 2.18*10**(-3)
+    HI = 0.5#2.18*10**(-3)
     IR = 0.44036
 
 
@@ -68,7 +68,6 @@ if __name__ == '__main__':
     for id_ in range(0,SN):       #Making zombies
         s = susceptible(X,Y,id_,step,'b',grid_size)
         susceptible_.append(s)
-        print ZMO
         x,y = s.coordinates()
         if makepath:
             path_x.append(x)
@@ -108,15 +107,20 @@ if __name__ == '__main__':
 
     susceptible_array[0] = len(susceptible_)
     infected_array[0] = len(infected_)
-
+    
+    update = run(HI,X,Y,step,grid_size,everyone)
     for i in range(0,steps):
 
         if(counter == 0):
-            x, y, c = first_step(everyone)
+            x, y, c = update.first_step()
         else:
-            x, y, c = one_step(everyone)    
+            x, y, c = update.one_step()    
 
-        print ZMO
+
+        #print ZMO
+        print "runde: ",i
+        print "HMO",HMO
+        print "ZMO",ZMO
         """
         if (i%save_gap==0):
             path_x.append(x[0])
@@ -176,4 +180,4 @@ if __name__ == '__main__':
         plt.legend()
 
         plt.axis([0,steps,0,len(everyone)])
-        #plt.show()
+        plt.show()

@@ -271,7 +271,7 @@ This example has been common for all three systems, and will be used in this cha
 
 FIGURE:[plots/random_walk_days.png, height=300 width=900 frac=0.8] label{fig:random_walker_days} The positions a random walker has covered in 1,5 and 15 days. A random step with lenght 3.96 m is performed every minute. The positions are plotted for every ten minutes. 
 
-By simulating the random walk
+Fig.(ref{fig:random_walker_days} shows that a random walker will be distributed over the area after enough steps. The epidemic in the English boarding school can b
 
 !bt
 \begin{equation} label{eq:simple_PDE}
