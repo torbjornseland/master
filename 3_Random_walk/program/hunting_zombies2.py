@@ -490,7 +490,7 @@ def one_step(everyone):
             if (inf_rand < IZ): #percent chance of beeing a Zombie
                 everyone[counter] = zombie(p[0],p[1],e.get_id(),screen,'r','pictures/zombie.png')
             elif(inf_rand < (IZ+ID)):#percent change of dying 
-                everyone[counter] = dead(p[0],p[1],e.get_id(),screen,'k','pictures/tombstone.png')
+                everyone[counter] = dead(p[0],p[1],e.get_id(),screen,'k','pictures/cross.png')
             else:
                 pass
     
@@ -505,7 +505,7 @@ def one_step(everyone):
         if(e.color() == 'c'):   #getting infected
             everyone[counter] = infected(p[0],p[1],e.get_id(),screen,'w','pictures/infected.png')
         if(e.color() == 'm'):   #dying to dead
-            everyone[counter] = dead(p[0],p[1],e.get_id(),screen,'k','pictures/tombstone.png')
+            everyone[counter] = dead(p[0],p[1],e.get_id(),screen,'k','pictures/cross.png')
     
 
         

@@ -190,6 +190,9 @@ class run:
         self.x = np.zeros(len(everyone))
         self.y = np.zeros(len(everyone))
         self.c = [0]*len(everyone)
+        self.i = 0
+        self.j = 0
+        self.breakLoop = False
 
     def one_step(self):
         counter = 0
@@ -215,18 +218,22 @@ class run:
                     if (IMO.get_amount() == 0):
                         print SMO.get_matrix()
                         print IMO.get_matrix()
-                        sys.exit(0)
+                        self.breakLoop = True
 
             #From susceptible to infected
             if(e.color() == 'w'):
                 print "susceptible to infected"
+                print e.get_id()
                 x_coord, y_coord = e.coordinates()
                 SMO.delete_value(x_coord,y_coord,e.get_id())
                 IMO.set_value(x_coord,y_coord,e.get_id())
                 everyone[counter] = infected(self.HI,self.X,self.Y,x_coord,y_coord,e.get_id(),self.step,'r',self.grid_size)
             counter += 1
+            if self.breakLoop:
+                break
         return self.x,self.y,self.c
-
+    def get_breakLoop(self):
+        return self.breakLoop
     def first_step(self):
         counter = 0
         for e in everyone:
@@ -250,17 +257,19 @@ class matrix_constructor:
         self.amount = 0
 
     def set_value(self,x,y,id_):
-        i,j = self.find_ij(x,y)
-        self.mat[i,j].append(id_)  #Infected matrix
+        self.i,self.j = self.find_ij(x,y)
+        self.mat[self.i,self.j].append(id_)  #Infected matrix
         self.amount += 1
     
     def delete_value(self,x,y,id_):
         ok = False
-        i,j = self.find_ij(x,y)
+        #print "x",x
+        #print "y",y
+        self.i,self.j = self.find_ij(x,y)
         count_pos = 0
-        for val in self.mat[i,j]:
+        for val in self.mat[self.i,self.j]:
             if(val == id_):
-                del self.mat[i,j][count_pos]
+                del self.mat[self.i,self.j][count_pos]
                 self.amount -= 1
             count_pos += 1
 
@@ -268,8 +277,11 @@ class matrix_constructor:
         return self.mat
 
     def get_matrix_block(self,x,y,i_range,j_range):
-        i,j = self.find_ij(x,y)
-        return self.mat[i-1:i+i_range-1,j-1:j+j_range-1]
+        self.i,self.j = self.find_ij(x,y)
+        if (i_range == 0 and j_range == 0):
+            return self.mat[self.i,self.j]
+        else:
+            return self.mat[self.i-1:self.i+i_range-1,self.j-1:self.j+j_range-1]
 
     def find_ij(self,x,y):
         i_bas = int((x*self.grid_size)/float(self.X)) 
@@ -281,15 +293,15 @@ class matrix_constructor:
         return i_bas+1,j_bas+1
     
     def field_id(self,x,y,in_color):
-        i,j = self.find_ij(x,y)
+        self.i,self.j = self.find_ij(x,y)
         group = []
         pos_group = []
         for k in range(-1,2):
             for l in range(-1,2):
-                for per_id in self.mat[i+k,j+l]:
+                for per_id in self.mat[self.i+k,self.j+l]:
                     if (everyone[per_id].color() == in_color):
                         group.append(per_id)
-                        pos_group.append([i+k,j+l]) 
+                        pos_group.append(everyone[per_id].coordinates()) 
         return group,pos_group
 
     def change_pos(self,old_x,old_y,new_x,new_y,id_):
@@ -300,22 +312,17 @@ class matrix_constructor:
         return self.amount
 
 def susceptible_to_infected(x,y,HI):
-        susceptible_group, pos_group = SMO.field_id(x,y,'b') 
+        #susceptible_group, pos_group = SMO.field_id(x,y,'b') 
+        #i,j = SMO.find_ij(x,y)
+        susceptible_group = list(SMO.get_matrix_block(x,y,0,0))
+        #print "sus group",susceptible_group
         s_power = len(susceptible_group)
-        print "x",x
-        print "y",y
-        print SMO.get_matrix_block(x,y,3,3)
-        print IMO.get_matrix_block(x,y,3,3)
-        if(s_power != 0):
-            raw_input("stop")
         if(s_power != 0):
             for k in range(s_power):
                 human_infec = rd.random()
                 if(human_infec < HI):
                     everyone[susceptible_group[k]].set_color('w') #Human getting infected 
-                    SMO.delete_value(pos_group[k][0],pos_group[k][1],k)
-                    print SMO.get_matrix_block(x,y,3,3)
-                    print IMO.get_matrix_block(x,y,3,3)
+                    SMO.delete_value(x,y,k)
 
 #################Script##########################
 #ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode = read_command_line()
@@ -336,158 +343,194 @@ if __name__ == '__main__':
     """
 
     #General for english school
-    grid_size = 100
-    steps = 21600
-    X = 100
-    Y = 100
-    step = 3.96
+    def script_runner():
+        grid_size = 1
+        steps = 15*24#1600
+        X = 10
+        Y = 10
+        step = 3.96
+        
+        global IMO
+        global SMO
+        IMO = matrix_constructor(grid_size,X,Y)
+        SMO = matrix_constructor(grid_size,X,Y)
 
-    IMO = matrix_constructor(grid_size,X,Y)
-    SMO = matrix_constructor(grid_size,X,Y)
+        grid_x = (X/float(grid_size))
+        grid_y = (Y/float(grid_size))
 
-    grid_x = (X/float(grid_size))
-    grid_y = (Y/float(grid_size))
-
-    # Random position after 15 days
-    """
-    save_gap = 10
-    print_plot = [1440,7200,21600]
-    title_p = ['1 day', '5 days', '15 days']
-    savename = ['plots/random_walk_1day.png' , 'plots/random_walk_5days.png', 'plots/random_walk_15days.png']
-    makeplot = True
-    makegraph = True 
-    makepath = True
-    savefile = "plots/english_school"
-    SN = 1
-    IN = 0
-    HI = 2.18*10**(-3)
-    IR = 0.44036
-    path_x = []
-    path_y = []
-    """
-    # English school simulation 
-    save_gap = 10
-    makeplot = False#True
-    makegraph = True #False
-    makepath = False
-    savefile = "plots/english_school"
-    SN = 20             #Susceptible number
-    IN = 1             #Infected number
-
-    HI = 2.18*10**(-3)*X**(2)*(1/float(24*60))
-    #IR = 0.44036
-    IR = 1-(0.55964**(1/float(24*60)))
-    print "IR",IR
-
-
-
-    susceptible_ = []
-    for id_ in range(0,SN):       #Making zombies
-        x = rd.randint(0,X)
-        y = rd.randint(0,Y)
-        s = susceptible(X,Y,x,y,id_,step,'b',grid_size)
-        susceptible_.append(s)
-        if makepath:
-            path_x.append(x)
-            path_y.append(y)
-        SMO.set_value(x,y,id_)
-
-    infected_ = []
-    for id_ in range(0,IN):       #Making zombies
-        x = rd.randint(0,X)
-        y = rd.randint(0,Y)
-        i_ = infected(HI,X,Y,x,y,id_+SN,step,'r',grid_size)
-        infected_.append(i_)
-        IMO.set_value(x,y,id_+SN)
-
-    everyone = susceptible_ + infected_ 
-    x = []
-    y = []
-    c = []
-
-    #files = []
-
-    counter = 0
-
-    steps_array = np.linspace(0,steps,steps+1) 
-    susceptible_array = np.zeros(steps+1)
-    infected_array = np.zeros(steps+1)
-    removed_array = np.zeros(steps+1)
-
-    susceptible_array[0] = len(susceptible_)
-    infected_array[0] = len(infected_)
-    
-    update = run(HI,IR,X,Y,step,grid_size,everyone)
-    for i in range(0,steps):
-
-        if (i%1000 == 0):
-            print i
-
-        if(counter == 0):
-            x, y, c = update.first_step()
-        else:
-            x, y, c = update.one_step()    
-    
+        # Random position after 15 days
         """
-        if (i%save_gap==0):
-            path_x.append(x[0])
-            path_y.append(y[0])
-        for j in range(len(print_plot)):
-            if print_plot[j] == i:
-                plt.plot(path_x, path_y, 'o')
+        save_gap = 10
+        print_plot = [1440,7200,21600]
+        title_p = ['1 day', '5 days', '15 days']
+        savename = ['plots/random_walk_1day.png' , 'plots/random_walk_5days.png', 'plots/random_walk_15days.png']
+        makeplot = True
+        makegraph = True 
+        makepath = True
+        savefile = "plots/english_school"
+        SN = 1
+        IN = 0
+        HI = 2.18*10**(-3)
+        IR = 0.44036
+        path_x = []
+        path_y = []
+        """
+        # English school simulation 
+        save_gap = 10
+        makeplot = False#True
+        makegraph = False
+        makepath = False
+        savefile = "plots/english_school"
+        SN = 762            #Susceptible number
+        IN = 1             #Infected number
+
+        HI = 1-(1-2.18*10**(-3))**(1/float(24))
+        #print "HI_day",2.18*10**(-3)*X**2
+        print "HI",HI
+        IR = 1-(1-0.44036)**(1/float(24))
+        #IR = 1-(0.55964**(1/float(24*60)))
+        print "IR",IR
+
+
+
+        susceptible_ = []
+        for id_ in range(0,SN):       #Making zombies
+            x = rd.randint(0,X)
+            y = rd.randint(0,Y)
+            s = susceptible(X,Y,x,y,id_,step,'b',grid_size)
+            susceptible_.append(s)
+            if makepath:
+                path_x.append(x)
+                path_y.append(y)
+            SMO.set_value(x,y,id_)
+
+        infected_ = []
+        for id_ in range(0,IN):       #Making zombies
+            x = rd.randint(0,X)
+            y = rd.randint(0,Y)
+            i_ = infected(HI,X,Y,x,y,id_+SN,step,'r',grid_size)
+            infected_.append(i_)
+            IMO.set_value(x,y,id_+SN)
+
+        global everyone
+        everyone = susceptible_ + infected_ 
+        x = []
+        y = []
+        c = []
+
+        #files = []
+
+        counter = 0
+
+        steps_array = np.linspace(0,steps,steps+1) 
+        susceptible_array = np.zeros(steps+1)
+        infected_array = np.zeros(steps+1)
+        removed_array = np.zeros(steps+1)
+
+        susceptible_array[0] = len(susceptible_)
+        infected_array[0] = len(infected_)
+        
+        update = run(HI,IR,X,Y,step,grid_size,everyone)
+        
+
+        for i in range(0,steps):
+
+            if (i%1000 == 0):
+                print i
+
+            if(counter == 0):
+                x, y, c = update.first_step()
+            else:
+                x, y, c = update.one_step()    
+            if update.get_breakLoop():
+                print "break"
+                break
+            #print "IMO"
+            #print IMO.get_matrix()
+            #print "SMO"
+            #print SMO.get_matrix()
+            """
+            if (i%save_gap==0):
+                path_x.append(x[0])
+                path_y.append(y[0])
+            for j in range(len(print_plot)):
+                if print_plot[j] == i:
+                    plt.plot(path_x, path_y, 'o')
+                    plt.axis([0,X,0,Y])
+                    plt.title(title_p[j])
+                    plt.savefig(savename[j])
+                    plt.show()
+            """
+
+            if (makeplot and (i%save_gap==0)):
+                fig = plt.figure()
+                #imgplot = plt.imshow(img)
+                plt.scatter(x,y, c=c)
                 plt.axis([0,X,0,Y])
-                plt.title(title_p[j])
-                plt.savefig(savename[j])
-                plt.show()
-        """
+                plt.savefig('moviefiles/tmp%04d.png' % (i/save_gap))
+                plt.close()
 
-        if (makeplot and (i%save_gap==0)):
-            fig = plt.figure()
-            #imgplot = plt.imshow(img)
-            plt.scatter(x,y, c=c)
+            
+            if makegraph:
+                for e in everyone:
+                    if (e.color() == 'r' or e.color() == 'w'):
+                        infected_array[i+1] = infected_array[i+1]+ 1
+                    elif (e.color() == 'b'):
+                        susceptible_array[i+1] = susceptible_array[i+1]+ 1
+                    elif (e.color() == 'm'):
+                        removed_array[i+1] = removed_array[i+1] + 1
+                    else:
+                        print "ukjent",e.color()
+            
+
+            counter += 1
+
+        if makepath:
+            plt.plot(path_x, path_y, 'o')
             plt.axis([0,X,0,Y])
-            plt.savefig('moviefiles/tmp%04d.png' % (i/save_gap))
-            plt.close()
+            plt.title(title_p[-1])
+            plt.savefig(savename[-1])
+            plt.show()
 
-        
+        if makeplot:
+            #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
+            #os.system('avconv -r 10 -i %s -vcodec libx264 %s' %('moviefiles/tmp%04d.png',savefile))
+            os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('moviefiles/tmp%04d.png',savefile))
+
+            for filename in glob.glob('moviefiles/tmp*.png'):
+                os.remove(filename)
+
+
+
+            
         if makegraph:
-            for e in everyone:
-                if (e.color() == 'r' or e.color() == 'w'):
-                    infected_array[i+1] = infected_array[i+1]+ 1
-                elif (e.color() == 'b'):
-                    susceptible_array[i+1] = susceptible_array[i+1]+ 1
-                elif (e.color() == 'm'):
-                    removed_array[i+1] = removed_array[i+1] + 1
-                else:
-                    print "ukjent",e.color()
-        
+            plt.plot(steps_array, susceptible_array,'b',label='Susceptible')
+            plt.plot(steps_array, infected_array,'g', label='Infected')
+            plt.plot(steps_array, removed_array,'r', label='Removed')
+            plt.legend()
+            plt.axis([0,steps,0,len(everyone)])
+            plt.show()
+        return steps_array,susceptible_array,infected_array, removed_array
+      
+    N = 4
+    for i in range(N):
+        steps_array,sus,inf,rem = script_runner()
+        if (i == 0):
+            susceptible_array = list(sus)
+            infected_array = list(inf)
+            removed_array = list(rem)
+        else:
+            susceptible_array = [x+y for x,y in zip(sus,susceptible_array)]
+            infected_array = [x+y for x,y in zip(inf,infected_array)]
+            removed_array = [x+y for x,y in zip(rem,removed_array)]
 
-        counter += 1
+    sus_plot = [x/float(N) for x in susceptible_array]
+    inf_plot = [x/float(N) for x in infected_array]
+    rem_plot = [x/float(N) for x in removed_array]
 
-    if makepath:
-        plt.plot(path_x, path_y, 'o')
-        plt.axis([0,X,0,Y])
-        plt.title(title_p[-1])
-        plt.savefig(savename[-1])
-        plt.show()
-
-    if makeplot:
-        #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
-        #os.system('avconv -r 10 -i %s -vcodec libx264 %s' %('moviefiles/tmp%04d.png',savefile))
-        os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('moviefiles/tmp%04d.png',savefile))
-
-        for filename in glob.glob('moviefiles/tmp*.png'):
-            os.remove(filename)
-
-
-
-        
-    if makegraph:
-        plt.plot(steps_array, susceptible_array,'b',label='Susceptible')
-        plt.plot(steps_array, infected_array,'g', label='Infected')
-        plt.plot(steps_array, removed_array,'r', label='Removed')
-        plt.legend()
-
-        plt.axis([0,steps,0,len(everyone)])
-        plt.show()
-    
+    plt.plot(steps_array,sus_plot,'b',label='Susceptible')
+    plt.plot(steps_array,inf_plot,'g', label='Infected')
+    plt.plot(steps_array,rem_plot,'r', label='Removed')
+    plt.legend()
+    plt.axis([0,len(steps_array),0,800])
+    plt.show()
