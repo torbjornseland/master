@@ -267,23 +267,35 @@ label{table:gauss_random}
 The average displacement and the standard deviation shows that a group of random walkes spread similar as a standard diffusion function. This result in a major group of random walkers. In the simulation in Fig.(ref{fig:gauss_random}), 10000 random walkers are used. By increasing the amount om random walkers, the precision will be better.
 
 ===== Epidemic in an English Boarding School =====
-This example has been common for all three systems, and will be used in this chapter. The chance of getting infected requires a meeting between  infected person and a susceptible person..A random walker will after enough steps cover the whole area. A simulation is done for a student with a random position at initial time. A random step is performed every ten minutes with the lenght 3.96 m. The simulation is performed for 15 days, which results in 21600 random steps.
+This example has been common for all three systems, and will be used in this chapter. The chance of getting infected requires a meeting between  infected person and a susceptible person..A random walker will after enough steps cover the whole area. A simulation is done for a student with a random position at initial time. 1000 random steps are performed every day, which results in a step every 90 seconds. The step length is set to 5.7024 m, and is based on the average distance a person walks every day. The simulation is performed for 15 days, which results in 15000 random steps.
 
 FIGURE:[plots/random_walk_days.png, height=300 width=900 frac=0.8] label{fig:random_walker_days} The positions a random walker has covered in 1,5 and 15 days. A random step with lenght 3.96 m is performed every minute. The positions are plotted for every ten minutes. 
 
-Fig.(ref{fig:random_walker_days} shows that a random walker will be distributed over the area after enough steps. The epidemic in the English boarding school can b
+Fig.(ref{fig:random_walker_days} shows that a random walker will be distributed over the area after enough steps. The students in the school are divided into three groups. The first group consists of susceptible students, and this group is at risk of getting infected. This group is described by $S$. The second group consists of infected students. The group is described by $I$. The last group consists of students who are immune to the disease. This group is described by $R$. The total number of studets is $N=763$. The initial values are: $S_0=672$, $I_0=1$ and $R_0=0$. There are two parameters that are used in the simulation. The first parameter $r$, describes the gain of $I$ from the susceptible group, $S$. This is rate proportional to the number of susceptible and infecetive and is given by $rSI$. The second parameter $a$ describes the rate of removal of infective to the removed group, $R$. These two parameters are given by $r=2.18\cdot 10^{-3}$ and $a=0.44036$. The simulation is based on the ODE system given in *Epidemic models* :
 
-!bt
-\begin{equation} label{eq:simple_PDE}
-	\begin{aligned}
-	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
-	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
-	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+\begin{equation} \label{eq:SIR_model}
+	\begin{aligned} 
+	\frac{dS}{dt} &= -rSI \\ 
+	\frac{dI}{dt} &= rSI-aI \\ 
+	\frac{dR}{dt} &= aI 
 	\end{aligned}
+\end{equation}
+
+The parameters $r$ and $a$ must be adapted to the random walk simulation. The parameter $r$ is used in
+!bt
+\begin{equation} label{eq:rSI}
+rSI
+\end{equation}
+!et
+is based on all possible combinations of $S$ and $I$. This will not be the case in a random simulation. The meetings in a random simulation depends on the number of random walkers and the number of meeting spots the area is divided into. If the simulated area consists of only one  The parameter $r_{random}$ has to fulfill:
+!bt
+\begin{equation}
+r_{random}*
 \end{equation}
 !et
 
-In previous section, the diffusion term was
+
+
 
 MOVIE:[plots/english_school.webm, height=500 width=600]
 

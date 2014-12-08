@@ -125,6 +125,7 @@ class infected(creature):
     def __init__(self,HI,*args):
         super(infected,self).__init__(*args)
         self.HI = HI
+        self.same_room = 0
     def update(self,everyone):
         #r_min = min_size
         #mx_min = 0
@@ -162,6 +163,12 @@ class infected(creature):
 
     def color(self):
         return super(infected,self).color()
+
+    def get_same_room(self):
+        return self.same_room
+
+    def increase_same_room(self):
+        self.same_room += 1
 
 class removed(creature):
     def __init__(self,*args):
@@ -211,19 +218,19 @@ class run:
             if(e.color() == 'r'):
                 removed_rand = rd.random()
                 if (removed_rand < self.IR): #percent chance of beeing a Zombie
-                    print "infected to removed"
+                    #print "infected to removed"
                     x_coord, y_coord = e.coordinates()
                     IMO.delete_value(x_coord,y_coord,e.get_id())
                     everyone[counter] = removed(self.X,self.Y,x_coord,y_coord,e.get_id(),self.step,'m',self.grid_size)
                     if (IMO.get_amount() == 0):
-                        print SMO.get_matrix()
-                        print IMO.get_matrix()
+                        #print SMO.get_matrix()
+                        #print IMO.get_matrix()
                         self.breakLoop = True
 
             #From susceptible to infected
             if(e.color() == 'w'):
-                print "susceptible to infected"
-                print e.get_id()
+                #print "susceptible to infected"
+                #print e.get_id()
                 x_coord, y_coord = e.coordinates()
                 SMO.delete_value(x_coord,y_coord,e.get_id())
                 IMO.set_value(x_coord,y_coord,e.get_id())
@@ -319,10 +326,12 @@ def susceptible_to_infected(x,y,HI):
         s_power = len(susceptible_group)
         if(s_power != 0):
             for k in range(s_power):
+                #everyone[-1].increase_same_room()
+                #print "same room nr",everyone[-1].get_same_room()
                 human_infec = rd.random()
                 if(human_infec < HI):
                     everyone[susceptible_group[k]].set_color('w') #Human getting infected 
-                    SMO.delete_value(x,y,k)
+                    #SMO.delete_value(x,y,k)
 
 #################Script##########################
 #ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode = read_command_line()
@@ -344,11 +353,11 @@ if __name__ == '__main__':
 
     #General for english school
     def script_runner():
-        grid_size = 1
-        steps = 15*24#1600
-        X = 10
-        Y = 10
-        step = 3.96
+        grid_size = 20
+        steps = 15000 #*24*60#*24 #*60 #*24*60#1600
+        X = 100
+        Y = 100
+        step = 3.96*1.44
         
         global IMO
         global SMO
@@ -378,19 +387,24 @@ if __name__ == '__main__':
         # English school simulation 
         save_gap = 10
         makeplot = False#True
-        makegraph = False
+        makegraph = False #True #False
         makepath = False
         savefile = "plots/english_school"
         SN = 762            #Susceptible number
         IN = 1             #Infected number
 
-        HI = 1-(1-2.18*10**(-3))**(1/float(24))
+        HI = (2.18*10**(-3))*(21600/float(41437))
+        #HI = 1-(1-(2.18*10**(-3))*(grid_size**2))**(1/float(24*60))
+        #HI = 0
+        #HI = ((2.18*10**(-3))*(grid_size**2))**(1/float(24))
         #print "HI_day",2.18*10**(-3)*X**2
         print "HI",HI
-        IR = 1-(1-0.44036)**(1/float(24))
-        #IR = 1-(0.55964**(1/float(24*60)))
+        #IR = 1-(1-0.44036)**(1/float(24*60))
+        IR = 1-0.55964**(1/float(1000))
+        #IR = 0
         print "IR",IR
-
+        global same_room
+        same_room = 0
 
 
         susceptible_ = []
@@ -432,7 +446,7 @@ if __name__ == '__main__':
         
         update = run(HI,IR,X,Y,step,grid_size,everyone)
         
-
+        break_loop = False
         for i in range(0,steps):
 
             if (i%1000 == 0):
@@ -444,7 +458,8 @@ if __name__ == '__main__':
                 x, y, c = update.one_step()    
             if update.get_breakLoop():
                 print "break"
-                break
+                break_loop = True
+                return steps_array,susceptible_array,infected_array, removed_array, break_loop
             #print "IMO"
             #print IMO.get_matrix()
             #print "SMO"
@@ -484,6 +499,7 @@ if __name__ == '__main__':
             
 
             counter += 1
+        #print "total meetings:", everyone[-1].get_same_room()
 
         if makepath:
             plt.plot(path_x, path_y, 'o')
@@ -510,27 +526,50 @@ if __name__ == '__main__':
             plt.legend()
             plt.axis([0,steps,0,len(everyone)])
             plt.show()
-        return steps_array,susceptible_array,infected_array, removed_array
-      
-    N = 4
+        return steps_array,susceptible_array,infected_array, removed_array, break_loop
+
+    #steps,sus,inf,rem,same_room = script_runner()
+    #print "same room",same_room
+    sim_failed = 0
+    first_sim = True
+    N = 3
+    N_ok = 0
     for i in range(N):
-        steps_array,sus,inf,rem = script_runner()
-        if (i == 0):
-            susceptible_array = list(sus)
-            infected_array = list(inf)
-            removed_array = list(rem)
+        steps_array,sus,inf,rem, break_loop = script_runner()
+        if break_loop:
+            print "simulation failed"
+            sim_failed += 1
         else:
-            susceptible_array = [x+y for x,y in zip(sus,susceptible_array)]
-            infected_array = [x+y for x,y in zip(inf,infected_array)]
-            removed_array = [x+y for x,y in zip(rem,removed_array)]
+            N_ok += 1
+            if first_sim:
+                susceptible_array = list(sus)
+                infected_array = list(inf)
+                removed_array = list(rem)
+                first_sim = False
+            else:
+                susceptible_array = [x+y for x,y in zip(sus,susceptible_array)]
+                infected_array = [x+y for x,y in zip(inf,infected_array)]
+                removed_array = [x+y for x,y in zip(rem,removed_array)]
 
-    sus_plot = [x/float(N) for x in susceptible_array]
-    inf_plot = [x/float(N) for x in infected_array]
-    rem_plot = [x/float(N) for x in removed_array]
+    print "simulation failed", sim_failed 
 
-    plt.plot(steps_array,sus_plot,'b',label='Susceptible')
-    plt.plot(steps_array,inf_plot,'g', label='Infected')
-    plt.plot(steps_array,rem_plot,'r', label='Removed')
-    plt.legend()
-    plt.axis([0,len(steps_array),0,800])
-    plt.show()
+    if first_sim:
+        print "all simulations failed"
+    else:
+        sus_plot = [x/float(N_ok) for x in susceptible_array]
+        inf_plot = [x/float(N_ok) for x in infected_array]
+        rem_plot = [x/float(N_ok) for x in removed_array]
+
+        plt.plot(steps_array,sus_plot,'b',label='Susceptible')
+        plt.plot(steps_array,inf_plot,'g', label='Infected')
+        plt.plot(steps_array,rem_plot,'r', label='Removed')
+        plt.legend()
+        plt.axis([0,len(steps_array),0,800])
+        plt.show()
+
+        plt.plot(steps_array,susceptible_array,'b',label='Susceptible')
+        plt.plot(steps_array,infected_array,'g', label='Infected')
+        plt.plot(steps_array,removed_array,'r', label='Removed')
+        plt.legend()
+        #plt.axis([0,len(steps_array),0,800])
+        plt.show()
