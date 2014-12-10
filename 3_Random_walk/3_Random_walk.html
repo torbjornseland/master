@@ -1,39 +1,42 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Random walk">
 
+<title>Random walk</title>
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -55,7 +58,11 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec9'),
-              (' Bibliography ', 1, None, '___sec10')]}
+              (' A Lower average value ', 3, None, '___sec10'),
+              (' Threshold value ', 3, None, '___sec11'),
+              (' Zombiefication ', 1, None, '___sec12'),
+              (' Random walk ', 2, None, '___sec13'),
+              (' Bibliography ', 1, None, '___sec14')]}
 end of tocinfo -->
 
 <body>
@@ -66,16 +73,13 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -83,7 +87,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Random walk</title>
 
 <center><h1>Random walk</h1></center>  <!-- document title -->
 
@@ -98,10 +101,11 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Dec 4, 2014</h4></center> <!-- date -->
+<center><h4>Dec 9, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
+<p>
 &nbsp; &nbsp; &nbsp; <a href="#___sec0"> Introduction </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Monte Carlo methods </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Random variable </a><br>
@@ -112,7 +116,11 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Diffusion equation and random walks </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> Random walker </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Epidemic in an English Boarding School </a><br>
-<a href="#___sec10"> Bibliography </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> A Lower average value </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Threshold value </a><br>
+<a href="#___sec12"> Zombiefication </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> Random walk </a><br>
+<a href="#___sec14"> Bibliography </a><br>
 </p>
 
 <h2>Introduction  <a name="___sec0"></a></h2>
@@ -421,37 +429,95 @@ To study if the average random walker develops as expected, a table can with the
 <a name="table:gauss_random"></a>
 <table border="1">
 <thead>
-<tr><th align="center">-----------------------</th> <th align="center">         time=2        </th> <th align="center">         time=8        </th> </tr>
+<tr><th align="center">                      </th> <th align="center"> time=2 </th> <th align="center">  time=8 </th> </tr>
 </thead>
 <tbody>
-<tr><td align="center">   average displacement       </td> <td align="center">   0.000662                   </td> <td align="center">   -0.002416                  </td> </tr>
-<tr><td align="center">   standard deviation(SD)     </td> <td align="center">   0.1414                     </td> <td align="center">   0.2828                     </td> </tr>
-<tr><td align="center">   percent inside SD          </td> <td align="center">   70.96 %                    </td> <td align="center">   69.02 %                    </td> </tr>
-<tr><td align="center">   percent inside gauss       </td> <td align="center">   68.26 %                    </td> <td align="center">   68.26 %                    </td> </tr>
+<tr><td align="center">   average displacement      </td> <td align="center">   0.000662    </td> <td align="center">   -0.002416    </td> </tr>
+<tr><td align="center">   standard deviation(SD)    </td> <td align="center">   0.1414      </td> <td align="center">   0.2828       </td> </tr>
+<tr><td align="center">   percent inside SD         </td> <td align="center">   70.96 %     </td> <td align="center">   69.02 %      </td> </tr>
+<tr><td align="center">   percent inside gauss      </td> <td align="center">   68.26 %     </td> <td align="center">   68.26 %      </td> </tr>
 </tbody>
 </table>
 <p>
 The average displacement and the standard deviation shows that a group of random walkes spread similar as a standard diffusion function. This result in a major group of random walkers. In the simulation in Fig.(<a href="#fig:gauss_random">1</a>), 10000 random walkers are used. By increasing the amount om random walkers, the precision will be better.
 
 <h2>Epidemic in an English Boarding School  <a name="___sec9"></a></h2>
-This example has been common for all three systems, and will be used in this chapter. A random walker will after enough steps cover the whole area. This will also be the case for an infected student. A simulation is done for a student placed in a random position with random walk. The position of the student is measured at every 10. minute.  
+This example has been common for all three systems, and will be used in this chapter. The chance of getting infected requires a meeting between  infected person and a susceptible person..A random walker will after enough steps cover the whole area. A simulation is done for a student with a random position at initial time. 1000 random steps are performed every day, which results in a step every 90 seconds. The step length is set to 5.7024 m, and is based on the average distance a person walks every day. The simulation is performed for 15 days, which results in 15000 random steps. The size of the schoolyard is sat to 100 m x 100 m, and the disease can spread within a distance of 5 meters.
 
 <p>
-<center><p><img src="plots/random_walk_days.png" align="bottom" height=300 width=900></p></center>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  <a name="fig:random_walker_days"></a> The positions a random walker has covered in 1,5 and 15 days. A random step with lenght 3.96 m is performed every minute. The positions are plotted for every ten minutes. </p></center>
+<p><img src="plots/random_walk_days.png" align="bottom" height=300 width=900></p>
+</center>
+
+<p>
+Fig.(<a href="#fig:random_walker_days">2</a> shows that a random walker will be distributed over the area after enough steps. The students in the school are divided into three groups. The first group consists of susceptible students, and this group is at risk of getting infected. This group is described by \( S \). The second group consists of infected students. The group is described by \( I \). The last group consists of students who are immune to the disease. This group is described by \( R \). The total number of students is \( N=763 \). The initial values are: \( S_0=672 \), \( I_0=1 \) and \( R_0=0 \). There are two parameters that are used in the simulation. The first parameter \( r \), describes the gain of \( I \) from the susceptible group, \( S \). This is rate proportional to the number of susceptible and infecetive and is given by \( rSI \). The second parameter \( a \) describes the rate of removal of infective to the removed group, \( R \). These two parameters are given by \( r=2.18\cdot 10^{-3} \) and \( a=0.44036 \). The simulation is based on the ODE system given in <em>Epidemic models</em> :
 
 $$
-\begin{equation} \label{eq:simple_PDE}
-	\begin{aligned}
-	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
-	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
-	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+\begin{equation} \label{eq:SIR_model_random}
+	\begin{aligned} 
+	\frac{dS}{dt} &= -rSI \\ 
+	\frac{dI}{dt} &= rSI-aI \\ 
+	\frac{dR}{dt} &= aI 
 	\end{aligned}
 \end{equation}
 $$
 
 
 <p>
-In previous section, the diffusion term was
+The parameters \( r \) and \( a \) must be adapted to the random walk simulation. The parameter \( r \) is used in
+$$
+\begin{equation} \label{eq:rSI}
+rSI
+\end{equation}
+$$
+
+is based on all possible combinations of \( S \) and \( I \). This will not be the case in a random simulation. The meetings in a random simulation depends on the number of random walkers and the possibility for a meeting. If the possibility is small, the susceptible student has to be close to an infected student to be infected. The number of meetings during one time step can be used to adjust the parameter. The following term has to be fulfilled:   
+$$
+\begin{equation} \label{eq:NoM}
+r_{random}NoM_0 = rS_0I_0
+\end{equation}
+$$
+
+Here \( NoM_0 \) is a constant value and represents number of meetings between the susceptible group and the infected group at initial time. This can be found by a numerical simulation of the random walkers. The number of meetings for the infected student during one day is simulated for 1000 rounds, the average value is \( NoM=1905.223 \). Now Eq.\eqref{eq:NoM} can be rewritten and \( r_{random} \) can be expressed by known values: 
+$$
+\begin{equation} \label{eq:NoM}
+	\begin{aligned} 
+	r_{random} &= \frac{rS_0I_0}{NoM_0}
+	\end{aligned}
+\end{equation}
+$$
+
+The parameter \( r_{random} \) is now used to calculate the risk of getting infected in a meeting between a susceptible student and an infected student. The value of \( a \) also has to be adjusted. This parameter is only affected by the time. The random simulation is performed for 1000 random steps during one day. This means that there will be 1000 chances of being immune to the disease during 1 day, since a random number will be drawn every random step. A person can only get immune one time, therefore it is more interesting to see if a person stays infected during 1 day. All other results will cause an immune student. The chance of staying infected during one day is \( In = 1-a \), which results in \( In=0.55964 \). The chance of staying infected for 1000 time steps during one day demands the following percent for each time step: \( In^{\frac{1}{1000}}= 0.9994197 \). Since all other solutions gives an immune student,the percent can be set to: \( a_{random} = 1-In^{\frac{1}{1000}}= 0.00058 \). A series of simulations can be done with these parameters. The average solution will be plotted against the solution from the ODE system given in Eq.\eqref{eq:SIR_model_random}. The standard deviation for the random simulations is given.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  <a name="fig:english_school_random"></a>Random walk compared to an ODE simulation of Eq.(ref{eq:SIR_model_random}. The random function is shown with a dashed line, with the standard deviation shown as the colored area around the dashed line. The random function is based on the average of a series of simulations. </p></center>
+<p><img src="plots/english_school_random.png" align="bottom" height=500 width=500></p>
+</center>
+
+<h3>A Lower average value  <a name="___sec10"></a></h3>
+
+The average values of th
+
+<h3>Threshold value  <a name="___sec11"></a></h3>
+
+<h1>Zombiefication  <a name="___sec12"></a></h1>
+The ODE system given in chapter <em>Epidemic models</em> will be used for this simulation. This can be seen in Eq.\eqref{eq:seland_model_random}. The parameters has to be adjusted for this simulation, similar as shown for the English boarding school. Frederikkeplassen at Blindern will be used as the area where the simulations will be done. The area is estimated to be 100m x 100m and the disease will be able to spread if the distance is closer than 4 meters. There will be done three different simulations in this section, where the human intelligence will be taken into account. The total time of the simulations will be set to 34 minutes, and there will be performed 100 random walks each minute.       
+$$
+\begin{equation} \label{eq:seland_model_random}
+    \begin{aligned} 
+    \frac{dS}{dt} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS \\
+    \frac{dI}{dt} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II\\
+    \frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+    \frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+    \end{aligned}
+\end{equation}
+$$
+
+<h2>Random walk  <a name="___sec13"></a></h2>
 
 <p>
 
@@ -466,8 +532,9 @@ In previous section, the diffusion term was
 <p>
 <!-- MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. -->
 
-<h1>Bibliography  <a name="___sec10"></a></h1>
+<h1>Bibliography  <a name="___sec14"></a></h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>

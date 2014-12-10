@@ -256,7 +256,7 @@ To study if the average random walker develops as expected, a table can with the
 
 label{table:gauss_random}
 |-----------------------------------------------|
-|-----------------------|time=2     |time=8     |
+|						|time=2     |time=8     |
 |-----------------------------------------------|
 |average displacement   |0.000662   | -0.002416 |
 |standard deviation(SD) |0.1414     |  0.2828   |
@@ -267,19 +267,21 @@ label{table:gauss_random}
 The average displacement and the standard deviation shows that a group of random walkes spread similar as a standard diffusion function. This result in a major group of random walkers. In the simulation in Fig.(ref{fig:gauss_random}), 10000 random walkers are used. By increasing the amount om random walkers, the precision will be better.
 
 ===== Epidemic in an English Boarding School =====
-This example has been common for all three systems, and will be used in this chapter. The chance of getting infected requires a meeting between  infected person and a susceptible person..A random walker will after enough steps cover the whole area. A simulation is done for a student with a random position at initial time. 1000 random steps are performed every day, which results in a step every 90 seconds. The step length is set to 5.7024 m, and is based on the average distance a person walks every day. The simulation is performed for 15 days, which results in 15000 random steps.
+This example has been common for all three systems, and will be used in this chapter. The chance of getting infected requires a meeting between  infected person and a susceptible person..A random walker will after enough steps cover the whole area. A simulation is done for a student with a random position at initial time. 1000 random steps are performed every day, which results in a step every 90 seconds. The step length is set to 5.7024 m, and is based on the average distance a person walks every day. The simulation is performed for 15 days, which results in 15000 random steps. The size of the schoolyard is sat to 100 m x 100 m, and the disease can spread within a distance of 5 meters.
 
 FIGURE:[plots/random_walk_days.png, height=300 width=900 frac=0.8] label{fig:random_walker_days} The positions a random walker has covered in 1,5 and 15 days. A random step with lenght 3.96 m is performed every minute. The positions are plotted for every ten minutes. 
 
-Fig.(ref{fig:random_walker_days} shows that a random walker will be distributed over the area after enough steps. The students in the school are divided into three groups. The first group consists of susceptible students, and this group is at risk of getting infected. This group is described by $S$. The second group consists of infected students. The group is described by $I$. The last group consists of students who are immune to the disease. This group is described by $R$. The total number of studets is $N=763$. The initial values are: $S_0=672$, $I_0=1$ and $R_0=0$. There are two parameters that are used in the simulation. The first parameter $r$, describes the gain of $I$ from the susceptible group, $S$. This is rate proportional to the number of susceptible and infecetive and is given by $rSI$. The second parameter $a$ describes the rate of removal of infective to the removed group, $R$. These two parameters are given by $r=2.18\cdot 10^{-3}$ and $a=0.44036$. The simulation is based on the ODE system given in *Epidemic models* :
+Fig.(ref{fig:random_walker_days} shows that a random walker will be distributed over the area after enough steps. The students in the school are divided into three groups. The first group consists of susceptible students, and this group is at risk of getting infected. This group is described by $S$. The second group consists of infected students. The group is described by $I$. The last group consists of students who are immune to the disease. This group is described by $R$. The total number of students is $N=763$. The initial values are: $S_0=762$, $I_0=1$ and $R_0=0$. There are two parameters that are used in the simulation. The first parameter $r$, describes the gain of $I$ from the susceptible group, $S$. This is rate proportional to the number of susceptible and infecetive and is given by $rSI$. The second parameter $a$ describes the rate of removal of infective to the removed group, $R$. These two parameters are given by $r=2.18\cdot 10^{-3}$ and $a=0.44036$. The simulation is based on the ODE system given in *Epidemic models* :
 
-\begin{equation} \label{eq:SIR_model}
+!bt
+\begin{equation} \label{eq:SIR_model_random}
 	\begin{aligned} 
 	\frac{dS}{dt} &= -rSI \\ 
 	\frac{dI}{dt} &= rSI-aI \\ 
 	\frac{dR}{dt} &= aI 
 	\end{aligned}
 \end{equation}
+!et
 
 The parameters $r$ and $a$ must be adapted to the random walk simulation. The parameter $r$ is used in
 !bt
@@ -287,14 +289,51 @@ The parameters $r$ and $a$ must be adapted to the random walk simulation. The pa
 rSI
 \end{equation}
 !et
-is based on all possible combinations of $S$ and $I$. This will not be the case in a random simulation. The meetings in a random simulation depends on the number of random walkers and the number of meeting spots the area is divided into. If the simulated area consists of only one  The parameter $r_{random}$ has to fulfill:
+is based on all possible combinations of $S$ and $I$. This will not be the case in a random simulation. The meetings in a random simulation depends on the number of random walkers and the possibility for a meeting. If the possibility is small, the susceptible student has to be close to an infected student to be infected. The number of meetings during one time step can be used to adjust the parameter. The following term has to be fulfilled:   
 !bt
-\begin{equation}
-r_{random}*
+\begin{equation} label{eq:NoM}
+r_{random}NoM_0 = rS_0I_0
+\end{equation}
+!et
+Here $NoM_0$ is a constant value and represents number of meetings between the susceptible group and the infected group at initial time. This can be found by a numerical simulation of the random walkers. The number of meetings for the infected student during one day is simulated for 1000 rounds, the average value is $NoM=1905.223$. Now Eq.(ref{eq:NoM}) can be rewritten and $r_{random}$ can be expressed by known values: 
+!bt
+\begin{equation} label{eq:NoM}
+	\begin{aligned} 
+	r_{random} &= \frac{rS_0I_0}{NoM_0}
+	\end{aligned}
+\end{equation}
+!et
+The parameter $r_{random}$ is now used to calculate the risk of getting infected in a meeting between a susceptible student and an infected student. The value of $a$ also has to be adjusted. This parameter is only affected by the time. The random simulation is performed for 1000 random steps during one day. This means that there will be 1000 chances of being immune to the disease during 1 day, since a random number will be drawn every random step. A person can only get immune one time, therefore it is more interesting to see if a person stays infected during 1 day. All other results will cause an immune student. The chance of staying infected during one day is $In = 1-a$, which results in $In=0.55964$. The chance of staying infected for 1000 time steps during one day demands the following percent for each time step: $In^{\frac{1}{1000}}= 0.9994197$. Since all other solutions gives an immune student,the percent can be set to: $a_{random} = 1-In^{\frac{1}{1000}}= 0.00058$. A series of simulations can be done with these parameters. The average solution will be plotted against the solution from the ODE system given in Eq.(ref{eq:SIR_model_random}). The standard deviation for the random simulations is given.
+
+FIGURE:[plots/english_school_random.png, height=500 width=500 frac=0.8] label{fig:english_school_random}Random walk compared to an ODE simulation of Eq.(ref{eq:SIR_model_random}. The random function is shown with a dashed line, with the standard deviation shown as the colored area around the dashed line. The random function is based on the average of a series of simulations. 
+ 
+
+=== A Lower average value ===
+By studying the results in Fig.(ref{fig:english_school_random}), one can see that the values of the random walk simulation is lower than for the ODE. The difference is low in the beginning of the simulation. This changes when the *Infected* group increases. This results in an increase of the combination between the *Susceptible* group and the *Infected* group. In an ODE simulation, this will lead to a rapid increase of the *Infected* group. Since the transformation for a student from the *Susceptible* group to the *Infected* group only requires one successful meeting, where successful is seen as the transmission of the disease. There will be no difference in the result if the transmission of the disease happens once or several times during one time step. This is reasonable to be the case when the amount of *Infected* increase.  
+
+=== Threshold value ===
+In the previous chapters, the threshold value was found for the epidemic systems. The reproduction rate could be used to check if the disease would develop into an epidemic disease. The reproduction rate can be seen in Eq.(ref{eq:rep_rate})
+!bt
+\begin{equation} label{eq:rep_rate}
+R_0 = \frac{rS_0}{a}
+\end{equation}
+!et
+If $R_0> 1$ was fulfilled, an epidemic situation would occur. The result will be $R_0 = 3.77$ with the parameters from the ODE simulation. When simulating the random walk, only 56 percent of the simulations resulted in an epidemic disease. 44 percent resulted in a transmission of the infected student to the *Removed* group, before the student was able to infect other students. This simulations were performed on a small group, and the results may differ in larger groups. A removal rate above one will not necessarily lead to an epidemic disease, if the group is small enough.
+  
+======= Zombiefication =======
+The ODE system given in chapter *Epidemic models* will be used for this simulation. This can be seen in Eq.(ref{eq:seland_model_random}). The parameters has to be adjusted for this simulation, similar as shown for the English boarding school. Frederikkeplassen at Blindern will be used as the area where the simulations will be done. The area is estimated to be 100m x 100m and the disease will be able to spread if the distance is closer than 4 meters. There will be done three different simulations in this section, where the human intelligence will be taken into account. The total time of the simulations will be set to 34 minutes, and there will be performed 100 random walks each minute.       
+!bt
+\begin{equation} \label{eq:seland_model_random}
+    \begin{aligned} 
+    \frac{dS}{dt} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS \\
+    \frac{dI}{dt} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II\\
+    \frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+    \frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+    \end{aligned}
 \end{equation}
 !et
 
-
+===== Random walk =====
 
 
 MOVIE:[plots/english_school.webm, height=500 width=600]

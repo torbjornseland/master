@@ -4,6 +4,7 @@ import os, sys,glob
 
 import random as rd
 import numpy as np
+import statistics as st
 
 
 class creature(object):
@@ -223,9 +224,10 @@ class run:
                     IMO.delete_value(x_coord,y_coord,e.get_id())
                     everyone[counter] = removed(self.X,self.Y,x_coord,y_coord,e.get_id(),self.step,'m',self.grid_size)
                     if (IMO.get_amount() == 0):
+                        print "no infected left"
                         #print SMO.get_matrix()
                         #print IMO.get_matrix()
-                        self.breakLoop = True
+                        #self.breakLoop = True
 
             #From susceptible to infected
             if(e.color() == 'w'):
@@ -353,6 +355,8 @@ if __name__ == '__main__':
 
     #General for english school
     def script_runner():
+        SN = 762            #Susceptible number
+        IN = 1             #Infected number
         grid_size = 20
         steps = 15000 #*24*60#*24 #*60 #*24*60#1600
         X = 100
@@ -387,13 +391,11 @@ if __name__ == '__main__':
         # English school simulation 
         save_gap = 10
         makeplot = False#True
-        makegraph = False #True #False
+        makegraph = True #False #True #False #True #False
         makepath = False
         savefile = "plots/english_school"
-        SN = 762            #Susceptible number
-        IN = 1             #Infected number
 
-        HI = (2.18*10**(-3))*(21600/float(41437))
+        HI = (2.18*10**(-3))*(762/float(1905.223))
         #HI = 1-(1-(2.18*10**(-3))*(grid_size**2))**(1/float(24*60))
         #HI = 0
         #HI = ((2.18*10**(-3))*(grid_size**2))**(1/float(24))
@@ -456,10 +458,6 @@ if __name__ == '__main__':
                 x, y, c = update.first_step()
             else:
                 x, y, c = update.one_step()    
-            if update.get_breakLoop():
-                print "break"
-                break_loop = True
-                return steps_array,susceptible_array,infected_array, removed_array, break_loop
             #print "IMO"
             #print IMO.get_matrix()
             #print "SMO"
@@ -525,17 +523,63 @@ if __name__ == '__main__':
             plt.plot(steps_array, removed_array,'r', label='Removed')
             plt.legend()
             plt.axis([0,steps,0,len(everyone)])
-            plt.show()
-        return steps_array,susceptible_array,infected_array, removed_array, break_loop
+            #plt.show()
+     
+        return steps_array,susceptible_array,infected_array, removed_array, break_loop,
 
-    #steps,sus,inf,rem,same_room = script_runner()
+    #SN = 1
+    #IN = 1
+    """
+    SIM = 1000
+    total = 0
+    for i in range(SIM):
+        print "number: ",i
+        steps,sus,inf,rem,same_room = script_runner()
+        print "total number", everyone[-1].get_same_room()
+        total += everyone[-1].get_same_room()
+    print "Average", total/float(SIM)
     #print "same room",same_room
+    """
     sim_failed = 0
     first_sim = True
-    N = 3
+    N = 100
     N_ok = 0
+    random_steps = 15001
+    susceptible_matrix = np.zeros([N,random_steps])
+    infected_matrix = np.zeros([N,random_steps])
+    removed_matrix = np.zeros([N,random_steps])
+
+    steps_array = np.zeros(random_steps)
+    sus = np.zeros(random_steps)
+    inf = np.zeros(random_steps)
+    rem = np.zeros(random_steps)
+    
+    tot_num = 0
     for i in range(N):
-        steps_array,sus,inf,rem, break_loop = script_runner()
+        print "number:",i
+        steps_array[:],sus[:],inf[:],rem[:], break_loop = script_runner()
+        if not break_loop:
+            tot_num += 1
+            for j in range(len(steps_array)):
+                susceptible_matrix[i,j] = sus[j]
+                infected_matrix[i,j] = inf[j]
+                removed_matrix[i,j] = rem[j]
+        print susceptible_matrix
+        print infected_matrix
+        print removed_matrix
+
+
+     
+
+    #plt.plot(steps_array,sus,'b',label='Susceptible')
+    #plt.plot(steps_array,inf,'g', label='Infected')
+    #plt.plot(steps_array,rem,'r', label='Removed')
+    #plt.legend()
+    plt.axis([0,len(steps_array),0,800])
+    plt.show()
+
+    
+"""
         if break_loop:
             print "simulation failed"
             sim_failed += 1
@@ -560,6 +604,14 @@ if __name__ == '__main__':
         inf_plot = [x/float(N_ok) for x in infected_array]
         rem_plot = [x/float(N_ok) for x in removed_array]
 
+        plt.plot(steps_array,sus,'b',label='Susceptible')
+        plt.plot(steps_array,inf,'g', label='Infected')
+        plt.plot(steps_array,rem,'r', label='Removed')
+        plt.legend()
+        plt.axis([0,len(steps_array),0,800])
+        plt.show()
+"""
+"""
         plt.plot(steps_array,sus_plot,'b',label='Susceptible')
         plt.plot(steps_array,inf_plot,'g', label='Infected')
         plt.plot(steps_array,rem_plot,'r', label='Removed')
@@ -571,5 +623,6 @@ if __name__ == '__main__':
         plt.plot(steps_array,infected_array,'g', label='Infected')
         plt.plot(steps_array,removed_array,'r', label='Removed')
         plt.legend()
-        #plt.axis([0,len(steps_array),0,800])
+        plt.axis([0,len(steps_array),0,800])
         plt.show()
+"""
