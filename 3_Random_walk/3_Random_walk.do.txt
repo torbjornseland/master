@@ -321,7 +321,7 @@ R_0 = \frac{rS_0}{a}
 If $R_0> 1$ was fulfilled, an epidemic situation would occur. The result will be $R_0 = 3.77$ with the parameters from the ODE simulation. When simulating the random walk, only 56 percent of the simulations resulted in an epidemic disease. 44 percent resulted in a transmission of the infected student to the *Removed* group, before the student was able to infect other students. This simulations were performed on a small group, and the results may differ in larger groups. A removal rate above one will not necessarily lead to an epidemic disease, if the group is small enough.
   
 ======= Zombiefication =======
-The ODE system given in chapter *Epidemic models* will be used for this simulation. This can be seen in Eq.(ref{eq:seland_model_random}). The parameters has to be adjusted for this simulation, similar as shown for the English boarding school. Frederikkeplassen at Blindern will be used as the area where the simulations will be done. The area is estimated to be 100m x 100m and the disease will be able to spread if the distance is closer than 4 meters. There will be done three different simulations in this section, where the human intelligence will be taken into account. The total time of the simulations will be set to 34 minutes, and there will be performed 100 random walks each minute.       
+The ODE system given in chapter *Epidemic models* will be used for this simulation. This can be seen in Eq.(ref{eq:seland_model_random}). The parameters has to be adjusted for this simulation, similar as shown for the English boarding school. Frederikkeplassen at Blindern will be used as the area where the simulations will be done. The area is estimated to be 100m x 100m and the disease will be able to spread if the distance is closer than 4 meters. There will be done three different simulations in this section, where the human intelligence will be taken into account. The total time of the simulations will be set to 10 minutes, and there will be performed 100 random walks each minute.       
 !bt
 \begin{equation} \label{eq:seland_model_random}
     \begin{aligned} 
@@ -333,6 +333,7 @@ The ODE system given in chapter *Epidemic models* will be used for this simulati
 \end{equation}
 !et
 
+As similar for the English boarding school, the parameters in Eq.(ref{eq:seland_model_random}). The same technique 
 ===== Random walk =====
 
 

@@ -73,7 +73,7 @@ def read_command_line():
     return args.ZN, args.HN, args.S, args.area, args.g, args.ZK, args.HI, args.ZA, args.IZ, args.ID, args.makeplot, args.makegraph, args.savefile, args.mode
 
 class creature(object):
-    def __init__(self,x,y,my_id,screen,getcolor,img_creature,img_w,img_h):
+    def __init__(self,step_x,step_y,x,y,my_id,screen,getcolor,img_creature,img_w,img_h,HI,IZ,ID,ZA,ZK):
         self.x = x
         self.y = y
         self.my_id = my_id
@@ -81,10 +81,18 @@ class creature(object):
         self.no_steps = 0
         self.getcolor = getcolor
         self.direction = 0
+        self.HI = HI
+        self.IZ = IZ
+        self.ID = ID
+        self.ZA = ZA
+        self.ZK = ZK
+        self.step_x = step_x
+        self.step_y = step_y
 
-        self.base_image = pygame.image.load(img_creature).convert_alpha()
-        self.image = self.base_image
-        self.image_w, self.image_h = self.image.get_size()
+        if self.screen != 0:
+            self.base_image = pygame.image.load(img_creature).convert_alpha()
+            self.image = self.base_image
+            self.image_w, self.image_h = self.image.get_size()
         self.img_h = img_h
         self.img_w = img_w
         self.test_x = 0
@@ -146,16 +154,14 @@ class creature(object):
 
 
 class zombie(creature):
-    def __init__(self,HI,ZK,*args):
+    def __init__(self,min_size,*args):
         super(zombie,self).__init__(*args)
-        
         self.dx = 0
         self.dy = 0
-        self.HI = HI
-        self.ZK = ZK
-
-    def update(self, everyone):
-        r_min = min_size
+        self.same_room = 0
+        self.min_size = min_size
+    def update(self, everyone,ph_val):
+        r_min = self.min_size
         mx_min = 0
         my_min = 0
         mx_way = 1
@@ -164,43 +170,7 @@ class zombie(creature):
         old_x = self.x
         old_y = self.y
         
-        """
-        i = int(self.x*grid_size/img_w)
-        j = int(self.y*grid_size/img_h)
-       
- 
-        if(i == grid_size):
-            print "inne her"
-            i = 0
-        if(j == grid_size):
-            print "inne j"
-            j = 0
-        
-        Zombie_force = [] 
-        Human_force = [] 
-
-        for k in range(3):
-            for l in range(3):
-                Zombie_force.extend(ZMO[i+k,j+l])
-                Human_force.extend(HMO[i+k,j+l])
-                del HMO[i+k,j+l][:] #Only allowed to do one battle each round
-
-        #Fighting
-        z_power = len(Zombie_force)
-        h_power = len(Human_force)
-       
-        if(h_power != 0):
-            for k in range(h_power):
-                human_infec = rd.random()
-                zombie_surv = rd.random()
-                if(human_infec < (HI+0.0*z_power)):
-                    everyone[Human_force[k]].getcolor = 'c' #Human getting infected
-                if(zombie_surv < (ZK+0.0*h_power)):
-                    self.getcolor = 'm'     #Zombie is dying
-                    break
-        """    
-        fight_susceptible_vs_zombie(self.x,self.y,self.HI,self.ZK,self.get_id())
-                                        
+        fight_susceptible_vs_zombie(self.x,self.y,self.HI[ph_val],self.ZK[ph_val],self.get_id())
 
         if(self.getcolor == 'r'): 
             #Checking the mode
@@ -241,32 +211,35 @@ class zombie(creature):
                             mx_way = x_way
                             my_way = y_way
                             
-                if (r_min < min_size and r_min!= 0):
+                if (r_min < self.min_size and r_min!= 0):
                     self.dx = (mx_min)/float(r_min)*mx_way
                     self.dy = (my_min)/float(r_min)*my_way
                     
-                    test_x = self.x + step_x*self.dx
-                    test_y = self.y + step_y*self.dy
-                    self.direction = atan2((step_y*self.dy),(step_x*self.dx))
+                    test_x = self.x + self.step_x*self.dx
+                    test_y = self.y + self.step_y*self.dy
+                    self.direction = atan2((self.step_y*self.dy),(self.step_x*self.dx))
                 else:
                     self.dx = 0
                     self.dy = 0
                 
 
                 
-            if(mode == 'random' or (mode == 'moving_smart' and r_min == min_size)):
+            if(mode == 'random' or (mode == 'moving_smart' and r_min == self.min_size)):
                 if (self.no_steps == 0):
                     self.direction = rd.uniform(0,2*pi)
                     self.no_steps = rd.randint(1,20)
         
-                test_x = self.x + step_x*cos(self.direction) 
-                test_y = self.y + step_y*sin(self.direction)
+                self.test_x = self.x + self.step_x*cos(self.direction) 
+                self.test_y = self.y + self.step_y*sin(self.direction)
                 self.no_steps -= 1
          
     
     
             #Removing zombie from position  
             self.through_wall()
+            #print "zombie"
+            #print "self.x random",self.x
+            #print "self.y random",self.y
             ZMO.change_pos(old_x,old_y,self.x,self.y,self.my_id)
    
     def through_wall(self):
@@ -300,11 +273,17 @@ class zombie(creature):
     def get_screen(self):
         return super(zombie,self).get_screen()
 
+    def get_same_room(self):
+        return self.same_room
+
+    def increase_same_room(self):
+        self.same_room += 1
+
 class man(creature):
     def __init__(self,*args):
         super(man,self).__init__(*args)
 
-    def update (self, everyone):
+    def update(self, everyone,ph_val):
 
         c = 1
         dx = 0
@@ -323,7 +302,6 @@ class man(creature):
             for e in everyone:
                 if e.color() == "r":    #Checking if the object is a zombie
                     mx, my = e.coordinates()
-
                     if(abs(self.x-mx) <= img_w/2.):
                         x_way = -1
                         x_dir = self.x-mx
@@ -347,9 +325,9 @@ class man(creature):
                     
                     r = sqrt((x_dir)**2 + (y_dir)**2)
                     
-                    if r < (min_size*0.5):
-                        dx += (min_size*0.5-r)*x_dir
-                        dy += (min_size*0.5-r)*y_dir
+                    if r < (self.min_size*0.5):
+                        dx += (self.min_size*0.5-r)*x_dir
+                        dy += (self.min_size*0.5-r)*y_dir
                         mx_way = x_way
                         my_way = y_way
             
@@ -359,23 +337,26 @@ class man(creature):
                 dx = dx/float(hyp)*mx_way
                 dy = dy/float(hyp)*my_way
             if((dx != 0 or dy != 0) or mode=='hunting'):
-                test_x = self.x - step_x*dx #Checking if x is inside the map    
-                test_y = self.y - step_y*dy #Checking if y is inside the map
+                test_x = self.x - self.step_x*dx #Checking if x is inside the map    
+                test_y = self.y - self.step_y*dy #Checking if y is inside the map
                 
-                self.direction = atan2((step_y*dy),(step_x*dx))+pi
+                self.direction = atan2((self.step_y*dy),(self.step_x*dx))+pi
         if(mode == 'random' or (mode=='moving_smart' and hyp == 0)) :
             if (self.no_steps == 0):
                 self.direction = rd.uniform(0,2*pi)
                 self.no_steps = rd.randint(1,20) 
         
-            test_x = self.x + step_x*cos(self.direction) 
-            test_y = self.y + step_y*sin(self.direction)
+            self.test_x = self.x + self.step_x*cos(self.direction) 
+            self.test_y = self.y + self.step_y*sin(self.direction)
             self.no_steps -= 1  
                 
             
         
         #Sending them through the wall
         self.through_wall()
+        #print "human"
+        #print "self.x",self.x
+        #print "self.y",self.y
         
         #Giving the human/infected a new position
         HMO.change_pos(old_x,old_y,self.x,self.y,self.get_id())
@@ -413,7 +394,7 @@ class dead(creature):
     def __init__(self,*args):
         super(dead,self).__init__(*args)
     
-    def update(self, everyone):
+    def update(self, everyone,ph_val):
         c = 1
 
     def coordinates(self):
@@ -438,19 +419,21 @@ class infected(creature):
     def __init__(self,*args):
         super(infected,self).__init__(*args)
 
-    def update(self, everyone):
+    def update(self, everyone,ph_val):
         c = 1
-
+        old_x = self.x
+        old_y = self.y
         if (self.no_steps == 0):
             self.direction = rd.uniform(0,2*pi)
             self.no_steps = 1 #rd.randint(1,20) 
         
-        self.test_x = self.x + step_x*cos(self.direction) 
-        self.test_y = self.y + step_y*sin(self.direction)
+        self.test_x = self.x + self.step_x*cos(self.direction) 
+        self.test_y = self.y + self.step_y*sin(self.direction)
         self.no_steps -= 1  
         
-        self.through_wall(self)
-        
+        self.through_wall()
+        IMO.change_pos(old_x,old_y,self.x,self.y,self.my_id)
+
     def through_wall(self):
         super(infected,self).through_wall()   
 
@@ -476,14 +459,16 @@ class infected(creature):
         self.screen.blit(self.image, draw_pos)
     
 class run:
-    def __init__(self,HI,IZ,ID,ZA,img_w,img_h,step,grid_size,everyone):
+    def __init__(self,min_size,HI,IZ,ID,ZA,ZK,img_w,img_h,step_x,step_y,grid_size,everyone,phases):
         self.HI = HI
         self.IZ = IZ
         self.ID = ID
         self.ZA = ZA
+        self.ZK = ZK
         self.img_w = img_w
         self.img_h = img_h
         self.step_x = step_x
+        self.step_y = step_y
         self.grid_size = grid_size
         self.x = np.zeros(len(everyone))
         self.y = np.zeros(len(everyone))
@@ -491,48 +476,79 @@ class run:
         self.i = 0
         self.j = 0
         self.breakLoop = False
+        self.phases = phases
+        self.ph_val = 0
+        self.min_size = min_size
     
-    def one_step(self,everyone):
+    def one_step(self,everyone,step_nr):
         counter = 0
+        for i in range(len(self.phases)):
+            if (step_nr < self.phases[i]):
+                self.ph_val = i
+                break
         for e in everyone:
-            print "color",e.color()
-            e.update(everyone)
+            mx = e.coordinates()
+            #print "mx",mx[0]
+            #print "my",mx[1]
+            e.update(everyone,self.ph_val)
             p = e.coordinates()
+            #print "after mx",p[0]
+            #print "after my",p[1]
+
             self.x[counter] = p[0]
             self.y[counter] = p[1]
             self.c[counter] = e.color()
 
 
             counter += 1
+        #print "HMO"
+        #print HMO.get_matrix()
+        #print "ZMO"
+        #print ZMO.get_matrix()
+        #print "IMO"
+        #print IMO.get_matrix()
+        #raw_input()
         counter = 0
         for e in everyone:
             #infected
-            print "e",e
             if(e.color() == 'w'):
                 inf_rand = rd.random()
-                if (inf_rand < IZ): #percent chance of beeing a Zombie
-                    everyone[counter] = zombie(p[0],p[1],e.get_id(),screen,'r','pictures/zombie.png',self.img_w,self.img_h)
-                elif(inf_rand < (IZ+ID)):#percent change of dying 
-                    everyone[counter] = dead(p[0],p[1],e.get_id(),screen,'k','pictures/tombstone.png',self.img_w,self.img_h)
+                if (inf_rand < self.IZ[self.ph_val]): #percent chance of beeing a Zombie
+                    ex,ey = e.coordinates()
+                    IMO.delete_value(ex,ey,e.get_id())
+                    everyone[counter] = zombie(self.step_x,self.step_y,self.min_size,ex,ey,e.get_id(),screen,'r','pictures/zombie.png',self.img_w,self.img_h,self.HI,self.IZ,self.ID,self.ZA,self.ZK)
+                    ZMO.set_value(ex,ey,e.get_id())
+                elif(inf_rand < (self.IZ[self.ph_val]+self.ID[self.ph_val])):#percent change of dying 
+                    ex,ey = e.coordinates()
+                    IMO.delete_value(ex,ey,e.get_id())
+                    everyone[counter] = dead(self.step_x,self.step_y,ex,ey,e.get_id(),screen,'k','pictures/tombstone.png',self.img_w,self.img_h,self.HI,self.IZ,self.ID,self.ZA,self.ZK)
                 else:
                     pass
         
             #dead       
             if(e.color() == 'k'):
                 dead_rand = rd.random()
-                if (dead_rand < ZA): #percent chance of beeing a Zombie
-                    everyone[counter] = zombie(p[0],p[1],e.get_id(),screen,'r','pictures/zombie.png',self.img_w,self.img_h)
+                if (dead_rand < self.ZA[self.ph_val]): #percent chance of beeing a Zombie
+                    ex,ey = e.coordinates()
+                    everyone[counter] = zombie(self.min_size,self.step_x,self.step_y,ex,ey,e.get_id(),screen,'r','pictures/zombie.png',self.img_w,self.img_h,self.HI,self.IZ,self.ID,self.ZA,self.ZK)
+                    ZMO.set_value(ex,ey,e.get_id())
                 else:
                     pass
             
             if(e.color() == 'c'):   #getting infected
-                everyone[counter] = infected(p[0],p[1],e.get_id(),screen,'w','pictures/infected.png',self.img_w,self.img_h)
+                #print "id is getting infected",e.get_id()
+                ex,ey = e.coordinates()
+                HMO.delete_value(ex,ey,e.get_id())
+                everyone[counter] = infected(self.step_x,self.step_y,ex,ey,e.get_id(),screen,'w','pictures/infected.png',self.img_w,self.img_h,self.HI,self.IZ,self.ID,self.ZA,self.ZK)
+                IMO.set_value(ex,ey,e.get_id())
             if(e.color() == 'm'):   #dying to dead
-                everyone[counter] = dead(p[0],p[1],e.get_id(),screen,'k','pictures/tombstone.png',self.img_w,self.img_h)
+                ex,ey = e.coordinates()
+                ZMO.delete_value(ex,ey,e.get_id())
+                everyone[counter] = dead(self.step_x,self.step_y,ex,ey,e.get_id(),screen,'k','pictures/tombstone.png',self.img_w,self.img_h,self.HI,self.IZ,self.ID,self.ZA,self.ZK)
         
 
-            
-            e.blitme()  
+            if screen != 0: 
+                e.blitme()  
             counter += 1
             
         
@@ -621,20 +637,21 @@ def fight_susceptible_vs_zombie(x,y,HI,ZK,zombie_id):
         #susceptible_group = list(SMO.get_matrix_block(x,y,0,0))
         zombie_group = list(ZMO.get_matrix_block(x,y,0,0)) 
         human_group = list(HMO.get_matrix_block(x,y,0,0)) 
-        print "human group",human_group
-        #print "sus group",susceptible_group
         s_power = len(human_group)
         if(s_power != 0):
             for k in range(s_power):
-                #everyone[-1].increase_same_room()
-                #print "same room nr",everyone[-1].get_same_room()
+                #everyone[0].increase_same_room()
+                #print "same room nr",everyone[0].get_same_room()
                 human_infec = rd.random()
                 zombie_killed = rd.random()
                 if(human_infec < HI):
-                    everyone[human_group[k]].set_color('w') #Human getting infected 
-                    #SMO.delete_value(x,y,k)
+                    e = everyone[human_group[k]]
+                    e.set_color('c') #Human getting infected 
+                    s_x,s_y = e.coordinates()
+                    HMO.delete_value(s_x,s_y,human_group[k])
                 if(zombie_killed < ZK):
                     everyone[zombie_id].set_color('m')     #Zombie is dying
+                    ZMO.delete_value(x,y,zombie_id)
                     break
                     
 
@@ -643,129 +660,204 @@ def fight_susceptible_vs_zombie(x,y,HI,ZK,zombie_id):
 
 
 ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode = read_command_line()
-game_on = True
+game_on = False #True #True
 
+def run_blindern():
+    beta = [0.01155,0.00011];rho=[1/1.37,1/1.5];alpha=[0.00044,0.000208];
+    q = 621/float(98.64) #Average number of meetings during one minute
+    HI = []
+    ZK = []
+    IZ = []
+    ID = [0,0]
+    ZA = [0,0]
+    for i in range(2):
+        HI.append(beta[i]*q) 
+        ZK.append(alpha[i]*q)
+        IZ.append(1-(1-rho[i])**(1/float(100)))
 
-    
+    global screen
+    phases = [300,steps]
+    if game_on:
+        pygame.init()       
 
-
-pygame.init()       
-
-background = pygame.image.load('pictures/Blindern2.jpg')
-
-
-#background.convert()
-background_size = background.get_size()
-background_rect = background.get_rect()
-screen = pygame.display.set_mode(background_size)
-
-
-background = background.convert()
-clock = pygame.time.Clock()
-
-
-
-
-
-img = mpimg.imread('pictures/Blindern2.jpg')
-img_h,img_w,c = img.shape
-min_size = min(img_h,img_w)*0.3
-
-grid_x = (img_w/float(grid_size))
-grid_y = (img_h/float(grid_size))
-
-step_x = grid_x*0.2
-step_y = grid_y*0.2
-
-
-ZMO = matrix_constructor(grid_size,img_w,img_h)
-HMO = matrix_constructor(grid_size,img_w,img_h)
-M_emp = matrix_constructor(grid_size,img_w,img_h)
-
-"""
-ZMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
-ZMN = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
-M_emp = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
-for i in range(grid_size+2):
-    for j in range(grid_size+2):
-        ZMO[i,j] = [] 
-        ZMN[i,j] = [] 
-        M_emp[i,j] = [] 
+        background = pygame.image.load('pictures/Blindern2.jpg')
+        background_size = background.get_size()
+        background_rect = background.get_rect()
+        screen = pygame.display.set_mode(background_size)
+        background = background.convert()
+        clock = pygame.time.Clock()
+    else:
+        screen = 0
 
 
 
-Human_matrix = np.zeros([grid_size+2,grid_size+2])
-HMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Human matrix old
-for i in range(grid_size+2):
-    for j in range(grid_size+2):
-        HMO[i,j] = [] 
-"""
+    global img_h
+    global img_w
+    img = mpimg.imread('pictures/Blindern2.jpg')
+    img_h,img_w,c = img.shape
+    min_size = min(img_h,img_w)*0.3
 
-zombies = []
-for i in range(0,ZN):       #Making zombies
-    x_start = rd.randint(0,grid_size-1)
-    y_start = rd.randint(0,grid_size-1)
-    
-    x, y = x_start*img_w/float(grid_size), y_start*img_h/float(grid_size) 
-    
-    z = zombie(HI,ZK,x,y,i,screen,'r','pictures/zombie.png',img_w,img_h)
-    zombies.append(z)
-    ZMO.set_value(x,y,i)
-    #ZMO[x_start+1,y_start+1].append(i)  #Zombie matrix old
+    grid_x = (img_w/float(grid_size))
+    grid_y = (img_h/float(grid_size))
 
+    step_length = 0.83/4 #The distance per 1/100 minute
 
+    step_x = grid_x*step_length
+    step_y = grid_y*step_length
 
-men = []
-first = True
-for i in range(0,HN):
-    x_start = rd.randint(0,grid_size-1)
-    y_start = rd.randint(0,grid_size-1)
+    global ZMO
+    global HMO
+    global IMO
+    ZMO = matrix_constructor(grid_size,img_w,img_h)
+    HMO = matrix_constructor(grid_size,img_w,img_h)
+    IMO = matrix_constructor(grid_size,img_w,img_h)
+    M_emp = matrix_constructor(grid_size,img_w,img_h)
 
-    x, y = x_start*img_w/float(grid_size), y_start*img_h/float(grid_size) 
-    m = man(x,y,i+ZN,screen,'b','pictures/redhead.png',img_w,img_h)
-    men.append(m)
-    HMO.set_value(x,y,i+ZN)
-    #HMO[x_start+1, y_start+1].append(i+ZN) #Human matrix old
-
-global everyone
-everyone = zombies + men
-x = []
-y = []
-c = []
+    """
+    ZMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
+    ZMN = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
+    M_emp = np.zeros([grid_size+2,grid_size+2],dtype=object) #Zombie matrix old
+    for i in range(grid_size+2):
+        for j in range(grid_size+2):
+            ZMO[i,j] = [] 
+            ZMN[i,j] = [] 
+            M_emp[i,j] = [] 
 
 
 
-files = []
+    Human_matrix = np.zeros([grid_size+2,grid_size+2])
+    HMO = np.zeros([grid_size+2,grid_size+2],dtype=object) #Human matrix old
+    for i in range(grid_size+2):
+        for j in range(grid_size+2):
+            HMO[i,j] = [] 
+    """
 
-
-counter = 0
-
-
-steps_array = np.linspace(0,steps,steps+1) 
-zombie_array = np.zeros(steps+1)
-human_array = np.zeros(steps+1)
-infected_array = np.zeros(steps+1)
-dead_array = np.zeros(steps+1)
-
-zombie_array[0] = len(zombies)
-human_array[0] = len(men)
-
-update = run(HI,IZ,ID,ZA,img_w,img_h,step_x,grid_size,everyone)
-if not game_on: 
-        for i in range(0,steps):
+    zombies = []
+    for i in range(0,ZN):       #Making zombies
+        x_start = rd.randint(0,grid_size-1)
+        y_start = rd.randint(0,grid_size-1)
         
-            if(counter == 0):
-                x, y, c = update.first_step()
-            else:
-                x, y, c = update.one_step()    
-            
-            if makeplot:
-                fig = plt.figure()
-                imgplot = plt.imshow(img)
-                plt.scatter(x,y, c=c)
-                plt.savefig('moviefiles/tmp%04d.png'% counter)
-                plt.close()
+        x, y = x_start*img_w/float(grid_size), y_start*img_h/float(grid_size) 
+        
+        z = zombie(min_size,step_x,step_y,x,y,i,screen,'r','pictures/zombie.png',img_w,img_h,HI,IZ,ID,ZA,ZK)
+        zombies.append(z)
+        ZMO.set_value(x,y,i)
+        #ZMO[x_start+1,y_start+1].append(i)  #Zombie matrix old
 
+
+
+    men = []
+    first = True
+    for i in range(0,HN):
+        x_start = rd.randint(0,grid_size-1)
+        y_start = rd.randint(0,grid_size-1)
+
+        x, y = x_start*img_w/float(grid_size), y_start*img_h/float(grid_size) 
+        m = man(step_x,step_y,x,y,i+ZN,screen,'b','pictures/redhead.png',img_w,img_h,HI,IZ,ID,ZA,ZK)
+        men.append(m)
+        HMO.set_value(x,y,i+ZN)
+        #HMO[x_start+1, y_start+1].append(i+ZN) #Human matrix old
+
+    global everyone
+    everyone = zombies + men
+    x = []
+    y = []
+    c = []
+
+
+
+    files = []
+
+
+    counter = 0
+
+
+    steps_array = np.linspace(0,steps,steps+1) 
+    zombie_array = np.zeros(steps+1)
+    human_array = np.zeros(steps+1)
+    infected_array = np.zeros(steps+1)
+    dead_array = np.zeros(steps+1)
+
+    zombie_array[0] = len(zombies)
+    human_array[0] = len(men)
+
+    update = run(min_size,HI,IZ,ID,ZA,ZK,img_w,img_h,step_x,step_y,grid_size,everyone,phases)
+    if not game_on: 
+            for i in range(0,steps):
+            
+                if(counter == 0):
+                    x, y, c = update.first_step(everyone)
+                else:
+                    x, y, c = update.one_step(everyone,i)    
+                    
+                    HMO.mat[0,1:-1] = HMO.mat[-2,1:-1]
+                    HMO.mat[-1,1:-1] = HMO.mat[1,1:-1]
+                    HMO.mat[1:-1,0] = HMO.mat[1:-1,-2]
+                    HMO.mat[1:-1,-1] = HMO.mat[1:-1,1]
+                    
+                    ZMO.mat[0,1:-1] = ZMO.mat[-2,1:-1]
+                    ZMO.mat[-1,1:-1] = ZMO.mat[1,1:-1]
+                    ZMO.mat[1:-1,0] = ZMO.mat[1:-1,-2]
+                    ZMO.mat[1:-1,-1] = ZMO.mat[1:-1,1]  
+                if makeplot:
+                    fig = plt.figure()
+                    imgplot = plt.imshow(img)
+                    plt.scatter(x,y, c=c)
+                    plt.savefig('moviefiles/tmp%04d.png'% counter)
+                    plt.close()
+
+                
+                if makegraph:
+                    for e in everyone:
+                        if (e.color() == 'r'):
+                            zombie_array[i+1] = zombie_array[i+1]+ 1
+                        elif (e.color() == 'b'):
+                            human_array[i+1] = human_array[i+1]+ 1
+                        elif (e.color() == 'w' or e.color() == 'c'):
+                            infected_array[i+1] = infected_array[i+1]+ 1
+                        else:
+                            dead_array[i+1] = dead_array[i+1] + 1
+                
+
+                counter += 1
+
+
+    else:
+        #print "hit"
+        break_point = 0
+        for i in range(0,steps):
+        #while True:    
+            
+            
+            z_a = False
+            h_a = False
+            time_passed = clock.tick(12)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+
+            screen.blit(background,background_rect)
+
+            if(counter == 0):
+                x, y, c = update.first_step(everyone)
+            else:   
+                x, y, c = update.one_step(everyone,i)
+                
+                HMO.mat[0,1:-1] = HMO.mat[-2,1:-1]
+                HMO.mat[-1,1:-1] = HMO.mat[1,1:-1]
+                HMO.mat[1:-1,0] = HMO.mat[1:-1,-2]
+                HMO.mat[1:-1,-1] = HMO.mat[1:-1,1]
+                
+                ZMO.mat[0,1:-1] = ZMO.mat[-2,1:-1]
+                ZMO.mat[-1,1:-1] = ZMO.mat[1,1:-1]
+                ZMO.mat[1:-1,0] = ZMO.mat[1:-1,-2]
+                ZMO.mat[1:-1,-1] = ZMO.mat[1:-1,1]  
+
+            
+            pygame.display.flip()
+            pygame.image.save(screen, 'pymovie/tmp%04d.png' % counter)
             
             if makegraph:
                 for e in everyone:
@@ -777,101 +869,80 @@ if not game_on:
                         infected_array[i+1] = infected_array[i+1]+ 1
                     else:
                         dead_array[i+1] = dead_array[i+1] + 1
-            
-
-            counter += 1
-
-
-else:
-    #print "hit"
-    break_point = 0
-    for i in range(0,steps):
-    #while True:    
-        
-        
-        z_a = False
-        h_a = False
-        time_passed = clock.tick(12)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-
-        screen.blit(background,background_rect)
-
-        if(counter == 0):
-            x, y, c = update.first_step(everyone)
-        else:   
-            x, y, c = update.one_step(everyone)
-            
-            HMO.mat[0,1:-1] = HMO.mat[-2,1:-1]
-            HMO.mat[-1,1:-1] = HMO.mat[1,1:-1]
-            HMO.mat[1:-1,0] = HMO.mat[1:-1,-2]
-            HMO.mat[1:-1,-1] = HMO.mat[1:-1,1]
-            
-            ZMO.mat[0,1:-1] = ZMO.mat[-2,1:-1]
-            ZMO.mat[-1,1:-1] = ZMO.mat[1,1:-1]
-            ZMO.mat[1:-1,0] = ZMO.mat[1:-1,-2]
-            ZMO.mat[1:-1,-1] = ZMO.mat[1:-1,1]  
-
-        
-        pygame.display.flip()
-        pygame.image.save(screen, 'pymovie/tmp%04d.png' % counter)
-        
-        if makegraph:
-            for e in everyone:
-                if (e.color() == 'r'):
-                    zombie_array[i+1] = zombie_array[i+1]+ 1
-                elif (e.color() == 'b'):
-                    human_array[i+1] = human_array[i+1]+ 1
-                elif (e.color() == 'w' or e.color() == 'c'):
-                    infected_array[i+1] = infected_array[i+1]+ 1
-                else:
-                    dead_array[i+1] = dead_array[i+1] + 1
-                
-
-
                     
-        #print "HMO 0",HMO
 
-        
-        counter += 1
-    
-        
-        for j in c:
-            if(j == 'r' or j =='w'):
-                z_a = True
-            if(j == 'b'):
-                h_a = True
 
-        if not z_a or not h_a:
-            break_point += 1
-            if break_point==10:
-                break
+                        
+            #print "HMO 0",HMO
+
+            
+            counter += 1
         
+            
+            for j in c:
+                if(j == 'r' or j =='w'):
+                    z_a = True
+                if(j == 'b'):
+                    h_a = True
+
+            if not z_a or not h_a:
+                break_point += 1
+                if break_point==10:
+                    break
+            
 
 
 
 #if makeplot: 
-if makeplot:
-    #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
-    #os.system('avconv -r 10 -i %s -vcodec libx264 %s' %('pymovie/tmp%04d.png',savefile))
-    os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' % ('pymovie/tmp%04d.png',savefile))
+    if makeplot:
+        #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
+        #os.system('avconv -r 10 -i %s -vcodec libx264 %s' %('pymovie/tmp%04d.png',savefile))
+        os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' % ('pymovie/tmp%04d.png',savefile))
 
-    for filename in glob.glob('pymovie/tmp*.png'):
-        os.remove(filename)
+        for filename in glob.glob('pymovie/tmp*.png'):
+            os.remove(filename)
 
 
 
-    
-if makegraph:
-    plt.plot(steps_array, zombie_array,'r',label='Zombies')
-    plt.plot(steps_array, human_array,'b', label='Humans')
-    plt.plot(steps_array, infected_array,'w', label='Infected')
-    plt.plot(steps_array, dead_array,'k', label='Dead')
-    plt.legend()
+    print "make graph"    
+    if makegraph:
+        plt.plot(steps_array, human_array,'b', label='Susceptible')
+        plt.plot(steps_array, infected_array,'g', label='Infected')
+        plt.plot(steps_array, zombie_array,'r',label='Zombies')
+        plt.plot(steps_array, dead_array,'c', label='Removed')
+        plt.legend()
+        print "value final time human", human_array[-1]
+        print "value final time zombie", zombie_array[-1]
 
-    plt.axis([0,steps,0,len(everyone)])
-    plt.show()
-    
+        plt.axis([0,steps,0,len(everyone)])
+        plt.show()
+    return human_array, infected_array, zombie_array, dead_array
+
+sim_failed = 0
+first_sim = True
+N = 3
+N_ok = 0
+random_steps = 10001
+susceptible_matrix = np.zeros([N,random_steps])
+infected_matrix = np.zeros([N,random_steps])
+zombie_matrix = np.zeros([N,random_steps])
+removed_matrix = np.zeros([N,random_steps])
+
+steps_array = np.zeros(random_steps)
+sus = np.zeros(random_steps)
+inf = np.zeros(random_steps)
+rem = np.zeros(random_steps)
+
+tot_num = 0
+for i in range(N):
+    print "number:",i
+    steps_array[:],sus[:],inf[:],rem[:], break_loop = run_blindern()
+    if not break_loop:
+        tot_num += 1
+        for j in range(len(steps_array)):
+            susceptible_matrix[i,j] = sus[j]
+            infected_matrix[i,j] = inf[j]
+            removed_matrix[i,j] = rem[j]
+    print susceptible_matrix
+    print infected_matrix
+    print removed_matrix
