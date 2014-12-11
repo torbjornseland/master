@@ -393,7 +393,7 @@ if __name__ == '__main__':
         makeplot = False#True
         makegraph = True #False #True #False #True #False
         makepath = False
-        savefile = "plots/english_school"
+        savefile = "plots/three_phases"
 
         HI = (2.18*10**(-3))*(762/float(1905.223))
         #HI = 1-(1-(2.18*10**(-3))*(grid_size**2))**(1/float(24*60))

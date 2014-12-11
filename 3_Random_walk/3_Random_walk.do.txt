@@ -333,19 +333,166 @@ The ODE system given in chapter *Epidemic models* will be used for this simulati
 \end{equation}
 !et
 
-As similar for the English boarding school, the parameters in Eq.(ref{eq:seland_model_random}). The same technique 
+As similar for the English boarding school, the parameters in Eq.(ref{eq:seland_model_random}) have to be adjusted. The parameters from the two first phases in *Walking Dead* will be used. These can be seen in the table below. The number of meetings per minute is sat to $NoM = 98.64$, based on the average of 300 timesteps. This is used to find the value of $beta_r$ and $alpha_r$, similar to the method shown in the previous section. The value for $\varrho$ has been adjusted by first finding the average incubation time for the *Infected* group. This has been done by setting $1/\varrho$. The average incubation time is 0.72 minute. This is really fast, and is not a realistic number, based on the TV Series *Walking Dead*. By numerical simulations, the value of $\varrho_r$ can be set to 0.0137 for each simulation. This will result in a average incubation time of 0.72 minute. The same can be done for the value in the hysterical phase.  
+ 
+label{table:param_val_random}
+|------------------------------------------|
+|parameter  |Initial phase|hysterical phase|
+|------------------------------------------|
+|$\beta$    |0.01155      | 0.000011       |
+|$\beta_r$  |0.07271      | 0.000693       |
+|$\varrho$  |1.37         | 1.5            |
+|$\varrho_r$|0.0137       | 0.015          |
+|$\alpha$   |0.00044      | 0.000208       |
+|$\alpha_r$ |0.00277      | 0.001309       |
+|------------------------------------------|
+
+These parameter values are used for all simulations. This section will focus on the ability to transfer the human intelligence to a epidemic model. The previous chapter *Geograpic models* introduced the spatial effect and the ability for humans to seek safe areas. This chapter will introduce different conditions for the interactions based on the phase that the groups are in. The section will use the area used in *Ten minutes on Frederikkeplassen* in *Geographic models*.  
+
 ===== Random walk =====
+Random walk will be the first condition the different groups will hold. This result in a smooth distribution of the whole group, and the spatial of a group of humans will work as for a diffusion equation. The simulation will be done for ten minutes at Frederikkeplassen. To get a better picture of the simulation. The walkers are represented with different images. These four figures can be seen in Fig.(ref{fig:figure_images}).
 
-
-MOVIE:[plots/english_school.webm, height=500 width=600]
-
-#MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-
-
+FIGURE:[plots/figure_images.png, height=50 width=400 frac=0.8] label{fig:figure_images} Figures used in the simulation. All seen from the sky. I: The walkers in the *Susceptible* group can be seen as humans with green sweater. II: The walkers in the *Infected* group can be seen with a red and green sweater, with one arm in front. III: The walkers in the *Zombie* group can be seen with a white sweater and both arms in front. IV: the walkers in the *Removed* group can be seen as a tombstone. 
+ 
+The walkers are at initial time placed out on Frederikkeplassen. The initial positions of the walkers can be seen in subplot I in Fig.(ref{fig:initial_final}). 
 
 
 
 
+FIGURE:[plots/Frederikke_initial_final.png, height=600 width=400 frac=0.8] label{fig:initial_final}
+
+FIGURE:[plots/Walking_dead_Frederikke.png, height=500 width=500 frac=0.8]
+#200 simulations
+
+
+label{table:frederikke_table_random}
+|---------------------------------------------------------------------------------|
+|                   |Uniform distribution PDE   |Uniform distribution Random walk |
+|---------------------------------------------------------------------------------|
+|3 Minutes          |---------------------------|---------------------------------|
+|---------------------------------------------------------------------------------|
+|Susceptible        |72.23                     	|229.05                           |
+|Infected           |229.65                    	|169.73                           |
+|Zombie             |296.67                    	|207.83                           |
+|Removed            |20.84                     	|15.38                            |
+|---------------------------------------------------------------------------------|
+|7 Minutes          |---------------------------|---------------------------------|
+|---------------------------------------------------------------------------------|
+|Susceptible        |70.78                    	|203.07                           |
+|Infected           |0.83                     	|4.95                             |
+|Zombie             |498.72                   	|350.62                           |
+|Removed            |49.12                    	|63.35                            |
+|---------------------------------------------------------------------------------|
+|10 Minutes         |---------------------------|---------------------------------|
+|---------------------------------------------------------------------------------|
+|Susceptible        |69.69                     	|184.2                            |
+|Infected           |0.25                      	|3.94                             |
+|Zombie             |479.00                    	|335.99                           |
+|Removed            |70.55                     	|97.87                            |
+|---------------------------------------------------------------------------------|
+
+##susc 229.052631579
+##inf 169.731578947
+##zom 207.831578947
+##rem 15.3842105263
+##susc 203.078947368
+##inf 4.95263157895
+##zom 350.621052632
+##rem 63.3473684211
+##susc 184.2
+##inf 3.94210526316
+##zom 335.989473684
+##rem 97.8684210526
+
+===== Moving smart =====
+Next phase is based on the pattern that would be naturally to 
+
+FIGURE:[plots/Moving_smart_screen.png, height=500 width=500 frac=0.8]
+
+FIGURE:[plots/Moving_smart_average.png, height=500 width=500 frac=0.8]
+
+label{table:frederikke_table_random}
+|---------------------------------------------------------------------------------------|
+|                   |Random walk mode                 |Moving smart mode                |
+|---------------------------------------------------------------------------------------|
+|3 Minutes          |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |229.05                           |439.67                           |
+|Infected           |169.73                           |88.67                            |
+|Zombie             |207.83                           |89.67                            |
+|Removed            |15.38                            |4.0                              |
+|---------------------------------------------------------------------------------------|
+|7 Minutes          |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |203.07                           |417.0                            |
+|Infected           |4.95                             |5.0                              |
+|Zombie             |350.62                           |153.66                           |
+|Removed            |63.35                            |46.33                            |
+|---------------------------------------------------------------------------------------|
+|10 Minutes         |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |184.2                            |402.0                            |
+|Infected           |3.94                             |2.67                             |
+|Zombie             |335.99                           |144.67                           |
+|Removed            |97.87                            |72.67                            |
+|---------------------------------------------------------------------------------------|
+
+
+
+===== Three phases in Walking Dead =====
+A natural idea is to use different modus in different phases. The first phase, *Initial phase* will include a random walk mode. Here
+
+FIGURE:[plots/three_phases_ODE_sd.png, height=500 width=500 frac=0.8]
+
+|---------------------------------------------------------------------------------------|
+|                   |ODE                              |Random walk                      |
+|---------------------------------------------------------------------------------------|
+|Initial phase      |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |71                               |265                              |
+|Infected           |231                              |139                              |
+|Zombie             |299                              |192                              |
+|Removed            |21                               |16                               |
+|---------------------------------------------------------------------------------------|
+|Hysterical phase   |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |62                               |172                              |
+|Infected           |0                                |1                                |
+|Zombie             |359                              |250                              |
+|Removed            |202                              |189                              |
+|---------------------------------------------------------------------------------------|
+|Counter attack     |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |58                               |171                              |
+|Infected           |1                                |1                                |
+|Zombie             |332                              |238                              |
+|Removed            |231                              |203                              |
+|---------------------------------------------------------------------------------------|
+
+#susc265.2
+#inf 139.2
+#zom 192.4
+#rem 16.2
+#ODE susc 76.3257731062
+#ODE inf 232.837911837
+#ODE zom 292.086820699
+#ODE rem 20.7494943579
+#susc172.2
+#inf 1.0
+#zom 250.4
+#rem 189.4
+#ODE susc 66.2402712021
+#ODE inf 0.302849884509
+#ODE zom 345.609711654
+#ODE rem 209.847167259
+#susc170.6
+#inf 1.2
+#zom 238.4
+#rem 202.8
+#ODE susc 62.2706113563
+#ODE inf 1.20422990329
+#ODE zom 317.700755652
+#ODE rem 240.824403089
 
 
 ======= Bibliography =======
