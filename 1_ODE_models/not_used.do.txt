@@ -1,0 +1,39 @@
+!bt
+\begin{equation}
+\frac{dR}{dt} = a(N-S_0+(\frac{S_0}{\rho}-1)R-\frac{S_0R^2}{2\rho^2})
+\end{equation}
+!et
+By factoring the right-hand side the equation can be integrated. After some complicated steps the equation can be given by (ref{eq:dR_normal}) is used in my equation
+!bt
+\begin{equation} label{eq:R_small}
+R(t) = \frac{\rho^2}{S_0}\left[\left(\frac{S_0}{\rho}-1\right)+\alpha \tanh\left(\frac{\alpha at}{2}-\phi\right)\right]
+\end{equation}
+!et
+where
+!bt
+\begin{equation}
+\alpha = \left[\left(\frac{S_0}{\rho}-1\right)+\frac{2S_0(N-S_0)}{\rho^2}\right]^{1/2}, \phi= \tanh^{-1}\frac{1}{\alpha}\left(\frac{S_0}{\rho}-1\right)
+\end{equation}
+!et
+This will give
+!bt
+\DeclareMathOperator{\sech}{sech}
+\begin{equation} label{eq:dR_small}
+\frac{dR}{dt} = \frac{a\alpha^2\rho^2}{2S_0}\sech^2\left(\frac{\alpha at}{2}-\phi\right)
+\end{equation}
+!et
+The advantage with (label{eq:dR_small}) is that this equation only consist of three parameters. This is easier to adjust to a real situation. If the exact number of the *Removed* class, $R$, is collected and the epidemic situation is quite small, the model (ref{eq:R_small}) should be used. Both these two models demands that $R/\rho$ is quite small. It not the model (ref{dR_normal}) has to be used.
+<linebreak>
+<linebreak>
+===== Bombay Plague Epidemic =====
+The model (ref{dR_small}) was used by Kermack and McKendrick(1927) to model the epidemic in Bombay. The data that they were able to get was the number of deaths per week. By these result they were able to modify the equation to simulate the number of deaths per week. The three parameters were
+!bt
+\DeclareMathOperator{\sech}{sech}
+\begin{equation}
+\frac{dR}{dt} = 890\sech^2(0.2t-3.4)
+\end{equation}
+!et
+And the function of deaths per week can be modeled,
+
+FIGURE:[plots/Bombay_plague.png]
+

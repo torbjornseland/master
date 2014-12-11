@@ -1,0 +1,95 @@
+* articles
+** When Zombies Attack!: Mathematical Modelling of an Outbreak of Zombie Infection
+   key:       munz2009zombies
+   author:    Philip Munz, Ioan Hudea, Joe Imad, Robert J. Smith
+   year:      2009
+   journal:   Infectious Disease Modelling Research Progress
+   volume:    4
+   pages:     133--150
+   status:    published
+   entrytype: article
+** Mathematical Modelling of the Transmission Dynamics of HIV Infection and AIDS: a Review
+   key:       isham1988mathematical
+   author:    Valerie Isham
+   year:      1988
+   journal:   Journal of the Royal Statistical Society. Series A (Statistics in Society)
+   publisher: JSTOR
+   pages:     5--49
+   status:    published
+   entrytype: article
+** Mathematical Analysis of HIV-1 Dynamics in Vivo
+   key:       perelson1999mathematical
+   author:    Alan S. Perelson, Patrick W. Nelson
+   year:      1999
+   journal:   SIAM review
+   publisher: SIAM
+   volume:    41
+   number:    1
+   pages:     3--44
+   status:    published
+   entrytype: article
+** Predicting the HIV/AIDS Epidemic and Measuring the Effect of Mobility in Mainland China
+   key:       xiao2013predicting
+   author:    Yanni Xiao, Sanyi Tang, Yicang Zhou, Robert J. Smith, Jianhong Wu, Ning Wang
+   year:      2013
+   journal:   Journal of theoretical biology
+   publisher: Elsevier
+   volume:    317
+   pages:     271--285
+   status:    published
+   entrytype: article
+* books
+** {P}ython Scripting for Computational Science
+   key:       Langtangen_2012
+   author:    H. P. Langtangen
+   year:      2012
+   publisher: Springer
+   status:    published
+   series:    Texts in Computational Science and Engineering
+   edition:   Third
+   entrytype: book
+** Mathematical Biology: I. an Introduction
+   key:       murray2002mathematical
+   author:    J.D. Murray
+   year:      2002
+   publisher: Springer
+   url:       http://books.google.no/books?id=4WbpP90Gk1YC
+   status:    published
+   isbn:      9780387952239
+   series:    Interdisciplinary Applied Mathematics
+   lccn:      2001020448
+   entrytype: book
+* chapters
+** Escaping the Zombie Threat by Mathematics
+   key:       zombie-math
+   author:    Hans Petter Langtangen, Kent-Andre Mardal, P{\aa}l R{\o}tnes
+   editor:    Chris Moore Andrew Whelan, Ruth Walker
+   year:      2013
+   booktitle: Zombies in the Academy: living death in higher education
+   publisher: University of Chicago Press
+   chapter:   3.6
+   pages:     x-y
+   status:    published
+   entrytype: inbook
+* reports
+** Births: Final Data From 2012
+   key:         CBC_births_2012
+   author:      Joyce A. Martin, Brady E. Hamilton, Michelle J.K. Osterman, Sally C. Curtin, T.J. Mathews
+   year:        2013
+   institution: Division of Vital Statistics
+   status:      published
+   entrytype:   techreport
+** Deaths:Preliminary Data for 2011
+   key:         CBC_deaths_2011
+   author:      Donna L.Hoyert, Jiaquan Xu
+   year:        2012
+   institution: Division of Vital Statistics
+   status:      published
+   entrytype:   techreport
+* misc
+** "Walking Dead: Season 1"
+   key:       walking_dead
+   author:    "F. Darabont, G. A. Hurd (executive producers)"
+   year:      2010-2011
+   status:    published
+   entrytype: misc

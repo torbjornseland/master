@@ -1,0 +1,7 @@
+TITLE: Random walk
+AUTHOR: Torbjørn Seland
+DATE: today
+
+TOC: on
+
+# #include "3_Random_walk.do.txt"

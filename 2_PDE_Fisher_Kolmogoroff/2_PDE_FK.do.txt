@@ -1,10 +1,5 @@
-TITLE: Geographic models 
-AUTHOR: Torbjørn Seland
-DATE: today
 
-TOC: on
-
-======= Introduction =======
+========= PDE models =========
 This chapter will introduce a spatial model for epidemic diseases. The ODE system from the previously chapter can be expanded with a term for geographic spread of the disease. The first section *Simple system for spatial spread* will be based on the simple SIR model presented in previously chapter, and the chapter *Geographic spread and Control of epidemics* by Murray cite{murray2003mathematical}. The parameters from the *English Boarding School* in the previously chapter will be used for the model and the results will be compared. The position of the infected student will be studied to see if it affects the number in the *Infected* group. The last section, *Zombiefication*, will study and expand the system from Langtangen, Mardal and Røtnes cite{zombie-math}. The results and parameter values used to calculate *Walking Dead* will be compared with the previously ODE system and variations of this PDE. 
  
 
@@ -86,9 +81,9 @@ This makes an eigenvalue problem. The value of $\lambda$ needs to stay in a rang
 !et
 An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is set to 0.5. The initial value of *Susceptible* is 1 for the area and the *Removed* is set to 0. The *Infected* group has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travels towards the other side. The value $z$, which is defined in Eq.(ref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
 
-FIGURE:[plots/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
+FIGURE:[2_fig/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
 
-FIGURE:[plots/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the travelling wave measures at at $x=15$ in figure(ref{fig:1D_sub})
+FIGURE:[2_fig/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the travelling wave measures at at $x=15$ in figure(ref{fig:1D_sub})
 
 <linebreak>
 The *Infective* group in Eq.(ref{eq:ord_diff_sys}) can be linearised when $z\rightarrow \infty$. This leads to $S\rightarrow 1$ and $I \rightarrow 0$. The result then become 
@@ -142,7 +137,7 @@ By deriving Eq.(ref{eq:simple_non_PDE2}), the following system Eq.(ref{eq:consta
 !et
 The values $\beta$ and $\lambda$ are based on the constants $C_s,C_i,C_r$, which can be chosen freely. Here they are set to $C_s = 1.2,C_i=0.8,C_r=0.6$. This results in $\lambda= C_s = 1.2$ and $\beta= \frac{C_s C_i}{C_r}=1.6$. A test is made in python and can be seen below.
 
-@@@CODE verify_sol.py fromto: def test_constant_solution@def test_manufactured_solution
+@@@CODE 2_src/verify_sol.py fromto: def test_constant_solution@def test_manufactured_solution
 
 The test was run with no error, and the three constant values were produced correctly. This test is not good enough to qualify the program alone, however an error here would result in a large error in the program. 
 ===== Manufactured solution =====
@@ -194,7 +189,7 @@ Now `sympy` can be used to do the calculations for the three functions $f$, $g$ 
 !et
 A similar test made for the constant solution can be used here. While the constant test expected a difference on machine precision, this is not the case here. In this test, an expected convergence rate can be measured. The following manufactured test will be
 
-@@@CODE verify_sol.py fromto: def test_manufactured_solution@def solver()
+@@@CODE 2_src/verify_sol.py fromto: def test_manufactured_solution@def solver()
 
 ===== Convergence rate =====
 The program can be controlled by checking the convergence rate. The error term  for this equation can be described as  
@@ -278,7 +273,7 @@ In the PDE system for the 1D equation, a Gaussian quantity of infected humans wa
 <linebreak>
 The size of the epidemic wave can be measured and compared by studying the travelling wave at a certain point. In these two 2D simulations in Fig.(ref{fig:2D_trav_wave}), the wave are measured in the point (15,15), while the travelling wave in the 1D simulation was measured at point(15). 
 
-FIGURE:[plots/Trav_wave_2D.png, height=400 width=800 frac=0.8] label{fig:2D_trav_wave} Travelling wave measured at point (15,15) with two different initial values for the *Infected* group. I:The initial value is set as a Gaussian line along (0,y).II:The initial value is set as a Gaussian point (0,0).
+FIGURE:[2_fig/Trav_wave_2D.png, height=400 width=800 frac=0.8] label{fig:2D_trav_wave} Travelling wave measured at point (15,15) with two different initial values for the *Infected* group. I:The initial value is set as a Gaussian line along (0,y).II:The initial value is set as a Gaussian point (0,0).
 
 <linebreak>
 <linebreak>
@@ -308,13 +303,13 @@ By increasing the initial wave of the *Infected* group, the initial value of *In
 #Volume extreme = 157.07963267948966
 #Volume under graph 1.43345609926
 
-FIGURE:[plots/2D_initial_variable_sub.png,height=600 width=800 frac=0.8] label{fig:initial_value} A major flow of *Infected* spread outwards in the field. After a certain time, the wave has passed the area and the number in each group stabilized. 
+FIGURE:[2_fig/2D_initial_variable_sub.png,height=600 width=800 frac=0.8] label{fig:initial_value} A major flow of *Infected* spread outwards in the field. After a certain time, the wave has passed the area and the number in each group stabilized. 
 
 <linebreak>
 <linebreak>
 The size and shape can be compared by measuring the travelling wave at point(15,15). The travelling wave for this simulation can be seen in Fig.(ref{fig:initial_trav_wave}) and the area for the travelling wave is measured to 1.43, which is similar to the three other simulations.
 
-FIGURE:[plots/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] label{fig:initial_trav_wave} The travelling wave with a major increase of *Infected* at the initial time. 
+FIGURE:[2_fig/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] label{fig:initial_trav_wave} The travelling wave with a major increase of *Infected* at the initial time. 
 
 <linebreak>
 <linebreak>
@@ -322,7 +317,7 @@ The size of the travelling  wave will not be affected by changing the value of t
 === Change in lambda ===
 The one thing that affects the speed and size, is the $\lambda$ variable in the PDE system(ref{eq:simple_non_PDE}). This $\lambda$ is a combination of $a$, which controls deaths among the *Infected* group, $r$, which controls the number from the *Susceptible* group that gets infected in meetings between the *Infected* and *Susceptible* groups. The last parameter in $\lambda$ is the concentration of Susceptible, $S_0$. By changing this parameter, the travelling wave will change in both size and shape. In Fig.(ref{fig:change_lambda}), the simulation is run with four different values of $\lambda$.
 
-FIGURE:[plots/2D_lambda_variable.png, height=600 width=800] label{fig:change_lambda} The travelling wave simulated with $\lambda$ values in the range of 0.01 to 1.
+FIGURE:[2_fig/2D_lambda_variable.png, height=600 width=800] label{fig:change_lambda} The travelling wave simulated with $\lambda$ values in the range of 0.01 to 1.
 
 <linebreak>
 <linebreak>
@@ -337,7 +332,7 @@ A major and aggressive travelling wave is caused when $\lambda \rightarrow 0$. I
 <linebreak>
 If $\lambda$ increases above 1, the disease will not be able to spread. The number of *Infected* will decrease, since the number in the *Removed* group caused by the *Infected* group is higher than the amount of *Infected* humans from the *Susceptible* group. After a certain time, the number of *Infected* will die out. If $\lambda$ stays at 1, the number of *Infected* will be equal the whole time. 
 
-======= Epidemic in an English Boarding School 1978 =======
+======= English Boarding School =======
 An example from an English boarding school was presented in the previously chapter *Epidemic models* . This example was based on the book from J.D Murray cite{murray2002mathematical}, and was modeled for an ODE system. A similar result should appear for the PDE system with the same parameter values and a uniform distribution of the groups. The school had 763 students, and one of the students brought a disease back to the school. The following numbers were used for the ODE system in chapter one. $N=763, S_0=762,I_0=1,R_0=0,\rho=202$ and $r = 2.18\cdot 10^{-3}$. 
 <linebreak>
 <linebreak>
@@ -346,7 +341,7 @@ The first simulation is produced with uniform distributed concentration, This is
 <linebreak>
 The results from subplot I in Fig.(ref{fig:british_number}) are equal to the results from the ODE system modeled in the previously chapter.This can be seen in Tab.(ref{table:british_number_table}). This is as expected, since the diffusion term is negligible in this system. The simulation results in a group of separate ODE systems modeled over an area.
 
-FIGURE:[plots/british_number.png, height=600 width=300 frac=0.8] label{fig:british_number} English Boarding School modeled with three different initial values for the infected student. The amount of students in each group modeled over 15 days. Subplot 1: uniform distribution. Subplot 2: The student is placed as a Gaussian function in center. Subplot 3: The student is placed as a Gaussian function in the corner (0,0). 
+FIGURE:[2_fig/british_number.png, height=600 width=300 frac=0.8] label{fig:british_number} English Boarding School modeled with three different initial values for the infected student. The amount of students in each group modeled over 15 days. Subplot 1: uniform distribution. Subplot 2: The student is placed as a Gaussian function in center. Subplot 3: The student is placed as a Gaussian function in the corner (0,0). 
 
 label{table:british_number_table}
 |-------------------------------------------------------------------|
@@ -378,7 +373,7 @@ label{table:british_number_table}
 ===== Introducing a Gaussian distribution of infected =====
 An assumption one can make is that a person is not able to be evenly distributed over an area. In this example, with only one infected student at initial time, the chance of being infected increases the closer the *Susceptible* group gets the infected student. The student is represented by a Gaussian function in the middle of the school yard, to see if the position affects the result. The height is set to 1 and the volume of the Gauss function is set to 1 cubic. The simulation can be seen in Fig.(ref{fig:gauss_sub}) and the total amount of students in each group can be be seen in Fig.(ref{fig:british_number}).
 
-FIGURE:[plots/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub} The infected student is placed in the center as a Gaussian function at initial time. The height of the Gaussian function is set to 1 m and volume is set to 1 cubic. 
+FIGURE:[2_fig/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub} The infected student is placed in the center as a Gaussian function at initial time. The height of the Gaussian function is set to 1 m and volume is set to 1 cubic. 
 
 <linebreak>
 <linebreak>
@@ -449,7 +444,7 @@ label{table:param_val}
 
 The simulation in Fig.(ref{fig:zombie_three_number}) seems to match the results from the ODE system. A closer check can be done by comparing the groups in each phase. This result can be seen in Tab.(ref{table:compare_phases_zombie}) 
 
-FIGURE:[plots/2D_zombie_three_phases_number.png, height=600 width=800 frac=0.8] label{fig:zombie_three_number} The Eq.(ref{eq:SIZR_disc2}) modeled with uniformed distributed groups. Initial values S_0 = 621,I_0 = 0, Z_0 = 0 R_0 = 0 with parameters from (ref{table:param_val}).
+FIGURE:[2_fig/2D_zombie_three_phases_number.png, height=600 width=800 frac=0.8] label{fig:zombie_three_number} The Eq.(ref{eq:SIZR_disc2}) modeled with uniformed distributed groups. Initial values S_0 = 621,I_0 = 0, Z_0 = 0 R_0 = 0 with parameters from (ref{table:param_val}).
 
 <linebreak>
 <linebreak>
@@ -578,19 +573,19 @@ The diffusion term describes the diffusion for each group. This can be seen as t
 <linebreak>
 The parameters from Tab.(ref{table:param_val}) will be used here, and the three phases will be modeled as shown for the uniformed distributed PDE system. The values will be used for three different simulations with the similar initial value for the different groups. The position of initial values can be seen in Fig.(ref{fig:initial_value_susceptible}) and are based on the data given for each town above. The difference in the three simulations will be the position of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
 
-FIGURE: [plots/initial_value_susceptible.png, height=600 width=800 frac=0.8] label{fig:initial_value_susceptible} The initial value for the *Susceptible* group for three simulations. Small group(6,6) with volume 21, middle group(12,25) with volume 200 and large group(25,12) with volume 400. All three groups are build up with a Gaussian function. 
+FIGURE: [2_fig/initial_value_susceptible.png, height=600 width=800 frac=0.8] label{fig:initial_value_susceptible} The initial value for the *Susceptible* group for three simulations. Small group(6,6) with volume 21, middle group(12,25) with volume 200 and large group(25,12) with volume 400. All three groups are build up with a Gaussian function. 
 
 <linebreak>
 <linebreak>
 Fig.(ref{fig:large_town}) shows the simulation where the zombie is placed in the large town. The simulations of the small and middle town can be seen in the Appendix. The four subplots are from the different phases that arise during a zombie attack. The different groups have the same color as introduced in Fig.(ref{fig:zombie_three_number}). It is difficult to separate the three groups *Infected*, *Zombie* and *Removed*, since they all have a low value at initial time. The development of the amount can easier be seen in the Fig.(ref{fig:compare_towns}), which also shows the results from the small and middle town. Since the amount of *Susceptible* is quite low in the small town where the zombie arises, the disease is not able to infect too many before the society has moved to the next phase, assuming that the broadcasting about the disease works okay for the first days. This results in an eradication of the disease in about a month. The table(ref{table:compare_phases_zombie}) shows that the number of zombies decreases towards zero after a month. 
 
-FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_2_sub.png, height=600 width=800 frac=0.8] label{fig:large_town} *Walking Dead* simulated with the zombie at initial time in the large town. Subplots shown at each phase. 
+FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, height=600 width=800 frac=0.8] label{fig:large_town} *Walking Dead* simulated with the zombie at initial time in the large town. Subplots shown at each phase. 
 
 <linebreak>
 <linebreak>
 By placing the zombie in the middle town, the amount in the *Zombie* group increases to a higher level. The amount can be seen as subplot II in Fig.(ref{fig:compare_towns}). The damages are higher, and after a month the total population of *Susceptible* is reduced to 427. The last calculation done for the large town in Fig.(ref{fig:large_town}) shows major damages. Here the amount in the *Zombie* group increases above the number of *Susceptible*. The *Infected* group also increases to above 100 after a couple of days in the initial phase. This can be explained by the high number of meetings between susceptible and zombies. By studying the subplot II in Fig.(ref{fig:large_town}), the zombies are grouped in the large town, while the middle and small town mostly consist of *Susceptible*. By counting the loss of *Susceptible* during the first phase, the Tab.(ref{table:compare_towns}) shows that this amount corresponds with the size of the towns where the zombie was placed, given by the number 17,188 and 362 in the small,middle and large group. The percent is highest in the middle town with 94 percent. The percent in the large and small group are 90 and 81.  The simulation in the middle town has the highest percent because the *Susceptible* group in the large town also gets infected. These towns are coupled together, and the epidemic disease is able to spread. The small town, which can be seen as Nesodden(a peninsula outside Oslo), has the lowest percent. The reason is that the disease is not able to spread to the other towns, and therefore is causes less damage.  
 
-FIGURE:[plots/2D_compare_towns.png, height=1000 width=400 frac=0.8] label{fig:compare_towns} The values for each group counted during 34 days in *Walking Dead*. Initial phase from day 0 to day 3, Hysterical phase from day 3 to day 33 and Counter attack from day 33 to day 34.   
+FIGURE:[2_fig/2D_compare_towns.png, height=1000 width=400 frac=0.8] label{fig:compare_towns} The values for each group counted during 34 days in *Walking Dead*. Initial phase from day 0 to day 3, Hysterical phase from day 3 to day 33 and Counter attack from day 33 to day 34.   
 
 <linebreak>
 <linebreak>
@@ -674,16 +669,16 @@ This arithmetic mean can be inserted for all $\gamma$'s in the system. The syste
 The diffusion term for the *Removed* group is taken away, since dead people are not able to move. This system looks quite messy, but it is straight forward to calculate. All values on the right side are known values and the system is easy to solve. Now every point will be controlled by the diffusion constants given in $\gamma(x)$. This makes it easier to control the flow in each group. With a high diffusion constant, the diffusion will spread fast. When the diffusion constant goes towards zero, the flow will decrease towards zero flow. This will result in a set of ODE systems modeled for each point.
 ##S &= \nabla\left(\gamma(x) \nabla S)\right \\
 
-=== Ten minutes at Frederikkeplassen ===
+===== Ten minutes at Frederikkeplassen =====
 Frederikkeplassen at the University of Oslo is a possible area for an upcoming zombie attack. This simulation will try to model a ten minute sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realize the danger and transitions into the *Hysterical phase*. A map of Frederikkeplassen is used to define the safe and critical areas. The buildings are set as areas where only the *Susceptible* are allowed to move. This is done by setting the diffusion constant to zero for the *Zombie* and *Infected* groups. Since the buildings are safe spots for the *Susceptible*, an idea would be to express this in the diffusion term by forcing the *Susceptible* for other areas into the buildings. This is more difficult, since the concentrations in each group wants to diffuse towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and a slow diffusion inside the buildings. 
 
-FIGURE:[plots/2D_compare_Frederikke.png, height=400 width=800 frac=0.8] label{fig:frederikke_numbers} The amount in each group for two simulations of Frederikkeplassen modeled same parameters for 10 minutes/hours. a)Plot with uniformed distributed groups and same diffusion constants for all groups. b)Plot based on figure(ref{fig:frederikke_free_area}) with different initial values for each group.     
+FIGURE:[2_fig/2D_compare_Frederikke.png, height=400 width=800 frac=0.8] label{fig:frederikke_numbers} The amount in each group for two simulations of Frederikkeplassen modeled same parameters for 10 minutes/hours. a)Plot with uniformed distributed groups and same diffusion constants for all groups. b)Plot based on figure(ref{fig:frederikke_free_area}) with different initial values for each group.     
 
 <linebreak>
 <linebreak>
 Two simulations have been done at Frederikkeplassen. The amount in each group can be seen in Fig.(ref{fig:frederikke_numbers}). The first simulation has a solution based on the ODE system, with uniformed distributed groups, equal diffusion constants and no free areas for the *Susceptible*. The second simulation is modeled with three groups of *Susceptible*, as in the previous section. The small group with 21 students is placed at point(4,4), the middle group with 200 students is placed at point(15,8) and the large group with 400 students is placed at point(8,13). The zombie is placed at point(8,10). The $\gamma(x)$ is set to zero in the buildings for the *Zombie* and *Infected* group, and one in the rest of the area. For the *Susceptible* group, $\gamma(x)$ is set to 0.1 in the buildings, which causes slow diffusion. In the outside areas, $\gamma(x)$ is set to 5 for the *Susceptible*. The desired result is to push them into the buildings, but this will only happen if there is a lower concentration inside the buildings. Therefore this will not reflect a realistic flow of a *Susceptible* population. This simulation can be seen in Fig.(ref{fig:frederikke_free_area})  
 
-FIGURE:[plots/2D_Frederikke_contourf_sub.png, height=600 width=800 frac=0.8] label{fig:frederikke_free_area} Frederikkeplassen modeled with free areas for the *Susceptible* group. The diffusion function $\gamma(x)$ is set to zero for the *Zombie* and *Infected* group in the buildings. The zombie at initial time is placed in the center of Frederikkeplassen
+FIGURE:[2_fig/2D_Frederikke_contourf_sub.png, height=600 width=800 frac=0.8] label{fig:frederikke_free_area} Frederikkeplassen modeled with free areas for the *Susceptible* group. The diffusion function $\gamma(x)$ is set to zero for the *Zombie* and *Infected* group in the buildings. The zombie at initial time is placed in the center of Frederikkeplassen
 
 <linebreak>
 <linebreak>
@@ -780,11 +775,11 @@ label{table:frederikke_table}
 ===== Random distribution =====
 This random distribution of *Susceptible* and *Zombie* is simulated with the idea of the next chapter. The volume of the *Susceptible* group is randomly placed over the area. The volume is similar to the two other simulations in Tab.(ref{table:frederikke_table}). The zombie is described with a Gaussian function at a random position. The simulation has the same $\gamma(x)$ as the simulation of the free areas, but the result is different. This simulation was done a couple of times, and resulted in different solutions each time. The position of the zombie had a major influence on the result. If the position of the zombie was in the center, the amount of *Infeced* and *Zombie* was larger than if the position of the zombie was in the corner. A specific random simulation cannot be compared with the two other simulations, but the range of the solutions be used. The result shows that the number of zombies at $time=3$ never exceeded the result from the free areas. A random position of people will never reach the amount when the *Zombie* group is uniformed distributed.
 
-FIGURE:[plots/2D_Frederikke_random_contourf_sub.png, height=600 width=800 frac=0.8] label{fig:frederikke_random} Random position of the *Susceptible* and *Zombie* group. Simulated with free areas inside the buildings.
+FIGURE:[2_fig/2D_Frederikke_random_contourf_sub.png, height=600 width=800 frac=0.8] label{fig:frederikke_random} Random position of the *Susceptible* and *Zombie* group. Simulated with free areas inside the buildings.
 
 !split
 ======= Appendix =======
-=== Sympy to find manufactured solution ===
+===== Sympy to find manufactured solution =====
 
 !bc pycod
 >>> from sympy import *
@@ -850,70 +845,64 @@ The calculations will be shown for the diffusion part in the first equation. Thi
 !et
 ===== 2D Gaussian function from x=0 =====
 
-FIGURE:[plots/2D_gauss_sub.png,height=600 width=800 frac=0.8]The PDE system (ref{eq:simple_non_PDE}) simulated for a 2D system with $\lambda=0.5$. A gauss wave from $x=0$.
+FIGURE:[2_fig/2D_gauss_sub.png,height=600 width=800 frac=0.8]The PDE system (ref{eq:simple_non_PDE}) simulated for a 2D system with $\lambda=0.5$. A gauss wave from $x=0$.
 
 ===== 2D Gaussian function from x=0,y=0 =====
 
-FIGURE:[plots/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian function from $x=0,y=0$ based on the PDE system (ref{eq:simple_non_PDE}) with $\lambda=0.5$  
+FIGURE:[2_fig/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian function from $x=0,y=0$ based on the PDE system (ref{eq:simple_non_PDE}) with $\lambda=0.5$  
 
 ===== 2D Gaussian function from x=0,y=0 with higher initial value ===== 
 
 ===== English Boarding School =====
 
-FIGURE:[plots/2D_british_school_sub.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_british_school_sub.png, height=600 width=800 frac=0.8]
 
 === Gaussian from the corner ===
 
-FIGURE:[plots/2D_british_school_gauss_corner_sub.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_british_school_gauss_corner_sub.png, height=600 width=800 frac=0.8]
 
 === A long simulation on 100 Days ===
 
-FIGURE:[plots/2D_british_school_long_number.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_british_school_long_number.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_british_school_gauss_long_number.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_british_school_gauss_long_number.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_british_school_gauss_corner_long_number.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_british_school_gauss_corner_long_number.png, height=600 width=800 frac=0.8]
 
 ===== Zombiefication =====
 === Verify the initial phase ===
 
-FIGURE:[plots/2D_zombie_initial_cond_sub.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_zombie_initial_cond_sub.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_zombie_initial_cond_number.png, height=600 width=800 frac=0.8]Creates the same results as for the ODE system
+FIGURE:[2_fig/2D_zombie_initial_cond_number.png, height=600 width=800 frac=0.8]Creates the same results as for the ODE system
 
 === Three phases ===
 
-FIGURE:[plots/2D_zombie_three_phases_sub.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_zombie_three_phases_sub.png, height=600 width=800 frac=0.8]
 
 === middle town ===
 
-FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_surface_sub.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_zombie_three_phases_zombie_middle_town_surface_sub.png, height=600 width=800 frac=0.8]
 
 === large town ===
 
-FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_sub.png, height=600 width=800 frac=0.8]
+FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_sub.png, height=600 width=800 frac=0.8]
 
 ## Movies
-#MOVIE:[plots/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
-#MOVIE:[plots/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
-#MOVIE:[plots/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
-#MOVIE:[plots/2D_british_school.webm, height=500 width=600] Acts like the ODE system
-#MOVIE:[plots/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
-#MOVIE:[plots/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard
-#MOVIE:[plots/2D_zombie_initial_cond.webm, height=500 width=600] 
-#MOVIE:[plots/2D_zombie_three_phases.webm, height=500 width=600]
-#MOVIE:[plots/2D_zombie_three_phases_zombie_small_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-#MOVIE:[plots/2D_zombie_three_phases_zombie_small_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-#MOVIE:[plots/2D_zombie_three_phases_zombie_middle_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-#MOVIE:[plots/2D_zombie_three_phases_zombie_middle_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-#MOVIE:[plots/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-#MOVIE:[plots/2D_zombie_three_phases_zombie_large_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-#MOVIE:[plots/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
-#MOVIE:[plots/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
+#MOVIE:[2_fig/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
+#MOVIE:[2_fig/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
+#MOVIE:[2_fig/2D_british_school.webm, height=500 width=600] Acts like the ODE system
+#MOVIE:[2_fig/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
+#MOVIE:[2_fig/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard
+#MOVIE:[2_fig/2D_zombie_initial_cond.webm, height=500 width=600] 
+#MOVIE:[2_fig/2D_zombie_three_phases.webm, height=500 width=600]
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_small_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_small_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_middle_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_middle_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_large_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
 
-======= Bibliography =======
-
-##BIBFILE: $HOME/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub
-##BIBFILE: ~/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub
-##BIBFILE: ~/home/torbjhse/Dropbox/Torbjørn/Skole/master/bibliography/papers.pub
-BIBFILE: ../bibliography/papers.pub
