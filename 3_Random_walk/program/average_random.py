@@ -6,7 +6,7 @@ Nt = 3400
 t = np.linspace(0,T,Nt+1)
 #Random walk
 savename = "three_phases"
-N = 5
+N = 50
 
 
 susceptible_matrix = np.load("data/susceptible_matrix_%s.npy" % savename)

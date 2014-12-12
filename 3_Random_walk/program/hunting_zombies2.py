@@ -966,12 +966,12 @@ def run_blindern():
         plt.plot(steps_array, dead_array,'c', label='Removed')
         plt.legend()
         plt.axis([0,steps,0,len(everyone)])
-        plt.show()
+        #plt.show()
     return human_array,infected_array, zombie_array, dead_array
 
 sim_failed = 0
 first_sim = True
-N = 5
+N = 50
 N_ok = 0
 random_steps = 3400
 susceptible_matrix = np.zeros([N,random_steps+1])
