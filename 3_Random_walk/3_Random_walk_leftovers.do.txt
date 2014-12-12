@@ -1,0 +1,81 @@
+
+===== Diffusion equation and random walks =====
+The British Botanist R. Brown developed a theory by studying how pollen dispersed in water. This idea is called Brownian motion and can be used to describe a group of particles spreading. The function $w(x,t)dx$ can be defined as the probability of finding a given number of particles in an interval with size $dx$. This function is the $PDF$ as explained in the section above. The flux of particles that passing a point $x$, can be described by $j(x,t). This flow is proportionally with the gradient of the $PDF$,
+!bt
+\begin{equation}
+j(x,t) = -D\frac{\partial w(x,t)}{\partial x}
+\end{equation}
+!et
+$D$ is here the diffusion constant. This example can be seen as a closed experiment, where the concentration is conserved. The relation between the flux and the $PDF$ can also be expressed
+!bt
+\begin{equation}
+\frac{\partial j(x,t)}{\partial x} = -\frac{\partial w(x,t)}{\partial t} 
+\end{equation}
+!et
+And a diffusion equation can be expressed based on these two equations.
+!bt
+\begin{equation}
+\frac{\partial w(x,t)}{\partial t} = D\frac{\partial^2 w(x,t)}{\partial x^2} 
+\end{equation}
+!et
+The expectation value and the variance, $\sigma^2$, can be study. The expectation value for the function $f(x,t)$ can be defined as
+!bt
+\begin{equation}
+\langle f(x,t) \rangle = \int^{\infty}_{-\infty} f(x,t) w(x,t)dx
+\end{equation}
+!et
+The demands defined for the PDF in the previous section have to be fulfilled for $w(x,t)$. The normalization condition which is defined for this PDF require constraints for equation.
+!bt
+\begin{equation} label{eq:PDF_demands}
+w(x= \pm \infty,t) = 0,\quad \frac{\partial^nw(x,t)}{\partial x^n}|_{x=\pm\infty} = 0 
+\end{equation}
+!et
+This can be used to study the time derivative of the expectation value. The diffusion equation derived earlier can be used here.
+!bt
+\begin{equation}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = \int^{\infty}_{-\infty} f(x,t) \frac{\partial w(x,t)}{\partial t}dx = D \int^{\infty}_{-\infty} f(x,t) \frac{\partial^2 w(x,t)}{\partial x^2}dx
+\end{equation}
+!et
+By using integration by parts on the right side, the equation can be expressed,
+!bt
+\begin{equation} label{eq:disp_0}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = D f(x,t) \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} \frac{\partial w(x,t)}{\partial x}dx
+\end{equation}
+!et
+By using the demands from (ref{eq:PDF_demands}), the $\langle f(x,t) \rangle$ is independent of time. 
+!bt
+\begin{equation}
+\frac{\partial \langle f(x,t) \rangle}{\partial t} = 0
+\end{equation}
+!et
+Implying that if a simulation of a random walk with equal probability of jumping in each direction, will end up with the probability distribution centered around the initial position. This may not be the case for the variance. By using (ref{eq:disp_0}), the $\langle x^2 \rangle $ can be found. 
+!bt
+\begin{equation} 
+\frac{\partial \langle x^2 \rangle}{\partial t} = D x^2 \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} x\frac{\partial w(x,t)}{\partial x}dx
+\end{equation}
+!et
+Here, integration by parts can be used. This results in
+!bt
+\begin{equation}
+\frac{\partial \langle x^2 \rangle}{\partial t} = D x w(x,t)|_{x=\pm \infty} + 2D \int^{\infty}_{-\infty} w(x,t)dx = 2D
+\end{equation}
+!et
+this leads to
+!bt
+\begin{equation}
+\langle x^2 \rangle = 2Dt
+\end{equation}
+!et
+which gives the variance
+!bt
+\begin{equation} label{eq:diff_var}
+\langle x^2 \rangle -\langle x \rangle^2 = 2Dt
+\end{equation}
+!et
+And the square root of the variance can be expressed,
+!bt
+\begin{equation}
+\sqrt{\langle x^2 \rangle -\langle x \rangle^2} = \sqrt{2Dt}
+\end{equation}
+!et
+By comparing this with the displacement of a free particle, which moves with the function $x(t)=vt$ from the initial point, will the diffusion process moves with $\sqrt{\langle x^2 \rangle -\langle x \rangle^2} \propto \sqrt{t}$. This can be used to describe a random walk, and could say that a random walker escapes much more slowly than a free particle from the initial time. This can be seen in an example. 

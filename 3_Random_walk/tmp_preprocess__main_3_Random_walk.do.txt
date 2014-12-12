@@ -1,0 +1,431 @@
+TITLE: Random walk
+AUTHOR: Torbjørn Seland
+DATE: today
+
+TOC: on
+
+\externaldocument{../1_ODE_models/biological_models.do.txt}
+\externaldocument{../2_PDE_Fisher_Kolmogoroff/2_PDE_FK.do.txt}
+
+
+
+========= Random walk =========
+The last chapter will study a third way to model epidemic disease. This will be done by using random walk. This technique quite different from the other models presented earlier, by using Monte Carlo simulations and probabilities instead of differential equations, which have been in focus earlier. The first section will be a study of Monte Carlo methods and Random walk based on the paper from M.H. Jensen Ref. cite{hjorth2011computational}. The next sections will use the parameters from *English Boarding School* and *Walking Dead* to see if a Random walk system can expand the knowledge about epidemics. The model will be compared to the ODE system and PDE system from the previous chapters.   
+
+======= Monte Carlo methods =======
+Techniques from Monte Carlo are widely used in several fields as chemistry, physics, medicine, biology and in finance Ref. cite{hjorth2011computational}. These numerical methods can be seen in general terms as statistical simulations methods, which use random numbers to perform the simulations. The Metropolis algorithm is a central algorithm in this field, and is considered as one of the top ten algorithms during the last century Ref. cite{hjorth2011computational}. A Monte Carlo strategy require four terms to be understood to use this method. These are:
+* Random variable
+* probability distribution functions (PDF)
+* moments of a PDE
+* the pertinent variance $\sigma ^2$
+
+===== Random variable =====
+Random variable can be seen as stochastic variable, where the outcome cannot be presumed. Examples as tossing dice, flipping coins or gambling are based on this principle. Although the outcome is unknown, knowledge about the probability and the range can be studied. The numbers in the *domain* for two dice are
+!bt
+\begin{equation*}
+\{2,3,4,5,6,7,8,9,10,11,12}\
+\end{equation*}
+!et
+with the corresponding *probabilities* are
+!bt
+\begin{equation*}
+\{1,2,3,4,5,6,5,4,3,2,1\}\frac{1}{36}
+\end{equation*}
+!et
+By throwing two dice once, there is no guarantee that the result will be 7, though this has the highest probability. But by repeating this operation, the distribution would reflect the *probabilities* above. A stochastic variable can either be discrete or continuous, but will in both cases be denoted as capital letters, $X,Y$. A discrete example is the example above, where the domain is given with exact values,${x_1,x_2,x_3,...,x_n}$. The continuous case can be seen as the probability in a given area. An example can be the distance from a dart to the center, after a random thrown at a dartboard.
+
+When using a computer to produce random number, they will in reality be pseudo random, since they have to be based on an algorithm. Therefore the choice of this algorithm is important. In this chapter, a generator of Marsaglia Ref. cite{marsaglia2003xorshift}
+
+===== probability distribution functions (PDF) =====
+The PDF is a function $p(x)$ on the domain that gives the probability or relative frequency for a outcome. In the discrete case, the function can be seen as
+!bt
+\begin{equation}
+p(x) = Prob(X=x)
+\end{equation}
+!et
+The PDF in the continuous is not able to directly depict the actual probability. The probability is instead defined as the density around $x$ with an infinitesimal interval. This can therefore be seen as an integral, since it is the density of the probability rather than the probability Ref.cite{hjorth2011computational}. This can be defined.
+!bt
+\begin{equation}
+ Prob(a\leq X \leq b) = \int^b_a p(x)dx
+\end{equation}
+!et
+And by quoting M.H. Jensen *Qualitatively speaking, a stochastic variable represents the values of numbers chosen as if by chance from some specified PDF so that the selection of a large set of these numbers reproduces this PDF.* Ref.cite{hjorth2011computational}. This sum up the relation between random variables and PDF. If this is not fulfilled, the group of stochastic variable does not fulfill the criteria for random numbers. 
+
+CDF- *cumulative probability distribution function*
+
+There are two properties that the PDF must fulfill. The first one is the size of $p(x)$. This has to be in the interval $0\geq p(x) \geq 1$, since the probability cannot be negative or larger than 1 for an event to happen. The sum of all events has to be 1, both for discrete and continuous PDFs, and can be seen as follows
+!bt
+\begin{equation}
+	\begin{aligned}
+    \sum_{x_i \in \mathbb{D}}\\
+    \int_{x \in \mathbb{D}}
+	\end{aligned}
+\end{equation} 
+!et
+
+There are several distributions that are essential when looking at continuous PDFs. The two ones that will be used in this chapter are the uniform distribution.
+!bt
+\begin{equation} label{eq:uni_dist}
+p(x) = \frac{1}{b-a}\theta(x-a)\theta(b-x)
+\end{equation}
+!et
+with:
+!bt
+\begin{equation}
+	\begin{aligned}
+    \theta(x) = 0,\quad x < 0 \\
+    \theta(x) = 1,\quad x \geq 0
+	\end{aligned}
+\end{equation}
+!et
+This distribution is natural to use, when a group of humans shall be evenly placed over an area. When comparing the ODE system from the first chapter and the uniformed distributed PDE system in previous chapter, Eq. (ref{eq:uni_dist}) is natural to use. To get a correct estimate, it is important that the set of random numbers is large enough. Gaussian distribution is the second one, this is often called normal distribution and can be seen in Eq.(ref{eq:gauss_dist})
+!bt
+\begin{equation} label{eq:gauss_dist}
+	\begin{aligned}
+    p(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp(-\frac{(x-\mu)^2}{2\sigma^2})
+	\end{aligned}
+\end{equation}
+!et
+This will give the same distribution as the Gaussian function used in the previous chapter. 
+
+
+===== moments of a PDF =====
+By define $h(x)$ as a arbitrary function, the *expectation value* can be written
+!bt
+\begin{equation}
+    \langle h \rangle_X \equiv \int h(x)p(x)dx
+\end{equation}
+!et
+Here defined on the domain of the stochastic variable $X$ with PDE $p(x)$. A more general way to write the expectation is by adding a power of,$n$, to the equation. This can now be seen as the *moments*. The $n$-th moment is defined
+!bt
+\begin{equation}
+    \langle x^n \rangle \equiv \int x^np(x)dx
+\end{equation}
+!et
+The value of $n$ can be sat to zero. This result in $\langle 1 \rangle$ and creates a normalization condition of $p$. The first order is called *mean* and are often defined with a $\mu$.
+!bt
+\begin{equation}
+    \langle x \rangle = \mu \equiv \int xp(x)dx
+\end{equation}
+!et
+This represents the average value of PDF and is often called the expectation value of $p$ Ref.cite{hjorth2011computational}.
+
+===== The pertinent variance $\sigma ^2$ =====
+*Central moments* is a special case of moments defined as
+!bt
+\begin{equation}
+    \langle (x-\langle x \rangle)^n \rangle \equiv \int (x-\langle x \rangle)^np(x)dx
+\end{equation}
+!et
+The first two central-moments are trivial and only result in 1 and 0, respectively for $n=0$ and $n=1$. But the second central-moment is more interesting to study. This is denoted as $\sigma^2_X$ or Var(X), called the variance. This can be shown.
+!bt
+\begin{equation}
+    \sigma^2_X  = \langle x^2\rangle -\langle x \rangle^2 
+\end{equation}
+!et
+The square root of the variance, $sigma = \sqrt{\langle (x-\langle x \rangle)^2 \rangle}$ is called *standard deviation*. This is the deviation from the mean of PDF, and can be seen as the spread around the mean of PDF.
+
+======= Random walks =======
+The previous section explained the technical aspects of Monte Carlo, as the principle and algorithms for producing random numbers. This section will study the importance of a proper selection of variables and importance sampling. The challenge when model a Monte Carlo simulation, is the appropriate selection of random states. It is important that this match the probability distribution, PDF. This will be done through a Markov process, which is a random walk with a selected probability for making a move. A good reason to choose Markov process, is that this will reach equilibrium state, after certain number of simulations. This can first be shown for a simple diffusion equation, which can be expanded to the simple PDE system used in the previous chapter.
+
+
+===== Random walker =====
+Now the random walker can be introduced in 1D. This can either jump to the left or the right with a lenght $\Delta x = l$. It is equal probability for both directions. $L=R=1/2$. Then the average displacement will be 
+!bt
+\begin{equation}
+ \langle x(n) \rangle = \sum^n_i \Delta x_i = 0, \quad \Delta x_i = \pm l,
+\end{equation}
+!et
+after $n$ jumps. The variance can be found by first finding $\langle x(n)^2 \rangle$.
+!bt
+\begin{equation}
+\langle x(n)^2 \rangle = \left(\sum^n_i \Delta x_i\right)\left(\sum^n_j \Delta x_j\right) = \sum^n_i \Delta x_i^2 + \sum^n_i \Delta x_i \Delta x_j = l^2n
+\end{equation}
+!et
+The last term here will disappear after enough steps.  
+!bt
+\begin{equation}
+\sum^n_i \Delta x_i \Delta x_j = 0
+\end{equation}
+!et
+This gives the variance
+!bt
+\begin{equation}
+\langle x(n)^2 \rangle-\langle x(n) \rangle^2 = l^2n
+\end{equation}
+!et
+Now this variance from a random walker can be coupled with the variance from the diffusion equation in the section above. By setting $n = t/\Delta t$. The random walker gets the following variance
+!bt
+\begin{equation}
+\langle x(n)^2 \rangle-\langle x(n) \rangle^2 = l^2\frac{t}{\Delta t}
+\end{equation}
+!et
+Then the diffusion constant in (ref{eq:diff_var}) can be replaced by
+!bt
+\begin{equation}
+D = \frac{l^2}{\Delta t}
+\end{equation}
+!et
+And the variance between these can be compared.
+
+FIGURE:[3_fig/random_compare.png, height=500 width=800 frac=0.8] label{fig:gauss_random} 10000 random walkers placed at x=0 at t=0. Every step has the length $\Delta x = 0.01$ and with a random step every $\Delta t = 0.01$.
+
+The standard deviation can be found for this simulation. This is given by the square root of the variance
+!bt
+\begin{equation}
+\sigma = \sqrt{l^2\frac{t}{\Delta t}}
+\end{equation}
+!et
+
+To study if the average random walker develops as expected, a table can with the outputs can be added. 
+
+label{table:gauss_random}
+|-----------------------------------------------|
+|						|time=2     |time=8     |
+|-----------------------------------------------|
+|average displacement   |0.000662   | -0.002416 |
+|standard deviation(SD) |0.1414     |  0.2828   |
+|percent inside SD      |70.96 %    |69.02 %    |
+|percent inside gauss   |68.26 %    |68.26 %    |
+|-----------------------------------------------|
+
+The average displacement and the standard deviation shows that a group of random walkes spread similar as a standard diffusion function. This result in a major group of random walkers. In the simulation in Fig.(ref{fig:gauss_random}), 10000 random walkers are used. By increasing the amount om random walkers, the precision will be better.
+
+======= English Boarding School =======
+This example has been common for all three systems, and will be used in this chapter. The chance of getting infected requires a meeting between  infected person and a susceptible person..A random walker will after enough steps cover the whole area. A simulation is done for a student with a random position at initial time. 1000 random steps are performed every day, which results in a step every 90 seconds. The step length is set to 5.7024 m, and is based on the average distance a person walks every day. The simulation is performed for 15 days, which results in 15000 random steps. The size of the schoolyard is sat to 100 m x 100 m, and the disease can spread within a distance of 5 meters.
+
+FIGURE:[3_fig/random_walk_days.png, height=300 width=900 frac=0.8] label{fig:random_walker_days} The positions a random walker has covered in 1,5 and 15 days. A random step with lenght 3.96 m is performed every minute. The positions are plotted for every ten minutes. 
+
+Fig.(ref{fig:random_walker_days} shows that a random walker will be distributed over the area after enough steps. The students in the school are divided into three groups. The first group consists of susceptible students, and this group is at risk of getting infected. This group is described by $S$. The second group consists of infected students. The group is described by $I$. The last group consists of students who are immune to the disease. This group is described by $R$. The total number of students is $N=763$. The initial values are: $S_0=762$, $I_0=1$ and $R_0=0$. There are two parameters that are used in the simulation. The first parameter $r$, describes the gain of $I$ from the susceptible group, $S$. This is rate proportional to the number of susceptible and infecetive and is given by $rSI$. The second parameter $a$ describes the rate of removal of infective to the removed group, $R$. These two parameters are given by $r=2.18\cdot 10^{-3}$ and $a=0.44036$. The simulation is based on the ODE system given in *Epidemic models* :
+
+!bt
+\begin{equation} \label{eq:SIR_model_random}
+	\begin{aligned} 
+	\frac{dS}{dt} &= -rSI \\ 
+	\frac{dI}{dt} &= rSI-aI \\ 
+	\frac{dR}{dt} &= aI 
+	\end{aligned}
+\end{equation}
+!et
+
+The parameters $r$ and $a$ must be adapted to the random walk simulation. The parameter $r$ is used in
+!bt
+\begin{equation} label{eq:rSI}
+rSI
+\end{equation}
+!et
+is based on all possible combinations of $S$ and $I$. This will not be the case in a random simulation. The meetings in a random simulation depends on the number of random walkers and the possibility for a meeting. If the possibility is small, the susceptible student has to be close to an infected student to be infected. The number of meetings during one time step can be used to adjust the parameter. The following term has to be fulfilled:   
+!bt
+\begin{equation} label{eq:NoM}
+r_{random}NoM_0 = rS_0I_0
+\end{equation}
+!et
+Here $NoM_0$ is a constant value and represents number of meetings between the susceptible group and the infected group at initial time. This can be found by a numerical simulation of the random walkers. The number of meetings for the infected student during one day is simulated for 1000 rounds, the average value is $NoM=1905.223$. Now Eq.(ref{eq:NoM}) can be rewritten and $r_{random}$ can be expressed by known values: 
+!bt
+\begin{equation} label{eq:NoM}
+	\begin{aligned} 
+	r_{random} &= \frac{rS_0I_0}{NoM_0}
+	\end{aligned}
+\end{equation}
+!et
+The parameter $r_{random}$ is now used to calculate the risk of getting infected in a meeting between a susceptible student and an infected student. The value of $a$ also has to be adjusted. This parameter is only affected by the time. The random simulation is performed for 1000 random steps during one day. This means that there will be 1000 chances of being immune to the disease during 1 day, since a random number will be drawn every random step. A person can only get immune one time, therefore it is more interesting to see if a person stays infected during 1 day. All other results will cause an immune student. The chance of staying infected during one day is $In = 1-a$, which results in $In=0.55964$. The chance of staying infected for 1000 time steps during one day demands the following percent for each time step: $In^{\frac{1}{1000}}= 0.9994197$. Since all other solutions gives an immune student,the percent can be set to: $a_{random} = 1-In^{\frac{1}{1000}}= 0.00058$. A series of simulations can be done with these parameters. The average solution will be plotted against the solution from the ODE system given in Eq.(ref{eq:SIR_model_random}). The standard deviation for the random simulations is given.
+
+FIGURE:[3_fig/english_school_random.png, height=500 width=500 frac=0.8] label{fig:english_school_random}Random walk compared to an ODE simulation of Eq.(ref{eq:SIR_model_random}. The random function is shown with a dashed line, with the standard deviation shown as the colored area around the dashed line. The random function is based on the average of a series of simulations. 
+ 
+
+===== A Lower average value =====
+By studying the results in Fig.(ref{fig:english_school_random}), one can see that the values of the random walk simulation is lower than for the ODE. The difference is low in the beginning of the simulation. This changes when the *Infected* group increases. This results in an increase of the combination between the *Susceptible* group and the *Infected* group. In an ODE simulation, this will lead to a rapid increase of the *Infected* group. Since the transformation for a student from the *Susceptible* group to the *Infected* group only requires one successful meeting, where successful is seen as the transmission of the disease. There will be no difference in the result if the transmission of the disease happens once or several times during one time step. This is reasonable to be the case when the amount of *Infected* increase.  
+
+===== Threshold value =====
+In the previous chapters, the threshold value was found for the epidemic systems. The reproduction rate could be used to check if the disease would develop into an epidemic disease. The reproduction rate can be seen in Eq.(ref{eq:rep_rate})
+!bt
+\begin{equation} label{eq:rep_rate}
+R_0 = \frac{rS_0}{a}
+\end{equation}
+!et
+If $R_0> 1$ was fulfilled, an epidemic situation would occur. The result will be $R_0 = 3.77$ with the parameters from the ODE simulation. When simulating the random walk, only 56 percent of the simulations resulted in an epidemic disease. 44 percent resulted in a transmission of the infected student to the *Removed* group, before the student was able to infect other students. This simulations were performed on a small group, and the results may differ in larger groups. A removal rate above one will not necessarily lead to an epidemic disease, if the group is small enough.
+  
+======= Zombiefication =======
+The ODE system given in chapter *Epidemic models* will be used for this simulation. This can be seen in Eq.(ref{eq:seland_model_random}). The parameters has to be adjusted for this simulation, similar as shown for the English boarding school. Frederikkeplassen at Blindern will be used as the area where the simulations will be done. The area is estimated to be 100m x 100m and the disease will be able to spread if the distance is closer than 4 meters. There will be done three different simulations in this section, where the human intelligence will be taken into account. The total time of the simulations will be set to 10 minutes, and there will be performed 100 random walks each minute.       
+!bt
+\begin{equation} \label{eq:seland_model_random}
+    \begin{aligned} 
+    \frac{dS}{dt} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS \\
+    \frac{dI}{dt} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II\\
+    \frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R\\
+    \frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+    \end{aligned}
+\end{equation}
+!et
+
+As similar for the English boarding school, the parameters in Eq.(ref{eq:seland_model_random}) have to be adjusted. The parameters from the two first phases in *Walking Dead* will be used. These can be seen in the table below. The number of meetings per minute is sat to $NoM = 98.64$, based on the average of 300 timesteps. This is used to find the value of $beta_r$ and $alpha_r$, similar to the method shown in the previous section. The value for $\varrho$ has been adjusted by first finding the average incubation time for the *Infected* group. This has been done by setting $1/\varrho$. The average incubation time is 0.72 minute. This is really fast, and is not a realistic number, based on the TV Series *Walking Dead*. By numerical simulations, the value of $\varrho_r$ can be set to 0.0137 for each simulation. This will result in a average incubation time of 0.72 minute. The same can be done for the value in the hysterical phase.  
+ 
+label{table:param_val_random}
+|------------------------------------------|
+|parameter  |Initial phase|hysterical phase|
+|------------------------------------------|
+|$\beta$    |0.01155      | 0.000011       |
+|$\beta_r$  |0.07271      | 0.000693       |
+|$\varrho$  |1.37         | 1.5            |
+|$\varrho_r$|0.0137       | 0.015          |
+|$\alpha$   |0.00044      | 0.000208       |
+|$\alpha_r$ |0.00277      | 0.001309       |
+|------------------------------------------|
+
+These parameter values are used for all simulations. This section will focus on the ability to transfer the human intelligence to a epidemic model. The previous chapter *Geographic models* introduced the spatial effect and the ability for humans to seek safe areas. This chapter will introduce different conditions for the walkers. These conditions will affect the interaction between the groups. In chapter *ODE models*, the simulated period was estimated to 34 days. This will differ/be different in this chapter, since the human behavior will be in focus. The time scale will be set to minutes, similar to the section *Ten minutes at Frederikkeplassen* in the previous chapter. 
+
+===== Random walk =====
+Random walk will be the first condition/tilstand for each group. This result in a smooth distribution of the whole group, and the spatial of a group of humans will work as for a diffusion equation. The simulation will be done for ten minutes at Frederikkeplassen. The simulations are shown in <Pygame>, where the random walkers are represented with different images. These can be seen in Fig.(ref{fig:figure_images}).
+
+FIGURE:[3_fig/figure_images.png, height=50 width=400 frac=0.8] label{fig:figure_images} Figures used in the simulation. All seen from the sky. I: The walkers in the *Susceptible* group can be seen as humans with green sweater. II: The walkers in the *Infected* group can be seen with a red and green sweater, with one arm in front. III: The walkers in the *Zombie* group can be seen with a white sweater and both arms in front. IV: the walkers in the *Removed* group can be seen as a tombstone. 
+ 
+The initial values for the four groups are similar as for the previous chapter. $S_0 = 621$, $I_0 = 0$, $Z_0 = 1$ and $R_0 = 0$. The walkers are randomly distributed over Frederikkeplassen at initial time. The initial positions can be seen in subplot I in Fig.(ref{fig:initial_final}).The probability distribution function for the walkers are here set to be uniform. The walkers will therefore have the same probability for walking in all directions. The step length is based on an average pace on 5 kilometers per hour. This result in a step length of 0.83 m. The first simulation is run for 10 minutes. The parameters from the *Initial phase* are used from 0 to 3 minutes. From 3 to 10 minutes, the parameters from the *Hysterical phase* are used. The result after 10 minutes can be seen in subplot II in Fig.(ref{fig:initial_final}). 
+
+FIGURE:[3_fig/Frederikke_initial_final.png, height=600 width=400 frac=0.8] label{fig:initial_final} Positions from the simulations of Frederikkeplassen. I: Initial position for 621 susceptible humans and 1 zombie. II: Final position of a simulation of Frederikkeplassen.
+
+
+FIGURE:[3_fig/Walking_dead_Frederikke.png, height=500 width=500 frac=0.8] The average and standard deviation of 200 simulations on Frederikkeplassen. The *Initial phase* lasts from 0 to 3 minutes.The *Hysterical phase* lasts from 3 to 10 minutes. The parameter values can be seen in Tab.(ref{table:param_val_random}).
+#200 simulations
+
+By comparing this result with the PDE simulation from *Ten minutes at Frederikkeplassen* in previous chapter, one can see that the average results differ from the PDE results. The average number of the *Susceptible* group is higher than the result from the PDE simulation. 
+
+label{table:frederikke_table_random}
+|---------------------------------------------------------------------------------|
+|                   |Uniform distribution PDE   |Uniform distribution Random walk |
+|---------------------------------------------------------------------------------|
+|3 Minutes          |---------------------------|---------------------------------|
+|---------------------------------------------------------------------------------|
+|Susceptible        |72.23                     	|229.05                           |
+|Infected           |229.65                    	|169.73                           |
+|Zombie             |296.67                    	|207.83                           |
+|Removed            |20.84                     	|15.38                            |
+|---------------------------------------------------------------------------------|
+|7 Minutes          |---------------------------|---------------------------------|
+|---------------------------------------------------------------------------------|
+|Susceptible        |70.78                    	|203.07                           |
+|Infected           |0.83                     	|4.95                             |
+|Zombie             |498.72                   	|350.62                           |
+|Removed            |49.12                    	|63.35                            |
+|---------------------------------------------------------------------------------|
+|10 Minutes         |---------------------------|---------------------------------|
+|---------------------------------------------------------------------------------|
+|Susceptible        |69.69                     	|184.2                            |
+|Infected           |0.25                      	|3.94                             |
+|Zombie             |479.00                    	|335.99                           |
+|Removed            |70.55                     	|97.87                            |
+|---------------------------------------------------------------------------------|
+
+##susc 229.052631579
+##inf 169.731578947
+##zom 207.831578947
+##rem 15.3842105263
+##susc 203.078947368
+##inf 4.95263157895
+##zom 350.621052632
+##rem 63.3473684211
+##susc 184.2
+##inf 3.94210526316
+##zom 335.989473684
+##rem 97.8684210526
+
+===== Moving smart =====
+Next phase is based on the movement pattern that would be more realistic based on the TV series *Walking Dead*. Here the *Zombie* group goes towards the *Susceptible* group, While the *Susceptible* group tries to run away. In Fig.(ref{fig:screenshoot_moving_smart}). If the zombies are to far from any susceptible humans, they will randomly walk around.  
+
+FIGURE:[3_fig/Moving_smart_screen.png, height=500 width=500 frac=0.8] label{fig:screenshoot_moving_smart} Screenshot of the moving pattern for the *Zombie* and *Susceptible* group. 
+
+FIGURE:[3_fig/Moving_smart_average.png, height=500 width=500 frac=0.8] The average and standard deviation with the movement pattern set to *Moving smart*. The *Initial phase* lasts from 0 to 3 minutes.The *Hysterical phase* lasts from 3 to 10 minutes. The parameter values can be seen in Tab.(ref{table:param_val_random}).
+
+There is a major difference in the result of these two simulations. Here the step length has been set equal for the *Susceptible* and *Zombie* group, which result in the same moving speed. Therefore, the initial value for the *Zombie* group is set to 10. However, the result of *Susceptible* is higher in the moving smart simulation. This movement pattern will not be seen as realistic for the *Initial phase*, since the zombie outburst is still unknown. When the society transpose to the *Hysterical phase*, this can be seen as a realistic pattern.  
+
+label{table:frederikke_table_random}
+|---------------------------------------------------------------------------------------|
+|                   |Random walk mode                 |Moving smart mode                |
+|---------------------------------------------------------------------------------------|
+|3 Minutes          |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |229.05                           |439.67                           |
+|Infected           |169.73                           |88.67                            |
+|Zombie             |207.83                           |89.67                            |
+|Removed            |15.38                            |4.0                              |
+|---------------------------------------------------------------------------------------|
+|7 Minutes          |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |203.07                           |417.0                            |
+|Infected           |4.95                             |5.0                              |
+|Zombie             |350.62                           |153.66                           |
+|Removed            |63.35                            |46.33                            |
+|---------------------------------------------------------------------------------------|
+|10 Minutes         |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |184.2                            |402.0                            |
+|Infected           |3.94                             |2.67                             |
+|Zombie             |335.99                           |144.67                           |
+|Removed            |97.87                            |72.67                            |
+|---------------------------------------------------------------------------------------|
+
+
+
+===== Three phases in Walking Dead =====
+A natural idea is to use different modus in different phases. The first phase, *Initial phase* will include a random walk mode. While the *Hysterical phase* will include a Smart moving mode. The simulation will be performed for 34 minutes, where the three phases have been scaled down from days to minutes. This simulation will not be able to say anything about the result for 34 days. This will demand other values for parameter as time step and step length. This result will give an insight into how human behavior will affect the result.  
+
+FIGURE:[3_fig/three_phases_ODE_sd.png, height=500 width=500 frac=0.8] The standard deviation of three phases compared to an ODE simulation.
+
+By studying the Tab.(ref{table:compare_ODE_random})The three phases gives the *Susceptible* group a greater chance of staying alive. One can see that there are only 1 person from the *Susceptible* group that dies in the Hysterical phase compared to 4 in the ODE simulation. The similar result can be seen for the *Zombie* group. There are several that dies in the ODE simulation that in the Random walk simulation. This can be explained by the fact that the *Susceptible* group tries to avoid fights by running away. 
+
+label{table:compare_ODE_random}
+|---------------------------------------------------------------------------------------|
+|                   |ODE                              |Random walk                      |
+|---------------------------------------------------------------------------------------|
+|Initial phase      |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |71                               |265                              |
+|Infected           |231                              |139                              |
+|Zombie             |299                              |192                              |
+|Removed            |21                               |16                               |
+|---------------------------------------------------------------------------------------|
+|Hysterical phase   |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |62                               |172                              |
+|Infected           |0                                |1                                |
+|Zombie             |359                              |250                              |
+|Removed            |202                              |189                              |
+|---------------------------------------------------------------------------------------|
+|Counter attack     |---------------------------------|---------------------------------|
+|---------------------------------------------------------------------------------------|
+|Susceptible        |58                               |171                              |
+|Infected           |1                                |1                                |
+|Zombie             |332                              |238                              |
+|Removed            |231                              |203                              |
+|---------------------------------------------------------------------------------------|
+
+
+FIGURE:[3_fig/three_phases_random.png, height=300 width=800 frac=0.8] Three screenshots a simulation of the three phases. I: Shows the initial position of the *Susceptible* and *Zombie* group. II: Shows the position and number before the *Hysterical phase*. III: shows the result after the *Hysterical phase*.   
+
+
+#susc265.2
+#inf 139.2
+#zom 192.4
+#rem 16.2
+#ODE susc 76.3257731062
+#ODE inf 232.837911837
+#ODE zom 292.086820699
+#ODE rem 20.7494943579
+#susc172.2
+#inf 1.0
+#zom 250.4
+#rem 189.4
+#ODE susc 66.2402712021
+#ODE inf 0.302849884509
+#ODE zom 345.609711654
+#ODE rem 209.847167259
+#susc170.6
+#inf 1.2
+#zom 238.4
+#rem 202.8
+#ODE susc 62.2706113563
+#ODE inf 1.20422990329
+#ODE zom 317.700755652
+#ODE rem 240.824403089
+
+
+===== Free areas for the *Susceptible* =====

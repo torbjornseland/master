@@ -1282,6 +1282,10 @@ FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_sub.png, height=600 width
 #MOVIE:[2_fig/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
 
 
+\externaldocument{../1_ODE_models/biological_models.do.txt}
+\externaldocument{../2_PDE_Fisher_Kolmogoroff/2_PDE_FK.do.txt}
+
+
 
 ========= Random walk =========
 The last chapter will study a third way to model epidemic disease. This will be done by using random walk. This technique quite different from the other models presented earlier, by using Monte Carlo simulations and probabilities instead of differential equations, which have been in focus earlier. The first section will be a study of Monte Carlo methods and Random walk based on the paper from M.H. Jensen Ref. cite{hjorth2011computational}. The next sections will use the parameters from *English Boarding School* and *Walking Dead* to see if a Random walk system can expand the knowledge about epidemics. The model will be compared to the ODE system and PDE system from the previous chapters.   
@@ -1402,86 +1406,6 @@ The square root of the variance, $sigma = \sqrt{\langle (x-\langle x \rangle)^2 
 ======= Random walks =======
 The previous section explained the technical aspects of Monte Carlo, as the principle and algorithms for producing random numbers. This section will study the importance of a proper selection of variables and importance sampling. The challenge when model a Monte Carlo simulation, is the appropriate selection of random states. It is important that this match the probability distribution, PDF. This will be done through a Markov process, which is a random walk with a selected probability for making a move. A good reason to choose Markov process, is that this will reach equilibrium state, after certain number of simulations. This can first be shown for a simple diffusion equation, which can be expanded to the simple PDE system used in the previous chapter.
 
-===== Diffusion equation and random walks =====
-The British Botanist R. Brown developed a theory by studying how pollen dispersed in water. This idea is called Brownian motion and can be used to describe a group of particles spreading. The function $w(x,t)dx$ can be defined as the probability of finding a given number of particles in an interval with size $dx$. This function is the $PDF$ as explained in the section above. The flux of particles that passing a point $x$, can be described by $j(x,t). This flow is proportionally with the gradient of the $PDF$,
-!bt
-\begin{equation}
-j(x,t) = -D\frac{\partial w(x,t)}{\partial x}
-\end{equation}
-!et
-$D$ is here the diffusion constant. This example can be seen as a closed experiment, where the concentration is conserved. The relation between the flux and the $PDF$ can also be expressed
-!bt
-\begin{equation}
-\frac{\partial j(x,t)}{\partial x} = -\frac{\partial w(x,t)}{\partial t} 
-\end{equation}
-!et
-And a diffusion equation can be expressed based on these two equations.
-!bt
-\begin{equation}
-\frac{\partial w(x,t)}{\partial t} = D\frac{\partial^2 w(x,t)}{\partial x^2} 
-\end{equation}
-!et
-The expectation value and the variance, $\sigma^2$, can be study. The expectation value for the function $f(x,t)$ can be defined as
-!bt
-\begin{equation}
-\langle f(x,t) \rangle = \int^{\infty}_{-\infty} f(x,t) w(x,t)dx
-\end{equation}
-!et
-The demands defined for the PDF in the previous section have to be fulfilled for $w(x,t)$. The normalization condition which is defined for this PDF require constraints for equation.
-!bt
-\begin{equation} label{eq:PDF_demands}
-w(x= \pm \infty,t) = 0,\quad \frac{\partial^nw(x,t)}{\partial x^n}|_{x=\pm\infty} = 0 
-\end{equation}
-!et
-This can be used to study the time derivative of the expectation value. The diffusion equation derived earlier can be used here.
-!bt
-\begin{equation}
-\frac{\partial \langle f(x,t) \rangle}{\partial t} = \int^{\infty}_{-\infty} f(x,t) \frac{\partial w(x,t)}{\partial t}dx = D \int^{\infty}_{-\infty} f(x,t) \frac{\partial^2 w(x,t)}{\partial x^2}dx
-\end{equation}
-!et
-By using integration by parts on the right side, the equation can be expressed,
-!bt
-\begin{equation} label{eq:disp_0}
-\frac{\partial \langle f(x,t) \rangle}{\partial t} = D f(x,t) \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} \frac{\partial w(x,t)}{\partial x}dx
-\end{equation}
-!et
-By using the demands from (ref{eq:PDF_demands}), the $\langle f(x,t) \rangle$ is independent of time. 
-!bt
-\begin{equation}
-\frac{\partial \langle f(x,t) \rangle}{\partial t} = 0
-\end{equation}
-!et
-Implying that if a simulation of a random walk with equal probability of jumping in each direction, will end up with the probability distribution centered around the initial position. This may not be the case for the variance. By using (ref{eq:disp_0}), the $\langle x^2 \rangle $ can be found. 
-!bt
-\begin{equation} 
-\frac{\partial \langle x^2 \rangle}{\partial t} = D x^2 \frac{\partial w(x,t)}{\partial x}|_{x=\pm \infty} - 2D \int^{\infty}_{-\infty} x\frac{\partial w(x,t)}{\partial x}dx
-\end{equation}
-!et
-Here, integration by parts can be used. This results in
-!bt
-\begin{equation}
-\frac{\partial \langle x^2 \rangle}{\partial t} = D x w(x,t)|_{x=\pm \infty} + 2D \int^{\infty}_{-\infty} w(x,t)dx = 2D
-\end{equation}
-!et
-this leads to
-!bt
-\begin{equation}
-\langle x^2 \rangle = 2Dt
-\end{equation}
-!et
-which gives the variance
-!bt
-\begin{equation} label{eq:diff_var}
-\langle x^2 \rangle -\langle x \rangle^2 = 2Dt
-\end{equation}
-!et
-And the square root of the variance can be expressed,
-!bt
-\begin{equation}
-\sqrt{\langle x^2 \rangle -\langle x \rangle^2} = \sqrt{2Dt}
-\end{equation}
-!et
-By comparing this with the displacement of a free particle, which moves with the function $x(t)=vt$ from the initial point, will the diffusion process moves with $\sqrt{\langle x^2 \rangle -\langle x \rangle^2} \propto \sqrt{t}$. This can be used to describe a random walk, and could say that a random walker escapes much more slowly than a free particle from the initial time. This can be seen in an example. 
 
 ===== Random walker =====
 Now the random walker can be introduced in 1D. This can either jump to the left or the right with a lenght $\Delta x = l$. It is equal probability for both directions. $L=R=1/2$. Then the average displacement will be 
@@ -1626,23 +1550,22 @@ label{table:param_val_random}
 |$\alpha_r$ |0.00277      | 0.001309       |
 |------------------------------------------|
 
-These parameter values are used for all simulations. This section will focus on the ability to transfer the human intelligence to a epidemic model. The previous chapter *Geograpic models* introduced the spatial effect and the ability for humans to seek safe areas. This chapter will introduce different conditions for the interactions based on the phase that the groups are in. The section will use the area used in *Ten minutes on Frederikkeplassen* in *Geographic models*.  
+These parameter values are used for all simulations. This section will focus on the ability to transfer the human intelligence to a epidemic model. The previous chapter *Geographic models* introduced the spatial effect and the ability for humans to seek safe areas. This chapter will introduce different conditions for the walkers. These conditions will affect the interaction between the groups. In chapter *ODE models*, the simulated period was estimated to 34 days. This will differ/be different in this chapter, since the human behavior will be in focus. The time scale will be set to minutes, similar to the section *Ten minutes at Frederikkeplassen* in the previous chapter. 
 
 ===== Random walk =====
-Random walk will be the first condition the different groups will hold. This result in a smooth distribution of the whole group, and the spatial of a group of humans will work as for a diffusion equation. The simulation will be done for ten minutes at Frederikkeplassen. To get a better picture of the simulation. The walkers are represented with different images. These four figures can be seen in Fig.(ref{fig:figure_images}).
+Random walk will be the first condition/tilstand for each group. This result in a smooth distribution of the whole group, and the spatial of a group of humans will work as for a diffusion equation. The simulation will be done for ten minutes at Frederikkeplassen. The simulations are shown in <Pygame>, where the random walkers are represented with different images. These can be seen in Fig.(ref{fig:figure_images}).
 
 FIGURE:[3_fig/figure_images.png, height=50 width=400 frac=0.8] label{fig:figure_images} Figures used in the simulation. All seen from the sky. I: The walkers in the *Susceptible* group can be seen as humans with green sweater. II: The walkers in the *Infected* group can be seen with a red and green sweater, with one arm in front. III: The walkers in the *Zombie* group can be seen with a white sweater and both arms in front. IV: the walkers in the *Removed* group can be seen as a tombstone. 
  
-The walkers are at initial time placed out on Frederikkeplassen. The initial positions of the walkers can be seen in subplot I in Fig.(ref{fig:initial_final}). 
+The initial values for the four groups are similar as for the previous chapter. $S_0 = 621$, $I_0 = 0$, $Z_0 = 1$ and $R_0 = 0$. The walkers are randomly distributed over Frederikkeplassen at initial time. The initial positions can be seen in subplot I in Fig.(ref{fig:initial_final}).The probability distribution function for the walkers are here set to be uniform. The walkers will therefore have the same probability for walking in all directions. The step length is based on an average pace on 5 kilometers per hour. This result in a step length of 0.83 m. The first simulation is run for 10 minutes. The parameters from the *Initial phase* are used from 0 to 3 minutes. From 3 to 10 minutes, the parameters from the *Hysterical phase* are used. The result after 10 minutes can be seen in subplot II in Fig.(ref{fig:initial_final}). 
+
+FIGURE:[3_fig/Frederikke_initial_final.png, height=600 width=400 frac=0.8] label{fig:initial_final} Positions from the simulations of Frederikkeplassen. I: Initial position for 621 susceptible humans and 1 zombie. II: Final position of a simulation of Frederikkeplassen.
 
 
-
-
-FIGURE:[3_fig/Frederikke_initial_final.png, height=600 width=400 frac=0.8] label{fig:initial_final}
-
-FIGURE:[3_fig/Walking_dead_Frederikke.png, height=500 width=500 frac=0.8]
+FIGURE:[3_fig/Walking_dead_Frederikke.png, height=500 width=500 frac=0.8] The average and standard deviation of 200 simulations on Frederikkeplassen. The *Initial phase* lasts from 0 to 3 minutes.The *Hysterical phase* lasts from 3 to 10 minutes. The parameter values can be seen in Tab.(ref{table:param_val_random}).
 #200 simulations
 
+By comparing this result with the PDE simulation from *Ten minutes at Frederikkeplassen* in previous chapter, one can see that the average results differ from the PDE results. The average number of the *Susceptible* group is higher than the result from the PDE simulation. 
 
 label{table:frederikke_table_random}
 |---------------------------------------------------------------------------------|
@@ -1684,11 +1607,13 @@ label{table:frederikke_table_random}
 ##rem 97.8684210526
 
 ===== Moving smart =====
-Next phase is based on the pattern that would be naturally to 
+Next phase is based on the movement pattern that would be more realistic based on the TV series *Walking Dead*. Here the *Zombie* group goes towards the *Susceptible* group, While the *Susceptible* group tries to run away. In Fig.(ref{fig:screenshoot_moving_smart}). If the zombies are to far from any susceptible humans, they will randomly walk around.  
 
-FIGURE:[3_fig/Moving_smart_screen.png, height=500 width=500 frac=0.8]
+FIGURE:[3_fig/Moving_smart_screen.png, height=500 width=500 frac=0.8] label{fig:screenshoot_moving_smart} Screenshot of the moving pattern for the *Zombie* and *Susceptible* group. 
 
-FIGURE:[3_fig/Moving_smart_average.png, height=500 width=500 frac=0.8]
+FIGURE:[3_fig/Moving_smart_average.png, height=500 width=500 frac=0.8] The average and standard deviation with the movement pattern set to *Moving smart*. The *Initial phase* lasts from 0 to 3 minutes.The *Hysterical phase* lasts from 3 to 10 minutes. The parameter values can be seen in Tab.(ref{table:param_val_random}).
+
+There is a major difference in the result of these two simulations. Here the step length has been set equal for the *Susceptible* and *Zombie* group, which result in the same moving speed. Therefore, the initial value for the *Zombie* group is set to 10. However, the result of *Susceptible* is higher in the moving smart simulation. This movement pattern will not be seen as realistic for the *Initial phase*, since the zombie outburst is still unknown. When the society transpose to the *Hysterical phase*, this can be seen as a realistic pattern.  
 
 label{table:frederikke_table_random}
 |---------------------------------------------------------------------------------------|
@@ -1719,10 +1644,13 @@ label{table:frederikke_table_random}
 
 
 ===== Three phases in Walking Dead =====
-A natural idea is to use different modus in different phases. The first phase, *Initial phase* will include a random walk mode. Here
+A natural idea is to use different modus in different phases. The first phase, *Initial phase* will include a random walk mode. While the *Hysterical phase* will include a Smart moving mode. The simulation will be performed for 34 minutes, where the three phases have been scaled down from days to minutes. This simulation will not be able to say anything about the result for 34 days. This will demand other values for parameter as time step and step length. This result will give an insight into how human behavior will affect the result.  
 
-FIGURE:[3_fig/three_phases_ODE_sd.png, height=500 width=500 frac=0.8]
+FIGURE:[3_fig/three_phases_ODE_sd.png, height=500 width=500 frac=0.8] The standard deviation of three phases compared to an ODE simulation.
 
+By studying the Tab.(ref{table:compare_ODE_random})The three phases gives the *Susceptible* group a greater chance of staying alive. One can see that there are only 1 person from the *Susceptible* group that dies in the Hysterical phase compared to 4 in the ODE simulation. The similar result can be seen for the *Zombie* group. There are several that dies in the ODE simulation that in the Random walk simulation. This can be explained by the fact that the *Susceptible* group tries to avoid fights by running away. 
+
+label{table:compare_ODE_random}
 |---------------------------------------------------------------------------------------|
 |                   |ODE                              |Random walk                      |
 |---------------------------------------------------------------------------------------|
@@ -1747,6 +1675,10 @@ FIGURE:[3_fig/three_phases_ODE_sd.png, height=500 width=500 frac=0.8]
 |Zombie             |332                              |238                              |
 |Removed            |231                              |203                              |
 |---------------------------------------------------------------------------------------|
+
+
+FIGURE:[3_fig/three_phases_random.png, height=300 width=800 frac=0.8] Three screenshots a simulation of the three phases. I: Shows the initial position of the *Susceptible* and *Zombie* group. II: Shows the position and number before the *Hysterical phase*. III: shows the result after the *Hysterical phase*.   
+
 
 #susc265.2
 #inf 139.2
@@ -1774,9 +1706,17 @@ FIGURE:[3_fig/three_phases_ODE_sd.png, height=500 width=500 frac=0.8]
 #ODE rem 240.824403089
 
 
+===== Free areas for the *Susceptible* group =====
+The last advantage the *Susceptible* group will get, is to be able to move into buildings to escape the zombies. A similar thing was done for in the previous chapter, *PDE models*, however the effect is more efficient here. The free areas are found by using the pixel values for the backgroud picture. The value of the buildings is similar for all buildings, and is used to control the direction of the *Zombie* group. Nothing is done for the *Susceptible* group. The movement pattern for the susceptible students will only be affected by the positions of the zombies. A simulation is done for 30 zombies and 30 susceptible humans at initial time. A screenshot can be seen in Fig.(ref{fig:
 
 
-======= Discussion and conclusion =======
+FIGURE:[3_fig/screenshot_safe_buildings.png, height=300 width=800 frac=0.8] 
+
+
+
+
+
+========= Discussion and conclusion =========
 
 This is left to write
 

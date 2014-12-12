@@ -5,7 +5,7 @@ T = 34
 Nt = 3400
 t = np.linspace(0,T,Nt+1)
 #Random walk
-savename = "three_phases"
+savename = "three_phases_free"
 N = 50
 
 
@@ -120,18 +120,18 @@ plt.plot(t,I,'g',label='Infected ODE')
 plt.plot(t,Z,'r',label='Infected ODE')
 plt.plot(t,R,'c',label='Removed ODE')
 
-#plt.plot(t, susceptible_mean, lw=1, label='Susceptible moving smart', color='blue', ls='--') 
-plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
-                label='Standard deviation Sus.')
-#plt.plot(t, infected_mean, lw=1, label='Infected moving smart', color='green', ls='--') 
-plt.fill_between(t, infected_mean-infected_sd, infected_mean+infected_sd, facecolor='green', alpha=0.1,
-                label='Standard deviation Inf.')
-#plt.plot(t, zombie_mean, lw=1, label='Zombie moving smart', color='red', ls='--') 
-plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red', alpha=0.1,
-                label='Standard deviation Zom.')
-#plt.plot(t, removed_mean, lw=1, label='Removed moving smart', color='c', ls='--') 
-plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
-                label='Standard deviation Rem.')
+plt.plot(t, susceptible_mean, lw=1, label='Susceptible moving smart', color='blue', ls='--') 
+#plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
+#                label='Standard deviation Sus.')
+plt.plot(t, infected_mean, lw=1, label='Infected moving smart', color='green', ls='--') 
+#plt.fill_between(t, infected_mean-infected_sd, infected_mean+infected_sd, facecolor='green', alpha=0.1,
+#                label='Standard deviation Inf.')
+plt.plot(t, zombie_mean, lw=1, label='Zombie moving smart', color='red', ls='--') 
+#plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red', alpha=0.1,
+#                label='Standard deviation Zom.')
+plt.plot(t, removed_mean, lw=1, label='Removed moving smart', color='c', ls='--') 
+#plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
+#                label='Standard deviation Rem.')
 plt.axis([0,T,0,800])
 plt.xlabel("Minutes")
 plt.ylabel("Number")

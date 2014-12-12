@@ -13,8 +13,8 @@
 \contentsline {chapter}{\numberline {2}PDE models}{29}{chapter.2}
 \contentsline {section}{\numberline {2.1}Simple system for spatial spread}{29}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Travelling wave 1D}{30}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Verifying the solution}{32}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Constant solution}{33}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.2}Verifying the solution}{31}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Constant solution}{32}{subsection.2.1.3}
 \contentsline {subsection}{\numberline {2.1.4}Manufactured solution}{34}{subsection.2.1.4}
 \contentsline {subsection}{\numberline {2.1.5}Convergence rate}{36}{subsection.2.1.5}
 \contentsline {subsection}{\numberline {2.1.6}The spatial error}{36}{subsection.2.1.6}
@@ -51,13 +51,13 @@
 \contentsline {subsection}{\numberline {3.1.3}moments of a PDF}{71}{subsection.3.1.3}
 \contentsline {subsection}{\numberline {3.1.4}The pertinent variance $\sigma ^2$}{72}{subsection.3.1.4}
 \contentsline {section}{\numberline {3.2}Random walks}{72}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Diffusion equation and random walks}{72}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Random walker}{74}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}English Boarding School}{75}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}A Lower average value}{77}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Threshold value}{78}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Zombiefication}{78}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Random walk}{79}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Moving smart}{81}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Three phases in Walking Dead}{82}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}Discussion and conclusion}{83}{section.3.5}
+\contentsline {subsection}{\numberline {3.2.1}Random walker}{72}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}English Boarding School}{74}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}A Lower average value}{75}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Threshold value}{76}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Zombiefication}{76}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Random walk}{78}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Moving smart}{80}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Three phases in Walking Dead}{81}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Free areas for the \emph {Susceptible} group}{83}{subsection.3.4.4}
+\contentsline {chapter}{\numberline {4}Discussion and conclusion}{87}{chapter.4}

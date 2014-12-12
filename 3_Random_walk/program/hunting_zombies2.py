@@ -205,44 +205,54 @@ class zombie(creature):
                     
                         #print "x_dir",x_dir
                         r = sqrt((x_dir)**2 + (y_dir)**2)
-
-                        if (r < r_min and img[my][mx][0] != free_area):
-
-                            r_min = r
-                            mx_min = x_dir
-                            my_min = y_dir
-                            mx_way = x_way
-                            my_way = y_way
-                            
+                        if area_free:
+                            if (r < r_min and img[my][mx][0] != free_area):
+                                r_min = r
+                                mx_min = x_dir
+                                my_min = y_dir
+                                mx_way = x_way
+                                my_way = y_way
+                        else:    
+                            if (r < r_min):
+                                r_min = r
+                                mx_min = x_dir
+                                my_min = y_dir
+                                mx_way = x_way
+                                my_way = y_way
                 if (r_min < self.min_size and r_min!= 0):
                     self.dx = (mx_min)/float(r_min)*mx_way
                     self.dy = (my_min)/float(r_min)*my_way
                     
                     self.test_x = self.x + self.step_x*self.dx
                     self.test_y = self.y + self.step_y*self.dy
+                    self.through_wall()
+                    if (area_free and (img[self.y][self.x][0] == free_area)):
+                        self.min_size = r_min
+                        self.dx = 0
+                        self.dy = 0
                     self.direction = atan2((self.step_y*self.dy),(self.step_x*self.dx))
                 else:
                     self.dx = 0
                     self.dy = 0
                 
 
-                
             if(mode[ph_val] == 'random' or (mode[ph_val] == 'moving_smart' and r_min == self.min_size)):
                 if (self.no_steps == 0):
                     self.direction = rd.uniform(0,2*pi)
                     self.no_steps = rd.randint(1,20)
+                    
         
                 self.test_x = self.x + self.step_x*cos(self.direction) 
                 self.test_y = self.y + self.step_y*sin(self.direction)
+                self.through_wall()
+                while (area_free and (img[self.y][self.x][0] == free_area)):
+                    self.direction = rd.uniform(0,2*pi)
+                    self.test_x = self.x + self.step_x*cos(self.direction) 
+                    self.test_y = self.y + self.step_y*sin(self.direction)
+                    self.through_wall()
+                    
+
                 self.no_steps -= 1
-         
-    
-    
-            #Removing zombie from position  
-            self.through_wall()
-            #print "zombie"
-            #print "self.x random",self.x
-            #print "self.y random",self.y
             ZMO.change_pos(old_x,old_y,self.x,self.y,self.my_id)
    
     def through_wall(self):
@@ -519,7 +529,7 @@ class run:
                 if (inf_rand < self.IZ[self.ph_val]): #percent chance of beeing a Zombie
                     ex,ey = e.coordinates()
                     IMO.delete_value(ex,ey,e.get_id())
-                    everyone[counter] = zombie(self.step_x,self.step_y,self.min_size,ex,ey,e.get_id(),screen,'r','pictures/zombie.png',self.img_w,self.img_h,self.HI,self.IZ,self.ID,self.ZA,self.ZK)
+                    everyone[counter] = zombie(self.min_size,self.step_x,self.step_y,ex,ey,e.get_id(),screen,'r','pictures/zombie.png',self.img_w,self.img_h,self.HI,self.IZ,self.ID,self.ZA,self.ZK)
                     ZMO.set_value(ex,ey,e.get_id())
                 elif(inf_rand < (self.IZ[self.ph_val]+self.ID[self.ph_val])):#percent change of dying 
                     ex,ey = e.coordinates()
@@ -669,6 +679,8 @@ ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, save
 game_on = False
 mode = ['random','moving_smart']
 spread = 'gaussian'
+area_free = True
+
 def run_blindern():
     beta = [0.01155,0.00011];rho=[0.0137,0.015];alpha=[0.00044,0.000208];
     q = 621/float(98.64) #Average number of meetings during one minute
@@ -855,7 +867,7 @@ def run_blindern():
                     fig = plt.figure()
                     imgplot = plt.imshow(img)
                     plt.scatter(x,y, c=c)
-                    plt.savefig('moviefiles/tmp%04d.png'% counter)
+                    plt.savefig('moviefiles/tmp%05d.png'% counter)
                     plt.close()
 
                 
@@ -880,7 +892,9 @@ def run_blindern():
         for i in range(0,steps):
         #while True:    
             
-            
+            if (i % 100 == 0):
+                print "nr:",i
+             
             z_a = False
             h_a = False
             time_passed = clock.tick(12)
@@ -891,8 +905,12 @@ def run_blindern():
 
 
             screen.blit(background,background_rect)
-            if i == 33000:
+            if (i == 3300):
+                print "attacking"
                 attack = True
+            if (i == 3350):
+                print "stop counter attack"
+                attack = False
 
             if(counter == 0):
                 x, y, c = update.first_step(everyone)
@@ -911,7 +929,7 @@ def run_blindern():
 
             
             pygame.display.flip()
-            pygame.image.save(screen, 'pymovie/tmp%04d.png' % counter)
+            pygame.image.save(screen, 'pymovie/tmp%05d.png' % counter)
             
             if makegraph:
                 for e in everyone:
@@ -923,9 +941,11 @@ def run_blindern():
                         infected_array[i+1] = infected_array[i+1]+ 1
                     else:
                         dead_array[i+1] = dead_array[i+1] + 1
-                    
-
-
+            
+            if(i == 300):
+                print "zombie number:", zombie_array[i+1]
+                print "human number:", human_array[i+1]
+                raw_input()
                         
             #print "HMO 0",HMO
 
@@ -951,7 +971,7 @@ def run_blindern():
     if makeplot:
         #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
         #os.system('avconv -r 10 -i %s -vcodec libx264 %s' %('pymovie/tmp%04d.png',savefile))
-        os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' % ('pymovie/tmp%04d.png',savefile))
+        os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' % ('pymovie/tmp%05d.png',savefile))
 
         for filename in glob.glob('pymovie/tmp*.png'):
             os.remove(filename)
@@ -971,7 +991,7 @@ def run_blindern():
 
 sim_failed = 0
 first_sim = True
-N = 50
+N = 1
 N_ok = 0
 random_steps = 3400
 susceptible_matrix = np.zeros([N,random_steps+1])
@@ -999,8 +1019,8 @@ for i in range(N):
     print zombie_matrix
     print removed_matrix
 
-np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
-np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
-np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
-np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
+#np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
+#np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
+#np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
+#np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
 
