@@ -156,6 +156,15 @@ The parameter value $\rho$ has a major impact on the result. The epidemic diseas
 
 FIGURE:[1_fig/English_boarding_school_changes.png] label{fig:rho_changes} In the first plot where $\rho=50$, the *Infected* group will increase until the number of *Susceptible* falls down to 50. This will result in a majority of infected students. In the last plot where $\rho=400$, the total number of *Susceptible* stays around 170 students and will go towards a steady number as $I(\infty)=0$.   
 
+===== Maximum concentration of *Infected* =====
+The maximum concentration of the *Infected* group can be found by usin the threshold value. The result can be compared to the simulation in Fig.(ref{fig:english_boarding}). Maximum of *Infected* can be found by the following equation from Eq.(ref{eq:max_I})
+!bt
+\begin{equation} label{eq:max_I_eng}
+\Imax= N - \rho + \rho \ln\frac{\rho}{S_0} label{eq:max_I}
+\end{equation}
+!et
+By inserting the parameters from the simulation in Fig.(ref{english_boarding}) in Eq.(ref{eq:max_I_eng}), the value of $\Imax = 292$. The $\Imax$ of the simulation can be found by checking the maximum number of the infected list. This is similar as the calculated $\Imax$. This maximum value of the *Infeced* group occurs when the $Susceptible$ group is 202, and similar to the value of $\rho$ in the simulation.
+ 
 ======= Zombification =======
 One of the worst epidemics that can affect the human population is a zombie attack. This will have a huge impact on the way humans live today. Several movies and series has illustrated this type of situation, but it is time that the scientists also take this threat seriously. There have been written a couple of papers about this. Munz et. alcite{munz2009zombies} used the SEIR model to simulate a possible upcoming zombiefication, where the latent group($E$), is replaced with an *Infected* group($I$) and the *Infected* group($I$) is replaced with a *Zombie* group($Z$). Here it is important to know that the *Infected* group in the $SIZR$ is not the same as in the $SEIR$ model. The following model was used,
 
@@ -308,7 +317,7 @@ It would be interesting to check what would happen if this counter attack was re
 
 FIGURE:[1_fig/WD_zombie_counter_series.png] label{fig:counter_series} 100 counter attacks during 200 days will result in a higher population of humans.
 
-After 200 days there would be about 15 humans and 12 zombies left. Then the humans would be able to survive since they are more efficient in battles. There are of course several things to discuss. How will the number of battles effect the humans and zombies. Will they be tired or more efficient? What about weapons? What would happen if the group of zombies was much larger? Due to different variations in behavior of humans and zombies, one can never predict all situations accurately. 
+After 200 days there would be about 15 humans and 12 zombies left. Then the humans would be able to survive since they are more efficient in battles. 
 
 === The three phases in Walking Dead ===
 By adding these three phases together, the final result after the attack should be possible to match. The simulation here will be done with the parameters used in the earlier sections. This can lead to a small error since the result of the final number in each phase is given with decimals and the initial values are based on assumptions and round off numbers. The different parameter values are listed in Tab.(ref{table:param_val}). 
@@ -344,5 +353,15 @@ label{table:group_values}
 Considering the uncertainty of the parameters, this simulation gives a result close to the expected result. 
 <linebreak>
 <linebreak>
+
 ======= Discussion =======
-This model will be used as the basic model, which the two other models presented later will be compared to. This model is straight forward to calculate and is easy to use.The model is good if the goal is to find the total amount of each group measured over an area. It demands that the parameters are given. But the model gives no information about the spatial spread of the disease. This will therefore be useless in describing how a disease can spread abroad countries and borderlines, or the spatial differences in the chance of being infected. The two next chapters will introduce more complicated models which will be compared to this ODE-system. 
+Two different ODE models are used in this chapter. The first model is a basic SIR model, and the disease in the *English boarding school* is based on this model. The expected result was produced. With variations in the value of $\rho$, it caused large differences in the result for the simulation.
+<linebreak>
+<linebreak>
+The *Zombiefication* part was based on the model and phases from LMR Ref.(cite{zombie-math}). The parameters and the lenght of the phases were adjusted to simulate *Walking Dead*. Several assumptions were made from the writer to model this series. Since the simulations were based on expected results, the parameters were adjusted to fulfill these demands. The model was able to produce the expected result for the groups, and one can say that the spread can be seen as possible based on these assumptions.    
+<linebreak>
+<linebreak>
+There are several factors that this model don't take into account. How will the number of battles effect the humans and zombies? Will they be tired or more efficient? What about weapons? What would happen if the group of zombies was much larger? Due to different variations in behavior of humans and zombies, one can never predict all situations accurately. This is a weakness with this model, and human behavior is difficult to add to the model.  
+<linebreak>
+<linebreak>
+The parameters found in this model will be used for all three chapters.This model is straight forward to calculate and is easy to use.The model is good if the goal is to find the total amount of each group measured over an area. It demands that the parameters are given. The model gives no information about the spatial spread of the disease. This will therefore be useless in describing how a disease can spread abroad countries and borderlines, or the spatial differences of being infected. The two next chapters will introduce more complicated models which will take the spatial position into account. 

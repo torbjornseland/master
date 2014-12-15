@@ -675,11 +675,6 @@ def fight_susceptible_vs_zombie(x,y,HI,ZK,zombie_id):
 #############################--Script--#####################################
 
 
-ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode, savedata = read_command_line()
-game_on = False
-mode = ['random','moving_smart']
-spread = 'gaussian'
-area_free = True
 
 def run_blindern():
     beta = [0.01155,0.00011];rho=[0.0137,0.015];alpha=[0.00044,0.000208];
@@ -942,11 +937,6 @@ def run_blindern():
                     else:
                         dead_array[i+1] = dead_array[i+1] + 1
             
-            if(i == 300):
-                print "zombie number:", zombie_array[i+1]
-                print "human number:", human_array[i+1]
-                raw_input()
-                        
             #print "HMO 0",HMO
 
             
@@ -970,8 +960,8 @@ def run_blindern():
 #if makeplot: 
     if makeplot:
         #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
-        #os.system('avconv -r 10 -i %s -vcodec libx264 %s' %('pymovie/tmp%04d.png',savefile))
-        os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' % ('pymovie/tmp%05d.png',savefile))
+        os.system('avconv -r 10 -i %s -vcodec libx264 %s.mp4' %('pymovie/tmp%05d.png',savefile))
+        #os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' % ('pymovie/tmp%05d.png',savefile))
 
         for filename in glob.glob('pymovie/tmp*.png'):
             os.remove(filename)
@@ -989,11 +979,16 @@ def run_blindern():
         #plt.show()
     return human_array,infected_array, zombie_array, dead_array
 
+ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode, savedata = read_command_line()
+game_on = False
+mode = ['random','moving_smart']
+spread = 'gaussian'
+area_free = True
 sim_failed = 0
 first_sim = True
-N = 1
+N = 200
 N_ok = 0
-random_steps = 3400
+random_steps = steps
 susceptible_matrix = np.zeros([N,random_steps+1])
 infected_matrix = np.zeros([N,random_steps+1])
 zombie_matrix = np.zeros([N,random_steps+1])
@@ -1014,13 +1009,13 @@ for i in range(N):
         infected_matrix[i,j] = inf[j]
         zombie_matrix[i,j] = zom[j] 
         removed_matrix[i,j] = rem[j]
-    print susceptible_matrix
-    print infected_matrix
-    print zombie_matrix
-    print removed_matrix
+    #print susceptible_matrix
+    #print infected_matrix
+    #print zombie_matrix
+    #print removed_matrix
 
-#np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
-#np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
-#np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
-#np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
+np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
+np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
+np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
+np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
 

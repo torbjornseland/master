@@ -1,0 +1,128 @@
+
+===== Sympy to find manufactured solution =====
+
+!bc pycod
+>>> from sympy import *
+>>> x,t,lam = symbols('x t lam')
+>>> def s_simple(x,t):
+...     return cos(pi*x)*t
+... 
+>>> def i_simple(x,t):
+...     return cos(pi*x)*t
+... 
+>>> def r_simple(x,t):
+...     return cos(pi*x)*t
+... 
+>>> for x_point in 0,1:
+...     print "s_x(%s,t): ", % x_point,
+>>> for x_point in 0,1:
+...     print "s_x(%s,t): " % x_point,
+...     print diff(s_simple(x,t),x).subs(x,x_point).simplify()
+...     print "i_x(%s,t): " % x_point,
+...     print diff(i_simple(x,t),x).subs(x,x_point).simplify()
+...     print "r_x(%s,t): " % x_point,
+...     print diff(r_simple(x,t),x).subs(x,x_point).simplify()
+... 
+s_x(0,t):  0
+i_x(0,t):  0
+r_x(0,t):  0
+s_x(1,t):  0
+i_x(1,t):  0
+r_x(1,t):  0
+>>> s = s_simple(x,t)
+>>> i = i_simple(x,t)
+>>> r = r_simple(x,t)
+>>> f = diff(s,t)+i*s-diff(diff(s,x),x)
+>>> print f.simplify()
+(t**2*cos(pi*x) + pi**2*t + 1)*cos(pi*x)
+>>> g = diff(i,t)-i*s+lam*i-diff(diff(i,x),x)
+>>> print g.simplify()
+(lam*t - t**2*cos(pi*x) + pi**2*t + 1)*cos(pi*x)
+>>> h = diff(r,t)-lam*i-diff(diff(r,x),x)
+>>> print h.simplify()
+(-lam*t + pi**2*t + 1)*cos(pi*x)
+!ec
+===== Discretization =====
+!bt
+\begin{equation} \label{eq:LMR_model}
+	\begin{aligned} 
+	\frac{dS}{dt} =& \Sigma -\beta SZ - \delta_SS + \nabla(\gamma_s(x)\nabla S) \\
+	\frac{dI}{dt} =& \beta SZ - \varrho I - \delta_II+\nabla(\gamma_I(x)\nabla I)\\
+	\frac{dZ}{dt} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+ \nabla(\gamma_Z(x)\nabla Z)\\
+	\frac{dR}{dt} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ 
+	\end{aligned}
+\end{equation}
+!et
+The calculations will be shown for the diffusion part in the first equation. This idea will be used for the whole system
+
+!bt
+\begin{equation}
+	\begin{aligned}
+	\frac{dS}{dt} =& \nabla(\gamma_s(x)\nabla S) \\
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \left(\gamma(x_{i+1/2,j})\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y}\right) 
+	\end{aligned}
+\end{equation}
+!et
+===== 2D Gaussian function from x=0 =====
+
+FIGURE:[2_fig/2D_gauss_sub.png,height=600 width=800 frac=0.8]The PDE system (ref{eq:simple_non_PDE}) simulated for a 2D system with $\lambda=0.5$. A gauss wave from $x=0$.
+
+===== 2D Gaussian function from x=0,y=0 =====
+
+FIGURE:[2_fig/2D_gauss_one_sub.png,height=600 width=800 frac=0.8]A gaussian function from $x=0,y=0$ based on the PDE system (ref{eq:simple_non_PDE}) with $\lambda=0.5$  
+
+===== 2D Gaussian function from x=0,y=0 with higher initial value ===== 
+
+===== English Boarding School =====
+
+FIGURE:[2_fig/2D_british_school_sub.png, height=600 width=800 frac=0.8]
+
+=== Gaussian from the corner ===
+
+FIGURE:[2_fig/2D_british_school_gauss_corner_sub.png, height=600 width=800 frac=0.8]
+
+=== A long simulation on 100 Days ===
+
+FIGURE:[2_fig/2D_british_school_long_number.png, height=600 width=800 frac=0.8]
+
+FIGURE:[2_fig/2D_british_school_gauss_long_number.png, height=600 width=800 frac=0.8]
+
+FIGURE:[2_fig/2D_british_school_gauss_corner_long_number.png, height=600 width=800 frac=0.8]
+
+===== Zombiefication =====
+=== Verify the initial phase ===
+
+FIGURE:[2_fig/2D_zombie_initial_cond_sub.png, height=600 width=800 frac=0.8]
+
+FIGURE:[2_fig/2D_zombie_initial_cond_number.png, height=600 width=800 frac=0.8]Creates the same results as for the ODE system
+
+=== Three phases ===
+
+FIGURE:[2_fig/2D_zombie_three_phases_sub.png, height=600 width=800 frac=0.8]
+
+=== middle town ===
+
+FIGURE:[2_fig/2D_zombie_three_phases_zombie_middle_town_surface_sub.png, height=600 width=800 frac=0.8]
+
+=== large town ===
+
+FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_sub.png, height=600 width=800 frac=0.8]
+
+## Movies
+#MOVIE:[2_fig/2D_gaussian.webm, height=500 width=600] Travelling wave modeled with the same values as for 1D.
+#MOVIE:[2_fig/2D_one_corner.webm, height=500 width=600] Starting the travelling wave from the corner.
+#MOVIE:[2_fig/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
+#MOVIE:[2_fig/2D_british_school.webm, height=500 width=600] Acts like the ODE system
+#MOVIE:[2_fig/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
+#MOVIE:[2_fig/2D_british_school_gauss_corner.webm, height=500 width=600] A wave of infected moves towards the school yard
+#MOVIE:[2_fig/2D_zombie_initial_cond.webm, height=500 width=600] 
+#MOVIE:[2_fig/2D_zombie_three_phases.webm, height=500 width=600]
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_small_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_small_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_middle_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_middle_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_zombie_large_town_surface.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_blindern_area_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+#MOVIE:[2_fig/2D_zombie_three_phases_blindern_area_3_ph_contourf.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+

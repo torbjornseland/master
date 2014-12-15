@@ -5,3 +5,8 @@ DATE: today
 TOC: on
 
 # #include "3_Random_walk.do.txt"
+
+======= Bibliography =======
+
+BIBFILE: ../bibliography/papers.pub
+

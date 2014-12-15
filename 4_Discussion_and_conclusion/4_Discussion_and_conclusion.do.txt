@@ -1,4 +1,5 @@
 
 ========= Discussion and conclusion =========
+This paper has used three different systems to model epidemic diseases. These three models gives different possibilities related to the adaptation to real epidemic situations. While the ODE system 
 
 This is left to write

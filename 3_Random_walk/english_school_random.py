@@ -227,7 +227,7 @@ class run:
                         print "no infected left"
                         #print SMO.get_matrix()
                         #print IMO.get_matrix()
-                        #self.breakLoop = True
+                        self.breakLoop = True
 
             #From susceptible to infected
             if(e.color() == 'w'):
@@ -403,6 +403,7 @@ if __name__ == '__main__':
         print "HI",HI
         #IR = 1-(1-0.44036)**(1/float(24*60))
         IR = 1-0.55964**(1/float(1000))
+        IR = 0.00044036
         #IR = 0
         print "IR",IR
         global same_room
@@ -494,7 +495,11 @@ if __name__ == '__main__':
                         removed_array[i+1] = removed_array[i+1] + 1
                     else:
                         print "ukjent",e.color()
-            
+            if update.get_breakLoop():
+                infected_array[i+2:] = infected_array[i+1] 
+                susceptible_array[i+2:] = susceptible_array[i+1] 
+                removed_array[i+2:] = removed_array[i+1] 
+                break
 
             counter += 1
         #print "total meetings:", everyone[-1].get_same_room()
@@ -504,7 +509,7 @@ if __name__ == '__main__':
             plt.axis([0,X,0,Y])
             plt.title(title_p[-1])
             plt.savefig(savename[-1])
-            plt.show()
+            #plt.show()
 
         if makeplot:
             #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
@@ -540,9 +545,10 @@ if __name__ == '__main__':
     print "Average", total/float(SIM)
     #print "same room",same_room
     """
+    savedata = "english_school"
     sim_failed = 0
     first_sim = True
-    N = 100
+    N = 200
     N_ok = 0
     random_steps = 15001
     susceptible_matrix = np.zeros([N,random_steps])
@@ -567,7 +573,11 @@ if __name__ == '__main__':
         print susceptible_matrix
         print infected_matrix
         print removed_matrix
-
+    
+    
+    np.save('program/data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
+    np.save('program/data/infected_matrix_%s.npy' % savedata,infected_matrix)
+    np.save('program/data/removed_matrix_%s.npy' % savedata,removed_matrix)
 
      
 
@@ -575,8 +585,8 @@ if __name__ == '__main__':
     #plt.plot(steps_array,inf,'g', label='Infected')
     #plt.plot(steps_array,rem,'r', label='Removed')
     #plt.legend()
-    plt.axis([0,len(steps_array),0,800])
-    plt.show()
+    #plt.axis([0,len(steps_array),0,800])
+    #plt.show()
 
     
 """
