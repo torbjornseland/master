@@ -206,7 +206,7 @@ class zombie(creature):
                         #print "x_dir",x_dir
                         r = sqrt((x_dir)**2 + (y_dir)**2)
                         if area_free:
-                            if (r < r_min and img[my][mx][0] != free_area):
+                            if (r < r_min and img[my][mx][0] == free_area):
                                 r_min = r
                                 mx_min = x_dir
                                 my_min = y_dir
@@ -226,7 +226,7 @@ class zombie(creature):
                     self.test_x = self.x + self.step_x*self.dx
                     self.test_y = self.y + self.step_y*self.dy
                     self.through_wall()
-                    if (area_free and (img[self.y][self.x][0] == free_area)):
+                    if (area_free and (img[self.y][self.x][0] != free_area)):
                         self.min_size = r_min
                         self.dx = 0
                         self.dy = 0
@@ -245,7 +245,7 @@ class zombie(creature):
                 self.test_x = self.x + self.step_x*cos(self.direction) 
                 self.test_y = self.y + self.step_y*sin(self.direction)
                 self.through_wall()
-                while (area_free and (img[self.y][self.x][0] == free_area)):
+                while (area_free and (img[self.y][self.x][0] != free_area)):
                     self.direction = rd.uniform(0,2*pi)
                     self.test_x = self.x + self.step_x*cos(self.direction) 
                     self.test_y = self.y + self.step_y*sin(self.direction)
@@ -712,7 +712,8 @@ def run_blindern():
     img = mpimg.imread('pictures/Blindern2.jpg')
     img_h,img_w,c = img.shape
     min_size = min(img_h,img_w)*0.3
-    free_area = img[img_h-1][img_w-1][0] #White Blindern    
+    #free_area = img[img_h-1][img_w-1][0] #White Blindern    
+    free_area = img[img_h/2][img_w/2][0] #White Blindern    
 
     grid_x = (img_w/float(grid_size))
     grid_y = (img_h/float(grid_size))
@@ -987,10 +988,10 @@ def run_blindern():
     return human_array,infected_array, zombie_array, dead_array
 
 ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode, savedata = read_command_line()
-game_on = False #False
-mode = ['moving_smart','moving_smart']
-spread = 'uniform'
-area_free = False
+game_on = False #True #False #False
+mode = ['random','moving_smart']
+spread = 'gaussian'
+area_free = True
 sim_failed = 0
 first_sim = True
 N = 100

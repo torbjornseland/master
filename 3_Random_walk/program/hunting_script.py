@@ -34,7 +34,7 @@ rho_ = 1/float(rho)
 HI = beta*q 
 ZK = alpha*q
 IZ = 1-(1-rho_)**(1/float(100))
-
-os.system("python hunting_zombies2.py --ZN 10 --HN 612 --S 1000 --g 25 --ZK %f --HI %f --IZ %f --ID 0.0 --makegraph --savefile movies/random_zombie --mode moving_smart --savedata moving_smart_2_zombie" % (ZK,HI,IZ))
+print "three phases_free"
+os.system("python hunting_zombies2.py --ZN 1 --HN 621 --S 3400 --g 25 --ZK %f --HI %f --IZ %f --ID 0.0 --makegraph --savefile movies/random_zombie --mode moving_smart --savedata three_phases_free_2_zombie" % (ZK,HI,IZ))
 #os.system("python hunting_zombies2.py --ZN 1 --HN 21 --S 1000 --g 25 --ZK %f --HI %f --IZ %f --ID 0.0 --makegraph --savefile movies/random_walk --mode hunting --savedata hunting" % (ZK,HI,IZ))
 #os.system("python hunting_zombies2.py --ZN 1 --HN 21 --S 1000 --g 25 --ZK %f --HI %f --IZ %f --ID 0.0 --makegraph --savefile movies/random_walk --mode moving_smart --savedata moving_smart" % (ZK,HI,IZ))
