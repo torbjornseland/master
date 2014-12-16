@@ -1,24 +1,29 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-T = 10
-Nt = 1000
-t = np.linspace(0,T,Nt+1)
+T = 34
+#Nt = 3400
 #Random walk
-savename = "moving_smart_zombie"
-N = 200
+savename = "three_phases_zombie_free_2"
 
 
 susceptible_matrix = np.load("data/susceptible_matrix_%s.npy" % savename)
 infected_matrix = np.load("data/infected_matrix_%s.npy" % savename)
 zombie_matrix = np.load("data/zombie_matrix_%s.npy" % savename)
 removed_matrix = np.load("data/removed_matrix_%s.npy" % savename)
-"""
+
+N,Nt = susceptible_matrix.shape
+Nt = Nt-1
+t = np.linspace(0,T,Nt+1)
+
+print "N",N
+print "Nt",Nt
+
 S = np.load("data/ODE_three_phases_sus.npy")
 I = np.load("data/ODE_three_phases_inf.npy")
 Z = np.load("data/ODE_three_phases_zom.npy")
 R = np.load("data/ODE_three_phases_rem.npy")
-"""
+
 print susceptible_matrix
 
 susceptible_mean = np.zeros(Nt+1)
@@ -34,10 +39,10 @@ removed_sd = np.zeros(Nt+1)
 success_plot = []
 zero_plot = 0
 for i in range(N):
-    if (infected_matrix[i,500] != 0):
-        success_plot.append(i)
-    else:
-        zero_plot += 1
+    #if (infected_matrix[i,500] != 0):
+    success_plot.append(i)
+    #else:
+    #    zero_plot += 1
 
 succ_size = len(success_plot)
 print "succ_size", succ_size
@@ -63,7 +68,10 @@ for i in range(Nt+1):
         zombie_sd[i] = np.std(s_zombie_matrix[:,i])
         removed_sd[i] = np.std(s_removed_matrix[:,i])
 
-for i in [300,700,1000]:
+ten_minutes = [300,700,1000]
+three_phases = [300,3300,3400]
+for i in three_phases:#,3300,3400]:
+        print "i",i
         print "susc",susceptible_mean[i]
         print "inf",infected_mean[i]
         print "zom",zombie_mean[i]
@@ -79,14 +87,18 @@ print "standard dev sus", susceptible_sd[-1]
 print "standard dev zom", zombie_sd[-1]
 
 sus_era = 0
+sus_era_33 = 0
 sus_era_final = 0
 for i in range(N):
-	if susceptible_matrix[i,300] == 0:
-		sus_era += 1
-	if susceptible_matrix[i,-1] == 0:
-		sus_era_final += 1
+    if susceptible_matrix[i,300] == 0:
+        sus_era += 1
+    #if susceptible_matrix[i,3300] == 0:
+    #   sus_era_33 += 1
+    if susceptible_matrix[i,-1] == 0:
+        sus_era_final += 1
 
 print "initial time eradication",sus_era
+print "initial time eradication",sus_era_33
 print "final time eradication",sus_era_final
 #max_ind = infected_mean.argmax()
 #print "max inf random", infected_mean[max_ind] 
@@ -132,15 +144,18 @@ for i in range(Nt):
     R[i+1] = R[i] + dt*a*I[i]
 """
 
-"""
-max_ind = I.argmax()
-print "max ODE", max(I)
-print "max pos ODE", I[max_ind]
-print "max sus ODE", S[max_ind]
-plt.plot(t,S,'b',label='Susceptible ODE')
-plt.plot(t,I,'g',label='Infected ODE')
+
+#max_ind = I.argmax()
+#print "max ODE", max(I)
+#print "max pos ODE", I[max_ind]
+#print "max sus ODE", S[max_ind]
+#plt.plot(t,S,'b',label='Susceptible ODE')
+#plt.plot(t,I,'g',label='Infected ODE')
 #plt.plot(t,Z,'r',label='Infected ODE')
-plt.plot(t,R,'r',label='Removed ODE')
+#plt.plot(t,R,'c',label='Removed ODE')
+
+
+# Moving smart
 """
 plt.plot(t, susceptible_mean, lw=1, label='Susceptible moving smart', color='blue', ls='--') 
 plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
@@ -154,7 +169,29 @@ plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red
 plt.plot(t, removed_mean, lw=1, label='Removed moving smart', color='c', ls='--') 
 plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
                 label='Standard deviation Rem.')
-plt.axis([0,T,0,800])
+plt.axis([0,T,0,700])
+plt.xlabel("Minutes")
+plt.ylabel("Number")
+#plt.title("Random walk at Frederikkeplassen")
+plt.legend()
+plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderaxespad=0.)
+#plt.savefig("../plots/Random_three_phases")
+plt.show()
+"""
+# Three phases
+plt.plot(t, susceptible_mean, lw=1, label='Susceptible free areas', color='blue', ls='--') 
+plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
+                label='Standard deviation Sus.')
+plt.plot(t, infected_mean, lw=1, label='Infected free areas', color='green', ls='--') 
+plt.fill_between(t, infected_mean-infected_sd, infected_mean+infected_sd, facecolor='green', alpha=0.1,
+                label='Standard deviation Inf.')
+plt.plot(t, zombie_mean, lw=1, label='Zombie free areas', color='red', ls='--') 
+plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red', alpha=0.1,
+                label='Standard deviation Zom.')
+plt.plot(t, removed_mean, lw=1, label='Removed free aras', color='c', ls='--') 
+plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
+                label='Standard deviation Rem.')
+plt.axis([0,T,0,700])
 plt.xlabel("Minutes")
 plt.ylabel("Number")
 #plt.title("Random walk at Frederikkeplassen")
