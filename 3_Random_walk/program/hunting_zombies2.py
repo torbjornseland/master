@@ -677,7 +677,7 @@ def fight_susceptible_vs_zombie(x,y,HI,ZK,zombie_id):
 
 
 def run_blindern():
-    beta = [0.01155,0.00011];rho=[0.0137,0.015];alpha=[0.00044,0.000208];
+    beta = [0.01155,0.000011];rho=[0.0137,0.015];alpha=[0.00044,0.000208];
     q = 621/float(98.64) #Average number of meetings during one minute
     HI = []
     ZK = []
@@ -712,7 +712,7 @@ def run_blindern():
     img = mpimg.imread('pictures/Blindern2.jpg')
     img_h,img_w,c = img.shape
     min_size = min(img_h,img_w)*0.3
-    free_area = img[img_h-1][img_w-1][0] #White Blindern	
+    free_area = img[img_h-1][img_w-1][0] #White Blindern    
 
     grid_x = (img_w/float(grid_size))
     grid_y = (img_h/float(grid_size))
@@ -877,6 +877,13 @@ def run_blindern():
                         else:
                             dead_array[i+1] = dead_array[i+1] + 1
                 
+                if ((zombie_array[i+1] == 0 and infected_array[i+1] == 0) or human_array[i+1] == 0):
+                    infected_array[i+2:] = infected_array[i+1] 
+                    human_array[i+2:] = human_array[i+1] 
+                    dead_array[i+2:] = dead_array[i+1] 
+                    zombie_array[i+2:] = zombie_array[i+1] 
+                    print "break loop"
+                    break
 
                 counter += 1
 
@@ -980,13 +987,13 @@ def run_blindern():
     return human_array,infected_array, zombie_array, dead_array
 
 ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode, savedata = read_command_line()
-game_on = False
-mode = ['random','moving_smart']
-spread = 'gaussian'
-area_free = True
+game_on = False #False
+mode = ['moving_smart','moving_smart']
+spread = 'uniform'
+area_free = False
 sim_failed = 0
 first_sim = True
-N = 200
+N = 100
 N_ok = 0
 random_steps = steps
 susceptible_matrix = np.zeros([N,random_steps+1])
@@ -1014,8 +1021,8 @@ for i in range(N):
     #print zombie_matrix
     #print removed_matrix
 
-np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
-np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
-np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
-np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
+    np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
+    np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
+    np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
+    np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
 
