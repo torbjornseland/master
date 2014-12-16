@@ -590,6 +590,7 @@ FIGURE: [2_fig/initial_value_susceptible.png, height=600 width=800 frac=0.8] lab
 <linebreak>
 Fig.(ref{fig:large_town}) shows the simulation where the zombie is placed in the large town. The simulations of the small and middle town can be seen in the Appendix. The four subplots are from the different phases that arise during a zombie attack. The different groups have the same color as introduced in Fig.(ref{fig:zombie_three_number}). It is difficult to separate the three groups *Infected*, *Zombie* and *Removed*, since they all have a low value at initial time. The development of the amount can easier be seen in the Fig.(ref{fig:compare_towns}), which also shows the results from the small and middle town. Since the amount of *Susceptible* is quite low in the small town where the zombie arises, the disease is not able to infect too many before the society has moved to the next phase, assuming that the broadcasting about the disease works okay for the first days. This results in an eradication of the disease in about a month. The table(ref{table:compare_phases_zombie}) shows that the number of zombies decreases towards zero after a month. 
 
+<<<<<<< Updated upstream
 FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, height=600 width=800 frac=0.8] label{fig:large_town} *Walking Dead* simulated with the zombie at initial time in the large town. Subplots shown at each phase. 
 
 <linebreak>
@@ -601,6 +602,82 @@ FIGURE:[2_fig/2D_compare_towns.png, height=1000 width=400 frac=0.8] label{fig:co
 <linebreak>
 <linebreak>
 The results from the uniformed distributed simulation is still much higher for the *Zombie* group the in these three simulations. This shows that using the parameters from the ODE system in a geographical area makes little sense. A realistic assumption is that a zombie is restricted to a given area, and therefore the parameters will not be equal for all. The chance of getting infected is much higher if a person from the  *Susceptible* group is close to an infected. There is also a greater chance of getting infected if the *Susceptible* group has a high density. 
+=======
+FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_2_number.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_2_number.png, height=600 width=800 frac=0.8]
+
+FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_2_number.png, height=600 width=800 frac=0.8]
+
+##Small town
+##time=0.000000
+##Susceptible = 619.99
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 603.74
+##Infective = 2.96
+##Zombies = 13.79
+##Removed = 0.66
+##time=33.000000
+##Susceptible = 604.42
+##Infective = 0.03
+##Zombies = 6.25
+##Removed = 12.14
+##time=34.000000
+##Susceptible = 604.21
+##Infective = 0.08
+##Zombies = 4.49
+##Removed = 14.11
+
+
+##Middle town
+##time=0.000000
+##Susceptible = 619.99
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 433.22
+##Infective = 25.51
+##Zombies = 155.27
+##Removed = 7.16
+##time=33.000000
+##Susceptible = 429.35
+##Infective = 0.18
+##Zombies = 87.31
+##Removed = 106.00
+##time=34.000000
+##Susceptible = 427.45
+##Infective = 0.59
+##Zombies = 73.70
+##Removed = 121.16
+
+##Large town
+time=0.000000
+Susceptible = 619.99
+Infective = 0.00
+Zombies = 1.00
+Removed = 0.00
+time=3.000000
+Susceptible = 259.20
+Infective = 50.94
+Zombies = 297.24
+Removed = 13.78
+time=33.000000
+Susceptible = 251.14
+Infective = 0.35
+Zombies = 178.45
+Removed = 192.90
+time=34.000000
+Susceptible = 247.33
+Infective = 1.17
+Zombies = 151.44
+Removed = 222.96
+
+===== Lock in different areas =====
+>>>>>>> Stashed changes
 
 label{table:compare_towns}
 |-----------------------------------------------------------------------|

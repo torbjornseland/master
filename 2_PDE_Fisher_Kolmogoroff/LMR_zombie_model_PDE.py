@@ -74,7 +74,7 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,bet
     if (T != 0):
         for n in range(1,Nt+1): 
             if (n*dt % 1 == 0):
-                print n*dt
+                print "time: ",n*dt
             omega_t = omega(t[n], a, sigma, attacks)
 
             # Only diffusion as a constant

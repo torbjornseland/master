@@ -60,10 +60,10 @@ def build_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,ph
         plt.close()
 
     os.system('doconce combine_images plots/2D_gauss_wave000* %s_sub.png' % moviename)
-    os.system('rm plots/2D_gauss_wave000*')
+    #os.system('rm plots/2D_gauss_wave000*')
     #os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' %('movie_images/tmp%04d.png',moviename))
-    for filename in glob.glob('movie_images/tmp*.png'):
-        os.remove(filename)
+    #for filename in glob.glob('movie_images/tmp*.png'):
+    #    os.remove(filename)
 
 def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,classnames,phases,phase_name):
     x_list = []
@@ -71,7 +71,11 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
     surf_color = ['blue','green','red','cyan']
     for i in plotnames:
         img = "%s%04d.npz" % (i,0)
+<<<<<<< Updated upstream
         arr = np.load(img)
+=======
+	arr = np.load(img)
+>>>>>>> Stashed changes
         len_x = len(arr['arr_0'])
         x,y = np.meshgrid(np.linspace(0,L,len_x),np.linspace(0,L,len_x))
         x_list.append(x)
@@ -82,7 +86,10 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
     #sub_num = int(Nt/3)
     ph_check = []
     for ph in phases:
-        ph_check.append(int((Nt*ph)/T))
+        if ph == T:
+            ph_check.append(Nt-1)
+        else:
+            ph_check.append(int((Nt*ph)/T))
     
     for j in range(Nt):
         fig = plt.figure()
@@ -90,7 +97,11 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
             ax = fig.add_subplot(2,2,i+1,projection='3d')
             #ax.title("%s" % classnames[i])
             img = "%s%04d.npz" % (plotnames[i],j)
+<<<<<<< Updated upstream
             arr = np.load(img)
+=======
+	    arr = np.load(img)
+>>>>>>> Stashed changes
             label_name = "%s = %s" % (para_name, parameter_values[i])
             #plt.plot(x_list[i],np.load(img),label=label_name)
             #ax.plot_wireframe(x_list[i],y_list[i],np.load(img), rstride=10, cstride=10,color=surf_color[i])
@@ -255,7 +266,7 @@ def plot_volume(t,vol_list,moviename,classnames,T,title,t_size=1,x_size=1):
     plt.title(title)
     #plt.legend(bbox_to_anchor=(0.,.9,1.0,.102), loc=3,ncol=4,mode="expand",borderaxespad=0.)
     plt.savefig('%s_number.png' % moviename)
-    plt.show()
+    #plt.show()
     
 def print_phase(dt,t,phases,vol_list,classnames):
     for i in phases:
