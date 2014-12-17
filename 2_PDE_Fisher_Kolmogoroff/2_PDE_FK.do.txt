@@ -398,18 +398,18 @@ If the simulations are run for a long time, the difference between each group wi
 
 !split
 ======= Zombiefication =======
-The previous chapter studied an ODE system designed to calculate the number in the four groups: *Susceptible*, *Infected*, *Zombie* and *Removed* during the five first episodes in the TV series *Walking Dead* Ref.cite{walking_dead}. The model was based on the model from Langtangen, Mardal and Røtnes Ref.cite{zombie-math}, with an extra term in the *counter attack* phase. The ODE system from the chapter *Epidemic models* can be expanded with a diffusion term in each group to make a PDE system. This can be seen in Eq.(ref{eq:seland_model})  
+The previous chapter studied an ODE system designed to calculate the number in the four groups: *Susceptible*, *Infected*, *Zombie* and *Removed* during the five first episodes in the TV series *Walking Dead* Ref.cite{walking_dead}. The model was based on the model from Langtangen, Mardal and Røtnes Ref.cite{zombie-math}, with an extra term in the *counter attack* phase. The ODE system from the chapter *Epidemic models* can be expanded with a diffusion term in each group to make a PDE system. This can be seen in Eq.(ref{eq:seland_model_PDE})  
 !bt
-\begin{equation} label{eq:seland_model}
+\begin{equation} label{eq:seland_model_PDE}
 	\begin{aligned} 
-	\frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
-	\frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+D_i\nabla^2 I\\
-	\frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z\\
-	\frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
+	\frac{\partial S}{\partial t} &= \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
+	\frac{\partial I}{\partial t} &= (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+D_i\nabla^2 I \\
+	\frac{\partial Z}{\partial t} &= \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z \\
+	\frac{\partial R}{\partial t} &= \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
 	\end{aligned}
 \end{equation}
 !et
-The Eq.(ref{eq:seland_model}) can be solved numerically by discretization. Forward Euler is used for the time derivative and Crank Nicolson for the space derivative. This is solved with the same technique as for the SIR model(ref{eq:SIR_disc}). The system can be seen in Eq.(ref{eq:SIZR_disc})
+The Eq.(ref{eq:seland_model_PDE}) can be solved numerically by discretization. Forward Euler is used for the time derivative and Crank Nicolson for the space derivative. This is solved with the same technique as for the SIR model(ref{eq:SIR_disc}). The system can be seen in Eq.(ref{eq:SIZR_disc})
 !bt
 \begin{equation} label{eq:SIZR_disc}
 	\begin{aligned}
@@ -590,7 +590,6 @@ FIGURE: [2_fig/initial_value_susceptible.png, height=600 width=800 frac=0.8] lab
 <linebreak>
 Fig.(ref{fig:large_town}) shows the simulation where the zombie is placed in the large town. The simulations of the small and middle town can be seen in the Appendix. The four subplots are from the different phases that arise during a zombie attack. The different groups have the same color as introduced in Fig.(ref{fig:zombie_three_number}). It is difficult to separate the three groups *Infected*, *Zombie* and *Removed*, since they all have a low value at initial time. The development of the amount can easier be seen in the Fig.(ref{fig:compare_towns}), which also shows the results from the small and middle town. Since the amount of *Susceptible* is quite low in the small town where the zombie arises, the disease is not able to infect too many before the society has moved to the next phase, assuming that the broadcasting about the disease works okay for the first days. This results in an eradication of the disease in about a month. The table(ref{table:compare_phases_zombie}) shows that the number of zombies decreases towards zero after a month. 
 
-<<<<<<< Updated upstream
 FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, height=600 width=800 frac=0.8] label{fig:large_town} *Walking Dead* simulated with the zombie at initial time in the large town. Subplots shown at each phase. 
 
 <linebreak>
@@ -602,12 +601,12 @@ FIGURE:[2_fig/2D_compare_towns.png, height=1000 width=400 frac=0.8] label{fig:co
 <linebreak>
 <linebreak>
 The results from the uniformed distributed simulation is still much higher for the *Zombie* group the in these three simulations. This shows that using the parameters from the ODE system in a geographical area makes little sense. A realistic assumption is that a zombie is restricted to a given area, and therefore the parameters will not be equal for all. The chance of getting infected is much higher if a person from the  *Susceptible* group is close to an infected. There is also a greater chance of getting infected if the *Susceptible* group has a high density. 
-=======
-FIGURE:[plots/2D_zombie_three_phases_zombie_small_town_2_number.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_2_number.png, height=600 width=800 frac=0.8]
+#FIGURE:[2_fig/2D_zombie_three_phases_zombie_small_town_2_number.png, height=600 width=800 frac=0.8]
 
-FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_2_number.png, height=600 width=800 frac=0.8]
+#FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_2_number.png, height=600 width=800 frac=0.8]
+
+#FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_2_number.png, height=600 width=800 frac=0.8]
 
 ##Small town
 ##time=0.000000
@@ -675,9 +674,6 @@ Susceptible = 247.33
 Infective = 1.17
 Zombies = 151.44
 Removed = 222.96
-
-===== Lock in different areas =====
->>>>>>> Stashed changes
 
 label{table:compare_towns}
 |-----------------------------------------------------------------------|
