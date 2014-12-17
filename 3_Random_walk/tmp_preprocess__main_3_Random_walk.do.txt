@@ -301,60 +301,67 @@ label{table:frederikke_table_random}
 |-------------------------------------------------------------------------------------------------------------------|
 |3 Minutes          |---------------------------|---------------------------------|---------------------------------|
 |-------------------------------------------------------------------------------------------------------------------|
-|Susceptible        |72.23                     	|310.86                           |95.9                            |
-|Infected           |229.65                    	|145.77                           |219.8                           |
-|Zombie             |296.67                    	|154.06                           |286.9                           |
-|Removed            |20.84                     	|11.29                            |19.4                            |
+|Susceptible        |72.23                     	|279.2                            |87.51                            |
+|Infected           |229.65                    	|162.05                           |229.02                           |
+|Zombie             |296.67                    	|167.57                           |284.88                           |
+|Removed            |20.84                     	|13.168                           |20.59                            |
 |-------------------------------------------------------------------------------------------------------------------|
 |7 Minutes          |---------------------------|---------------------------------|---------------------------------|
 |-------------------------------------------------------------------------------------------------------------------|
-|Susceptible        |70.78                    	|307.94                           |92.7                             |
-|Infected           |0.83                     	|0.75    			  |1.1         		            |
-|Zombie             |498.72                   	|248.84                           |439.2                            |
-|Removed            |49.12                    	|64.46                            |89.0                             |
+|Susceptible        |70.78                    	|276.36                           |82.79                            |
+|Infected           |0.83                     	|0.6421  			  |35.35     		            |
+|Zombie             |498.72                   	|278.87                           |397.46                           |
+|Removed            |49.12                    	|66.115                           |106.4                            |
 |-------------------------------------------------------------------------------------------------------------------|
 |10 Minutes         |---------------------------|---------------------------------|---------------------------------|
 |-------------------------------------------------------------------------------------------------------------------|
-|Susceptible        |69.69                     	|305.83                           |90.1                           |
-|Infected           |0.25                      	|0.44                             |0.5                            |
-|Zombie             |479.00                    	|213.06                           |399.3                          |
-|Removed            |70.55                     	|102.66                           |132.1                          |
+|Susceptible        |69.69                     	|274.34                           |79.96                            |
+|Infected           |0.25                      	|0.4736                           |34.87                            |
+|Zombie             |479.00                    	|243.48                           |350.15                           |
+|Removed            |70.55                     	|103.69                           |157.02                           |
 |-------------------------------------------------------------------------------------------------------------------|
 
-##succ_size 190
-##i
-##susc 310.863157895
-##inf  145.778947368
-##zom  154.063157895
-##rem  11.2947368421
-##i
-##susc 307.947368421
-##inf  0.747368421053
-##zom  248.847368421
-##rem  64.4578947368
-##i
-##susc 305.831578947
-##inf  0.436842105263
-##zom  213.068421053
-##rem  102.663157895
-
-
+##Random walk
+##succ_size 95
 ##i 300
-##susc 95.9
-##inf  219.8
-##zom  286.9
-##rem  19.4
+##susc279.2
+##inf 162.052631579
+##zom 167.578947368
+##rem 13.1684210526
 ##i 700
-##susc 92.7
-##inf  1.1
-##zom  439.2
-##rem  89.0
+##susc276.368421053
+##inf 0.642105263158
+##zom 278.873684211
+##rem 66.1157894737
 ##i 1000
-##susc 90.1
-##inf  0.5
-##zom  399.3
-##rem  132.1
+##susc274.347368421
+##inf 0.473684210526
+##zom 243.484210526
+##rem 103.694736842
+##standard dev sus 114.988490813
+##standard dev zom 108.561490037
 
+##Moving smart
+##succ_size 100
+##i 300
+##susc87.51
+##inf 229.02
+##zom 284.88
+##rem 20.59
+##i 700
+##susc 82.79
+##inf  35.35
+##zom  397.46
+##rem  106.4
+##i 1000
+##susc79.96
+##inf 34.87
+##zom 350.15
+##rem 157.02
+##standard dev sus 116.568856904
+##standard dev zom 123.155947887
+##initial time eradication 15
+##final time eradication 29
 
 
 ===== Moving smart =====
@@ -363,7 +370,7 @@ Next phase is based on the movement pattern that would be more realistic based o
 <linebreak>
 Similar as for the random walk condition above, the moving smart condition is calculated for 200 simulations. The step length has been set to equal for the *Susceptible* group and the *Zombie* group. Therefore the number of zombies are set to 10, to avoid a chasing game, where one zombie run after the group of *Susceptible* with the equal distance the whole time. A screenshot of one simulation can be seen in Fig.(ref{fig:screenshot_moving_smart}). One can see that the zombies chase the humans around. The zombies have to cooperate to be able to get close enough to attack the humans.  
 
-#FIGURE:[3_fig/screenshots_moving_smart.png, height=800 width=300 frac=0.8] label{fig:screenshoot_moving_smart} Three Screenshots of the moving pattern for the *Zombie* and *Susceptible* group with the moving smart condition.I:Close after initial time. The zombies are chasing the humans.II: A large group of humans have recently been infected in the upper left corner. III: Close to total eradication for the human group. Only a small group left in the center of Frederikke. 
+FIGURE:[3_fig/screenshots_moving_smart.png, height=800 width=300 frac=0.8] label{fig:screenshoot_moving_smart} Three Screenshots of the moving pattern for the *Zombie* and *Susceptible* group with the moving smart condition.I:Close after initial time. The zombies are chasing the humans.II: A large group of humans have recently been infected in the upper left corner. III: Close to total eradication for the human group. Only a small group left in the center of Frederikke. 
 
 Some simulations was first tried where only one zombie was initialized at the start. This resulted in zero infected humans and a chasing zombie as explained above. However, when the amount of zombies was increased to 10, it gave a major difference in the result. One can see in Tab.(ref{table:frederikke_table_random}) that after the *Initial phase*, there are only 100 susceptible humans left in the average moving smart. The cooperating force from the *Zombie* group gets stronger as the group increases. Then they are able to chase the *Susceptible* group from several fronts, and it is difficult for the *Susceptible* group to avoid fights. Similar things are seen in *Walking Dead*. In the city Atlanta, where the amount of zombies is high, the ability to escape is difficult. While when the main character Rick Grimes meets individual zombies, he can easily escape the danger. A plot of the average result with the standard deviation can be seen in Fig.(ref{fig:average_moving_smart}). 
 
@@ -396,24 +403,24 @@ label{table:compare_ODE_random}
 |-------------------------------------------------------------------------------------------------------------------------|
 |Initial phase      |---------------------------------|---------------------------------|---------------------------------|
 |-------------------------------------------------------------------------------------------------------------------------|
-|Susceptible        |71                               |340                              |337                              |
-|Infected           |231                              |149                              |139                              |
-|Zombie             |299                              |123                              |134                              |
-|Removed            |21                               |10                               |13                               |
+|Susceptible        |71                               |340                              |289.05                           |
+|Infected           |231                              |149                              |144.42                           |
+|Zombie             |299                              |123                              |174.26                           |
+|Removed            |21                               |10                               |14.263                           |
 |-------------------------------------------------------------------------------------------------------------------------|
 |Hysterical phase   |---------------------------------|---------------------------------|---------------------------------|
 |-------------------------------------------------------------------------------------------------------------------------|
-|Susceptible        |62                               |326                              |335                              |
+|Susceptible        |62                               |326                              |287.57                           |
 |Infected           |0                                |0                                |0.0                              |
-|Zombie             |359                              |15                               |247                              |
-|Removed            |202                              |280                              |40                               |
+|Zombie             |359                              |15                               |294.21                           |
+|Removed            |202                              |280                              |40.210                           |
 |-------------------------------------------------------------------------------------------------------------------------|
 |Counter attack     |---------------------------------|---------------------------------|---------------------------------|
 |-------------------------------------------------------------------------------------------------------------------------|
-|Susceptible        |58                               |326                              |335                              |
+|Susceptible        |58                               |326                              |287.57                           |
 |Infected           |1                                |0.0                              |0.0                              |
-|Zombie             |332                              |14                               |246                              |
-|Removed            |231                              |282.0                            |42                               |
+|Zombie             |332                              |14                               |293.94                           |
+|Removed            |231                              |282.0                            |40.473                           |
 |-------------------------------------------------------------------------------------------------------------------------|
 
 ##susc 277.588235294
@@ -476,27 +483,31 @@ label{table:compare_ODE_random}
 ===== Free areas for the *Susceptible* group =====
 The last advantage the *Susceptible* group will get, is to be able to move into buildings to escape the zombies. A similar thing was done for in the previous chapter, *PDE models*, however the effect is more efficient here. The free areas are found by using the pixel values for the backgroud picture. The value of the buildings is similar for all buildings, and is used to control the direction of the *Zombie* group. Nothing is done for the *Susceptible* group. The movement pattern for the susceptible students will only be affected by the positions of the zombies. A screenshot after 10 minutes can be seen in Fig.(ref{fig:screenshot_three_phases_free})
 
-#FIGURE:[3_fig/screenshot_three_phases_free.png, height=300 width=800 frac=0.8] label{fig:screenshot_three_phases_free}
+FIGURE:[3_fig/screenshot_three_phases_free.png, height=500 width=600 frac=0.8] label{fig:screenshot_three_phases_free} A screenshot of the situation after 10 minutes. 
 
-One can see from Fig.(ref{fig:screenshot_three_phases_free}) that the humans moves into the buildings. These are not defined as any free areas. However, the zombies are not able to go in here, and the result is that this becomes the desired area for the humans. By studying Fig.(ref{fig:three_phases_free}), one can see that the amount of zombies and humans flattens out over time, this can be explained by the fact that the humans are now able to aviod battles. 
+One can see from Fig.(ref{fig:screenshot_three_phases_free}) that the humans moves into the buildings. These are not defined as any free areas. However, the zombies are not able to go in here, and the result is that this becomes the desired area for the humans. By studying Fig.(ref{fig:three_phases_free}), one can see that the change in amount of zombies and humans flattens out over time, this can be explained by the fact that the humans are now able to avoid battles. 
 
-#FIGURE:[3_fig/three_phases_free.png, height=500 width=500 frac=0.8] label{fig:three_phases_free}
+FIGURE:[3_fig/three_phases_free.png, height=500 width=500 frac=0.8] label{fig:three_phases_free}
 
+The *Counter attack* phase in negligible. Since the humans are able to avoid connections with the zombies, the counter attack disappears.  
 
-##susc 336.8
-##inf  138.6
-##zom  133.8
-##rem  12.8
+##Three phases free areas
+##sus 289.052631579
+##inf 144.421052632
+##zom 174.263157895
+##rem 14.2631578947
 ##i 3300
-##susc 334.8
-##inf  0.0
-##zom  247.4
-##rem  39.8
+##sus 287.578947368
+##inf 0.0
+##zom 294.210526316
+##rem 40.2105263158
 ##i 3400
-##susc 334.8
-##inf  0.0
-##zom  245.6
-##rem  41.6
+##sus 287.578947368
+##inf 0.0
+##zom 293.947368421
+##rem 40.4736842105
+##standard dev sus 112.303777782
+##standard dev zom 104.437074323
 
 
 ======= Conclusion =======
@@ -509,7 +520,7 @@ Another result from the English boarding school was the number of successful epi
 The zombiefication part for this chapter was only modeled for minutes. The idea was to study the effect of human behavior. The average result from the random walk simulations in Fig.(ref{fig:walking_dead}) showed a large standard deviation for the groups. It is therefore difficult to predict the result. The similar situation was for the other condition moving smart. This condition was first given to improve the humans ability to survive. With a small group of zombies, this was the case. However, when the group of zombies increased the cooperation force become strong. These simulations were performed on a small area which gave the zombies an advantage. It was then easier for the *Zombie* group to surround the *Susceptible* group. This leads to a total eradication in about 50 percent of the simulations done for the moving smart simulation.
 <linebreak>  
 <linebreak>
-The two lasts sections consists of simulations of all three phases from *Walking Dead*. These are modeled for a shorter time, and are not able to    
+The two lasts sections consists of simulations of all three phases from *Walking Dead*. These are modeled for a shorter time than the series. However, these simulations gives some interesting results. The first simulation of the three phases tries to add the movement pattern that is realistic based on the series *Walking Dead*. This result in the ability to avoid battles, and the loss of *Susceptible* is reduced. An interesting study further, would be if the moving smart phase could compensate for the changes in parameter values in each phase. The idea by changing the parameter values in the ODE and PDE systems, is to illustrate changes in the behavior. The last simulation add the free areas for the *Susceptible* group. A similar thing was done for the PDE system in the previous chapter. However, the expected result was easier achieved in this simulation. It is interesting to see that the preferred area for the humans was the buildings. The *Susceptible* group had no knowledge about the safety in the buildings, only a desire to avoid the zombies. 
 
 
 

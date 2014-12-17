@@ -969,7 +969,8 @@ def run_blindern():
     if makeplot:
         #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
         os.system('avconv -r 10 -i %s -vcodec libx264 %s.mp4' %('pymovie/tmp%05d.png',savefile))
-        #os.system('avconv -r 10 -i %s -vcodec libvpx %s.webm -y' % ('pymovie/tmp%05d.png',savefile))
+        #os.system('avconv -r 10 -minrate 4M -maxrate 4M -b:v 4M -i %s -vcodec libvpx %s_q5.webm -y' % ('pymovie/tmp%05d.png',savefile))
+        #os.system('avconv -r 10 -q 1 -i %s -vcodec libvpx %s_q1.webm -y' % ('pymovie/tmp%05d.png',savefile))
 
         for filename in glob.glob('pymovie/tmp*.png'):
             os.remove(filename)
@@ -988,13 +989,13 @@ def run_blindern():
     return human_array,infected_array, zombie_array, dead_array
 
 ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode, savedata = read_command_line()
-game_on = False #True #False #False
+game_on = True #False #True #False #False
 mode = ['random','moving_smart']
 spread = 'gaussian'
-area_free = True
+area_free = True #True
 sim_failed = 0
 first_sim = True
-N = 100
+N = 1
 N_ok = 0
 random_steps = steps
 susceptible_matrix = np.zeros([N,random_steps+1])
@@ -1022,8 +1023,8 @@ for i in range(N):
     #print zombie_matrix
     #print removed_matrix
 
-    np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
-    np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
-    np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
-    np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
+#np.save('data/susceptible_matrix_%s.npy' % savedata,susceptible_matrix)
+#np.save('data/infected_matrix_%s.npy' % savedata,infected_matrix)
+#np.save('data/zombie_matrix_%s.npy' % savedata,zombie_matrix)
+#np.save('data/removed_matrix_%s.npy' % savedata,removed_matrix)
 

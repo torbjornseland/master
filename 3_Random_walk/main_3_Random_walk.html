@@ -109,7 +109,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Dec 16, 2014</h4></center> <!-- date -->
+<center><h4>Dec 17, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -511,20 +511,20 @@ By comparing the average result with the PDE simulation from <em>Ten minutes at 
 </thead>
 <tbody>
 <tr><td align="center">   3 Minutes      </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   72.23                          </td> <td align="center">   310.86                               </td> <td align="center">   95.9                                 </td> </tr>
-<tr><td align="center">   Infected       </td> <td align="center">   229.65                         </td> <td align="center">   145.77                               </td> <td align="center">   219.8                                </td> </tr>
-<tr><td align="center">   Zombie         </td> <td align="center">   296.67                         </td> <td align="center">   154.06                               </td> <td align="center">   286.9                                </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   20.84                          </td> <td align="center">   11.29                                </td> <td align="center">   19.4                                 </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   72.23                          </td> <td align="center">   279.2                                </td> <td align="center">   87.51                                </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   229.65                         </td> <td align="center">   162.05                               </td> <td align="center">   229.02                               </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   296.67                         </td> <td align="center">   167.57                               </td> <td align="center">   284.88                               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   20.84                          </td> <td align="center">   13.168                               </td> <td align="center">   20.59                                </td> </tr>
 <tr><td align="center">   7 Minutes      </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   70.78                          </td> <td align="center">   307.94                               </td> <td align="center">   92.7                                 </td> </tr>
-<tr><td align="center">   Infected       </td> <td align="center">   0.83                           </td> <td align="center">   0.75                                 </td> <td align="center">   1.1                                  </td> </tr>
-<tr><td align="center">   Zombie         </td> <td align="center">   498.72                         </td> <td align="center">   248.84                               </td> <td align="center">   439.2                                </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   49.12                          </td> <td align="center">   64.46                                </td> <td align="center">   89.0                                 </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   70.78                          </td> <td align="center">   276.36                               </td> <td align="center">   82.79                                </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   0.83                           </td> <td align="center">   0.6421                               </td> <td align="center">   35.35                                </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   498.72                         </td> <td align="center">   278.87                               </td> <td align="center">   397.46                               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   49.12                          </td> <td align="center">   66.115                               </td> <td align="center">   106.4                                </td> </tr>
 <tr><td align="center">   10 Minutes     </td> <td align="center">   ---------------------------    </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> </tr>
-<tr><td align="center">   Susceptible    </td> <td align="center">   69.69                          </td> <td align="center">   305.83                               </td> <td align="center">   90.1                                 </td> </tr>
-<tr><td align="center">   Infected       </td> <td align="center">   0.25                           </td> <td align="center">   0.44                                 </td> <td align="center">   0.5                                  </td> </tr>
-<tr><td align="center">   Zombie         </td> <td align="center">   479.00                         </td> <td align="center">   213.06                               </td> <td align="center">   399.3                                </td> </tr>
-<tr><td align="center">   Removed        </td> <td align="center">   70.55                          </td> <td align="center">   102.66                               </td> <td align="center">   132.1                                </td> </tr>
+<tr><td align="center">   Susceptible    </td> <td align="center">   69.69                          </td> <td align="center">   274.34                               </td> <td align="center">   79.96                                </td> </tr>
+<tr><td align="center">   Infected       </td> <td align="center">   0.25                           </td> <td align="center">   0.4736                               </td> <td align="center">   34.87                                </td> </tr>
+<tr><td align="center">   Zombie         </td> <td align="center">   479.00                         </td> <td align="center">   243.48                               </td> <td align="center">   350.15                               </td> </tr>
+<tr><td align="center">   Removed        </td> <td align="center">   70.55                          </td> <td align="center">   103.69                               </td> <td align="center">   157.02                               </td> </tr>
 </tbody>
 </table>
 
@@ -535,15 +535,19 @@ Next phase is based on the movement pattern that would be more realistic based o
 Similar as for the random walk condition above, the moving smart condition is calculated for 200 simulations. The step length has been set to equal for the <em>Susceptible</em> group and the <em>Zombie</em> group. Therefore the number of zombies are set to 10, to avoid a chasing game, where one zombie run after the group of <em>Susceptible</em> with the equal distance the whole time. A screenshot of one simulation can be seen in Fig.\eqref{fig:screenshot_moving_smart}. One can see that the zombies chase the humans around. The zombies have to cooperate to be able to get close enough to attack the humans.  
 
 <p>
-<!-- FIGURE:[3_fig/screenshots_moving_smart.png, height=800 width=300 frac=0.8] <a name="fig:screenshoot_moving_smart"></a> Three Screenshots of the moving pattern for the <em>Zombie</em> and <em>Susceptible</em> group with the moving smart condition.I:Close after initial time. The zombies are chasing the humans.II: A large group of humans have recently been infected in the upper left corner. III: Close to total eradication for the human group. Only a small group left in the center of Frederikke. -->
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 7:  <a name="fig:screenshoot_moving_smart"></a> Three Screenshots of the moving pattern for the <em>Zombie</em> and <em>Susceptible</em> group with the moving smart condition.I:Close after initial time. The zombies are chasing the humans.II: A large group of humans have recently been infected in the upper left corner. III: Close to total eradication for the human group. Only a small group left in the center of Frederikke. </p></center>
+<p><img src="3_fig/screenshots_moving_smart.png" align="bottom" height=800 width=300></p>
+</center>
 
 <p>
-Some simulations was first tried where only one zombie was initialized at the start. This resulted in zero infected humans and a chasing zombie as explained above. However, when the amount of zombies was increased to 10, it gave a major difference in the result. One can see in Tab.(<a href="#table:frederikke_table_random">table:frederikke_table_random</a>) that after the <em>Initial phase</em>, there are only 100 susceptible humans left in the average moving smart. The cooperating force from the <em>Zombie</em> group gets stronger as the group increases. Then they are able to chase the <em>Susceptible</em> group from several fronts, and it is difficult for the <em>Susceptible</em> group to avoid fights. Similar things are seen in <em>Walking Dead</em>. In the city Atlanta, where the amount of zombies is high, the ability to escape is difficult. While when the main character Rick Grimes meets individual zombies, he can easily escape the danger. A plot of the average result with the standard deviation can be seen in Fig.(<a href="#fig:average_moving_smart">7</a>). 
+Some simulations was first tried where only one zombie was initialized at the start. This resulted in zero infected humans and a chasing zombie as explained above. However, when the amount of zombies was increased to 10, it gave a major difference in the result. One can see in Tab.(<a href="#table:frederikke_table_random">table:frederikke_table_random</a>) that after the <em>Initial phase</em>, there are only 100 susceptible humans left in the average moving smart. The cooperating force from the <em>Zombie</em> group gets stronger as the group increases. Then they are able to chase the <em>Susceptible</em> group from several fronts, and it is difficult for the <em>Susceptible</em> group to avoid fights. Similar things are seen in <em>Walking Dead</em>. In the city Atlanta, where the amount of zombies is high, the ability to escape is difficult. While when the main character Rick Grimes meets individual zombies, he can easily escape the danger. A plot of the average result with the standard deviation can be seen in Fig.(<a href="#fig:average_moving_smart">8</a>). 
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 7:  <a name="fig:average_moving_smart"></a> </p></center>
+<center><p class="caption">Figure 8:  <a name="fig:average_moving_smart"></a> </p></center>
 <p><img src="3_fig/Moving_smart_average.png" align="bottom" height=500 width=500></p>
 </center>
 
@@ -554,19 +558,19 @@ A result of this cooperating force from the <em>Zombie</em> group is that the gr
 A natural idea is to use different conditions for different phases. The first phase, <em>Initial phase</em> will include a random walk condition for all groups. While the <em>Hysterical phase</em> will include a smart moving condition for the <em>Susceptible</em> and <em>Zombie</em> group. The <em>Infected</em> group will move randomly around as in the <em>Initial phase</em>. The third phase will be the <em>Counter attack</em>. Where the <em>Susceptible</em> group will stop running and then counter attack the zombies. The strength of the attack depends on the density of humans around. If the density of humans is high in an area, the strength of the <em>Susceptible</em> group will increase. This is not the case for the <em>Zombie</em> group. The simulation will be performed for 34 minutes, where the three phases have been scaled down from days to minutes. This simulation will not be able to say anything about the result for 34 days. This will demand other values. This result will give an insight into how human behavior will affect the result.  
 <br />
 <br />
-The <em>Susceptible</em> group will at initial time be split into three groups. The distribution in the groups will be based on a Gaussian distribution explained in Sec.(<a href="#sec:monte_carlo_methods">Monte Carlo methods</a>). The <em>Susceptible</em> groups are placed at the following positions: 21 humans at position(6,6), 200 humans at position(12,25) and 400 humans at (25,12). The initial position for the zombie is randomly placed around for all simulations. 200 simulations are performed. Screenshots from a simulation can be seen in Fig.(<a href="#fig:screenshots_three_phases">8</a>). 
+The <em>Susceptible</em> group will at initial time be split into three groups. The distribution in the groups will be based on a Gaussian distribution explained in Sec.(<a href="#sec:monte_carlo_methods">Monte Carlo methods</a>). The <em>Susceptible</em> groups are placed at the following positions: 21 humans at position(6,6), 200 humans at position(12,25) and 400 humans at (25,12). The initial position for the zombie is randomly placed around for all simulations. 200 simulations are performed. Screenshots from a simulation can be seen in Fig.(<a href="#fig:screenshots_three_phases">9</a>). 
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 8:  <a name="fig:screenshots_three_phases"></a> Three screenshots from a simulation of the three phases. I: Shows the initial position of the <em>Susceptible</em> and <em>Zombie</em> group. II: Shows the position and number before the <em>Hysterical phase</em>. III: shows the result after the <em>Hysterical phase</em>. </p></center>
+<center><p class="caption">Figure 9:  <a name="fig:screenshots_three_phases"></a> Three screenshots from a simulation of the three phases. I: Shows the initial position of the <em>Susceptible</em> and <em>Zombie</em> group. II: Shows the position and number before the <em>Hysterical phase</em>. III: shows the result after the <em>Hysterical phase</em>. </p></center>
 <p><img src="3_fig/three_phases_random.png" align="bottom" height=800 width=300></p>
 </center>
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 9:  The standard deviation of three phases compared to an ODE simulation. </p></center>
+<center><p class="caption">Figure 10:  The standard deviation of three phases compared to an ODE simulation. </p></center>
 <p><img src="3_fig/three_phases_ODE_sd.png" align="bottom" height=500 width=500></p>
 </center>
 
@@ -587,20 +591,20 @@ By studying the Tab.(<a href="#table:compare_ODE_random">table:compare_ODE_rando
 </thead>
 <tbody>
 <tr><td align="center">   Initial phase       </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> </tr>
-<tr><td align="center">   Susceptible         </td> <td align="center">   71                                   </td> <td align="center">   340                                  </td> <td align="center">   337                                  </td> </tr>
-<tr><td align="center">   Infected            </td> <td align="center">   231                                  </td> <td align="center">   149                                  </td> <td align="center">   139                                  </td> </tr>
-<tr><td align="center">   Zombie              </td> <td align="center">   299                                  </td> <td align="center">   123                                  </td> <td align="center">   134                                  </td> </tr>
-<tr><td align="center">   Removed             </td> <td align="center">   21                                   </td> <td align="center">   10                                   </td> <td align="center">   13                                   </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   71                                   </td> <td align="center">   340                                  </td> <td align="center">   289.05                               </td> </tr>
+<tr><td align="center">   Infected            </td> <td align="center">   231                                  </td> <td align="center">   149                                  </td> <td align="center">   144.42                               </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   299                                  </td> <td align="center">   123                                  </td> <td align="center">   174.26                               </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   21                                   </td> <td align="center">   10                                   </td> <td align="center">   14.263                               </td> </tr>
 <tr><td align="center">   Hysterical phase    </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> </tr>
-<tr><td align="center">   Susceptible         </td> <td align="center">   62                                   </td> <td align="center">   326                                  </td> <td align="center">   335                                  </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   62                                   </td> <td align="center">   326                                  </td> <td align="center">   287.57                               </td> </tr>
 <tr><td align="center">   Infected            </td> <td align="center">   0                                    </td> <td align="center">   0                                    </td> <td align="center">   0.0                                  </td> </tr>
-<tr><td align="center">   Zombie              </td> <td align="center">   359                                  </td> <td align="center">   15                                   </td> <td align="center">   247                                  </td> </tr>
-<tr><td align="center">   Removed             </td> <td align="center">   202                                  </td> <td align="center">   280                                  </td> <td align="center">   40                                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   359                                  </td> <td align="center">   15                                   </td> <td align="center">   294.21                               </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   202                                  </td> <td align="center">   280                                  </td> <td align="center">   40.210                               </td> </tr>
 <tr><td align="center">   Counter attack      </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> <td align="center">   ---------------------------------    </td> </tr>
-<tr><td align="center">   Susceptible         </td> <td align="center">   58                                   </td> <td align="center">   326                                  </td> <td align="center">   335                                  </td> </tr>
+<tr><td align="center">   Susceptible         </td> <td align="center">   58                                   </td> <td align="center">   326                                  </td> <td align="center">   287.57                               </td> </tr>
 <tr><td align="center">   Infected            </td> <td align="center">   1                                    </td> <td align="center">   0.0                                  </td> <td align="center">   0.0                                  </td> </tr>
-<tr><td align="center">   Zombie              </td> <td align="center">   332                                  </td> <td align="center">   14                                   </td> <td align="center">   246                                  </td> </tr>
-<tr><td align="center">   Removed             </td> <td align="center">   231                                  </td> <td align="center">   282.0                                </td> <td align="center">   42                                   </td> </tr>
+<tr><td align="center">   Zombie              </td> <td align="center">   332                                  </td> <td align="center">   14                                   </td> <td align="center">   293.94                               </td> </tr>
+<tr><td align="center">   Removed             </td> <td align="center">   231                                  </td> <td align="center">   282.0                                </td> <td align="center">   40.473                               </td> </tr>
 </tbody>
 </table>
 <p>
@@ -630,16 +634,27 @@ By studying the Tab.(<a href="#table:compare_ODE_random">table:compare_ODE_rando
 <!-- ODE rem 240.824403089 -->
 
 <h2>Free areas for the <em>Susceptible</em> group  <a name="___sec14"></a></h2>
-The last advantage the <em>Susceptible</em> group will get, is to be able to move into buildings to escape the zombies. A similar thing was done for in the previous chapter, <em>PDE models</em>, however the effect is more efficient here. The free areas are found by using the pixel values for the backgroud picture. The value of the buildings is similar for all buildings, and is used to control the direction of the <em>Zombie</em> group. Nothing is done for the <em>Susceptible</em> group. The movement pattern for the susceptible students will only be affected by the positions of the zombies. A screenshot after 10 minutes can be seen in Fig.(<a href="#fig:screenshot_three_phases_free">fig:screenshot_three_phases_free</a>)
+The last advantage the <em>Susceptible</em> group will get, is to be able to move into buildings to escape the zombies. A similar thing was done for in the previous chapter, <em>PDE models</em>, however the effect is more efficient here. The free areas are found by using the pixel values for the backgroud picture. The value of the buildings is similar for all buildings, and is used to control the direction of the <em>Zombie</em> group. Nothing is done for the <em>Susceptible</em> group. The movement pattern for the susceptible students will only be affected by the positions of the zombies. A screenshot after 10 minutes can be seen in Fig.(<a href="#fig:screenshot_three_phases_free">11</a>)
 
 <p>
-<!-- FIGURE:[3_fig/screenshot_three_phases_free.png, height=300 width=800 frac=0.8] <a name="fig:screenshot_three_phases_free"></a> -->
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 11:  <a name="fig:screenshot_three_phases_free"></a> A screenshot of the situation after 10 minutes. </p></center>
+<p><img src="3_fig/screenshot_three_phases_free.png" align="bottom" height=500 width=600></p>
+</center>
 
 <p>
-One can see from Fig.(<a href="#fig:screenshot_three_phases_free">fig:screenshot_three_phases_free</a>) that the humans moves into the buildings. These are not defined as any free areas. However, the zombies are not able to go in here, and the result is that this becomes the desired area for the humans. By studying Fig.(<a href="#fig:three_phases_free">fig:three_phases_free</a>), one can see that the amount of zombies and humans flattens out over time, this can be explained by the fact that the humans are now able to aviod battles. 
+One can see from Fig.(<a href="#fig:screenshot_three_phases_free">11</a>) that the humans moves into the buildings. These are not defined as any free areas. However, the zombies are not able to go in here, and the result is that this becomes the desired area for the humans. By studying Fig.(<a href="#fig:three_phases_free">12</a>), one can see that the change in amount of zombies and humans flattens out over time, this can be explained by the fact that the humans are now able to avoid battles. 
 
 <p>
-<!-- FIGURE:[3_fig/three_phases_free.png, height=500 width=500 frac=0.8] <a name="fig:three_phases_free"></a> -->
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 12:  <a name="fig:three_phases_free"></a> </p></center>
+<p><img src="3_fig/three_phases_free.png" align="bottom" height=500 width=500></p>
+</center>
+
+<p>
+The <em>Counter attack</em> phase in negligible. Since the humans are able to avoid connections with the zombies, the counter attack disappears.
 
 <h1>Conclusion  <a name="___sec15"></a></h1>
 The result from the English boarding school shows that the maximum concentration of the <em>Infected</em> is reduced when using random walk to simulate the disease. The incubation time for influenza has one day as the shortest incubation time. The model used for the English boarding school is a SIR model, and skips this incubation phase. This will not be the case for the random walk. The incubation time is set to one time step for the random simulation.
@@ -651,7 +666,7 @@ Another result from the English boarding school was the number of successful epi
 The zombiefication part for this chapter was only modeled for minutes. The idea was to study the effect of human behavior. The average result from the random walk simulations in Fig.(<a href="#fig:walking_dead">6</a>) showed a large standard deviation for the groups. It is therefore difficult to predict the result. The similar situation was for the other condition moving smart. This condition was first given to improve the humans ability to survive. With a small group of zombies, this was the case. However, when the group of zombies increased the cooperation force become strong. These simulations were performed on a small area which gave the zombies an advantage. It was then easier for the <em>Zombie</em> group to surround the <em>Susceptible</em> group. This leads to a total eradication in about 50 percent of the simulations done for the moving smart simulation.
 <br />
 <br />
-The two lasts sections consists of simulations of all three phases from <em>Walking Dead</em>. These are modeled for a shorter time, and are not able to    
+The two lasts sections consists of simulations of all three phases from <em>Walking Dead</em>. These are modeled for a shorter time than the series. However, these simulations gives some interesting results. The first simulation of the three phases tries to add the movement pattern that is realistic based on the series <em>Walking Dead</em>. This result in the ability to avoid battles, and the loss of <em>Susceptible</em> is reduced. An interesting study further, would be if the moving smart phase could compensate for the changes in parameter values in each phase. The idea by changing the parameter values in the ODE and PDE systems, is to illustrate changes in the behavior. The last simulation add the free areas for the <em>Susceptible</em> group. A similar thing was done for the PDE system in the previous chapter. However, the expected result was easier achieved in this simulation. It is interesting to see that the preferred area for the humans was the buildings. The <em>Susceptible</em> group had no knowledge about the safety in the buildings, only a desire to avoid the zombies. 
 
 <p>
 Zombiefication

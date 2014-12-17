@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 T = 34
 #Nt = 3400
 #Random walk
-savename = "three_phases_zombie_free_2"
+#savename = "random_walk_2_zombie"
+#savename = "moving_smart_2_zombie"
+#savename = "three_phases_2_zombie"
+savename = "three_phases_free_2_zombie"
 
 
 susceptible_matrix = np.load("data/susceptible_matrix_%s.npy" % savename)
@@ -39,10 +42,10 @@ removed_sd = np.zeros(Nt+1)
 success_plot = []
 zero_plot = 0
 for i in range(N):
-    #if (infected_matrix[i,500] != 0):
-    success_plot.append(i)
-    #else:
-    #    zero_plot += 1
+    if (zombie_matrix[i,500] != 0):
+    	success_plot.append(i)
+    else:
+        zero_plot += 1
 
 succ_size = len(success_plot)
 print "succ_size", succ_size
@@ -92,8 +95,8 @@ sus_era_final = 0
 for i in range(N):
     if susceptible_matrix[i,300] == 0:
         sus_era += 1
-    #if susceptible_matrix[i,3300] == 0:
-    #   sus_era_33 += 1
+    if susceptible_matrix[i,3300] == 0:
+       sus_era_33 += 1
     if susceptible_matrix[i,-1] == 0:
         sus_era_final += 1
 
@@ -151,7 +154,7 @@ for i in range(Nt):
 #print "max sus ODE", S[max_ind]
 #plt.plot(t,S,'b',label='Susceptible ODE')
 #plt.plot(t,I,'g',label='Infected ODE')
-#plt.plot(t,Z,'r',label='Infected ODE')
+#plt.plot(t,Z,'r',label='Zombie ODE')
 #plt.plot(t,R,'c',label='Removed ODE')
 
 
@@ -179,6 +182,22 @@ plt.legend(bbox_to_anchor=(0.,1.02,1.,.102), loc=3,ncol=3,mode="expand",borderax
 plt.show()
 """
 # Three phases
+"""
+plt.plot(t, susceptible_mean, lw=1, label='Susceptible three phases', color='blue', ls='--') 
+plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
+                label='Standard deviation Sus.')
+plt.plot(t, infected_mean, lw=1, label='Infected three phases', color='green', ls='--') 
+plt.fill_between(t, infected_mean-infected_sd, infected_mean+infected_sd, facecolor='green', alpha=0.1,
+                label='Standard deviation Inf.')
+plt.plot(t, zombie_mean, lw=1, label='Zombie three phases', color='red', ls='--') 
+plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red', alpha=0.1,
+                label='Standard deviation Zom.')
+plt.plot(t, removed_mean, lw=1, label='Removed three phases', color='c', ls='--') 
+plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
+                label='Standard deviation Rem.')
+"""
+# Three phases free
+
 plt.plot(t, susceptible_mean, lw=1, label='Susceptible free areas', color='blue', ls='--') 
 plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
                 label='Standard deviation Sus.')
@@ -191,6 +210,37 @@ plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red
 plt.plot(t, removed_mean, lw=1, label='Removed free aras', color='c', ls='--') 
 plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
                 label='Standard deviation Rem.')
+
+# Random walk
+"""
+plt.plot(t, susceptible_mean, lw=1, label='Susceptible random walk', color='blue', ls='--') 
+plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
+                label='Standard deviation Sus.')
+plt.plot(t, infected_mean, lw=1, label='Infected random walk', color='green', ls='--') 
+plt.fill_between(t, infected_mean-infected_sd, infected_mean+infected_sd, facecolor='green', alpha=0.1,
+                label='Standard deviation Inf.')
+plt.plot(t, zombie_mean, lw=1, label='Zombie random walk', color='red', ls='--') 
+plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red', alpha=0.1,
+                label='Standard deviation Zom.')
+plt.plot(t, removed_mean, lw=1, label='Removed random walk', color='c', ls='--') 
+plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
+                label='Standard deviation Rem.')
+"""
+#Moving smart
+"""
+plt.plot(t, susceptible_mean, lw=1, label='Susceptible moving smart', color='blue', ls='--') 
+plt.fill_between(t, susceptible_mean-susceptible_sd, susceptible_mean+susceptible_sd, facecolor='blue', alpha=0.1,
+                label='Standard deviation Sus.')
+plt.plot(t, infected_mean, lw=1, label='Infected moving smart', color='green', ls='--') 
+plt.fill_between(t, infected_mean-infected_sd, infected_mean+infected_sd, facecolor='green', alpha=0.1,
+                label='Standard deviation Inf.')
+plt.plot(t, zombie_mean, lw=1, label='Zombie moving smart', color='red', ls='--') 
+plt.fill_between(t, zombie_mean-zombie_sd, zombie_mean+zombie_sd, facecolor='red', alpha=0.1,
+                label='Standard deviation Zom.')
+plt.plot(t, removed_mean, lw=1, label='Removed moving smart', color='c', ls='--') 
+plt.fill_between(t, removed_mean-removed_sd, removed_mean+removed_sd, facecolor='c', alpha=0.1,
+                label='Standard deviation Rem.')
+"""
 plt.axis([0,T,0,700])
 plt.xlabel("Minutes")
 plt.ylabel("Number")
