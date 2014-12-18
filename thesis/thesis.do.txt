@@ -1,6 +1,20 @@
-TITLE:Mathematical analysis of epidemic systems- comparison of different models
-AUTHOR: Torbjørn Paschen Seland
-DATE: today
+!bt
+\input{frontpage}
+!et
+
+!bt
+\newcommand{\Imax}{I_{\textrm{max}}}
+!et
+
+!bt
+\chapter*{Abstract}
+!et
+# #include "../Abstract/Abstract.do.txt"
+
+!bt
+\chapter*{Acknowledgements}
+!et
+# #include "../Acknowledgement/Acknowledgement.do.txt"
 
 TOC: on
 
@@ -14,7 +28,11 @@ TOC: on
 
 # #include "../4_Discussion_and_conclusion/4_Discussion_and_conclusion.do.txt"
 
-======= Bibliography =======
+========= Appendix =========
+
+# #include "../3_Random_walk/3_Appendix.do.txt"
+
+========= Bibliography =========
 
 BIBFILE: ../bibliography/papers.pub
 

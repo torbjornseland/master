@@ -1,0 +1,5 @@
+First, I would like to thank my supervisors Kent-Andre Mardal and Hans Petter Langtangen for their guidance and knowledge. A special thanks to Kent-Andre for the good discussions about humans ability to survive a zombie attack.
+<linebreak>
+I would also like to thank my fellow students in B1002 for their company and good support. A special thanks to Ada and Aslak for reading my thesis, and for constructive feedback. Thanks to my sister-in-law,Trine, who has done an amazing job helping me with my English.
+<linebreak>
+Finally, I would like to thank my two favorite girls, my daughter Tiril and my wife Silje. Thank you for supporting me with constant love and comfort.     

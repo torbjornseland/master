@@ -1,6 +1,6 @@
 
 ===== Diffusion equation and random walks =====
-The British Botanist R. Brown developed a theory by studying how pollen dispersed in water. This idea is called Brownian motion and can be used to describe a group of particles spreading. The function $w(x,t)dx$ can be defined as the probability of finding a given number of particles in an interval with size $dx$. This function is the $PDF$ as explained in the section above. The flux of particles that passing a point $x$, can be described by $j(x,t). This flow is proportionally with the gradient of the $PDF$,
+The British Botanist R. Brown developed a theory by studying how pollen dispersed in water. This idea is called Brownian motion and can be used to describe a group of particles spreading. The function $w(x,t)dx$ can be defined as the probability of finding a given number of particles in an interval with size $dx$. This function is the $PDF$ as explained in the section above. The flux of particles that passing a point $x$, can be described by $j(x,t)$. This flow is proportionally with the gradient of the $PDF$,
 !bt
 \begin{equation}
 j(x,t) = -D\frac{\partial w(x,t)}{\partial x}

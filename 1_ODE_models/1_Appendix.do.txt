@@ -1,0 +1,40 @@
+
+The *Susceptible* will always have a decreasing solution since $\frac{dS}{dt} < 0$ when $S\neq0$ and $I\neq0$. Some integration can be done on the ODE system in Eq.(ref{eq:SIR_model}) some integration can be done,
+!bt
+\begin{equation} label{eq:S_infty}
+	\begin{aligned}
+	\frac{dS}{dR} =& -\frac{S}{\rho}\\
+	S =& S_0e^{-R/\rho} 
+	\end{aligned}
+\end{equation}
+!et
+Then the following term is true,
+!bt
+\begin{equation} 
+S = S_0e^{-R/\rho} \geq S_0e^{-N/\rho} > 0
+\end{equation}
+!et
+As $t\rightarrow \infty$, the total number of *Susceptible* will be in the range $0 < S(\infty)\leq N$. This range can be reduced even more by knowing that $I$ will increase as long as $S> \rho$. The number of *Susceptible* will be in the range $0 < S(\infty)\leq \rho$. Since $I$ will be zero when the time goes towards infinity, the *Removed* group can be described $R(\infty)= N -S(\infty)$. Now this can be insert in eq(ref{eq:S_infty}), which gives,
+!bt
+\begin{equation}
+S(\infty) = S_0 \exp\left(-\frac{N-S(\infty)}{\rho}\right)
+\end{equation}
+!et
+$S(\infty)$ can be found as the positive root in the transcendental equation. This can be used to find the total number of people who catch the disease.
+!bt
+\begin{equation} label{eq:total_I}
+I_{total} = I_0 + S_0 -S(\infty)
+\end{equation}
+!et
+This analysis is based on the implication that the disease dies out because the *Infected* group goes towards zero, and not because of the lack of *Susceptible*. It will affect the number of *Susceptible* that can be infected. The reproduction rate ($R_0$), will vary with respect to different parameters as population density, incubation time and the length of the period of sickness. The two equations shown in Eq.(ref{eq:max_I}) and Eq.(ref{eq:total_I}) gives an understanding of the maximum and total number in the *Infected* group, but the methods demand the exact numbers of $\rho,I_0,S_0$ and $S$, which is quite hard to get in a real situation. The challenging thing is often to know how many infected there are at each time. The number of *Removed* is often the easiest group to control.. This group is assisted with medical help. So to model a realistic situation, the number of *Removed* as a function of time $dR/dt$ is a realistic model. Here the equations from (ref{eq:SIR_model}) ,(ref{eq:SIR_N}) and (ref{eq:S_infty}) can be used.
+!bt
+\begin{equation} label{eq:dR_normal}
+	\begin{aligned} 
+	\frac{dR}{dt} &= aI\\
+	&= a(N-R-S)\\
+	&= a(N-R-S_0e^{-R/\rho}), R(0)=0,
+	\end{aligned}
+\end{equation}
+!et
+This solution demands several parameters as $a$, $r$, $S_0$ and $N$ to solve this numerically. It is normal to adjust the parameters after the epidemic situation to get the best result as possible. However, if the epidemic is not to large, $R/\rho$ will be quite small, at least under 1. Then another model from Kermack and McKendrick(1927) can be used. J.D Murray does a deeper study of this in his book cite[p.~324]{murray2002mathematical}. This chapter will look at an example from a boarding school in England and do some studies on the change in $\rho$.  
+

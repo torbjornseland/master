@@ -1,7 +1,6 @@
-TITLE: Introduction
-AUTHOR: Torbjørn Paschen Seland
-DATE: today
-
+!bt
+\input{frontpage}
+!et
 
 # #include "0_introduction.do.txt"
 

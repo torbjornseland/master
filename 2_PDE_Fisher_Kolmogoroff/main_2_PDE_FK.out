@@ -1,0 +1,19 @@
+\BOOKMARK [0][-]{chapter.1}{PDE models}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Simple system for spatial spread}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Travelling wave 1D}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Verifying the solution}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Constant solution}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{Manufactured solution}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.5}{Convergence rate}{section.1.1}% 7
+\BOOKMARK [2][-]{subsection.1.1.6}{The spatial error}{section.1.1}% 8
+\BOOKMARK [2][-]{subsection.1.1.7}{The temporal error}{section.1.1}% 9
+\BOOKMARK [2][-]{subsection.1.1.8}{Travelling wave in 2D}{section.1.1}% 10
+\BOOKMARK [2][-]{subsection.1.1.9}{A gaussian wave}{section.1.1}% 11
+\BOOKMARK [1][-]{section.1.2}{English Boarding School}{chapter.1}% 12
+\BOOKMARK [2][-]{subsection.1.2.1}{Maximum concentration of Infected}{section.1.2}% 13
+\BOOKMARK [2][-]{subsection.1.2.2}{Introducing a Gaussian distribution of infected}{section.1.2}% 14
+\BOOKMARK [1][-]{section.1.3}{Zombiefication}{chapter.1}% 15
+\BOOKMARK [2][-]{subsection.1.3.1}{The position of the Infected group}{section.1.3}% 16
+\BOOKMARK [2][-]{subsection.1.3.2}{Free areas for the Susceptible group}{section.1.3}% 17
+\BOOKMARK [2][-]{subsection.1.3.3}{Ten minutes at Frederikkeplassen}{section.1.3}% 18
+\BOOKMARK [1][-]{section.1.4}{Discussion}{chapter.1}% 19

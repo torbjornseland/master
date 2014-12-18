@@ -5,3 +5,8 @@ DATE: today
 TOC: on
 
 # #include "2_PDE_FK.do.txt"
+
+======= Bibliography =======
+
+BIBFILE: ../bibliography/papers.pub
+

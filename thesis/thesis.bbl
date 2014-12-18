@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
 \bibitem{walking_dead}
 F.~Darabont and G.~A. Hurd.
@@ -21,22 +21,6 @@ Hans~Petter Langtangen, Kent-Andre Mardal, and P{\aa}l R{\o}tnes.
 \newblock {\em Escaping the Zombie Threat by Mathematics}, chapter 3.6, pages
   x--y.
 \newblock University of Chicago Press, 2013.
-
-\bibitem{CBC_deaths_2011}
-Donna L.Hoyert and Jiaquan Xu.
-\newblock Deaths:preliminary data for 2011.
-\newblock Technical report, Division of Vital Statistics, 2012.
-
-\bibitem{marsaglia2003xorshift}
-George Marsaglia.
-\newblock Xorshift rngs.
-\newblock {\em Journal of Statistical Software}, 8(14):1--6, 2003.
-
-\bibitem{CBC_births_2012}
-Joyce~A. Martin, Brady~E. Hamilton, Michelle~J.K. Osterman, Sally~C. Curtin,
-  and T.J. Mathews.
-\newblock Births: Final data from 2012.
-\newblock Technical report, Division of Vital Statistics, 2013.
 
 \bibitem{munz2009zombies}
 Philip Munz, Ioan Hudea, Joe Imad, and Robert~J. Smith.

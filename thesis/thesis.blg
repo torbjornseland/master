@@ -3,46 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 The style file: plain.bst
 Database file #1: ../bibliography/papers.bib
-Warning--can't use both author and editor fields in zombie-math
-You've used 12 entries,
+You've used 9 entries,
             2118 wiz_defined-function locations,
-            570 strings with 5851 characters,
-and the built_in function-call counts, 3602 in all, are:
-= -- 352
-> -- 176
+            552 strings with 5440 characters,
+and the built_in function-call counts, 2777 in all, are:
+= -- 270
+> -- 128
 < -- 3
-+ -- 70
-- -- 58
-* -- 232
-:= -- 633
-add.period$ -- 37
-call.type$ -- 12
-change.case$ -- 64
++ -- 51
+- -- 42
+* -- 176
+:= -- 476
+add.period$ -- 28
+call.type$ -- 9
+change.case$ -- 45
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 136
-empty$ -- 274
-format.name$ -- 58
-if$ -- 741
+cite$ -- 9
+duplicate$ -- 109
+empty$ -- 221
+format.name$ -- 42
+if$ -- 581
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 12
-newline$ -- 62
-num.names$ -- 24
-pop$ -- 68
+int.to.str$ -- 9
+missing$ -- 11
+newline$ -- 47
+num.names$ -- 18
+pop$ -- 56
 preamble$ -- 1
-purify$ -- 53
+purify$ -- 39
 quote$ -- 0
-skip$ -- 92
+skip$ -- 75
 stack$ -- 0
-substring$ -- 170
-swap$ -- 22
+substring$ -- 142
+swap$ -- 20
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 42
-warning$ -- 1
-while$ -- 37
-width$ -- 14
-write$ -- 130
-(There was 1 warning)
+type$ -- 30
+warning$ -- 0
+while$ -- 29
+width$ -- 10
+write$ -- 97

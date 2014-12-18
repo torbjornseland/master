@@ -1,0 +1,823 @@
+TITLE: Geographic models 
+AUTHOR: Torbjørn Seland
+DATE: today
+
+TOC: on
+
+!bt
+\newcommand{\Imax}{I_{\textrm{max}}}
+!et
+
+========= PDE models =========
+This chapter will introduce a spatial model for epidemic diseases. The ODE system from the previously chapter ref{section:ODE_models} can be expanded with a term for geographic spread of the disease. The first section *Simple system for spatial spread* will be based on the simple SIR model presented in previously chapter, and the chapter *Geographic spread and Control of epidemics* by Murray cite{murray2003mathematical}. The parameters from the *English Boarding School* in the previously chapter will be used for the model and the results will be compared. The position of the infected student will be studied to see if it affects the number in the *Infected* group. The last section, *Zombiefication*, will study and expand the system from Langtangen, Mardal and Røtnes cite{zombie-math}. The results and parameter values used to calculate *Walking Dead* will be compared with the previously ODE system and variations of this PDE. 
+ 
+
+======= Simple system for spatial spread =======
+A spatial variable, _x_, will be introduced to the model. This results in both temporal and spatial variations. The difference from a standard ODE system will be the diffusion part added to each equation. The system can be seen in Eq.(ref{eq:simple_PDE}). 
+!bt
+\begin{equation} label{eq:simple_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -rIS + D\nabla ^2 S\\
+	\frac{\partial I}{\partial t} &= rIS- aI + D\nabla ^2 I\\
+	\frac{\partial R}{\partial t} &= aI + D\nabla ^2 R
+	\end{aligned}
+\end{equation}
+!et
+Here $S$ describes the *Susceptible* group, $I$ describes the *Infected* group and $R$ describes the *Removed* group. The following conditions are set for the boundary and initial values:
+!bt
+\begin{equation} label{eq:boundary_initial}
+	\begin{aligned}
+	u_x(0,t) &= u_x(X,t) = 0,\quad u = S,I,R\\
+	u(x,0) &= f_u(x),\quad u= S,I,R
+	\end{aligned}
+\end{equation}
+!et
+This results in Neumann conditions at the boundary. The following implementation can be used at the boundary
+!bt
+\begin{equation}
+	\begin{aligned}
+	\frac{u_{-1}^n - u_1^n}{2\Delta x} &= 0 \\
+	u_{-1}^n &= u_1^n
+	\end{aligned}
+\end{equation}
+!et
+This is solved by adding an extra point on each side, called ghost points. The values in these ghost points are updated every time step with values from $u_1^n$ and $u_{X-1}^n$. All three groups, $S,I,R$ in Eq.(ref{eq:simple_PDE}) have the same diffusion coefficient, $D$. This gives the three groups the same diffusion speed. This can vary between systems. Later in the chapter, in section *Zombiefication*, different diffusion terms are given to the groups. The two probabilities $rIS$ and $aI$ will work in the same way as in the ODE system. Since this model takes the position into account, a group of *Infected* that move into a uniform population with *Susceptible* can be model. The group of *Susceptible* has the density $S_0$. A simulation can show the geotemporal spread of the disease. The problem can first be considered as one-dimensional. The system can be nondimensionalised by writing 
+!bt
+\begin{equation} label{eq:constants_nondimensional}
+	\begin{aligned}
+	I^* =\frac{I}{S_0},&\quad I^* = \frac{I}{S_0},&\quad R^*= \frac{R}{S_0},&\\
+	x^* =\left(\frac{rS_0}{D}\right)^{1/2}x,&\quad t^*=rS_0t,&\quad \lambda =\frac{a}{rS_0},&
+	\end{aligned}
+\end{equation}
+!et
+$S_0$ is used as a representative population. Now Eq.(ref{eq:simple_PDE}) can be expressed as in Eq.(ref{eq:simple_non_PDE}). The asterisks have been dropped to make it easier to read.
+!bt
+\begin{equation} label{eq:simple_non_PDE}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2},\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+!et
+The three parameters $r$, $a$ and $D$ have been replaced by $\lambda$. The *reproduction rate* that was presented for the ODE model can be seen as $1/\lambda $.
+!bt
+\begin{equation} label{eq:reproduction_rate_PDF}
+R_0 = \frac{1}{\lambda} = \frac{rS_0}{a}
+\end{equation}
+!et
+The number of secondary infections produced by one primary infected can be seen as $1/\lambda$. It can also be used to measure two different time scales. The first one, $1/(rS_0)$, measures the contagious time of the disease. The second one looks at the life expectancy for an infected. This can be described as $1/a$ cite{murray2003mathematical}. 
+===== Travelling wave 1D =====
+In this case the travelling wave describes how a group of *Infected* travels through a geographic area of *Susceptible*. This will be shown by sending a pulse from the *Infected* group into a group of *Susceptible*. A travelling wave solution can be described as follows,
+!bt
+\begin{equation} label{eq:trav_para}
+I(x,t)=I(z),\quad S(x,t)=S(z),\quad R(x,t) = R(z),\quad z = x-ct,
+\end{equation}
+!et
+The value $c$ describes the wave speed. This represents a wave of constant shape that travels in the positive x-direction. Eq.(ref{eq:trav_para}) can be inserted into Eq.(ref{eq:simple_non_PDE}). This result in the ordinary system Eq.(ref{eq:ord_diff_sys})
+!bt
+\begin{equation} label{eq:ord_diff_sys}
+	\begin{aligned}
+	S'' + cS' - IS &= 0,\\
+	I'' + cI' + I(S-\lambda)&=0\\
+	R'' + cR  + I\lambda &=0
+	\end{aligned}
+\end{equation}
+!et
+This makes an eigenvalue problem. The value of $\lambda$ needs to stay in a range where $c > 0$ is fulfilled. The values $S$, $I$ and $R$ have to stay nonnegative. This leads to
+!bt
+\begin{equation} 
+	\begin{aligned}
+	0 \leq S(-\infty) < S(\infty)&=1\\
+	I(-\infty)=I(\infty)&=0,\\
+	1 \geq R(-\infty)\geq R(\infty) &= 0
+	\end{aligned}
+\end{equation}
+!et
+An epidemic wave can be seen in Fig.(ref{fig:1D_sub}). The value of $\lambda$ is set to 0.5. The initial value of *Susceptible* is 1 for the area and the *Removed* is set to 0. The *Infected* group has a Gauss curve around 0 at initial time. In the four subplots in Fig.(ref{fig:1D_sub}), the epidemic wave travels towards the other side. The value $z$, which is defined in Eq.(ref{eq:trav_para}), is used to plot the travelling wave measured at a specific point, in this case $x=15$. This travelling wave is shown in figure(ref{fig:1D_tw}).       
+
+FIGURE:[2_fig/trav_wave_sub.png,height=600 width=800 frac=0.8] label{fig:1D_sub} The system (ref{eq:ord_diff_sys}. A gaussian curve with height 0.2 placed on the left side. This causes an epidemic wave controlled by the parameter $\lambda=0.5$. The size is measured at point $x=15$ and can be seen in figure (ref{fig:1D_tw}). 
+
+FIGURE:[2_fig/epidemic_wave_z_lambda_0_5.png] label{fig:1D_tw} This shows the travelling wave measures at at $x=15$ in figure(ref{fig:1D_sub})
+
+<linebreak>
+The *Infective* group in Eq.(ref{eq:ord_diff_sys}) can be linearised when $z\rightarrow \infty$. This leads to $S\rightarrow 1$ and $I \rightarrow 0$. The result then become 
+!bt
+\begin{equation}
+	I'' + cI' + I(S-\lambda) \approx 0 
+\end{equation}
+!et
+This can be found by
+!bt
+\begin{equation}
+I(z) \propto \exp\left[(-c \pm {c^2 -4(1-\lambda)}^{1/2})z/2\right]
+\end{equation}
+!et
+Since it is required that $I(z)\rightarrow 0$ and $I(z) > 0$, oscillations around 0 must be prevented. If a travelling wave exist, it has to satisfy
+!bt
+\begin{equation}
+	c \geq 2(1-\lambda)^{1/2}, \lambda < 1
+\end{equation}
+!et
+If $\lambda > 1$, no travelling wave will exist. Then the disease will die out. The terms defined in Eq.(ref{eq:constants_nondimensional}) will give the threshold conditions,
+!bt
+\begin{equation}
+	\lambda = \frac{a}{rS_0} < 1
+\end{equation}
+!et
+This is the same value that was given for the ODE model in the previously chapter.
+===== Verifying the solution =====
+To verify the implementation of the solution, a couple of tests can be done one the system in Eq.(ref{eq:simple_non_PDE}). The system will be tested with a constant solution and a manufactured solution.   
+
+===== Constant solution =====
+A constant solution uses preproduced constant values for the concentrations $S$, $I$ and $R$. These can be replaced by $S = C_s,I=C_i,R=C_r$. The value of $C_i$ can only be 0 in Eq.(ref{eq:simple_non_PDE}). This results in a poor test where several bugs can escape. The system can be expanded by adding a term $\beta R$ to the *Susceptible* group and subtracting the same term from the *Removed* group. Then all three values can be tested. The system will then look like this: 
+!bt
+\begin{equation} label{eq:simple_non_PDE2}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \beta R + \frac{\partial^2 S}{\partial x^2},\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2},\\
+	\frac{\partial R}{\partial t} &= \lambda I - \beta R + \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+!et
+By deriving Eq.(ref{eq:simple_non_PDE2}), the following system Eq.(ref{eq:constant_PDE}) has to be solved
+!bt
+\begin{equation} label{eq:constant_PDE}
+	\begin{aligned}
+	C_iC_s &= \beta C_r \\
+	C_iC_s &= \lambda C_i \\
+	\lambda C_i &= -\beta C_r 
+	\end{aligned}
+\end{equation}
+!et
+The values $\beta$ and $\lambda$ are based on the constants $C_s,C_i,C_r$, which can be chosen freely. Here they are set to $C_s = 1.2,C_i=0.8,C_r=0.6$. This results in $\lambda= C_s = 1.2$ and $\beta= \frac{C_s C_i}{C_r}=1.6$. A test is made in python and can be seen below.
+
+@@@CODE 2_src/verify_sol.py fromto: def test_constant_solution@def test_manufactured_solution
+
+The test was run with no error, and the three constant values were produced correctly. This test is not good enough to qualify the program alone, however an error here would result in a large error in the program. 
+===== Manufactured solution =====
+By constructing a function to each equation in the Eq.(ref{eq:simple_non_PDE}), a manufactured solution can be created. Here $S$,$I$ and $R$ are pre produced. The system will be
+!bt
+\begin{equation} label{eq:simple_non_PDE3}
+	\begin{aligned}
+	\frac{\partial S}{\partial t} &= -IS + \frac{\partial^2 S}{\partial x^2}+f(x,t),\\
+	\frac{\partial I}{\partial t} &= IS- \lambda I + \frac{\partial^2 I}{\partial x^2}+g(x,t),\\
+	\frac{\partial R}{\partial t} &= \lambda I + \frac{\partial^2 R}{\partial x^2}+h(x,t),
+	\end{aligned}
+\end{equation}
+!et
+where $f$, $g$ and $h$ are functions to achieve the expected results for $S$, $I$ and $R$. In this case the functions will be:
+!bt
+\begin{equation}
+	\begin{aligned}
+	f(x,t) = \frac{\partial S}{\partial t} + IS - \frac{\partial^2 S}{\partial x^2}\\
+	g(x,t) = \frac{\partial I}{\partial t} - IS + \lambda I - \frac{\partial^2 I}{\partial x^2}\\
+	h(x,t) = \frac{\partial R}{\partial t} -\lambda I - \frac{\partial^2 R}{\partial x^2},
+	\end{aligned}
+\end{equation}
+!et
+When choosing the expected function for the groups, it is important that the boundary conditions from Eq.(ref{eq:boundary_initial}) is fulfilled.
+!bt
+\begin{equation}
+    u_x(0,t) = u_x(X,t) = 0
+\end{equation}
+!et
+The quantities have been set to:
+!bt
+\begin{equation}
+	\begin{aligned}
+    S(x,t) = cos(\frac{\pi}{X}x)t\\
+    I(x,t) = cos(\frac{\pi}{X}x)t\\
+    R(x,t) = cos(\frac{\pi}{X}x)t
+	\end{aligned}
+\end{equation}
+!et
+Now `sympy` can be used to do the calculations for the three functions $f$, $g$ and $h$. The program can be seen in the Appendix. This results in the following equations seen in Eq.(ref{eq:manu_func}) 
+!bt
+\begin{equation} label{eq:manu_func}
+	\begin{aligned}
+	f(x,t) &= (t^2\cos(\frac{\pi}{X} x) + (\frac{\pi}{X})^2t + 1)\cos(\frac{\pi}{X} x)\\
+	g(x,t) &= (\lambda t - t^2\cos(\frac{\pi}{X} x) + (\frac{\pi}{X})^2t + 1)\cos(\frac{\pi}{X} x)\\
+	h(x,t) &= (-\lambda t + (\frac{\pi}{X})^2t + 1)\cos(\frac{\pi}{X} x)
+	\end{aligned}
+\end{equation}
+!et
+A similar test made for the constant solution can be used here. While the constant test expected a difference on machine precision, this is not the case here. In this test, an expected convergence rate can be measured. The following manufactured test will be
+
+@@@CODE 2_src/verify_sol.py fromto: def test_manufactured_solution@def solver()
+
+===== Convergence rate =====
+The program can be controlled by checking the convergence rate. The error term  for this equation can be described as  
+!bt
+\begin{equation} label{eq:error}
+    \epsilon = C_x\Delta x^2 + C_t \Delta t
+\end{equation}
+!et
+With Eq.(ref{eq:error}), the expected convergence rate can be found for both $\Delta x$ and $\Delta t$. To be able to separate the $\Delta$s, the other value has to be close to eliminated. To study the value $\Delta x$, the following term has to be fullfilled: $\Delta t \ll \Delta x$. This will lead to $C_t\Delta t \approx 0$, and the error term for $\Delta x$ can be found. The opposite thing can  be done for $\Delta t$. A table for the error is produced for different values for $\Delta t = 0.05$ and $\Delta x=0.1$.
+
+label{table:error_numbers}
+|---------------------------------------------------------------------------------------------------------------|
+|         		|$\Delta x$ 	|$\frac{\Delta x}{2}$   |$\frac{\Delta x}{4}$  |$\frac{\Delta x}{8}$	|
+|---------------------------------------------------------------------------------------------------------------|
+|$\Delta t     $ 	|9.9E-3   	|  -    		|		     - | -     		 	|
+|$\frac{\Delta t}{4} $  |9.9E-3   	|2.5E-3 		|		     - | -     		 	|
+|$\frac{\Delta t}{8} $  |9.9E-3   	|2.5E-3 		|		6.1E-4 | -     		 	|
+|$\frac{\Delta t}{16}$  |9.9E-3   	|2.5E-3 		|		6.1E-4 |1.5E-4 		 	|
+|---------------------------------------------------------------------------------------------------------------|
+#0.00986586295419,-,-,- 
+#0.00988006143376,0.00246039081619,-,-
+#0.00988361769746,0.00246127510994,0.000614719954035
+#0.00988450717896,0.00246149628689,0.000614775174047,0.000153656409034
+
+===== The spatial error =====
+The Tab.(ref{table:error_numbers}) gives information about the error when $\Delta t$ and $\Delta x$ are reduced. By studying the row where $\Delta t/16$, the $C_t \Delta t$ can be seen as close to negligible in Eq.(ref{eq:error}). The error can be expressed 
+!bt
+\begin{equation}
+    \epsilon \propto \Delta x^r
+\end{equation}
+!et
+The value is expected to be $r=2$, since centered difference is used in the spatial discretization. By comparing the error for different $\Delta x$, the convergence rate, $r$, can be expressed, 
+!bt
+\begin{equation} label{eq:conv_rate}
+ r_{12} \simeq \frac{\log(\epsilon_1/\epsilon_2)}{\log(\Delta x_1/\Delta x_2)}
+\end{equation}
+!et
+Since the table above has four different error values, these can be used to give three different convergence rates. $\Delta x_1 = \Delta x, \Delta x_2 = \Delta x/2...$. The same notation has been used for the different error values, $\epsilon$.
+|-------------------------------------------------------------------------------|
+|	|$\epsilon_1/\epsilon_2$|$\epsilon_2/\epsilon_3$|$\epsilon_3/\epsilon_4$|
+|-------------------------------------------------------------------------------|
+| r    |2.0056			|2.0014			|2.0004			|
+|-------------------------------------------------------------------------------|
+
+##|------|$\epsilon_1/\epsilon_2$	|$\epsilon_2/\epsilon_3$|$\epsilon_3/\epsilon_4$|
+Here the rate goes towards 2, and a 2.order convergence rate seems to be fulfilled.
+===== The temporal error =====
+The temporal error is hard to find since the *Stability criteria* expects $\Delta t$ to fulfill the criteria in Eq.(ref{eq:stability_cr}) to avoid oscillations.
+!bt
+\begin{equation} label{eq:stability_cr}
+ \Delta t \leq \frac{\Delta x^2}{2}
+\end{equation}
+!et
+As a result, $\Delta x \ll \Delta t$ is impossible, because this only leads to an unstable solution. By looking at the column for $\frac{\Delta x}{8}$, the only stable solution is for $\frac{\Delta t}{16}$. Therefore the technique used for the spatial error cannot be used here. 
+
+===== Travelling wave in 2D =====
+The Eq.(ref{eq:simple_non_PDE}) can be discretized for a 2D area. This is more realistic when simulating a geographic spread of an epidemic disease. The non dimensional system  can be discretized with Forward Euler in time and centered difference in space
+!bt
+\begin{equation} label{eq:SIR_disc}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= -I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right) 
+	\end{aligned}
+\end{equation}
+!et
+The known values can be placed on the right side. The system will then be
+!bt
+\begin{equation}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^{n}_{i,j}+\Delta t\left(-I^{n}_{i,j}S^{n}_{i,j} + \left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    I^{n+1}_{i,j} &= I^{n}_{i,j}+\Delta t\left(I^{n}_{i,j}S^{n}_{i,j} -\lambda I^{n}_{i,j} + \left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right)\right) \\
+    R^{n+1}_{i,j} &= R^{n}_{i,j}+\Delta t\left(\lambda I^{n}_{i,j}+\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right)\right) 
+	\end{aligned}
+\end{equation}
+!et
+This results in an explicit system, which is easy to code. It consists of known values on the right side and only one unknown value on the left side.
+===== A gaussian wave =====
+In the PDE system for the 1D equation, a Gaussian quantity of infected humans was placed on the left side in the initial value. This resulted in a wave of *Infected* spreading along the x-axis. A similar procedure can be done for the 2D simulation. A couple of simulations have been produced for the 2D system. The first simulation is calculated with a Gaussian function along the points(0,y) for the *Infected* group at initial time. The second simulation has placed the Gaussian function at point(0,0) for the *Infected* group at initial value. Both simulations can be seen in the Appendix.  
+<linebreak>
+<linebreak>
+The size of the epidemic wave can be measured and compared by studying the travelling wave at a certain point. In these two 2D simulations in Fig.(ref{fig:2D_trav_wave}), the wave are measured in the point (15,15), while the travelling wave in the 1D simulation was measured at point(15). 
+
+FIGURE:[2_fig/Trav_wave_2D.png, height=400 width=800 frac=0.8] label{fig:2D_trav_wave} Travelling wave measured at point (15,15) with two different initial values for the *Infected* group. I:The initial value is set as a Gaussian line along (0,y).II:The initial value is set as a Gaussian point (0,0).
+
+<linebreak>
+<linebreak>
+The shapes of the two travelling waves in Fig.(ref{fig:2D_trav_wave}) are similar. The only difference is the time when the wave occurs. The plot for 1D wave in Fig.(ref{fig:1D_tw}) has the same shape. With a closer study, the area under the function can be measured in all three cases. The result can be seen in Tab.(ref{table:wave_values})   
+
+#1D
+#1.4340793845
+#1.43143259034 dt = $1\cdot10^{-3}$, dx = 0.05
+#1.43195870243 dt = 0.0002, dx^2 = 0.000625
+#2D wave line: 
+#1.43345609926 dt =0.0004, dx^2 =  0.0016
+#2D wave point:
+#1.43352971688
+
+label{table:wave_values}
+|------------------------------------------|
+|1D wave       |2D wave line |2D wave point|
+|------------------------------------------|
+|1.43          |1.43         |1.43         |
+|------------------------------------------|
+
+The area in all three simulations approach the same area when $\Delta t$ and $\Delta x$ are reduced. The size and shape will not change by  expanding the system from 1D to 2D. However, by studying Fig.(ref{fig:2D_trav_wave}), one can see that the wave occurs at different times. This is caused by the distance from the start position for the Gaussian wave. The first subplot that starts with a Gaussian function along the $x=0$ axis gets a wave from the *Infected* group that flows along the x axis. This can be seen as a wave on the beach. Everyone that have the same distance from the ocean will be hit simultaneously. The travelling wave for the 1D simulation and the first subplot occurs at the same time, because they are measured at the same distance from the starting point. The last plot is also measured at (15,15), but occurs later. Since the wave starts at point (0,0), the distance to (15,15) is 21.21. This means that the wave will reach the point 6.21 time steps later. This is a reasonable conclusion based on the plot.    
+
+=== Change in initial flow ===
+By increasing the initial wave of the *Infected* group, the initial value of *Infected* can be studied. The simulation is run with the same parameters as for the three simulations above and the only difference is the initial value for the *Infected* group. The Gaussian wave of *Infected* is placed at point(0,0) as for subplot II in Fig.(ref{fig:2D_trav_wave}). The simulation can be seen in Fig.(ref{fig:initial_value}).  
+#Volume ordinary = 0.3141592653589793
+#Volume extreme = 157.07963267948966
+#Volume under graph 1.43345609926
+
+FIGURE:[2_fig/2D_initial_variable_sub.png,height=600 width=800 frac=0.8] label{fig:initial_value} A major flow of *Infected* spread outwards in the field. After a certain time, the wave has passed the area and the number in each group stabilized. 
+
+<linebreak>
+<linebreak>
+The size and shape can be compared by measuring the travelling wave at point(15,15). The travelling wave for this simulation can be seen in Fig.(ref{fig:initial_trav_wave}) and the area for the travelling wave is measured to 1.43, which is similar to the three other simulations.
+
+FIGURE:[2_fig/TW_2D_initial_z_lambda_0_5.png,height=600 width=800 frac=0.8] label{fig:initial_trav_wave} The travelling wave with a major increase of *Infected* at the initial time. 
+
+<linebreak>
+<linebreak>
+The size of the travelling  wave will not be affected by changing the value of the *Infected* group. However there is a difference in the time when the wave occurs. In the simulation where the initial value is higher, the travelling wave reaches the measuring point (15,15) earlier. This can be explained by the idea of a ball dropped from a large height. If the ball is released or thrown to the ground, it will only affect the acceleration of the ball, not the terminal velocity. After a certain time the released ball and the thrown ball will reach the same maximum speed. This is the case for the speed of the travelling wave. 
+=== Change in lambda ===
+The one thing that affects the speed and size, is the $\lambda$ variable in the PDE system(ref{eq:simple_non_PDE}). This $\lambda$ is a combination of $a$, which controls deaths among the *Infected* group, $r$, which controls the number from the *Susceptible* group that gets infected in meetings between the *Infected* and *Susceptible* groups. The last parameter in $\lambda$ is the concentration of Susceptible, $S_0$. By changing this parameter, the travelling wave will change in both size and shape. In Fig.(ref{fig:change_lambda}), the simulation is run with four different values of $\lambda$.
+
+FIGURE:[2_fig/2D_lambda_variable.png, height=600 width=800] label{fig:change_lambda} The travelling wave simulated with $\lambda$ values in the range of 0.01 to 1.
+
+<linebreak>
+<linebreak>
+To understand the results in Fig.(ref{fig:change_lambda}), the $\lambda $ function can be studied,
+!bt
+\begin{equation} label{eq:lambda}
+ \lambda =\frac{a}{rS_0},
+\end{equation}
+!et
+A major and aggressive travelling wave is caused when $\lambda \rightarrow 0$. In Fig.(ref{fig:change_lambda}), $\lambda$ is run with value 0.01 in the first subplot. This results in a travelling wave of *Infected* that eradicates the *Susceptible* group in a short time. The wave starts decreasing when all *Susceptible* are infected. By looking at Eq.(ref{eq:lambda}),one can see that a small value is caused by a small $a$ compared to $r$ and $S_0$. If $a$ is low, this results in few deaths/immune in the *Infected* group. This means that the *Infected* group will grow and be able to infect even more humans from the *Susceptible* group. The same thing will happen if $r$ is large. A result of a large $r$ will be an aggressive disease that infects  a major part of the population. The same result will happen if $S_0$ is large. Then there are several possible humans to infect. Therefore an outburst of a disease is more critical in a crowded city than in the wilderness, far from other humans.
+<linebreak>
+<linebreak>
+If $\lambda$ increases above 1, the disease will not be able to spread. The number of *Infected* will decrease, since the number in the *Removed* group caused by the *Infected* group is higher than the amount of *Infected* humans from the *Susceptible* group. After a certain time, the number of *Infected* will die out. If $\lambda$ stays at 1, the number of *Infected* will be equal the whole time. 
+
+======= English Boarding School =======
+An example from an English boarding school was presented in the previously chapter *Epidemic models* . This example was based on the book from J.D Murray cite{murray2002mathematical}, and was modeled for an ODE system. A similar result should appear for the PDE system with the same parameter values and a uniform distribution of the groups. The school had 763 students, and one of the students brought a disease back to the school. The following numbers were used for the ODE system in chapter one. $N=763, S_0=762,I_0=1,R_0=0,\rho=202$ and $r = 2.18\cdot 10^{-3}$. 
+<linebreak>
+<linebreak>
+The first simulation is produced with uniform distributed concentration, This is done to verify the implementation. A person is defined as one cubic. The total volume of the whole group is spread over the area. The area is set to be 100 m x 100 m, which results in an average height of $1/10000$ m per person. This is done to get a uniformed distribution. This would of course be more difficult in real life, particularly if the person would be alive. Since the *Infected* group only consists of one person, the total height will be 0.0001 for the whole area. The *Susceptible* group consists of 762 students and the total height at each point will be 0.0762 The simulation can be seen in the Appendix. 
+<linebreak>
+<linebreak>
+The results from subplot I in Fig.(ref{fig:british_number}) are equal to the results from the ODE system modeled in the previously chapter.This can be seen in Tab.(ref{table:british_number_table}). This is as expected, since the diffusion term is negligible in this system. The simulation results in a group of separate ODE systems modeled over an area.
+
+FIGURE:[2_fig/british_number.png, height=600 width=300 frac=0.6] label{fig:british_number} English Boarding School modeled with three different initial values for the infected student. The amount of students in each group modeled over 15 days. Subplot 1: uniform distribution. Subplot 2: The student is placed as a Gaussian function in center. Subplot 3: The student is placed as a Gaussian function in the corner (0,0). 
+
+===== Maximum concentration of *Infected* =====
+The maximum concentration of the *Infected* group was found for the ODE system in the previous chapter. The expected value of $\Imax$ was first calculated, and later verified with the numberical solution of the ODE system. The reproduction rate found for the PDE system in Eq.(ref{eq:reproduction_rate_PDF}) was given by the same parameters as for the ODE system. A similar maximum value is expected from the PDE solution. The maximum value for the *Infected* array is $\Imax=292$ and is similar to the $\Imax$ for the ODE solution. 
+    
+A table with the values from the three simulations performed for this English boarding school are compared to ODE system from chapter ref{section:ODE_models}.
+
+label{table:british_number_table}
+|-------------------------------------------------------------------|
+|           | ODE system| PDE uniform dist  |PDE center |PDE corner |
+|-------------------------------------------------------------------|
+|5 Days     |-----------|-------------------|-----------|-----------|
+|-------------------------------------------------------------------|
+|Susceptible|444.62     |444.62             |748.03     |757.33     |
+|Infective  |209.56     |209.56             |7.36       |2.35       |
+|Removed    |108.82     |108.82             |7.60      	|3.32       |
+|-------------------------------------------------------------------|
+|10 Days    |-----------|-------------------|-----------|-----------|
+|-------------------------------------------------------------------|
+|Susceptible|37.59      |37.59              |697.71     |743.58     |
+|Infective  |117.59     |117.59             |24.43      |6.66       |
+|Removed    |607.82     |607.82             |40.86     	|12.76      |
+|-------------------------------------------------------------------|
+|15 Days    |-----------|-------------------|-----------|-----------|
+|-------------------------------------------------------------------|
+|Susceptible|21.09      |21.09              |597.01     |717.02     |
+|Infective  |17.30      |17.30              |46.96      |12.37      |
+|Removed    |724.62     |724.62             |119.03     |33.61      |
+|-------------------------------------------------------------------|
+#dt = 1.5E-4
+#dx = 0.04
+#dx^2 = 1.6E-3
+#ODE = 1.5E-4
+
+===== Introducing a Gaussian distribution of infected =====
+An assumption one can make is that a person is not able to be evenly distributed over an area. In this example, with only one infected student at initial time, the chance of being infected increases the closer the *Susceptible* group gets the infected student. The student is represented by a Gaussian function in the middle of the school yard, to see if the position affects the result. The height is set to 1 and the volume of the Gauss function is set to 1 cubic. The simulation can be seen in Fig.(ref{fig:gauss_sub}) and the total amount of students in each group can be be seen in Fig.(ref{fig:british_number}).
+
+FIGURE:[2_fig/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub} The infected student is placed in the center as a Gaussian function at initial time. The height of the Gaussian function is set to 1 m and volume is set to 1 cubic. 
+
+<linebreak>
+<linebreak>
+The results from the uniform distributed and Gaussian distributed simulations show various results. The initial position of the *Infected* group is the difference between the simulations. This has a major impact. Since the only ones that can be infected by the Gaussian distribution are the students close to the infected student, this restricts the spread of the epidemic. The chance of getting infected in this area is higher. The Fig.(ref{fig:gauss_sub}) shows that the amount of *Infective* quickly grows in the center, where the infected was placed. Subplot IV in Fig.(ref{fig:gauss_sub}) shows that the amount from the *Removed* group in the center is close to the maximum of the initial value of *Susceptible*, while the students along the boundary of the schoolyard seem to be unaffected after 15 days. This simulation shows that the position of the *Infected* group has a major role in the simulation.
+<linebreak>
+<linebreak>
+The position of the *Infected* group, here as a Gaussian function, also affects the outcome. Subplot III in Fig.(ref{fig:british_number}) describes a simulation where the Gaussian function is placed in the corner with position(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. Tab.(ref{table:british_number_table}) shows that the total number of *Infected* is lower than for the centered placed Gaussian function. The infected student is only able to spread the disease to a quarter of the population compared to the infected student in the center. The simulation can be seen in the Appendix.
+<linebreak>
+<linebreak>
+If the simulations are run for a long time, the difference between each group will decrease. After 100 days there will be about 18 students in the *Susceptible* group in the uniform distributed simulation, compared to 25 students in both of the Gaussian simulations. The simulations can be seen in the Appendix.
+
+!split
+======= Zombiefication =======
+The previous chapter studied an ODE system designed to calculate the number in the four groups: *Susceptible*, *Infected*, *Zombie* and *Removed* during the five first episodes in the TV series *Walking Dead* Ref.cite{walking_dead}. The model was based on the model from Langtangen, Mardal and Røtnes Ref.cite{zombie-math}, with an extra term in the *counter attack* phase. The ODE system from the chapter *Epidemic models* can be expanded with a diffusion term in each group to make a PDE system. This can be seen in Eq.(ref{eq:seland_model_PDE})  
+!bt
+\begin{equation} label{eq:seland_model_PDE}
+	\begin{aligned} 
+	\frac{\partial S}{\partial t} &= \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +D_s\nabla^2 S \\
+	\frac{\partial I}{\partial t} &= (\beta+\mu \omega(t))SZ - \varrho I - \delta_II+D_i\nabla^2 I \\
+	\frac{\partial Z}{\partial t} &= \varrho I- (\alpha+\omega(t))SZ + \zeta R+D_z\nabla^2 Z \\
+	\frac{\partial R}{\partial t} &= \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+D_r\nabla^2 R 
+	\end{aligned}
+\end{equation}
+!et
+The Eq.(ref{eq:seland_model_PDE}) can be solved numerically by discretization. Forward Euler is used for the time derivative and centered difference for the space derivative. This is solved with the same technique as for the SIR model(ref{eq:SIR_disc}). The system can be seen in Eq.(ref{eq:SIZR_disc})
+!bt
+\begin{equation} label{eq:SIZR_disc}
+	\begin{aligned}
+    \frac{S^{n+1}_{i,j}-S^n_{i,j}}{\Delta t} &= \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j} \\
+        &+D_s\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{I^{n+1}_{i,j}-I^n_{i,j}}{\Delta t} &= (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j} \\
+        &+D_i\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{Z^{n+1}_{i,j}-Z^n_{i,j}}{\Delta t} &= \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j} \\
+        &+D_z\left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right) \\
+    \frac{R^{n+1}_{i,j}-R^n_{i,j}}{\Delta t} &= \delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j} \\
+        &+D_r\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right) 
+	\end{aligned}
+\end{equation}
+!et
+By setting the unknown to the left, the following system in Eq.(ref{eq:SIZR_disc2}) can be solved: 
+!bt
+\begin{equation}label{eq:SIZR_disc2}
+	\begin{aligned}
+    S^{n+1}_{i,j} &= S^n_{i,j} + \Delta t \Bigl( \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j} \\
+        &+ D_s\left(\frac{S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j}}{\Delta x^2}+\frac{S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) \\
+    I^{n+1}_{i,j} &= I^n_{i,j} + \Delta t \Bigl((\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j} \\
+        &+ D_i\left(\frac{I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j}}{\Delta x^2}+\frac{I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) \\ 
+    Z^{n+1}_{i,j} &= Z^n_{i,j} +\Delta t \Bigl( \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j} \\
+        &+D_z\left(\frac{Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j}}{\Delta x^2}+\frac{Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) \\
+    R^{n+1}_{i,j} &= R^n_{i,j} +\Delta t \Bigl(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j} \\
+        &+D_r\left(\frac{R^{n}_{i-1,j}-2R^{n}_{i,j}+R^{n}_{i+1,j}}{\Delta x^2}+\frac{R^{n}_{i,j-1}-2R^{n}_{i,j}+R^{n}_{i,j+1}}{\Delta y^2}\right)\Bigr) 
+	\end{aligned}
+\end{equation}
+!et
+A simulation with uniform distributed groups can be done to verify the implementation of the system. The result is expected to be similar to the ODE system in the previous chapter. A zombie attack can be separated into three different phases, based on the paper from Langtangen, Mardal and Røtnes cite{zombie-math}. The first phase is short, and it is called the *Initial phase*. The humans are unfamiliar with the disease in this phase and are as a consequence quite naive to the disease. This result in a high chance of getting infected. The next phase is called the *Hysterical phase*. The humans are now more familiar with the situation and try to avoid the *Infected* group. This result in a lower chance of getting infected. The last phase, which happens at the same time as the *Hysterical phase*, is the *Counter attack*. This phase is often initiated when humans are attacked by zombies. The following parameters that were used for simulating the first episodes of *Walking Dead* will be used here. These can be seen in Tab.(ref{table:param_val}). By computing the system for all three phases, the value in each phase can be compared to the ones from the ODE system. This will give an indication of whether the discretization is done correct. 
+
+label{table:param_val}
+|-------------------------------------------------------|
+|parameter|Initial phase|hysterical phase|counter attack|
+|-------------------------------------------------------|
+|$\beta$  |0.01155      | 0.000011       | 0.00011      |
+|$\varrho$|1.37         | 1.5            | 1.5          |
+|$\alpha$ |0.00044      | 0.000208       | 0.000208     |
+|a        |0            | 0              | 0.0073       |
+|$\sigma$ |0            | 0              | 0.005        |
+|$\mu$    |0            | 0              | 0.14         |
+|-------------------------------------------------------|
+
+The simulation in Fig.(ref{fig:zombie_three_number}) seems to match the results from the ODE system. A closer check can be done by comparing the groups in each phase. This result can be seen in Tab.(ref{table:compare_phases_zombie}) 
+
+FIGURE:[2_fig/2D_zombie_three_phases_number.png, height=600 width=800 frac=0.8] label{fig:zombie_three_number} The Eq.(ref{eq:SIZR_disc2}) modeled with uniformed distributed groups. Initial values $S_0 = 621$, $I_0 = 0$, $Z_0 = 0$ and  $R_0 = 0$ with parameters from (ref{table:param_val}).
+
+<linebreak>
+<linebreak>
+The initial values for the four groups are set to $S_0=621$, $I_0=0$, $Z_0=1$ and $R_0= 0$ in all simulations. The values in Tab.(ref{table:compare_phases_zombie}) are measured at the final time for each phase. The *Initial phase* lasts for three days and the values are measured at $time=3$. The *Hysterical phase* is a continuous phase, and will not stop until an eventual eradication. The values are therefore given before the *Counter attack* at $time=33$. The *Counter attack* lasts for some hours, and is measured at $time=34$, which is a day after the attack. The value of $\Delta t$ is set to 1E-3. 
+
+label{table:compare_phases_zombie}
+|-----------------------------------------------------------------------|
+|                   | ODE system| PDE uniform dist  | PDE gauss center  |
+|-----------------------------------------------------------------------|
+|Initial phase      |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |71.3       | 71.3              |81.12              |
+|Infected           |230.8      | 230.8             |210.94             |
+|Zombie             |298.9      | 298.9             |310.11             |
+|Removed            |21.0       | 21.0              |20.60              |
+|-----------------------------------------------------------------------|
+|Hysterical phase   |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |61.6       |61.6               |70.55              |
+|Infected           |0.3        |0.3                |0.34               |
+|Zombie             |358.6      |355.6              |334.33             |
+|Removed            |201.5      |201.5              |217.56             |
+|-----------------------------------------------------------------------|
+|Counter attack     |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |57.8       |57.8               |66.50              |
+|Infected           |1.2        |1.2                |1.23               |
+|Zombie             |331.8      |331.8              |305.86             |
+|Removed            |231.3      |231.3              |249.19             |
+|-----------------------------------------------------------------------|
+
+These results shows that the PDE system gives the same results as the ODE system.
+
+##dt= 0.001
+##ODE results
+##
+##---------------------
+##time, 0.000000
+##S_n 621.0
+##I_n 0.0
+##Z_n 1.0
+##R_n 0.0
+##---------------------
+##time, 3.000000
+##S_n 71.2973582098
+##I_n 230.848367121
+##Z_n 298.873127347
+##R_n 20.9812508213
+##---------------------
+##time, 33.000000
+##S_n 61.6100739089
+##I_n 0.310909545827
+##Z_n 358.579528667
+##R_n 201.500626378
+##---------------------
+##time, 34.000000
+##S_n 57.7976621629
+##I_n 1.1578809554
+##Z_n 331.784821898
+##R_n 231.260807984
+##
+##
+##PDE results
+##
+##---------------------
+##time=0.000000
+##Susceptible = 621.00
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##---------------------
+##time=3.000000
+##Susceptible = 71.54
+##  Infective = 230.57
+##    Zombies = 298.91
+##    Removed = 20.97
+##---------------------
+##time=33.000000
+##Susceptible = 61.83
+##Infective =   0.32
+##Zombies =     357.89
+##Removed =     201.96
+##---------------------
+##time=34.000000
+##Susceptible = 58.02
+##Infective =   1.16
+##Zombies =     331.08
+##Removed =     231.74
+##Values each phase with dt= $5 \cdot 10^{-4}$ 
+##---------------------
+##time=0.000000
+##Susceptible = 621.00
+##Infective = 0.00
+##Zombies = 1.77
+##Removed = 0.00
+##---------------------
+##time=3.000000
+##Susceptible = 81.12
+##Infective =   210.94
+##Zombies =     310.11
+##Removed =     20.60
+##---------------------
+##time=33.000000
+##Susceptible = 70.55
+##Infective =   0.34
+##Zombies =     334.33
+##Removed =     217.56
+##---------------------
+##time=34.000000
+##Susceptible = 66.50
+##Infective =   1.23
+##Zombies =     305.86
+##Removed =     249.19
+
+
+===== The position of the *Infected* group =====
+In the previous section, *English boarding school*, the location of the *Infected* group was proven to have a major influence on the result. However here the *Susceptible* group was uniformly distributed over the schoolyard. The number in each group, based on the study of *Walking Dead*, was seen in three different locations in the TV series. By only studying the TV series, it is hard to decide the geographical distance between these three locations. Therefore they have been placed with a certain distance from each other. The following simulations are done on a grid with size(40 x 40) with the following positions for the towns: Small town(6,6) with size 21, middle town(12,25) with size 200 and large town(25,12) with size 400. Since these values were based on the humans and zombies seen in the series, these can be scaled up by 1000 to correspond a realistic population. A large town can be seen as an area with a population of 400 000. The length can be measured in kilometres. Then the distance between the middle and large town will be 18.38 km. Compared to the distance between Oslo and Bærum(Sandvika) which is 15 km, the simulation can be seen as a rough estimate of the area around Oslo, if the fjord is frozen and the mobility for the area is similar.
+<linebreak>
+<linebreak>
+The diffusion term describes the diffusion for each group. This can be seen as the speed towards equilibrium for each group. If the diffusion constant is large, the flow towards equilibrium will go faster. The values have been set as follows. 
+* $D_s=1$, The *Susceptible* has a basic moving speed. The other groups are based on the speed of a healthy human.
+* $D_i=0.5$, The *Infected* are often injured caused by recent fights. This affects their mobility.
+* $D_z=0.9$, The average moving speed for a zombie. There are zombies with the mobility of a human, but there are also zombies that drag themselves forward with only one arm. This results in a major difference in speed and therefore a lower average speed for the zombies.
+* $D_r=0$, The removed are here seen as dead, therefore there is no mobility.
+<linebreak>
+<linebreak>
+The parameters from Tab.(ref{table:param_val}) will be used here, and the three phases will be modeled as shown for the uniformed distributed PDE system. The values will be used for three different simulations with the similar initial value for the different groups. The position of initial values can be seen in Fig.(ref{fig:initial_value_susceptible}) and are based on the data given for each town above. The difference in the three simulations will be the position of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
+
+FIGURE: [2_fig/initial_value_susceptible.png, height=600 width=800 frac=0.8] label{fig:initial_value_susceptible} The initial value for the *Susceptible* group for three simulations. Small group(6,6) with volume 21, middle group(12,25) with volume 200 and large group(25,12) with volume 400. All three groups are build up with a Gaussian function. 
+
+<linebreak>
+<linebreak>
+Fig.(ref{fig:large_town}) shows the simulation where the zombie is placed in the large town. The simulations of the small and middle town can be seen in the Appendix. The four subplots are from the different phases that arise during a zombie attack. The different groups have the same color as introduced in Fig.(ref{fig:zombie_three_number}). It is difficult to separate the three groups *Infected*, *Zombie* and *Removed*, since they all have a low value at initial time. The development of the amount can easier be seen in the Fig.(ref{fig:compare_towns}), which also shows the results from the small and middle town. Since the amount of *Susceptible* is quite low in the small town where the zombie arises, the disease is not able to infect too many before the society has moved to the next phase, assuming that the broadcasting about the disease works okay for the first days. This results in an eradication of the disease in about a month. The table(ref{table:compare_phases_zombie}) shows that the number of zombies decreases towards zero after a month. 
+
+FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, height=600 width=800 frac=0.8] label{fig:large_town} *Walking Dead* simulated with the zombie at initial time in the large town. Subplots shown at each phase. 
+
+<linebreak>
+<linebreak>
+By placing the zombie in the middle town, the amount in the *Zombie* group increases to a higher level. The amount can be seen as subplot II in Fig.(ref{fig:compare_towns}). The damages are higher, and after a month the total population of *Susceptible* is reduced to 427. The last calculation done for the large town in Fig.(ref{fig:large_town}) shows major damages. Here the amount in the *Zombie* group increases above the number of *Susceptible*. The *Infected* group also increases to above 100 after a couple of days in the initial phase. This can be explained by the high number of meetings between susceptible and zombies. By studying the subplot II in Fig.(ref{fig:large_town}), the zombies are grouped in the large town, while the middle and small town mostly consist of *Susceptible*. By counting the loss of *Susceptible* during the first phase, the Tab.(ref{table:compare_towns}) shows that this amount corresponds with the size of the towns where the zombie was placed, given by the number 17,188 and 362 in the small,middle and large group. The percent is highest in the middle town with 94 percent. The percent in the large and small group are 90 and 81.  The simulation in the middle town has the highest percent because the *Susceptible* group in the large town also gets infected. These towns are coupled together, and the epidemic disease is able to spread. The small town, which can be seen as Nesodden(a peninsula outside Oslo), has the lowest percent. The reason is that the disease is not able to spread to the other towns, and therefore is causes less damage.  
+
+FIGURE:[2_fig/2D_compare_towns.png, height=1000 width=400 frac=0.6] label{fig:compare_towns} The values for each group counted during 34 days in *Walking Dead*. Initial phase from day 0 to day 3, Hysterical phase from day 3 to day 33 and Counter attack from day 33 to day 34.   
+
+<linebreak>
+<linebreak>
+The results from the uniformed distributed simulation is still much higher for the *Zombie* group the in these three simulations. This shows that using the parameters from the ODE system in a geographical area makes little sense. A realistic assumption is that a zombie is restricted to a given area, and therefore the parameters will not be equal for all. The chance of getting infected is much higher if a person from the  *Susceptible* group is close to an infected. There is also a greater chance of getting infected if the *Susceptible* group has a high density. 
+
+#FIGURE:[2_fig/2D_zombie_three_phases_zombie_small_town_2_number.png, height=600 width=800 frac=0.8]
+
+#FIGURE:[plots/2D_zombie_three_phases_zombie_middle_town_2_number.png, height=600 width=800 frac=0.8]
+
+#FIGURE:[plots/2D_zombie_three_phases_zombie_large_town_2_number.png, height=600 width=800 frac=0.8]
+
+##Small town
+##time=0.000000
+##Susceptible = 619.99
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 603.74
+##Infective = 2.96
+##Zombies = 13.79
+##Removed = 0.66
+##time=33.000000
+##Susceptible = 604.42
+##Infective = 0.03
+##Zombies = 6.25
+##Removed = 12.14
+##time=34.000000
+##Susceptible = 604.21
+##Infective = 0.08
+##Zombies = 4.49
+##Removed = 14.11
+
+
+##Middle town
+##time=0.000000
+##Susceptible = 619.99
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 433.22
+##Infective = 25.51
+##Zombies = 155.27
+##Removed = 7.16
+##time=33.000000
+##Susceptible = 429.35
+##Infective = 0.18
+##Zombies = 87.31
+##Removed = 106.00
+##time=34.000000
+##Susceptible = 427.45
+##Infective = 0.59
+##Zombies = 73.70
+##Removed = 121.16
+
+##Large town
+##time=0.000000
+##Susceptible = 619.99
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 259.20
+##Infective = 50.94
+##Zombies = 297.24
+##Removed = 13.78
+##time=33.000000
+##Susceptible = 251.14
+##Infective = 0.35
+##Zombies = 178.45
+##Removed = 192.90
+##time=34.000000
+##Susceptible = 247.33
+##Infective = 1.17
+##Zombies = 151.44
+##Removed = 222.96
+
+label{table:compare_towns}
+|-----------------------------------------------------------------------|
+|                   |Small town |Middle town 	|Large 			|
+|-----------------------------------------------------------------------|
+|Initial phase      |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |603.74     |433.22            |259.20           	|
+|Infected           |2.96       |25.51             |50.94            	|
+|Zombie             |13.79      |155.27            |297.24           	|
+|Removed            |0.66       |7.16              |13.78              	|
+|-----------------------------------------------------------------------|
+|Hysterical phase   |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |604.42     |429.35             |251.14             |
+|Infected           |0.03       |0.18               |0.35               |
+|Zombie             |6.25       |87.31              |178.45             |
+|Removed            |12.14      |106.00             |192.90             |
+|-----------------------------------------------------------------------|
+|Counter attack     |-----------|-------------------|-------------------|
+|-----------------------------------------------------------------------|
+|Susceptible        |604.21     |427.45              |247.33            |
+|Infected           |0.08       |0.59                |1.17              |
+|Zombie             |4.49       |73.70               |151.44            |
+|Removed            |14.11      |121.16              |222.96            |
+|-----------------------------------------------------------------------|
+## dt = 34/68000
+## dx = 40/800
+
+===== Free areas for the *Susceptible* group =====
+To model a realistic zombie attack, humans ability to think logically is crucial in the fight. The mobility was presented as a factor in the previous section. Another important skill that the *Susceptible* group holds, is the ability to decide the safety of an area. In the TV series *Walking Dead*, the humans build barricades to keep the zombies outside. This gives the *Susceptible* group free areas where they can stay. This idea can be transfered to the PDE system by rewriting the Eq.(ref{eq:seland_model_PDE}) with spatial dependent diffusion terms. The diffusion constant $D_u$ is now replaced with a diffusion function $\gamma_u(x)$ for $u= S,I,Z,R$, which is spatial discretized. Since a diffusion equation always goes towards equilibrium, this rewriting will only slow down/stop the selected group to diffuse into an area. In this case it will stop the *Zombie* group from diffusing into the buildings. 
+!bt
+\begin{equation} label{eq:seland_model_diff}
+    \begin{aligned} 
+    \frac{\partial S}{\partial t} =& \Sigma -(\beta+\mu \omega(t))SZ - \delta_SS +\nabla(\gamma_S(x) \nabla S) \\
+    \frac{\partial I}{\partial t} =& (\beta+\mu \omega(t))SZ - \varrho I - D_i\delta_II+\nabla(\gamma_I(x) \nabla I)\\
+    \frac{\partial Z}{\partial t} =& \varrho I- (\alpha+\omega(t))SZ + \zeta R+\nabla(\gamma_Z(x) \nabla Z)\\
+    \frac{\partial R}{\partial t} =& \delta_SS +\delta_II -\zeta R + (\alpha+\omega(t))SZ+\nabla(\gamma_R(x) \nabla R) 
+    \end{aligned}
+\end{equation}
+!et
+The diffusion term is the difference between this system and Eq.(ref{eq:seland_model_PDE}). The discretization can be shown for for a general $\gamma$. This will be similar for all groups. A centered difference is used in space.
+!bt
+\begin{equation} label{eq:gamma}
+    \begin{aligned}
+    &=\nabla(\gamma(x) \nabla S) \\
+    &=(\gamma(x) S_x)_x+(\gamma(x) S_y)_y \\
+    &= \left(\gamma(x) \frac{S^{n}_{i+1/2,j}-S^{n}_{i-1/2,j}}{\Delta x}\right)_x+\left(\gamma(x) \frac{S^{n}_{i,j+1/2}-S^{n}_{i,j-1/2}}{\Delta y}\right)_y \\
+    &= \left(\frac{\gamma(x_{i+1/2,j})(S^{n}_{i+1,j}-S^{n}_{i,j})-\gamma(x_{i-1/2,j})(S^{n}_{i,j}-S^{n}_{i-1,j})}{\Delta x^2}\right) \\
+    &+ \left(\frac{\gamma(x_{i,j+1/2})(S^{n}_{i,j+1}-S^{n}_{i,j})-\gamma(x_{i,j-1/2})(S^{n}_{i,j}-S^{n}_{i,j-})}{\Delta y^2}\right)
+    \end{aligned}
+\end{equation}
+!et
+Since the calculations are based on spatial points, the values inside the function of $\gamma$ need to be adjusted. This can be done by the use of an arithmetic mean, which can be seen in Eq.(ref{eq:arith_mean}). The notation $q_{i+1/2}$ is a simplification of the function $q(x_{i+1/2})$ with $x_{i+1/2} = x_i + 1/2 \Delta x$
+!bt
+\begin{equation} label{eq:arith_mean}
+q_{i+1/2} \approx \frac{1}{2}(q_i +q_{i+1})
+\end{equation}
+!et
+This arithmetic mean can be inserted for all $\gamma$'s in the system. The system can be expressed:
+!bt
+\begin{equation} label{eq:SIZR_disc3}
+	\begin{aligned}
+    S^{n+1}_{i,j}   &= S^n_{i,j} + \Delta t \Bigl( \Sigma - (\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}- \delta_S S^{n}_{i,j} \\
+                    &+ \frac{1}{2\Delta x^2}\left(\gamma_S(x_{i-1,j})(S^{n}_{i-1,j}-S^{n}_{i,j})+\gamma_S(x_{i,j})(S^{n}_{i-1,j}-2S^{n}_{i,j}+S^{n}_{i+1,j})+\gamma_S(x_{i+1,j})(-S^{n}_{i,j}+S^{n}_{i+1,j})\right) \\
+                    &+ \frac{1}{2\Delta y^2}\left(\gamma_S(x_{i,j-1})(S^{n}_{i,j-1}-S^{n}_{i,j})+\gamma_S(x_{i,j})(S^{n}_{i,j-1}-2S^{n}_{i,j}+S^{n}_{i,j+1})+\gamma_S(x_{i,j+1})(-S^{n}_{i,j}+S^{n}_{i,j+1})\right)\Bigr)\\
+    I^{n+1}_{i,j}   &= I^n_{i,j} + \Delta t \Bigl((\beta+\mu \omega(t))S^{n}_{i,j}Z^{n}_{i,j}-\varrho I^{n}_{i,j}- \delta_I I^{n}_{i,j} \\
+                    &+ \frac{1}{2\Delta x^2}\left(\gamma_I(x_{i-1,j})(I^{n}_{i-1,j}-I^{n}_{i,j})+\gamma_I(x_{i,j})(I^{n}_{i-1,j}-2I^{n}_{i,j}+I^{n}_{i+1,j})+\gamma_I(x_{i+1,j})(-I^{n}_{i,j}+I^{n}_{i+1,j})\right) \\
+                    &+ \frac{1}{2\Delta y^2}\left(\gamma_I(x_{i,j-1})(I^{n}_{i,j-1}-I^{n}_{i,j})+\gamma_I(x_{i,j})(I^{n}_{i,j-1}-2I^{n}_{i,j}+I^{n}_{i,j+1})+\gamma_I(x_{i,j+1})(-I^{n}_{i,j}+I^{n}_{i,j+1})\right)\Bigr)\\
+    Z^{n+1}_{i,j}   &= Z^n_{i,j} +\Delta t \Bigl( \varrho I^{n}_{i,j}-(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}+ \zeta R^{n}_{i,j} \\
+                    &+ \frac{1}{2\Delta x^2}\left(\gamma_Z(x_{i-1,j})(Z^{n}_{i-1,j}-Z^{n}_{i,j})+\gamma_Z(x_{i,j})(Z^{n}_{i-1,j}-2Z^{n}_{i,j}+Z^{n}_{i+1,j})+\gamma_Z(x_{i+1,j})(-Z^{n}_{i,j}+Z^{n}_{i+1,j})\right) \\
+                    &+ \frac{1}{2\Delta y^2}\left(\gamma_Z(x_{i,j-1})(Z^{n}_{i,j-1}-Z^{n}_{i,j})+\gamma_Z(x_{i,j})(Z^{n}_{i,j-1}-2Z^{n}_{i,j}+Z^{n}_{i,j+1})+\gamma_Z(x_{i,j+1})(-Z^{n}_{i,j}+Z^{n}_{i,j+1})\right)\Bigr)\\
+    R^{n+1}_{i,j}   &= R^n_{i,j} +\Delta t \left(\delta_S S^{n}_{i,j}+\delta_I I^{n}_{i,j}-\zeta R^{n}_{i,j}+(\alpha+\omega(t))S^{n}_{i,j}Z^{n}_{i,j}\right)
+	\end{aligned}
+\end{equation}
+!et
+The diffusion term for the *Removed* group is taken away, since dead people are not able to move. This system looks quite messy, but it is straight forward to calculate. All values on the right side are known values and the system is easy to solve. Now every point will be controlled by the diffusion constants given in $\gamma(x)$. This makes it easier to control the flow in each group. With a high diffusion constant, the diffusion will spread fast. When the diffusion constant goes towards zero, the flow will decrease towards zero flow. This will result in a set of ODE systems modeled for each point.
+##S &= \nabla\left(\gamma(x) \nabla S)\right \\
+
+===== Ten minutes at Frederikkeplassen =====
+Frederikkeplassen at the University of Oslo is a possible area for an upcoming zombie attack. This simulation will try to model a ten minute sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realize the danger and transitions into the *Hysterical phase*. A map of Frederikkeplassen is used to define the safe and critical areas. The buildings are set as areas where only the *Susceptible* are allowed to move. This is done by setting the diffusion constant to zero for the *Zombie* and *Infected* groups. Since the buildings are safe spots for the *Susceptible*, an idea would be to express this in the diffusion term by forcing the *Susceptible* for other areas into the buildings. This is more difficult, since the concentrations in each group wants to diffuse towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and a slow diffusion inside the buildings. 
+
+FIGURE:[2_fig/2D_compare_Frederikke.png, height=400 width=800 frac=0.8] label{fig:frederikke_numbers} The amount in each group for two simulations of Frederikkeplassen modeled same parameters for 10 minutes/hours. a)Plot with uniformed distributed groups and same diffusion constants for all groups. b)Plot based on figure(ref{fig:frederikke_free_area}) with different initial values for each group.     
+
+<linebreak>
+<linebreak>
+Two simulations have been done at Frederikkeplassen. The amount in each group can be seen in Fig.(ref{fig:frederikke_numbers}). The first simulation has a solution based on the ODE system, with uniformed distributed groups, equal diffusion constants and no free areas for the *Susceptible*. The second simulation is modeled with three groups of *Susceptible*, as in the previous section. The small group with 21 students is placed at point(4,4), the middle group with 200 students is placed at point(15,8) and the large group with 400 students is placed at point(8,13). The zombie is placed at point(8,10). The $\gamma(x)$ is set to zero in the buildings for the *Zombie* and *Infected* group, and one in the rest of the area. For the *Susceptible* group, $\gamma(x)$ is set to 0.1 in the buildings, which causes slow diffusion. In the outside areas, $\gamma(x)$ is set to 5 for the *Susceptible*. The desired result is to push them into the buildings, but this will only happen if there is a lower concentration inside the buildings. Therefore this will not reflect a realistic flow of a *Susceptible* population. This simulation can be seen in Fig.(ref{fig:frederikke_free_area})  
+
+FIGURE:[2_fig/2D_Frederikke_contourf_sub.png, height=600 width=800 frac=0.8] label{fig:frederikke_free_area} Frederikkeplassen modeled with free areas for the *Susceptible* group. The diffusion function $\gamma(x)$ is set to zero for the *Zombie* and *Infected* group in the buildings. The zombie at initial time is placed in the center of Frederikkeplassen
+
+<linebreak>
+<linebreak>
+The results in Tab.(ref{table:frederikke_table}) shows that the three first minutes are crucial. The number after three minutes shows that only 72 humans survived the attack in the uniformed solution, compared to 252 in the free areas. The number in the *Zombie* group is quite similar in *Uniformed distribution* and *Free areas* measured at $t=3$. However at $t=7$ the difference is major. This can be explained by looking at Fig.(ref{fig:frederikke_free_area}) and the building with the middle group placed inside. When the zombie starts attacking at $t=0$, the large group is exposed. This group is placed close to the zombie and the position is in an open area. The zombie can attack right away and the number in the *Infected* and *Zombie* groups increases fast. In the two first minutes, a major part of the large group is infected and the *Zombie* group starts to spread. After 2-3 minutes, the group has reached the buildings with the middle group. Here the diffusion is set to 0, and the spread of zombies stop. Since the diffusion variable for the *Susceptible* is quite low inside the buildings, it takes time before the group diffuses. Maybe the right diffusion value along the buildings would be 0, to avoid any leakage. This would again cause problem for the diffusion of *Susceptible* into the buildings. It is also reasonable to think that the *Susceptible* group needs to diffuse after a certain time. The lack of supplies would force them out.
+
+label{table:frederikke_table}
+|---------------------------------------------------------------|
+|                   |Uniform distribution	|Free areas	|
+|---------------------------------------------------------------|
+|3 Minutes          |---------------------------|---------------|
+|---------------------------------------------------------------|
+|Susceptible        |72.23                     	|252.72         |
+|Infected           |229.65                    	|75.69          |
+|Zombie             |296.67                    	|276.55         |
+|Removed            |20.84                     	|13.94          |
+|---------------------------------------------------------------|
+|7 Minutes          |---------------------------|---------------|
+|---------------------------------------------------------------|
+|Susceptible        |70.78                    	|251.35         |
+|Infected           |0.83                     	|0.51           |
+|Zombie             |498.72                   	|325.54         |
+|Removed            |49.12                    	|41.26          |
+|---------------------------------------------------------------|
+|10 Minutes         |---------------------------|---------------|
+|---------------------------------------------------------------|
+|Susceptible        |69.69                     	|249.84         |
+|Infected           |0.25                      	|0.38           |
+|Zombie             |479.00                    	|295.71         |
+|Removed            |70.55                     	|72.36          |
+|---------------------------------------------------------------|
+
+
+======= Discussion =======
+This chapter expand the study of the disease, by adding the opportunity to analyse the disease for a spatial area. The travelling wave is essential for a disease to spread in an area. If the reproduction rate seen in Eq.(ref{eq:reproduction_rate_PDF}) was below 1, the travelling wave would decrease towars zero and the disease would dissapear. By varying $\lambda$, one could see that a low value would cause a total eradication of the *Susceptible*. By setting $\lambda>=1$, the damage from the epidemic wave would be close to zero and the disease would die out.
+<linebreak>  
+<linebreak>  
+The results from the English boarding school shows that the position of the infected student has a major impact on the result. A uniform distribution was first calculated and compared with the ODE simulation in the previous chapter. This gave the same result. By varying the position of the infected student, the result was affected. When simulating the disease for a long time, the number of *Infected* students seems to be similar. Therefore the parameter values in the system will not be enough to say anything about the concentrations measured in time for each group. The position will also affect the result. 
+<linebreak>  
+<linebreak>  
+The section *Zombiefication* verified the uniform distribued PDF solution with the ODE solution from the previous chapter. These were expected to be similar. The English boarding school studied the result of varying the position of the infected with a uniform distributed group of *Susceptible*. This section tried to expand this idea byspread the group of *Susceptible* into three groups. The position of the zombie was placed in center of all three groups. The amount of *Infected* in these three simulations was proportional to the size of the group where the zombie was placed. The position of the infected student was shown to have an impact on the spread of the disease. This section shows that the *Susceptible* group also affects the result.
+<linebreak>  
+<linebreak>  
+The last part *Ten minutes at Frederikke* tries to implement human behavior by giving the *Susceptible* group the ability to keep zombies outside the buildings. This was crucial in *Walking Dead* to prevent meetings between zombies and humans. One can see from the results that this gives the *Susceptible* group a greater chance of surviving. The concentrations for each group will go towards equilibrium. Therefore this simulation will differ from human behavior. The next chapter will use random walks to simulate this zombie outburst. This will build on *Ten minutes ad Frederikke*, and introduce different conditions based on the phase the zombies and humans are in. 
+
+
+======= Bibliography =======
+
+BIBFILE: ../bibliography/papers.pub
+

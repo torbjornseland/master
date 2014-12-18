@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.4.27)  12 DEC 2014 14:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.15)  18 DEC 2014 15:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **thesis
 (./thesis.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 26 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo
@@ -46,10 +46,18 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
@@ -66,11 +74,8 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvips.def on input line 130.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 130.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
@@ -94,13 +99,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count88
+\inf@bad=\count89
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count89
-\leftroot@=\count90
+\uproot@=\count90
+\leftroot@=\count91
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count91
-\DOTSCASE@=\count92
+\classnum@=\count92
+\DOTSCASE@=\count93
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
@@ -109,15 +114,15 @@ LaTeX Info: Redefining \cdots on input line 466.
 \big@size=\dimen109
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count93
-\c@MaxMatrixCols=\count94
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
 \dotsspace@=\muskip10
-\c@parentequation=\count95
-\dspbrk@lvl=\count96
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
 \tag@help=\toks16
-\row@=\count97
-\column@=\count98
-\maxfields@=\count99
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
 \andhelp@=\toks17
 \eqnshift@=\dimen110
 \alignsep@=\dimen111
@@ -145,7 +150,7 @@ Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package xcolor Info: Driver file: dvips.def on input line 225.
+Package xcolor Info: Driver file: pdftex.def on input line 225.
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
@@ -162,8 +167,9 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \minrowclearance=\skip48
 )
 LaTeX Info: Redefining \color on input line 702.
-\rownum=\count100
+\rownum=\count101
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
 Package xcolor Info: Model `RGB' extended on input line 1353.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
@@ -183,11 +189,11 @@ LaTeX Info: Redefining \bm on input line 204.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
 \MT@toks=\toks22
-\MT@count=\count101
+\MT@count=\count102
 LaTeX Info: Redefining \textls on input line 766.
 \MT@outer@kern=\dimen118
 LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
-\MT@listname@count=\count102
+\MT@listname@count=\count103
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -206,11 +212,11 @@ Package: fancyvrb 2008/02/07
 
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)
-\FV@CodeLineNo=\count103
+\FV@CodeLineNo=\count104
 \FV@InFile=\read1
 \FV@TabBox=\box28
-\c@FancyVerbLine=\count104
-\FV@StepNumber=\count105
+\c@FancyVerbLine=\count105
+\FV@StepNumber=\count106
 \FV@OutFile=\write3
 ) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
@@ -481,15 +487,15 @@ Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is not detected.
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -502,7 +508,7 @@ Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package pdftexcmds Info: \pdfdraftmode found.
 Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
@@ -529,15 +535,15 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen119
-\Hy@linkcounter=\count106
-\Hy@pagecounter=\count107
+\Hy@linkcounter=\count107
+\Hy@pagecounter=\count108
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count108
+\Hy@SavedSpaceFactor=\count109
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -553,7 +559,7 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count109
+\c@Hy@tempcnt=\count110
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
@@ -561,7 +567,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen120
-\Fld@menulength=\count110
+\Fld@menulength=\count111
 \Field@Width=\dimen121
 \Fld@charsize=\dimen122
 Package hyperref Info: Hyper figures OFF on input line 6295.
@@ -573,23 +579,15 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count111
-\c@Item=\count112
-\c@Hfootnote=\count113
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
 )
 
-Package hyperref Message: Driver (default): hdvips.
+Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
-File: hdvips.def 2012/11/06 v6.83m Hyperref driver for dvips
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
-File: pdfmark.def 2012/11/06 v6.83m Hyperref definitions for pdfmark specials
-\pdf@docset=\toks25
-\pdf@box=\box29
-\pdf@toks=\toks26
-\pdf@defaulttoks=\toks27
-\HyField@AnnotCount=\count114
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count115
 \c@bookmark@seq@number=\count116
 
@@ -599,7 +597,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip50
-))
+)
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
@@ -614,19 +612,7 @@ LaTeX Warning: Unused global option(s):
 
 (./thesis.aux
 
-LaTeX Warning: Label `eq:simple_non_PDE2' multiply defined.
-
-
 LaTeX Warning: Label `table:param_val' multiply defined.
-
-
-LaTeX Warning: Label `eq:LMR_model' multiply defined.
-
-
-LaTeX Warning: Label `eq:NoM' multiply defined.
-
-
-LaTeX Warning: Label `table:frederikke_table_random' multiply defined.
 
 )
 \openout1 = `thesis.aux'.
@@ -649,11 +635,41 @@ LaTeX Font Info:    Try loading font information for T1+lmr on input line 81.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count117
+\scratchdimen=\dimen123
+\scratchbox=\box29
+\nofMPsegments=\count118
+\nofMParguments=\count119
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen124
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
+\everyMPtoPDFconversion=\toks26
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Info: Redefining \microtypecontext on input line 81.
-Package microtype Info: Generating DVI output.
+Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: No font expansion.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -671,7 +687,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count117
+\c@section@level=\count123
 )
 LaTeX Info: Redefining \ref on input line 81.
 LaTeX Info: Redefining \pageref on input line 81.
@@ -681,36 +697,48 @@ LaTeX Info: Redefining \nameref on input line 81.
 \@outlinefile=\write5
 \openout5 = `thesis.out'.
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 104.
+ (./frontpage.tex
+<uiologo.png, id=217, 1951.29pt x 1996.45876pt>
+File: uiologo.png Graphic file (type png)
+ <use uiologo.png>
+Package pdftex.def Info: uiologo.png used on input line 32.
+(pdftex.def)             Requested size: 113.79718pt x 113.78105pt.
+) [1
 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./uiologo.png>] [2
+
+] [3] [4
+
+] [5]
+[6
+
+] (./thesis.toc
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 3.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 104.
-
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 3.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 104
-.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 3.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 104
-.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 3.
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 104.
+(Font)              <10> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 104.
+(Font)              <7> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 104.
-LaTeX Font Info:    Try loading font information for U+msa on input line 104.
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -718,341 +746,178 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 104.
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [1
-
-] [2
-
-]
-(./thesis.toc
-Overfull \hbox (8.95839pt too wide) in paragraph at lines 38--38
- [][] [] [][]  
- []
-
-[3])
+) [7])
 \tf@toc=\write6
 \openout6 = `thesis.toc'.
 
+ [8]
+Chapter 1.
+[9
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--146
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--146
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--146
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--146
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--146
-
- []
-
-
-Overfull \hbox (15.38036pt too wide) in paragraph at lines 130--146
-\T1/lmr/m/n/10 There have been done sev-eral math-e-mat-i-cal stud-ies on dif-f
-er-ent dis-eases. HIV/AIDS
- []
-
-[4] [5] [6
+] [10] [11] [12
 
 ]
-Chapter 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 150--154
-
- []
-
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 157.
+Chapter 2.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 228.
 
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 157.
- [7]
-Underfull \hbox (badness 10000) in paragraph at lines 168--173
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 228.
+ [13] [14]
+<1_fig/threshold_phenomenon.png, id=370, 578.16pt x 433.62pt>
+File: 1_fig/threshold_phenomenon.png Graphic file (type png)
 
- []
+<use 1_fig/threshold_phenomenon.png>
+Package pdftex.def Info: 1_fig/threshold_phenomenon.png used on input line 287.
+
+(pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
+ [15] [16 <./1_fig/threshold_phenomenon.png>] <1_fig/English_boarding_school.pn
+g, id=402, 578.16pt x 433.62pt>
+File: 1_fig/English_boarding_school.png Graphic file (type png)
+
+<use 1_fig/English_boarding_school.png>
+Package pdftex.def Info: 1_fig/English_boarding_school.png used on input line 3
+38.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
+ [17 <./1_fig/English_boarding_school.png>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 353.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 353.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 353.
 
 
-! Package inputenc Error: Unicode char \u8:  not set up for use with LaTeX.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 353.
 
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.180 ...pecially sexually transmitted diseases. 
-                                                  The total number of the po...
 
-? 
-[8]
-File: 1_fig/threshold_phenomenon.eps Graphic file (type eps)
- <1_fig/threshold_phenomenon.eps> [9]
-Underfull \hbox (badness 10000) in paragraph at lines 218--223
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\rho' on input line 353.
 
- []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 242--247
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 353.
 
- []
+<1_fig/English_boarding_school_changes.png, id=416, 926.5014pt x 712.5822pt>
+File: 1_fig/English_boarding_school_changes.png Graphic file (type png)
 
-[11]
-File: 1_fig/English_boarding_school.eps Graphic file (type eps)
- <1_fig/English_boarding_school.eps>
-File: 1_fig/English_boarding_school_changes.eps Graphic file (type eps)
+<use 1_fig/English_boarding_school_changes.png>
+Package pdftex.def Info: 1_fig/English_boarding_school_changes.png used on inpu
+t line 358.
+(pdftex.def)             Requested size: 310.4979pt x 238.80621pt.
+ [18 <./1_fig/English_boarding_school_changes.png>] [19] [20] [21]
+<1_fig/WD_zombie_initial_1.png, id=451, 578.16pt x 433.62pt>
+File: 1_fig/WD_zombie_initial_1.png Graphic file (type png)
 
-<1_fig/English_boarding_school_changes.eps> [12] [13] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 325--329
+<use 1_fig/WD_zombie_initial_1.png>
+Package pdftex.def Info: 1_fig/WD_zombie_initial_1.png used on input line 496.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
- []
+<1_fig/check_parameters.png, id=455, 1042.8561pt x 871.5762pt>
+File: 1_fig/check_parameters.png Graphic file (type png)
 
-[15
+<use 1_fig/check_parameters.png>
+Package pdftex.def Info: 1_fig/check_parameters.png used on input line 509.
+(pdftex.def)             Requested size: 310.4979pt x 259.4933pt.
 
+<1_fig/WD_zombie_initial_2.png, id=457, 578.16pt x 433.62pt>
+File: 1_fig/WD_zombie_initial_2.png Graphic file (type png)
+
+<use 1_fig/WD_zombie_initial_2.png>
+Package pdftex.def Info: 1_fig/WD_zombie_initial_2.png used on input line 521.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
+ [22] [23 <./1_fig/WD_zombie_initial_1.png>] [24 <./1_fig/check_parameters.png>
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 350--354
+<1_fig/check_parameters_hysterical_2.png, id=481, 1353.6171pt x 897.5934pt>
+File: 1_fig/check_parameters_hysterical_2.png Graphic file (type png)
 
- []
+<use 1_fig/check_parameters_hysterical_2.png>
+Package pdftex.def Info: 1_fig/check_parameters_hysterical_2.png used on input 
+line 564.
+(pdftex.def)             Requested size: 310.4979pt x 205.89429pt.
+ [25 <./1_fig/WD_zombie_initial_2.png>] <1_fig/WD_zombie_hysterical_1.png, id=4
+90, 578.16pt x 433.62pt>
+File: 1_fig/WD_zombie_hysterical_1.png Graphic file (type png)
 
+<use 1_fig/WD_zombie_hysterical_1.png>
+Package pdftex.def Info: 1_fig/WD_zombie_hysterical_1.png used on input line 59
+8.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
+ [26 <./1_fig/check_parameters_hysterical_2.png>] <1_fig/omega_function.png, id
+=499, 578.16pt x 433.62pt>
+File: 1_fig/omega_function.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--354
+<use 1_fig/omega_function.png>
+Package pdftex.def Info: 1_fig/omega_function.png used on input line 625.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
- []
+<1_fig/WD_zombie_counter_1.png, id=500, 578.16pt x 433.62pt>
+File: 1_fig/WD_zombie_counter_1.png Graphic file (type png)
 
+<use 1_fig/WD_zombie_counter_1.png>
+Package pdftex.def Info: 1_fig/WD_zombie_counter_1.png used on input line 637.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
+ [27 <./1_fig/WD_zombie_hysterical_1.png>]
+<1_fig/WD_zombie_counter_2.png, id=512, 578.16pt x 433.62pt>
+File: 1_fig/WD_zombie_counter_2.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--363
+<use 1_fig/WD_zombie_counter_2.png>
+Package pdftex.def Info: 1_fig/WD_zombie_counter_2.png used on input line 658.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
- []
+<1_fig/WD_zombie_counter_series.png, id=515, 578.16pt x 433.62pt>
+File: 1_fig/WD_zombie_counter_series.png Graphic file (type png)
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 371--379
+<use 1_fig/WD_zombie_counter_series.png>
+Package pdftex.def Info: 1_fig/WD_zombie_counter_series.png used on input line 
+681.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
+ [28 <./1_fig/omega_function.png>]
+<1_fig/WD_zombie_all_phases_1.png, id=525, 578.16pt x 433.62pt>
+File: 1_fig/WD_zombie_all_phases_1.png Graphic file (type png)
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 371--379
-
- []
-
-[17]
-File: 1_fig/WD_zombie_initial_1.eps Graphic file (type eps)
- <1_fig/WD_zombie_initial_1.eps>
-File: 1_fig/check_parameters.eps Graphic file (type eps)
- <1_fig/check_parameters.eps>
-File: 1_fig/WD_zombie_initial_2.eps Graphic file (type eps)
-
-<1_fig/WD_zombie_initial_2.eps> [18]
-Underfull \hbox (badness 10000) in paragraph at lines 426--430
-
- []
-
-[19] [20]
-File: 1_fig/check_parameters_hysterical_2.eps Graphic file (type eps)
- <1_fig/check_parameters_hysterical_2.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 458--465
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 458--465
-
- []
-
-[21]
-File: 1_fig/WD_zombie_hysterical_1.eps Graphic file (type eps)
- <1_fig/WD_zombie_hysterical_1.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 480--484
-
- []
-
-[22]
-File: 1_fig/omega_function.eps Graphic file (type eps)
- <1_fig/omega_function.eps>
-! Missing $ inserted.
-<inserted text> 
-                $
-l.496 
-      
-? 
-File: 1_fig/WD_zombie_counter_1.eps Graphic file (type eps)
-<1_fig/WD_zombie_counter_1.eps> [23]
-File: 1_fig/WD_zombie_counter_2.eps Graphic file (type eps)
- <1_fig/WD_zombie_counter_2.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 526--530
-
- []
-
-File: 1_fig/WD_zombie_counter_series.eps Graphic file (type eps)
-<1_fig/WD_zombie_counter_series.eps> [24]
-File: 1_fig/WD_zombie_all_phases_1.eps Graphic file (type eps)
- <1_fig/WD_zombie_all_phases_1.eps>
-[25]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.585 S_
-        0              & 621              & 71               & 62           ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.585 S_0              &
-                         621              & 71               & 62           ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.586 I_
-        0              & 0                & 231              & 0            ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.586 I_0              &
-                         0                & 231              & 0            ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.587 Z_
-        0              & 1                & 299              & 359          ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.587 Z_0              &
-                         1                & 299              & 359          ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.588 R_
-        0              & 0                & 21               & 202          ...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.588 R_0              &
-                         0                & 21               & 202          ...
-
-? 
-
-Overfull \hbox (12.4035pt too wide) in paragraph at lines 581--591
+<use 1_fig/WD_zombie_all_phases_1.png>
+Package pdftex.def Info: 1_fig/WD_zombie_all_phases_1.png used on input line 71
+6.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
+ [29 <./1_fig/WD_zombie_counter_1.png>]
+Overfull \hbox (27.00119pt too wide) in paragraph at lines 729--739
 [][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 593--597
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 593--597
-
- []
-
-[26] [27] [28
+[30 <./1_fig/WD_zombie_counter_2.png>] [31 <./1_fig/WD_zombie_counter_series.pn
+g> <./1_fig/WD_zombie_all_phases_1.png>] [32
 
 ]
-Chapter 2.
-[29
+Chapter 3.
+[33
 
-] [30]
-File: 2_fig/trav_wave_sub.eps Graphic file (type eps)
- <2_fig/trav_wave_sub.eps>
-File: 2_fig/epidemic_wave_z_lambda_0_5.eps Graphic file (type eps)
- <2_fig/epidemic_wave_z_lambda_0_5.eps>
+] [34] <2_fig/trav_wave_sub.png, id=583, 1465.475pt x 1146.2825pt>
+File: 2_fig/trav_wave_sub.png Graphic file (type png)
 
-! LaTeX Error: There's no line here to end.
+<use 2_fig/trav_wave_sub.png>
+Package pdftex.def Info: 2_fig/trav_wave_sub.png used on input line 863.
+(pdftex.def)             Requested size: 276.00105pt x 215.87195pt.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.688 T
-       he \emph{Infective} group in Eq.(\ref{eq:ord_diff_sys}) can be linear...
+<2_fig/epidemic_wave_z_lambda_0_5.png, id=588, 578.16pt x 433.62pt>
+File: 2_fig/epidemic_wave_z_lambda_0_5.png Graphic file (type png)
 
-? 
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.697 \begin{equation}
-                      
-? 
-! You can't use `\eqno' in math mode.
-\endmathdisplay@a ...\df@tag \@empty \else \veqno 
-                                                  \alt@tag \df@tag \fi \ifx ...
-l.699 \end{equation}
-                    
-? 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.699 \end{equation}
-                    
-? 
-
-! LaTeX Error: \begin{document} ended by \end{equation}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.699 \end{equation}
-                    
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.699 \end{equation}
-                    
-? 
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.699 \end{equation}
-                    
-? 
-
-Overfull \hbox (212.37563pt too wide) in paragraph at lines 695--701
-\T1/lmr/m/n/10 Since it is re-quired that $\OML/lmm/m/it/10 I\OT1/lmr/m/n/10 (\
-OML/lmm/m/it/10 z\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 ! \OT1/lmr/m/n/10 0$ \T1/lm
-r/m/n/10 and $\OML/lmm/m/it/10 I\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 z\OT1/lmr/m/n
-/10 ) \OML/lmm/m/it/10 > \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 ; oscillationsaround
-\OT1/lmr/m/n/10 0\OML/lmm/m/it/10 mustbeprevented:Ifatravellingwaveexist; ithas
-tosatisfy[]c \OMS/lmsy/m/n/10 ^^U
- []
-
-[31] [32]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 727.
+<use 2_fig/epidemic_wave_z_lambda_0_5.png>
+Package pdftex.def Info: 2_fig/epidemic_wave_z_lambda_0_5.png used on input lin
+e 873.
+(pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
+ [35] [36 <./2_fig/trav_wave_sub.png>]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 925.
 
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1061,625 +926,301 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [33] [34] [35] [36]
-Overfull \hbox (12.564pt too wide) detected at line 945
+ [37 <./2_fig/epidemic_wave_z_lambda_0_5.png>] [38] [39] [40]
+Overfull \hbox (12.564pt too wide) detected at line 1119
 [][] []
  []
 
 
-Overfull \hbox (35.30016pt too wide) detected at line 953
+Overfull \hbox (35.30016pt too wide) detected at line 1127
 [][] []
  []
 
-[37]
-Underfull \hbox (badness 10000) in paragraph at lines 956--960
+[41] <2_fig/Trav_wave_2D.png, id=662, 1464.47125pt x 544.0325pt>
+File: 2_fig/Trav_wave_2D.png Graphic file (type png)
 
- []
+<use 2_fig/Trav_wave_2D.png>
+Package pdftex.def Info: 2_fig/Trav_wave_2D.png used on input line 1145.
+(pdftex.def)             Requested size: 276.00105pt x 102.52882pt.
+ [42 <./2_fig/Trav_wave_2D.png>]
+<2_fig/2D_initial_variable_sub.png, id=674, 1330.9725pt x 1069.9975pt>
+File: 2_fig/2D_initial_variable_sub.png Graphic file (type png)
 
-File: 2_fig/Trav_wave_2D.eps Graphic file (type eps)
-<2_fig/Trav_wave_2D.eps>
+<use 2_fig/2D_initial_variable_sub.png>
+Package pdftex.def Info: 2_fig/2D_initial_variable_sub.png used on input line 1
+197.
+(pdftex.def)             Requested size: 276.00105pt x 221.88156pt.
 
-! LaTeX Error: There's no line here to end.
+<2_fig/TW_2D_initial_z_lambda_0_5.png, id=676, 578.16pt x 433.62pt>
+File: 2_fig/TW_2D_initial_z_lambda_0_5.png Graphic file (type png)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.972 \\
-        
-? 
+<use 2_fig/TW_2D_initial_z_lambda_0_5.png>
+Package pdftex.def Info: 2_fig/TW_2D_initial_z_lambda_0_5.png used on input lin
+e 1219.
+(pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
+ [43 <./2_fig/2D_initial_variable_sub.png>] <2_fig/2D_lambda_variable.png, id=6
+87, 1457.445pt x 1145.27875pt>
+File: 2_fig/2D_lambda_variable.png Graphic file (type png)
 
-! LaTeX Error: There's no line here to end.
+<use 2_fig/2D_lambda_variable.png>
+Package pdftex.def Info: 2_fig/2D_lambda_variable.png used on input line 1243.
+(pdftex.def)             Requested size: 310.4979pt x 243.99326pt.
+ [44 <./2_fig/TW_2D_initial_z_lambda_0_5.png>] [45 <./2_fig/2D_lambda_variable.
+png>]
+<2_fig/british_number.png, id=706, 682.55pt x 1750.54pt>
+File: 2_fig/british_number.png Graphic file (type png)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.973 T
-       he shapes of the two travelling waves in Fig.(\ref{fig:2D_trav_wave})...
-
-? 
-[38]
-File: 2_fig/2D_initial_variable_sub.eps Graphic file (type eps)
- <2_fig/2D_initial_variable_sub.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1016 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1017 T
-        he size and shape can be compared by measuring the travelling wave a...
-
-? 
-[39]
-File: 2_fig/TW_2D_initial_z_lambda_0_5.eps Graphic file (type eps)
- <2_fig/TW_2D_initial_z_lambda_0_5.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1030 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1031 T
-        he size of the travelling  wave will not be affected by changing the...
-
-? 
-File: 2_fig/2D_lambda_variable.eps Graphic file (type eps)
-<2_fig/2D_lambda_variable.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1046 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1047 T
-        o understand the results in Fig.(\ref{fig:change_lambda}), the $\lam...
-
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1050--1055
-
- []
-
-[40]
-Underfull \hbox (badness 10000) in paragraph at lines 1057--1064
-
- []
+<use 2_fig/british_number.png>
+Package pdftex.def Info: 2_fig/british_number.png used on input line 1305.
+(pdftex.def)             Requested size: 207.0021pt x 530.88222pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1057--1064
-
- []
-
-[41]
-File: 2_fig/british_number.eps Graphic file (type eps)
- <2_fig/british_number.eps>
-
-LaTeX Warning: Float too large for page by 230.3714pt on input line 1071.
+LaTeX Warning: Float too large for page by 53.38222pt on input line 1309.
 
 
-Overfull \hbox (50.47256pt too wide) in paragraph at lines 1078--1101
+Overfull \hbox (50.47256pt too wide) in paragraph at lines 1321--1344
 [][] 
  []
 
-[42]
-File: 2_fig/2D_british_school_gauss_sub.eps Graphic file (type eps)
- <2_fig/2D_british_school_gauss_sub.eps>
+<2_fig/2D_british_school_gauss_sub.png, id=711, 1336.995pt x 1086.0575pt>
+File: 2_fig/2D_british_school_gauss_sub.png Graphic file (type png)
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1122 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1123 T
-        he results from the uniform distributed and Gaussian distributed sim...
-
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1123--1130
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1123--1130
-
- []
-
-[43] [44] [45] [46
+<use 2_fig/2D_british_school_gauss_sub.png>
+Package pdftex.def Info: 2_fig/2D_british_school_gauss_sub.png used on input li
+ne 1356.
+(pdftex.def)             Requested size: 276.00105pt x 224.20097pt.
+ [46] [47] [48 <./2_fig/british_number.png>] [49 <./2_fig/2D_british_school_gau
+ss_sub.png>] [50
 
 ]
-File: 2_fig/2D_zombie_three_phases_number.eps Graphic file (type eps)
- <2_fig/2D_zombie_three_phases_number.eps>
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1195   }
-          
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1195   }
-          
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1195   }
-          
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1195   }
-          
-? 
+<2_fig/2D_zombie_three_phases_number.png, id=753, 578.16pt x 433.62pt>
+File: 2_fig/2D_zombie_three_phases_number.png Graphic file (type png)
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1201 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1202 T
-        he initial values for the four groups are set to $S_0=621$, $I_0=0$,...
-
-? 
-[47]
-Overfull \hbox (36.25067pt too wide) in paragraph at lines 1207--1233
+<use 2_fig/2D_zombie_three_phases_number.png>
+Package pdftex.def Info: 2_fig/2D_zombie_three_phases_number.png used on input 
+line 1459.
+(pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
+ [51]
+Overfull \hbox (36.25067pt too wide) in paragraph at lines 1482--1508
 [][] 
  []
 
-[48]
-Underfull \hbox (badness 10000) in paragraph at lines 1245--1249
+[52 <./2_fig/2D_zombie_three_phases_number.png>] [53]
+<2_fig/initial_value_susceptible.png, id=775, 578.16pt x 433.62pt>
+File: 2_fig/initial_value_susceptible.png Graphic file (type png)
 
- []
+<use 2_fig/initial_value_susceptible.png>
+Package pdftex.def Info: 2_fig/initial_value_susceptible.png used on input line
+ 1557.
+(pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
+ [54 <./2_fig/initial_value_susceptible.png>]
+<2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, id=787, 1332.98pt x 
+1055.945pt>
+File: 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png Graphic file (ty
+pe png)
+ <use 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png>
+Package pdftex.def Info: 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.p
+ng used on input line 1579.
+(pdftex.def)             Requested size: 276.00105pt x 218.62918pt.
 
-[49]
-Underfull \hbox (badness 10000) in paragraph at lines 1259--1263
+[55 <./2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png>]
+<2_fig/2D_compare_towns.png, id=798, 682.55pt x 1748.5325pt>
+File: 2_fig/2D_compare_towns.png Graphic file (type png)
 
- []
-
-File: 2_fig/initial_value_susceptible.eps Graphic file (type eps)
-<2_fig/initial_value_susceptible.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1275 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1276 F
-        ig.(\ref{fig:large_town}) shows the simulation where the zombie is p...
-
-? 
-[50]
-File: 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.eps Graphic file (ty
-pe eps)
- <2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1289 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1290 B
-        y placing the zombie in the middle town, the amount in the \emph{Zom...
-
-? 
-[51]
-File: 2_fig/2D_compare_towns.eps Graphic file (type eps)
- <2_fig/2D_compare_towns.eps>
-
-LaTeX Warning: Float too large for page by 205.00404pt on input line 1298.
+<use 2_fig/2D_compare_towns.png>
+Package pdftex.def Info: 2_fig/2D_compare_towns.png used on input line 1601.
+(pdftex.def)             Requested size: 207.0021pt x 530.2734pt.
 
 
-! LaTeX Error: There's no line here to end.
+LaTeX Warning: Float too large for page by 28.21783pt on input line 1605.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1303 \\
-         
-? 
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1304 T
-        he results from the uniformed distributed simulation is still much h...
-
-? 
-
-Overfull \hbox (0.63875pt too wide) in paragraph at lines 1309--1335
+Overfull \hbox (0.63875pt too wide) in paragraph at lines 1634--1660
 [][] 
  []
 
-[52]
-Overfull \hbox (122.23366pt too wide) detected at line 1376
+[56]
+Overfull \hbox (122.23366pt too wide) detected at line 1701
 [][] []
  []
 
-[53]
-File: 2_fig/2D_compare_Frederikke.eps Graphic file (type eps)
- <2_fig/2D_compare_Frederikke.eps> [54]
+[57] <2_fig/2D_compare_Frederikke.png, id=813, 1493.58pt x 544.0325pt>
+File: 2_fig/2D_compare_Frederikke.png Graphic file (type png)
 
-! LaTeX Error: There's no line here to end.
+<use 2_fig/2D_compare_Frederikke.png>
+Package pdftex.def Info: 2_fig/2D_compare_Frederikke.png used on input line 170
+9.
+(pdftex.def)             Requested size: 276.00105pt x 100.52821pt.
+ [58]
+<2_fig/2D_Frederikke_contourf_sub.png, id=823, 1569.865pt x 1160.335pt>
+File: 2_fig/2D_Frederikke_contourf_sub.png Graphic file (type png)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1393 \\
-         
-? 
+<use 2_fig/2D_Frederikke_contourf_sub.png>
+Package pdftex.def Info: 2_fig/2D_Frederikke_contourf_sub.png used on input lin
+e 1731.
+(pdftex.def)             Requested size: 276.00105pt x 204.00005pt.
+ [59] [60] [61 <./2_fig/2D_compare_towns.png>] [62 <./2_fig/2D_compare_Frederik
+ke.png> <./2_fig/2D_Frederikke_contourf_sub.png>] [63
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1394 T
-        wo simulations have been done at Frederikkeplassen. The amount in ea...
-
-? 
-File: 2_fig/2D_Frederikke_contourf_sub.eps Graphic file (type eps)
-<2_fig/2D_Frederikke_contourf_sub.eps>
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1407 \\
-         
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1408 T
-        he results in Tab.(\ref{table:frederikke_table}) shows that the thre...
-
-? 
-
-Overfull \hbox (26.91551pt too wide) in paragraph at lines 1418--1444
-[][] 
- []
-
-[55]
-File: 2_fig/2D_Frederikke_random_contourf_sub.eps Graphic file (type eps)
- <2_fig/2D_Frederikke_random_contourf_sub.eps> [56] [57] [58] [59] [60
-
-]
-File: 2_fig/2D_gauss_sub.eps Graphic file (type eps)
-
-<2_fig/2D_gauss_sub.eps>
-File: 2_fig/2D_gauss_one_sub.eps Graphic file (type eps)
- <2_fig/2D_gauss_one_sub.eps>
-File: 2_fig/2D_british_school_sub.eps Graphic file (type eps)
-
-<2_fig/2D_british_school_sub.eps> [61] [62]
-File: 2_fig/2D_british_school_gauss_corner_sub.eps Graphic file (type eps)
-
-<2_fig/2D_british_school_gauss_corner_sub.eps> [63]
-File: 2_fig/2D_british_school_long_number.eps Graphic file (type eps)
-
-<2_fig/2D_british_school_long_number.eps>
-File: 2_fig/2D_british_school_gauss_long_number.eps Graphic file (type eps)
-
-<2_fig/2D_british_school_gauss_long_number.eps> [64]
-File: 2_fig/2D_british_school_gauss_corner_long_number.eps Graphic file (type e
-ps)
-
-<2_fig/2D_british_school_gauss_corner_long_number.eps>
-File: 2_fig/2D_zombie_initial_cond_sub.eps Graphic file (type eps)
-
-<2_fig/2D_zombie_initial_cond_sub.eps> [65]
-File: 2_fig/2D_zombie_initial_cond_number.eps Graphic file (type eps)
-
-<2_fig/2D_zombie_initial_cond_number.eps>
-File: 2_fig/2D_zombie_three_phases_sub.eps Graphic file (type eps)
-
-<2_fig/2D_zombie_three_phases_sub.eps> [66]
-File: 2_fig/2D_zombie_three_phases_zombie_middle_town_surface_sub.eps Graphic f
-ile (type eps)
-
-<2_fig/2D_zombie_three_phases_zombie_middle_town_surface_sub.eps>
-File: 2_fig/2D_zombie_three_phases_zombie_large_town_sub.eps Graphic file (type
- eps)
-
-<2_fig/2D_zombie_three_phases_zombie_large_town_sub.eps> [67]
-! Undefined control sequence.
-l.1633 \externaldocument
-                        {../1_ODE_models/biological_models.do.txt}
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1633 \externaldocument{../1_
-                              ODE_models/biological_models.do.txt}
-? 
-! Extra }, or forgotten $.
-l.1633 ..../1_ODE_models/biological_models.do.txt}
-                                                  
-? 
-! Undefined control sequence.
-l.1634 \externaldocument
-                        {../2_PDE_Fisher_Kolmogoroff/2_PDE_FK.do.txt}
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1635 
-       
-? 
-
-Overfull \hbox (49.21152pt too wide) in paragraph at lines 1633--1635
-[]\T1/lmr/m/n/10 ../1$[]\OML/lmm/m/it/10 DE[]odels=biological[]odels:do:txt[]$ 
-
- []
-
-[68]
-Chapter 3.
-[69
-
-]
-! Extra }, or forgotten $.
-l.1657 \{2,3,4,5,6,7,8,9,10,11,12}
-                                  \
-? 
-[70]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 1723.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 1723.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 1723.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1723.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sigma' on input line 1723.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 1723.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1723.
-
-[71] [72]
-
-LaTeX Warning: Reference `eq:diff_var' on page 73 undefined on input line 1759.
-
-
-File: 3_fig/random_compare.eps Graphic file (type eps)
-<3_fig/random_compare.eps>
-! Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \let \hskip \vskip \let \vrule \hrule \let...
-l.1793 \hline
-             
-? 
-! You can't use `\hrule' here except with leaders.
-\vline ->\vrule 
-                \@width \arrayrulewidth 
-l.1793 \hline
-             
-? 
-! Missing number, treated as zero.
-<to be read again> 
-                   }
-l.1793 \hline
-             
-? 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.1793 \hline
-             
-? 
-
-Overfull \hbox (10.58401pt too wide) in paragraph at lines 1785--1795
-[][] 
- []
-
-[73]
-File: 3_fig/random_walk_days.eps Graphic file (type eps)
- <3_fig/random_walk_days.eps> [74]
-File: 3_fig/english_school_random.eps Graphic file (type eps)
- <3_fig/english_school_random.eps>
-[75] [76] [77]
-File: 3_fig/figure_images.eps Graphic file (type eps)
- <3_fig/figure_images.eps>
-File: 3_fig/Frederikke_initial_final.eps Graphic file (type eps)
- <3_fig/Frederikke_initial_final.eps>
-File: 3_fig/Walking_dead_Frederikke.eps Graphic file (type eps)
-
-<3_fig/Walking_dead_Frederikke.eps>
-! Illegal parameter number in definition of \GetTitleStringResult.
-<to be read again> 
-                   2
-l.1924   }
-          
-? 
-! Illegal parameter number in definition of \GTS@GlobalString.
-<to be read again> 
-                   2
-l.1924   }
-          
-? 
-! Illegal parameter number in definition of \GTS@GlobalString.
-<to be read again> 
-                   2
-l.1924   }
-          
-? 
-! Illegal parameter number in definition of \reserved@a.
-<to be read again> 
-                   2
-l.1924   }
-          
-? 
-! You can't use `macro parameter character #' in restricted horizontal mode.
-<argument> ....(\ref {table:param_val_random}). ##
-                                                  200 simulations \fi 
-l.1924   }
-          
-? 
-! You can't use `macro parameter character #' in horizontal mode.
-<argument> ....(\ref {table:param_val_random}). ##
-                                                  200 simulations \fi 
-l.1924   }
-          
-? 
-
-Overfull \hbox (59.33182pt too wide) in paragraph at lines 1934--1960
-[][] 
- []
-
-[78]
-Overfull \vbox (52.58432pt too high) has occurred while \output is active []
-
-
-[79]
-File: 3_fig/Moving_smart_screen.eps Graphic file (type eps)
- <3_fig/Moving_smart_screen.eps>
-File: 3_fig/Moving_smart_average.eps Graphic file (type eps)
- <3_fig/Moving_smart_average.eps>
-Overfull \hbox (9.94456pt too wide) in paragraph at lines 1992--2018
-[][] 
- []
-
-[80]
-File: 3_fig/three_phases_ODE_sd.eps Graphic file (type eps)
- <3_fig/three_phases_ODE_sd.eps> [81]
-Overfull \hbox (32.80605pt too wide) in paragraph at lines 2041--2067
-[][] 
- []
-
-File: 3_fig/three_phases_random.eps Graphic file (type eps)
-<3_fig/three_phases_random.eps>
-
-LaTeX Warning: Float too large for page by 32.60434pt on input line 2077.
-
-[82]
-Runaway argument?
-{fig: 
-! Paragraph ended before \T@ref was complete.
-<to be read again> 
-                   \par 
-l.2110 
-       
-? 
-File: 3_fig/screenshot_safe_buildings.eps Graphic file (type eps)
-<3_fig/screenshot_safe_buildings.eps> [83] [84] [85] [86
+] [64
 
 ]
 Chapter 4.
-[87] [88
+[65] [66] [67]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1915.
 
 
-] (./thesis.bbl) [89
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\sigma' on input line 1915.
 
-] [90
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 1915.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1915.
+
+[68] <3_fig/random_compare.png, id=895, 1478.52374pt x 521.95pt>
+File: 3_fig/random_compare.png Graphic file (type png)
+
+<use 3_fig/random_compare.png>
+Package pdftex.def Info: 3_fig/random_compare.png used on input line 1955.
+(pdftex.def)             Requested size: 345.0pt x 121.79015pt.
+ [69 <./3_fig/random_compare.png>]
+<3_fig/random_walk_days.png, id=907, 2277.50874pt x 521.95pt>
+File: 3_fig/random_walk_days.png Graphic file (type png)
+
+<use 3_fig/random_walk_days.png>
+Package pdftex.def Info: 3_fig/random_walk_days.png used on input line 1993.
+(pdftex.def)             Requested size: 276.00105pt x 63.2525pt.
+ [70 <./3_fig/random_walk_days.png>]
+<3_fig/english_school_random.png, id=918, 839.0547pt x 625.1355pt>
+File: 3_fig/english_school_random.png Graphic file (type png)
+
+<use 3_fig/english_school_random.png>
+Package pdftex.def Info: 3_fig/english_school_random.png used on input line 204
+8.
+(pdftex.def)             Requested size: 276.00105pt x 205.63716pt.
+
+Overfull \hbox (6.10222pt too wide) in paragraph at lines 2056--2056
+[]\T1/lmr/bx/n/12 Lower max-i-mum con-cen-tra-tion for the \T1/lmr/bx/it/12 In-
+fected \T1/lmr/bx/n/12 group 
+ []
+
+[71] [72 <./3_fig/english_school_random.png>] [73]
+<3_fig/figure_images.png, id=950, 324.21124pt x 28.105pt>
+File: 3_fig/figure_images.png Graphic file (type png)
+
+<use 3_fig/figure_images.png>
+Package pdftex.def Info: 3_fig/figure_images.png used on input line 2119.
+(pdftex.def)             Requested size: 276.00105pt x 23.92708pt.
+
+<3_fig/Frederikke_initial_final.png, id=953, 1284.8pt x 1622.06pt>
+File: 3_fig/Frederikke_initial_final.png Graphic file (type png)
+
+<use 3_fig/Frederikke_initial_final.png>
+Package pdftex.def Info: 3_fig/Frederikke_initial_final.png used on input line 
+2131.
+(pdftex.def)             Requested size: 276.00105pt x 348.4391pt.
+ [74 <./3_fig/figure_images.png>]
+<3_fig/Walking_dead_Frederikke.png, id=962, 760.2804pt x 607.7907pt>
+File: 3_fig/Walking_dead_Frederikke.png Graphic file (type png)
+
+<use 3_fig/Walking_dead_Frederikke.png>
+Package pdftex.def Info: 3_fig/Walking_dead_Frederikke.png used on input line 2
+143.
+(pdftex.def)             Requested size: 276.00105pt x 220.65004pt.
+ [75 <./3_fig/Frederikke_initial_final.png>] [76 <./3_fig/Walking_dead_Frederik
+ke.png>]
+<3_fig/screenshots_moving_smart.png, id=976, 1284.8pt x 2433.09pt>
+File: 3_fig/screenshots_moving_smart.png Graphic file (type png)
+
+<use 3_fig/screenshots_moving_smart.png>
+Package pdftex.def Info: 3_fig/screenshots_moving_smart.png used on input line 
+2214.
+(pdftex.def)             Requested size: 276.00105pt x 522.65865pt.
+
+
+LaTeX Warning: Float too large for page by 44.60307pt on input line 2218.
+
+<3_fig/Moving_smart_average.png, id=979, 766.7847pt x 625.1355pt>
+File: 3_fig/Moving_smart_average.png Graphic file (type png)
+
+<use 3_fig/Moving_smart_average.png>
+Package pdftex.def Info: 3_fig/Moving_smart_average.png used on input line 2236
+.
+(pdftex.def)             Requested size: 276.00105pt x 225.01044pt.
+ [77]
+<3_fig/three_phases_random.png, id=990, 1284.8pt x 2433.09pt>
+File: 3_fig/three_phases_random.png Graphic file (type png)
+
+<use 3_fig/three_phases_random.png>
+Package pdftex.def Info: 3_fig/three_phases_random.png used on input line 2272.
+
+(pdftex.def)             Requested size: 276.00105pt x 522.65865pt.
+
+
+LaTeX Warning: Float too large for page by 32.60307pt on input line 2276.
+
+<3_fig/three_phases_ODE_sd.png, id=991, 695.2374pt x 625.1355pt>
+File: 3_fig/three_phases_ODE_sd.png Graphic file (type png)
+
+<use 3_fig/three_phases_ODE_sd.png>
+Package pdftex.def Info: 3_fig/three_phases_ODE_sd.png used on input line 2284.
+
+(pdftex.def)             Requested size: 276.00105pt x 248.17062pt.
+ [78]
+<3_fig/screenshot_three_phases_free.png, id=1000, 1284.8pt x 811.03pt>
+File: 3_fig/screenshot_three_phases_free.png Graphic file (type png)
+
+<use 3_fig/screenshot_three_phases_free.png>
+Package pdftex.def Info: 3_fig/screenshot_three_phases_free.png used on input l
+ine 2350.
+(pdftex.def)             Requested size: 276.00105pt x 174.21954pt.
+
+<3_fig/three_phases_free.png, id=1003, 724.1454pt x 614.295pt>
+File: 3_fig/three_phases_free.png Graphic file (type png)
+
+<use 3_fig/three_phases_free.png>
+Package pdftex.def Info: 3_fig/three_phases_free.png used on input line 2362.
+(pdftex.def)             Requested size: 276.00105pt x 234.13753pt.
+ [79] [80 <./3_fig/screenshots_moving_smart.png>] [81 <./3_fig/Moving_smart_ave
+rage.png>] [82 <./3_fig/three_phases_random.png>] [83 <./3_fig/three_phases_ODE
+_sd.png> <./3_fig/screenshot_three_phases_free.png (PNG copy)>] [84 <./3_fig/th
+ree_phases_free.png>] [85
+
+] [86
+
+]
+Chapter 5.
+[87]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 2447.
+
+[88]
+Chapter 6.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 2476.
+
+[89
+
+] [90] (./thesis.bbl) [91
+
+
+
+] [92
 
 
 ] (./thesis.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2144.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2144.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2549.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2549.
  (./thesis.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2144.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2549.
 
 
  *File List*
@@ -1692,11 +1233,12 @@ graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-dvipsnam.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -1725,8 +1267,6 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
@@ -1752,17 +1292,22 @@ kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
-  hdvips.def    2012/11/06 v6.83m Hyperref driver for dvips
- pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   thesis.out
   thesis.out
+frontpage.tex
+ uiologo.png    Graphic file (type png)
   ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -1772,85 +1317,88 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-1_fig/threshold_phenomenon.eps
-1_fig/English_boarding_school.eps
-1_fig/English_boarding_school_changes.eps
-1_fig/WD_zombie_initial_1.eps
-1_fig/check_parameters.eps
-1_fig/WD_zombie_initial_2.eps
-1_fig/check_parameters_hysterical_2.eps
-1_fig/WD_zombie_hysterical_1.eps
-1_fig/omega_function.eps
-1_fig/WD_zombie_counter_1.eps
-1_fig/WD_zombie_counter_2.eps
-1_fig/WD_zombie_counter_series.eps
-1_fig/WD_zombie_all_phases_1.eps
-2_fig/trav_wave_sub.eps
-2_fig/epidemic_wave_z_lambda_0_5.eps
+1_fig/threshold_phenomenon.png
+1_fig/English_boarding_school.png
+1_fig/English_boarding_school_changes.png
+1_fig/WD_zombie_initial_1.png
+1_fig/check_parameters.png
+1_fig/WD_zombie_initial_2.png
+1_fig/check_parameters_hysterical_2.png
+1_fig/WD_zombie_hysterical_1.png
+1_fig/omega_function.png
+1_fig/WD_zombie_counter_1.png
+1_fig/WD_zombie_counter_2.png
+1_fig/WD_zombie_counter_series.png
+1_fig/WD_zombie_all_phases_1.png
+2_fig/trav_wave_sub.png
+2_fig/epidemic_wave_z_lambda_0_5.png
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
-2_fig/Trav_wave_2D.eps
-2_fig/2D_initial_variable_sub.eps
-2_fig/TW_2D_initial_z_lambda_0_5.eps
-2_fig/2D_lambda_variable.eps
-2_fig/british_number.eps
-2_fig/2D_british_school_gauss_sub.eps
-2_fig/2D_zombie_three_phases_number.eps
-2_fig/initial_value_susceptible.eps
-2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.eps
-2_fig/2D_compare_towns.eps
-2_fig/2D_compare_Frederikke.eps
-2_fig/2D_Frederikke_contourf_sub.eps
-2_fig/2D_Frederikke_random_contourf_sub.eps
-2_fig/2D_gauss_sub.eps
-2_fig/2D_gauss_one_sub.eps
-2_fig/2D_british_school_sub.eps
-2_fig/2D_british_school_gauss_corner_sub.eps
-2_fig/2D_british_school_long_number.eps
-2_fig/2D_british_school_gauss_long_number.eps
-2_fig/2D_british_school_gauss_corner_long_number.eps
-2_fig/2D_zombie_initial_cond_sub.eps
-2_fig/2D_zombie_initial_cond_number.eps
-2_fig/2D_zombie_three_phases_sub.eps
-2_fig/2D_zombie_three_phases_zombie_middle_town_surface_sub.eps
-2_fig/2D_zombie_three_phases_zombie_large_town_sub.eps
-3_fig/random_compare.eps
-3_fig/random_walk_days.eps
-3_fig/english_school_random.eps
-3_fig/figure_images.eps
-3_fig/Frederikke_initial_final.eps
-3_fig/Walking_dead_Frederikke.eps
-3_fig/Moving_smart_screen.eps
-3_fig/Moving_smart_average.eps
-3_fig/three_phases_ODE_sd.eps
-3_fig/three_phases_random.eps
-3_fig/screenshot_safe_buildings.eps
+2_fig/Trav_wave_2D.png
+2_fig/2D_initial_variable_sub.png
+2_fig/TW_2D_initial_z_lambda_0_5.png
+2_fig/2D_lambda_variable.png
+2_fig/british_number.png
+2_fig/2D_british_school_gauss_sub.png
+2_fig/2D_zombie_three_phases_number.png
+2_fig/initial_value_susceptible.png
+2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png
+2_fig/2D_compare_towns.png
+2_fig/2D_compare_Frederikke.png
+2_fig/2D_Frederikke_contourf_sub.png
+3_fig/random_compare.png
+3_fig/random_walk_days.png
+3_fig/english_school_random.png
+3_fig/figure_images.png
+3_fig/Frederikke_initial_final.png
+3_fig/Walking_dead_Frederikke.png
+3_fig/screenshots_moving_smart.png
+3_fig/Moving_smart_average.png
+3_fig/three_phases_random.png
+3_fig/three_phases_ODE_sd.png
+3_fig/screenshot_three_phases_free.png
+3_fig/three_phases_free.png
   thesis.bbl
   thesis.ind
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2144.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2549.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 7520D17008B9A5F2FD2F343E839AB11F;3673.
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: C29719F820DE89F70492014AAF41A800;3809.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2144.
- )
-(\end occurred inside a group at level 1)
-
-### simple group (level 1) entered at line 1633 ({)
-### bottom level 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2549.
+ ) 
 Here is how much of TeX's memory you used:
- 8951 strings out of 494466
- 136417 string characters out of 6166387
- 271124 words of memory out of 5000000
- 11951 multiletter control sequences out of 15000+600000
- 91405 words of font info for 84 fonts, out of 8000000 for 9000
- 350 hyphenation exceptions out of 8191
+ 9938 strings out of 493304
+ 150986 string characters out of 6139870
+ 279518 words of memory out of 5000000
+ 12624 multiletter control sequences out of 15000+600000
+ 112042 words of font info for 203 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
  41i,11n,35p,1661b,504s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathex.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxo10.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/symbols/msbm7.pfb>
+Output written on thesis.pdf (92 pages, 6654367 bytes).
+PDF statistics:
+ 1222 PDF objects out of 1440 (max. 8388607)
+ 1024 compressed objects within 11 object streams
+ 286 named destinations out of 1000 (max. 500000)
+ 32369 words of extra memory for PDF output out of 35830 (max. 10000000)
 
-Output written on thesis.dvi (90 pages, 352616 bytes).

@@ -3,3 +3,8 @@ AUTHOR: Torbjørn Seland
 DATE: today
 
 # #include "biological_models.do.txt"
+
+======= Bibliography =======
+
+BIBFILE: ../bibliography/papers.pub
+

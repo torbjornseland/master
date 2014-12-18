@@ -1,0 +1,186 @@
+%%
+%% Automatically generated file from DocOnce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+twoside,                 % oneside: electronic viewing, twoside: printing
+final,                   % or draft (marks overfull hboxes, figures with paths)
+chapterprefix=true,      % "Chapter" word at beginning of each chapter
+open=right               % start new chapters on odd-numbered pages
+10pt]{book}
+
+\listfiles               % print all files needed to compile this document
+
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% Make sure blank even-numbered pages before new chapters are
+% totally blank with no header
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+
+% ------------------- main content ----------------------
+
+\input{frontpage}
+
+
+\chapter{Introduction}
+Throughout history large epidemic diseases have spread around the world, often over large geographical areas. These diseases have done great harm on the population and millions of people have died. The Black Death and Cholera are epidemics that have moved over large distances into Europe. When the Black Death came to Europe in 1347, it killed about a third of the population, which at that time was about 85 million people Ref.\cite[p.~315]{murray2002mathematical}.~These diseases often gave physical symptoms, which have given important knowledge through history to prevent new outbursts and to cure already infected humans. They have various outbreaks, but are often related to connections between humans and animals. Malaria is an example of a disease that transmits from mosquitoes to humans. There have also been various explanations of the spread and cause of epidemics. AIDS(autoimmune deficiency syndrome) has as an example been ascribed by many as a punishment sent by God. Ref.\cite[p.~316]{murray2002mathematical}.~
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+The first major epidemic in the U.S.A was the Yellow Fever, discovered in 1793 in Philadelphia. 5000 of a population of 50 000 died. About 20 000 fled the city and the situation was quite chaotic Ref.\cite[p.~316]{murray2002mathematical}.~This had a major impact on the subsequent life and politics of the country. The power of a disease can do larger damage, with respect to death, than a war.
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+After World War II, public health strategy has focused on elimination and control of organisms which cause disease. In 1978 United Nations sat a goal of eradicating all diseases by year 2000. A large job has been done and smallpox is an example of a disease that was last seen in Somalia in 1977[Ref:cdc.gov]. AIDS was later recognized and has been difficult to stop the spread.
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+Another important aspect in the current spread of diseases, is the displacement of human populations. About a million people cross international borders daily. The growth of human population, especially in underdeveloped countries, is a factor that affects the spread. These conditions played a key role in the spread of HIV(human immunodeficiency) in the 1980's. World Health Organization has estimated that around 32.6 million are infected with the HIV virus today[web:http://www.who.int/features/factfiles/hiv/en/].
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+Knowledge through history is important for the control of different epidemics, but also important in detecting new diseases. The plague of Athens had been studied in great detail by Thucydides in 430-438 BC. Similar had been done with the 'sweating sickness' in the late 15th and first of the 16th centuries in England. The symptoms of 'sweating sickness' was detected in 1993 in the Southwest U.S.A. Here the disease was called hanta virus. There is likely that this is the same disease, but that the 'sweating sickness' has been dormant for couple of hundred years. Ref.\cite[p.~317]{murray2002mathematical}.~
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+There have been done several mathematical studies on different diseases. HIV/AIDS is a field which has been studied by several scientists through the years. \emph{Mathematical Modelling of the Transmission Dynamics of HIV Infection and AIDS: a Review} was published in 1988 by Valerie Isham Ref.\cite{isham1988mathematical}. This paper focuses on modelling transmission of infection in the context of AIDS epidemic.In 1999 Alan S. Perelson and Patrick W. Nelson published \emph{Mathematical Analysis of HIV-1 Dynamics in Vivo} Ref.\cite{perelson1999mathematical}. They studied the dynamics of HIV-1 pathogenesis to AIDS, where they looked at rapid dynamical processes that occur in short time scales, as hours, while AIDS occurs on a time scale of about 10 years. This affect the way that AIDS patients are treated with drugs. \emph{Predicting the HIV/AIDS epidemic and measuring the effect of mobility in mainland China} by Xiao et. al Ref.\cite{xiao2013predicting} is another study done on HIV/AIDS where they look at the geographic variation in the severity of the epidemic in China. 
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+This thesis will study three mathematical models used to simulate epidemic diseases. The first chapter will use an ODE system to model the different groups that consists in an epidemic disease. The chapter will study the variations in each group based on the time aspect. The second chapter will look at a PDE system. This model also takes the spatial spread into account, and the position affects the result. A random walk system is studied in the third chapter. In the two first chapters, the amount in each group has been seen as concentrations. In this chapter, each person will be model as a particle. The person behavior will be based on the group it belongs to and the time and position of the person. 
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+The TV series \emph{Walking Dead} has through several seasons shown the result of a zombie outburst. A couple of studies have been done on epidemic disease, where papers from Munz et. al Ref.\cite{munz2009zombies} and Langtangen,Mardal {\&} Røtnes Ref.\cite{zombie-math} can be mentioned. This thesis will use these papers and develop the models further. It will focus on the first five episodes in the first season of \emph{Walking Dead} Ref.\cite{walking_dead}, and use parameter values based on this series. 
+
+
+\vspace{3mm}
+
+
+
+
+\vspace{3mm}
+
+
+A couple of choices have been done for this thesis. The systems will be model for a short period of time. The longest simulations are performed for a month, while the third chapter only consists of simulations for an half hour. This is done to study the humans behavior and influence in a zombie attack. The second one is to model all systems as closed systems. The amount in each simulation never exceeds 763 humans and the time aspect is short. Therefore the birth and death rate is close to negligible, and are set to zero.    
+
+
+
+\clearemptydoublepage
+\markboth{Bibliography}{Bibliography}
+\thispagestyle{empty}
+
+\bibliographystyle{plain}
+\bibliography{../bibliography/papers}
+
+
+
+% ------------------- end of main content ---------------
+
+
+\clearemptydoublepage
+\markboth{Index}{Index}
+\thispagestyle{empty}
+\printindex
+
+\end{document}
+
