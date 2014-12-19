@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{walking_dead}
 F.~Darabont and G.~A. Hurd.
@@ -17,10 +17,9 @@ Valerie Isham.
   in Society)}, pages 5--49, 1988.
 
 \bibitem{zombie-math}
-Hans~Petter Langtangen, Kent-Andre Mardal, and P{\aa}l R{\o}tnes.
-\newblock {\em Escaping the Zombie Threat by Mathematics}, chapter 3.6, pages
-  x--y.
-\newblock University of Chicago Press, 2013.
+Hans~Petter Langtangen, Kent-Andre Mardal, and P{\r a}l R{\o}tnes.
+\newblock Escaping the zombie threat by mathematics.
+\newblock Technical report, Simula Research Laboratory, 2012.
 
 \bibitem{munz2009zombies}
 Philip Munz, Ioan Hudea, Joe Imad, and Robert~J. Smith.
@@ -40,6 +39,11 @@ J.D. Murray.
   Applications}.
 \newblock Intercisciplinary Applied Mathematics: Mathematical Biology.
   Springer, 2003.
+
+\bibitem{who_hiv}
+World~Health Organization.
+\newblock 10 facts on hiv/aids.
+\newblock \url{http://www.who.int/features/factfiles/hiv/en/}, 2014.
 
 \bibitem{perelson1999mathematical}
 Alan~S. Perelson and Patrick~W. Nelson.

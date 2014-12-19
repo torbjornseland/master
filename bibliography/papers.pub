@@ -87,17 +87,6 @@
    series:    Intercisciplinary Applied Mathematics: Mathematical Biology
    lccn:      2001020448
    entrytype: book
-* chapters
-** Escaping the Zombie Threat by Mathematics
-   key:       zombie-math
-   author:    Hans Petter Langtangen, Kent-Andre Mardal, P{\aa}l R{\o}tnes
-   year:      2013
-   booktitle: Zombies in the Academy: living death in higher education
-   publisher: University of Chicago Press
-   chapter:   3.6
-   pages:     x-y
-   status:    published
-   entrytype: inbook
 * reports
 ** Births: Final Data From 2012
    key:         CBC_births_2012
@@ -113,6 +102,13 @@
    institution: Division of Vital Statistics
    status:      published
    entrytype:   techreport
+** Escaping the Zombie Threat by Mathematics
+   key:         zombie-math
+   author:      Hans Petter Langtangen, Kent-Andre Mardal, P{\r a}l R{\o}tnes
+   year:        2012
+   institution: Simula Research Laboratory
+   status:      published
+   entrytype:   techreport
 * misc
 ** Walking Dead: Season 1
    key:       walking_dead
@@ -120,3 +116,10 @@
    year:      2010-2011
    status:    published
    entrytype: misc
+** 10 Facts on HIV/AIDS
+   key:          who_hiv
+   author:       World Health Organization
+   year:         2014
+   status:       published
+   howpublished: \url{http://www.who.int/features/factfiles/hiv/en/}
+   entrytype:    misc

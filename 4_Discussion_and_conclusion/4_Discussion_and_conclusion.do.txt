@@ -1,24 +1,24 @@
 
 ========= Discussion and conclusion =========
-This paper has used three different systems to model epidemic diseases. These three models gives different possibilities related to the adaptation to real epidemic situations. The first chapter *ODE systems*, models the changes in different groups based on the time aspect. This does not take into account the spatial distribution and is easy to use if a model should be adapted to a already given result, or if the simulation is done for a large, uniform group. The three phases in *Walking Dead* were modeled by adjusting the parameter values to fulfill the expected amount for each group. The model is good to use in the result is known. However, since the spatial factor plays a major role in how a disease spred, this model will not take this information into account. 
+This paper has used three different systems to model epidemic diseases. These three models gives different possibilities related to the adaptation to real epidemic situations. The first chapter *ODE systems*, models the changes in different groups based on the time aspect. This does not take into account the spatial distribution and is easy to use if a model should be adapted to a already given result, or if the simulation is done for a large, uniform group. The three phases in *Walking Dead* were modeled by adjusting the parameter values to fulfill the expected amount for each group. The model is good when the result is known. However, the spatial factor plays a major role in how a disease spred and this model will not take this information into account. 
 <linebreak>
 <linebreak>
-The chapter *PDE models* added the spatial factor. From the English boarding school, one could see that the position of the infected student had a major impact on the result. This was expanded for the *Zombiefication* model, where the *Susceptible* group was spread. One could see that the positions for the groups was important. This chapter also introduce *Ten minutes at Frederikke*, where the idea is to add human behavior to the model. The diffusion term gave restrictions for the areas where the zombies could move, which resulted i a higher amount of humans that survived. This idea did not work that good, since the concentrations in a PDE system wants fullfil equilibirum. 
+The chapter *PDE models* added the spatial factor. From the English boarding school, one could see that the position of the infected student had a major impact on the result. This was expanded for the *Zombiefication* model, where the susceptible group was spread. One could see that the positions for the groups was important. This chapter also introduce *Ten minutes at Frederikke*, where the idea is to add human behavior to the model. The diffusion term gave restrictions for the areas where the zombies could move, which resulted i a higher amount of humans that survived. 
 <linebreak>
 <linebreak>
 Random walk gave the opportunity to add human behavior in an easier way. Since the random walk model is based on a set of choises that the random walker needs to do every time step, the expected behavoir can be implemented. Compared to *Walking Dead*, the different conditions in the random walk model reflects the behavior from the humans and zombies in the series. The moving smart condition takes away some of the random walk aspect. However, it also adds a more realistic behavoir. By presenting the situation where a zombie outbust would happen, a random walk would not be a natural and realistic way to move. Neither for a larger group. 
 <linebreak>
 <linebreak>
-The idea by adding areas where the zombies could not move, worked a lot better for the random walk model than the PDE model. The group that was simulated here, aws quite small and the result would may differ if the group was larger. The focus in this thesis has been on small groups the the ability to add human behavior. The random walk model was the one that gave the best results. However, it also demands most computational force.
+The idea by adding areas where the zombies could not move, worked a lot better for the random walk model than the PDE model. The group that was simulated here, was quite small and the result may differ in a larger group. The focus in this thesis has been on simulating small groups and the ability to add human behavior. The random walk model was the one that gave the best results. However, it also demands most computational force.
 
 ===== Further work =====
-It would be interesting to expand the random model by simulating for a longer time scale with a higher amount of people. The code in this thesis has been written i python,which results in a slow simulating. By paralellisizing the code and divide the different simulations into different areas, one could done a more qualified simulation of a zombie outburst.
+It would be interesting to expand the random model by simulating for a longer time scale with a higher amount of people. The code in this thesis has been written i python, which results in a slow simulating. By paralellisizing the code and divide the different simulations into different areas, a more efficient simulation of a zombie outburst could be achieved.
 <linebreak>
 <linebreak>
-The idea of adding more parameters to the random walker, would make it more realistic. The skills for a human was similar for all in the *Susceptible* group. This is not the case in the real world. All humans have different skills and would behave different in meeting with a zombie. Interesting skills to add would be:
-* weapons for the *Susceptible* group
-* noise sensitive for the *Zombie* group
-* The ability to cooperate
+The idea of adding more parameters to the random walker, would make it more realistic. The skills for a human was similar for all in the susceptible group. This is not the case in the real world. All humans have different skills and would behave different in meeting with a zombie. Interesting skills to add would be:
+* weapons for the susceptible group
+* noise sensitive for the zombie group
+* The ability to cooperate in the groups.
 This would all make the random walk model more realistic in the idea of simulating a zombie outburst.
  
 

@@ -2,7 +2,7 @@ from numpy import zeros,linspace
 from simple_PDE import *
 
 
-def test_constant_solution():
+def _test_constant_solution():
     """
     Test problem where u=u_const is the exact solution, to be
     reproduced (to machine precision) by any relevant method.
@@ -45,7 +45,7 @@ def test_constant_solution():
     tol = 1E-14
     assert difference < tol
 
-def test_manufactured_solution(T,Nt,X,Nx):
+def _test_manufactured_solution(T,Nt,X,Nx):
     
     def exact_solution_S(t,x):
         return np.cos(np.pi*x)*t
