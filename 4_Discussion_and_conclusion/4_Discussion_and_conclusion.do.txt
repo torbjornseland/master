@@ -22,3 +22,4 @@ The idea of adding more parameters to the random walker, would make it more real
 This would all make the random walk model more realistic in the idea of simulating a zombie outburst.
  
 
+

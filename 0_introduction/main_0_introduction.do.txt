@@ -1,6 +1,6 @@
-!bt
-\input{frontpage}
-!et
+#!bt
+#\input{frontpage}
+#!et
 
 # #include "0_introduction.do.txt"
 

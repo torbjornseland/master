@@ -127,6 +127,7 @@ The parameter value $\rho$ has a major impact on the result. The epidemic diseas
 FIGURE:[1_fig/English_boarding_school_changes.png] label{fig:rho_changes} In the first plot where $\rho=50$, the infected group will increase until the number of susceptible group falls down to 50. This will result in a majority of infected students. In the last plot where $\rho=400$, the total number of susceptible humans stays around 170 students and will go towards a steady number as $I(\infty)=0$.   
 
 ======= Zombification =======
+label{section:1_zombiefication}
 One of the worst epidemics that can affect the human population is a zombie attack. This will have a huge impact on the way humans live today. Several movies and series has illustrated this type of situation, but it is time that the scientists also take this threat seriously. There have been written several papers about this. Munz et. alcite{munz2009zombies} used the SEIR model to simulate a possible upcoming zombiefication, where the latent group($E$), is replaced with an infected group($I$) and the infected group($I$) is replaced with a zombie group($Z$). Here it is important to know that the infected group in the $SIZR$ is not the same as in the $SEIR$ model. The following model was used,
 
 !bt
@@ -289,7 +290,7 @@ label{table:param_val}
 |-------------------------------------------------------|
 |parameter|*Initial phase*|*Hysterical phase*|*Counter attack phase*|
 |-------------------------------------------------------|
-|$\beta$  |0.01155      |0.000011        |0.00011      	|
+|$\beta$  |0.01155      |0.000011        |0.000011     	|
 |$\varrho$|1.37         |1.5             |1.5          	|
 |$\alpha$ |0.00044      |0.000208        |0.000208     	|
 |a        |0            |0               |0.0073       	|
@@ -318,12 +319,18 @@ Considering the uncertainty of the parameters, this simulation gives a result cl
 <linebreak>
 
 ======= Discussion =======
-Two different ODE models are used in this chapter. The first model is a basic SIR model, and the disease in the *English boarding school* is based on this model. The expected result was produced. With variations in the value of $\rho$, it caused large differences in the result for the simulation.
+Two different ODE models are used in this chapter. The first model is a basic SIR model, and the disease in the *English boarding school* is based on this model. The expected result was produced. The maximum concentration of the infected group could be found by using ref{eq:max_I}. The value of $\Imax$ was first calculated for the example from ref{section:1_english} with the given parameter values. This was found to be $\Imax=292$. The numerical solution shown in Fig.(ref{fig:english_boarding}) gave the same $\Imax$. 
+<linebreak>
+<linebreak>
+With variations in the parameter value $\rho$, different epidemic results could be achieved. In the section ref{section:1_english}, the value of $\rho$ was set to 202. By decreasing this value to 50, all students will be infected in during the 8 first days. While increasing the value of $\rho$ to 400, 170 students will remain in the susceptible group after 15 days. 
 <linebreak>
 <linebreak>
 The *Zombiefication* part was based on the model and phases from LMR Ref.(cite{zombie-math}). The parameters and the lenght of the phases were adjusted to simulate *Walking Dead*. Several assumptions were made from the writer to model this series. Since the simulations were based on expected results, the parameters were adjusted to fulfill these demands. The model produced the expected result for the groups, and one can say that the spread can be seen as possible based on these assumptions.    
 <linebreak>
 <linebreak>
+The parameter values $\beta$, $\varrho$ and $\alpha$ from the model in Eq.(ref{eq:LMR_model}) were adjusted for the different phases in ref{section:1_zombiefication}. The effect of varying these parameters could be seen for the two groups *Susceptible* and *Removed* in Fig.(ref{fig:initial_parameters}) and Fig.(ref{hysterical_variations}). The effect of varying $\beta$, which describes the number of susceptible humans that become infected, had major effect on the result for the susceptible group. The changes in $\alpha$, which describes the number of zombies killed by susceptible humans, affected the result in the removed group. The changes in $\varrho$, which describes the probability for an infected human to wake up as a zombie, affects the susceptible group in the *Initial phase*.  The effect for the *Hysterical phase* is close negligible. One can see that $\varrho$ has a greater effect on short simulations. By varying the different parameters in Eq.(ref{eq:LMR_model}), the expected result from *Walking Dead* wasachieved.
+<linebreak> 
+<linebreak> 
 There are several factors that this model don't take into account. How will the number of battles effect the humans and zombies? Will they be tired or more efficient? What about weapons? What would happen if the group of zombies was much larger? Due to different variations in behavior of humans and zombies, one can never predict all situations accurately. This is a weakness with this model, and human behavior is difficult to add to the model.  
 <linebreak>
 <linebreak>

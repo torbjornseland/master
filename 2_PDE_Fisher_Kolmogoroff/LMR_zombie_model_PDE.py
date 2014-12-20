@@ -63,10 +63,10 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,bet
     Z_vol[0] = volume_engine(Z_1[1:-1,1:-1],dx*dy)
     R_vol[0] = volume_engine(R_1[1:-1,1:-1],dx*dy)
 
-    np.savez_compressed("%s/Sub%04d" % (folder,0),S_1[1:-1:gap,1:-1:gap]) #initial conditions
-    np.savez_compressed("%s/Inf%04d" % (folder,0),I_1[1:-1:gap,1:-1:gap]) #initial conditions
-    np.savez_compressed("%s/Zom%04d" % (folder,0),Z_1[1:-1:gap,1:-1:gap]) #initial conditions
-    np.savez_compressed("%s/Rem%04d" % (folder,0),R_1[1:-1:gap,1:-1:gap]) #initial conditions
+    #np.savez_compressed("%s/Sub%04d" % (folder,0),S_1[1:-1:gap,1:-1:gap]) #initial conditions
+    #np.savez_compressed("%s/Inf%04d" % (folder,0),I_1[1:-1:gap,1:-1:gap]) #initial conditions
+    #np.savez_compressed("%s/Zom%04d" % (folder,0),Z_1[1:-1:gap,1:-1:gap]) #initial conditions
+    #np.savez_compressed("%s/Rem%04d" % (folder,0),R_1[1:-1:gap,1:-1:gap]) #initial conditions
 
         
     
@@ -132,18 +132,18 @@ def zombiefication_2D(T,Nx,Ny,Nt,X,Y,z_X,z_Y,moviename,par_values,classnames,bet
             Z_vol[n] = volume_engine(Z[1:-1,1:-1],dx*dy)
             R_vol[n] = volume_engine(R[1:-1,1:-1],dx*dy)
 
-            if (n%mn == 0):
-                np.savez_compressed("%s/Sub%04d" % (folder,(n/mn)),S[1:-1:gap,1:-1:gap])
-                np.savez_compressed("%s/Inf%04d" % (folder,(n/mn)),I[1:-1:gap,1:-1:gap])
-                np.savez_compressed("%s/Zom%04d" % (folder,(n/mn)),Z[1:-1:gap,1:-1:gap])
-                np.savez_compressed("%s/Rem%04d" % (folder,(n/mn)),R[1:-1:gap,1:-1:gap])
+            #if (n%mn == 0):
+            #    np.savez_compressed("%s/Sub%04d" % (folder,(n/mn)),S[1:-1:gap,1:-1:gap])
+            #    np.savez_compressed("%s/Inf%04d" % (folder,(n/mn)),I[1:-1:gap,1:-1:gap])
+            #    np.savez_compressed("%s/Zom%04d" % (folder,(n/mn)),Z[1:-1:gap,1:-1:gap])
+            #    np.savez_compressed("%s/Rem%04d" % (folder,(n/mn)),R[1:-1:gap,1:-1:gap])
 
             S_1[:,:] = S
             I_1[:,:] = I
             Z_1[:,:] = Z 
             R_1[:,:] = R 
 
-    plot_volume(t,[S_vol,I_vol,Z_vol,R_vol],moviename,classnames,T,title)
+    #plot_volume(t,[S_vol,I_vol,Z_vol,R_vol],moviename,classnames,T,title)
     print_phase(dt,t,phases,[S_vol,I_vol,Z_vol,R_vol],classnames)
 
 

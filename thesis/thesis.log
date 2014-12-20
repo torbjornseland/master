@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.15)  18 DEC 2014 23:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.15)  20 DEC 2014 16:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -701,13 +701,13 @@ LaTeX Info: Redefining \nameref on input line 81.
 <uiologo.png, id=217, 1951.29pt x 1996.45876pt>
 File: uiologo.png Graphic file (type png)
  <use uiologo.png>
-Package pdftex.def Info: uiologo.png used on input line 32.
+Package pdftex.def Info: uiologo.png used on input line 33.
 (pdftex.def)             Requested size: 113.79718pt x 113.78105pt.
-) [1
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./uiologo.png>] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./uiologo.png>]) [2] [3
 
-] [3] [4
+] [4
 
 ] [5]
 [6
@@ -760,174 +760,182 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  [8]
 Chapter 1.
 
-Overfull \hbox (7.59552pt too wide) in paragraph at lines 121--122
-\T1/lmr/m/n/10 (-20) Throughout the his-tory great epi-demic dis-eases have spr
-ead across the world,leading
- []
+LaTeX Warning: Reference `section:PDE_models' on page 9 undefined on input line
+ 132.
 
 [9
 
-] [10]
+]
+
+LaTeX Warning: Reference `section:PDE_models' on page 10 undefined on input lin
+e 154.
+
+[10]
 Chapter 2.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 206.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 207.
 
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 206.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 207.
  [11
 
 ] [12]
-<1_fig/threshold_phenomenon.png, id=362, 578.16pt x 433.62pt>
+<1_fig/threshold_phenomenon.png, id=354, 578.16pt x 433.62pt>
 File: 1_fig/threshold_phenomenon.png Graphic file (type png)
 
 <use 1_fig/threshold_phenomenon.png>
-Package pdftex.def Info: 1_fig/threshold_phenomenon.png used on input line 265.
+Package pdftex.def Info: 1_fig/threshold_phenomenon.png used on input line 266.
 
 (pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
  [13] [14 <./1_fig/threshold_phenomenon.png>] <1_fig/English_boarding_school.pn
-g, id=395, 578.16pt x 433.62pt>
+g, id=387, 578.16pt x 433.62pt>
 File: 1_fig/English_boarding_school.png Graphic file (type png)
 
 <use 1_fig/English_boarding_school.png>
 Package pdftex.def Info: 1_fig/English_boarding_school.png used on input line 3
-16.
+18.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
  [15 <./1_fig/English_boarding_school.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 331.
+(Font)              <12> on input line 333.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 331.
+(Font)              <8> on input line 333.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 331.
+(Font)              <6> on input line 333.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 331.
+(hyperref)                removing `math shift' on input line 333.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\rho' on input line 331.
+(hyperref)                removing `\rho' on input line 333.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 331.
+(hyperref)                removing `math shift' on input line 333.
 
-<1_fig/English_boarding_school_changes.png, id=409, 926.5014pt x 712.5822pt>
+<1_fig/English_boarding_school_changes.png, id=401, 926.5014pt x 712.5822pt>
 File: 1_fig/English_boarding_school_changes.png Graphic file (type png)
 
 <use 1_fig/English_boarding_school_changes.png>
 Package pdftex.def Info: 1_fig/English_boarding_school_changes.png used on inpu
-t line 336.
+t line 338.
 (pdftex.def)             Requested size: 310.4979pt x 238.80621pt.
- [16 <./1_fig/English_boarding_school_changes.png>] [17] [18] [19]
-<1_fig/WD_zombie_initial_1.png, id=444, 578.16pt x 433.62pt>
+ [16] [17 <./1_fig/English_boarding_school_changes.png>] [18] [19] [20]
+<1_fig/WD_zombie_initial_1.png, id=442, 578.16pt x 433.62pt>
 File: 1_fig/WD_zombie_initial_1.png Graphic file (type png)
 
 <use 1_fig/WD_zombie_initial_1.png>
-Package pdftex.def Info: 1_fig/WD_zombie_initial_1.png used on input line 474.
+Package pdftex.def Info: 1_fig/WD_zombie_initial_1.png used on input line 477.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
-
-<1_fig/check_parameters.png, id=448, 1042.8561pt x 871.5762pt>
+ [21 <./1_fig/WD_zombie_initial_1.png>]
+<1_fig/check_parameters.png, id=453, 1042.8561pt x 871.5762pt>
 File: 1_fig/check_parameters.png Graphic file (type png)
 
 <use 1_fig/check_parameters.png>
-Package pdftex.def Info: 1_fig/check_parameters.png used on input line 487.
+Package pdftex.def Info: 1_fig/check_parameters.png used on input line 490.
 (pdftex.def)             Requested size: 310.4979pt x 259.4933pt.
 
-<1_fig/WD_zombie_initial_2.png, id=450, 578.16pt x 433.62pt>
+<1_fig/WD_zombie_initial_2.png, id=455, 578.16pt x 433.62pt>
 File: 1_fig/WD_zombie_initial_2.png Graphic file (type png)
 
 <use 1_fig/WD_zombie_initial_2.png>
-Package pdftex.def Info: 1_fig/WD_zombie_initial_2.png used on input line 499.
+Package pdftex.def Info: 1_fig/WD_zombie_initial_2.png used on input line 502.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [20] [21 <./1_fig/WD_zombie_initial_1.png>] [22 <./1_fig/check_parameters.png>
-]
-<1_fig/check_parameters_hysterical_2.png, id=474, 1353.6171pt x 897.5934pt>
+ [22 <./1_fig/check_parameters.png>]
+[23 <./1_fig/WD_zombie_initial_2.png>]
+<1_fig/check_parameters_hysterical_2.png, id=473, 1353.6171pt x 897.5934pt>
 File: 1_fig/check_parameters_hysterical_2.png Graphic file (type png)
 
 <use 1_fig/check_parameters_hysterical_2.png>
 Package pdftex.def Info: 1_fig/check_parameters_hysterical_2.png used on input 
-line 542.
+line 545.
 (pdftex.def)             Requested size: 310.4979pt x 205.89429pt.
- [23 <./1_fig/WD_zombie_initial_2.png>] <1_fig/WD_zombie_hysterical_1.png, id=4
-82, 578.16pt x 433.62pt>
+ [24]
+<1_fig/WD_zombie_hysterical_1.png, id=480, 578.16pt x 433.62pt>
 File: 1_fig/WD_zombie_hysterical_1.png Graphic file (type png)
 
 <use 1_fig/WD_zombie_hysterical_1.png>
 Package pdftex.def Info: 1_fig/WD_zombie_hysterical_1.png used on input line 57
-6.
+9.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [24 <./1_fig/check_parameters_hysterical_2.png>] <1_fig/omega_function.png, id
-=491, 578.16pt x 433.62pt>
+ [25 <./1_fig/check_parameters_hysterical_2.png>] <1_fig/omega_function.png, id
+=490, 578.16pt x 433.62pt>
 File: 1_fig/omega_function.png Graphic file (type png)
 
 <use 1_fig/omega_function.png>
-Package pdftex.def Info: 1_fig/omega_function.png used on input line 603.
+Package pdftex.def Info: 1_fig/omega_function.png used on input line 606.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
-<1_fig/WD_zombie_counter_1.png, id=492, 578.16pt x 433.62pt>
+<1_fig/WD_zombie_counter_1.png, id=491, 578.16pt x 433.62pt>
 File: 1_fig/WD_zombie_counter_1.png Graphic file (type png)
 
 <use 1_fig/WD_zombie_counter_1.png>
-Package pdftex.def Info: 1_fig/WD_zombie_counter_1.png used on input line 615.
+Package pdftex.def Info: 1_fig/WD_zombie_counter_1.png used on input line 618.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [25 <./1_fig/WD_zombie_hysterical_1.png>]
-<1_fig/WD_zombie_counter_2.png, id=505, 578.16pt x 433.62pt>
+ [26 <./1_fig/WD_zombie_hysterical_1.png>]
+<1_fig/WD_zombie_counter_2.png, id=504, 578.16pt x 433.62pt>
 File: 1_fig/WD_zombie_counter_2.png Graphic file (type png)
 
 <use 1_fig/WD_zombie_counter_2.png>
-Package pdftex.def Info: 1_fig/WD_zombie_counter_2.png used on input line 636.
+Package pdftex.def Info: 1_fig/WD_zombie_counter_2.png used on input line 639.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
 
-<1_fig/WD_zombie_counter_series.png, id=508, 578.16pt x 433.62pt>
+<1_fig/WD_zombie_counter_series.png, id=507, 578.16pt x 433.62pt>
 File: 1_fig/WD_zombie_counter_series.png Graphic file (type png)
 
 <use 1_fig/WD_zombie_counter_series.png>
 Package pdftex.def Info: 1_fig/WD_zombie_counter_series.png used on input line 
-659.
+662.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [26 <./1_fig/omega_function.png>]
-Overfull \hbox (47.22272pt too wide) in paragraph at lines 675--687
+ [27 <./1_fig/omega_function.png>]
+Overfull \hbox (47.22272pt too wide) in paragraph at lines 678--690
 [][] 
  []
 
-<1_fig/WD_zombie_all_phases_1.png, id=518, 578.16pt x 433.62pt>
+<1_fig/WD_zombie_all_phases_1.png, id=517, 578.16pt x 433.62pt>
 File: 1_fig/WD_zombie_all_phases_1.png Graphic file (type png)
 
 <use 1_fig/WD_zombie_all_phases_1.png>
 Package pdftex.def Info: 1_fig/WD_zombie_all_phases_1.png used on input line 69
-4.
+7.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [27 <./1_fig/WD_zombie_counter_1.png>]
-Overfull \hbox (89.83429pt too wide) in paragraph at lines 707--717
+ [28 <./1_fig/WD_zombie_counter_1.png>]
+Overfull \hbox (89.83429pt too wide) in paragraph at lines 710--720
 [][] 
  []
 
-[28 <./1_fig/WD_zombie_counter_2.png>] [29 <./1_fig/WD_zombie_counter_series.pn
-g> <./1_fig/WD_zombie_all_phases_1.png>] [30
+[29 <./1_fig/WD_zombie_counter_2.png>] [30 <./1_fig/WD_zombie_counter_series.pn
+g> <./1_fig/WD_zombie_all_phases_1.png>]
 
-]
-Chapter 3.
+LaTeX Warning: Reference `hysterical_variations' on page 31 undefined on input 
+line 769.
+
 [31
 
-] [32] <2_fig/trav_wave_sub.png, id=576, 1465.475pt x 1146.2825pt>
+] [32]
+Chapter 3.
+[33
+
+] [34] <2_fig/trav_wave_sub.png, id=590, 1465.475pt x 1146.2825pt>
 File: 2_fig/trav_wave_sub.png Graphic file (type png)
 
 <use 2_fig/trav_wave_sub.png>
-Package pdftex.def Info: 2_fig/trav_wave_sub.png used on input line 841.
+Package pdftex.def Info: 2_fig/trav_wave_sub.png used on input line 867.
 (pdftex.def)             Requested size: 276.00105pt x 215.87195pt.
 
-<2_fig/epidemic_wave_z_lambda_0_5.png, id=581, 578.16pt x 433.62pt>
+<2_fig/epidemic_wave_z_lambda_0_5.png, id=595, 578.16pt x 433.62pt>
 File: 2_fig/epidemic_wave_z_lambda_0_5.png Graphic file (type png)
 
 <use 2_fig/epidemic_wave_z_lambda_0_5.png>
 Package pdftex.def Info: 2_fig/epidemic_wave_z_lambda_0_5.png used on input lin
-e 851.
+e 877.
 (pdftex.def)             Requested size: 310.4979pt x 232.87433pt.
- [33] [34 <./2_fig/trav_wave_sub.png>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 903.
+ [35] [36 <./2_fig/trav_wave_sub.png>]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 929.
 
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -936,290 +944,293 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [35 <./2_fig/epidemic_wave_z_lambda_0_5.png>] [36] [37] [38]
-Overfull \hbox (12.564pt too wide) detected at line 1097
+ [37 <./2_fig/epidemic_wave_z_lambda_0_5.png>] [38] [39] [40]
+Overfull \hbox (12.564pt too wide) detected at line 1118
 [][] []
  []
 
 
-Overfull \hbox (35.30016pt too wide) detected at line 1105
+Overfull \hbox (35.30016pt too wide) detected at line 1126
 [][] []
  []
 
-[39] <2_fig/Trav_wave_2D.png, id=654, 1464.47125pt x 544.0325pt>
+[41] <2_fig/Trav_wave_2D.png, id=670, 1464.47125pt x 544.0325pt>
 File: 2_fig/Trav_wave_2D.png Graphic file (type png)
 
 <use 2_fig/Trav_wave_2D.png>
-Package pdftex.def Info: 2_fig/Trav_wave_2D.png used on input line 1123.
+Package pdftex.def Info: 2_fig/Trav_wave_2D.png used on input line 1144.
 (pdftex.def)             Requested size: 276.00105pt x 102.52882pt.
- [40 <./2_fig/Trav_wave_2D.png>]
-<2_fig/2D_initial_variable_sub.png, id=666, 1330.9725pt x 1069.9975pt>
+ [42 <./2_fig/Trav_wave_2D.png>]
+<2_fig/2D_initial_variable_sub.png, id=682, 1330.9725pt x 1069.9975pt>
 File: 2_fig/2D_initial_variable_sub.png Graphic file (type png)
 
 <use 2_fig/2D_initial_variable_sub.png>
 Package pdftex.def Info: 2_fig/2D_initial_variable_sub.png used on input line 1
-175.
+196.
 (pdftex.def)             Requested size: 276.00105pt x 221.88156pt.
 
-<2_fig/TW_2D_initial_z_lambda_0_5.png, id=668, 578.16pt x 433.62pt>
+<2_fig/TW_2D_initial_z_lambda_0_5.png, id=684, 578.16pt x 433.62pt>
 File: 2_fig/TW_2D_initial_z_lambda_0_5.png Graphic file (type png)
 
 <use 2_fig/TW_2D_initial_z_lambda_0_5.png>
 Package pdftex.def Info: 2_fig/TW_2D_initial_z_lambda_0_5.png used on input lin
-e 1197.
+e 1218.
 (pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
- [41 <./2_fig/2D_initial_variable_sub.png>] <2_fig/2D_lambda_variable.png, id=6
-78, 1457.445pt x 1145.27875pt>
+ [43 <./2_fig/2D_initial_variable_sub.png>] <2_fig/2D_lambda_variable.png, id=6
+95, 1457.445pt x 1145.27875pt>
 File: 2_fig/2D_lambda_variable.png Graphic file (type png)
 
 <use 2_fig/2D_lambda_variable.png>
-Package pdftex.def Info: 2_fig/2D_lambda_variable.png used on input line 1221.
+Package pdftex.def Info: 2_fig/2D_lambda_variable.png used on input line 1242.
 (pdftex.def)             Requested size: 310.4979pt x 243.99326pt.
- [42 <./2_fig/TW_2D_initial_z_lambda_0_5.png>] [43 <./2_fig/2D_lambda_variable.
+ [44 <./2_fig/TW_2D_initial_z_lambda_0_5.png>] [45 <./2_fig/2D_lambda_variable.
 png>]
-<2_fig/british_number.png, id=698, 682.55pt x 1750.54pt>
+<2_fig/british_number.png, id=715, 682.55pt x 1750.54pt>
 File: 2_fig/british_number.png Graphic file (type png)
 
 <use 2_fig/british_number.png>
-Package pdftex.def Info: 2_fig/british_number.png used on input line 1283.
+Package pdftex.def Info: 2_fig/british_number.png used on input line 1305.
 (pdftex.def)             Requested size: 207.0021pt x 530.88222pt.
 
 
-LaTeX Warning: Float too large for page by 53.38222pt on input line 1287.
+LaTeX Warning: Float too large for page by 53.38222pt on input line 1309.
 
-
-Overfull \hbox (50.47256pt too wide) in paragraph at lines 1299--1322
-[][] 
- []
-
-[44] <2_fig/2D_british_school_gauss_sub.png, id=708, 1336.995pt x 1086.0575pt>
+<2_fig/2D_british_school_gauss_sub.png, id=719, 1336.995pt x 1086.0575pt>
 File: 2_fig/2D_british_school_gauss_sub.png Graphic file (type png)
 
 <use 2_fig/2D_british_school_gauss_sub.png>
 Package pdftex.def Info: 2_fig/2D_british_school_gauss_sub.png used on input li
-ne 1334.
+ne 1322.
 (pdftex.def)             Requested size: 276.00105pt x 224.20097pt.
- [45] [46 <./2_fig/british_number.png>] [47 <./2_fig/2D_british_school_gauss_su
-b.png>] [48
+ [46]
+Overfull \hbox (50.47256pt too wide) in paragraph at lines 1367--1390
+[][] 
+ []
+
+[47] [48 <./2_fig/british_number.png>] [49 <./2_fig/2D_british_school_gauss_sub
+.png>] [50
 
 ]
-<2_fig/2D_zombie_three_phases_number.png, id=744, 578.16pt x 433.62pt>
+<2_fig/2D_zombie_three_phases_number.png, id=761, 578.16pt x 433.62pt>
 File: 2_fig/2D_zombie_three_phases_number.png Graphic file (type png)
 
 <use 2_fig/2D_zombie_three_phases_number.png>
 Package pdftex.def Info: 2_fig/2D_zombie_three_phases_number.png used on input 
-line 1437.
+line 1458.
 (pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
- [49]
-Overfull \hbox (36.25067pt too wide) in paragraph at lines 1460--1486
+ [51]
+Overfull \hbox (36.25067pt too wide) in paragraph at lines 1481--1507
 [][] 
  []
 
-[50 <./2_fig/2D_zombie_three_phases_number.png>] [51]
-<2_fig/initial_value_susceptible.png, id=767, 578.16pt x 433.62pt>
+[52 <./2_fig/2D_zombie_three_phases_number.png>] [53]
+<2_fig/initial_value_susceptible.png, id=784, 578.16pt x 433.62pt>
 File: 2_fig/initial_value_susceptible.png Graphic file (type png)
 
 <use 2_fig/initial_value_susceptible.png>
 Package pdftex.def Info: 2_fig/initial_value_susceptible.png used on input line
- 1535.
+ 1544.
 (pdftex.def)             Requested size: 276.00105pt x 206.9972pt.
- [52 <./2_fig/initial_value_susceptible.png>]
-<2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, id=779, 1332.98pt x 
+
+
+LaTeX Warning: Reference `table:compare_phase_zombie' on page 54 undefined on i
+nput line 1562.
+
+
+<2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, id=787, 1332.98pt x 
 1055.945pt>
 File: 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png Graphic file (ty
 pe png)
  <use 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png>
 Package pdftex.def Info: 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.p
-ng used on input line 1557.
+ng used on input line 1576.
 (pdftex.def)             Requested size: 276.00105pt x 218.62918pt.
 
-[53 <./2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png>]
-<2_fig/2D_compare_towns.png, id=789, 682.55pt x 1748.5325pt>
-File: 2_fig/2D_compare_towns.png Graphic file (type png)
-
-<use 2_fig/2D_compare_towns.png>
-Package pdftex.def Info: 2_fig/2D_compare_towns.png used on input line 1579.
-(pdftex.def)             Requested size: 207.0021pt x 530.2734pt.
-
-
-LaTeX Warning: Float too large for page by 28.21783pt on input line 1583.
-
-
-Overfull \hbox (0.63875pt too wide) in paragraph at lines 1612--1638
+[54 <./2_fig/initial_value_susceptible.png>]
+Overfull \hbox (79.30652pt too wide) in paragraph at lines 1610--1636
 [][] 
  []
 
-[54]
-Overfull \hbox (122.23366pt too wide) detected at line 1679
+[55 <./2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png>] [56]
+Overfull \hbox (122.23366pt too wide) detected at line 1682
 [][] []
  []
 
-[55] <2_fig/2D_compare_Frederikke.png, id=805, 1493.58pt x 544.0325pt>
+[57] <2_fig/2D_compare_Frederikke.png, id=818, 1493.58pt x 544.0325pt>
 File: 2_fig/2D_compare_Frederikke.png Graphic file (type png)
 
 <use 2_fig/2D_compare_Frederikke.png>
-Package pdftex.def Info: 2_fig/2D_compare_Frederikke.png used on input line 168
-7.
+Package pdftex.def Info: 2_fig/2D_compare_Frederikke.png used on input line 169
+1.
 (pdftex.def)             Requested size: 276.00105pt x 100.52821pt.
- [56]
-<2_fig/2D_Frederikke_contourf_sub.png, id=815, 1569.865pt x 1160.335pt>
+ [58 <./2_fig/2D_compare_Frederikke.png>]
+<2_fig/2D_Frederikke_contourf_sub.png, id=830, 1569.865pt x 1160.335pt>
 File: 2_fig/2D_Frederikke_contourf_sub.png Graphic file (type png)
 
 <use 2_fig/2D_Frederikke_contourf_sub.png>
 Package pdftex.def Info: 2_fig/2D_Frederikke_contourf_sub.png used on input lin
-e 1709.
+e 1713.
 (pdftex.def)             Requested size: 276.00105pt x 204.00005pt.
- [57] [58] [59 <./2_fig/2D_compare_towns.png>] [60 <./2_fig/2D_compare_Frederik
-ke.png> <./2_fig/2D_Frederikke_contourf_sub.png>] [61
-
-] [62
+ [59 <./2_fig/2D_Frederikke_contourf_sub.png>] [60] [61] [62
 
 ]
 Chapter 4.
 [63] [64] [65]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1893.
+(hyperref)                removing `math shift' on input line 1898.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sigma' on input line 1893.
+(hyperref)                removing `\sigma' on input line 1898.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 1893.
+(hyperref)                removing `superscript' on input line 1898.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1893.
+(hyperref)                removing `math shift' on input line 1898.
 
-[66] <3_fig/random_compare.png, id=886, 1478.52374pt x 521.95pt>
-File: 3_fig/random_compare.png Graphic file (type png)
-
-<use 3_fig/random_compare.png>
-Package pdftex.def Info: 3_fig/random_compare.png used on input line 1933.
-(pdftex.def)             Requested size: 345.0pt x 121.79015pt.
- [67 <./3_fig/random_compare.png>]
-<3_fig/random_walk_days.png, id=899, 2277.50874pt x 521.95pt>
+<3_fig/random_walk_days.png, id=887, 2277.50874pt x 521.95pt>
 File: 3_fig/random_walk_days.png Graphic file (type png)
 
 <use 3_fig/random_walk_days.png>
-Package pdftex.def Info: 3_fig/random_walk_days.png used on input line 1971.
+Package pdftex.def Info: 3_fig/random_walk_days.png used on input line 1914.
 (pdftex.def)             Requested size: 276.00105pt x 63.2525pt.
- [68 <./3_fig/random_walk_days.png>]
-<3_fig/english_school_random.png, id=910, 839.0547pt x 625.1355pt>
+ [66] [67 <./3_fig/random_walk_days.png>]
+<3_fig/english_school_random.png, id=911, 839.0547pt x 625.1355pt>
 File: 3_fig/english_school_random.png Graphic file (type png)
 
 <use 3_fig/english_school_random.png>
-Package pdftex.def Info: 3_fig/english_school_random.png used on input line 202
-6.
+Package pdftex.def Info: 3_fig/english_school_random.png used on input line 196
+9.
 (pdftex.def)             Requested size: 276.00105pt x 205.63716pt.
 
-Overfull \hbox (6.10222pt too wide) in paragraph at lines 2034--2034
-[]\T1/lmr/bx/n/12 Lower max-i-mum con-cen-tra-tion for the \T1/lmr/bx/it/12 In-
-fected \T1/lmr/bx/n/12 group 
+Overfull \hbox (3.96689pt too wide) in paragraph at lines 1977--1977
+[]\T1/lmr/bx/n/12 Lower max-i-mum con-cen-tra-tion for the in-fected group 
  []
 
-[69] [70 <./3_fig/english_school_random.png>] [71]
-<3_fig/figure_images.png, id=940, 324.21124pt x 28.105pt>
+[68 <./3_fig/english_school_random.png>] [69]
+<3_fig/figure_images.png, id=934, 324.21124pt x 28.105pt>
 File: 3_fig/figure_images.png Graphic file (type png)
 
 <use 3_fig/figure_images.png>
-Package pdftex.def Info: 3_fig/figure_images.png used on input line 2097.
+Package pdftex.def Info: 3_fig/figure_images.png used on input line 2041.
 (pdftex.def)             Requested size: 276.00105pt x 23.92708pt.
-
-<3_fig/Frederikke_initial_final.png, id=943, 1284.8pt x 1622.06pt>
+ [70]
+<3_fig/Frederikke_initial_final.png, id=942, 1284.8pt x 1622.06pt>
 File: 3_fig/Frederikke_initial_final.png Graphic file (type png)
 
 <use 3_fig/Frederikke_initial_final.png>
 Package pdftex.def Info: 3_fig/Frederikke_initial_final.png used on input line 
-2109.
+2063.
 (pdftex.def)             Requested size: 276.00105pt x 348.4391pt.
- [72 <./3_fig/figure_images.png>]
-<3_fig/Walking_dead_Frederikke.png, id=953, 760.2804pt x 607.7907pt>
+
+<3_fig/Walking_dead_Frederikke.png, id=944, 760.2804pt x 607.7907pt>
 File: 3_fig/Walking_dead_Frederikke.png Graphic file (type png)
 
 <use 3_fig/Walking_dead_Frederikke.png>
 Package pdftex.def Info: 3_fig/Walking_dead_Frederikke.png used on input line 2
-121.
+075.
 (pdftex.def)             Requested size: 276.00105pt x 220.65004pt.
- [73 <./3_fig/Frederikke_initial_final.png>] [74 <./3_fig/Walking_dead_Frederik
-ke.png>]
-<3_fig/screenshots_moving_smart.png, id=968, 1284.8pt x 2433.09pt>
+ [71 <./3_fig/figure_images.png>]
+Overfull \vbox (52.58348pt too high) has occurred while \output is active []
+
+
+[72 <./3_fig/Frederikke_initial_final.png>]
+<3_fig/screenshots_moving_smart.png, id=960, 1284.8pt x 2433.09pt>
 File: 3_fig/screenshots_moving_smart.png Graphic file (type png)
 
 <use 3_fig/screenshots_moving_smart.png>
 Package pdftex.def Info: 3_fig/screenshots_moving_smart.png used on input line 
-2192.
+2146.
 (pdftex.def)             Requested size: 276.00105pt x 522.65865pt.
 
 
-LaTeX Warning: Float too large for page by 44.60307pt on input line 2196.
+LaTeX Warning: Float too large for page by 44.60307pt on input line 2150.
 
-<3_fig/Moving_smart_average.png, id=971, 766.7847pt x 625.1355pt>
+[73 <./3_fig/Walking_dead_Frederikke.png>]
+<3_fig/Moving_smart_average.png, id=970, 766.7847pt x 625.1355pt>
 File: 3_fig/Moving_smart_average.png Graphic file (type png)
 
 <use 3_fig/Moving_smart_average.png>
-Package pdftex.def Info: 3_fig/Moving_smart_average.png used on input line 2214
+Package pdftex.def Info: 3_fig/Moving_smart_average.png used on input line 2168
 .
 (pdftex.def)             Requested size: 276.00105pt x 225.01044pt.
- [75]
-<3_fig/three_phases_random.png, id=982, 1284.8pt x 2433.09pt>
+
+<3_fig/three_phases_random.png, id=975, 1284.8pt x 2433.09pt>
 File: 3_fig/three_phases_random.png Graphic file (type png)
 
 <use 3_fig/three_phases_random.png>
-Package pdftex.def Info: 3_fig/three_phases_random.png used on input line 2250.
+Package pdftex.def Info: 3_fig/three_phases_random.png used on input line 2204.
 
 (pdftex.def)             Requested size: 276.00105pt x 522.65865pt.
 
 
-LaTeX Warning: Float too large for page by 32.60307pt on input line 2254.
+LaTeX Warning: Float too large for page by 32.60307pt on input line 2208.
 
-<3_fig/three_phases_ODE_sd.png, id=983, 695.2374pt x 625.1355pt>
+<3_fig/three_phases_ODE_sd.png, id=976, 695.2374pt x 625.1355pt>
 File: 3_fig/three_phases_ODE_sd.png Graphic file (type png)
 
 <use 3_fig/three_phases_ODE_sd.png>
-Package pdftex.def Info: 3_fig/three_phases_ODE_sd.png used on input line 2262.
+Package pdftex.def Info: 3_fig/three_phases_ODE_sd.png used on input line 2216.
 
 (pdftex.def)             Requested size: 276.00105pt x 248.17062pt.
- [76]
-<3_fig/screenshot_three_phases_free.png, id=992, 1284.8pt x 811.03pt>
+ [74]
+<3_fig/screenshot_three_phases_free.png, id=986, 1284.8pt x 811.03pt>
 File: 3_fig/screenshot_three_phases_free.png Graphic file (type png)
 
 <use 3_fig/screenshot_three_phases_free.png>
 Package pdftex.def Info: 3_fig/screenshot_three_phases_free.png used on input l
-ine 2328.
+ine 2282.
 (pdftex.def)             Requested size: 276.00105pt x 174.21954pt.
 
-<3_fig/three_phases_free.png, id=995, 724.1454pt x 614.295pt>
+<3_fig/three_phases_free.png, id=989, 724.1454pt x 614.295pt>
 File: 3_fig/three_phases_free.png Graphic file (type png)
 
 <use 3_fig/three_phases_free.png>
-Package pdftex.def Info: 3_fig/three_phases_free.png used on input line 2340.
+Package pdftex.def Info: 3_fig/three_phases_free.png used on input line 2294.
 (pdftex.def)             Requested size: 276.00105pt x 234.13753pt.
- [77] [78 <./3_fig/screenshots_moving_smart.png>] [79 <./3_fig/Moving_smart_ave
-rage.png>] [80 <./3_fig/three_phases_random.png>] [81 <./3_fig/three_phases_ODE
-_sd.png> <./3_fig/screenshot_three_phases_free.png (PNG copy)>] [82 <./3_fig/th
-ree_phases_free.png>] [83
+ [75] [76 <./3_fig/screenshots_moving_smart.png>] [77 <./3_fig/Moving_smart_ave
+rage.png>] [78 <./3_fig/three_phases_random.png>] [79 <./3_fig/three_phases_ODE
+_sd.png> <./3_fig/screenshot_three_phases_free.png (PNG copy)>] [80 <./3_fig/th
+ree_phases_free.png>]
 
-] [84
+LaTeX Warning: Reference `section:1_threshold_phenomenon' on page 81 undefined 
+on input line 2318.
+
+
+LaTeX Warning: Reference `section:2_discussion' on page 81 undefined on input l
+ine 2329.
+
+[81
+
+] [82]
+Chapter 5.
+[83
 
 ]
-Chapter 5.
-[85]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 2425.
+(hyperref)                than one, level fixed on input line 2380.
 
-[86]
+[84]
 Chapter 6.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 2454.
+(hyperref)                than one, level fixed on input line 2410.
 
-[87
+[85
 
-] [88] (./thesis.bbl) [89
+] [86] <3_fig/random_compare.png, id=1068, 1478.52374pt x 521.95pt>
+File: 3_fig/random_compare.png Graphic file (type png)
+
+<use 3_fig/random_compare.png>
+Package pdftex.def Info: 3_fig/random_compare.png used on input line 2495.
+(pdftex.def)             Requested size: 345.0pt x 121.79015pt.
+ [87 <./3_fig/random_compare.png>] [88]
+(./thesis.bbl) [89
 
 
 
@@ -1227,10 +1238,10 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 
 ] (./thesis.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2527.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2527.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2546.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2546.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2527.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2546.
 
 
  *File List*
@@ -1352,10 +1363,8 @@ frontpage.tex
 2_fig/2D_zombie_three_phases_number.png
 2_fig/initial_value_susceptible.png
 2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png
-2_fig/2D_compare_towns.png
 2_fig/2D_compare_Frederikke.png
 2_fig/2D_Frederikke_contourf_sub.png
-3_fig/random_compare.png
 3_fig/random_walk_days.png
 3_fig/english_school_random.png
 3_fig/figure_images.png
@@ -1367,27 +1376,31 @@ frontpage.tex
 3_fig/three_phases_ODE_sd.png
 3_fig/screenshot_three_phases_free.png
 3_fig/three_phases_free.png
+3_fig/random_compare.png
   thesis.bbl
   thesis.ind
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2527.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2546.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: D0198D64C61DC04DB209C0EAE730DE70;3815.
+(rerunfilecheck)             Checksum: 576C4F03C01258394A1BD4E556722FD9;3810.
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2527.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2546.
  ) 
 Here is how much of TeX's memory you used:
- 9938 strings out of 493304
- 150991 string characters out of 6139870
- 279679 words of memory out of 5000000
- 12625 multiletter control sequences out of 15000+600000
- 111995 words of font info for 203 fonts, out of 8000000 for 9000
+ 9932 strings out of 493304
+ 150942 string characters out of 6139870
+ 279852 words of memory out of 5000000
+ 12632 multiletter control sequences out of 15000+600000
+ 111616 words of font info for 199 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,11n,35p,1661b,504s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,35p,1805b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -1405,10 +1418,10 @@ fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.
 pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/symbols/msbm7.pfb>
-Output written on thesis.pdf (90 pages, 6659487 bytes).
+Output written on thesis.pdf (90 pages, 6575900 bytes).
 PDF statistics:
- 1215 PDF objects out of 1440 (max. 8388607)
- 1019 compressed objects within 11 object streams
- 285 named destinations out of 1000 (max. 500000)
- 32369 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 1231 PDF objects out of 1440 (max. 8388607)
+ 1036 compressed objects within 11 object streams
+ 281 named destinations out of 1000 (max. 500000)
+ 32364 words of extra memory for PDF output out of 35830 (max. 10000000)
 

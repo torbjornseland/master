@@ -71,11 +71,8 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
     surf_color = ['blue','green','red','cyan']
     for i in plotnames:
         img = "%s%04d.npz" % (i,0)
-<<<<<<< Updated upstream
         arr = np.load(img)
-=======
 	arr = np.load(img)
->>>>>>> Stashed changes
         len_x = len(arr['arr_0'])
         x,y = np.meshgrid(np.linspace(0,L,len_x),np.linspace(0,L,len_x))
         x_list.append(x)
@@ -97,11 +94,8 @@ def sub_plot(plotnames,moviename,parameter_values,para_name,L,T,z_X,max_val,clas
             ax = fig.add_subplot(2,2,i+1,projection='3d')
             #ax.title("%s" % classnames[i])
             img = "%s%04d.npz" % (plotnames[i],j)
-<<<<<<< Updated upstream
             arr = np.load(img)
-=======
 	    arr = np.load(img)
->>>>>>> Stashed changes
             label_name = "%s = %s" % (para_name, parameter_values[i])
             #plt.plot(x_list[i],np.load(img),label=label_name)
             #ax.plot_wireframe(x_list[i],y_list[i],np.load(img), rstride=10, cstride=10,color=surf_color[i])

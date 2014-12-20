@@ -196,7 +196,7 @@ def init_func(x,y):
 D_s = D_i = D_z = D_r = 1
 """
 # Three phases
-
+"""
 #Standard
 T = 34
 Nt = 34000
@@ -245,7 +245,7 @@ def init_func(x,y):
 folder = "three_phases_check"
 plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
 zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
-
+"""
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name,title)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
@@ -278,7 +278,7 @@ Nt = 136000
 moviename = "plots/2D_zombie_three_phases_gauss_2"
 """
 #### Different initial and diffusion
-<<<<<<< Updated upstream
+
 """
 T = 10
 Nt = 20000
@@ -289,7 +289,7 @@ T = 34
 Nt = 68000
 Nx = 800
 X = 40
->>>>>>> Stashed changes
+
 
 gap = 10
 z_X = z_Y = z_xy = 0
@@ -364,7 +364,41 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 initial_susceptible_plot(plotnames[0],moviename,para_name,X,T,z_xy,max_val)
 """
 ## Small town
-"""
+T = 34
+Nt = 68000
+Nx = 800
+X = 40
+dx = X/float(Nx)
+z_X = z_Y = 0
+x,y = np.meshgrid(np.linspace(0-dx,X+dx,Nx+3),np.linspace(0-dx,X+dx,Nx+3))
+
+
+attacks = [33.125]
+phases = [0,3,33,34]
+phase_name = ["Initial value", "Initial phase","Hysterical phase","Counter attack"]
+def beta(t):
+    if t < 3:
+        return 0.01155*X**2
+    else:
+        return 0.000011*X**2
+def rho(t):
+    if t < 3:
+        return 1.37
+    else:
+        return 1.5
+def alpha(t):
+    if t < 3:
+        return 0.00044*X**2
+    else:
+        return 0.000208*X**2
+par_values = dict(Sigma=0,delta_S=0,delta_I=0,zeta=0,a=0.0073*X**2,sigma=0.005,mu=0.14)
+
+gamma_s = np.ones([Nx+3,Nx+3])
+gamma_i = np.ones([Nx+3,Nx+3])
+gamma_z = np.ones([Nx+3,Nx+3])
+
+#Small town
+
 print "Writing small town"
 V = 1
 A = 0.2
@@ -373,17 +407,17 @@ Z_1 = gauss_2D(x,y,A,sig,6,6)
 title = "Zombie placed in small town:"
 gap = 1
 
-V_s = 21
+V_s = 21.47
 A_s = 0.5
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 = gauss_2D(x,y,A_s,sig_s,6,6)
 
-V_s = 200
+V_s = 200.02
 A_s = 3
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 += gauss_2D(x,y,A_s,sig_s,12,25)
 
-V_s = 400
+V_s = 400.57
 A_s = 4
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 += gauss_2D(x,y,A_s,sig_s,25,12)
@@ -397,18 +431,16 @@ else:
 folder = "small_town_data"
 plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
 moviename = "plots/2D_zombie_three_phases_zombie_small_town"
-<<<<<<< Updated upstream
 zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
+
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
-=======
 #zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
-build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
->>>>>>> Stashed changes
+#build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
-"""
+
 ## middle town
-"""
+
 print "Writing middle town"
 V = 1
 A = 0.2
@@ -416,42 +448,36 @@ sig = V/float(2*np.pi*A)
 Z_1 = gauss_2D(x,y,A,sig,12,25)
 title = "Zombie placed in middle town:"
 
-V_s = 21
+V_s = 21.47
 A_s = 0.5
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 = gauss_2D(x,y,A_s,sig_s,6,6)
 
-V_s = 200
+V_s = 200.02
 A_s = 3
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 += gauss_2D(x,y,A_s,sig_s,12,25)
 
-V_s = 400
+V_s = 400.57
 A_s = 4
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 += gauss_2D(x,y,A_s,sig_s,25,12)
 
-<<<<<<< Updated upstream
-=======
 #S_1 = init_func(x,y,5,8)*200
->>>>>>> Stashed changes
 if S_1.max() >= Z_1.max():
     max_val = S_1.max()
 else:
     max_val = Z_1.max()
-<<<<<<< Updated upstream
 gap = 1
 folder = "middle_town_data"
 plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
 moviename = "plots/2D_zombie_three_phases_zombie_middle_town_2"
 zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
-=======
-
+"""
 #folder = "middle_town_data"
 #moviename = "plots/2D_zombie_three_phases_zombie_middle_town"
 #zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
 
->>>>>>> Stashed changes
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
@@ -465,38 +491,34 @@ sig = V/float(2*np.pi*A)
 Z_1 = gauss_2D(x,y,A,sig,25,12)
 title = "Zombie placed in large town:"
 
-V_s = 21
+V_s = 21.47
 A_s = 0.5
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 = gauss_2D(x,y,A_s,sig_s,6,6)
 
-V_s = 200
+V_s = 200.02
 A_s = 3
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 += gauss_2D(x,y,A_s,sig_s,12,25)
 
-V_s = 400
+V_s = 400.57
 A_s = 4
 sig_s = V_s/float(2*np.pi*A_s)
 S_1 += gauss_2D(x,y,A_s,sig_s,25,12)
 
-<<<<<<< Updated upstream
-=======
 #S_1 = init_func(x,y,5,8)*200
->>>>>>> Stashed changes
 if S_1.max() >= Z_1.max():
     max_val = S_1.max()
 else:
     max_val = Z_1.max()
 
 max_val = 4
-
+gap = 1
 folder = "large_town_data"
 plotnames = ['%s/Sub' % folder,'%s/Inf' % folder,'%s/Zom' % folder, '%s/Rem' % folder]
-<<<<<<< Updated upstream
 moviename = "plots/2D_zombie_three_phases_zombie_large_town_2"
 zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
-
+"""
 #build_plot(plotnames,moviename,parameter_values,para_name,X,T,z_X,max_val,phases,phase_name,title)
 #sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
@@ -508,7 +530,6 @@ zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rh
 print "Frederikke"
 phases = [0,3,7,10]
 phase_name = ["time = 0", "time = 3","time = 7","time = 10"]
-=======
 moviename = "plots/2D_zombie_three_phases_zombie_large_town"
 #zombiefication_2D(T,Nx,Nx,Nt,X,X,z_X,z_Y,moviename,par_values,classnames,beta,rho,alpha,attacks,phases,Z_1,S_1,gamma_s,gamma_i,gamma_z,title,folder,gap)
 
@@ -516,7 +537,6 @@ moviename = "plots/2D_zombie_three_phases_zombie_large_town"
 sub_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames,phases,phase_name)
 #contourf_plot(plotnames,moviename,parameter_values,para_name,X,T,z_xy,max_val,classnames)
 
->>>>>>> Stashed changes
 
 #Initial values for Susceptible and Zombie
 V = 1

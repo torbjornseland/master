@@ -1,9 +1,9 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [0][-]{chapter.2}{ODE models}{}% 2
-\BOOKMARK [1][-]{section.2.1}{Simple Epidemic Models}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.1}{Simple epidemic models}{chapter.2}% 3
 \BOOKMARK [1][-]{section.2.2}{Threshold phenomenon}{chapter.2}% 4
-\BOOKMARK [1][-]{section.2.3}{English Boarding School 1978}{chapter.2}% 5
-\BOOKMARK [2][-]{subsection.2.3.1}{Maximum concentration of Infected}{section.2.3}% 6
+\BOOKMARK [1][-]{section.2.3}{English boarding school}{chapter.2}% 5
+\BOOKMARK [2][-]{subsection.2.3.1}{Maximum concentration of infected}{section.2.3}% 6
 \BOOKMARK [2][-]{subsection.2.3.2}{Variation in parameter value }{section.2.3}% 7
 \BOOKMARK [1][-]{section.2.4}{Zombification}{chapter.2}% 8
 \BOOKMARK [2][-]{subsection.2.4.1}{Parameters used in the model}{section.2.4}% 9
@@ -23,12 +23,12 @@
 \BOOKMARK [2][-]{subsection.3.1.7}{The temporal error}{section.3.1}% 23
 \BOOKMARK [2][-]{subsection.3.1.8}{Travelling wave in 2D}{section.3.1}% 24
 \BOOKMARK [2][-]{subsection.3.1.9}{A gaussian wave}{section.3.1}% 25
-\BOOKMARK [1][-]{section.3.2}{English Boarding School}{chapter.3}% 26
-\BOOKMARK [2][-]{subsection.3.2.1}{Maximum concentration of Infected}{section.3.2}% 27
+\BOOKMARK [1][-]{section.3.2}{English boarding school}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.2.1}{Maximum concentration of infected}{section.3.2}% 27
 \BOOKMARK [2][-]{subsection.3.2.2}{Introducing a Gaussian distribution of infected}{section.3.2}% 28
 \BOOKMARK [1][-]{section.3.3}{Zombiefication}{chapter.3}% 29
-\BOOKMARK [2][-]{subsection.3.3.1}{The position of the Infected group}{section.3.3}% 30
-\BOOKMARK [2][-]{subsection.3.3.2}{Free areas for the Susceptible group}{section.3.3}% 31
+\BOOKMARK [2][-]{subsection.3.3.1}{The position of the infected group}{section.3.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.2}{Free areas for the susceptible group}{section.3.3}% 31
 \BOOKMARK [2][-]{subsection.3.3.3}{Ten minutes at Frederikkeplassen}{section.3.3}% 32
 \BOOKMARK [1][-]{section.3.4}{Discussion}{chapter.3}% 33
 \BOOKMARK [0][-]{chapter.4}{Random walk}{}% 34
@@ -37,17 +37,17 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{Probability distribution functions \(PDF\)}{section.4.1}% 37
 \BOOKMARK [2][-]{subsection.4.1.3}{Moments of a PDF}{section.4.1}% 38
 \BOOKMARK [2][-]{subsection.4.1.4}{The pertinent variance 2}{section.4.1}% 39
-\BOOKMARK [1][-]{section.4.2}{Random walker}{chapter.4}% 40
-\BOOKMARK [1][-]{section.4.3}{English Boarding School}{chapter.4}% 41
-\BOOKMARK [2][-]{subsection.4.3.1}{Lower maximum concentration for the Infected group}{section.4.3}% 42
-\BOOKMARK [2][-]{subsection.4.3.2}{The chance for a disease to spread}{section.4.3}% 43
-\BOOKMARK [1][-]{section.4.4}{Zombiefication}{chapter.4}% 44
-\BOOKMARK [2][-]{subsection.4.4.1}{Random walk}{section.4.4}% 45
-\BOOKMARK [2][-]{subsection.4.4.2}{Moving smart}{section.4.4}% 46
-\BOOKMARK [2][-]{subsection.4.4.3}{Three phases in Walking Dead}{section.4.4}% 47
-\BOOKMARK [2][-]{subsection.4.4.4}{Free areas for the Susceptible group}{section.4.4}% 48
-\BOOKMARK [1][-]{section.4.5}{Discussion}{chapter.4}% 49
-\BOOKMARK [0][-]{chapter.5}{Discussion and conclusion}{}% 50
-\BOOKMARK [1][-]{subsection.5.0.1}{Further work}{chapter.5}% 51
-\BOOKMARK [0][-]{chapter.6}{Appendix}{}% 52
-\BOOKMARK [1][-]{subsection.6.0.2}{Diffusion equation and random walks}{chapter.6}% 53
+\BOOKMARK [1][-]{section.4.2}{English boarding school}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.2.1}{Lower maximum concentration for the infected group}{section.4.2}% 41
+\BOOKMARK [2][-]{subsection.4.2.2}{The chance for a disease to spread}{section.4.2}% 42
+\BOOKMARK [1][-]{section.4.3}{Zombiefication}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.3.1}{Random walk}{section.4.3}% 44
+\BOOKMARK [2][-]{subsection.4.3.2}{Moving smart}{section.4.3}% 45
+\BOOKMARK [2][-]{subsection.4.3.3}{Three phases in Walking Dead}{section.4.3}% 46
+\BOOKMARK [2][-]{subsection.4.3.4}{Free areas for the susceptible group}{section.4.3}% 47
+\BOOKMARK [1][-]{section.4.4}{Discussion}{chapter.4}% 48
+\BOOKMARK [0][-]{chapter.5}{Discussion and conclusion}{}% 49
+\BOOKMARK [1][-]{subsection.5.0.1}{Further work}{chapter.5}% 50
+\BOOKMARK [0][-]{chapter.6}{Appendix}{}% 51
+\BOOKMARK [1][-]{subsection.6.0.2}{Diffusion equation and random walks}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.1}{Random walker}{chapter.6}% 53

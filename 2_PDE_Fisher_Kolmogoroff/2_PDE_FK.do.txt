@@ -244,13 +244,13 @@ Since the table above has four different error values, these can be used to give
 ##|------|$\epsilon_1/\epsilon_2$	|$\epsilon_2/\epsilon_3$|$\epsilon_3/\epsilon_4$|
 Here the rate goes towards 2, and a 2.order convergence rate seems to be fulfilled.
 ===== The temporal error =====
-The temporal error can be found by stuying  the values along the diagonal in the table above. The values of $\Delta t$ and $\Delta x$ is set to fulfill the *Stability criteria* in Eq.(ref{eq:stability_cr}.
+The temporal error can be found by studying  the values along the diagonal in the table above. The values of $\Delta t$ and $\Delta x$ is set to fulfill the *Stability criteria* in Eq.(ref{eq:stability_cr}.
 !bt
 \begin{equation} label{eq:stability_cr}
  \Delta t = \frac{\Delta x^2}{2}
 \end{equation}
 !et
-The values from the diagonal in Tab.ref{table:error_numbers} can be used with the values of $\Delta t$. These can be insterted in Eq.ref{eq:conv_rate}. This gives the following table
+The values from the diagonal in Tab.(ref{table:error_numbers}) can be used with the values of $\Delta t$. These can be inserted in Eq.(ref{eq:conv_rate}). This gives the following table
 |-------------------------------------------------------------------------------|
 |	|$\epsilon_1/\epsilon_2$|$\epsilon_2/\epsilon_3$|$\epsilon_3/\epsilon_4$|
 |-------------------------------------------------------------------------------|
@@ -360,7 +360,21 @@ FIGURE:[2_fig/british_number.png, height=600 width=300 frac=0.6] label{fig:briti
 ===== Maximum concentration of infected =====
 The maximum concentration of the infected group was found for the ODE system in the previous chapter. The expected value of $\Imax$ was first calculated, and later verified with the numerical solution of the ODE system. The reproduction rate found for the PDE system in Eq.(ref{eq:reproduction_rate_PDF}) was given by the same parameters as for the ODE system. A similar maximum value is expected from the PDE solution. The maximum value of the infected group from the numerical PDE solution is $\Imax=292$ and is equal to the $\Imax$ for the ODE solution. 
     
-A table with the values from the three simulations performed for this English boarding school are compared to ODE system from chapter ref{section:ODE_models}.
+
+===== Introducing a Gaussian distribution of infected =====
+An assumption one can make is that a person is not able to be evenly distributed over an area. In this example, with only one infected student at initial time, the chance of being infected increases the closer the susceptible group gets the infected student. The student is represented by a Gaussian function in the middle of the school yard, to see if the position affects the result. The height is set to 1 and the volume of the Gauss function is set to 1 cubic. The simulation can be seen in Fig.(ref{fig:gauss_sub}) and the total amount of students in each group can be be seen in Fig.(ref{fig:british_number}).
+
+FIGURE:[2_fig/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub} The infected student is placed in the center as a Gaussian function at initial time. The height of the Gaussian function is set to 1 m and volume is set to 1 cubic. 
+
+<linebreak>
+<linebreak>
+The results from the uniform distributed and Gaussian distributed simulations show various results. The initial position of the infected group is the difference between the simulations. This has a major impact. Since the only ones that can be infected by the Gaussian distribution are the students close to the infected student, this restricts the spread of the epidemic. The chance of getting infected in this area is higher. The Fig.(ref{fig:gauss_sub}) shows that the amount of *Infective* quickly grows in the center, where the infected was placed. Subplot IV in Fig.(ref{fig:gauss_sub}) shows that the amount from the removed group in the center is close to the maximum of the initial value of  the susceptible group, while the students along the boundary of the schoolyard seem to be unaffected after 15 days. This simulation shows that the position of the infected group has a major role in the simulation.
+<linebreak>
+<linebreak>
+The position of the infected group, here as a Gaussian function, also affects the outcome. Subplot III in Fig.(ref{fig:british_number}) describes a simulation where the Gaussian function is placed in the corner with position(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. Tab.(ref{table:british_number_table}) shows that the total number of infected is lower than for the centered placed Gaussian function. The infected student is only able to spread the disease to a quarter of the population compared to the infected student in the center. The simulation can be seen in the Appendix.
+<linebreak>
+<linebreak>
+If the simulations are run for a long time, the difference between each group will decrease. After 100 days there will be about 18 students in the susceptible group in the uniform distributed simulation, compared to 25 students in both of the Gaussian simulations. A table with the values from the three simulations performed for this English boarding school are compared to ODE system from chapter ref{section:ODE_models}.
 
 label{table:british_number_table}
 |-------------------------------------------------------------------|
@@ -388,24 +402,9 @@ label{table:british_number_table}
 #dx = 0.04
 #dx^2 = 1.6E-3
 #ODE = 1.5E-4
-
-===== Introducing a Gaussian distribution of infected =====
-An assumption one can make is that a person is not able to be evenly distributed over an area. In this example, with only one infected student at initial time, the chance of being infected increases the closer the susceptible group gets the infected student. The student is represented by a Gaussian function in the middle of the school yard, to see if the position affects the result. The height is set to 1 and the volume of the Gauss function is set to 1 cubic. The simulation can be seen in Fig.(ref{fig:gauss_sub}) and the total amount of students in each group can be be seen in Fig.(ref{fig:british_number}).
-
-FIGURE:[2_fig/2D_british_school_gauss_sub.png, height=600 width=800 frac=0.8] label{fig:gauss_sub} The infected student is placed in the center as a Gaussian function at initial time. The height of the Gaussian function is set to 1 m and volume is set to 1 cubic. 
-
-<linebreak>
-<linebreak>
-The results from the uniform distributed and Gaussian distributed simulations show various results. The initial position of the infected group is the difference between the simulations. This has a major impact. Since the only ones that can be infected by the Gaussian distribution are the students close to the infected student, this restricts the spread of the epidemic. The chance of getting infected in this area is higher. The Fig.(ref{fig:gauss_sub}) shows that the amount of *Infective* quickly grows in the center, where the infected was placed. Subplot IV in Fig.(ref{fig:gauss_sub}) shows that the amount from the removed group in the center is close to the maximum of the initial value of  the susceptible group, while the students along the boundary of the schoolyard seem to be unaffected after 15 days. This simulation shows that the position of the infected group has a major role in the simulation.
-<linebreak>
-<linebreak>
-The position of the infected group, here as a Gaussian function, also affects the outcome. Subplot III in Fig.(ref{fig:british_number}) describes a simulation where the Gaussian function is placed in the corner with position(0,0). The total volume of the function is increased to 4 since only a quarter of the function is placed in the area. Tab.(ref{table:british_number_table}) shows that the total number of infected is lower than for the centered placed Gaussian function. The infected student is only able to spread the disease to a quarter of the population compared to the infected student in the center. The simulation can be seen in the Appendix.
-<linebreak>
-<linebreak>
-If the simulations are run for a long time, the difference between each group will decrease. After 100 days there will be about 18 students in the susceptible group in the uniform distributed simulation, compared to 25 students in both of the Gaussian simulations. The simulations can be seen in the Appendix.
-
 !split
 ======= Zombiefication =======
+label{section:2_zombiefication}
 The previous chapter studied an ODE system designed to calculate the number in the four groups: *Susceptible*, *Infected*, *Zombie* and *Removed* during the five first episodes in the TV series *Walking Dead* Ref.cite{walking_dead}. The model was based on the model from Langtangen, Mardal and Røtnes Ref.cite{zombie-math}, with an extra term in the *counter attack* phase. The ODE system from the chapter *Epidemic models* can be expanded with a diffusion term in each group to make a PDE system. This can be seen in Eq.(ref{eq:seland_model_PDE})  
 !bt
 \begin{equation} label{eq:seland_model_PDE}
@@ -580,38 +579,28 @@ These results shows that the PDE system gives the same results as the ODE system
 
 
 ===== The position of the infected group =====
-In the previous section, ref{section:2_english}, the location of the infected group was proven to have a major influence on the result. However here the susceptible group was uniformly distributed over the schoolyard. The number in each group, based on the study of *Walking Dead*, was seen in three different locations in the TV series. By only studying the TV series, it is hard to decide the geographical distance between these three locations. Therefore they have been placed with a certain distance from each other. The following simulations are done on a grid with size 40 x 40. The three towns are represented as gaussian functions. A person is defined as one cubic. The following initial positions for the towns : 
-* Small town with center in point(6,6) with the volume of 21 cubic, correspond to the population of 21 humans 
-* Middle town with the center in point(12,25) with voulme of 200 cubic, correspond to the population of 200 humans
-* Large town with the center in point(25,12) with volume of 400 cubic, correspond to the population of 200 humans
-Since these values were based on the humans and zombies seen in the series *Walking Dead*, these can be scaled up by 1000 to correspond a realistic population. A large town can be seen as an area with a population of 400 000. The length is measured in kilometres. Then the distance between the middle and large town will be 18.38 km. Compared to the distance between Oslo and Bærum(Sandvika) which is 15 km, the simulation is seen as a rough estimate of the area around Oslo, if the fjord is frozen and the mobility for the area is similar.
+In the previous section, ref{section:2_english}, the location of the infected group was proven to have a major influence on the result. However here the susceptible group was uniformly distributed over the schoolyard. The number in each group, based on the study of *Walking Dead*, was seen in three different locations in the TV series. By only studying the TV series, it is hard to decide the geographical distance between these three locations. Since this paper focus on a small group of people, the following simulations are done on a grid with size 40m x 40m and for a group of 622 persons. Three susceptible groups will be divided out at initial time. The three susceptible groups will now be called constellations, to avoid any confusion with the groups *Susceptible*, *Infected*, *Zombie* and *Removed. The three constellations are represented as Gaussian functions. A person is defined as one cubic. The following initial positions for the constellations : 
+* Small constellation with center in position(6,6) with the volume of 21 cubic, correspond to the population of 21 humans 
+* Middle constellation with the center in position(12,25) with voulme of 200 cubic, correspond to the population of 200 humans
+* Large constellation with the center in position(25,12) with volume of 400 cubic, correspond to the population of 200 humans
+The diffusion term describes the diffusion for each group. This can be seen as the speed towards equilibrium for each group. If the diffusion constant is large, the flow towards equilibrium will go faster. In these simulations, the diffusion constant for the groups *Susceptible*, *Infected* and *Zombie* will be set to 1, while the diffusion constant for the group *Removed* will be set to 0. 
 <linebreak>
 <linebreak>
-The diffusion term describes the diffusion for each group. This can be seen as the speed towards equilibrium for each group. If the diffusion constant is large, the flow towards equilibrium will go faster. The values have been set as follows. 
-* $D_s=1$, The *Susceptible* has a basic moving speed. The other groups are based on the speed of a healthy human.
-* $D_i=0.5$, The *Infected* are often injured caused by recent fights. This affects their mobility.
-* $D_z=0.9$, The average moving speed for a zombie. There are zombies with the mobility of a human, but there are also zombies that drag themselves forward with only one arm. This results in a major difference in speed and therefore a lower average speed for the zombies.
-* $D_r=0$, The removed are here seen as dead, therefore there is no mobility.
-<linebreak>
-<linebreak>
-The parameters from Tab.(ref{table:param_val}) will be used here, and the three phases will be modeled as shown for the uniformed distributed PDE system. The values will be used for three different simulations with the similar initial value for the different groups. The position of initial values can be seen in Fig.(ref{fig:initial_value_susceptible}) and are based on the data given for each town above. The difference in the three simulations will be the position of the zombie at initial time. The zombie will be placed in center of the small, middle and large town.
+The parameters from Tab.(ref{table:param_val}) will be used here, and the three phases will be modeled as shown for the uniformed distributed PDE system. The values will be used for three different simulations with the similar initial value for the different groups. The position of initial values can be seen in Fig.(ref{fig:initial_value_susceptible}) and are based on the data given for each town above. The difference in the three simulations will be the position of the zombie at initial time. The zombie will be placed in center of the small, middle and large constellation.
 
-FIGURE: [2_fig/initial_value_susceptible.png, height=600 width=800 frac=0.8] label{fig:initial_value_susceptible} The initial value for the susceptible group for three simulations. Small group(6,6) with volume of 21 cubic kilometres, middle group(12,25) with volume of 200 cubic kilometres and large group(25,12) with volume  of 400 cubic kilometres. All three groups are build up with a Gaussian function. 
+FIGURE: [2_fig/initial_value_susceptible.png, height=600 width=800 frac=0.8] label{fig:initial_value_susceptible} The initial value for the susceptible group for three simulations. Small constellation at position(6,6) with volume of 21 cubic, middle constellation at position(12,25) with volume of 200 cubic and large constellation(25,12) with volume of 400 cubic. All three groups are build up with a Gaussian function. 
 
 <linebreak>
 <linebreak>
-Fig.(ref{fig:large_town}) shows the simulation where the zombie is placed in the large town. The simulations of the small and middle town can be seen in the Appendix. The four subplots are from the different phases that arise during a zombie attack. The different groups have the same color as introduced in Fig.(ref{fig:zombie_three_number}). It is difficult to separate the three groups *Infected*, *Zombie* and *Removed*, since they all have a low value at initial time. The development of the amount can easier be seen in the Fig.(ref{fig:compare_towns}), which also shows the results from the small and middle town. Since the amount of the susceptible group is quite low in the small town where the zombie arises, the disease is not able to infect too many before the society has moved to the next phase, assuming that the broadcasting about the disease works okay for the first days. This results in an eradication of the disease in about a month. The table(ref{table:compare_phases_zombie}) shows that the number of zombies decreases towards zero after a month. 
+Fig.(ref{fig:large_town}) shows the simulation where the zombie is placed in the large constellation. The four subplots are from the different phases that arise during a zombie attack. The different groups have the same color as introduced in Fig.(ref{fig:zombie_three_number}). It is difficult to separate the three groups *Infected*, *Zombie* and *Removed*, since they all have a low value at initial time. The development of the amount can easier be seen in the Tab.(ref{table:compare_phase_zombie}). Since the amount of the susceptible group is quite low in the small constellation where the zombie arises, the disease is not able to infect too many before the society has moved to the next phase, assuming that the broadcasting about the disease works okay for the first days. 
 <linebreak>
 <linebreak>
 
 FIGURE:[2_fig/2D_zombie_three_phases_zombie_large_town_2_sub.png, height=600 width=800 frac=0.8] label{fig:large_town} *Walking Dead* simulated with the zombie at initial time in the large town. Subplots shown at each phase. 
 
-By placing the zombie in the middle town, the amount in the zombie group increases to a higher level. The amount can be seen as subplot II in Fig.(ref{fig:compare_towns}). The damages are higher, and after a month the total population of the susceptible group is reduced to 427 thousand. The last calculation done for the large town in Fig.(ref{fig:large_town}) shows major damages. Here the amount in the zombie group increases above the number of susceptible humans. The infected group also increases to above 100 after a couple of days in the initial phase. This can be explained by the high number of meetings between susceptible and zombies. By studying the subplot II in Fig.(ref{fig:large_town}), the zombies are grouped in the large town, while the middle and small town mostly consist of susceptible humans. By counting the loss of susceptible humans during the first phase, the Tab.(ref{table:compare_towns}) shows that this amount corresponds with the size of the towns where the zombie was placed, given by the number 17, 188 and 362 thousand in the small,middle and large group. 
+By placing the zombie in the middle town, the amount in the zombie group increases to a higher level. The damages are higher, and after a month the total population of the susceptible group is reduced to 427. The last calculation done for the large constellation in Fig.(ref{fig:large_town}) shows major damages. Here the amount in the zombie group increases above the number of susceptible humans. The infected group also increases to above 100 after a couple of days in the initial phase. This can be explained by the high number of meetings between susceptible and zombies. By studying the subplot II in Fig.(ref{fig:large_town}), the zombies are grouped in the large town, while the middle and small town mostly consist of susceptible humans. By counting the loss of susceptible humans during the first phase, the Tab.(ref{table:compare_towns}) shows that this amount corresponds with the size of the towns where the zombie was placed, given by the number 17, 188 and 362 in the small,middle and large constellation. 
 <linebreak>
 <linebreak>
-
-FIGURE:[2_fig/2D_compare_towns.png, height=1000 width=400 frac=0.6] label{fig:compare_towns} The values for each group counted during 34 days in *Walking Dead*. Initial phase from day 0 to day 3, Hysterical phase from day 3 to day 33 and Counter attack from day 33 to day 34.   
-
 The results from the uniformed distributed simulation is still much higher for the zombie group the in these three simulations. This shows that using the parameters from the ODE system in a geographical area makes little sense. A realistic assumption is that a zombie is restricted to a given area, and therefore the parameters will not be equal for all. The chance of getting infected is much higher if a person from the susceptible group is close to an infected. There is also a greater chance of getting infected if the susceptible group has a high density. 
 
 #FIGURE:[2_fig/2D_zombie_three_phases_zombie_small_town_2_number.png, height=600 width=800 frac=0.8]
@@ -689,31 +678,99 @@ The results from the uniformed distributed simulation is still much higher for t
 
 label{table:compare_towns}
 |-----------------------------------------------------------------------|
-|                   |Small town |Middle town 	|Large 			|
+|                   |Small constellation |Middle constellation 	    |Large constellation		|
 |-----------------------------------------------------------------------|
 |Initial phase      |-----------|-------------------|-------------------|
 |-----------------------------------------------------------------------|
-|Susceptible        |603.74     |433.22            |259.20           	|
-|Infected           |2.96       |25.51             |50.94            	|
-|Zombie             |13.79      |155.27            |297.24           	|
-|Removed            |0.66       |7.16              |13.78              	|
+|Susceptible        |602.93     |425.31             |246.18           	|
+|Infected           |3.09       |25.96              |49.29            	|
+|Zombie             |14.30      |162.28             |311.26           	|
+|Removed            |0.65       |7.42               |14.25              	|
 |-----------------------------------------------------------------------|
 |Hysterical phase   |-----------|-------------------|-------------------|
 |-----------------------------------------------------------------------|
-|Susceptible        |604.42     |429.35             |251.14             |
-|Infected           |0.03       |0.18               |0.35               |
-|Zombie             |6.25       |87.31              |178.45             |
-|Removed            |12.14      |106.00             |192.90             |
+|Susceptible        |602.31     |420.11             |237.41             |
+|Infected           |0.03       |0.20               |0.36               |
+|Zombie             |6.40       |96.21              |205.37             |
+|Removed            |12.23      |104.45             |177.83             |
 |-----------------------------------------------------------------------|
 |Counter attack     |-----------|-------------------|-------------------|
 |-----------------------------------------------------------------------|
-|Susceptible        |604.21     |427.45              |247.33            |
-|Infected           |0.08       |0.59                |1.17              |
-|Zombie             |4.49       |73.70               |151.44            |
-|Removed            |14.11      |121.16              |222.96            |
+|Susceptible        |602.05     |418.17             |233.65             |
+|Infected           |0.08       |0.59               |1.14               |
+|Zombie             |4.60       |82.64              |179.09             |
+|Removed            |14.24      |119.57             |207.09             |
 |-----------------------------------------------------------------------|
 ## dt = 34/68000
 ## dx = 40/800
+
+##small town (dx=0.5,dt=0.01)
+##time=0.000000
+##Susceptible = 619.98
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 602.93
+##Infective =   3.09
+##Zombies =     14.30
+##Removed =     0.65
+##time=33.000000
+##Susceptible = 602.31
+##Infective =   0.03
+##Zombies =     6.40
+##Removed =     12.23
+##time=34.000000
+##Susceptible = 602.05
+##Infective =   0.08
+##Zombies =     4.60
+##Removed =     14.24
+
+## middle town
+##time=0.000000
+##Susceptible = 619.98
+##Infective = 0.00
+##Zombies = 1.00
+##Removed = 0.00
+##time=3.000000
+##Susceptible = 425.31
+##Infective =   25.96
+##Zombies =     162.28
+##Removed =     7.42
+##time=33.000000
+##Susceptible = 420.11
+##Infective =   0.20
+##Zombies =     96.21
+##Removed = 	104.45
+##time=34.000000
+##Susceptible = 418.17
+##Infective = 	0.59
+##Zombies = 	82.64
+##Removed = 	119.57
+
+##large town
+##time=0.000000
+##Susceptible = 619.98
+##Infective =   0.00
+##Zombies =     1.00
+##Removed =     0.00
+##time=3.000000
+##Susceptible = 246.18
+##Infective =   49.29
+##Zombies =     311.26
+##Removed =     14.25
+##time=33.000000
+##Susceptible = 237.41
+##Infective =   0.36
+##Zombies =     205.37
+##Removed =     177.83
+##time=34.000000
+##Susceptible = 233.65
+##Infective = 	1.14
+##Zombies = 	179.09
+##Removed = 	207.09
+
+
 
 ===== Free areas for the susceptible group =====
 To model a realistic zombie attack, humans ability to think logically is crucial in the fight. The mobility was presented as a factor in the previous section. Another important skill that the susceptible group holds, is the ability to decide the safety of an area. In the TV series *Walking Dead*, the humans build barricades to keep the zombies outside. This gives the susceptible group free areas where they can stay. This idea can be transfered to the PDE system by rewriting the Eq.(ref{eq:seland_model_PDE}) with spatial dependent diffusion terms. The diffusion constant $D_u$ is now replaced with a diffusion function $\gamma_u(x)$ for $u= S,I,Z,R$, which is spatial discretized. Since a diffusion equation always goes towards equilibrium, this rewriting will only slow down/stop the selected group to diffuse into an area. In this case it will stop the zombie group from diffusing into the buildings. 
@@ -766,6 +823,7 @@ The diffusion term for the removed group is taken away, since dead people are no
 ##S &= \nabla\left(\gamma(x) \nabla S)\right \\
 
 ===== Ten minutes at Frederikkeplassen =====
+label{section:2_frederikke}
 Frederikkeplassen at the University of Oslo is a possible area for an upcoming zombie attack. This simulation will try to model a ten minute sequence with the diffusion parameter added in this section. Since students often learn and interact fast, they will only use three minutes before they realize the danger and transitions into the *Hysterical phase*. A map of Frederikkeplassen is used to define the safe and critical areas. The buildings are set as areas where only the susceptible humans are allowed to move. This is done by setting the diffusion constant to zero for the zombie and infected groups. Since the buildings are safe spots for the susceptible humans, an idea would be to express this in the diffusion term by forcing the susceptible humans for other areas into the buildings. This is more difficult, since the concentrations in each group wants to diffuse towards equilibrium. A way to delay this process is by setting the diffusion constant to be low in the buildings and high outside. This will result in a fast diffusion in the open areas and a slow diffusion inside the buildings. 
 
 FIGURE:[2_fig/2D_compare_Frederikke.png, height=400 width=800 frac=0.8] label{fig:frederikke_numbers} The amount in each group for two simulations of Frederikkeplassen modeled same parameters for 10 minutes/hours. a)Plot with uniformed distributed groups and same diffusion constants for all groups. b)Plot based on figure(ref{fig:frederikke_free_area}) with different initial values for each group.     
@@ -808,14 +866,14 @@ label{table:frederikke_table}
 
 
 ======= Discussion =======
-This chapter expand the study of the disease, by adding the opportunity to analyse the disease for a spatial area. The travelling wave is essential for a disease to spread in an area. If the reproduction rate seen in Eq.(ref{eq:reproduction_rate_PDF}) was below 1, the travelling wave would decrease towars zero and the disease would dissapear. By varying $\lambda$, one could see that a low value would cause a total eradication of the susceptible group. By setting $\lambda>=1$, the damage from the epidemic wave would be close to zero and the disease would die out.
+This chapter expand the study of the disease, by adding the opportunity to analyse the disease for a spatial area. The travelling wave is essential for a disease to spread in an area. If the reproduction rate seen in Eq.(ref{eq:reproduction_rate_PDF}) was below 1, the travelling wave would decrease towards zero and the disease would disapear. By varying $\lambda$, one could see that a low value would cause a total eradication of the susceptible group. By setting $\lambda>=1$, the damage from the epidemic wave would be close to zero and the disease would die out.
 <linebreak>  
 <linebreak>  
-The results from the English boarding school shows that the position of the infected student has a major impact on the result. A uniform distribution was first calculated and compared with the ODE simulation in the previous chapter. This gave the same result. By varying the position of the infected student, the result was affected. When simulating the disease for a long time, the number of infected students seems to be similar. Therefore the parameter values in the system will not be enough to say anything about the concentrations measured in time for each group. The position will also affect the result. 
+The results from the English boarding school shows that the position of the infected student has a major impact on the result. A uniform distribution was first calculated and compared with the ODE simulation in the previous chapter. This gave the same result. By placing the infected student in the center of the schoolyard, one can see after five days that the amount of susceptible is 68 percent higher, than with a uniform distribution. The amount of susceptible is even higher if the student is placed in the corner. Then the amount is 70 percent higher than for the uniform group. The results can be seen in Tab.(ref{table:british_number_table}). The results after 15 days shows that for the uniform distribution, there are 21 students left in the susceptible group and 724 in the removed group. The opposite result can be seen for the simulation with the infected in the corner. Here, the amount of susceptible and removed is 717 and 33. 
 <linebreak>  
 <linebreak>  
-The section *Zombiefication* verified the uniform distribued PDF solution with the ODE solution from the previous chapter. These were expected to be similar. The English boarding school studied the result of varying the position of the infected with a uniform distributed group of susceptible. This section tried to expand this idea byspread the group of susceptible into three groups. The position of the zombie was placed in center of all three groups. The amount of infected in these three simulations was proportional to the size of the group where the zombie was placed. The position of the infected student was shown to have an impact on the spread of the disease. This section shows that the susceptible group also affects the result.
+The section ref{section:2_zombiefication} verified the uniform distributed PDF solution with the ODE solution from the previous chapter. These were expected to be similar. The English boarding school studied the result of varying the position of the infected with a uniform distributed group of susceptible. This section tried to expand this idea by split the group of susceptible into three constellations. The position of the zombie was placed in center of all three constellations. The loss of susceptible students in the *Initial phase* was proportional to the three constellations where the zombie was placed at initial time. For the small, middle and large constellation the loss of susceptible was 18.07,195.69 and 374.82 based on the Tab.(ref{table:compare_towns}). The percent based on the constellation is then: 86 percent for the small, 97 for the middle and 93 for the large constellation. The percent was highest for the middle group. This can be explained by the overlapping between the middle and the large constellations, seen in Fig.(ref{fig:initial_value_susceptible}). This overlapping resulted in a minor spread to the constellation next to. The position of the infected student was shown to have an impact on the spread of the disease in the section ref{section:2_english}. This section shows that the susceptible group also affects the result. An ODE model will therefore be weak, compared to an PDE model. An realistic assumption is that different groups will never be uniformed distributed, and the positions are shown to have a major effect.
 <linebreak>  
 <linebreak>  
-The last part *Ten minutes at Frederikke* tries to implement human behavior by giving the susceptible group the ability to keep zombies outside the buildings. This was crucial in *Walking Dead* to prevent meetings between zombies and humans. One can see from the results that this gives the susceptible group a greater chance of surviving. The concentrations for each group will go towards equilibrium. Therefore this simulation will differ from human behavior. The next chapter will use random walks to simulate this zombie outburst. This will build on *Ten minutes ad Frederikke*, and introduce different conditions based on the phase the zombies and humans are in. 
+The last part ref{section:2_frederikke} tries to implement human behavior by giving the susceptible group the ability to keep zombies outside the buildings. This is done by giving the groups: *Zombie* and *Infected* restricted areas. This was crucial in *Walking Dead* to prevent meetings between zombies and humans. The three similar constellations as in the previous section is used. However, the position has been changed. The middle constellation is placed in one of the buildings. By studying the Fig.(ref{fig:frederikke_free_area}, one can see that the zombie group is not able to diffuse into the buildings. The middle group will then avoid attacks. However, since the concentrations for each group will go towards equilibrium. This simulation will differ from human behavior. The next chapter will use random walks to simulate this zombie outburst. This will build on the section ref{section:2_frederikke}, and introduce different conditions based on the phase the zombies and humans are in. 
 

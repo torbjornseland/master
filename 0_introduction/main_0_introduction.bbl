@@ -1,44 +1,18 @@
 \begin{thebibliography}{1}
 
-\bibitem{walking_dead}
-F.~Darabont and G.~A. Hurd.
-\newblock Walking dead: Season 1, 2010-2011.
-
-\bibitem{isham1988mathematical}
-Valerie Isham.
-\newblock Mathematical modelling of the transmission dynamics of hiv infection
-  and aids: a review.
-\newblock {\em Journal of the Royal Statistical Society. Series A (Statistics
-  in Society)}, pages 5--49, 1988.
-
 \bibitem{zombie-math}
-Hans~Petter Langtangen, Kent-Andre Mardal, and P{\aa}l R{\o}tnes.
-\newblock {\em Escaping the Zombie Threat by Mathematics}, chapter 3.6, pages
-  x--y.
-\newblock University of Chicago Press, 2013.
-
-\bibitem{munz2009zombies}
-Philip Munz, Ioan Hudea, Joe Imad, and Robert~J. Smith.
-\newblock When zombies attack!: Mathematical modelling of an outbreak of zombie
-  infection.
-\newblock {\em Infectious Disease Modelling Research Progress}, 4:133--150,
-  2009.
+Hans~Petter Langtangen, Kent-Andre Mardal, and P{\r a}l R{\o}tnes.
+\newblock Escaping the zombie threat by mathematics.
+\newblock Technical report, Simula Research Laboratory, 2012.
 
 \bibitem{murray2002mathematical}
 J.D. Murray.
 \newblock {\em Mathematical Biology: I. an Introduction}.
 \newblock Interdisciplinary Applied Mathematics. Springer, 2002.
 
-\bibitem{perelson1999mathematical}
-Alan~S. Perelson and Patrick~W. Nelson.
-\newblock Mathematical analysis of hiv-1 dynamics in vivo.
-\newblock {\em SIAM review}, 41(1):3--44, 1999.
-
-\bibitem{xiao2013predicting}
-Yanni Xiao, Sanyi Tang, Yicang Zhou, Robert~J. Smith, Jianhong Wu, and Ning
-  Wang.
-\newblock Predicting the hiv/aids epidemic and measuring the effect of mobility
-  in mainland china.
-\newblock {\em Journal of Object Technology}, 317:271--285, 2013.
+\bibitem{who_hiv}
+World~Health Organization.
+\newblock 10 facts on hiv/aids.
+\newblock \url{http://www.who.int/features/factfiles/hiv/en/}, 2014.
 
 \end{thebibliography}
