@@ -1,55 +1,50 @@
 \contentsline {chapter}{\numberline {1}Introduction}{9}{chapter.1}
 \contentsline {chapter}{\numberline {2}ODE models}{11}{chapter.2}
 \contentsline {section}{\numberline {2.1}Simple epidemic models}{11}{section.2.1}
-\contentsline {section}{\numberline {2.2}Threshold phenomenon}{13}{section.2.2}
+\contentsline {section}{\numberline {2.2}Threshold phenomenon}{12}{section.2.2}
 \contentsline {section}{\numberline {2.3}English boarding school}{15}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Maximum concentration of infected}{16}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Maximum concentration of infected}{15}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Variation in parameter value $\rho $}{16}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Zombification}{17}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Parameters used in the model}{19}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}The \emph {Initial phase}}{19}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}The \emph {Hysterical phase}}{23}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {2.4.4}The \emph {Counter attack phase}}{25}{subsection.2.4.4}
-\contentsline {subsection}{\numberline {2.4.5}The three phases in Walking Dead}{28}{subsection.2.4.5}
-\contentsline {section}{\numberline {2.5}Discussion}{31}{section.2.5}
-\contentsline {chapter}{\numberline {3}PDE models}{33}{chapter.3}
-\contentsline {section}{\numberline {3.1}Simple system for spatial spread}{33}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Travelling wave 1D}{34}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Verifying the solution}{36}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Constant solution}{36}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}Manufactured solution}{38}{subsection.3.1.4}
-\contentsline {subsection}{\numberline {3.1.5}Convergence rate}{40}{subsection.3.1.5}
-\contentsline {subsection}{\numberline {3.1.6}The spatial error}{40}{subsection.3.1.6}
-\contentsline {subsection}{\numberline {3.1.7}The temporal error}{41}{subsection.3.1.7}
-\contentsline {subsection}{\numberline {3.1.8}Travelling wave in 2D}{41}{subsection.3.1.8}
-\contentsline {subsection}{\numberline {3.1.9}A gaussian wave}{41}{subsection.3.1.9}
-\contentsline {paragraph}{Change in initial flow.}{43}{section*.4}
-\contentsline {paragraph}{Change in lambda.}{44}{section*.5}
-\contentsline {section}{\numberline {3.2}English boarding school}{45}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Maximum concentration of infected}{46}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Introducing a Gaussian distribution of infected}{46}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Zombiefication}{50}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}The position of the infected group}{53}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Free areas for the susceptible group}{56}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Ten minutes at Frederikkeplassen}{58}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Discussion}{60}{section.3.4}
-\contentsline {chapter}{\numberline {4}Random walk}{63}{chapter.4}
-\contentsline {section}{\numberline {4.1}Monte Carlo methods}{63}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Random variable}{64}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Probability distribution functions (PDF)}{64}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Moments of a PDF}{65}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}The pertinent variance $\sigma ^2$}{66}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}English boarding school}{66}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Lower maximum concentration for the infected group}{69}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}The chance for a disease to spread}{69}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Zombiefication}{69}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Random walk}{70}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Moving smart}{73}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Three phases in Walking Dead}{74}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Free areas for the susceptible group}{75}{subsection.4.3.4}
-\contentsline {section}{\numberline {4.4}Discussion}{81}{section.4.4}
-\contentsline {chapter}{\numberline {5}Discussion and conclusion}{83}{chapter.5}
-\contentsline {subsection}{\numberline {5.0.1}Further work}{84}{subsection.5.0.1}
-\contentsline {chapter}{\numberline {6}Appendix}{85}{chapter.6}
-\contentsline {subsection}{\numberline {6.0.2}Diffusion equation and random walks}{85}{subsection.6.0.2}
-\contentsline {section}{\numberline {6.1}Random walker}{86}{section.6.1}
+\contentsline {section}{\numberline {2.4}Zombification}{16}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Parameters used in the model}{18}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}The Initial phase}{18}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}The Hysterical phase}{21}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}The Counter attack phase}{23}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.5}The three phases in Walking Dead}{26}{subsection.2.4.5}
+\contentsline {section}{\numberline {2.5}Discussion}{29}{section.2.5}
+\contentsline {chapter}{\numberline {3}PDE models}{31}{chapter.3}
+\contentsline {section}{\numberline {3.1}Simple system for spatial spread}{31}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Travelling wave 1D}{32}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Verifying the solution}{34}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Constant solution}{34}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Manufactured solution}{36}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}Convergence rate}{38}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}Travelling wave in 2D}{39}{subsection.3.1.6}
+\contentsline {subsection}{\numberline {3.1.7}A Gaussian wave}{39}{subsection.3.1.7}
+\contentsline {subsection}{\numberline {3.1.8}Changes in the initial flow}{40}{subsection.3.1.8}
+\contentsline {subsection}{\numberline {3.1.9}Changes in lambda}{41}{subsection.3.1.9}
+\contentsline {section}{\numberline {3.2}English boarding school}{43}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Maximum concentration of infected}{44}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Introducing a Gaussian distribution of infected}{44}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Zombiefication}{48}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Spatial spread of the susceptible group}{51}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Free areas for the susceptible group}{54}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Ten minutes at Frederikkeplassen}{56}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Discussion}{58}{section.3.4}
+\contentsline {chapter}{\numberline {4}Random walk}{61}{chapter.4}
+\contentsline {section}{\numberline {4.1}Monte Carlo methods}{61}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Random variable}{62}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Probability distribution functions (PDF)}{62}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Moments of a PDF}{63}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}The pertinent variance $\sigma ^2$}{64}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}English boarding school}{64}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Lower maximum concentration for the infected group}{66}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}The chance for a disease to spread}{67}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Zombiefication}{67}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Random walk}{68}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Moving smart}{71}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Three phases in Walking Dead}{72}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Free areas for the susceptible group}{73}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}Discussion}{79}{section.4.4}
+\contentsline {chapter}{\numberline {5}Discussion and conclusion}{81}{chapter.5}
+\contentsline {subsection}{\numberline {5.0.1}Further work}{83}{subsection.5.0.1}

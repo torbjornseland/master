@@ -1,7 +1,7 @@
 \begin{thebibliography}{1}
 
 \bibitem{walking_dead}
-F.~Darabont and G.~A. Hurd.
+Frank Darabont and Gale~Anne Hurd.
 \newblock Walking dead: Season 1, 2010-2011.
 
 \bibitem{hjorth2011computational}
@@ -37,5 +37,10 @@ J.D. Murray.
 World~Health Organization.
 \newblock 10 facts on hiv/aids.
 \newblock \url{http://www.who.int/features/factfiles/hiv/en/}, 2014.
+
+\bibitem{ebola}
+World~Health Organization.
+\newblock Ebola virus.
+\newblock \url{http://www.who.int/mediacentre/factsheets/fs103/en/}, 2014.
 
 \end{thebibliography}

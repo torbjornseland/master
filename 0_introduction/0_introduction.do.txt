@@ -1,38 +1,20 @@
 
 ========= Introduction =========
-Throughout the history great epidemic diseases have spread across the world, leading to catastrophic consequences for human populations. Millions of lives have been taken. The Black Death and Cholera are epidemics that have moved over large distances into Europe Ref.cite[p.~315]{murray2002mathematical}. An important aspect in the current spread of diseases is the displacement of human populations. About a million people cross international borders daily. The growth of human population, especially in underdeveloped countries, is another factor that affects the spread. These developments played a key role in the spread of HIV in the 1980's. The World Health Organization has estimated that around 32.6 million people are infected with the HIV virus today Ref.cite{who_hiv}. Knowledge about the spread and severity of epidemic diseases is valuable for the human population in preventing major damages. The current outbreak of Ebola in West Africa in March 2014, has shown that epidemics will occur repeatedly. Mathematical models can help us understand the severity and prepare the population in the best way possible.
+Throughout the history great epidemic diseases have spread across the world, leading to catastrophic consequences for human populations. Millions of lives have been taken. The Black Death and Cholera are epidemics that have moved over large distances into Europe Ref.cite[p.~315]{murray2002mathematical}. An important aspect in the current spread of diseases is the displacement of human populations. About a million people cross international borders daily. The growth of human population, especially in underdeveloped countries, is another factor that affects the spread. These developments played a key role in the spread of HIV in the 1980's. The World Health Organization has estimated that around 32.6 million people are infected with the HIV virus today Ref.cite{who_hiv}. Knowledge about the spread and severity of epidemic diseases is valuable for the human population in preventing major damages. The current outbreak of Ebola in West Africa in March 2014 Ref.cite{ebola}, has shown that epidemics will occur repeatedly. Mathematical models can help us understand the severity and prepare the population in the best way possible.
 <linebreak>
 <linebreak>
-This thesis will study and compare three different models which simulate epidemic diseases. The three models that will be used are: the ODE model, the PDE model and Random walk. Each model will be presented and studied. The threshold value for an epidemic disease will be examined in the first chapter, ref{section:ODE_models}. The second chapter, ref{section:PDE_models}, focuses on how a travelling wave of infected disperse in an area. The third chapter, ref{section:Random_walk}, will look into Monte Carlo methods, which will later be used for the Random walk simulations. The results from the different models will be compared and analysed throughout the paper.
+In this thesis three different models will be used to simulate epidemic diseases. The three models that will be used are: the ODE model, the PDE model and Random walk. Each model will be presented and the results will be analyzed and compared throughout the paper. The threshold value for an epidemic disease will be examined in chapter, ref{section:ODE_models}. The chapter ref{section:PDE_models}, focuses on how a travelling wave of infected disperse in an area. The fourth chapter, ref{section:Random_walk}, will look into Monte Carlo methods, which will later be used for the Random walk simulations. 
 <linebreak>  
 <linebreak>  
-A couple of choices have been done for this thesis. First, the systems will be modeled for a short period of time. The length of the longest simulations is a month, while the third chapter only consists of simulations with the length of half an hour. This is done to study variations of human and zombie behavior in a zombiefication. Second, all models are simulated as closed systems. The amount in each simulation never exceeds 763 humans and the time aspect is short. Therefore the birth and death rate is close to negligible, and are set to zero.    
+A couple of choices have been made for this thesis. First, the systems will be modeled for a short period of time. The length of the longest simulations is a month, while the fourth chapter only consists of simulations with the length of half an hour. This is done to study variations of human and zombie behavior in a zombiefication. Second, all models are simulated as closed systems. The amount in each simulation never exceeds 763 humans and the time aspect is short. Therefore the birth and death rate is close to negligible, and are set to zero.    
 <linebreak>
 <linebreak>
 Two different examples will be used for all three models. The first case is based on an influenza outbreak which occurred at an English boarding school in 1978. A basic SIR system will be used to model the epidemic trough 15 days. This example shows the effect of varying the parameter values in the system. This will be done in chapter ref{section:ODE_models}. The maximum concentration of infected humans will be compared, to see if the results between the models differ. The effect from the two spatial models in chapter ref{section:PDE_models} and chapter ref{section:Random_walk} will be compared to the ODE model. The second case is based on the TV series *Walking Dead*. Here, a SEIR model will be used to simulate a zombie outbreak. The model is based on the paper *Escaping the Zombie Threat by Mathematics* by Langtangen, Mardal and Røtnes Ref.cite{zombie-math}. The simulations will be done for different phases, and the parameter values in each phase will be changed and studied. Differences in behavior will be used to vary the simulations. Restricted areas will be used in the simulations of the PDE model, while Random walk also adds altered behavior.
 <linebreak>
 <linebreak>
+The code used for the thesis can be found at URL: "https://github.com/torbjornseland/master". There will be a link "Movie": "https://torbjornseland.github.io/master" attached to each figure that has a simulation on web. This can be used to study the simulations, especially for the Random walk model.
 
 
 
 
- 
 
-
-#- Hva er målet?
-#- sammenligne modeller
-#
-#- se på forenklinger
-#
-#- caser
-#- hvilke aspekter vil disse bringe inn
-#- hvorfor er disse med?
-#
-#- Hva trenger vi kunnskapen til?
-#<linebreak>
-#Several scientific and mathematical studies have been done on different diseases through the years, for instance on HIV/AIDS. *Mathematical Modelling of the Transmission Dynamics of HIV Infection and AIDS: a Review* was published in 1988 by Valerie Isham Ref.cite{isham1988mathematical}. This paper focuses on modeling transmission of infection in an AIDS epidemic. In 1999 Alan S. Perelson and Patrick W. Nelson published *Mathematical Analysis of HIV-1 Dynamics in Vivo* Ref.cite{perelson1999mathematical}. They studied the dynamics of HIV-1 pathogenesis to AIDS. Their focus was rapid dynamical processes that occur in short time scales, as hours, while AIDS occurs on a time scale of about 10 years. This affects the way that AIDS patients are treated with drugs. *Predicting the HIV/AIDS epidemic and measuring the effect of mobility in mainland China* by Xiao et. al Ref.cite{xiao2013predicting} is another study done on HIV/AIDS. This study focused on the geographic variation in the severity of the epidemic in China. 
-#<linebreak>
-#<linebreak>
-#This thesis will study three mathematical models used to simulate epidemic diseases. The first chapter will use an ODE system to model the different groups that are included in an epidemic disease. The chapter will study the variations in each group based on different time aspects. The second chapter will look at a PDE system. This model also takes the spatial spread into account, and the position affects the result. A random walk system is studied in the third chapter. In the two first chapters, the amount of each group is viewed as concentrations. In the third chapter, each person will be modeled as a particle. The person's behavior will be based on the group it belongs to and its time and position. 
-#<linebreak>
-#<linebreak>

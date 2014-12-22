@@ -1,0 +1,12 @@
+In Fig.(ref{fig:hysterical_variations}) the parameters of $\beta$, $\varrho$ and $\alpha$ have been simulated with different values. 
+
+
+FIGURE:[1_fig/check_parameters_hysterical_2.png, width=800] label{fig:hysterical_variations} Variations in the final result for the susceptible and removed group based on variations in the parameter values. Simulated for the *Hysterical phase*. The last subplot consist of the combination of all. $\beta=[1\cdot10^{-5},1.2\cdot10^{-5}]$, $\varrho=[1,2]$ and $\alpha=[2\cdot10^{-4},2.2\cdot10^{-4}]$
+
+Fig.(ref{fig:hysterical_variations}) gives insight in how variations in parameters affect the final result. By decreasing $\beta$, it will essentially increase the number of susceptible humans that will survive, but it will also increase the number of deaths. This may at a first glance seem quite strange. Should not the number of deaths decrease when the number of surviving humans increase? This can be explained with the idea that was shown for $\beta$ in the *Initial phase*. Since $\beta SZ$ gets smaller when $\beta$ gets smaller, the combination of $SZ$ will stay higher for a longer time . This will again affect $\alpha SZ$, which regulates the number of killed zombies. The larger this combination is, the more zombies will die. 
+<linebreak>
+<linebreak>
+By increasing $\alpha$, the number of removed also increase. However, similar to the increasing of the removed group it also has a slight increase of the number of susceptible humans. Here the argument for $\beta$ above can be reversed. Since a higher $\alpha$ leads to a higher death rate among the zombies, the combination $SZ$ will be smaller, which makes $\beta SZ$ smaller.
+<linebreak>
+<linebreak>
+The last parameter, $\varrho$, has nearly no effect. The red dots show a small decreasing of the removed group and  an increasing of susceptible humans when $\varrho$ is increased. This parameter varies most, but has least impact. This can be explained with the long time aspect and the low number of infected compared to the number of zombies. Since the number of zombies is much higher, the transformation length from infected to zombie is almost negligible.  

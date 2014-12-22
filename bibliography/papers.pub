@@ -112,7 +112,7 @@
 * misc
 ** Walking Dead: Season 1
    key:       walking_dead
-   author:    F. Darabont, G. A. Hurd
+   author:    Frank Darabont, Gale Anne Hurd
    year:      2010-2011
    status:    published
    entrytype: misc
@@ -122,4 +122,11 @@
    year:         2014
    status:       published
    howpublished: \url{http://www.who.int/features/factfiles/hiv/en/}
+   entrytype:    misc
+** Ebola virus
+   key:          ebola
+   author:       World Health Organization
+   year:         2014
+   status:       published
+   howpublished: \url{http://www.who.int/mediacentre/factsheets/fs103/en/}
    entrytype:    misc

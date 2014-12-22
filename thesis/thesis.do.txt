@@ -28,9 +28,6 @@ TOC: on
 
 # #include "../4_Discussion_and_conclusion/4_Discussion_and_conclusion.do.txt"
 
-========= Appendix =========
-
-# #include "../3_Random_walk/3_Appendix.do.txt"
 
 ========= Bibliography =========
 

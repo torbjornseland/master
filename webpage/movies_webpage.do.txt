@@ -1,0 +1,25 @@
+
+======= PDE models =======
+
+===== Travelling wave =====
+
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/Travelling_wave.webm, heigth=500 width=500]
+
+===== Fig 3.4-major flow =====
+
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
+
+===== Fig.3.8-Infected in center =====
+
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
+
+===== Fig.3.11-Large constellation =====
+
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+
+===== Fig.3.13-Frederikkeplassen =====
+
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_Frederikke_contourf.webm, height=500 width=600]
+
+======= Random walk =======
+

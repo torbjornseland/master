@@ -1,10 +1,9 @@
 ========= ODE models =========
 label{section:ODE_models}
-This chapter will be split into two different parts. The part includes two sections, which will be based on the chapter *Dynamic of Infectious Diseases* from Mathematical Biology by J.D Murray Ref.cite{murray2002mathematical}. *Epidemic models* will give a historic perspective on different epidemic diseases and their effect on the human population. Furthermore a basic ODE system will be presented and studied to see how this model can give information about the disease. The section will check if a disease is severe for the human population, and based on this called an epidemic disease.
-<linebreak>
-<linebreak>
-The last part will be based on a scenario where the population faces a zombification, one of the most critical and devastating epidemic diseases that can occur. Here, the TV series *Walking Dead* will be used as reference, and the series will be tested against a model based on the SIR model explained in section *Simple Epidemic models*. There have been a couple of papers on this model earlier, and this part will be based on these models and try to adjust the system to the TV series.     
+This chapter will be split into two different parts. The first part is based on the chapter *Dynamic of Infectious Diseases* from Mathematical Biology by J.D Murray Ref.cite{murray2002mathematical}. A basic ODE system will be presented and studied to see how this model can give information about the disease. The section will check if a disease is severe for the human population, and based on this called an epidemic disease. The example from English boarding school will be used. The second part will be based on a scenario where the population faces a zombification, one of the most critical and devastating epidemic diseases that can occur. Here, the TV series *Walking Dead* will be used as reference. The ODE model from the paper *Escaping the Zombie Threat by Mathematics* by Langtangen, Mardal and Røtnes Ref.cite{zombie-math} will be used to model the zombie outbreak.
+
 ======= Simple epidemic models =======
+label{section:1_simple_epidemic_models}
 Most of the models shown here will have a constant population. The zombie model shown later will have a slight increase considering newborn, but this will be close to negligible. This may differ from the real world, where the population in different areas will vary with population flow. Reasons for doing this are, first of all to simplify the model and second to be able to model a closed system. How the population interacts is another assumption that has to be done. Here this is set to be similar for the whole area that is modeled. To simplify the population can be divided into three different groups. 
 * *Susceptible* ($S$), who are humans that are healthy and at risk of becoming infected. 
 * *Infected* ($I$), who are humans who have the disease or are carriers of the disease. This group can infect the group *Susceptible*. 
@@ -62,20 +61,16 @@ The expression inside the brackets controls the change in $I$. The function will
 \rho = \frac{a}{r}
 \end{equation}
 !et
-This can be shown with some phase trajectories of the infected and susceptible humans in Fig.(ref{fig:threshold_phenomenon}).  
 
-FIGURE:[1_fig/threshold_phenomenon.png, length=500 width=500 frac=0.8]label{fig:threshold_phenomenon} Simulations of the SIR model (ref{eq:SIR_model}) with start positions along the blue line. $I$ increases until $S$ is equal to the threshold value $\rho$, which is set to 35. Then $I$ is reduced to 0. In the simulations where $S_0 < \rho$, no epidemic situation is achieved.    
+FIGURE:[1_fig/threshold_phenomenon.png, length=500 width=500 frac=0.8]label{fig:threshold_phenomenon} Simulations of the SIR model (ref{eq:SIR_model}) with start positions along the blue diagonal line. $I$ increases until $S$ is equal to the threshold value $\rho$, which is set to 35. Then $I$ is reduced to 0. In the simulations where $S_0 < \rho$, no epidemic situation is achieved.    
 
-The simulation shows that $I$ is based on the relation between $S$ and $\rho$. This can be described with a reproduction rate,
+This can be shown with some phase trajectories of the infected and susceptible humans in Fig.(ref{fig:threshold_phenomenon}). The simulation shows that $I$ is based on the relation between $S$ and $\rho$. This can be described with a reproduction rate,
 !bt
 \begin{equation}
 R_0 = \frac{rS_0}{a}
 \end{equation}
 !et
-It will cause an epidemic reaction if $R_0 > 1$. This parameter is crucial in the understanding of the work with the disease. To prevent a dispersion, the value of $R_0$ has to be under 1. An effective way to get control is by global vaccination programs. Smallpox is an example on a disease that nearly has been eradicated around the world. This is due to a reduction of susceptible humans. However there is always a small chance of side effects when using vaccination, and therefore some people choose to skip it. This is quite critical for the fight of total eradication. Not only is it a big risk for the specific person, but it also increases the number of susceptible humans. An epidemic situation can quickly grow again if the reproduction rate reaches the threshold.
-<linebreak>
-<linebreak>
-Some analytical studies can be done on the model in Eq.(ref{eq:SIR_model}).
+It will cause an epidemic reaction if $R_0 > 1$. This parameter is crucial in the understanding of the work with the disease. To prevent a dispersion, the value of $R_0$ has to be under 1. An effective way to get control is by global vaccination programs. Smallpox is an example on a disease that nearly has been eradicated around the world. This is due to a reduction of susceptible humans. However there is always a small chance of side effects when using vaccination, and therefore some people choose to skip it. This is quite critical for the fight of total eradication. Not only is it a big risk for the specific person, but it also increases the number of susceptible humans. An epidemic situation can quickly grow again if the reproduction rate reaches the threshold. Some analytical studies can be done on the model in Eq.(ref{eq:SIR_model}).
 !bt
 \begin{equation} 
 \frac{dI}{dS} = -\frac{(rS-a)I}{rSI} = -1 + \frac{\rho}{S},\hspace{8mm}\rho=\frac{a}{r}, (I\neq0).
@@ -124,7 +119,7 @@ By inserting the parameters from the simulation in Fig.(ref{fig:english_boarding
 ===== Variation in parameter value $\rho$ ===== 
 The parameter value $\rho$ has a major impact on the result. The epidemic disease could turn out quite differently than in the situation in Fig.(ref{fig:english_boarding}), caused by variations in $a$ and $r$. Fig.(ref{fig:rho_changes}) consists of some examples where $\rho$ varies from 50 to 400.
 
-FIGURE:[1_fig/English_boarding_school_changes.png] label{fig:rho_changes} In the first plot where $\rho=50$, the infected group will increase until the number of susceptible group falls down to 50. This will result in a majority of infected students. In the last plot where $\rho=400$, the total number of susceptible humans stays around 170 students and will go towards a steady number as $I(\infty)=0$.   
+FIGURE:[1_fig/English_boarding_school_changes.png] label{fig:rho_changes} English boarding school with four different values of $\rho$. In the first plot where $\rho=50$, the infected group will increase until the number of susceptible group falls down to 50. This will result in a majority of infected students. In the last plot where $\rho=400$, the total number of susceptible humans stays around 170 students and will go towards a steady number as $I(\infty)=0$.   
 
 ======= Zombification =======
 label{section:1_zombiefication}
@@ -144,7 +139,7 @@ This is a bit more complicated than the standard $SEIR$ model. A presentation of
 * $\beta SZ$ describes the numbers of susceptible humans that become infected , based on interactions between zombies and humans. Similar to the case for $rSI$ in the SIR model. 
 * $\delta$ describes the number of natural deaths in the group. This is used in the susceptible and infected groups
 * $\varrho I$ describes the probability for an infected human to wake up as a zombie.
-* $\zeta R$ controls the number from the group *Removed* that arises in the group *Zombie*. 
+* $\zeta R$ describes the number from the group *Removed* that arises in the group *Zombie*. 
 * $\alpha SZ$ describes the number of zombies killed by susceptible humans in the zombie attacks. 
 <linebreak>
 <linebreak>
@@ -176,7 +171,7 @@ This function will be modeled later when it is used in section ref{section:count
 ===== Parameters used in the model =====
 The parameter values are essential factors when modelling a zombie attack. Data from the movie *The Night of The Living Dead* was used as basis for the parameters in the ODE system from LMR cite{zombie-math}. This thesis is based on a thorough study of the TV series *Walking Dead* cite{walking_dead}. The data will be based on the first five episodes and are constructed after having watched the episodes carefully. The three phases in a zombie attack will be based on the form used in the paper from LMR, but with an extended version in the *Counter attack phase* .
 
-===== The *Initial phase* =====
+===== The Initial phase =====
 The disease is not yet known in this phase and humans try to save the sick ones by taking them to hospitals or getting some kind of treatment. Because of this ignorance related to the disease, the number in the infected group is high. This phase is often quite short and humans soon start to realise that the risk of getting infected by saving others is really high. *Walking Dead* never shows anything from this phase, but the viewer sees the results when the main character sheriff Rick Grimes wakes up at the local hospital. What he sees is the major damage caused in the *Initial phase*, while the society has moved to the *Hysterical phase*.
 <linebreak>
 <linebreak>
@@ -201,28 +196,30 @@ The ODE system in Eq.(ref{eq:LMR_model})can be used to model the *Initial phase*
 \end{equation}
 !et
 The probability of a human being infected will be set to $\beta = 0.3$. The natural death and the birth number is set to 0, since the simulations are performed over short period and for a small group. $\delta_S = \Sigma = 0$. It is quite hard to find similar realistic data for infected humans, so $\delta_I = \delta_S$. Since this is data for the *Initial phase*, zombies are seen as infeteced humans that can be saved. Therefore $\alpha = 0$. And the two last parameters are also zero, $a = \zeta = 0$. The *Initial phase* is modeled in Fig.(ref{fig:initial_phase_1}):
+<linebreak>
+<linebreak>
 
 FIGURE:[1_fig/WD_zombie_initial_1.png] label{fig:initial_phase_1} *Initial phase* for *Walking Dead*. $\beta=0.3$, $\varrho=1$ and $\alpha=0$ leads to eradication.
 
-The result from Fig.(ref{fig:initial_phase_1}) shows that the human population is eradicated in about a half day. This is not the case, and some adjustments need to be done. There are three parameters that are interesting to study. The first one is $\beta$, which describes how many humans that get infected in a human-zombie collision. The second one is $\varrho$. This parameter controls the incubation time. The last parameter that can affect the number in each group is $\alpha$. This describes the number of zombies killed in a human-zombie collision. These variables are plotted separately and combined in Fig.(ref{fig:initial_parameters}). The idea here is to produce results that fulfill the final number for the groups *Susceptible* and *Removed*, which is 71 and 20. The blue dot in each plot describes this value. A rough estimate has been done for each parameter before using it. This is why they all lie in different regions than the parameter value in Fig.(ref{fig:initial_phase_1})
+The results shows that the human population is eradicated in about a half day. This is not the case, and some adjustments need to be done. There are three parameters that are interesting to study. The first one is $\beta$, which describes how many humans that get infected in a human-zombie collision. The second one is $\varrho$. This parameter controls the incubation time. The last parameter that can affect the number in each group is $\alpha$. This describes the number of zombies killed in a human-zombie collision. These variables are plotted separately and combined in Fig.(ref{fig:initial_parameters}). The idea here is to produce results that fulfill the final number for the groups *Susceptible* and *Removed*, which is 71 and 20. The blue dot in each plot describes this value. A rough estimate has been done for each parameter before using it. This is why they all lie in different regions than the parameter value in Fig.(ref{fig:initial_phase_1})
+<linebreak>
+<linebreak>
+
+FIGURE:[1_fig/check_parameters.png, width=800] label{fig:initial_parameters} The final result for susceptible and removed group. These plots give a knowledge in the effect of varying the parameters. $\beta$ and $\varrho$ mainly affects the number of susceptible humans at final time, while $\alpha$ affects them both. 
 
 
-FIGURE:[1_fig/check_parameters.png, width=800] label{fig:initial_parameters} The final result for susceptible and removed group. These plots give a knowledge in the effect of varying the parameters. $\beta$ and $\varrho$ mainly affect the number of susceptible humans while $\alpha$ affect them both. 
+FIGURE:[1_fig/WD_zombie_initial_2.png] label{fig:initial_phase_2} *Initial phase* for *Walking Dead*. The parameter values are set to $\beta=0.01155$, $\varrho=1.37$ and $\alpha=0.00044$. The final values are $S_n=71.3,I_n=230.8,Z_n=298.9$ and $R_n=21$, which is quite close to the result from the movie. 
 
-By choosing $\beta = 0.01155$, $\varrho=1.37$ and $\alpha=0.00044$, the following plot can be seen in Fig.(ref{fig:initial_phase_2}):  
+By choosing $\beta = 0.01155$, $\varrho=1.37$ and $\alpha=0.00044$, the simulation can be seen in Fig.(ref{fig:initial_phase_2}). It is possible to argue for the changes done in Fig.(ref{fig:initial_phase_2}). Increasing $\varrho$ to 1.37 reduces the incubation time. Now the average time will be about 17.5 hours, which is realistic. The probability $\beta$ is sensitive and has a major effect only by small variations. This is due to the term that it is a part of $\Delta t SZ \beta$. A couple of examples demonstrate this. One hour can be estimated by setting $\Delta t = 1/24$. When using the initial values for the groups $Susceptible$ and $Zombie$ and $\beta=0.01155$ from Fig.(ref{fig:initial_phase_2}). A rough estimate of the infected group in the first hour will be $(1/24)*721*1*0.01155=0.34$. About one-third of a human in the first hour seems as a slow and not very aggressive disease. However when the number of *Zombies* slowly increases, the number of infected will be affected. By looking at the hour when the values are equal between humans and zombies, about 200 in each group, the number of infected will be 19.25 per hour. This result in about 10 percent of the humans. By changing $\beta$ to the value from Fig.(ref{fig:initial_phase_1}), the number of infected will be 500 per hour and it is quite easy to see that this will lead to eradication in a short amount of time. The last parameter $\alpha$ controls the number of zombies that dies in collisions between zombies and humans. While humans still think that the infected can be saved, it is still a chance that the result from a collision can end with a zombie kill. These results can therefore be seen as realistic values.
 
-FIGURE:[1_fig/WD_zombie_initial_2.png] label{fig:initial_phase_2} The final values are $S_n=71.3,I_n=230.8,Z_n=298.9$ and $R_n=21$, which is quite close to the result from the movie. 
-
-It is possible to argue for the changes done in Fig.(ref{fig:initial_phase_2}). Increasing $\varrho$ to 1.37 reduces the incubation time. Now the average time will be about 17.5 hours, which is realistic. The probability $\beta$ is sensitive and has a major effect only by small variations. This is due to the term that it is a part of $\Delta t SZ \beta$. A couple of examples demonstrate this. One hour can be estimated by setting $\Delta t = 1/24$. When using the initial values for the groups $Susceptible$ and $Zombie$ and $\beta=0.01155$ from Fig.(ref{fig:initial_phase_2}). A rough estimate of the infected group in the first hour will be $(1/24)*721*1*0.01155=0.34$. About one-third of a human in the first hour seems as a slow and not very aggressive disease. However when the number of *Zombies* slowly increases, the number of infected will be affected. By looking at the hour when the values are equal between humans and zombies, about 200 in each group, the number of infected will be 19.25 per hour. This result in about 10 percent of the humans. By changing $\beta$ to the value from Fig.(ref{fig:initial_phase_1}), the number of infected will be 500 per hour and it is quite easy to see that this will lead to eradication in a short amount of time. The last parameter $\alpha$ controls the number of zombies that dies in collisions between zombies and humans. While humans still think that the infected can be saved, it is still a chance that the result from a collision can end with a zombie kill. These results can therefore be seen as realistic values.
-
-===== The *Hysterical phase* =====
+===== The Hysterical phase =====
 Now the humans start to avoid the infected and some try to fight them. The humans often gather in groups and try to find safe spots away from the zombies. Important supplies as weapons and food are their main priorities. Barricades are built and the guarding is strict. When Rick Grimes wakes up, the hospital is abandoned and the halls are filled up with dead people. Quite fast he understand that he needs to reach safety. After a couple of days he ends up in a camp outside Atlanta city. A couple of elementary changes has happened with the interaction between humans and infected/zombies. In the *Initial phase*, the humans tried to help the infected humans. This resulted in a high percent of infected. Now they understand this risk and keep distance to those who are infected. This will give $\beta$ a lower value. The morality for a zombie kill has dramatically changed. While this was seen as no option in the *Initial phase*, this is now okay. The humans have started to treat zombies and infected as enemies instead of sick allies. This results in a higher death rate among the zombies, which is described by $\alpha$. 
 <linebreak>
 <linebreak>
 The hysterical model can be constructed based on the data found in the *Initial phase*. 
 
 |--------------------------------------------|
-|*Hysterical phase*|initial values|final values|
+|Hysterical phase|initial values|final values|
 |--------------------------------------------|
 |S      |71.3          | 62                  |
 |I      |230.8         | -                   |
@@ -230,34 +227,27 @@ The hysterical model can be constructed based on the data found in the *Initial 
 |R      |21            | 200                 |
 |--------------------------------------------|
 
-Here, the infected and zombies are counted as one group for the final values, since it is difficult to separate these groups in the series. The time aspect will be modeled for 30 days, which results in a ten times longer simulation. Since the final results are known here, a similar adjustment of the parameters can be done. The range of the parameter values have been found by some test simulations.In Fig.(ref{fig:hysterical_variations}) the parameters of $\beta$, $\varrho$ and $\alpha$ have been simulated with different values. 
-
-FIGURE:[1_fig/check_parameters_hysterical_2.png, width=800] label{fig:hysterical_variations} Variation in three different parameters in the *Hysterical phase*. The last subplot consist of the combination of all. $\beta=[1\cdot10^{-5},1.2\cdot10^{-5}]$, $\varrho=[1,2]$ and $\alpha=[2\cdot10^{-4},2.2\cdot10^{-4}]$
-
-Fig.(ref{fig:hysterical_variations}) gives insight in how variations in parameters affect the final result. By decreasing $\beta$, it will essentially increase the number of susceptible humans that will survive, but it will also increase the number of deaths. This may at a first glance seem quite strange. Should not the number of deaths decrease when the number of surviving humans increase? This can be explained with the idea that was shown for $\beta$ in the *Initial phase*. Since $\beta SZ$ gets smaller when $\beta$ gets smaller, the combination of $SZ$ will stay higher for a longer time . This will again affect $\alpha SZ$, which regulates the number of killed zombies. The larger this combination is, the more zombies will die. 
+Here, the infected and zombies are counted as one group for the final values, since it is difficult to separate these groups in the series. The time aspect will be modeled for 30 days, which results in a ten times longer simulation. Since the final results are known here, a similar adjustment of the parameters can be done. The range of the parameter values have been found by some test simulations similar as shown in Fig.(ref{fig:initial_parameters}). The following parameter values can be used to simulate the *Hysterical phase*: $\beta=0.000011$, $\varrho=1.4$ and $\alpha = 0.000208$. The simulation is shown in Fig.(ref{fig:hysterical_1}).
 <linebreak>
 <linebreak>
-By increasing $\alpha$, the number of removed also increase. However, similar to the increasing of the removed group it also has a slight increase of the number of susceptible humans. Here the argument for $\beta$ above can be reversed. Since a higher $\alpha$ leads to a higher death rate among the zombies, the combination $SZ$ will be smaller, which makes $\beta SZ$ smaller.
-<linebreak>
-<linebreak>
-The last parameter, $\varrho$, has nearly no effect. The red dots show a small decreasing of the removed group and  an increasing of susceptible humans when $\varrho$ is increased. This parameter varies most, but has least impact. This can be explained with the long time aspect and the low number of infected compared to the number of zombies. Since the number of zombies is much higher, the transformation length from infected to zombie is almost negligible.  
 
 FIGURE:[1_fig/WD_zombie_hysterical_1.png] label{fig:hysterical_1} *Hysterical phase* with parameter values $\beta = 0.000011$, $\varrho = 1.5$ and $\alpha = 0.000208$.
 
 Fig.(ref{fig:hysterical_1}) fulfills the result that was predicted based on the series. These final numbers correspond with the number in each group when Rick woke up at the hospital. The plot shows that the number of zombies increases quickly and reaches its maximum value after a couple of days in this phase, similar to the number of infected that dramatically decreased. Here the humans have been able to stabilize. Since the clashes between humans and zombies are dramatically decreased, nearly no humans get infected. And in the cases where humans have to face zombies, the killing rate has increased. The increase of the removed group is close to proportional to the decrease of the zombie group, which means that it is mostly zombies that die.
 
-===== The *Counter attack phase* ===== 
+===== The Counter attack phase ===== 
 label{section:counter_attack}
-This *Counter attack phase* is more complicated to model, since this phase appears simultaneously as the *Hysterical phase* in *Walking Dead*. The group of humans are trying to avoid the zombies, but when the zombies get too close, the humans need to fight back. These situations are caused by a high density of zombies in some areas, which force the zombies to spread. In *Walking dead* the *Counter attack phase* appears when a group of 30 zombies reaches the camp. This triggers a fight where all the zombies are killed and 4 of the humans get bitten. This shows that a *Counter attack phase* from the humans causes a lot of damage. The time aspect is set to 6 hours.  
+This *Counter attack phase* is more complicated to model, since this phase appears simultaneously as the *Hysterical phase* in *Walking Dead*. The group of humans are trying to avoid the zombies, but when the zombies get too close, the humans need to fight back. These situations are caused by a high density of zombies in some areas, which force the zombies to spread. In *Walking dead* the *Counter attack phase* appears when a group of 30 zombies reaches the camp. This triggers a fight where all the zombies are killed and 4 of the humans get bitten. This shows that a *Counter attack phase* from the humans causes a lot of damage. The time aspect is set to 6 hours. Now the function $\omega(t)$ will be used. This can be seen in Fig.(ref{fig:omega_function}):
 <linebreak>
 <linebreak>
-Now the function $\omega(t)$ will be used. This can be seen in Fig.(ref{fig:omega_function}):
 
 FIGURE:[1_fig/omega_function.png] label{fig:omega_function} $\omega (t)$ is a Gaussian function where $a$ controls the maximum value, $T$ controls the time for maximum value and $\sigma$ controls the length of the attack.   
 
-To get some start values, $SZ\omega(t)=30$ can be used. Where $\omega(t)$ is the area under the function. By inserting the final values from *Hysterical phase* for $S$ and $Z$, the area shall be $\omega (t)=1.34\cdot10^{-3}$. This result can be reproduced by using $a= 0.00103$ and $\sigma = 0.005$ in $\omega(t)$. The *Counter attack phase* is sat to appear during the last part of the day [0.75,1]. The value of T is then set to $T$=[0.875].
+To get some start values, $SZ\omega(t)=30$ can be used. Where $\omega(t)$ is the area under the function. By inserting the final values from *Hysterical phase* for $S$ and $Z$, the area shall be $\omega (t)=1.34\cdot10^{-3}$. This result can be reproduced by using $a= 0.00103$ and $\sigma = 0.005$ in $\omega(t)$. The *Counter attack phase* is set to appear during the last part of the day [0.75,1]. The value of T is then set to $T$=[0.875].
+<linebreak>
+<linebreak>
 
-FIGURE:[1_fig/WD_zombie_counter_1.png] label{fig:zombie_counter_1} The *Counter attack phase*. 8-9 zombies are killed and all humans survive
+FIGURE:[1_fig/WD_zombie_counter_1.png] label{fig:zombie_counter_1} The *Counter attack phase* with parameter values $a = 0.00103$, $\sigma = 0.005$ and $T = 0.875$. 8-9 zombies are killed and all humans survive
 
 This simulation in Fig.(ref{fig:zombie_counter_1}) results in some deaths. However, the total number should be higher. Another problem is that no humans died during this battle. The ODE model (ref{eq:LMR_model}) is based on *The Night of the Living Dead*, where the amount of humans who are killed is close to zero. This is not the case in *Walking dead*. Therefore the risk of dying is higher for human during a *Counter attack phase*. This is solved by adding $\mu \omega (t) SZ$, where $\mu$ is the risk for a human getting infected compared to a zombie kill during this attack. The model (ref{eq:LMR_model}) can then be expanded to system(ref{eq:1_seland_model}),
 
@@ -272,23 +262,21 @@ This simulation in Fig.(ref{fig:zombie_counter_1}) results in some deaths. Howev
 \end{equation}
 !et
 
-FIGURE:[1_fig/WD_zombie_counter_2.png] label{fig:zombie_counter_2} *Counter attack phase* with the new model. Parameter values are set to $a=0.0073$ and $\mu=0.14$. 
+FIGURE:[1_fig/WD_zombie_counter_2.png] label{fig:zombie_counter_2} *Counter attack phase* with parameter values $a=0.0073$ and $\mu=0.14$. 
 
 Fig.(ref{fig:zombie_counter_2}) is modeled with the initial values given when Rich woke up, explained in the *Initial phase*. The result after this day is that the humans are reduced to 58 humans. The number in the infected group is increased to 2.47, which can be explained with the two characters in the series, Amy and Jim. The number of removed humans is increased to 231, and is a combination of killed zombies and humans who are attacked. By modelling this for another day, the removed group will increase with a couple of new deaths. 
 <linebreak>
 <linebreak>
-It would be interesting to check what would happen if this *Counter attack phase* was repeated over time. Who would survive? An attack every other day will give the following result shown in Fig.(ref{fig:counter_series})
+It would be interesting to check what would happen if this *Counter attack phase* was repeated over time. Who would survive? An attack every other day will give the following result shown in Fig.(ref{fig:counter_series}). After 200 days there would be about 15 humans and 12 zombies left. Then the humans would be able to survive since they are more efficient in battles. 
 
 FIGURE:[1_fig/WD_zombie_counter_series.png] label{fig:counter_series} 100 counter attacks during 200 days will result in a higher population of humans.
-
-After 200 days there would be about 15 humans and 12 zombies left. Then the humans would be able to survive since they are more efficient in battles. 
 
 ===== The three phases in Walking Dead =====
 By adding these three phases together, the final result after the attack should be possible to match. The simulation here will be done with the parameters used in the earlier sections. This can lead to a small error since the result of the final number in each phase is given with decimals and the initial values are based on assumptions and round off numbers. The different parameter values are listed in Tab.(ref{table:param_val}). 
 
 label{table:param_val}
 |-------------------------------------------------------|
-|parameter|*Initial phase*|*Hysterical phase*|*Counter attack phase*|
+|parameter|Initial phase|Hysterical phase|Counter attack phase|
 |-------------------------------------------------------|
 |$\beta$  |0.01155      |0.000011        |0.000011     	|
 |$\varrho$|1.37         |1.5             |1.5          	|
@@ -298,15 +286,15 @@ label{table:param_val}
 |$\mu$    |0            |0               |0.14         	|
 |-------------------------------------------------------|
 
-The simulation is run for 34 days. The three first days are in the *Initial phase*, the resisting days are in the *Hysterical phase*. The *Counter attack phase* is released on day 33 and lasts for about 6 hours. The plot is shown in Fig.(ref{fig:all_phases})   
+The simulation is run for 34 days. The three first days are in the *Initial phase*, the resisting days are in the *Hysterical phase*. The *Counter attack phase* is released on day 33 and lasts for about 6 hours. The plot is shown in Fig.(ref{fig:all_phases}). This clearly shows that the change in parameter values affects the different phases. The different values are shown in the Tab.(ref{table:group_values}), where the values are given at the initial time. The last column consist of the final values after 34 days.
 
 FIGURE:[1_fig/WD_zombie_all_phases_1.png] label{fig:all_phases} Walking Dead simulated after 5 episodes. Based on the three different phases.
 
-Fig.(ref{fig:all_phases}) clearly shows that the change in parameter values affect the different phases. The different values are shown in the Tab.(ref{table:group_values}), where the values are given at the initial time. The last column consist of the final values after 34 days.
+
 
 label{table:group_values}
 |---------------------------------------------------------------------------|
-|values	    |*Initial phase*|*Hysterical phase*	|*Counter attack phase*|final values|
+|values	    |Initial phase|Hysterical phase	|Counter attack phase|final values|
 |---------------------------------------------------------------------------|
 |$S_0$      |621          | 71          	| 62           |58          |
 |$I_0$      |0            | 231         	| 0            |1           |
@@ -319,19 +307,16 @@ Considering the uncertainty of the parameters, this simulation gives a result cl
 <linebreak>
 
 ======= Discussion =======
-Two different ODE models are used in this chapter. The first model is a basic SIR model, and the disease in the *English boarding school* is based on this model. The expected result was produced. The maximum concentration of the infected group could be found by using ref{eq:max_I}. The value of $\Imax$ was first calculated for the example from ref{section:1_english} with the given parameter values. This was found to be $\Imax=292$. The numerical solution shown in Fig.(ref{fig:english_boarding}) gave the same $\Imax$. 
+The simulations of the example English boarding school were based on a basic SIR model, shown in Eq.(ref{eq:SIR_model}), and expected results were achieved. The maximum concentration of the infected group could be found by using Eq.(ref{eq:max_I}). The value of $\Imax$ was first calculated for the example from section ref{section:1_english} with the given parameter values, and this resulted in $\Imax=292$. The numerical solution shown in Fig.(ref{fig:english_boarding}) gave the same result for $\Imax$. 
 <linebreak>
 <linebreak>
-With variations in the parameter value $\rho$, different epidemic results could be achieved. In the section ref{section:1_english}, the value of $\rho$ was set to 202. By decreasing this value to 50, all students will be infected in during the 8 first days. While increasing the value of $\rho$ to 400, 170 students will remain in the susceptible group after 15 days. 
+With variations in the parameter value $\rho$, different epidemic results were achieved. In section ref{section:1_english}, the value of $\rho$ was set to 202. By decreasing this value to 50, all students would be infected during the 10 first days. Increasing the value of $\rho$ up to 400 on the other hand, would result in 170 remaining students in the susceptible group after 30 days. 
 <linebreak>
 <linebreak>
-The *Zombiefication* part was based on the model and phases from LMR Ref.(cite{zombie-math}). The parameters and the lenght of the phases were adjusted to simulate *Walking Dead*. Several assumptions were made from the writer to model this series. Since the simulations were based on expected results, the parameters were adjusted to fulfill these demands. The model produced the expected result for the groups, and one can say that the spread can be seen as possible based on these assumptions.    
+The *Zombiefication* part was based on the model and phases from Langtangen, Mardal and Røtnes Ref.cite{zombie-math}. The parameters and the length of the phases were adjusted to simulate *Walking Dead*. Since the simulations were based on observations from the TV series *Walking Dead*, the parameter values in the model were adjusted to fulfill the result. 
 <linebreak>
 <linebreak>
-The parameter values $\beta$, $\varrho$ and $\alpha$ from the model in Eq.(ref{eq:LMR_model}) were adjusted for the different phases in ref{section:1_zombiefication}. The effect of varying these parameters could be seen for the two groups *Susceptible* and *Removed* in Fig.(ref{fig:initial_parameters}) and Fig.(ref{hysterical_variations}). The effect of varying $\beta$, which describes the number of susceptible humans that become infected, had major effect on the result for the susceptible group. The changes in $\alpha$, which describes the number of zombies killed by susceptible humans, affected the result in the removed group. The changes in $\varrho$, which describes the probability for an infected human to wake up as a zombie, affects the susceptible group in the *Initial phase*.  The effect for the *Hysterical phase* is close negligible. One can see that $\varrho$ has a greater effect on short simulations. By varying the different parameters in Eq.(ref{eq:LMR_model}), the expected result from *Walking Dead* wasachieved.
+The parameter values $\beta$, $\varrho$ and $\alpha$ from the model in Eq.(ref{eq:LMR_model}) were adjusted for the different phases in section ref{section:1_zombiefication}. The effect of varying these parameters could be seen for the two groups *Susceptible* and *Removed* in Fig.(ref{fig:initial_parameters}). Varying $\beta$, which describes the number of susceptible humans that become infected, had a major effect on the result for the susceptible group. The changes in $\alpha$, which describes the number of zombies killed by susceptible humans, affects the result in the removed group. The changes in $\varrho$, which describes the probability for an infected human to wake up as a zombie, affects the susceptible group in the *Initial phase*. By varying the different parameters in Eq.(ref{eq:LMR_model}), the expected result from *Walking Dead* was achieved.
 <linebreak> 
 <linebreak> 
-There are several factors that this model don't take into account. How will the number of battles effect the humans and zombies? Will they be tired or more efficient? What about weapons? What would happen if the group of zombies was much larger? Due to different variations in behavior of humans and zombies, one can never predict all situations accurately. This is a weakness with this model, and human behavior is difficult to add to the model.  
-<linebreak>
-<linebreak>
-The parameters found in this model will be used for all three chapters. This model is straight forward to calculate and is easy to use. The model is good if the goal is to find the total amount of each group measured over an area. It requires that the parameters are given. The model gives no information about the spatial spread of the disease. This will therefore be useless in describing how a disease can spread abroad countries and borderlines. The next two chapters will introduce more complicated models which will take the spatial position into account. 
+The parameters found in this model will be used for all three chapters. This model is easy to use. The parameter values can easily be adjusted to fit a known solution, shown for the example from *Walking Dead*. However,it gives no information about the spatial spread of the disease. It will therefore be useless in describing how a disease can spread abroad countries and borderlines. The next two chapters will introduce more complicated models which will take the spatial position into account. 
