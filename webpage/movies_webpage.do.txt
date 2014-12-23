@@ -23,3 +23,6 @@ MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_Frederikke_contourf.webm, height=500
 
 ======= Random walk =======
 
+===== Moving smart =====
+
+MOVIE:[../3_Random_walk/3_fig/moving_smart.mp4, height=500 width=600]
