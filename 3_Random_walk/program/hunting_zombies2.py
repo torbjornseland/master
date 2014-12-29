@@ -670,8 +670,55 @@ def fight_susceptible_vs_zombie(x,y,HI,ZK,zombie_id):
                     ZMO.delete_value(x,y,zombie_id)
                     break
                     
+"""
+class clock:
+    def __init__(self):
+        
+    def blitme(self):
+        self.image = pygame.transform.rotate(
+            self.base_image, (-self.direction*(360/(2*pi))-90))
+        
+        draw_pos = self.image.get_rect().move(
+            self.x - self.image_w / 2, 
+            self.y - self.image_h / 2)
+        self.screen.blit(self.image, draw_pos)
 
-
+    font = pygame.font.Font(None, 36)
+	text = font.render("Hello There", 1, (10, 10, 10))
+	textpos = text.get_rect()
+	textpos.centerx = background.get_rect().centerx
+	background.blit(text, textpos)
+"""
+class text_display:
+    def __init__(self,step,mode,phases,zom_phases):
+        self.step = step
+        self.steps = 100
+        self.phases = phases
+        self.zom_phases = zom_phases
+        self.phase = mode[0]
+        self.mode = mode
+        self.mo = mode[0]
+        self.font = pygame.font.Font(None, 36)
+    def display(self,step,background,H,I,Z,D):
+        self.step = step
+        #Choose phase
+        if (self.step < phases[0]):
+            self.mo = self.mode[0]
+            self.phase = self.zom_phases[0]
+        else:
+            self.mo = self.mode[1]
+            self.phase = self.zom_phases[1]
+        #Choose time
+        self.time = self.step/self.steps
+        if self.time == 1:
+            minute = "minute"
+        else:
+            minute = "minutes"
+        
+        text = self.font.render("Phase: %s phase, Mode: %s ,Time: %s %s, H=%i, I=%i, Z=%i, D=%i" % (self.phase,self.mo,self.time,minute,H,I,Z,D), 1, (10, 10, 10))
+        textpos = text.get_rect()
+        textpos.centerx = background.get_rect().centerx
+        screen.blit(text, textpos)
 #############################--Script--#####################################
 
 
@@ -690,6 +737,9 @@ def run_blindern():
         #IZ.append(1-(1-rho[i])**(1/float(100)))
 
     global screen
+    global phases
+    global zom_phases
+    zom_phases = ["Initial","Hysterical","Counter attack"]
     phases = [300,steps]
     if game_on:
         pygame.init()       
@@ -832,6 +882,7 @@ def run_blindern():
     global attack
     attack = False
 
+
     if not game_on: 
             for i in range(0,steps):
                 if (i % 100 == 0):
@@ -890,8 +941,9 @@ def run_blindern():
 
 
     else:
-        #print "hit"
+        #print "hi
         break_point = 0
+        screenText = text_display(0,mode,phases,zom_phases)
         for i in range(0,steps):
         #while True:    
             
@@ -930,10 +982,6 @@ def run_blindern():
                 ZMO.mat[1:-1,0] = ZMO.mat[1:-1,-2]
                 ZMO.mat[1:-1,-1] = ZMO.mat[1:-1,1]  
 
-            
-            pygame.display.flip()
-            pygame.image.save(screen, 'pymovie/tmp%05d.png' % counter)
-            
             if makegraph:
                 for e in everyone:
                     if (e.color() == 'r'):
@@ -944,6 +992,11 @@ def run_blindern():
                         infected_array[i+1] = infected_array[i+1]+ 1
                     else:
                         dead_array[i+1] = dead_array[i+1] + 1
+
+            screenText.display(i,background,human_array[i+1],infected_array[i+1],zombie_array[i+1],dead_array[i+1]) 
+            pygame.display.flip()
+            pygame.image.save(screen, 'pymovie/tmp%05d.png' % counter)
+            
             
             #print "HMO 0",HMO
 
@@ -966,16 +1019,15 @@ def run_blindern():
 
 
 #if makeplot: 
-    if makeplot:
+    #if makeplot:
         #sci.movie('pymovie/tmp*.png',encoder='ffmpeg',output_file=savefile,vcodec='libx264rgb',vbitrate='2400',qscale=1,fps=10)
-        os.system('avconv -r 10 -i %s -vcodec libx264 %s.mp4' %('pymovie/tmp%05d.png',savefile))
+        #os.system('avconv -r 10 -i %s -vcodec libx264 %s.mp4' %('pymovie/tmp%05d.png',savefile))
         #os.system('avconv -r 10 -minrate 4M -maxrate 4M -b:v 4M -i %s -vcodec libvpx %s_q5.webm -y' % ('pymovie/tmp%05d.png',savefile))
-        #os.system('avconv -r 10 -q 1 -i %s -vcodec libvpx %s_q1.webm -y' % ('pymovie/tmp%05d.png',savefile))
+        #os.system('avconv -r 10 -b:v 10M -i %s -vcodec libvpx %s_q1.webm -y' % ('pymovie/tmp%05d.png',savefile))
 
-        for filename in glob.glob('pymovie/tmp*.png'):
-            os.remove(filename)
-
-
+        #for filename in glob.glob('pymovie/tmp*.png'):
+        #    os.remove(filename)
+	print "make plot"	
 
     print "make graph"    
     if makegraph:
@@ -990,9 +1042,9 @@ def run_blindern():
 
 ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode, savedata = read_command_line()
 game_on = True #False #True #False #False
-mode = ['random','moving_smart']
-spread = 'gaussian'
-area_free = True #True
+mode = ['moving_smart','moving_smart']
+spread = 'uniform'
+area_free = False #True #True
 sim_failed = 0
 first_sim = True
 N = 1
