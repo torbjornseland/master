@@ -33,3 +33,16 @@ MOVIE:[../3_Random_walk/3_fig/moving_smart_z_1.webm, height=500 width=600]
 
 
 MOVIE:[../3_Random_walk/3_fig/moving_smart_z_10.webm, height=500 width=600]
+
+======= Three phases =======
+
+MOVIE:[../3_Random_walk/3_fig/three_phases.webm, height=500 width=600]
+
+MOVIE:[../3_Random_walk/3_fig/three_phases_10min.webm, height=500 width=600]
+
+===== Free areas =====
+
+MOVIE:[../3_Random_walk/3_fig/three_phases_free.webm, height=500 width=600]
+
+MOVIE:[../3_Random_walk/3_fig/three_phases_free_10min.webm, height=500 width=600]
+

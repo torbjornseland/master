@@ -495,10 +495,10 @@ class run:
     
     def one_step(self,everyone,step_nr):
         counter = 0
-        for i in range(len(self.phases)):
-            if (step_nr < self.phases[i]):
-                self.ph_val = i
-                break
+        if (step_nr < self.phases[0]):
+            self.ph_val = 0
+        else:
+            self.ph_val = 1
         for e in everyone:
             mx = e.coordinates()
             #print "mx",mx[0]
@@ -705,9 +705,12 @@ class text_display:
         if (self.step < phases[0]):
             self.mo = self.mode[0]
             self.phase = self.zom_phases[0]
-        else:
+       	elif (self.step < phases[1]):
             self.mo = self.mode[1]
             self.phase = self.zom_phases[1]
+	else:
+            self.mo = self.mode[1]
+            self.phase = self.zom_phases[2]
         #Choose time
         self.time = self.step/self.steps
         if self.time == 1:
@@ -740,7 +743,7 @@ def run_blindern():
     global phases
     global zom_phases
     zom_phases = ["Initial","Hysterical","Counter attack"]
-    phases = [300,steps]
+    phases = [300,3300,steps]
     if game_on:
         pygame.init()       
 
@@ -995,7 +998,8 @@ def run_blindern():
 
             screenText.display(i,background,human_array[i+1],infected_array[i+1],zombie_array[i+1],dead_array[i+1]) 
             pygame.display.flip()
-            pygame.image.save(screen, 'pymovie/tmp%05d.png' % counter)
+            if (counter%1 == 0): 	
+                pygame.image.save(screen, 'pymovie/tmp%05d.png' % (counter/1))
             
             
             #print "HMO 0",HMO
@@ -1042,9 +1046,9 @@ def run_blindern():
 
 ZN, HN, steps, area_map, grid_size, ZK, HI, ZA, IZ, ID,makeplot, makegraph, savefile, mode, savedata = read_command_line()
 game_on = True #False #True #False #False
-mode = ['moving_smart','moving_smart']
-spread = 'uniform'
-area_free = False #True #True
+mode = ['random','moving_smart']
+spread = 'gaussian'
+area_free = True #True
 sim_failed = 0
 first_sim = True
 N = 1
