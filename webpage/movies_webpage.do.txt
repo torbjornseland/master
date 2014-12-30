@@ -1,48 +1,51 @@
+========= Movies for the master thesis  =========
+This page includes movies for the thesis *MATHEMATICAL ANALYSIS OF EPIDEMIC SYSTEMS-COMPARISON OF DIFFERENT MODELS*. These are produced as webm movies, and must be seen in Firefox or Chrome.
 
-======= PDE models =======
+TOC: on
 
-===== Travelling wave =====
+======= 3-PDE models =======
 
-MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/Travelling_wave.webm, heigth=500 width=500]
+===== Fig. 3.1-Travelling wave =====
 
-===== Fig 3.4-major flow =====
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/Travelling_wave.webm, heigth=500 width=500] A Gaussian function of infected with height 0.2 is placed on the left side. This causes an epidemic wave controlled by the parameter λ = 0.5. The size of the epidemic wave is measured at point x = 15.
 
-MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_initial_variable.webm, height=500 width=600] Travelling wave with a greater initial wave.
+===== Fig. 3.4-Major flow =====
 
-===== Fig.3.8-Infected in center =====
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_initial_variable.webm, height=500 width=600] A major flow of infected spread outwards in the field. After a certain time, the wave has passed the area and the number in each group stabilized
 
-MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_british_school_gauss.webm, height=500 width=600] The sick one is placed in the center of the School area.
+===== Fig. 3.8-Infected in center =====
 
-===== Fig.3.11-Large constellation =====
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_british_school_gauss.webm, height=500 width=600] The infected student is placed in the center as a Gaussian function at initial time. The height of the Gaussian function is set to 1 m and volume is set to 1 cubic
 
-MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Created with different diffusion constants. The groups of susceptible are placed in three different areas. 
+===== Fig. 3.11-Large constellation =====
 
-===== Fig.3.13-Frederikkeplassen =====
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Walking Dead simulated with the zombie at initial time in the large constellation. 
 
-MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_Frederikke_contourf.webm, height=500 width=600]
+===== Fig. 3.13-Frederikkeplassen =====
 
-======= Random walk =======
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_Frederikke_contourf.webm, height=500 width=600]Frederikkeplassen modeled with free areas for the susceptible groups. The diffusion function γ(x) is set to zero for the zombie and infected groups in the buildings. The zombie at initial time is placed in the center of Frederikkeplassen.
 
-===== Random walk =====
+======= 4-Random walk =======
 
-MOVIE:[../3_Random_walk/3_fig/random_walk.webm, height=500 width=600]
+===== Fig. 4.4-Random walk =====
 
-===== Moving smart =====
+MOVIE:[../3_Random_walk/3_fig/random_walk.webm, height=500 width=600] Simulation of a random walk mode for 10 minutes. The first 3 minutes are in the Initial phase, while the last 7 minutes are for the Hysterical phase.
 
-MOVIE:[../3_Random_walk/3_fig/moving_smart_z_1.webm, height=500 width=600]
+===== Fig. 4.6-Moving smart =====
 
+MOVIE:[../3_Random_walk/3_fig/moving_smart_z_1.webm, height=500 width=600] Simulation of a moving smart mode for 10 minutes. The first 3 minutes are in the Initial phase, while the last 7 minutes are for the Hysterical phase. Simulated with 1 zombie at initial time
 
-MOVIE:[../3_Random_walk/3_fig/moving_smart_z_10.webm, height=500 width=600]
+MOVIE:[../3_Random_walk/3_fig/moving_smart_z_10.webm, height=500 width=600] Simulation of a moving smart mode for 10 minutes. The first 3 minutes are in the Initial phase, while the last 7 minutes are for the Hysterical phase. Simulated with 10 zombies at initial time
 
-======= Three phases =======
+===== Fig. 4.8-Three phases =====
 
-MOVIE:[../3_Random_walk/3_fig/three_phases.webm, height=500 width=600]
+MOVIE:[../3_Random_walk/3_fig/three_phases.webm, height=500 width=600] Simulation of three phases with low quality. Simulated for 34 minutes. The Initial phase last from 0 to 3 minutes with Random walk mode. The Hysterical phase last from 3 minutes to 33 minutes with Moving smart mode. The Counter attack last from 33 minutes to 33.5 minutes.
 
-MOVIE:[../3_Random_walk/3_fig/three_phases_10min.webm, height=500 width=600]
+MOVIE:[../3_Random_walk/3_fig/three_phases_10min.webm, height=500 width=600] Simulation of the first ten minutes of three phases with high quality.
 
-===== Free areas =====
+===== Fig. 4.10-Free areas =====
 
-MOVIE:[../3_Random_walk/3_fig/three_phases_free.webm, height=500 width=600]
+MOVIE:[../3_Random_walk/3_fig/three_phases_free.webm, height=500 width=600] Simulation of three phases with free areas for the susceptible group with low quality. Simulated for 34 minutes. The Initial phase last from 0 to 3 minutes with Random walk mode. The Hysterical phase last from 3 minutes to 33 minutes with Moving smart mode. The Counter attack last from 33 minutes to 33.5 minutes.
 
-MOVIE:[../3_Random_walk/3_fig/three_phases_free_10min.webm, height=500 width=600]
+MOVIE:[../3_Random_walk/3_fig/three_phases_free_10min.webm, height=500 width=600] Simulation of the first ten minutes of three phases with free areas with high quality.
 
