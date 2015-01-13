@@ -19,7 +19,7 @@ MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_british_school_gauss.webm, height=50
 
 ===== Fig. 3.11-Large constellation =====
 
-MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_zombie_three_phases_zombie_large_town.webm, height=500 width=600] Walking Dead simulated with the zombie at initial time in the large constellation. 
+MOVIE:[../2_PDE_Fisher_Kolmogoroff/2_fig/2D_zombie_three_phases_zombie_large_town_3.webm, height=500 width=600] Walking Dead simulated with the zombie at initial time in the large constellation. 
 
 ===== Fig. 3.13-Frederikkeplassen =====
 
